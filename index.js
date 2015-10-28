@@ -32,7 +32,7 @@
 
 // But, NEVER do this: (Why?)
 // exports = {my_method: ...}
-require('./lib/_include.less');
+import include from './lib/_include.less';
 
 //import Mask from './lib/mask/mask';
 import Grid from './lib/Grid';

@@ -43,10 +43,10 @@ module.exports = {
                 loaders: ['babel'],
                 exclude: /node_modules/
             },
-            {
+            /*{
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-            },
+            },*/
             // Optionally extract less files
             // or any other compile-to-css language
             {

@@ -18,4 +18,4 @@ gulp.task('watch', function () {
   gulp.watch(['./lib/**/*.*'], ['webpack']);
 });
 
-gulp.task('default', ['webpack'/*, 'html', 'asset'*/]);
+gulp.task('default', [/*'webpack', 'html', 'asset'*/]);
