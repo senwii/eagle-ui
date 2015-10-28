@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Input</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <!--<link rel="stylesheet" type="text/css" href="../dist/eagleui.css" />-->
+</head>
+<body>
+<div id="root" style="padding: 100px"></div>
+
+<script src="../bower_components/react/react.js"></script>
+<script src="../bower_components/react/JSXTransformer.js"></script>
+<script src="../dist/eagleui.js"></script>
+<script type="text/javascript">
+</script>
+<script type="text/jsx">
+   // var eagleui = require('eagleui.js');
+
+    React.render(
+            <div>
+                <eagleui.Input name="test" id="test" placeholder="请输入"  />
+                <div>
+                    <eagleui.Input  type="checkbox"   />
+                    <eagleui.Input  type="checkbox"   />
+                    <eagleui.Input  type="checkbox"   />
+                    <eagleui.Input  type="checkbox"   />
+                </div>
+            </div>
+            ,
+        document.getElementById('root')
+    );
+</script>
+</body>
+</html>

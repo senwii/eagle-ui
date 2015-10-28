@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>弹框</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <!--<link rel="stylesheet" type="text/css" href="../dist/eagleui.css" />-->
+</head>
+<body>
+<div id="root"></div>
+
+<script src="../bower_components/react/react.js"></script>
+<script src="../bower_components/react/JSXTransformer.js"></script>
+<script src="../dist/eagleui.js"></script>
+<script type="text/javascript">
+    window.params = {
+        display:false,
+        text:'我是一个测试',
+        time:1000
+    };
+</script>
+<script type="text/jsx">
+   // var eagleui = require('eagleui.js');
+
+    React.render(
+            <eagleui.Grid>
+                <eagleui.Row>
+                    <eagleui.Col sm="10">dsdsd</eagleui.Col>
+                    <eagleui.Col sm="2">啊哈</eagleui.Col>
+                </eagleui.Row>
+            </eagleui.Grid>,
+        document.getElementById('root')
+    );
+</script>
+</body>
+</html>
