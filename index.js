@@ -41,6 +41,7 @@ import Row from './lib/Row';
 import Button from './lib/Button';
 import ButtonGroup from './lib/ButtonGroup';
 import Input from './lib/Input.js';
+import RadioGroup from './lib/RadioGroup.js';
 
 //var apis = api();
 
@@ -51,7 +52,8 @@ window.eagleui={
     Row:Row,
     Button:Button,
     ButtonGroup:ButtonGroup,
-    Input:Input
+    Input:Input,
+    RadioGroup:RadioGroup
 };
 
 if (typeof module !== 'undefined') {
