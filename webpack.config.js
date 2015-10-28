@@ -4,7 +4,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var extend = require('extend');
-var externals = require('./externals');
+//var externals = require('./externals');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 //var
 var getExternals = function(){
