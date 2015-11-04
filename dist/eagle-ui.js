@@ -92,6 +92,7 @@
 
 	// But, NEVER do this: (Why?)
 	// exports = {my_method: ...}
+	exports.__esModule = true;
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -103,48 +104,38 @@
 
 	var _libGrid = __webpack_require__(14);
 
-	var _libGrid2 = _interopRequireDefault(_libGrid);
+	exports.Grid = _libGrid.Grid;
 
 	var _libCol = __webpack_require__(16);
 
-	var _libCol2 = _interopRequireDefault(_libCol);
+	exports.Col = _libCol.Col;
 
 	var _libRow = __webpack_require__(17);
 
-	var _libRow2 = _interopRequireDefault(_libRow);
+	exports.Row = _libRow.Row;
 
 	var _libButton = __webpack_require__(18);
 
-	var _libButton2 = _interopRequireDefault(_libButton);
+	exports.Button = _libButton.Button;
 
 	var _libButtonGroup = __webpack_require__(22);
 
-	var _libButtonGroup2 = _interopRequireDefault(_libButtonGroup);
+	exports.ButtonGroup = _libButtonGroup.ButtonGroup;
 
 	var _libInputJs = __webpack_require__(23);
 
-	var _libInputJs2 = _interopRequireDefault(_libInputJs);
+	exports.Input = _libInputJs.Input;
 
 	var _libRadioGroupJs = __webpack_require__(24);
 
-	var _libRadioGroupJs2 = _interopRequireDefault(_libRadioGroupJs);
+	exports.RadioGroup = _libRadioGroupJs.RadioGroup;
 
 	//var apis = api();
 
-	window.eagleui = {
-	    //Mask:Mask,
-	    Grid: _libGrid2['default'],
-	    Col: _libCol2['default'],
-	    Row: _libRow2['default'],
-	    Button: _libButton2['default'],
-	    ButtonGroup: _libButtonGroup2['default'],
-	    Input: _libInputJs2['default'],
-	    RadioGroup: _libRadioGroupJs2['default']
-	};
-
-	if (true) {
-	    module.exports = eagleui;
-	}
+	//
+	//if (typeof module !== 'undefined') {
+	//    module.exports=eagleui;
+	//}
 
 /***/ },
 /* 10 */
@@ -159,7 +150,18 @@
 	var update = __webpack_require__(13)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
-
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/less-loader/index.js!./_include.less", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/less-loader/index.js!./_include.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 11 */
@@ -509,7 +511,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = React;
+	module.exports = require('react');
 
 /***/ },
 /* 16 */

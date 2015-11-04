@@ -35,29 +35,19 @@
 import include from './lib/_include.less';
 
 //import Mask from './lib/mask/mask';
-import Grid from './lib/Grid';
-import Col from './lib/Col';
-import Row from './lib/Row';
-import Button from './lib/Button';
-import ButtonGroup from './lib/ButtonGroup';
-import Input from './lib/Input.js';
-import RadioGroup from './lib/RadioGroup.js';
+export {Grid} from './lib/Grid';
+export {Col} from './lib/Col';
+export {Row} from './lib/Row';
+export {Button} from './lib/Button';
+export {ButtonGroup} from './lib/ButtonGroup';
+export {Input} from './lib/Input.js';
+export {RadioGroup} from './lib/RadioGroup.js';
 
 //var apis = api();
 
-window.eagleui={
-    //Mask:Mask,
-    Grid:Grid,
-    Col:Col,
-    Row:Row,
-    Button:Button,
-    ButtonGroup:ButtonGroup,
-    Input:Input,
-    RadioGroup:RadioGroup
-};
-
-if (typeof module !== 'undefined') {
-    module.exports=eagleui;
-}
+//
+//if (typeof module !== 'undefined') {
+//    module.exports=eagleui;
+//}
 
 

@@ -30,12 +30,9 @@ module.exports = {
     },
     output:{
         path:path.join(__dirname,'dist'),
-        filename:'eagleui.js'/*,
+        filename:'eagle-ui.js'/*,
          sourceMapFilename:'[file].map'*/
     },
-    externals:{
-        'react':'React'
-    },//getExternals(),
     module:{
         loaders:[
             {
