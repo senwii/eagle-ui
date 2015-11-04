@@ -1,0 +1,51 @@
+.eg-dialogue-overlay{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 5000;
+  background-color: #000000;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+.eg-closeDialogue{
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: -15px;
+  padding-right: 5px;
+}
+
+.eg-dialogue{
+  position:absolute;
+  top:50%;left:50%;
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+  opacity: 1;
+  background: #fff;
+  z-index: 5500;
+  text-align: center;
+  padding: 10px;
+}
+.eg-dialogue-button{
+  text-align: center;
+  padding: 5px 50px;
+}
+.eg-dialogue-content{
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px 30px;
+}
+.eg-dialogue-submit,.eg-dialogue-cancel{
+  margin: 5px;
+  border-radius: 4px;
+}
+.eg-submit{
+  color: #fff;
+  background: #d94000;
+}
+.eg-dialogue-title{
+  margin-top: 10px;
+  font-size: 18px;
+}

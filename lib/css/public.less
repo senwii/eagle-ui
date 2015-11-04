@@ -7,3 +7,26 @@
 .clearfix:after {
     clear: both;
 }
+/**搜索图标*/
+.search-icon:before, .search-icon:after{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    z-index:10;
+}
+.search-icon:before{
+    border: 2px solid @gray-b2;
+    height: 10px;
+    width: 10px;
+    border-radius: 7px;
+    top: 11px;
+    left: 5px;
+}
+.search-icon:after{
+    height: 7px;
+    width: 2px;
+    transform: rotate(-45deg);
+    top: 21px;
+    left: 18px;
+    background: @gray-b2;
+}
