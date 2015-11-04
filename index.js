@@ -42,6 +42,7 @@ export {Button} from './lib/Button';
 export {ButtonGroup} from './lib/ButtonGroup';
 export {Input} from './lib/Input.js';
 export {RadioGroup} from './lib/RadioGroup.js';
+export {Label} from './lib/Label.js';
 
 //var apis = api();
 

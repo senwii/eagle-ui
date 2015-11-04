@@ -58,22 +58,12 @@
 	var _indexJs = __webpack_require__(165);
 
 	_react2['default'].render(_react2['default'].createElement(
-	    _indexJs.ButtonGroup,
-	    { justify: true },
+	    'div',
+	    null,
 	    _react2['default'].createElement(
-	        _indexJs.Button,
-	        { radius: true, egSize: 'sm', egStyle: 'warning' },
-	        '我是按钮'
-	    ),
-	    _react2['default'].createElement(
-	        _indexJs.Button,
-	        { radius: true, egSize: 'sm', egStyle: 'warning' },
-	        '我是按钮'
-	    ),
-	    _react2['default'].createElement(
-	        _indexJs.Button,
-	        { radius: true, egSize: 'sm', egStyle: 'warning' },
-	        '我是按钮'
+	        _indexJs.Label,
+	        { url: 'http://www.baidu.com' },
+	        '我是一个标签'
 	    )
 	), document.getElementById('root'));
 
