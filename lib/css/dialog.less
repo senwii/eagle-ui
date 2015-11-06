@@ -1,4 +1,4 @@
-.eg-dialogue-overlay{
+.eg-dialog-overlay, .eg-tips-overlay{
   position: fixed;
   left: 0px;
   top: 0px;
@@ -8,16 +8,16 @@
   width: 100%;
   height: 100%;
 }
-.eg-closeDialogue{
+.eg-dialog-close, .eg-tips-close{
   display: inline-block;
   float: right;
   cursor: pointer;
   font-size: 17px;
-  margin-top: -15px;
+  margin-top: -10px;
   padding-right: 5px;
 }
 
-.eg-dialogue{
+.eg-dialog, .eg-tips{
   position:absolute;
   top:50%;left:50%;
   -webkit-transform:translate(-50%,-50%);
@@ -27,17 +27,19 @@
   z-index: 5500;
   text-align: center;
   padding: 10px;
+  box-shadow: 0px 1px 5px 2px @gray-bb;
+  border-radius: 3px;
 }
-.eg-dialogue-button{
+.eg-dialog-button, .eg-tips-button{
   text-align: center;
   padding: 5px 50px;
 }
-.eg-dialogue-content{
+.eg-dialog-content, .eg-tips-content{
   text-align: center;
   margin-top: 10px;
   padding: 10px 30px;
 }
-.eg-dialogue-submit,.eg-dialogue-cancel{
+.eg-dialog-submit,.eg-dialog-cancel, .eg-tips-submit,.eg-tips-cancel{
   margin: 5px;
   border-radius: 4px;
 }
@@ -45,7 +47,7 @@
   color: #fff;
   background: #d94000;
 }
-.eg-dialogue-title{
+.eg-dialog-title, .eg-tips-title{
   margin-top: 10px;
   font-size: 18px;
 }
