@@ -48,6 +48,7 @@ export {Dialog} from './lib/Dialog .js';
 export {Crumb} from './lib/Crumb.js';
 export {Search} from './lib/Search.js';
 export {LabelGroup} from './lib/LabelGroup.js';
+export {Toast} from './lib/Toast.js';
 //var apis = api();
 
 //
