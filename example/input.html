@@ -18,15 +18,36 @@
    // var eagleui = require('eagleui.js');
 
     React.render(
-            <div>
-                <eagleui.Input name="test" id="test" placeholder="请输入"  />
-                <div>
-                    <eagleui.Input  type="checkbox"   />
-                    <eagleui.Input  type="checkbox"   />
-                    <eagleui.Input  type="checkbox"   />
-                    <eagleui.Input  type="checkbox"   />
-                </div>
-            </div>
+            <eagleui.Grid>
+                <eagleui.Row>
+                    <eagleui.Col sm={12}><eagleui.Input name="test" id="test" placeholder="请输入"  /></eagleui.Col>
+                    <eagleui.Col sm={12}>
+                        <eagleui.Input  type="checkbox" checked  disabled={true}  />
+                        <eagleui.Input  type="checkbox"  disabled={true}   />
+                        <eagleui.Input  type="checkbox"   />
+                        <eagleui.Input  type="checkbox" checked  />
+
+                    </eagleui.Col>
+                    <eagleui.Col sm={12}>
+                        <eagleui.Col sm={6}>
+                            <eagleui.RadioGroup defaultChecked="石榴" name="radio-test">
+                                <eagleui.Input  type="radio"  label="石榴" value="石榴" />
+                                <eagleui.Input  type="radio"  label="橘子" value="橘子"  />
+                                <eagleui.Input  type="radio"  label="苹果" value="苹果" />
+                            </eagleui.RadioGroup>
+                        </eagleui.Col>
+                        <eagleui.Col sm={6}>
+                            <eagleui.RadioGroup defaultChecked="鸡蛋" name="radio-foot">
+                                <eagleui.Input  type="radio"  label="大白菜" value="大白菜" />
+                                <eagleui.Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  />
+                                <eagleui.Input  type="radio"  label="猪肉" value="猪肉" />
+                                <eagleui.Input  type="radio"  label="牛肉" value="牛肉" />
+                                <eagleui.Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} />
+                            </eagleui.RadioGroup>
+                        </eagleui.Col>
+                    </eagleui.Col>
+                </eagleui.Row>
+            </eagleui.Grid>
             ,
         document.getElementById('root')
     );

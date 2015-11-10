@@ -4,7 +4,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var extend = require('extend');
-var externals = require('./externals');
+//var externals = require('./externals');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 //var
 var getExternals = function(){
@@ -30,12 +30,9 @@ module.exports = {
     },
     output:{
         path:path.join(__dirname,'dist'),
-        filename:'eagleui.js'/*,
+        filename:'eagle-ui.js'/*,
          sourceMapFilename:'[file].map'*/
     },
-    externals:{
-        'react':'React'
-    },//getExternals(),
     module:{
         loaders:[
             {
@@ -43,10 +40,10 @@ module.exports = {
                 loaders: ['babel'],
                 exclude: /node_modules/
             },
-            {
+            /*{
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-            },
+            },*/
             // Optionally extract less files
             // or any other compile-to-css language
             {

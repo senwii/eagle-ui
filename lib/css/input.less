@@ -15,14 +15,14 @@
         color:@black-99;
     }
 }
-.eg-input-checkbox{
+.eg-input-checkbox,.eg-input-radio{
     position: relative;
     text-align: left;
     margin-bottom: 10px;
     margin-right: 10px;
     min-height: 24px;
     display: inline-block;
-    input[type="checkbox"]{
+    input[type="checkbox"],input[type="radio"]{
         /*width: 14px;
         height: 14px;
         border: 1px solid @black-99;*/
@@ -54,6 +54,10 @@
             -webkit-border-radius: 2px;
             -moz-border-radius: 2px;
             border-radius: 2px;
+            background: @white;
+            .round{
+                display: none;
+            }
         }
         .active{
 
@@ -82,13 +86,77 @@
     }
 
 }
-/*.eg-input-checkbox-disabled{
+
+.eg-input-radio{
+    .box{
+        .checkbox{
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            //border-color: @orange-btn;
+            .round{
+
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                background: @orange-btn;
+                margin: 4px;
+                width: 8px;
+                height: 8px;
+                margin: 2px;
+            }
+        }
+    }
+}
+.eg-input-radio-active{
+    .box{
+        .checkbox{
+
+            border-color: @orange-btn;
+            .round{
+                display: block;
+            }
+        }
+    }
+
+}
+.eg-input-radio-disabled{
+    .box{
+        .checkbox{
+
+            background: @gray-ee;
+            color:@black-99;
+            border: 1px solid @black-99;
+            .round{
+                background: @gray-cc;
+            }
+        }
+    }
+    label{
+        color:@black-99;
+    }
+}
+
+.eg-input-checkbox-disabled{
     .box{
         .checkbox{
             background: @gray-ee;
             color:@black-99;
-            .checkbox-back;
+            border-color: @orange-btn;
+            background: none;
         }
     }
+    label{
+        color:@black-99;
+    }
 
-}*/
+}
+.eg-input-checkbox-active.eg-input-checkbox-disabled{
+    .box{
+        .checkbox{
+            background: @gray-ee;
+            color:@black-99;
+
+        }
+    }
+}

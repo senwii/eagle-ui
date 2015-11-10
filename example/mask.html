@@ -21,7 +21,10 @@
 </script>
 <script type="text/jsx">
     React.render(
-            <div><div onTouchEnd="">点击显示弹层</div><eagleui.Mask text={params.text} display={params.display} time={params.time} /></div>,
+            <div>
+                <div onTouchEnd="">点击显示弹层</div>
+                <eagleui.Mask text={params.text} display={params.display} time={params.time}/>
+            </div>,
         document.getElementById('root')
     );
 </script>

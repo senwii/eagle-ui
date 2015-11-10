@@ -1,3 +1,4 @@
+@import "color.less";
 /**清除浮动*/
 .clearfix:before, .clearfix:after {
     display: table;
@@ -6,4 +7,164 @@
 }
 .clearfix:after {
     clear: both;
+}
+/**搜索图标*/
+.eg-search-icon:before, .eg-search-icon:after{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    z-index:10;
+}
+.eg-search-icon:before{
+    border: 2px solid @gray-b2;
+    height: 10px;
+    width: 10px;
+    border-radius: 7px;
+    top: 11px;
+    left: 5px;
+}
+.eg-search-icon:after{
+    height: 7px;
+    width: 2px;
+    transform: rotate(-45deg);
+    top: 21px;
+    left: 18px;
+    background: @gray-b2;
+}
+/**面板*/
+.eg-panel{
+    border: 1px solid #eee;
+    box-shadow: 0 0 5px #eee;
+    padding: 15px 20px 5px;
+    background: #fff;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 8px 1px @gray-cc;
+    webkit-box-shadow: 0px 0px 8px 1px @gray-cc;
+}
+/**圆角*/
+.eg-radius{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+//选中背景色
+.eg-active{
+
+}
+/**淡入淡出动画*/
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1; /*初始状态 透明度为1*/
+    }
+    50% {
+        opacity: 0.5; /*中间状态 透明度为0.5*/
+    }
+    100% {
+        opacity: 0; /*结尾状态 透明度为0*/
+    }
+
+}
+/**显示*/
+.eg-show{
+    display: block;
+}
+.eg-hide{
+    display: none;
+}
+.eg-fadein{
+    display: block;
+    -webkit-animation: fadeIn .5s 1 0s;
+}
+.eg-fadeout{
+    -webkit-animation: fadeOut .5s 1 3s ;
+}
+/**成功图标*/
+.eg-tips-success{
+    background: @lighet-green;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: inline-block;
+    position: relative;
+}
+/**出错提示*/
+.eg-tips-error{
+    background: @danger;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: inline-block;
+    position: relative;
+}
+/**加载中*/
+.eg-tips-loading{
+    background: @gray-bb;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: inline-block;
+    position: relative;
+}
+.eg-tips-success:before,.eg-tips-success:after,.eg-tips-error:after, .eg-tips-error:before,.eg-tips-loading:before, .eg-tips-loading:after{
+    display: inline-block;
+    position: absolute;
+    content: "";
+}
+.eg-tips-success:before{
+    height: 8px;
+    width: 2px;
+    background: #fff;
+    left: 10px;
+    top: 13px;
+    transform: rotate(135deg);
+}
+.eg-tips-success:after{
+    height: 14px;
+    width: 2px;
+    background: #fff;
+    left: 17px;
+    top: 8px;
+    transform: rotate(45deg);
+}
+.eg-tips-error:after{
+    height: 10px;
+    width: 2px;
+    background: #fff;
+    left: 14px;
+    top: 6px;
+}
+.eg-tips-error:before{
+    height: 2px;
+    width: 2px;
+    background: #fff;
+    left: 14px;
+    top: 19px;
+}
+.eg-tips-loading:before{
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border: 2px solid #fff;
+    top: 5.5px;
+    left: 5.5px;
+    border-radius: 12px;
+    clip: rect(auto,16px,auto,auto);
+    animation: 0.5s linear 0s normal none infinite rotate;
+
+}
+//旋转动画
+@-webkit-keyframes rotate{
+    from{-webkit-transform:rotate(0deg)}
+    to{-webkit-transform:rotate(360deg)}
 }

@@ -32,30 +32,39 @@
 
 // But, NEVER do this: (Why?)
 // exports = {my_method: ...}
-require('./lib/_include.less');
+import include from './lib/_include.less';
 
 //import Mask from './lib/mask/mask';
-import Grid from './lib/Grid';
-import Col from './lib/Col';
-import Row from './lib/Row';
-import Button from './lib/Button';
-import ButtonGroup from './lib/ButtonGroup';
-import Input from './lib/Input.js';
 
+export {Grid} from './lib/Grid';
+export {Col} from './lib/Col';
+export {Row} from './lib/Row';
+export {Button} from './lib/Button';
+export {ButtonGroup} from './lib/ButtonGroup';
+export {Input} from './lib/Input.js';
+export {RadioGroup} from './lib/RadioGroup.js';
+export {Label} from './lib/Label.js';
+export {Dialog} from './lib/Dialog .js';
+export {Crumb} from './lib/Crumb.js';
+export {Search} from './lib/Search.js';
+export {LabelGroup} from './lib/LabelGroup.js';
+export {Toast} from './lib/Toast.js';
 //var apis = api();
 
-window.eagleui={
-    //Mask:Mask,
-    Grid:Grid,
-    Col:Col,
-    Row:Row,
-    Button:Button,
-    ButtonGroup:ButtonGroup,
-    Input:Input
-};
+//
+//if (typeof module !== 'undefined') {
+//    module.exports=eagleui;
+//}
 
-if (typeof module !== 'undefined') {
-    module.exports=eagleui;
-}
+//import Grid from './lib/Grid';
+//import Col from './lib/Col';
+//import Row from './lib/Row';
+//import Button from './lib/Button';
+//import ButtonGroup from './lib/ButtonGroup';
+//import Input from './lib/Input.js';
+//import Dialogue from './lib/Dialog .js';
+//import Crumb from './lib/Crumb.js';
+//import Search from './lib/Search.js'
+
 
 
