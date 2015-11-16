@@ -51,4 +51,5 @@ export LabelGroup from './lib/LabelGroup.js';
 export Toast from './lib/Toast.js';
 export Paging from './lib/Paging.js';
 export Calendar from './lib/Calendar';
+export Tab from './lib/Tab.js';
 

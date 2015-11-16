@@ -173,3 +173,51 @@
     from{-webkit-transform:rotate(0deg)}
     to{-webkit-transform:rotate(360deg)}
 }
+
+/*icon*/
+
+.eg-arrow-up,.eg-arrow-down{
+    &::before{
+        content:'';
+        display: inline-block;
+        width: 6px;
+        height: 9px;
+        position: absolute;
+        top: 50%;
+        margin-left: 9px;
+    }
+    &::after{
+        content:'';
+        display: inline-block;
+        border-width: 7px;
+        border-style: solid;
+        margin-left: 5px;
+        position: relative;
+    }
+}
+/*向上箭头*/
+@green-arrow:#38bd7c;
+.eg-arrow-up{
+    &::before{
+        background: @green-arrow;
+        margin-top: -1px;
+        border-radius: 0px 0px 1px 1px;
+    }
+    &::after{
+        border-color: transparent transparent @green-arrow transparent;
+        top: -6px;
+    }
+}
+/*向下箭头*/
+@red-arrow:#fa3739;
+.eg-arrow-down{
+    &::before{
+        background: @red-arrow;
+        margin-top: -8px;
+        border-radius: 1px 1px 0px 0px;
+    }
+    &::after{
+        border-color:@red-arrow transparent transparent transparent;
+        top: 10px;
+    }
+}
