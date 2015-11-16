@@ -41,4 +41,7 @@ thumbs.db
 .idea
 node_modules/
 jscoverage_lib/
-example/js/
+example/
+examples/js/
+doc/
+bower_components/
