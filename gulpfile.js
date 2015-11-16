@@ -1,10 +1,9 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var webpack = require('webpack');
-var extend = require('extend');
-var glob = require('glob');
-var p = require('path');
-var webpackConfig = require('./webpack.config');
+var Server = require('karma').Server;
+var demoWebpackConfig = require('./webpack/demo.config');
+var webpackConfig = require('./webpack/webpack.config');
 
 var error = function(e){
   console.error(e);
@@ -14,53 +13,26 @@ var error = function(e){
   process.exit(1);
 }
 
+gulp.task('karma', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
 gulp.task('demo-webpack', function(done) {
 
-  webpack(extend(webpackConfig,{
-    output:{
-      path:p.join(__dirname,'example/js'),
-      filename:'eagle-ui.js'
-    }
-  })).run(done);
+  webpack(demoWebpackConfig).run(done);
 });
 
 gulp.task('require-webpack', function(done) {
-  webpack(extend(webpackConfig,{
-    externals:{
-      'react':"require('react')"
-    }
-  })).run(done);
+  webpack(webpackConfig).run(done);
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./lib/**/*.*'], ['webpack']);
-});
-
-
-
-var getEntry =function() {
-  var basedir = p.join(process.cwd(), 'example');
-  var files = glob.sync(p.join(basedir, '*.js'));
-
-  var webpackConfigEntry = {};//webpackConfig.entry || (webpackConfig.entry = {});
-
-  files.forEach(function(file) {
-    var relativePath = p.relative(basedir, file);
-
-    webpackConfigEntry[relativePath] = file;
-  });
-  return webpackConfigEntry;
-};
-
-gulp.task('demo-js', function(done) {
-  webpack(extend(webpackConfig,{
-    entry:getEntry(),
-    output:{
-      path:p.join(__dirname,'example/js'),
-      filename: "[name]"
-    }
-  } )).run(done);
+  gulp.watch(['./lib/**/*.*'], ['require-webpack']);
 });
 
 gulp.task('default', ['require-webpack'/*, 'html', 'asset'*/]);
-gulp.task('demo', [/*'demo-webpack',*/'demo-js']);
+gulp.task('test',['karma']);
+gulp.task('demo', ['demo-webpack',/*'demo-js'*/]);
