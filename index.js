@@ -49,6 +49,9 @@ export {Crumb} from './lib/Crumb.js';
 export {Search} from './lib/Search.js';
 export {LabelGroup} from './lib/LabelGroup.js';
 export {Toast} from './lib/Toast.js';
+export {Tab} from './lib/Tab.js';
+export {Tabset} from './lib/Tabset.js';
+
 //var apis = api();
 
 //
