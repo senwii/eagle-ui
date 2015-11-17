@@ -2,26 +2,63 @@
  * Created by mac on 15/11/4.
  */
 import css from '../../lib/_include.less';
-import React from 'react';
+import React,{Component} from 'react';
 import Tab from '../../lib/Tab.js';
 import Tabset from '../../lib/Tabset.js';
 
+let Demo = class Demo extends Component{
+
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            tabIndex:0
+        };
+    }
+
+    callback(index){
+        if(this.state.tabIndex!==index){
+            this.setState({
+                tabIndex:index
+            });
+        }
+    }
+
+    tab3(){
+        if(this.state.tabIndex==2){
+            return (<div>tab3</div>);
+        }
+    }
+    tab2(){
+        if(this.state.tabIndex==1){
+            return (<div>tab2</div>);
+        }
+    }
+    tab1(){
+        if(this.state.tabIndex==0){
+            alert(0);
+            return (<div>tab1</div>);
+        }
+    }
+
+
+    render(){
+        return (
+            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>
+                <Tab heading='tab1'>
+                    {::this.tab1()}
+                </Tab>
+                <Tab heading='tab2'>
+                    {::this.tab2()}
+                </Tab>
+                <Tab heading='tab3'>
+                    {::this.tab3()}
+                </Tab>
+            </Tabset>
+        );
+    }
+}
+
 ReactDOM.render(
-    <Tabset >
-        <Tab heading='tab1'>
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
-        </Tab>
-        <Tab heading='tab2'>
-            <img src='http://static.bootcss.com/www/assets/img/gruntjs.png' />
-        </Tab>
-        <Tab heading='tab3'>
-            hahaha
-        </Tab>
-    </Tabset>
+    <Demo />
     ,document.getElementById('root'));
