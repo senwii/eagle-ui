@@ -1,14 +1,23 @@
 @import "color.less";
 
+@tr-split-line : @gray-dd;
 .eg-table{
   background: @white;
   border-spacing: 0px;
   border-collapse: separate;
-  padding: 0px 20px 10px 0px;
+  padding: 0px 20px 10px 20px;
   font-size: 14px;
   tr{
+    &.eg-tr-split{
+      td{
+        border-bottom: 1px solid @tr-split-line;
+      }
+    }
+    /*td[rowspan]{
+      border-bottom: 1px solid @tr-split-line;
+    }*/
     td,th{
-      padding: 15px;
+      padding: 10px 15px;
       text-align: left;
       position: relative;
     }

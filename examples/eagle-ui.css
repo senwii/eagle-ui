@@ -960,12 +960,20 @@ h6 {
   background: #ffffff;
   border-spacing: 0px;
   border-collapse: separate;
-  padding: 0px 20px 10px 0px;
+  padding: 0px 20px 10px 20px;
   font-size: 14px;
+}
+.eg-table tr {
+  /*td[rowspan]{
+      border-bottom: 1px solid @tr-split-line;
+    }*/
+}
+.eg-table tr.eg-tr-split td {
+  border-bottom: 1px solid #dddddd;
 }
 .eg-table tr td,
 .eg-table tr th {
-  padding: 15px;
+  padding: 10px 15px;
   text-align: left;
   position: relative;
 }

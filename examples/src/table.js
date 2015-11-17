@@ -43,11 +43,11 @@ ReactDOM.render(
                 <Td>1876500</Td>
                 <Td>200</Td>
             </Tr>
-            <Tr>
+            <Tr split>
                 <Td>消费交易额</Td>
                 <Td>1876500</Td>
                 <Td>1876500</Td>
-                <Td>1876500</Td>
+                <Td arrow-down>1876500</Td>
                 <Td>200</Td>
             </Tr>
             <Tr>
