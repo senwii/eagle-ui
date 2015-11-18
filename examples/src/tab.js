@@ -36,7 +36,6 @@ let Demo = class Demo extends Component{
     }
     tab1(){
         if(this.state.tabIndex==0){
-            alert(0);
             return (<div>tab1</div>);
         }
     }
