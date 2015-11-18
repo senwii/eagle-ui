@@ -44,7 +44,6 @@ export ButtonGroup from './lib/ButtonGroup';
 export Input from './lib/Input.js';
 export RadioGroup from './lib/RadioGroup.js';
 export Label from './lib/Label.js';
-export Dialog from './lib/Dialog .js';
 export Crumb from './lib/Crumb.js';
 export Search from './lib/Search.js';
 export LabelGroup from './lib/LabelGroup.js';
@@ -52,4 +51,5 @@ export Toast from './lib/Toast.js';
 export Paging from './lib/Paging.js';
 export Calendar from './lib/Calendar';
 export Tab from './lib/Tab.js';
-
+export Dialog from './lib/Dialog.js';
+export Tooltip from './lib/Tooltip.js';
