@@ -6,7 +6,7 @@ var webpack = require('webpack');
 var extend = require('extend');
 
 module.exports ={
-    entry:['./index.js'],
+    entry:[path.join(process.cwd(),'./index.js')],
     devtoll:'source-map',
     resolve:{
         modulesDirectories: [

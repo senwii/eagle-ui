@@ -53,3 +53,14 @@ export Calendar from './lib/Calendar';
 export Tab from './lib/Tab.js';
 export Dialog from './lib/Dialog.js';
 export Tooltip from './lib/Tooltip.js';
+
+
+window['Eagleui'] = {};
+
+[
+    'Grid','Col','Row',
+    'Button','ButtonGroup','Input','RadioGroup','Label',
+    'Crumb','Search','LabelGroup','Toast','Paging','Calendar','Tab','Dialog','Tooltip'
+].forEach(function(clazzName){
+    Eagleui[clazzName] =exports[clazzName];
+});

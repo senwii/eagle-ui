@@ -35,6 +35,12 @@ module.exports =extend({}, {
             commonjs2: 'react',
             commonjs: 'react',
             amd: 'react'
+        },
+        'eagle-ui': {
+            root: 'Eagleui',
+            commonjs2: 'Eagleui',
+            commonjs: 'Eagleui',
+            amd: 'Eagleui'
         }
     }],
     module:{
