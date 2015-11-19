@@ -5,21 +5,21 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    .eg-btn-error{
-        border-color:@red-border;
-    }
-    .eg-btn-success{
-        border-color:@blue-border;
-    }
-    .eg-btn-warning{
-        border-color:@orange-border;
-    }
-    .eg-btn-danger{
-        border-color:@orange-border;
-    }
-    .eg-btn-gray{
-        border-color: @gray-bb;
-    }
+    //.eg-btn-error{
+    //    border-color:@red-border;
+    //}
+    //.eg-btn-success{
+    //    border-color:@blue-border;
+    //}
+    //.eg-btn-warning{
+    //    border-color:@orange-border;
+    //}
+    //.eg-btn-danger{
+    //    border-color:@orange-border;
+    //}
+    //.eg-btn-gray{
+    //    border-color: @gray-bb;
+    //}
     .eg-btn{
         position: relative;
         float: left;
@@ -83,8 +83,14 @@
     border: 1px solid transparent;
     cursor: pointer;
     outline: 0;
+    text-decoration: none;
     &:hover{
         background: @red-btn;
+        text-decoration: none;
+    }
+    &.eg-btn-disabled{
+        color:#f8c1a8;
+        background-color: #f49462;
     }
 }
 .eg-btn-block{
@@ -125,6 +131,14 @@
 }
 .eg-btn-success{
     background-color:@blue-txt;
+    //60b5f0
+    &:hover{
+        background: @blue-border;
+    }
+    &.eg-btn-disabled{
+        color: #a2cae3;
+        background: #4ca0d5;
+    }
 }
 .eg-btn-warning{
     background-color:@warning;
@@ -136,6 +150,14 @@
     border:none;
     color:@black-64;
     background-color: transparent;
+    &:hover{
+        color:@black-64;
+        background:transparent;
+        text-decoration: underline;
+    }
+    .eg-btn-disabled{
+        color: @gray-cc;
+    }
 }
 .eg-btn-disabled{
     color: @gray-cc;
@@ -145,6 +167,10 @@
     background-color:@gray-d4;
 
     color:@black-33;
+    &:hover{
+        background: @gray-cc;
+
+    }
     &.eg-btn-disabled{
         color: @black-99;
         background-color: @gray-e1;
@@ -152,9 +178,16 @@
 }
 .eg-btn-white{
     background: @white;
+    border-color: #dbdad9;
+    color: @black;
     &:hover{
         background: @gray-f8;
     }
-    border-color: #dbdad9;
-    color: @black;
+    &.eg-btn-disabled{
+        color: @gray-f2;
+        background-color: @gray-cc;
+    }
+}
+.eg-btn-disabled{
+    cursor: auto;
 }

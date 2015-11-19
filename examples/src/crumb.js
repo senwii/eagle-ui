@@ -2,9 +2,9 @@
  * Created by panqianjin on 15/11/4.
  */
 import React from 'react';
-import {Crumb} from '../index.js';
+import Crumb from '../../lib/Crumb.js';
 
-React.render(
+ReactDOM.render(
     <Crumb>
         <item url="dddd.html">菜单</item>
         <item url="dddd.html">菜单</item>

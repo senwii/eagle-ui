@@ -11,17 +11,23 @@
     background: #fff;
     -webkit-box-shadow: 0px 0px 8px 1px @gray-cc;
     webkit-box-shadow: 0px 0px 8px 1px @gray-cc;
-    .eg-calendar-selected{
-        color: @white !important;
-        background:@orange-btn ;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
+    .eg-calendar-item:not(.no-hover){
+        cursor: pointer;
     }
-    .eg-calendar-disabled{
-        color: @gray-cc;
-        cursor: default;
+    .eg-calendar-box{
+        .eg-calendar-selected{
+            color: @white !important;
+            background:@orange-btn ;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .eg-calendar-disabled{
+            color: @gray-cc;
+            cursor: default;
+        }
     }
+
 }
 .eg-calendar-box{
     background: @white;
@@ -54,6 +60,9 @@
         cursor: pointer;
         &:hover{
             background: @gray-f0;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
         }
     }
 }
@@ -69,13 +78,13 @@
                 height: 30px;
                 line-height: 30px;
                 display: inline-block;
-                &:hover:not(.eg-calendar-selected):not(.eg-calendar-disabled){
+                &:hover:not(.eg-calendar-selected):not(.eg-calendar-disabled):not(.no-hover){
                     background: @gray-f0;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    border-radius: 50%;
                 }
             }
-        }
-        tr.body td{
-            cursor: pointer;
         }
 
         .month-list{
@@ -89,6 +98,8 @@
                 i{
                     font-style: normal;
                     padding: 4px 9px;
+                    -webkit-border-radius: 500px;
+                    -moz-border-radius: 500px;
                     border-radius: 500px;
                     cursor: pointer;
                     &:hover:not(.eg-selected){
@@ -109,6 +120,9 @@
 .eg-icon-prev,.eg-icon-next{
     &:hover{
         background: @gray-f0;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
     }
 }
 //.eg-icon-prev{

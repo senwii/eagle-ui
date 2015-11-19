@@ -30,7 +30,7 @@ gulp.task('require-webpack', function(done) {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./lib/**/*.*'], ['require-webpack']);
+  gulp.watch(['./lib/**/*.*'], ['demo']);
 });
 
 gulp.task('default', ['require-webpack'/*, 'html', 'asset'*/]);
