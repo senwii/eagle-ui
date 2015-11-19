@@ -6,7 +6,7 @@ import React from 'react';
 import Select from '../../lib/Select.js';
 
 ReactDOM.render(
-    <Select auto callback={function(val){alert(val)}}>
+    <Select  callback={function(val){alert(val)}}>
         <item> 北京</item>
         <item> 上海</item>
         <item> 南京</item>

@@ -313,26 +313,6 @@ h6 {
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/*下/右箭头*/
-.eg-arrow-down,
-.eg-arrow-right {
-  position: absolute;
-  top: 12px;
-  right: 10px;
-  display: inline-block;
-  cursor: pointer;
-  z-index: 10;
-  border-top: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-left: 5px solid #bbbbbb;
-  border-bottom: 5px solid #bbbbbb;
-}
-.eg-arrow-down {
-  transform: rotate(-45deg);
-}
-.eg-arrow-right {
-  transform: rotate(-135deg);
-}
 /**字体大小*/
 .small {
   font-size: 65%;
@@ -1183,6 +1163,7 @@ h6 {
   position: relative;
   display: inline-block;
   margin-right: 15px;
+  /*下箭头*/
 }
 .eg-select-container ul {
   background: #fff;
@@ -1204,6 +1185,21 @@ h6 {
 }
 .eg-select-container .eg-select-show {
   display: block;
+}
+.eg-select-container .eg-select-arrow {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 10;
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-left: 5px solid #bbbbbb;
+  border-bottom: 5px solid #bbbbbb;
+}
+.eg-select-container .eg-select-arrow {
+  transform: rotate(-45deg);
 }
 .eg-tooltip-container .eg-tooltip-wraper {
   display: none;
@@ -1245,6 +1241,7 @@ h6 {
   border: #cc3333 2px solid;
   overflow: hidden;
   border-radius: 3px;
+  background: #fff;
 }
 .eg-marquee-container .eg-marquee-new-tip {
   position: absolute;
