@@ -8,7 +8,7 @@
     "engle-ui"
   ],
   "scripts": {
-    "build": "node_modules/.bin/gulp ",
+    "build": "node_modules/.bin/gulp && webpack",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
     "doc": "smartDoc ||node_modules/.bin/smartDoc"
