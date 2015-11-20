@@ -2,13 +2,13 @@
   "name": "eagle-ui",
   "version": "0.1.0",
   "description": "The coolest cortex module.",
-  "main": "dist/eagle-ui.js",
+  "main": "index.js",
   "repository": "git://github.com/xiaoking/eagle-ui.git",
   "keywords": [
     "engle-ui"
   ],
   "scripts": {
-    "build": "node_modules/.bin/gulp && webpack",
+    "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
     "doc": "smartDoc ||node_modules/.bin/smartDoc"
