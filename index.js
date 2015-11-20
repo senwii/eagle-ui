@@ -59,13 +59,16 @@ export PanelContent from './lib/Panel/PanelContent.js'
 export PanelFooter from './lib/Panel/PanelFooter.js'
 export PanelHeader from './lib/Panel/PanelHeader.js'
 
+export List from './lib/List.js';
+export Item from './lib/Item.js';
+
 window['Eagleui'] = {};
 
 [
     'Grid','Col','Row',
     'Button','ButtonGroup','Input','RadioGroup','Label',
     'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Dialog','Tooltip',
-    'Panel','PanelContent','PanelFooter','PanelHeader'
+    'Panel','PanelContent','PanelFooter','PanelHeader','List','Item'
 ].forEach(function(clazzName){
     Eagleui[clazzName] =exports[clazzName];
 });

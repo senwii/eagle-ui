@@ -13,18 +13,18 @@ let SearchSec= class SearchSec extends Component{
         return (
             <Grid>
                 <Row>
-                    <Col sm={2}>
+                    <Col sm={5}>
                         <Select  callback={function(val){alert(val)}}>
                             <item> 北京</item>
                             <item> 上海</item>
                             <item> 南京</item>
                         </Select>
                     </Col>
-                    <Col sm={4}>
-                        <Search callBack={function(val){alert(val)}}>
+                    <Col sm={5}>
+                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}>
                         </Search>
                     </Col>
-                    <Col sm={6}>
+                    <Col sm={2}>
                     </Col>
                 </Row>
             </Grid>
@@ -91,83 +91,165 @@ let CardListPanel = class CardListPanel extends Component{
         return (
             <Panel>
                 <PanelHeader>
-                    <Input  type="checkbox" checked  disabled={true}  />
-                    <Input  type="checkbox"  disabled={true}   />
-                    <Input  type="checkbox"   />
-                    <Input  type="checkbox" checked  />
+                    <div className="checkboxGroup">
+                        <Input label="仅公海"  type="checkbox" checked />
+                        <Input lebal="冻结中"  type="checkbox" />
+                        <Input label="团购在线" type="checkbox"  />
+                        <Input label="闪惠在线" type="checkbox"  />
+                        <Input label="预订在线" type="checkbox"  />
+                    </div>
                 </PanelHeader>
                 <PanelContent padding={false}>
-                    <Grid>
-                        <Row>
-                            <Col sm={1}>
-                                <Input label=''  type="checkbox"  />
-                            </Col>
-                            <Col sm={10}>
-                                <div className='shop-card'>
-                                    <h1 className='shop-card-title inline-block'>
-                                        西贝莜面村（中山公园店）
+                    <List>
+                        <Item className="shop-info-item">
+                            <h1 className='shop-card-title inline-block'>
+                                宴遇 (晶品店)
+                            </h1>
+                            <Label error radius> 团</Label>
+                            <div className="shop-info-item-text">
+                                <Grid>
+                                    <Row>
+                                        <Col sm={6}>
+                                            shopid: 22936478 rotateid: 107126470
+                                        </Col>
+                                        <Col sm={6}>
+                                            月佣金基数: 3000.00
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={6}>
+                                            浏览量：151195
+                                        </Col>
+                                        <Col sm={6}>
+                                            门店市场份额:100.00%          战区市场份额: 94.63%
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={6}>
+                                            美食其他 | 静安区 愚园路68号晶品中心4楼
+                                        </Col>
+                                        <Col sm={6}>
+                                        </Col>
+                                    </Row>
+                                </Grid>
 
-                                    </h1>
-                                    <Label error radius>运营下线</Label>
-                                    <div>
-                                        <span className='row-key'>方案ID：</span><span className='row-value'>21355</span>
-                                        <span className='row-key'>负责人：</span><span className='row-value'>张三丰</span>
-                                        <span className='row-key'>城市：</span><span className='row-value'>上海</span>
-                                        <span className='row-key'>售卖时间：</span><span className='row-value'>2014-2015</span>
-                                        <span className='row-key'>售卖量：</span><span className='row-value'>0</span>
-                                    </div>
-                                    <div>
-                                        <span className='row-key'>客户：</span><span className='row-value'></span>
-                                        <span className='row-key'>已分配（王卓轩 2015-02-01 14:22）</span>
-                                    </div>
-                                    <div>
-                                        <LabelGroup simple clickCallback={this.show} >
-                                            <Label>流程历史</Label>
-                                            <Label>编辑</Label>
-                                            <Label>删除</Label>
-                                            <Label>复制</Label>
-                                        </LabelGroup>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col sm={1}>审批通过</Col>
-                        </Row>
-                        <Row>
-                            <Col sm={1}>
-                                <Input label=''  type="checkbox" checked  />
-                            </Col>
-                            <Col sm={10}>
-                                <div className='shop-card'>
-                                    <h1 className='shop-card-title inline-block'>
-                                        西贝莜面村（中山公园店）
+                            </div>
+                            <div className="shop-info-item-footer">
+                                <Grid>
+                                    <Row>
+                                        <Col sm={10}>
+                                            <LabelGroup simple clickCallback={this.show} >
+                                                <Label>POI报错</Label>
+                                                <Label>查看所有分店</Label>
+                                            </LabelGroup>
+                                        </Col>
+                                        <Col sm={2}>
+                                            <Label>想要这家店？</Label>
+                                        </Col>
+                                    </Row>
+                                </Grid>
+                            </div>
+                        </Item>
+                        <Item className="shop-info-item">
+                            <h1 className='shop-card-title inline-block'>
+                                宴遇 (晶品店)
+                            </h1>
+                            <Label error radius> 团</Label>
+                            <div className="shop-info-item-text">
+                                <Grid>
+                                    <Row>
+                                        <Col sm={6}>
+                                            shopid: 22936478 rotateid: 107126470
+                                        </Col>
+                                        <Col sm={6}>
+                                            月佣金基数: 3000.00
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={6}>
+                                            浏览量：151195
+                                        </Col>
+                                        <Col sm={6}>
+                                            门店市场份额:100.00%          战区市场份额: 94.63%
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={6}>
+                                            美食其他 | 静安区 愚园路68号晶品中心4楼
+                                        </Col>
+                                        <Col sm={6}>
+                                        </Col>
+                                    </Row>
+                                </Grid>
 
-                                    </h1>
-                                    <Label success radius>售卖中</Label>
-                                    <div>
-                                        <span className='row-key'>方案ID：</span><span className='row-value'>21355</span>
-                                        <span className='row-key'>负责人：</span><span className='row-value'>张三丰</span>
-                                        <span className='row-key'>城市：</span><span className='row-value'>上海</span>
-                                        <span className='row-key'>售卖时间：</span><span className='row-value'>2014-2015</span>
-                                        <span className='row-key'>售卖量：</span><span className='row-value'>0</span>
-                                    </div>
-                                    <div>
-                                        <span className='row-key'>客户：</span><span className='row-value'></span>
-                                        <span className='row-key'>已分配（王卓轩 2015-02-01 14:22）</span>
-                                    </div>
-                                    <div>
-                                        <LabelGroup simple clickCallback={this.show} >
-                                            <Label>流程历史</Label>
-                                            <Label>编辑</Label>
-                                            <Label>删除</Label>
-                                            <Label>复制</Label>
-                                        </LabelGroup>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col sm={1}>审批通过</Col>
-                        </Row>
+                            </div>
+                            <div className="shop-info-item-footer">
+                                <Grid>
+                                    <Row>
+                                        <Col sm={10}>
+                                            <LabelGroup simple clickCallback={this.show} >
+                                                <Label>POI报错</Label>
+                                                <Label>查看所有分店</Label>
+                                            </LabelGroup>
+                                        </Col>
+                                        <Col sm={2}>
+                                            <Label>想要这家店？</Label>
+                                        </Col>
+                                    </Row>
+                                </Grid>
+                            </div>
+                        </Item>
+                        <Item className="shop-info-item">
+                            <h1 className='shop-card-title inline-block'>
+                                宴遇 (晶品店)
+                            </h1>
+                            <Label error radius> 团</Label>
+                            <div className="shop-info-item-text">
+                                <Grid>
+                                    <Row>
+                                        <Col sm={6}>
+                                            shopid: 22936478 rotateid: 107126470
+                                        </Col>
+                                        <Col sm={6}>
+                                            月佣金基数: 3000.00
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={6}>
+                                            浏览量：151195
+                                        </Col>
+                                        <Col sm={6}>
+                                            门店市场份额:100.00%          战区市场份额: 94.63%
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col sm={6}>
+                                            美食其他 | 静安区 愚园路68号晶品中心4楼
+                                        </Col>
+                                        <Col sm={6}>
+                                        </Col>
+                                    </Row>
+                                </Grid>
 
-                    </Grid>
+                            </div>
+                            <div className="shop-info-item-footer">
+                                <Grid>
+                                    <Row>
+                                        <Col sm={10}>
+                                            <LabelGroup simple clickCallback={this.show} >
+                                                <Label>POI报错</Label>
+                                                <Label>查看所有分店</Label>
+                                            </LabelGroup>
+                                        </Col>
+                                        <Col sm={2}>
+                                            <Label>想要这家店？</Label>
+                                        </Col>
+                                    </Row>
+                                </Grid>
+                            </div>
+                        </Item>
+
+                    </List>
                 </PanelContent>
                 <PanelFooter>
                     <Paging currentPage={page} total={1024} />
