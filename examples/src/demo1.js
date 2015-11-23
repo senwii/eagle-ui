@@ -42,7 +42,7 @@ let FilterSec= class FilterSec extends Component{
             <div>
                 <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >
                     <Label>全部</Label>
-                    <Label>美食</Label>
+                    <Label>美</Label>
                     <Label>休闲娱乐</Label>
                     <Label>景点</Label>
                     <Label>购物</Label>
@@ -125,10 +125,8 @@ let CardListPanel = class CardListPanel extends Component{
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={6}>
+                                        <Col end sm={6}>
                                             美食其他 | 静安区 愚园路68号晶品中心4楼
-                                        </Col>
-                                        <Col sm={6}>
                                         </Col>
                                     </Row>
                                 </Grid>

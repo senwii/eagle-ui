@@ -52,6 +52,8 @@ export Toast from './lib/Toast.js';
 export Paging from './lib/Paging.js';
 export Calendar from './lib/Calendar';
 export Tab from './lib/Tab.js';
+export Tabset from './lib/Tabset.js';
+
 export Dialog from './lib/Dialog.js';
 export Tooltip from './lib/Tooltip.js';
 export Panel from './lib/Panel/Panel.js'
@@ -62,13 +64,20 @@ export PanelHeader from './lib/Panel/PanelHeader.js'
 export List from './lib/List.js';
 export Item from './lib/Item.js';
 
+
+export Table from './lib/Table/Table.js';
+export Tr from './lib/Table/Tr.js';
+export Td from './lib/Table/Td.js';
+export Th from './lib/Table/Th.js';
+
 window['Eagleui'] = {};
 
 [
     'Grid','Col','Row',
     'Button','ButtonGroup','Input','RadioGroup','Label',
-    'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Dialog','Tooltip',
+    'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip',
     'Panel','PanelContent','PanelFooter','PanelHeader','List','Item'
+    ,'Table','Tr','Td','Th'
 ].forEach(function(clazzName){
     Eagleui[clazzName] =exports[clazzName];
 });
