@@ -51,6 +51,14 @@ address {
   font-style: normal;
 }
 /**重置h1-h6的字体大小*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
 h1 {
   font-size: 22px;
 }
@@ -963,6 +971,9 @@ h6 {
 .eg-label-disabled {
   background: #cccccc;
   color: #ffffff;
+}
+.eg-label-end {
+  margin-bottom: 0;
 }
 /**按钮组*/
 .eg-paging-container {

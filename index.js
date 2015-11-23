@@ -63,6 +63,7 @@ export PanelHeader from './lib/Panel/PanelHeader.js'
 
 export List from './lib/List.js';
 export Item from './lib/Item.js';
+export ValidatorPanel from './lib/ValidatorPanel';
 
 
 export Table from './lib/Table/Table.js';
@@ -74,7 +75,7 @@ window['Eagleui'] = {};
 
 [
     'Grid','Col','Row',
-    'Button','ButtonGroup','Input','RadioGroup','Label',
+    'Button','ButtonGroup','Input','RadioGroup','Label','ValidatorPanel',
     'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip',
     'Panel','PanelContent','PanelFooter','PanelHeader','List','Item'
     ,'Table','Tr','Td','Th'
