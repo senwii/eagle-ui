@@ -98,6 +98,9 @@ h6 {
   display: block !important;
 }
 /**搜索图标*/
+.eg-search-icon {
+  position: relative;
+}
 .eg-search-icon:before,
 .eg-search-icon:after {
   content: '';
@@ -110,15 +113,15 @@ h6 {
   height: 10px;
   width: 10px;
   border-radius: 7px;
-  top: 11px;
-  left: 5px;
+  top: 10px;
+  left: 6px;
 }
 .eg-search-icon:after {
   height: 7px;
   width: 2px;
   transform: rotate(-45deg);
-  top: 21px;
-  left: 18px;
+  top: 22px;
+  left: 16px;
   background: #b2b2b2;
 }
 /**圆角*/
@@ -194,6 +197,20 @@ h6 {
   display: inline-block;
   position: relative;
 }
+.eg-tips-error:before {
+  height: 2px;
+  width: 2px;
+  background: #fff;
+  left: 14px;
+  top: 19px;
+}
+.eg-tips-error:after {
+  height: 10px;
+  width: 2px;
+  background: #fff;
+  left: 14px;
+  top: 6px;
+}
 /**加载中*/
 .eg-tips-loading {
   background: #bbbbbb;
@@ -203,14 +220,25 @@ h6 {
   display: inline-block;
   position: relative;
 }
+.eg-tips-loading:before {
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  top: 5.5px;
+  left: 5.5px;
+  border-radius: 12px;
+  clip: rect(auto, 16px, auto, auto);
+  animation: 0.5s linear 0s normal none infinite rotate;
+}
 .eg-tips-success:before,
 .eg-icon-tick:before,
+.eg-tips-success:before,
+.eg-tips-error:before,
+.eg-tips-success:after,
 .eg-icon-tick:after,
 .eg-tips-success:after,
-.eg-tips-error:after,
-.eg-tips-error:before,
-.eg-tips-loading:before,
-.eg-tips-loading:after {
+.eg-tips-error:after {
   display: inline-block;
   position: absolute;
   content: "";
@@ -232,31 +260,6 @@ h6 {
   left: 17px;
   top: 8px;
   transform: rotate(45deg);
-}
-.eg-tips-error:after {
-  height: 10px;
-  width: 2px;
-  background: #fff;
-  left: 14px;
-  top: 6px;
-}
-.eg-tips-error:before {
-  height: 2px;
-  width: 2px;
-  background: #fff;
-  left: 14px;
-  top: 19px;
-}
-.eg-tips-loading:before {
-  width: 15px;
-  height: 15px;
-  background: transparent;
-  border: 2px solid #fff;
-  top: 5.5px;
-  left: 5.5px;
-  border-radius: 12px;
-  clip: rect(auto, 16px, auto, auto);
-  animation: 0.5s linear 0s normal none infinite rotate;
 }
 @-webkit-keyframes rotate {
   from {
@@ -477,6 +480,7 @@ h6 {
 .eg-btn:hover {
   background: #d94000;
   text-decoration: none;
+  color: #ffffff;
 }
 .eg-btn.eg-btn-disabled {
   color: #f8c1a8;
@@ -815,7 +819,6 @@ h6 {
   background: #fff;
   text-align: center;
   padding: 10px;
-  box-shadow: 0px 1px 5px 2px #bbbbbb;
   border-radius: 3px;
 }
 .eg-dialog {
@@ -895,13 +898,37 @@ h6 {
   display: none;
 }
 .eg-search-wrapper {
-  width: 300px;
+  width: 100%;
   position: relative;
-  display: inline-block;
+  display: box;
+  /* OLD - Android 4.4- */
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
   margin-right: 15px;
 }
 .eg-search-wrapper input {
   text-indent: 15px;
+}
+.eg-search-wrapper .eg-search-content {
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 1;
+  /* Chrome */
+  -ms-flex: 1;
+  flex: 1.0;
+}
+.eg-search-wrapper .eg-search-icon {
+  position: relative;
 }
 .eg-label-item {
   padding: 2px 4px;
@@ -1217,7 +1244,11 @@ h6 {
   padding: 5px 0;
   cursor: pointer;
 }
-.eg-select-container ul li:hover {
+.eg-select-container ul li:hover,
+.eg-select-container ul li:focus {
+  color: #ff717d;
+}
+.eg-select-container ul li.active {
   color: #ff717d;
 }
 .eg-select-container .eg-select-ul {
@@ -1254,13 +1285,14 @@ h6 {
   text-align: left;
   border-radius: 3px;
   box-shadow: 0px 1px 5px 2px #bbbbbb;
-  margin: 5px;
+  margin: 5px 0px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip {
   position: relative;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow {
   border-width: 5px;
+  border-style: dashed;
   border-color: transparent transparent #000 transparent;
   position: absolute;
   left: 18px;
