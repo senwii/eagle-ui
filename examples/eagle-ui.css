@@ -179,6 +179,7 @@ h6 {
   -webkit-animation: fadeIn .4s 1 0s;
 }
 .fadeout {
+  display: block !important;
   -webkit-animation: fadeOut .4s 1 0s ;
   -webkit-animation-fill-mode: forwards;
 }
@@ -881,7 +882,6 @@ h6 {
 }
 .eg-tips-container {
   z-index: 9001;
-  display: none;
 }
 .eg-dialog-button,
 .eg-tips-button {
@@ -913,51 +913,6 @@ h6 {
 .eg-dialog-show,
 .eg-tips-show {
   display: block;
-}
-/**淡入淡出动画*/
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    /*初始状态 透明度为0*/
-  }
-  50% {
-    opacity: 0.5;
-    /*中间状态 透明度为0.5*/
-  }
-  100% {
-    opacity: 1;
-    /*结尾状态 透明度为1*/
-  }
-}
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-    /*初始状态 透明度为1*/
-  }
-  50% {
-    opacity: 0.5;
-    /*中间状态 透明度为0.5*/
-  }
-  100% {
-    opacity: 0;
-    /*结尾状态 透明度为0*/
-  }
-}
-/**显示*/
-.eg-hide {
-  display: none;
-}
-.eg-show {
-  display: block;
-}
-.eg-fadein {
-  display: block;
-  -webkit-animation: fadeIn .4s 1 0s;
-}
-.eg-fadeout {
-  display: block;
-  -webkit-animation: fadeOut .4s 1 0s ;
-  -webkit-animation-fill-mode: forwards;
 }
 .eg-crumb ul li {
   float: left;
@@ -1334,11 +1289,11 @@ h6 {
 }
 .eg-select-container ul {
   background: #fff;
+  display: none;
   position: absolute;
   width: inherit;
   top: 39px;
   left: 0px;
-  display: block;
   border: #dadbdd solid 1px;
   border-radius: 0px 0px 4px 4px;
   max-height: 150px;
@@ -1355,26 +1310,6 @@ h6 {
 }
 .eg-select-container ul li.active {
   color: #ff717d;
-}
-.eg-select-container .eg-select-ul {
-  display: none;
-  /*定义滚动条轨道 内阴影+圆角*/
-  /*定义滑块 内阴影+圆角*/
-}
-.eg-select-container .eg-select-ul::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
-  background-color: #fff;
-}
-.eg-select-container .eg-select-ul::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #fff;
-}
-.eg-select-container .eg-select-ul::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
 }
 .eg-select-container .eg-select-show {
   display: block;
@@ -1399,6 +1334,9 @@ h6 {
   transform: rotate(135deg);
   top: 13px;
 }
+.eg-tooltip-container {
+  display: inline-block;
+}
 .eg-tooltip-container .eg-tooltip-wraper {
   display: none;
   position: absolute;
@@ -1412,7 +1350,7 @@ h6 {
   text-align: left;
   border-radius: 3px;
   box-shadow: 0px 1px 5px 2px #bbbbbb;
-  margin: 5px 0px;
+  margin: 5px -15px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip {
   position: relative;
@@ -1422,7 +1360,7 @@ h6 {
   border-style: dashed;
   border-color: transparent transparent #000 transparent;
   position: absolute;
-  left: 18px;
+  left: 32px;
   top: -15px;
   height: 0;
   width: 0;
