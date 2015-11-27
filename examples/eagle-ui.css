@@ -167,18 +167,18 @@ h6 {
   }
 }
 /**显示*/
-.eg-hide {
+.eg-hide,
+.show {
   display: none;
 }
-.eg-show {
+.eg-show.show {
   display: block;
 }
 .fadein {
-  display: block!important;
+  display: block !important;
   -webkit-animation: fadeIn .4s 1 0s;
 }
 .fadeout {
-  display: block!important;
   -webkit-animation: fadeOut .4s 1 0s ;
   -webkit-animation-fill-mode: forwards;
 }
@@ -349,6 +349,61 @@ h6 {
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+/**晃动*/
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+}
+.animated {
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 /**字体大小*/
 .small {
   font-size: 65%;
@@ -483,7 +538,6 @@ h6 {
 .eg-btn:hover {
   background: #d94000;
   text-decoration: none;
-  color: #ffffff;
 }
 .eg-btn.eg-btn-disabled {
   color: #f8c1a8;
@@ -1555,4 +1609,44 @@ h6 {
 }
 .eg-list .eg-item:last-child {
   border-bottom: none;
+}
+/**按钮组*/
+.eg-validate .eg-validate-error {
+  outline: none;
+  border-color: #dd514c;
+}
+.eg-validate .eg-validate-tips {
+  position: absolute;
+  padding: 4px 10px;
+  display: none;
+}
+.eg-validate .eg-validate-tips i {
+  border-radius: 50%;
+  display: inline-block;
+  background: #dd514c;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 0;
+  margin-top: -10px;
+  position: absolute;
+}
+.eg-validate .eg-validate-tips i:before {
+  height: 2px;
+  width: 2px;
+  background: #fff;
+  left: 8px;
+  top: 13px;
+  position: absolute;
+  content: "";
+  opacity: 0.9;
+}
+.eg-validate .eg-validate-tips i:after {
+  height: 8px;
+  width: 2px;
+  background: #fff;
+  left: 8px;
+  top: 4px;
+  position: absolute;
+  content: "";
 }

@@ -86,19 +86,18 @@
 
 }
 /**显示*/
-.eg-hide{
+.eg-hide,.show{
     display: none;
 }
-.eg-show{
+.eg-show.show{
     display: block;
 }
 
 .fadein{
-    display: block!important;
+    display: block !important;
     -webkit-animation: fadeIn .4s 1 0s;
 }
 .fadeout{
-    display: block!important;
     -webkit-animation: fadeOut .4s 1 0s ;
     -webkit-animation-fill-mode: forwards;
 }
@@ -271,3 +270,40 @@
     }
 }
 
+/**晃动*/
+@-webkit-keyframes shake {
+    0%,100% {
+        -webkit-transform:translate3d(0,0,0);
+        transform:translate3d(0,0,0)
+    }
+    10%,30%,50%,70%,90% {
+        -webkit-transform:translate3d(-10px,0,0);
+        transform:translate3d(-10px,0,0)
+    }
+    20%,40%,60%,80% {
+        -webkit-transform:translate3d(10px,0,0);
+        transform:translate3d(10px,0,0)
+    }
+}@keyframes shake {
+     0%,100% {
+         -webkit-transform:translate3d(0,0,0);
+         transform:translate3d(0,0,0)
+     }
+     10%,30%,50%,70%,90% {
+         -webkit-transform:translate3d(-10px,0,0);
+         transform:translate3d(-10px,0,0)
+     }
+     20%,40%,60%,80% {
+         -webkit-transform:translate3d(10px,0,0);
+         transform:translate3d(10px,0,0)
+     }
+ }.shake {
+      -webkit-animation-name:shake;
+      animation-name:shake
+  }
+.animated {
+    -webkit-animation-duration:.8s;
+    animation-duration:.8s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
