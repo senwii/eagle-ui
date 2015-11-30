@@ -137,35 +137,6 @@ h6 {
   color: #ffffff;
   background: #ee5511;
 }
-/**淡入淡出动画*/
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    /*初始状态 透明度为0*/
-  }
-  50% {
-    opacity: 0.5;
-    /*中间状态 透明度为0.5*/
-  }
-  100% {
-    opacity: 1;
-    /*结尾状态 透明度为1*/
-  }
-}
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-    /*初始状态 透明度为1*/
-  }
-  50% {
-    opacity: 0.5;
-    /*中间状态 透明度为0.5*/
-  }
-  100% {
-    opacity: 0;
-    /*结尾状态 透明度为0*/
-  }
-}
 /**显示*/
 .eg-hide,
 .show {
@@ -173,15 +144,6 @@ h6 {
 }
 .eg-show.show {
   display: block;
-}
-.fadein {
-  display: block !important;
-  -webkit-animation: fadeIn .4s 1 0s;
-}
-.fadeout {
-  display: block !important;
-  -webkit-animation: fadeOut .4s 1 0s ;
-  -webkit-animation-fill-mode: forwards;
 }
 /**成功图标*/
 .eg-tips-success {
@@ -350,61 +312,6 @@ h6 {
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/**晃动*/
-@-webkit-keyframes shake {
-  0%,
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-@keyframes shake {
-  0%,
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-.shake {
-  -webkit-animation-name: shake;
-  animation-name: shake;
-}
-.animated {
-  -webkit-animation-duration: .8s;
-  animation-duration: .8s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
 /**字体大小*/
 .small {
   font-size: 65%;
@@ -471,6 +378,120 @@ h6 {
   font-weight: 400;
   line-height: 1;
   color: #777;
+}
+/**晃动*/
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+}
+.animated {
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/**淡入淡出*/
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadein {
+  display: block !important;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: .4s;
+  animation-duration: .4s;
+}
+@-webkit-keyframes fadeOut {
+  0% {
+    display: block !important;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fadeout {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  -webkit-animation-duration: .4s;
+  animation-duration: .4s;
 }
 /**按钮组*/
 .eg-btn-group {
@@ -1555,8 +1576,10 @@ h6 {
 }
 .eg-validate .eg-validate-tips {
   position: absolute;
-  padding: 4px 10px;
-  display: none;
+  left: -9999rem;
+  padding: 0px 10px 0 22px;
+  z-index: 9010;
+  background-color: transparent;
 }
 .eg-validate .eg-validate-tips i {
   border-radius: 50%;
@@ -1587,4 +1610,17 @@ h6 {
   top: 4px;
   position: absolute;
   content: "";
+}
+.eg-validate .eg-validate-tips.bottom {
+  background: rgba(51, 51, 51, 0.8);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #fff;
+  height: auto;
+  line-height: normal;
+  padding: 10px 10px 10px 32px;
+}
+.eg-validate .eg-validate-tips.bottom i {
+  left: 10px;
 }

@@ -75,7 +75,7 @@ let Demo = class Demo extends Component{
                     <Grid>
                         <Row>
                             <Col sm={5} end>
-                                <ValidatorPanel rules={this.rules} submitElement="#submit">
+                                <ValidatorPanel rules={this.rules} submitElement="#submit" direction="right" id="testFrom">
                                     <Row>
                                         <Col>
                                             <PanelContent>
