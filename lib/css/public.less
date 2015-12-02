@@ -120,8 +120,12 @@
         animation: 0.5s linear 0s normal none infinite rotate;
     }
 }
-
-.eg-tips-success,.eg-icon-tick,.eg-tips-success,.eg-tips-error{
+//旋转动画
+@-webkit-keyframes rotate{
+    from{-webkit-transform:rotate(0deg)}
+    to{-webkit-transform:rotate(360deg)}
+}
+.eg-tips-success,.eg-icon-tick,.eg-tips-loading,.eg-tips-error{
     &:before,&:after{
         display: inline-block;
         position: absolute;
@@ -147,11 +151,7 @@
     }
 }
 
-//旋转动画
-@-webkit-keyframes rotate{
-    from{-webkit-transform:rotate(0deg)}
-    to{-webkit-transform:rotate(360deg)}
-}
+
 /*icon*/
 
 .eg-arrow-up,.eg-arrow-down{

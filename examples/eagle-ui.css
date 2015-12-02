@@ -197,13 +197,21 @@ h6 {
   clip: rect(auto, 16px, auto, auto);
   animation: 0.5s linear 0s normal none infinite rotate;
 }
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
 .eg-tips-success:before,
 .eg-icon-tick:before,
-.eg-tips-success:before,
+.eg-tips-loading:before,
 .eg-tips-error:before,
 .eg-tips-success:after,
 .eg-icon-tick:after,
-.eg-tips-success:after,
+.eg-tips-loading:after,
 .eg-tips-error:after {
   display: inline-block;
   position: absolute;
@@ -226,14 +234,6 @@ h6 {
   left: 17px;
   top: 8px;
   transform: rotate(45deg);
-}
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
 }
 /*icon*/
 .eg-arrow-up::before,
@@ -466,7 +466,6 @@ h6 {
 }
 @-webkit-keyframes fadeOut {
   0% {
-    display: block !important;
     opacity: 1;
   }
   50% {
@@ -488,10 +487,13 @@ h6 {
   }
 }
 .fadeout {
+  display: block !important;
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
   -webkit-animation-duration: .4s;
   animation-duration: .4s;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
 }
 /**按钮组*/
 .eg-btn-group {
@@ -1349,7 +1351,7 @@ h6 {
 }
 .eg-select-container .eg-select-arrow-down {
   transform: rotate(-45deg);
-  top: 16px;
+  top: 12px;
 }
 .eg-select-container .eg-select-arrow-up {
   transform: rotate(135deg);
@@ -1357,6 +1359,7 @@ h6 {
 }
 .eg-tooltip-container {
   display: inline-block;
+  position: relative;
 }
 .eg-tooltip-container .eg-tooltip-wraper {
   display: none;
@@ -1371,21 +1374,39 @@ h6 {
   text-align: left;
   border-radius: 3px;
   box-shadow: 0px 1px 5px 2px #bbbbbb;
-  margin: 5px -15px;
+  margin: 5px 0px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip {
   position: relative;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow {
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-down,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-up,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-left,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-right {
   border-width: 5px;
   border-style: dashed;
-  border-color: transparent transparent #000 transparent;
   position: absolute;
-  left: 32px;
-  top: -15px;
   height: 0;
   width: 0;
   line-height: 0;
+}
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-down {
+  border-color: transparent transparent #000 transparent;
+  left: 32px;
+  top: -15px;
+}
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-up {
+  border-color: #000 transparent transparent transparent;
+  left: 32px;
+  bottom: -15px;
+}
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-left {
+  border-color: transparent transparent transparent #000;
+  right: 0px;
+}
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-right {
+  border-color: transparent #000 transparent transparent;
+  left: 0px;
 }
 .eg-tooltip-container .eg-tooltip-show {
   display: block;
