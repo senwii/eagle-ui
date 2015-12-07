@@ -884,15 +884,13 @@ h6 {
 .eg-dialog-container,
 .eg-tips-container {
   display: none;
-}
-.eg-dialog-overlay,
-.eg-tips-overlay {
   position: fixed;
   left: 0px;
   top: 0px;
+  right: 0;
+  bottom: 0;
   z-index: 8900;
-  background-color: #000000;
-  opacity: 0.4;
+  background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
 }
@@ -1044,6 +1042,9 @@ h6 {
 .eg-label-active {
   background: #ee5511;
   color: #ffffff;
+}
+.eg-label-group-simple:hover {
+  text-decoration: underline;
 }
 .eg-label-group-simple .eg-label-item {
   border-right: 1px solid #cccccc;
@@ -1605,6 +1606,9 @@ h6 {
   border-bottom: none;
 }
 /**按钮组*/
+.eg-validate {
+  position: relative;
+}
 .eg-validate .eg-validate-error {
   outline: none;
   border-color: #dd514c;
@@ -1612,9 +1616,14 @@ h6 {
 .eg-validate .eg-validate-tips {
   position: absolute;
   left: -9999rem;
-  padding: 0px 10px 0 22px;
+  padding: 10px 10px;
   z-index: 9010;
-  background-color: transparent;
+  background: rgba(255, 255, 255, 0.8);
+  min-width: 300px;
+  text-align: left;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 .eg-validate .eg-validate-tips i {
   border-radius: 50%;
@@ -1622,10 +1631,10 @@ h6 {
   background: #dd514c;
   width: 18px;
   height: 18px;
-  top: 50%;
   left: 0;
-  margin-top: -10px;
-  position: absolute;
+  float: left;
+  position: relative;
+  margin-right: 8px;
 }
 .eg-validate .eg-validate-tips i:before {
   height: 2px;
@@ -1648,14 +1657,5 @@ h6 {
 }
 .eg-validate .eg-validate-tips.bottom {
   background: rgba(51, 51, 51, 0.8);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
   color: #fff;
-  height: auto;
-  line-height: normal;
-  padding: 10px 10px 10px 32px;
-}
-.eg-validate .eg-validate-tips.bottom i {
-  left: 10px;
 }

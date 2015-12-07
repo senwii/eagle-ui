@@ -13,6 +13,9 @@ import Grid from '../../lib/Grid.js';
 import RadioGroup from '../../lib/RadioGroup.js';
 import ValidatorPanel from '../../lib/ValidatorPanel.js';
 import CalendarPanel from '../../lib/CalendarPanel.js';
+import Tab from '../../lib/Tab.js';
+import Tabset from '../../lib/Tabset.js';
+import Dialog from '../../lib/Dialog.js';
 
 let Demo = class Demo extends Component{
 
@@ -69,7 +72,8 @@ let Demo = class Demo extends Component{
 
         this.state={
             showTab:0,
-            update:'uid'
+            update:'uid',
+            show:false
         };
 
     }
@@ -81,12 +85,19 @@ let Demo = class Demo extends Component{
     change(value){
        this.setState({
            showTab:value,
-           update:'uid'+(+new Date())
+           update:'uid'+(+new Date()),
+           show:false
        });
     }
 
     submit(vals){
         alert('验证成功'+JSON.stringify(vals));
+    }
+
+    showMask(){
+        this.setState({
+            show:true
+        });
     }
 
     checktab(){
@@ -119,66 +130,116 @@ let Demo = class Demo extends Component{
             <Panel>
 
                     <Grid>
-                        <Row>
-                            <Col>
+                        <Tabset>
+                            <Tab heading="demo1">
+                                <Row>
+                                    <Col>
+                                        <PanelContent>
+                                            <RadioGroup defaultChecked={this.state.showTab+''} name="radio-foot" getValueCallback={::this.change}>
+                                                <Input  type="radio"  label="显示第一个表单元素" value="0"  />
+                                                <Input  type="radio"  label="显示第二个表单元素" value="1"   />
+                                            </RadioGroup>
+                                        </PanelContent>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col sm={5} end>
+                                        <ValidatorPanel rules={this.rules} submitElement="#submit" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
+                                            <Row>
+                                                <Col>
+                                                    <PanelContent>
+                                                        <Row>
+                                                            <Col>
+                                                                <CalendarPanel>
+                                                                    <Input placeholder="请选择日期" icon="calendar" name="date" style={{width:'150px'}} data-validate />
+                                                                </CalendarPanel>
+
+                                                            </Col>
+                                                        </Row>
+                                                        {this.checktab()}
+                                                        <Row>
+                                                            <Col>
+                                                                <Input placeholder="请输入有效的号码" name="number" data-validate />
+                                                            </Col>
+                                                        </Row>
+                                                        <Row>
+                                                            <Col>
+                                                                <Input placeholder="请输入有效的号码" name="equalTo" data-validate />
+                                                            </Col>
+                                                        </Row>
+                                                        <Row>
+                                                            <Col>
+                                                                <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+                                                            </Col>
+                                                        </Row>
+                                                        <Row>
+                                                            <Col>
+                                                                <Input placeholder="请输入您的email" name="email" data-validate />
+                                                            </Col>
+                                                        </Row>
+                                                        <Row>
+                                                            <Col>
+                                                                <Button radius egSize="xs" id="submit" >点我提交表单</Button>
+                                                            </Col>
+                                                        </Row>
+                                                    </PanelContent>
+                                                </Col>
+                                            </Row>
+
+                                        </ValidatorPanel>
+                                    </Col>
+                                </Row>
+                            </Tab>
+                            <Tab heading="demo2">
                                 <PanelContent>
-                                    <RadioGroup defaultChecked={this.state.showTab+''} name="radio-foot" getValueCallback={::this.change}>
-                                        <Input  type="radio"  label="显示第一个表单元素" value="0"  />
-                                        <Input  type="radio"  label="显示第二个表单元素" value="1"   />
-                                    </RadioGroup>
-                                </PanelContent>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col sm={5} end>
-                                <ValidatorPanel rules={this.rules} submitElement="#submit" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
                                     <Row>
                                         <Col>
-                                            <PanelContent>
-                                                <Row>
-                                                    <Col>
-                                                        <CalendarPanel>
-                                                            <Input placeholder="请选择日期" icon="calendar" name="date" style={{width:'150px'}} data-validate />
-                                                        </CalendarPanel>
-
-                                                    </Col>
-                                                </Row>
-                                                {this.checktab()}
-                                                <Row>
-                                                    <Col>
-                                                        <Input placeholder="请输入有效的号码" name="number" data-validate />
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col>
-                                                        <Input placeholder="请输入有效的号码" name="equalTo" data-validate />
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col>
-                                                        <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col>
-                                                        <Input placeholder="请输入您的email" name="email" data-validate />
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col>
-                                                        <Button radius egSize="xs" id="submit" >点我提交表单</Button>
-                                                    </Col>
-                                                </Row>
-                                            </PanelContent>
+                                            <Button onClick={::this.showMask}>弹出验证表单</Button>
                                         </Col>
                                     </Row>
-
-                                </ValidatorPanel>
-                            </Col>
-                        </Row>
+                                </PanelContent>
+                            </Tab>
+                        </Tabset>
                     </Grid>
+                    <Dialog type={'mask'} show={this.state.show}>
+                        <Grid style={{width:'300px'}}>
+                            <ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="right" id="testDialogFrom" submitCallback={::this.submit}>
+                                <Row>
+                                    <Col>
+                                        <Input placeholder="请输入姓名"  name="userName" data-validate />
 
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Input placeholder="请输入有效的号码" name="number" data-validate />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Input placeholder="请输入有效的号码" name="equalTo" data-validate />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Input placeholder="请输入您的email" name="email" data-validate />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Button radius egSize="xs" id="ssubmit" >点我提交表单</Button>
+                                    </Col>
+                                </Row>
+                            </ValidatorPanel>
+                        </Grid>
+                    </Dialog>
             </Panel>
+
         );
     }
 }
