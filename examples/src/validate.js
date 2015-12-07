@@ -203,7 +203,7 @@ let Demo = class Demo extends Component{
                     </Grid>
                     <Dialog type={'mask'} show={this.state.show}>
                         <Grid style={{width:'300px'}}>
-                            <ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="right" id="testDialogFrom" submitCallback={::this.submit}>
+                            <ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="bottom" id="testDialogFrom" submitCallback={::this.submit}>
                                 <Row>
                                     <Col>
                                         <Input placeholder="请输入姓名"  name="userName" data-validate />

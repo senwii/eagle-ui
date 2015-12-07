@@ -1614,6 +1614,7 @@ h6 {
   border-color: #dd514c;
 }
 .eg-validate .eg-validate-tips {
+  display: none;
   position: absolute;
   left: -9999rem;
   padding: 10px 10px;
