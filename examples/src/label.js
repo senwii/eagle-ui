@@ -31,7 +31,7 @@ let Demo = class Demo extends Component{
                         <Row>
                             <Col>
                                 <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} end>
-                                    <Label value="0">全部</Label>
+                                    <Label value="0" className="all">全部</Label>
                                     <Label value="1">卢湾区</Label>
                                     <Label value="10">徐汇区</Label>
                                     <Label>静安区</Label>
