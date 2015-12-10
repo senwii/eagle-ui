@@ -12,7 +12,7 @@ let Demo = class Demo extends Component{
         super(props,context);
 
         this.state={
-            tabIndex:0
+            tabIndex:2
         };
     }
 
@@ -50,8 +50,14 @@ let Demo = class Demo extends Component{
                 <Tab heading='tab2'>
                     {::this.tab2()}
                 </Tab>
-                <Tab heading='tab3'>
+                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
                     {::this.tab3()}
+                </Tab>
+                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
+                    nadkfnpasknfsaknf
+                </Tab>
+                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
+                    nadkfnpasknfsaknf
                 </Tab>
             </Tabset>
         );
