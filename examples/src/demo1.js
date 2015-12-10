@@ -3,7 +3,7 @@
  */
 import React,{Component} from 'react';
 
-import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging} from 'eagle-ui';
+import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup} from 'eagle-ui';
 
 let SearchSec= class SearchSec extends Component{
     constructor(props,context){
@@ -91,13 +91,13 @@ let CardListPanel = class CardListPanel extends Component{
         return (
             <Panel>
                 <PanelHeader>
-                    <div className="checkboxGroup">
+                    <CheckboxGroup>
                         <Input label="仅公海"  type="checkbox" checked />
                         <Input lebal="冻结中"  type="checkbox" />
                         <Input label="团购在线" type="checkbox"  />
                         <Input label="闪惠在线" type="checkbox"  />
                         <Input label="预订在线" type="checkbox"  />
-                    </div>
+                    </CheckboxGroup>
                 </PanelHeader>
                 <PanelContent padding={false}>
                     <List>

@@ -8,6 +8,7 @@ import Row from '../../lib/Row.js';
 import Col from '../../lib/Col.js';
 import Grid from '../../lib/Grid.js';
 import RadioGroup from '../../lib/RadioGroup.js';
+import CheckboxGroup from '../../lib/CheckboxGroup.js';
 import CalendarPanel from '../../lib/CalendarPanel.js';
 import querystring from 'querystring';
 
@@ -39,11 +40,12 @@ let Demo= class Demo extends Component{
                 <Row>
                     <Col sm={12}><Input name="test" id="test" placeholder="请输入" icon="calendar"  /></Col>
                     <Col sm={12}>
-                        <Input  type="checkbox" checked  disabled={true}  />
-                        <Input  type="checkbox"  disabled={true}   />
-                        <Input  type="checkbox"   />
-                        <Input  type="checkbox" checked  />
-
+                        <CheckboxGroup>
+                            <Input  type="checkbox" checked  disabled={true}  />
+                            <Input  type="checkbox"  disabled={true}   />
+                            <Input  type="checkbox"   />
+                            <Input  type="checkbox" checked  />
+                        </CheckboxGroup>
                     </Col>
                     <Col sm={12}>
                         <Col sm={6}>

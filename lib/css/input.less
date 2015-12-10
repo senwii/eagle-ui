@@ -18,8 +18,8 @@
 .eg-input-checkbox,.eg-input-radio{
     position: relative;
     text-align: left;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    //margin-bottom: 10px;
+    //margin-right: 10px;
     min-height: 24px;
     display: inline-block;
     input[type="checkbox"],input[type="radio"]{
@@ -177,6 +177,19 @@
             color:@black-99;
 
         }
+    }
+}
+.eg-input-group{
+    overflow: hidden;
+    .eg-input-radio,.eg-input-checkbox{
+        margin-top: 10px;
+        margin-right: 10px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+    .eg-input-group-container{
+        margin-top: -10px;
     }
 }
 .eg-icon-container{

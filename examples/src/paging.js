@@ -9,16 +9,24 @@ import Col from '../../lib/Col.js';
 import querystring from 'querystring';
 
 
+let page = 1;
 function callback(page){
-    window.location = location.origin+location.pathname+'?page='+page;
+    page = page;
+    window.location = location.origin+location.pathname+'?page='+page+'&pageSize='+pageSize;
 }
 
-var page =location.search ? querystring.parse(location.search.substr(1) ).page*1 : 1;
+function loadPageCallback(pageSize){
+    window.location = location.origin+location.pathname+'?page='+page+'&pageSize='+pageSize;
+}
+
+page =location.search ? querystring.parse(location.search.substr(1) ).page*1 : 1;
+
+var pageSize = location.search ? querystring.parse(location.search.substr(1) ).pageSize*1 : 20;
 
 ReactDOM.render(
     <Row>
         <Col sm={12}>
-            <Paging currentPage={page} pageCallback={callback} total={5024} />
+            <Paging showItemsNumber={true} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize} pageCallback={callback} total={5024} />
         </Col>
     </Row>
     ,document.getElementById('root'));
