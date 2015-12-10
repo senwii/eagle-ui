@@ -41,8 +41,8 @@ Open the project in the doc directory index can refer to
 ## Examples
 
 Download dependent package installation bower, start the server, static access eagle - UI examples directory file to view the demo
-```
-		
+
+```	
 		$ cd eagle-ui
 		$ npm install bower -g
 		$ npm install anywhere -g
@@ -53,7 +53,6 @@ Download dependent package installation bower, start the server, static access e
 ## Command
 
 ```
-
 	$ npm run demo
 	$ npm run build
 	$ npm run doc
