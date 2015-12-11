@@ -568,7 +568,8 @@ h6 {
   outline: 0;
   text-decoration: none;
 }
-.eg-btn:hover {
+.eg-btn:hover,
+.eg-btn.eg-btn-active {
   background: #d94000;
   text-decoration: none;
 }
@@ -614,7 +615,8 @@ h6 {
 .eg-btn-success {
   background-color: #38bd7c;
 }
-.eg-btn-success:hover {
+.eg-btn-success:hover,
+.eg-btn-success.eg-btn-active {
   background: #0da45a;
 }
 .eg-btn-success.eg-btn-disabled {
@@ -632,7 +634,8 @@ h6 {
   color: #646464;
   background-color: transparent;
 }
-.eg-btn-link:hover {
+.eg-btn-link:hover,
+.eg-btn-link.eg-btn-active {
   color: #646464;
   background: transparent;
   text-decoration: underline;
@@ -648,7 +651,8 @@ h6 {
   background-color: #d4d4d4;
   color: #333333;
 }
-.eg-btn-gray:hover {
+.eg-btn-gray:hover,
+.eg-btn-gray.eg-btn-active {
   background: #cccccc;
 }
 .eg-btn-gray.eg-btn-disabled {
@@ -660,7 +664,8 @@ h6 {
   border-color: #dbdad9;
   color: #000000;
 }
-.eg-btn-white:hover {
+.eg-btn-white:hover,
+.eg-btn-white.eg-btn-active {
   background: #f8f8f8;
 }
 .eg-btn-white.eg-btn-disabled {
@@ -689,8 +694,6 @@ h6 {
 .eg-input-radio {
   position: relative;
   text-align: left;
-  margin-bottom: 10px;
-  margin-right: 10px;
   min-height: 24px;
   display: inline-block;
 }
@@ -817,6 +820,21 @@ h6 {
 .eg-input-checkbox-active.eg-input-checkbox-disabled .box .checkbox {
   background: #cccccc;
   color: #999;
+}
+.eg-input-group {
+  overflow: hidden;
+}
+.eg-input-group .eg-input-radio,
+.eg-input-group .eg-input-checkbox {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.eg-input-group .eg-input-radio:last-child,
+.eg-input-group .eg-input-checkbox:last-child {
+  margin-right: 0;
+}
+.eg-input-group .eg-input-group-container {
+  margin-top: -10px;
 }
 .eg-icon-container {
   position: relative;
@@ -1029,9 +1047,6 @@ h6 {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-.eg-label-item:hover {
-  text-decoration: none;
-}
 .eg-label-all {
   margin-right: 45px;
 }
@@ -1043,15 +1058,15 @@ h6 {
   background: #ee5511;
   color: #ffffff;
 }
-.eg-label-group-simple:hover {
-  text-decoration: underline;
-}
 .eg-label-group-simple .eg-label-item {
   border-right: 1px solid #cccccc;
   border-radius: 0px;
   padding: 0px 15px 0px 0px;
   margin-right: 15px;
   line-height: 14px;
+}
+.eg-label-group-simple .eg-label-item:hover {
+  text-decoration: underline;
 }
 .eg-label-group-simple .eg-label-item:last-child {
   border-right: none;
@@ -1280,11 +1295,11 @@ h6 {
   border-bottom: 1px solid transparent;
   border-radius: 3px 3px 0px 0px;
   color: #333;
-  background-color: #fff;
+  background-color: #f8f7f7;
   border-color: #ddd;
 }
 .eg-panel .eg-panel-footer {
-  background-color: #fff;
+  background-color: #f8f7f7;
   border-top: 1px solid #ddd;
   border-radius: 0px 0px 3px 3px;
 }

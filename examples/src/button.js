@@ -14,18 +14,18 @@ ReactDOM.render(
         <Row>
             <Col sm={12}>
                 <ButtonGroup justify>
-                    <Button radius egSize="sm" egStyle="warning">水平按钮组</Button>
-                    <Button radius egSize="sm" egStyle="warning">水平按钮组</Button>
-                    <Button radius egSize="sm" egStyle="warning">水平按钮组</Button>
+                    <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
+                    <Button radius egSize="sm" egStyle="warning">水平按钮组2</Button>
+                    <Button radius egSize="sm" egStyle="warning">水平按钮组3</Button>
                 </ButtonGroup>
             </Col>
         </Row>
         <Row>
             <Col sm={12}>
                 <ButtonGroup tacked>
-                    <Button radius egSize="sm" egStyle="">垂直按钮组</Button>
-                    <Button radius egSize="sm" egStyle="">垂直按钮组</Button>
-                    <Button radius egSize="sm" egStyle="">垂直按钮组</Button>
+                    <Button radius egSize="sm" egStyle="">垂直按钮组1</Button>
+                    <Button radius egSize="sm" egStyle="">垂直按钮组2</Button>
+                    <Button radius egSize="sm" egStyle="">垂直按钮组3</Button>
                 </ButtonGroup>
             </Col>
         </Row>
