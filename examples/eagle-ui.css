@@ -685,6 +685,7 @@ h6 {
   padding: 10px;
   color: #333333;
   width: 100%;
+  outline-color: #cc3333;
 }
 .eg-input-text:disabled {
   background: #eeeeee;
@@ -712,6 +713,12 @@ h6 {
   opacity: 0;
   z-index: 2;
   left: 0;
+}
+.eg-input-checkbox input[type="checkbox"]:hover,
+.eg-input-radio input[type="checkbox"]:hover,
+.eg-input-checkbox input[type="radio"]:hover,
+.eg-input-radio input[type="radio"]:hover {
+  border-color: #ee5511;
 }
 .eg-input-checkbox .box,
 .eg-input-radio .box {
@@ -926,6 +933,7 @@ h6 {
   position: fixed;
   top: 50%;
   left: 50%;
+  -moz-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 1;
@@ -935,8 +943,10 @@ h6 {
   border-radius: 3px;
   z-index: 9000;
 }
-.eg-tips-container {
+.eg-tips-container,
+.eg-tips-wapper {
   z-index: 9001;
+  display: none;
 }
 .eg-dialog-button,
 .eg-tips-button {
@@ -1288,7 +1298,6 @@ h6 {
   border: 1px solid #dddddd;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  overflow-x: hidden;
 }
 .eg-panel .eg-panel-header {
   padding: 10px 15px;

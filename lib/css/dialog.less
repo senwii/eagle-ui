@@ -24,6 +24,7 @@
   position:fixed;
   top:50%;
   left:50%;
+  -moz-transform:translate(-50%,-50%);
   -webkit-transform:translate(-50%,-50%);
   transform:translate(-50%,-50%);
   opacity: 1;
@@ -35,8 +36,9 @@
   border-radius: 3px;
   z-index: 9000;
 }
-.eg-tips-container{
+.eg-tips-container,.eg-tips-wapper{
   z-index: 9001;
+  display: none;
 }
 .eg-dialog-button, .eg-tips-button{
   text-align: center;

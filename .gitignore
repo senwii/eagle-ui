@@ -42,6 +42,3 @@ thumbs.db
 node_modules/
 jscoverage_lib/
 example/
-examples/js/
-doc/
-bower_components/
