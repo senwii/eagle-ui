@@ -18,7 +18,8 @@ let Demo= class Demo extends Component{
         super(props, context);
         this.state = {
             show: this.props.show,
-            type: this.props.type
+            type: this.props.type,
+            title:'这是个提示'
         }
     }
     render(){
@@ -30,7 +31,7 @@ let Demo= class Demo extends Component{
             <Col sm={3}><Button block radius egSize="sm" onClick={::this.showConfirm}>confirm</Button></Col>
             <Col sm={3}><Button block radius egSize="sm" onClick={::this.showMsak}>mask</Button></Col>
         </Row>
-            <Dialog type={this.state.type} show={this.state.show}>
+            <Dialog type={this.state.type} show={this.state.show} title={this.state.title}>
             ahflaskdjflajsflajsdlf;jkasdfk
                 adfkjasd;fkjas;dlf
                 asdfkn;askdfnas

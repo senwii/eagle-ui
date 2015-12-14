@@ -20,6 +20,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "PanelHeader",
         "RadioGroup",
         "Row",
+        "Search",
         "Select",
         "Tab",
         "Table",
@@ -27,6 +28,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "Td",
         "Th",
         "Toast",
+        "Tooltip",
+        "TooltipPanel",
         "Tr",
         "ValidatorPanel",
         "crumb",
@@ -81,6 +84,9 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Col"
+                },
+                {
+                    "name": "Search"
                 }
             ]
         },
@@ -158,10 +164,16 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "Paging"
                 },
                 {
+                    "name": "Tooltip"
+                },
+                {
                     "name": "Tabset"
                 },
                 {
                     "name": "Toast"
+                },
+                {
+                    "name": "TooltipPanel"
                 }
             ]
         }

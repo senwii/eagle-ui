@@ -10,7 +10,8 @@ import Col from '../../../lib/Col.js';
 let Demo= class Demo extends Component{
 
     static defaultProps = {
-        input: true
+        input: true,
+        keys:'bei'
     }
 
     constructor(props, context) {
@@ -20,16 +21,15 @@ let Demo= class Demo extends Component{
         }
     }
     render(){
-        console.log(this.state.input);
         return (
             <Grid>
                 <Row>
-                    <Col sm={3}><Button block radius egSize="sm" onClick={::this.changeIn}>切换至不可输入模式</Button></Col>
+                    <Col sm={3}><Button block radius egSize="sm" onClick={::this.changeIn} >切换至限定值模式</Button></Col>
                 <Col sm={8}>
-                <Select  callback={function(val,key){console.log(val+':'+key)}} input={this.state.input}>
-                    <item value='0'>北京</item>
-                    <item value='1'>上海</item>
-                    <item value='2'>南京</item>
+                <Select keys={this.props.keys} callback={function(val,key){console.log(val+':'+key)}} input={this.state.input} >
+                    <item value='bei'>北京</item>
+                    <item value='shang'>上海</item>
+                    <item value='nan'>南京</item>
                     <item value='3'>ssdd</item>
                     <item value='4'>sd饭否否</item>
                     <item value='5'>南京</item>
@@ -50,7 +50,7 @@ let Demo= class Demo extends Component{
         this.setState({
           input: false
         })
-        alert('不可输入');
+        alert('输入值必须为select之中的值');
     }
 }
 

@@ -284,7 +284,9 @@
         "lib/Search.js": {
             "name": "lib/Search.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "Search": 1
+            },
             "fors": {},
             "namespaces": {}
         },
@@ -329,14 +331,18 @@
         "lib/Tooltip.js": {
             "name": "lib/Tooltip.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "Tooltip": 1
+            },
             "fors": {},
             "namespaces": {}
         },
         "lib/TooltipPanel.js": {
             "name": "lib/TooltipPanel.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "TooltipPanel": 1
+            },
             "fors": {},
             "namespaces": {}
         },
@@ -420,14 +426,16 @@
                 "LabelGroup": 1,
                 "List": 1,
                 "Paging": 1,
+                "Tooltip": 1,
                 "Tabset": 1,
-                "Toast": 1
+                "Toast": 1,
+                "TooltipPanel": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/Toast.js",
-            "line": 11,
+            "file": "lib/TooltipPanel.js",
+            "line": 12,
             "description": "tab组件"
         },
         "grid": {
@@ -436,13 +444,14 @@
             "classes": {
                 "Grid": 1,
                 "Row": 1,
-                "Col": 1
+                "Col": 1,
+                "Search": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/Row.js",
-            "line": 5,
+            "file": "lib/Search.js",
+            "line": 9,
             "description": "行"
         }
     },
@@ -835,12 +844,12 @@
             "namespace": "",
             "file": "lib/Dialog.js",
             "line": 11,
-            "description": "弹框组件",
+            "description": "弹框组件，dialog类型：分为alert,confirm,dialog,mask 四种。默认alert。\n根据show的存在与否决定弹框展示与否",
             "extends": "Component",
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Dialog from '../../../lib/Dialog.js';\n\timport Button from '../../../lib/Button.js';\n\timport Grid from '../../../lib/Grid.js';\n\timport Row from '../../../lib/Row.js';\n\timport Col from '../../../lib/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        show: false,\n\t        type: \"alert\"\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show: this.props.show,\n\t            type: this.props.type\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t         <Grid>\n\t        <Row>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showDialog}>dialog</Button></Col>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showAlert}>alert</Button></Col>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showConfirm}>confirm</Button></Col>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showMsak}>mask</Button></Col>\n\t        </Row>\n\t            <Dialog type={this.state.type} show={this.state.show}>\n\t            ahflaskdjflajsflajsdlf;jkasdfk\n\t                adfkjasd;fkjas;dlf\n\t                asdfkn;askdfnas\n\t            </Dialog>\n\t           </Grid>\n\t        );\n\t    }\n\t    showDialog(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'dialog'\n\t        })\n\t    }\n\t    showAlert(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'alert'\n\t        })\n\t    }\n\t    showConfirm(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'confirm'\n\t        })\n\t    }\n\t    showMsak(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'mask'\n\t        })\n\t    }\n\t};\n\t\n\texport default class DialogCls extends Component{\n\t    render(){\n\t        return (\n\t            <Demo  />\n\t        );\n\t    }\n\t}"
+                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Dialog from '../../../lib/Dialog.js';\n\timport Button from '../../../lib/Button.js';\n\timport Grid from '../../../lib/Grid.js';\n\timport Row from '../../../lib/Row.js';\n\timport Col from '../../../lib/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        show: false,\n\t        type: \"alert\"\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show: this.props.show,\n\t            type: this.props.type,\n\t            title:'这是个提示'\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t         <Grid>\n\t        <Row>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showDialog}>dialog</Button></Col>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showAlert}>alert</Button></Col>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showConfirm}>confirm</Button></Col>\n\t            <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.showMsak}>mask</Button></Col>\n\t        </Row>\n\t            <Dialog type={this.state.type} show={this.state.show} title={this.state.title}>\n\t            ahflaskdjflajsflajsdlf;jkasdfk\n\t                adfkjasd;fkjas;dlf\n\t                asdfkn;askdfnas\n\t            </Dialog>\n\t           </Grid>\n\t        );\n\t    }\n\t    showDialog(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'dialog'\n\t        })\n\t    }\n\t    showAlert(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'alert'\n\t        })\n\t    }\n\t    showConfirm(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'confirm'\n\t        })\n\t    }\n\t    showMsak(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'mask'\n\t        })\n\t    }\n\t};\n\t\n\texport default class DialogCls extends Component{\n\t    render(){\n\t        return (\n\t            <Demo  />\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "js"
@@ -1047,6 +1056,30 @@
             "is_constructor": 1,
             "since": "0.1.0"
         },
+        "Search": {
+            "name": "Search",
+            "shortname": "Search",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "grid",
+            "namespace": "",
+            "file": "lib/Search.js",
+            "line": 9,
+            "description": "搜索按钮组件\n参数： id/callBack/placeholder 均可不传",
+            "moudle": "ui",
+            "is_constructor": 1,
+            "since": "0.1.0",
+            "example": [
+                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Search from '../../../lib/Search.js';\n\t\n\texport default class SearchCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Search callBack={function(val){alert(val)}}>\n\t                </Search>\n\t            </div>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "js"
+            ],
+            "show": true
+        },
         "Select": {
             "name": "Select",
             "shortname": "Select",
@@ -1059,16 +1092,42 @@
             "namespace": "",
             "file": "lib/Select.js",
             "line": 11,
-            "description": "下拉选择框组件。\n有input参数可以自由输入，否则不在列表中的输入改变为第一个item",
+            "description": "下拉选择框组件。\n有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item",
+            "moudle": "ui",
             "is_constructor": 1,
-            "extends": "Coponent",
             "since": "0.1.0",
             "example": [
-                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component,PropTypes}  from 'react';\n\timport Select from '../../../lib/Select.js';\n\timport Button from '../../../lib/Button.js';\n\timport Grid from '../../../lib/Grid.js';\n\timport Row from '../../../lib/Row.js';\n\timport Col from '../../../lib/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        input: true\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input\n\t        }\n\t    }\n\t    render(){\n\t        console.log(this.state.input);\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" onClick={::this.changeIn}>切换至不可输入模式</Button></Col>\n\t                <Col sm={8}>\n\t                <Select  callback={function(val,key){console.log(val+':'+key)}} input={this.state.input}>\n\t                    <item value='0'>北京</item>\n\t                    <item value='1'>上海</item>\n\t                    <item value='2'>南京</item>\n\t                    <item value='3'>ssdd</item>\n\t                    <item value='4'>sd饭否否</item>\n\t                    <item value='5'>南京</item>\n\t                    <item value='6'>ssdd</item>\n\t                    <item value='7'>sd饭否否</item>\n\t                    <item value='8'>北京</item>\n\t                    <item value='9'>上海</item>\n\t                    <item value='10'>南京</item>\n\t                    <item value='11'>ssdd</item>\n\t                    <item value='12'>sd饭否否</item>\n\t                </Select>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t    changeIn(){\n\t        this.setState({\n\t          input: false\n\t        })\n\t        alert('不可输入');\n\t    }\n\t}\n\t\n\texport default Demo;"
+                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Search from '../../../lib/Search.js';\n\t\n\texport default class SearchCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Search callBack={function(val){alert(val)}}>\n\t                </Search>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "js"
-            ]
+            ],
+            "show": true,
+            "extends": "Component"
+        },
+        "Tooltip": {
+            "name": "Tooltip",
+            "shortname": "Tooltip",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ui",
+            "namespace": "",
+            "file": "lib/Tooltip.js",
+            "line": 11,
+            "description": "tips组件\n只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中",
+            "moudle": "ui",
+            "is_constructor": 1,
+            "since": "0.1.0",
+            "example": [
+                "\t/**\n\t * Created by panqianjin on 15/11/17.\n\t */\n\timport React,{Component} from 'react';\n\timport Tooltip from '../../../lib/Tooltip.js';\n\timport Button from '../../../lib/Button.js';\n\timport TooltipPanel from '../../../lib/TooltipPanel.js';\n\tlet Demo = class Demo extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t            <div style={{width:'300px',marginBottom:'200px'}}>sadasda\n\t                <TooltipPanel direction='top'>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边2</Button>\n\t                </TooltipPanel>\n\t            </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t            <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t            </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='top'>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边</Button>\n\t                </TooltipPanel>\n\t                <div>\n\t                    <TooltipPanel direction='left'>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t                    <div style={{float:'right'}}>\n\t                        <TooltipPanel direction='right'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\texport default Demo;"
+            ],
+            "exampleTitles": [
+                "js"
+            ],
+            "show": true
         },
         "Tab": {
             "name": "Tab",
@@ -1130,12 +1189,36 @@
             "namespace": "",
             "file": "lib/Toast.js",
             "line": 11,
-            "description": "提示组件",
+            "description": "提示组件\n类型：分为success,error,loading 三种。默认success\noveralay是否显示遮罩，默认false不显示",
             "extends": "Component",
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Toast from '../../../lib/Toast.js';\n\timport Button from '../../../lib/Button.js';\n\timport Grid from '../../../lib/Grid.js';\n\timport Row from '../../../lib/Row.js';\n\timport Col from '../../../lib/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        show: false,\n\t        type: \"success\"\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show: this.props.show,\n\t            type: this.props.type,\n\t            overlay: false\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={4}><Button block radius egSize=\"sm\" onClick={::this.showSuccess}>success</Button></Col>\n\t                    <Col sm={4}><Button block radius egSize=\"sm\" onClick={::this.showError}>error</Button></Col>\n\t                    <Col sm={4}><Button block radius egSize=\"sm\" onClick={::this.showLoading}>loading</Button></Col>\n\t                </Row>\n\t                <Toast type={this.state.type} show={this.state.show} overlay={this.state.overlay}>\n\t                </Toast>\n\t            </Grid>\n\t        );\n\t    }\n\t    showSuccess(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'success'\n\t        })\n\t    }\n\t    showError(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'error'\n\t        })\n\t    }\n\t    showLoading(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'loading'\n\t        })\n\t    }\n\t};\n\texport default Demo;"
+                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Toast from '../../../lib/Toast.js';\n\timport Button from '../../../lib/Button.js';\n\timport Grid from '../../../lib/Grid.js';\n\timport Row from '../../../lib/Row.js';\n\timport Col from '../../../lib/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        show: false,\n\t        type: \"success\"\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show: this.props.show,\n\t            type: this.props.type,\n\t            overlay: true\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={4}><Button block radius egSize=\"sm\" onClick={::this.showSuccess}>success</Button></Col>\n\t                    <Col sm={4}><Button block radius egSize=\"sm\" onClick={::this.showError}>error</Button></Col>\n\t                    <Col sm={4}><Button block radius egSize=\"sm\" onClick={::this.showLoading}>loading</Button></Col>\n\t                </Row>\n\t                <Toast type={this.state.type} show={this.state.show} overlay={this.state.overlay}>\n\t                </Toast>\n\t            </Grid>\n\t        );\n\t    }\n\t    showSuccess(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'success'\n\t        })\n\t    }\n\t    showError(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'error',\n\t            overlay: false\n\t        })\n\t    }\n\t    showLoading(){\n\t        this.setState({\n\t            show: true,\n\t            type: 'loading'\n\t        })\n\t    }\n\t};\n\texport default Demo;"
+            ],
+            "exampleTitles": [
+                "js"
+            ],
+            "show": true
+        },
+        "TooltipPanel": {
+            "name": "TooltipPanel",
+            "shortname": "TooltipPanel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ui",
+            "namespace": "",
+            "file": "lib/TooltipPanel.js",
+            "line": 12,
+            "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认",
+            "moudle": "ui",
+            "is_constructor": 1,
+            "since": "0.1.0",
+            "example": [
+                "\t/**\n\t * Created by panqianjin on 15/11/17.\n\t */\n\timport React,{Component} from 'react';\n\timport Tooltip from '../../../lib/Tooltip.js';\n\timport Button from '../../../lib/Button.js';\n\timport TooltipPanel from '../../../lib/TooltipPanel.js';\n\tlet Demo = class Demo extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t            <div style={{width:'300px',marginBottom:'200px'}}>sadasda\n\t                <TooltipPanel direction='top'>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边2</Button>\n\t                </TooltipPanel>\n\t            </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t            <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t            </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='top'>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边</Button>\n\t                </TooltipPanel>\n\t                <div>\n\t                    <TooltipPanel direction='left'>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t                    <div style={{float:'right'}}>\n\t                        <TooltipPanel direction='right'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\texport default Demo;"
             ],
             "exampleTitles": [
                 "js"
@@ -1240,7 +1323,27 @@
         },
         {
             "file": "lib/Table/Column.js",
+            "line": 21,
+            "description": "表头（不加th字段，组件会进行包装）",
+            "itemtype": "property",
+            "name": "header",
+            "type": "React节点或者 String",
+            "class": "Th",
+            "module": "table"
+        },
+        {
+            "file": "lib/Table/Column.js",
             "line": 30,
+            "description": "用来声明需要绑定数组对象中的哪一个属性",
+            "itemtype": "property",
+            "name": "field",
+            "type": "String",
+            "class": "Th",
+            "module": "table"
+        },
+        {
+            "file": "lib/Table/Column.js",
+            "line": 44,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -1252,7 +1355,17 @@
         },
         {
             "file": "lib/Table/Table.js",
-            "line": 71,
+            "line": 24,
+            "description": "用来渲染表格的数组，可选参数，如果传入data，会更具table下的column标签绑定的属性进行渲染",
+            "itemtype": "property",
+            "name": "data",
+            "type": "Array",
+            "class": "Table",
+            "module": "table"
+        },
+        {
+            "file": "lib/Table/Table.js",
+            "line": 77,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -1835,7 +1948,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 25,
+            "line": 26,
             "description": "dialog类型：分为alert,confirm,dialog,mask 四种。默认alert",
             "itemtype": "property",
             "name": "type",
@@ -1846,18 +1959,18 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 32,
+            "line": 33,
             "description": "标题",
             "itemtype": "property",
             "name": "title",
             "type": "String",
-            "default": "温馨提示",
+            "default": "\"\"",
             "class": "dialog",
             "module": "ui"
         },
         {
             "file": "lib/Dialog.js",
-            "line": 39,
+            "line": 40,
             "description": "点击确定时，回调方法",
             "itemtype": "property",
             "name": "successCallback",
@@ -1868,7 +1981,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 46,
+            "line": 47,
             "description": "点击取消时，回调方法",
             "itemtype": "property",
             "name": "cancelCallback",
@@ -1879,7 +1992,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 53,
+            "line": 54,
             "description": "类名样式前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -1890,7 +2003,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 60,
+            "line": 61,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -1901,7 +2014,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 87,
+            "line": 88,
             "description": "接收到新props时执行,props是否存在show，是改变state.show，否则不变\n生命周期方法",
             "itemtype": "method",
             "name": "componentWillReceiveProps",
@@ -1910,14 +2023,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 97,
-            "description": "change flag状态，即非第一次",
-            "class": "dialog",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Dialog.js",
-            "line": 112,
+            "line": 105,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -1929,14 +2035,14 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 129,
+            "line": 122,
             "description": "改变display形态",
             "class": "dialog",
             "module": "ui"
         },
         {
             "file": "lib/Dialog.js",
-            "line": 152,
+            "line": 143,
             "description": "点击X，调用cancelCallback（如果存在），否则通过改变自身state来关闭",
             "itemtype": "method",
             "name": "closeDialog",
@@ -1948,7 +2054,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 161,
+            "line": 152,
             "description": "点击确定按钮，调用successCallback（如果存在），否则通过改变自身state来关闭",
             "itemtype": "method",
             "name": "submitForm",
@@ -1960,7 +2066,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 169,
+            "line": 160,
             "description": "点击取消按钮，调用cancelCallback（如果存在），否则通过改变自身state来关闭",
             "itemtype": "method",
             "name": "cancleDialog",
@@ -1972,7 +2078,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 178,
+            "line": 169,
             "description": "显示遮罩",
             "itemtype": "method",
             "name": "showOverlay",
@@ -1985,7 +2091,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 195,
+            "line": 186,
             "description": "渲染alert",
             "itemtype": "method",
             "name": "alert",
@@ -1998,7 +2104,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 228,
+            "line": 219,
             "description": "渲染confirm",
             "itemtype": "method",
             "name": "confirm",
@@ -2011,7 +2117,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 268,
+            "line": 259,
             "description": "渲染dialog",
             "itemtype": "method",
             "name": "dialog",
@@ -2024,7 +2130,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 306,
+            "line": 297,
             "description": "渲染mask",
             "itemtype": "method",
             "name": "mask",
@@ -2399,7 +2505,41 @@
         },
         {
             "file": "lib/Search.js",
-            "line": 51,
+            "line": 29,
+            "itemtype": "property",
+            "name": "id",
+            "type": "String",
+            "default": "''",
+            "class": "Tooltip",
+            "module": "grid"
+        },
+        {
+            "file": "lib/Search.js",
+            "line": 36,
+            "description": "回调方法",
+            "itemtype": "property",
+            "name": "callBack",
+            "type": "Function",
+            "default": "null",
+            "class": "Tooltip",
+            "module": "grid"
+        },
+        {
+            "file": "lib/Search.js",
+            "line": 59,
+            "description": "渲染元素",
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": "",
+                "type": "ReactElement"
+            },
+            "class": "Tooltip",
+            "module": "grid"
+        },
+        {
+            "file": "lib/Search.js",
+            "line": 85,
             "itemtype": "method",
             "name": "change input value",
             "params": [
@@ -2411,12 +2551,12 @@
             "return": {
                 "description": "setState"
             },
-            "class": "Select",
+            "class": "Tooltip",
             "module": "grid"
         },
         {
             "file": "lib/Search.js",
-            "line": 66,
+            "line": 95,
             "itemtype": "method",
             "name": "submit search",
             "params": [
@@ -2428,7 +2568,7 @@
             "return": {
                 "description": "get value calback if exist"
             },
-            "class": "Select",
+            "class": "Tooltip",
             "module": "grid"
         },
         {
@@ -2479,7 +2619,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 61,
+            "line": 63,
             "description": "item content文本值",
             "type": "{String}",
             "class": "Select",
@@ -2487,7 +2627,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 66,
+            "line": 69,
             "description": "item value值",
             "type": "{String}",
             "class": "Select",
@@ -2495,7 +2635,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 71,
+            "line": 74,
             "description": "是否可以自由输入",
             "type": "{Boolean}",
             "class": "Select",
@@ -2503,7 +2643,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 78,
+            "line": 92,
             "description": "第一次渲染完成后执行,为document添加点击监听事件，判断是否关闭ul\n生命周期方法",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -2512,7 +2652,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 96,
+            "line": 132,
             "description": "判断obj是否为parentObj的子元素",
             "itemtype": "method",
             "name": "isParent",
@@ -2537,7 +2677,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 112,
+            "line": 148,
             "description": "显示选项列表,当ul关闭时才changestate",
             "itemtype": "method",
             "name": "showUl",
@@ -2549,7 +2689,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 124,
+            "line": 161,
             "description": "点击icon时，控制ul的显示与否",
             "itemtype": "method",
             "name": "toogleUl",
@@ -2561,7 +2701,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 134,
+            "line": 176,
             "description": "关闭ul，当前ul显示时起作用",
             "itemtype": "method",
             "name": "hideUl",
@@ -2573,7 +2713,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 147,
+            "line": 188,
             "description": "失去焦点事件",
             "itemtype": "method",
             "name": "finishInput",
@@ -2585,7 +2725,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 156,
+            "line": 197,
             "description": "取得符合要求的值，父级回调存在的话调用",
             "itemtype": "method",
             "name": "callBacks",
@@ -2597,7 +2737,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 174,
+            "line": 216,
             "description": "根据当前值是否为select内的值，判断是否改变state的值",
             "itemtype": "method",
             "name": "getTrueVal",
@@ -2609,7 +2749,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 189,
+            "line": 231,
             "description": "验证输入值是否为select内容，return true 否则return false",
             "itemtype": "method",
             "name": "isInSelect",
@@ -2622,7 +2762,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 207,
+            "line": 249,
             "description": "改变input的value",
             "itemtype": "method",
             "name": "handlerValue",
@@ -2641,7 +2781,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 221,
+            "line": 263,
             "description": "点击或者enter键时，选择当前li的值，并关闭ul",
             "itemtype": "method",
             "name": "chooseItem",
@@ -2660,7 +2800,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 239,
+            "line": 281,
             "description": "target为flase移除li的active状态，否则将obj子元素的值付给state.value",
             "itemtype": "method",
             "name": "removeAllActive",
@@ -2684,7 +2824,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 261,
+            "line": 304,
             "description": "keydown时触发，不通方向键分别对应不同方法",
             "itemtype": "method",
             "name": "keyIn",
@@ -2703,42 +2843,42 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 274,
+            "line": 318,
             "description": "当ul显示时，方向键移动起作用\n遍历寻找当前active元素的位置，并移除active",
             "class": "Select",
             "module": "form"
         },
         {
             "file": "lib/Select.js",
-            "line": 286,
+            "line": 329,
             "description": "下方向键，判断active元素是否为最后一个，是则不再向下否则i+1",
             "class": "Select",
             "module": "form"
         },
         {
             "file": "lib/Select.js",
-            "line": 291,
+            "line": 334,
             "description": "上方向键，判断active元素是否为第一个，是则不再向上否则i－1",
             "class": "Select",
             "module": "form"
         },
         {
             "file": "lib/Select.js",
-            "line": 297,
+            "line": 340,
             "description": "如果active为第五个元素之前的元素，则scrollTop不变，否则每向下一个，scrollTop加30",
             "class": "Select",
             "module": "form"
         },
         {
             "file": "lib/Select.js",
-            "line": 303,
+            "line": 345,
             "description": "enter键，取得当前元素值",
             "class": "Select",
             "module": "form"
         },
         {
             "file": "lib/Select.js",
-            "line": 312,
+            "line": 353,
             "description": "为选中li元素增加active class",
             "itemtype": "method",
             "name": "addActive",
@@ -2757,7 +2897,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 324,
+            "line": 365,
             "description": "为li元素移除active class",
             "itemtype": "method",
             "name": "removeActive",
@@ -2776,7 +2916,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 337,
+            "line": 378,
             "description": "渲染li元素，并根据autoVal来匹配获得符合元素\nthis.state.autoVal 为input输入值，初始为.*匹配任意",
             "itemtype": "method",
             "name": "renderLi",
@@ -2789,7 +2929,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 361,
+            "line": 406,
             "description": "渲染select",
             "itemtype": "method",
             "name": "renderSelect",
@@ -2802,7 +2942,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 393,
+            "line": 437,
             "description": "根据auto存在与否渲染不同类型的元素",
             "itemtype": "method",
             "name": "render",
@@ -2847,7 +2987,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 25,
+            "line": 27,
             "description": "toast类型：分为success,error,loading 三种。默认success",
             "itemtype": "property",
             "name": "type",
@@ -2858,7 +2998,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 32,
+            "line": 34,
             "description": "文字信息",
             "itemtype": "property",
             "name": "msg",
@@ -2869,7 +3009,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 39,
+            "line": 41,
             "description": "tips n秒后消失 默认2秒",
             "itemtype": "property",
             "name": "seconds",
@@ -2880,7 +3020,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 46,
+            "line": 48,
             "description": "是否显示遮罩，默认false",
             "itemtype": "property",
             "name": "overlay",
@@ -2891,7 +3031,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 53,
+            "line": 55,
             "description": "类名样式前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -2902,7 +3042,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 60,
+            "line": 62,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -2913,7 +3053,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 82,
+            "line": 84,
             "description": "是否显示tips",
             "type": "Boolean",
             "class": "Toast",
@@ -2921,7 +3061,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 89,
+            "line": 91,
             "description": "接收到新props时执行,props改变，改变state.show",
             "itemtype": "method",
             "name": "componentWillReceiveProps",
@@ -2930,7 +3070,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 96,
+            "line": 98,
             "description": "state.show随新的props里的值改变",
             "type": "Boolean",
             "class": "Toast",
@@ -2938,14 +3078,14 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 104,
+            "line": 106,
             "description": "change flag状态，即非第一次",
             "class": "Toast",
             "module": "ui"
         },
         {
             "file": "lib/Toast.js",
-            "line": 110,
+            "line": 112,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -2957,14 +3097,14 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 129,
+            "line": 131,
             "description": "改变display形态",
             "class": "Toast",
             "module": "ui"
         },
         {
             "file": "lib/Toast.js",
-            "line": 138,
+            "line": 140,
             "description": "渲染toast主体",
             "itemtype": "method",
             "name": "toast",
@@ -2977,7 +3117,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 166,
+            "line": 168,
             "description": "延时n秒消失",
             "itemtype": "method",
             "name": "setTimeoutForClose",
@@ -2989,7 +3129,7 @@
         },
         {
             "file": "lib/Toast.js",
-            "line": 180,
+            "line": 182,
             "description": "改变state.show 隐藏tips,并调用回调方法",
             "itemtype": "method",
             "name": "closeToast",
@@ -3003,14 +3143,226 @@
             "file": "lib/Tooltip.js",
             "line": 1,
             "description": "Created by panqianjin on 15/11/17.",
-            "class": "ValidatorPanel",
+            "class": "Tooltip",
+            "module": "ui"
+        },
+        {
+            "file": "lib/Tooltip.js",
+            "line": 24,
+            "description": "提示是否展示",
+            "itemtype": "property",
+            "name": "show",
+            "type": "Boolean",
+            "default": "null",
+            "class": "Tooltip",
+            "module": "ui"
+        },
+        {
+            "file": "lib/Tooltip.js",
+            "line": 31,
+            "description": "提示内容",
+            "itemtype": "property",
+            "name": "msg",
+            "type": "String",
+            "default": "null",
+            "class": "Tooltip",
+            "module": "ui"
+        },
+        {
+            "file": "lib/Tooltip.js",
+            "line": 38,
+            "description": "提示方向",
+            "itemtype": "property",
+            "name": "direction",
+            "type": "String",
+            "default": "null",
+            "class": "Tooltip",
+            "module": "ui"
+        },
+        {
+            "file": "lib/Tooltip.js",
+            "line": 55,
+            "description": "接收到新props时执行,state.show变为nextProps.show\n接收到新props时执行,state.show变为nextProps.show\n实现隐藏与显示",
+            "itemtype": "method",
+            "name": "componentWillReceiveProps",
+            "return": {
+                "description": "null"
+            },
+            "class": "Tooltip",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
             "line": 1,
             "description": "Created by panqianjin on 15/11/17.",
-            "class": "ValidatorPanel",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 27,
+            "description": "提示是否展示",
+            "itemtype": "property",
+            "name": "show",
+            "type": "Boolean",
+            "default": "false",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 34,
+            "description": "提示内容",
+            "itemtype": "property",
+            "name": "msg",
+            "type": "String",
+            "default": "这是个提示",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 41,
+            "description": "提示方向",
+            "itemtype": "property",
+            "name": "direction",
+            "type": "String",
+            "default": "down",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 62,
+            "description": "显示与否由父组件控制",
+            "type": "Boolean",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 69,
+            "description": "渲染完成时进行方向和边界判断，调整tips的位置",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "return": {
+                "description": "null"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 77,
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": "ReactElement"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 95,
+            "description": "鼠标over，set show true,tips显示",
+            "itemtype": "method",
+            "name": "showTips",
+            "return": {
+                "description": "null"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 105,
+            "description": "鼠标leave，set show false, tips隐藏",
+            "itemtype": "method",
+            "name": "hideTips",
+            "return": {
+                "description": "null"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 115,
+            "description": "tips方向和边界判断，调整tips的位置",
+            "itemtype": "method",
+            "name": "changeStyle",
+            "params": [
+                {
+                    "name": "direction",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "null"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 175,
+            "description": "获得浏览器的边界大小",
+            "itemtype": "method",
+            "name": "getMaxBody",
+            "params": [
+                {
+                    "name": "body",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "doc",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "maxBody",
+                "type": "Object"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 190,
+            "description": "判断是否满足边界条件,是返回true否返回false",
+            "itemtype": "method",
+            "name": "isValidate",
+            "params": [
+                {
+                    "name": "dir",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "tips",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "ele",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "maxBody",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "flag",
+                "type": "Boolean"
+            },
+            "class": "TooltipPanel",
             "module": "ui"
         },
         {
@@ -3309,6 +3661,18 @@
             "line": " lib/RadioGroup.js:10"
         },
         {
+            "message": "unknown tag: moudle",
+            "line": " lib/Search.js:9"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Search.js:9"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " lib/Search.js:9"
+        },
+        {
             "message": "unknown tag: demo",
             "line": " lib/Select.js:11"
         },
@@ -3335,6 +3699,30 @@
         {
             "message": "unknown tag: show",
             "line": " lib/Toast.js:11"
+        },
+        {
+            "message": "unknown tag: moudle",
+            "line": " lib/Tooltip.js:11"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Tooltip.js:11"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " lib/Tooltip.js:11"
+        },
+        {
+            "message": "unknown tag: moudle",
+            "line": " lib/TooltipPanel.js:12"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/TooltipPanel.js:12"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " lib/TooltipPanel.js:12"
         },
         {
             "message": "unknown tag: demo",
@@ -3397,12 +3785,8 @@
             "line": " lib/Dialog.js:1"
         },
         {
-            "message": "Missing item type\nchange flag状态，即非第一次",
-            "line": " lib/Dialog.js:97"
-        },
-        {
             "message": "Missing item type\n改变display形态",
-            "line": " lib/Dialog.js:129"
+            "line": " lib/Dialog.js:122"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
@@ -3446,35 +3830,35 @@
         },
         {
             "message": "Missing item type\nitem content文本值",
-            "line": " lib/Select.js:61"
+            "line": " lib/Select.js:63"
         },
         {
             "message": "Missing item type\nitem value值",
-            "line": " lib/Select.js:66"
+            "line": " lib/Select.js:69"
         },
         {
             "message": "Missing item type\n是否可以自由输入",
-            "line": " lib/Select.js:71"
+            "line": " lib/Select.js:74"
         },
         {
             "message": "Missing item type\n当ul显示时，方向键移动起作用\n遍历寻找当前active元素的位置，并移除active",
-            "line": " lib/Select.js:274"
+            "line": " lib/Select.js:318"
         },
         {
             "message": "Missing item type\n下方向键，判断active元素是否为最后一个，是则不再向下否则i+1",
-            "line": " lib/Select.js:286"
+            "line": " lib/Select.js:329"
         },
         {
             "message": "Missing item type\n上方向键，判断active元素是否为第一个，是则不再向上否则i－1",
-            "line": " lib/Select.js:291"
+            "line": " lib/Select.js:334"
         },
         {
             "message": "Missing item type\n如果active为第五个元素之前的元素，则scrollTop不变，否则每向下一个，scrollTop加30",
-            "line": " lib/Select.js:297"
+            "line": " lib/Select.js:340"
         },
         {
             "message": "Missing item type\nenter键，取得当前元素值",
-            "line": " lib/Select.js:303"
+            "line": " lib/Select.js:345"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
@@ -3490,19 +3874,19 @@
         },
         {
             "message": "Missing item type\n是否显示tips",
-            "line": " lib/Toast.js:82"
+            "line": " lib/Toast.js:84"
         },
         {
             "message": "Missing item type\nstate.show随新的props里的值改变",
-            "line": " lib/Toast.js:96"
+            "line": " lib/Toast.js:98"
         },
         {
             "message": "Missing item type\nchange flag状态，即非第一次",
-            "line": " lib/Toast.js:104"
+            "line": " lib/Toast.js:106"
         },
         {
             "message": "Missing item type\n改变display形态",
-            "line": " lib/Toast.js:129"
+            "line": " lib/Toast.js:131"
         },
         {
             "message": "Missing item type\nCreated by panqianjin on 15/11/17.",
@@ -3511,6 +3895,10 @@
         {
             "message": "Missing item type\nCreated by panqianjin on 15/11/17.",
             "line": " lib/TooltipPanel.js:1"
+        },
+        {
+            "message": "Missing item type\n显示与否由父组件控制",
+            "line": " lib/TooltipPanel.js:62"
         }
     ]
 }

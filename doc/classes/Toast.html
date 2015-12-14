@@ -147,6 +147,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -323,6 +331,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Tabset.html">Tabset</a>
                            <ul>
                                 
@@ -332,6 +348,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
                            <ul>
                                 
                            </ul>
@@ -375,7 +399,9 @@
     <h1>Toast <small>Class</small></h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>提示组件</p>
+      <div class="stdoc-code"><p>提示组件
+类型：分为success,error,loading 三种。默认success
+overalay是否显示遮罩，默认false不显示</p>
 </div>
  </div>
 
@@ -613,7 +639,7 @@ let Demo= class Demo extends Component{
         this.state = {
             show: this.props.show,
             type: this.props.type,
-            overlay: false
+            overlay: true
         }
     }
     render(){
@@ -638,7 +664,8 @@ let Demo= class Demo extends Component{
     showError(){
         this.setState({
             show: true,
-            type: &#39;error&#39;
+            type: &#39;error&#39;,
+            overlay: false
         })
     }
     showLoading(){
@@ -705,7 +732,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l180"><code>lib&#x2F;Toast.js:180</code></a>
+        <a href="../files/lib_Toast.js.html#l182"><code>lib&#x2F;Toast.js:182</code></a>
         
         </p>
 
@@ -774,7 +801,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l89"><code>lib&#x2F;Toast.js:89</code></a>
+        <a href="../files/lib_Toast.js.html#l91"><code>lib&#x2F;Toast.js:91</code></a>
         
         </p>
 
@@ -835,7 +862,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l110"><code>lib&#x2F;Toast.js:110</code></a>
+        <a href="../files/lib_Toast.js.html#l112"><code>lib&#x2F;Toast.js:112</code></a>
         
         </p>
 
@@ -907,7 +934,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l166"><code>lib&#x2F;Toast.js:166</code></a>
+        <a href="../files/lib_Toast.js.html#l168"><code>lib&#x2F;Toast.js:168</code></a>
         
         </p>
 
@@ -980,7 +1007,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l138"><code>lib&#x2F;Toast.js:138</code></a>
+        <a href="../files/lib_Toast.js.html#l140"><code>lib&#x2F;Toast.js:140</code></a>
         
         </p>
 
@@ -1046,7 +1073,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l53"><code>lib&#x2F;Toast.js:53</code></a>
+        <a href="../files/lib_Toast.js.html#l55"><code>lib&#x2F;Toast.js:55</code></a>
         
         </p>
 
@@ -1094,7 +1121,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l60"><code>lib&#x2F;Toast.js:60</code></a>
+        <a href="../files/lib_Toast.js.html#l62"><code>lib&#x2F;Toast.js:62</code></a>
         
         </p>
 
@@ -1142,7 +1169,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l32"><code>lib&#x2F;Toast.js:32</code></a>
+        <a href="../files/lib_Toast.js.html#l34"><code>lib&#x2F;Toast.js:34</code></a>
         
         </p>
 
@@ -1190,7 +1217,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l46"><code>lib&#x2F;Toast.js:46</code></a>
+        <a href="../files/lib_Toast.js.html#l48"><code>lib&#x2F;Toast.js:48</code></a>
         
         </p>
 
@@ -1238,7 +1265,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l39"><code>lib&#x2F;Toast.js:39</code></a>
+        <a href="../files/lib_Toast.js.html#l41"><code>lib&#x2F;Toast.js:41</code></a>
         
         </p>
 
@@ -1286,7 +1313,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Toast.js.html#l25"><code>lib&#x2F;Toast.js:25</code></a>
+        <a href="../files/lib_Toast.js.html#l27"><code>lib&#x2F;Toast.js:27</code></a>
         
         </p>
 

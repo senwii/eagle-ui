@@ -77,6 +77,7 @@ h5 {
 h6 {
   font-size: 12px;
 }
+/*兼容性*/
 /**清除浮动*/
 .clearfix:before,
 .clearfix:after {
@@ -120,15 +121,21 @@ h6 {
   height: 7px;
   width: 2px;
   transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
   top: 22px;
   left: 16px;
   background: #b2b2b2;
 }
 /**圆角*/
 .eg-radius {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .eg-active {
   color: #ee5511;
@@ -151,6 +158,10 @@ h6 {
   width: 30px;
   height: 30px;
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
   display: inline-block;
   position: relative;
 }
@@ -160,6 +171,10 @@ h6 {
   width: 30px;
   height: 30px;
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
   display: inline-block;
   position: relative;
 }
@@ -183,6 +198,10 @@ h6 {
   width: 30px;
   height: 30px;
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
   display: inline-block;
   position: relative;
 }
@@ -194,15 +213,53 @@ h6 {
   top: 5.5px;
   left: 5.5px;
   border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
   clip: rect(auto, 16px, auto, auto);
   animation: 0.5s linear 0s normal none infinite rotate;
+  -webkit-animation: 0.5s linear 0s normal none infinite rotate;
+  -moz-animation: 0.5s linear 0s normal none infinite rotate;
 }
 @-webkit-keyframes rotate {
   from {
+    transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    /*   -webkit-transform:rotate(0deg);
+           -moz-transform: rotate(0deg);*/
   }
   to {
+    transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    /*   -webkit-transform:rotate(360deg);
+           -moz-transform: rotate(360deg);*/
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    /*   -webkit-transform:rotate(0deg);
+        -moz-transform: rotate(0deg);*/
+  }
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    /*   -webkit-transform:rotate(360deg);
+        -moz-transform: rotate(360deg);*/
   }
 }
 .eg-tips-success:before,
@@ -225,6 +282,10 @@ h6 {
   left: 10px;
   top: 13px;
   transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
 }
 .eg-tips-success:after,
 .eg-icon-tick:after {
@@ -234,6 +295,10 @@ h6 {
   left: 17px;
   top: 8px;
   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
 }
 /*icon*/
 .eg-arrow-up::before,
@@ -925,22 +990,27 @@ h6 {
   float: right;
   cursor: pointer;
   font-size: 17px;
-  margin-top: -10px;
+  margin-top: -5px;
   padding-right: 5px;
 }
 .eg-dialog,
 .eg-tips {
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
   position: fixed;
   top: 50%;
   left: 50%;
-  -moz-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   opacity: 1;
   background: #fff;
-  text-align: center;
   padding: 10px;
-  border-radius: 3px;
   z-index: 9000;
 }
 .eg-tips-container,
@@ -955,7 +1025,6 @@ h6 {
 }
 .eg-dialog-content,
 .eg-tips-content {
-  text-align: center;
   margin-top: 10px;
   padding: 10px 30px;
 }
@@ -965,15 +1034,25 @@ h6 {
 .eg-tips-cancel {
   margin: 5px;
   border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .eg-submit {
   color: #fff;
   background: #d94000;
 }
 .eg-dialog-title,
-.eg-tips-title {
-  margin-top: 10px;
+.eg-tips-title,
+.eg-dialog-mask {
   font-size: 18px;
+  padding-left: 24px;
+}
+.eg-dialog-mask-title {
+  margin: -15px -25px 0 !important;
+  padding: 20px;
+  background: #eee;
 }
 .eg-dialog-show,
 .eg-tips-show {
@@ -1004,10 +1083,18 @@ h6 {
 .eg-crumb ul li a:after {
   top: 9px;
   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
 }
 .eg-crumb ul li a:before {
   top: 4px;
   transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
 }
 .eg-crumb ul li:last-child {
   cursor: default;
@@ -1363,13 +1450,22 @@ h6 {
 }
 .eg-select-container ul {
   background: #fff;
-  display: none;
+  visibility: hidden;
   position: absolute;
   width: inherit;
   top: 39px;
-  left: 0px;
+  left: -999rem;
+  transition: height 400ms;
+  -webkit-transition: height 400ms;
+  -moz-transition: height 400ms;
+  -ms-transition: height 400ms;
+  -o-transition: height 400ms;
   border: #dadbdd solid 1px;
   border-radius: 0px 0px 4px 4px;
+  -moz-border-radius: 0px 0px 4px 4px;
+  -webkit-border-radius: 0px 0px 4px 4px;
+  -ms-border-radius: 0px 0px 4px 4px;
+  -o-border-radius: 0px 0px 4px 4px;
   max-height: 150px;
   overflow: auto;
 }
@@ -1385,8 +1481,19 @@ h6 {
 .eg-select-container ul li.active {
   color: #ee5511;
 }
+.eg-select-container ul.height-none {
+  left: 0;
+  visibility: visible;
+  overflow: hidden;
+  transition: height 400ms;
+  -webkit-transition: height 400ms;
+  -moz-transition: height 400ms;
+  -ms-transition: height 400ms;
+  -o-transition: height 400ms;
+}
 .eg-select-container .eg-select-show {
-  display: block;
+  visibility: visible;
+  left: 0px;
 }
 .eg-select-container .eg-select-arrow-up,
 .eg-select-container .eg-select-arrow-down {
@@ -1402,10 +1509,18 @@ h6 {
 }
 .eg-select-container .eg-select-arrow-down {
   transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
   top: 12px;
 }
 .eg-select-container .eg-select-arrow-up {
   transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
   top: 13px;
 }
 .eg-tooltip-container {
@@ -1413,54 +1528,69 @@ h6 {
   position: relative;
 }
 .eg-tooltip-container .eg-tooltip-wraper {
-  display: none;
+  visibility: hidden;
+  display: block;
   position: absolute;
+  left: -999rem;
+  min-width: 90px;
+  max-width: 150px;
   z-index: 9001;
+  margin: 5px 0px;
   background: #000;
   opacity: 0.4;
   color: #fff;
-  max-width: 300px;
   font-size: 13px;
-  padding: 5px;
   text-align: left;
   border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
   box-shadow: 0px 1px 5px 2px #bbbbbb;
-  margin: 5px 0px;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip {
-  position: relative;
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-content {
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  min-width: 90px;
+  max-width: 100px;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-down,
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-up,
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-left,
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-right {
-  border-width: 5px;
-  border-style: dashed;
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
+  border-style: solid;
   position: absolute;
   height: 0;
   width: 0;
   line-height: 0;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-down {
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down {
   border-color: transparent transparent #000 transparent;
-  left: 32px;
-  top: -15px;
+  left: 43%;
+  top: -5px;
+  border-width: 0 5px 5px;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-up {
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top {
   border-color: #000 transparent transparent transparent;
-  left: 32px;
-  bottom: -15px;
+  left: 43%;
+  bottom: -5px;
+  border-width: 5px 5px 0;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-left {
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left {
   border-color: transparent transparent transparent #000;
-  right: 0px;
+  right: -5px;
+  top: 43%;
+  border-width: 5px 0 5px 5px;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip .eg-tooltip-arrow-right {
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
   border-color: transparent #000 transparent transparent;
-  left: 0px;
+  left: -10px;
+  top: 43%;
+  border-width: 5px;
 }
 .eg-tooltip-container .eg-tooltip-show {
-  display: block;
+  visibility: visible;
 }
 .eg-marquee-container {
   position: relative;
@@ -1471,6 +1601,10 @@ h6 {
   border: #cc3333 2px solid;
   overflow: hidden;
   border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
   background: #fff;
 }
 .eg-marquee-container .eg-marquee-new-tip {
@@ -1483,6 +1617,10 @@ h6 {
   width: 50px;
   height: 61px;
   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
 }
 .eg-marquee-container .eg-marquee-new-tip .eg-marquee-new {
   display: inline-block;
@@ -1490,6 +1628,10 @@ h6 {
   top: 20px;
   left: 31px;
   transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
 }
 .eg-marquee-container .eg-marquee-check {
   position: absolute;
@@ -1546,6 +1688,10 @@ h6 {
   z-index: 10;
   border: 1.5px solid #fff;
   border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 .eg-input-checkboxs {
   position: relative;
@@ -1581,9 +1727,11 @@ h6 {
   position: relative;
   top: 5px;
   left: 1px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
   border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
   background: #ffffff;
 }
 .eg-input-checkboxs .box .checkbox .round {

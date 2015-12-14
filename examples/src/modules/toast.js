@@ -19,7 +19,7 @@ let Demo= class Demo extends Component{
         this.state = {
             show: this.props.show,
             type: this.props.type,
-            overlay: false
+            overlay: true
         }
     }
     render(){
@@ -44,7 +44,8 @@ let Demo= class Demo extends Component{
     showError(){
         this.setState({
             show: true,
-            type: 'error'
+            type: 'error',
+            overlay: false
         })
     }
     showLoading(){

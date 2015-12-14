@@ -147,6 +147,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -323,6 +331,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Tabset.html">Tabset</a>
                            <ul>
                                 
@@ -332,6 +348,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
                            <ul>
                                 
                            </ul>
@@ -388,7 +412,8 @@ import Row from &#x27;./Row.js&#x27;;
 import Col from &#x27;./Col.js&#x27;;
 import Grid from &#x27;./Grid.js&#x27;;
 /**
- * 弹框组件
+ * 弹框组件，dialog类型：分为alert,confirm,dialog,mask 四种。默认alert。
+ * 根据show的存在与否决定弹框展示与否
  * @class dialog
  * @module ui
  * @extends Component
@@ -412,7 +437,7 @@ class Dialog extends Component {
          * 标题
          * @property title
          * @type String
-         * @default 温馨提示
+         * @default &quot;&quot;
          * */
         title: PropTypes.string,
         /**
@@ -449,7 +474,7 @@ class Dialog extends Component {
         successCallback: null,//success回掉函数
         cancelCallback: null,//cancel回调函数
         close: false,//是否有x图标
-        title: &#x27;温馨提示&#x27;,//标题
+        title: &#x27;&#x27;,//标题
         type: &#x27;alert&#x27;,
         classPrefix: &#x27;dialog&#x27;,
         componentTag: &#x27;div&#x27;
@@ -467,14 +492,6 @@ class Dialog extends Component {
      * 接收到新props时执行,props是否存在show，是改变state.show，否则不变
      * 生命周期方法
      * @method componentWillReceiveProps
-     * */
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            show: nextProps.show ? nextProps.show : this.state.show
-        });
-    }
-    /**
-     * change flag状态，即非第一次
      * */
     componentDidMount(){
         //this.flag = false;
@@ -515,9 +532,7 @@ class Dialog extends Component {
     }
 
     close(callbackId){
-
         callbackId = this.props[&#x60;${callbackId}Callback&#x60;];
-
         if(callbackId){
            callbackId();
            return this;
@@ -580,11 +595,11 @@ class Dialog extends Component {
         return (
             &lt;Row className={ classnames(
                     this.getClassNamesForArguments(&#x27;dialog&#x27;)
-                )} style={{width:&#x27;300px&#x27;}}&gt;
+                )} style={{width:&#x27;500px&#x27;}}&gt;
                 &lt;Col&gt;
                     &lt;Row className={classnames(
                    this.getClassNamesForArguments(&#x27;title&#x27;)
-                )}&gt;
+                )} style={{textAlign:&#x27;center&#x27;}}&gt;
                             {this.props.title}
                     &lt;/Row&gt;
                     &lt;Row className={ classnames(
@@ -614,11 +629,11 @@ class Dialog extends Component {
         return (
             &lt;Row className={ classnames(
                     this.getClassNamesForArguments(&#x27;dialog&#x27;)
-                )} style={{width:&#x27;300px&#x27;}}&gt;
+                )} style={{width:&#x27;500px&#x27;}}&gt;
                 &lt;Col&gt;
                     &lt;Row className={classnames(
                    this.getClassNamesForArguments(&#x27;title&#x27;)
-                )}&gt;
+                )} style={{textAlign:&#x27;center&#x27;}}&gt;
                             {this.props.title}
                             &lt;div className={classnames(
                     this.getClassNamesForArguments(&#x27;close&#x27;)
@@ -695,7 +710,8 @@ class Dialog extends Component {
                 )}&gt;
                 &lt;Col&gt;
                     &lt;Row className={classnames(
-                   this.getClassNamesForArguments(&#x27;title&#x27;)
+                   this.getClassNamesForArguments(&#x27;title&#x27;,&#x27;mask-title&#x27;)
+
                 )}&gt;
                             {this.props.title}
                             &lt;div className={classnames(

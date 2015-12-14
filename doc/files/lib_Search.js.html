@@ -147,6 +147,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -323,6 +331,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Tabset.html">Tabset</a>
                            <ul>
                                 
@@ -332,6 +348,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
                            <ul>
                                 
                            </ul>
@@ -388,10 +412,40 @@ import Grid from &#x27;./Grid.js&#x27;;
 /**
  * 搜索按钮组件
  * 参数： id/callBack/placeholder 均可不传
+ * @class Search
+ * @moudle ui
+ * @constructor
+ * @since 0.1.0
+ * @demo search.js{js}
+ * @show true
  * @class Select
+ * */
+/**
+ * tips组件
+ * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
+ * @class Tooltip
+
  * */
 @ClassNameMixin
 export default class Search extends Component {
+    static propType={
+        /**
+         *
+         * @property id
+         * @type String
+         * @default &#x27;&#x27;
+         * */
+        id: PropTypes.string,
+        /**
+         * 回调方法
+         * @property callBack
+         * @type Function
+         * @default null
+         * */
+        callBack: PropTypes.func,
+        classPrefix: PropTypes.string,
+        componentTag:PropTypes.string
+    }
     static defaultProps = {
         id: &#x27;1&#x27;,
         callBack: null,
@@ -405,7 +459,11 @@ export default class Search extends Component {
             value: this.props.value
         }
     }
-
+    /**
+     * 渲染元素
+     * @method render
+     * @return {ReactElement}
+     * */
     render() {
         return (
             &lt;Grid style={{minWidth:&#x27;240px&#x27;}}&gt;
@@ -436,11 +494,6 @@ export default class Search extends Component {
         this.setState({
             value: event.target.value
         });
-    }
-    keyIn(event){
-        if(event.keyCode == 13){
-            this.changeValue();
-        }
     }
     /**
      * @method submit search

@@ -147,6 +147,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -323,6 +331,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Tabset.html">Tabset</a>
                            <ul>
                                 
@@ -332,6 +348,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
                            <ul>
                                 
                            </ul>
@@ -400,6 +424,13 @@ import Tr from &#x27;./Tr.js&#x27;
 export default class Table extends Component{
 
     static propTypes = {
+        /**
+         * 用来渲染表格的数组，可选参数，如果传入data，会更具table下的column标签绑定的属性进行渲染
+         * @property data
+         * @type Array
+         * */
+        data:PropTypes.array
+
     };
 
     static defaultProps = {
@@ -410,7 +441,6 @@ export default class Table extends Component{
         super(props, context);
         var tableData=[];
         Object.assign(tableData, props.data);
-        console.debug(&#x27;tableDataInit&#x27;,tableData);
 
         this.state = {
             tableData:tableData,

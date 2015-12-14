@@ -147,6 +147,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -323,6 +331,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Tabset.html">Tabset</a>
                            <ul>
                                 
@@ -332,6 +348,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
                            <ul>
                                 
                            </ul>
@@ -397,7 +421,21 @@ import ClassNameMixin from &#x27;../utils/ClassNameMixin.js&#x27;;
 export default class Column extends Component{
 
     static propTypes = {
-
+        /**
+         * 表头（不加th字段，组件会进行包装）
+         * @property header
+         * @type React节点或者 String
+         * */
+        header:PropTypes.oneOfType([
+            PropTypes.node,
+            PropTypes.string,
+        ]),
+        /**
+         * 用来声明需要绑定数组对象中的哪一个属性
+         * @property field
+         * @type String
+         * */
+        field:PropTypes.string
     };
 
     static defaultProps = {
