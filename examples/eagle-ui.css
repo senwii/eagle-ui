@@ -750,7 +750,7 @@ h6 {
   padding: 10px;
   color: #333333;
   width: 100%;
-  outline-color: #cc3333;
+  outline-color: #ee5511;
 }
 .eg-input-text:disabled {
   background: #eeeeee;
@@ -1023,7 +1023,6 @@ h6 {
   text-align: center;
   padding: 5px 50px;
 }
-.eg-dialog-content,
 .eg-tips-content {
   margin-top: 10px;
   padding: 10px 30px;
@@ -1045,13 +1044,12 @@ h6 {
 }
 .eg-dialog-title,
 .eg-tips-title,
-.eg-dialog-mask {
-  font-size: 18px;
-  padding-left: 24px;
-}
 .eg-dialog-mask-title {
+  font-size: 16px;
   margin: -15px -25px 0 !important;
   padding: 20px;
+}
+.eg-dialog-mask-title {
   background: #eee;
 }
 .eg-dialog-show,

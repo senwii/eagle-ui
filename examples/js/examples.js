@@ -294,7 +294,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOM;
-	React.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOMServer;
 
 	module.exports = React;
 
@@ -10645,7 +10644,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    multiple: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
 	    muted: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
 	    name: null,
-	    nonce: MUST_USE_ATTRIBUTE,
 	    noValidate: HAS_BOOLEAN_VALUE,
 	    open: HAS_BOOLEAN_VALUE,
 	    optimum: null,
@@ -10657,7 +10655,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    readOnly: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
 	    rel: null,
 	    required: HAS_BOOLEAN_VALUE,
-	    reversed: HAS_BOOLEAN_VALUE,
 	    role: MUST_USE_ATTRIBUTE,
 	    rows: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
 	    rowSpan: null,
@@ -18860,7 +18857,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.3';
+	module.exports = '0.14.2';
 
 /***/ },
 /* 171 */
@@ -25124,7 +25121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	  Copyright (c) 2015 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
@@ -25165,9 +25162,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			module.exports = classNames;
 		} else if (true) {
 			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
@@ -28507,13 +28504,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 搜索按钮组件
 	 * 参数： id/callBack/placeholder 均可不传
+	 * @class Search
+	 * @moudle ui
+	 * @constructor
+	 * @since 0.1.0
+	 * @demo search.js{js}
+	 * @show true
 	 * @class Select
+	 * */
+	/**
+	 * tips组件
+	 * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
+	 * @class Tooltip
+
 	 * */
 
 	var Search = (function (_Component) {
 	    _inherits(Search, _Component);
 
 	    _createClass(Search, null, [{
+	        key: 'propType',
+	        value: {
+	            /**
+	             *
+	             * @property id
+	             * @type String
+	             * @default ''
+	             * */
+	            id: _react.PropTypes.string,
+	            /**
+	             * 回调方法
+	             * @property callBack
+	             * @type Function
+	             * @default null
+	             * */
+	            callBack: _react.PropTypes.func,
+	            classPrefix: _react.PropTypes.string,
+	            componentTag: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }, {
 	        key: 'defaultProps',
 	        value: {
 	            id: '1',
@@ -28533,6 +28563,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value: this.props.value
 	        };
 	    }
+
+	    /**
+	     * 渲染元素
+	     * @method render
+	     * @return {ReactElement}
+	     * */
 
 	    Search.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -28572,12 +28608,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 
-	    Search.prototype.keyIn = function keyIn(event) {
-	        if (event.keyCode == 13) {
-	            this.changeValue();
-	        }
-	    };
-
 	    /**
 	     * @method submit search
 	     * @param none
@@ -28614,6 +28644,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -28630,9 +28662,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
 
-	var _classnames2 = __webpack_require__(237);
+	var _classnames = __webpack_require__(237);
 
-	var _classnames3 = _interopRequireDefault(_classnames2);
+	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _InputJs = __webpack_require__(234);
 
@@ -28652,11 +28684,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 下拉选择框组件。
-	 * 有input参数可以自由输入，否则不在列表中的输入改变为第一个item
+	 * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
 	 * @Class Select
 	 * @Module form
 	 * @constructor
-	 * @extends Coponent
+	 * @extends Component
 	 * @since 0.1.0
 	 * @demo select.js {js}
 	 * */
@@ -28705,18 +28737,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _classCallCheck(this, _Select);
 
 	        _Component.call(this, props, context);
+	        this.heightTag = 0;
+	        var keys = this.getDefaultKey(this.props.keys);
 	        this.state = {
 	            show: this.props.show,
 	            /**
 	             * item content文本值
 	             * @type {String}
 	             * */
-	            value: this.props.value,
+	            //value:this.props.keys == ''?this.props.value:this.props.children[this.props.keys].props.children,
+	            value: keys,
 	            /**
 	             * item value值
 	             * @type {String}
 	             * */
-	            key: this.props.key,
+	            keys: this.props.keys,
 	            /**
 	             * 是否可以自由输入
 	             * @type {Boolean}
@@ -28724,6 +28759,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            input: this.props.input
 	        };
 	    }
+
+	    Select.prototype.getDefaultKey = function getDefaultKey(keys) {
+	        var deKey = this.props.value;
+	        if (keys != '') {
+	            this.props.children.forEach(function (item, index) {
+	                if (item.props.value == keys) {
+	                    deKey = item.props.children;
+	                }
+	            });
+	        }
+	        return deKey;
+	    };
 
 	    /**
 	     * 第一次渲染完成后执行,为document添加点击监听事件，判断是否关闭ul
@@ -28734,6 +28781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Select.prototype.componentDidMount = function componentDidMount() {
 	        var _this = this;
 	        var selectContair = _react2['default'].findDOMNode(this.refs.selectContair);
+	        var selectUl = _react2['default'].findDOMNode(this.refs.selectUl);
 	        document.addEventListener('click', function (e) {
 	            if (_this.isParent(e.target, selectContair)) {
 	                //console.dir('不要动');
@@ -28743,6 +28791,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    }
 	                }
 	        }, false);
+	        this.heightTag = selectUl.offsetHeight;
+	        selectUl.style.height = '0';
+	        if (!this.state.show) {
+	            this.removeClass(selectUl, 'height-none');
+	        }
+	    };
+
+	    Select.prototype.componentDidUpdate = function componentDidUpdate() {
+	        var selectUl = _react2['default'].findDOMNode(this.refs.selectUl);
+	        //this.heightTag = selectUl.offsetHeight;
+	        var length = selectUl.children.length;
+	        if (this.state.show) {
+	            if (length < 5) {
+	                selectUl.style.height = length * 29 + 2 + 'px';
+	            } else {
+	                selectUl.style.height = '150px';
+	            }
+	        } else {
+	            selectUl.style.height = '0';
+	            clearTimeout(this.timer);
+	            this.timer = setTimeout((function () {
+	                this.removeClass(selectUl, 'height-none');
+	            }).bind(this), 400);
+	        }
 	    };
 
 	    /**
@@ -28774,6 +28846,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.setState({
 	                show: true
 	            });
+	            _react2['default'].findDOMNode(this.refs.selectUl).style.height = this.heightTag + 'px';
 	        }
 	    };
 
@@ -28787,6 +28860,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setState({
 	            show: !this.state.show
 	        });
+	        if (this.state.show) {
+	            _react2['default'].findDOMNode(this.refs.selectUl).style.height = '0';
+	        } else {
+	            _react2['default'].findDOMNode(this.refs.selectUl).style.height = this.heightTag + 'px';
+	        }
 	    };
 
 	    /**
@@ -28825,11 +28903,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.getTrueVal();
 	        }
 	        var val = this.state.value;
-	        var key = this.state.key;
+	        var key = this.state.keys;
 	        if (this.state.show) {
-	            this.setState({
+	            /*this.setState({
 	                show: false
-	            });
+	            })*/
+	            this.hideUl();
 	        }
 	        this.props.callback && this.props.callback(val, key);
 	    };
@@ -28845,7 +28924,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (!target) {
 	            this.setState({
 	                value: this.props.children[0].props.children,
-	                key: this.props.children[0].props.value,
+	                keys: this.props.children[0].props.value,
 	                autoVal: this.props.children[0].props.children
 	            });
 	        }
@@ -28878,12 +28957,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    Select.prototype.handlerValue = function handlerValue(event) {
-	        //console.log(event.target.value);
 	        var val = event.target.value;
 	        this.setState({
 	            value: val,
 	            autoVal: val
 	        });
+	        this.showUl();
 	    };
 
 	    /**
@@ -28895,13 +28974,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Select.prototype.chooseItem = function chooseItem(event) {
 	        var ulChildren = _react2['default'].findDOMNode(this.refs.selectUl).children;
-	        //let inputObj = ReactDOM.findDOMNode(this.refs.select);
 	        this.removeAllActive(ulChildren);
 	        event.target.classList.add('active');
+	        this.hideUl();
 	        this.setState({
-	            show: !this.state.show,
+	            //show: !this.state.show,
 	            value: event.target.textContent,
-	            key: event.target.value
+	            keys: event.target.value
 	        });
 	        //inputObj.focus();
 	    };
@@ -28922,7 +29001,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (target) {
 	                    _this2.setState({
 	                        value: item.textContent,
-	                        key: item.value
+	                        keys: item.value,
+	                        autoVal: item.textContent
 	                    });
 	                } else {
 	                    item.classList.remove('active');
@@ -28942,6 +29022,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var selectUl = _react2['default'].findDOMNode(this.refs.selectUl);
 	        var ulChildren = _react2['default'].findDOMNode(this.refs.selectUl).children;
 	        var ulArrey = Array.prototype.slice.call(ulChildren);
+	        var inputObj = _react2['default'].findDOMNode(this.refs.select).children[0];
 	        var i = -1;
 	        var obj = ulChildren[0];
 	        if (event.keyCode == 40 || event.keyCode == 38) {
@@ -28949,38 +29030,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 当ul显示时，方向键移动起作用
 	             * 遍历寻找当前active元素的位置，并移除active
 	             * */
-	            if (this.state.show) {
-	                ulArrey.map(function (item, index) {
-	                    if (item.className.indexOf('active') > -1) {
-	                        i = index;
-	                        item.classList.remove('active');
-	                    }
-	                });
-	                if (event.keyCode == 40) {
-	                    /**
-	                     * 下方向键，判断active元素是否为最后一个，是则不再向下否则i+1
-	                     * */
-	                    obj = i == ulChildren.length - 1 ? ulChildren[i] : ulChildren[i + 1];
-	                } else {
-	                    /**
-	                     * 上方向键，判断active元素是否为第一个，是则不再向上否则i－1
-	                     * */
-	                    obj = i == 0 ? ulChildren[i] : ulChildren[i - 1];
+	            ulArrey.map(function (item, index) {
+	                if (item.className.indexOf('active') > -1) {
+	                    i = index;
+	                    item.classList.remove('active');
 	                }
-	                obj.classList.add('active');
+	            });
+	            if (event.keyCode == 40) {
 	                /**
-	                 * 如果active为第五个元素之前的元素，则scrollTop不变，否则每向下一个，scrollTop加30
+	                 * 下方向键，判断active元素是否为最后一个，是则不再向下否则i+1
 	                 * */
-	                selectUl.scrollTop = i < 4 ? 0 : (i - 3) * 30;
+	                obj = i == ulChildren.length - 1 ? ulChildren[i] : ulChildren[i + 1];
+	            } else {
+	                /**
+	                 * 上方向键，判断active元素是否为第一个，是则不再向上否则i－1
+	                 * */
+	                obj = i == 0 ? ulChildren[i] : ulChildren[i - 1];
 	            }
+	            obj.classList.add('active');
+	            /**
+	             * 如果active为第五个元素之前的元素，则scrollTop不变，否则每向下一个，scrollTop加30
+	             * */
+	            selectUl.scrollTop = i < 4 ? 0 : (i - 3) * 30;
 	        } else if (event.keyCode == 13) {
 	            /**
 	             * enter键，取得当前元素值
 	             * */
-	            this.setState({
-	                show: false
-	            });
+	            this.hideUl();
 	            this.removeAllActive(ulChildren, true);
+	            inputObj.blur();
 	        }
 	    };
 
@@ -29024,14 +29102,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var autoVal = this.state.autoVal == '' ? '.*' : this.state.autoVal;
 	        var reg = new RegExp(autoVal, "g");
-	        var li = _react2['default'].Children.map(this.props.children, function (item) {
+	        var li = _react2['default'].Children.map(this.props.children, function (item, index) {
 	            if (reg.test(item.props.children)) {
-	                return _react2['default'].createElement(
-	                    'li',
-	                    { value: item.props.value, onMouseOver: _this3.addActive.bind(_this3), onClick: _this3.removeActive.bind(_this3), onMouseDown: _this3.chooseItem.bind(_this3) },
-	                    item.props.children
-	                );
+	                if (_this3.state.keys == item.props.value) {
+	                    return _react2['default'].createElement(
+	                        'li',
+	                        { className: 'active', value: item.props.value, onMouseOver: _this3.addActive.bind(_this3), onMouseLeave: _this3.removeActive.bind(_this3), onMouseDown: _this3.chooseItem.bind(_this3) },
+	                        item.props.children
+	                    );
+	                } else {
+	                    return _react2['default'].createElement(
+	                        'li',
+	                        { value: item.props.value, onMouseOver: _this3.addActive.bind(_this3), onMouseLeave: _this3.removeActive.bind(_this3), onMouseDown: _this3.chooseItem.bind(_this3) },
+	                        item.props.children
+	                    );
+	                }
 	            }
+	            item.props.children;
 	        }, this);
 
 	        return li;
@@ -29055,21 +29142,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    Select.prototype.renderSelect = function renderSelect() {
-	        var _classnames;
-
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            { ref: 'selectContair', className: _classnames3['default'](this.getClassNamesForArguments('container')), value: this.state.value },
+	            { ref: 'selectContair', className: _classnames2['default'](this.getClassNamesForArguments('container')), value: this.state.value },
 	            _react2['default'].createElement(
 	                'select',
-	                { ref: 'test', value: this.state.key, style: { display: 'none' } },
+	                _extends({ ref: 'test' }, this.props, { defaultValue: this.state.keys, style: { display: 'none' } }),
 	                this.renderOption()
 	            ),
 	            _react2['default'].createElement(_InputJs2['default'], { ref: 'select', value: this.state.value, onClick: this.showUl.bind(this), onChange: this.handlerValue.bind(this), onKeyDown: this.keyIn.bind(this), onBlur: this.finishInput.bind(this) }),
-	            _react2['default'].createElement('i', { className: _classnames3['default'](this.getClassName('arrow-down')), onClick: this.toogleUl.bind(this) }),
+	            _react2['default'].createElement('i', { className: _classnames2['default'](this.getClassName('arrow-down')), onClick: this.toogleUl.bind(this) }),
 	            _react2['default'].createElement(
 	                'ul',
-	                { ref: 'selectUl', className: _classnames3['default'](this.getClassNamesForArguments('ul'), (_classnames = {}, _classnames[this.getClassName('show')] = this.state.show, _classnames)) },
+	                { ref: 'selectUl', className: _classnames2['default'](this.getClassNamesForArguments('ul'), this.state.show ? this.getClassName('show') : 'height-none') },
 	                this.renderLi()
 	            )
 	        );
@@ -29334,6 +29419,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 提示组件
+	 * 类型：分为success,error,loading 三种。默认success
+	 * overalay是否显示遮罩，默认false不显示
 	 * @class Toast
 	 * @module ui
 	 * @extends Component
@@ -30231,7 +30318,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _GridJs2 = _interopRequireDefault(_GridJs);
 
 	/**
-	 * 弹框组件
+	 * 弹框组件，dialog类型：分为alert,confirm,dialog,mask 四种。默认alert。
+	 * 根据show的存在与否决定弹框展示与否
 	 * @class dialog
 	 * @module ui
 	 * @extends Component
@@ -30258,7 +30346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 标题
 	             * @property title
 	             * @type String
-	             * @default 温馨提示
+	             * @default ""
 	             * */
 	            title: _react.PropTypes.string,
 	            /**
@@ -30298,7 +30386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            successCallback: null, //success回掉函数
 	            cancelCallback: null, //cancel回调函数
 	            close: false, //是否有x图标
-	            title: '温馨提示', //标题
+	            title: '', //标题
 	            type: 'alert',
 	            classPrefix: 'dialog',
 	            componentTag: 'div'
@@ -30321,16 +30409,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * 接收到新props时执行,props是否存在show，是改变state.show，否则不变
 	     * 生命周期方法
 	     * @method componentWillReceiveProps
-	     * */
-
-	    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        this.setState({
-	            show: nextProps.show ? nextProps.show : this.state.show
-	        });
-	    };
-
-	    /**
-	     * change flag状态，即非第一次
 	     * */
 
 	    Dialog.prototype.componentDidMount = function componentDidMount() {
@@ -30375,9 +30453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Dialog.prototype.close = function close(callbackId) {
-
 	        callbackId = this.props[callbackId + 'Callback'];
-
 	        if (callbackId) {
 	            callbackId();
 	            return this;
@@ -30438,18 +30514,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Dialog.prototype.alert = function alert() {
 	        return _react2['default'].createElement(
 	            _RowJs2['default'],
-	            { className: _classnames2['default'](this.getClassNamesForArguments('dialog')), style: { width: '300px' } },
+	            { className: _classnames2['default'](this.getClassNamesForArguments('dialog')), style: { width: '500px' } },
 	            _react2['default'].createElement(
 	                _ColJs2['default'],
 	                null,
 	                _react2['default'].createElement(
 	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('title')) },
+	                    { className: _classnames2['default'](this.getClassNamesForArguments('title')), style: { textAlign: 'center' } },
 	                    this.props.title
 	                ),
 	                _react2['default'].createElement(
 	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')) },
+	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')), style: { textAlign: 'center' } },
 	                    _react2['default'].createElement(
 	                        _ColJs2['default'],
 	                        null,
@@ -30482,13 +30558,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Dialog.prototype.confirm = function confirm() {
 	        return _react2['default'].createElement(
 	            _RowJs2['default'],
-	            { className: _classnames2['default'](this.getClassNamesForArguments('dialog')), style: { width: '300px' } },
+	            { className: _classnames2['default'](this.getClassNamesForArguments('dialog')), style: { width: '500px' } },
 	            _react2['default'].createElement(
 	                _ColJs2['default'],
 	                null,
 	                _react2['default'].createElement(
 	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('title')) },
+	                    { className: _classnames2['default'](this.getClassNamesForArguments('title')), style: { textAlign: 'center' } },
 	                    this.props.title,
 	                    _react2['default'].createElement(
 	                        'div',
@@ -30498,7 +30574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                ),
 	                _react2['default'].createElement(
 	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')) },
+	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')), style: { textAlign: 'center' } },
 	                    _react2['default'].createElement(
 	                        _ColJs2['default'],
 	                        null,
@@ -30596,7 +30672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                null,
 	                _react2['default'].createElement(
 	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('title')) },
+	                    { className: _classnames2['default'](this.getClassNamesForArguments('title', 'mask-title')) },
 	                    this.props.title,
 	                    _react2['default'].createElement(
 	                        'div',
@@ -30606,7 +30682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                ),
 	                _react2['default'].createElement(
 	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')) },
+	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')), style: { marginTop: '10px' } },
 	                    _react2['default'].createElement(
 	                        _ColJs2['default'],
 	                        null,
@@ -30672,17 +30748,46 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _GridJs2 = _interopRequireDefault(_GridJs);
 
+	/**
+	 * tips组件
+	 * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
+	 * @class Tooltip
+	 * @moudle ui
+	 * @constructor
+	 * @since 0.1.0
+	 * @demo tooltip.js{js}
+	 * @show false
+	 * */
+
 	var Tooltip = (function (_Component) {
 	    _inherits(Tooltip, _Component);
 
 	    _createClass(Tooltip, null, [{
-	        key: 'defaultProps',
+	        key: 'propType',
 	        value: {
-	            show: false,
-	            direction: 'down',
-	            msg: '我也不知道这个tips这么麻烦',
-	            classPrefix: 'tooltip',
-	            conponentTag: 'div'
+	            /**
+	             * 提示是否展示
+	             * @property show
+	             * @type Boolean
+	             * @default null
+	             * */
+	            show: _react.PropTypes.boolean,
+	            /**
+	             * 提示内容
+	             * @property msg
+	             * @type String
+	             * @default null
+	             * */
+	            msg: _react.PropTypes.string,
+	            /**
+	             * 提示方向
+	             * @property direction
+	             * @type String
+	             * @default null
+	             * */
+	            direction: _react.PropTypes.string,
+	            classPrefix: _react.PropTypes.string,
+	            componentTag: _react.PropTypes.string
 	        },
 	        enumerable: true
 	    }]);
@@ -30697,6 +30802,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    }
 
+	    /**
+	     * 接收到新props时执行,state.show变为nextProps.show
+	     * 接收到新props时执行,state.show变为nextProps.show
+	     * 实现隐藏与显示
+	     * @method componentWillReceiveProps
+	     * @return null
+	     * */
+
 	    Tooltip.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        this.setState({
 	            show: nextProps.show
@@ -30709,19 +30822,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
 	            { ref: this.props.ref, className: _classnames3['default'](this.getClassName('wraper'), (_classnames = {}, _classnames[this.getClassName('show')] = this.state.show, _classnames)) },
+	            _react2['default'].createElement('div', { className: _classnames3['default'](this.getClassName('arrow-' + this.props.direction)) }),
 	            _react2['default'].createElement(
-	                _RowJs2['default'],
-	                { className: _classnames3['default'](this.getClassName('tooltip')) },
-	                _react2['default'].createElement(
-	                    _ColJs2['default'],
-	                    null,
-	                    _react2['default'].createElement('div', { className: _classnames3['default'](this.getClassName('arrow-' + this.props.direction)) }),
-	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: _classnames3['default'](this.getClassName('content')) },
-	                        this.props.msg
-	                    )
-	                )
+	                'div',
+	                { className: _classnames3['default'](this.getClassName('content')) },
+	                this.props.msg
 	            )
 	        );
 	    };
@@ -30733,6 +30838,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports['default'] = Tooltip;
 	module.exports = exports['default'];
+
+	//[this.getClassName('show')]: true
 
 /***/ },
 /* 269 */
@@ -32066,7 +32173,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    _createClass(Table, null, [{
 	        key: 'propTypes',
-	        value: {},
+	        value: {
+	            /**
+	             * 用来渲染表格的数组，可选参数，如果传入data，会更具table下的column标签绑定的属性进行渲染
+	             * @property data
+	             * @type Array
+	             * */
+	            data: _react.PropTypes.array
+
+	        },
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
@@ -32080,7 +32195,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.call(this, props, context);
 	        var tableData = [];
 	        Object.assign(tableData, props.data);
-	        console.debug('tableDataInit', tableData);
 
 	        this.state = {
 	            tableData: tableData,
@@ -33331,7 +33445,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.call(this, props, context);
 	        this.state = {
 	            show: this.props.show,
-	            type: this.props.type
+	            type: this.props.type,
+	            title: '这是个提示'
 	        };
 	    }
 
@@ -33381,7 +33496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ),
 	            _react2['default'].createElement(
 	                _libDialogJs2['default'],
-	                { type: this.state.type, show: this.state.show },
+	                { type: this.state.type, show: this.state.show, title: this.state.title },
 	                'ahflaskdjflajsflajsdlf;jkasdfk adfkjasd;fkjas;dlf asdfkn;askdfnas'
 	            )
 	        );
@@ -34507,7 +34622,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Demo, null, [{
 	        key: 'defaultProps',
 	        value: {
-	            input: true
+	            input: true,
+	            keys: 'bei'
 	        },
 	        enumerable: true
 	    }]);
@@ -34522,7 +34638,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    Demo.prototype.render = function render() {
-	        console.log(this.state.input);
 	        return _react2['default'].createElement(
 	            _libGridJs2['default'],
 	            null,
@@ -34535,7 +34650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _react2['default'].createElement(
 	                        _libButtonJs2['default'],
 	                        { block: true, radius: true, egSize: 'sm', onClick: this.changeIn.bind(this) },
-	                        '切换至不可输入模式'
+	                        '切换至限定值模式'
 	                    )
 	                ),
 	                _react2['default'].createElement(
@@ -34543,22 +34658,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 8 },
 	                    _react2['default'].createElement(
 	                        _libSelectJs2['default'],
-	                        { callback: function (val, key) {
+	                        { keys: this.props.keys, callback: function (val, key) {
 	                                console.log(val + ':' + key);
 	                            }, input: this.state.input },
 	                        _react2['default'].createElement(
 	                            'item',
-	                            { value: '0' },
+	                            { value: 'bei' },
 	                            '北京'
 	                        ),
 	                        _react2['default'].createElement(
 	                            'item',
-	                            { value: '1' },
+	                            { value: 'shang' },
 	                            '上海'
 	                        ),
 	                        _react2['default'].createElement(
 	                            'item',
-	                            { value: '2' },
+	                            { value: 'nan' },
 	                            '南京'
 	                        ),
 	                        _react2['default'].createElement(
@@ -34621,7 +34736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setState({
 	            input: false
 	        });
-	        alert('不可输入');
+	        alert('输入值必须为select之中的值');
 	    };
 
 	    return Demo;
@@ -35213,7 +35328,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  _createClass(Column, null, [{
 	    key: 'propTypes',
-	    value: {},
+	    value: {
+	      /**
+	       * 表头（不加th字段，组件会进行包装）
+	       * @property header
+	       * @type React节点或者 String
+	       * */
+	      header: _react.PropTypes.oneOfType([_react.PropTypes.node, _react.PropTypes.string]),
+	      /**
+	       * 用来声明需要绑定数组对象中的哪一个属性
+	       * @property field
+	       * @type String
+	       * */
+	      field: _react.PropTypes.string
+	    },
 	    enumerable: true
 	  }, {
 	    key: 'defaultProps',
@@ -35291,7 +35419,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.state = {
 	            show: this.props.show,
 	            type: this.props.type,
-	            overlay: false
+	            overlay: true
 	        };
 	    }
 
@@ -35344,7 +35472,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Demo.prototype.showError = function showError() {
 	        this.setState({
 	            show: true,
-	            type: 'error'
+	            type: 'error',
+	            overlay: false
 	        });
 	    };
 
@@ -35409,7 +35538,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(
 	                'div',
 	                { style: { width: '300px', marginBottom: '200px' } },
-	                'sadasda'
+	                'sadasda',
+	                _react2['default'].createElement(
+	                    _libTooltipPanelJs2['default'],
+	                    { direction: 'top' },
+	                    _react2['default'].createElement(
+	                        _libButtonJs2['default'],
+	                        { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                        '应在上边2'
+	                    )
+	                )
 	            ),
 	            _react2['default'].createElement(
 	                'div',
@@ -35418,11 +35556,64 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ),
 	            _react2['default'].createElement(
 	                _libTooltipPanelJs2['default'],
-	                { direction: 'down' },
+	                { direction: 'left', style: { marginLeft: '100px' } },
 	                _react2['default'].createElement(
 	                    _libButtonJs2['default'],
 	                    { radius: true, egSize: 'sm', egStyle: 'warning' },
-	                    '我是按钮'
+	                    '应在左边'
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _libTooltipPanelJs2['default'],
+	                { direction: 'right', style: { marginLeft: '100px' } },
+	                _react2['default'].createElement(
+	                    _libButtonJs2['default'],
+	                    { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                    '应在右边'
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _libTooltipPanelJs2['default'],
+	                { direction: 'down', style: { marginLeft: '100px' } },
+	                _react2['default'].createElement(
+	                    _libButtonJs2['default'],
+	                    { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                    '应在下边'
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _libTooltipPanelJs2['default'],
+	                { direction: 'top' },
+	                _react2['default'].createElement(
+	                    _libButtonJs2['default'],
+	                    { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                    '应在上边'
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                'div',
+	                null,
+	                _react2['default'].createElement(
+	                    _libTooltipPanelJs2['default'],
+	                    { direction: 'left' },
+	                    _react2['default'].createElement(
+	                        _libButtonJs2['default'],
+	                        { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                        '应在左边2'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    'div',
+	                    { style: { float: 'right' } },
+	                    _react2['default'].createElement(
+	                        _libTooltipPanelJs2['default'],
+	                        { direction: 'right' },
+	                        _react2['default'].createElement(
+	                            _libButtonJs2['default'],
+	                            { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                            '应在右边2'
+	                        )
+	                    )
 	                )
 	            )
 	        );
@@ -35486,14 +35677,54 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _GridJs2 = _interopRequireDefault(_GridJs);
 
+	/**
+	 * tipsPanel组件
+	 * 方向可选：top,down,left,right.默认down
+	 * 存在边界判断，若指定方向容纳不了提示，会转为默认
+	 * @class TooltipPanel
+	 * @moudle ui
+	 * @constructor
+	 * @since 0.1.0
+	 * @demo tooltip.js{js}
+	 * @show false
+	 * */
+
 	var TooltipPanel = (function (_Component) {
 	    _inherits(TooltipPanel, _Component);
 
 	    _createClass(TooltipPanel, null, [{
+	        key: 'propType',
+	        value: {
+	            /**
+	             * 提示是否展示
+	             * @property show
+	             * @type Boolean
+	             * @default false
+	             * */
+	            show: _react.PropTypes.boolean,
+	            /**
+	             * 提示内容
+	             * @property msg
+	             * @type String
+	             * @default 这是个提示
+	             * */
+	            msg: _react.PropTypes.string,
+	            /**
+	             * 提示方向
+	             * @property direction
+	             * @type String
+	             * @default down
+	             * */
+	            direction: _react.PropTypes.string,
+	            classPrefix: _react.PropTypes.string,
+	            componentTag: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }, {
 	        key: 'defaultProps',
 	        value: {
 	            show: false,
-	            msg: "这真是令人心碎的组件",
+	            msg: "这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示",
 	            direction: 'down',
 	            classPrefix: 'tooltip',
 	            componentTag: 'div'
@@ -35506,13 +35737,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.call(this, props, context);
 	        this.state = {
+	            /**
+	             * 显示与否由父组件控制
+	             * @type Boolean
+	             * */
 	            show: this.props.show
 	        };
 	    }
 
+	    /**
+	     * 渲染完成时进行方向和边界判断，调整tips的位置
+	     * @method componentDidMount
+	     * @return null
+	     * */
+
 	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
 	        this.changeStyle(this.props.direction);
 	    };
+
+	    /**
+	     * @method render
+	     * @return ReactElement
+	     * */
 
 	    TooltipPanel.prototype.render = function render() {
 	        var componentTag = this.props.children.props.componentTag;
@@ -35520,7 +35766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            { className: _classnames2['default'](this.getClassName('container')), ref: 'container' },
+	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
 	            _react2['default'].cloneElement(this.props.children, {
 	                onMouseEnter: this.showTips.bind(this),
 	                onMouseOut: this.hideTips.bind(this)
@@ -35529,11 +35775,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        );
 	    };
 
+	    /**
+	     * 鼠标over，set show true,tips显示
+	     * @method showTips
+	     * @return null
+	     * */
+
 	    TooltipPanel.prototype.showTips = function showTips() {
 	        this.setState({
 	            show: true
 	        });
 	    };
+
+	    /**
+	     * 鼠标leave，set show false, tips隐藏
+	     * @method hideTips
+	     * @return null
+	     * */
 
 	    TooltipPanel.prototype.hideTips = function hideTips() {
 	        this.setState({
@@ -35541,9 +35799,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 
+	    /**
+	     * tips方向和边界判断，调整tips的位置
+	     * @method changeStyle
+	     * @param direction {String}
+	     * @return null
+	     * */
+
 	    TooltipPanel.prototype.changeStyle = function changeStyle(direction) {
 	        var dir = direction;
-	        console.log(dir);
 	        var dbody = document.body;
 	        var delement = document.documentElement;
 
@@ -35551,7 +35815,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var eleNode = _react2['default'].findDOMNode(this.refs.container).children[0];
 
-	        var win = {};
 	        var bodys = {
 	            height: dbody.clientHeight,
 	            width: dbody.clientWidth
@@ -35566,22 +35829,88 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	        var element = {
 	            height: eleNode.offsetHeight,
-	            width: eleNode.offsetWidth
+	            width: eleNode.offsetWidth,
+	            left: eleNode.parentNode.offsetLeft,
+	            top: eleNode.parentNode.offsetTop
 	        };
+	        var maxBody = this.getMaxBody(bodys, doc);
+	        var validate = this.isValidate(dir, tips, element, maxBody);
+	        if (!validate) {
+	            var arrow = tipNode.children[0];
+	            this.removeClass(arrow, _classnames2['default'](this.getClassName('arrow-' + dir)));
+	            this.addClass(arrow, _classnames2['default'](this.getClassName('arrow-down')));
+	            dir = 'down';
+	        }
 	        switch (dir) {
 	            case 'down':
+	                tipNode.style.left = '0';
 	                break;
 	            case 'top':
-	                tipNode.style.top = '-' + element.height + 'px';
-	                console.log(tipNode.style.top);
+	                tipNode.style.top = '-' + (tips.height + 10) + 'px';
+	                tipNode.style.left = '0';
 	                break;
 	            case 'left':
-	                tipNode.style.left = '-' + tips.width + 'px';
+	                tipNode.style.left = '-' + (tips.width + 5) + 'px';
+	                tipNode.style.top = (element.height - tips.height) / 2 - 5 + 'px';
 	                break;
 	            case 'right':
-	                tipNode.style.right = '-' + tips.width + 'px';
+	                tipNode.style.left = 'auto';
+	                tipNode.style.right = '-' + (tips.width + 5) + 'px';
+	                tipNode.style.top = (element.height - tips.height) / 2 - 5 + 'px';
 	                break;
 	            default:
+	                break;
+	        }
+	    };
+
+	    /**
+	     * 获得浏览器的边界大小
+	     * @method getMaxBody
+	     * @param body {Object}
+	     * @param doc {Object}
+	     * @return maxBody {Object}
+	     * */
+
+	    TooltipPanel.prototype.getMaxBody = function getMaxBody(body, doc) {
+	        var maxBody = {
+	            height: body.height > doc.height ? body.height : doc.height,
+	            width: body.width > doc.width ? body.width : doc.width
+
+	        };
+	        return maxBody;
+	    };
+
+	    /**
+	     * 判断是否满足边界条件,是返回true否返回false
+	     * @method isValidate
+	     * @param dir {String}
+	     * @param tips {Object}
+	     * @param ele {Object}
+	     * @param maxBody {Object}
+	     * @return flag {Boolean}
+	     * */
+
+	    TooltipPanel.prototype.isValidate = function isValidate(dir, tips, ele, maxBody) {
+	        var flag = false;
+	        switch (dir) {
+	            case 'down':
+	                flag = maxBody.height - ele.top > ele.height + tips.height ? true : false;
+	                return flag;
+	                break;
+	            case 'top':
+	                flag = ele.top > tips.height ? true : false;
+	                return flag;
+	                break;
+	            case 'left':
+	                flag = ele.left > tips.width ? true : false;
+	                return flag;
+	                break;
+	            case 'right':
+	                flag = maxBody.width - ele.left > ele.width + tips.width ? true : false;
+	                return flag;
+	                break;
+	            default:
+	                return flag;
 	                break;
 	        }
 	    };
