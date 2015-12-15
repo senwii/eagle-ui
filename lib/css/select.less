@@ -1,3 +1,4 @@
+@import "public.less";
 @import "color.less";
 .eg-select-container{
   width: 300px;
@@ -6,29 +7,52 @@
   margin-right: 15px;
   ul{
     background: #fff;
+    //display: none;
+    visibility: hidden;
     position: absolute;
     width: inherit;
     top: 39px;
-    left: 0px;
+    left:-999rem;
+    transition: height 400ms;
+    -webkit-transition: height 400ms;
+    -moz-transition: height 400ms;
+    -ms-transition: height 400ms;
+    -o-transition: height 400ms;
+    border: @gray-line solid 1px;
+    .border-radius(0px 0px 4px 4px);
+    max-height: 150px;
+    overflow: auto;
     li{
       text-indent: 10px;
       padding: 5px 0;
       cursor: pointer;
+      &:hover,&:focus{
+        color:@orange-btn;
+      }
     }
-    li:hover{
-      color:@red-num;
+    li.active{
+      color:@orange-btn;
     }
+
   }
-  .eg-select-ul{
-    display: none;
+  ul.height-none{
+    left:0;
+    visibility: visible;
+    overflow: hidden;
+    transition: height 400ms;
+    -webkit-transition: height 400ms;
+    -moz-transition: height 400ms;
+    -ms-transition: height 400ms;
+    -o-transition: height 400ms;
   }
   .eg-select-show{
-    display: block;
+    visibility: visible;
+    left: 0px;
+    //display: block;
   }
-  /*下箭头*/
-  .eg-select-arrow{
+  /*箭头*/
+  .eg-select-arrow-up,.eg-select-arrow-down{
     position: absolute;
-    top: 12px;
     right: 10px;
     display: inline-block;
     cursor: pointer;
@@ -38,8 +62,13 @@
     border-left: 5px solid @gray-bb;
     border-bottom: 5px solid @gray-bb;
   }
-  .eg-select-arrow{
-    transform: rotate(-45deg);
+  .eg-select-arrow-down{
+    .transform(rotate(-45deg));
+    top: 12px;
+  }
+  .eg-select-arrow-up{
+    .transform(rotate(135deg));
+    top: 13px;
   }
 
 }
