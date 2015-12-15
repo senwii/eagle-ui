@@ -8,7 +8,7 @@ export default class SearchCls extends Component{
     render(){
         return (
             <div>
-                <Search callBack={function(val){alert(val)}}>
+                <Search callback={function(val){alert(val)}}>
                 </Search>
             </div>
         );

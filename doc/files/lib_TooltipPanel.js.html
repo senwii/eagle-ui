@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="../examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">例子</a>
                     </li>
                     
                 </ul>
@@ -147,14 +147,6 @@
                            </ul>
                        </li>
                     
-                       <li>
-                            
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
                     </ul>
                 </dd>
              
@@ -260,6 +252,14 @@
                        <li>
                             
                            <a href="../classes/Item.html">Item</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
                            <ul>
                                 
                            </ul>
@@ -523,7 +523,7 @@ class TooltipPanel extends Component {
      * */
     changeStyle(direction){
         let dir = direction;
-        let [dbody,delement,tipNode,eleNode] = [document.body,document.documentElement,ReactDOM.findDOMNode(this.refs.tips),ReactDOM.findDOMNode(this.refs.container).children[0]];
+        let [dbody,delement,tipNode,eleNode] = [document.body,document.documentElement,React.findDOMNode(this.refs.tips),React.findDOMNode(this.refs.container).children[0]];
         let bodys = {
             height: dbody.clientHeight,
             width: dbody.clientWidth

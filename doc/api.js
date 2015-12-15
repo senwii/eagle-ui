@@ -84,9 +84,6 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Col"
-                },
-                {
-                    "name": "Search"
                 }
             ]
         },
@@ -138,6 +135,9 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Item"
+                },
+                {
+                    "name": "Search"
                 },
                 {
                     "name": "Tab"

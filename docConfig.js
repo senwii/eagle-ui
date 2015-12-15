@@ -32,7 +32,7 @@ module.exports = {
             },
             {
                 name: "例子",
-                url: "../examples/"
+                url: "/documents/eagle-ui/examples/"
             }
         ]
     },

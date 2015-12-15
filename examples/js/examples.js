@@ -294,6 +294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOM;
+	React.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOMServer;
 
 	module.exports = React;
 
@@ -10644,6 +10645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    multiple: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
 	    muted: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
 	    name: null,
+	    nonce: MUST_USE_ATTRIBUTE,
 	    noValidate: HAS_BOOLEAN_VALUE,
 	    open: HAS_BOOLEAN_VALUE,
 	    optimum: null,
@@ -10655,6 +10657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    readOnly: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
 	    rel: null,
 	    required: HAS_BOOLEAN_VALUE,
+	    reversed: HAS_BOOLEAN_VALUE,
 	    role: MUST_USE_ATTRIBUTE,
 	    rows: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
 	    rowSpan: null,
@@ -18857,7 +18860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.2';
+	module.exports = '0.14.3';
 
 /***/ },
 /* 171 */
@@ -25121,7 +25124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	  Copyright (c) 2015 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
@@ -25162,9 +25165,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			module.exports = classNames;
 		} else if (true) {
 			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
@@ -28505,7 +28508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 搜索按钮组件
 	 * 参数： id/callBack/placeholder 均可不传
 	 * @class Search
-	 * @moudle ui
+	 * @module ui
 	 * @constructor
 	 * @since 0.1.0
 	 * @demo search.js{js}
@@ -28534,11 +28537,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            id: _react.PropTypes.string,
 	            /**
 	             * 回调方法
-	             * @property callBack
+	             * @property callback
 	             * @type Function
 	             * @default null
 	             * */
-	            callBack: _react.PropTypes.func,
+	            callback: _react.PropTypes.func,
 	            classPrefix: _react.PropTypes.string,
 	            componentTag: _react.PropTypes.string
 	        },
@@ -28547,7 +28550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'defaultProps',
 	        value: {
 	            id: '1',
-	            callBack: null,
+	            callback: null,
 	            placeholder: '请输入',
 	            classPrefix: 'search', //类名前前缀
 	            componentTag: 'div'
@@ -28616,7 +28619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Search.prototype.submitSearch = function submitSearch() {
 	        var val = this.state.value;
-	        this.props.callBack && this.props.callBack(val);
+	        this.props.callback && this.props.callback(val);
 	    };
 
 	    Search.prototype.keyIn = function keyIn(event) {
@@ -34561,7 +34564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
-	            _react2['default'].createElement(_libSearchJs2['default'], { callBack: function (val) {
+	            _react2['default'].createElement(_libSearchJs2['default'], { callback: function (val) {
 	                    alert(val);
 	                } })
 	        );

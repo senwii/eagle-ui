@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="../examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">例子</a>
                     </li>
                     
                 </ul>
@@ -147,14 +147,6 @@
                            </ul>
                        </li>
                     
-                       <li>
-                            
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
                     </ul>
                 </dd>
              
@@ -260,6 +252,14 @@
                        <li>
                             
                            <a href="../classes/Item.html">Item</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
                            <ul>
                                 
                            </ul>
@@ -603,7 +603,7 @@ class Dialog extends Component {
                             {this.props.title}
                     &lt;/Row&gt;
                     &lt;Row className={ classnames(
-                    this.getClassNamesForArguments(&#x27;content&#x27;))}&gt;
+                    this.getClassNamesForArguments(&#x27;content&#x27;))} style={{textAlign:&#x27;center&#x27;}}&gt;
                         &lt;Col&gt;
                             {this.props.children}
                         &lt;/Col&gt;
@@ -641,7 +641,7 @@ class Dialog extends Component {
                             &lt;/div&gt;
                     &lt;/Row&gt;
                     &lt;Row className={ classnames(
-                    this.getClassNamesForArguments(&#x27;content&#x27;))}&gt;
+                    this.getClassNamesForArguments(&#x27;content&#x27;))} style={{textAlign:&#x27;center&#x27;}}&gt;
                         &lt;Col&gt;
                             {this.props.children?this.props.children:&#x27;请快乐的修bug&#x27;}
                         &lt;/Col&gt;
@@ -720,7 +720,7 @@ class Dialog extends Component {
                             &lt;/div&gt;
                     &lt;/Row&gt;
                     &lt;Row className={ classnames(
-                    this.getClassNamesForArguments(&#x27;content&#x27;))}&gt;
+                    this.getClassNamesForArguments(&#x27;content&#x27;))} style={{marginTop:&#x27;10px&#x27;}}&gt;
                         &lt;Col&gt;
                             {this.props.children}
                         &lt;/Col&gt;

@@ -10,7 +10,7 @@
             },
             {
                 "name": "例子",
-                "url": "../examples/"
+                "url": "/documents/eagle-ui/examples/"
             }
         ]
     },
@@ -418,6 +418,7 @@
             "classes": {
                 "crumb": 1,
                 "Item": 1,
+                "Search": 1,
                 "Tab": 1,
                 "Calendar": 1,
                 "CalendarPanel": 1,
@@ -444,14 +445,13 @@
             "classes": {
                 "Grid": 1,
                 "Row": 1,
-                "Col": 1,
-                "Search": 1
+                "Col": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/Search.js",
-            "line": 9,
+            "file": "lib/Row.js",
+            "line": 5,
             "description": "行"
         }
     },
@@ -1064,16 +1064,15 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "grid",
+            "module": "ui",
             "namespace": "",
             "file": "lib/Search.js",
             "line": 9,
             "description": "搜索按钮组件\n参数： id/callBack/placeholder 均可不传",
-            "moudle": "ui",
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Search from '../../../lib/Search.js';\n\t\n\texport default class SearchCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Search callBack={function(val){alert(val)}}>\n\t                </Search>\n\t            </div>\n\t        );\n\t    }\n\t}"
+                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Search from '../../../lib/Search.js';\n\t\n\texport default class SearchCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Search callback={function(val){alert(val)}}>\n\t                </Search>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "js"
@@ -1093,11 +1092,10 @@
             "file": "lib/Select.js",
             "line": 11,
             "description": "下拉选择框组件。\n有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item",
-            "moudle": "ui",
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Search from '../../../lib/Search.js';\n\t\n\texport default class SearchCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Search callBack={function(val){alert(val)}}>\n\t                </Search>\n\t            </div>\n\t        );\n\t    }\n\t}"
+                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport Search from '../../../lib/Search.js';\n\t\n\texport default class SearchCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Search callback={function(val){alert(val)}}>\n\t                </Search>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "js"
@@ -2511,18 +2509,18 @@
             "type": "String",
             "default": "''",
             "class": "Tooltip",
-            "module": "grid"
+            "module": "ui"
         },
         {
             "file": "lib/Search.js",
             "line": 36,
             "description": "回调方法",
             "itemtype": "property",
-            "name": "callBack",
+            "name": "callback",
             "type": "Function",
             "default": "null",
             "class": "Tooltip",
-            "module": "grid"
+            "module": "ui"
         },
         {
             "file": "lib/Search.js",
@@ -2535,7 +2533,7 @@
                 "type": "ReactElement"
             },
             "class": "Tooltip",
-            "module": "grid"
+            "module": "ui"
         },
         {
             "file": "lib/Search.js",
@@ -2552,7 +2550,7 @@
                 "description": "setState"
             },
             "class": "Tooltip",
-            "module": "grid"
+            "module": "ui"
         },
         {
             "file": "lib/Search.js",
@@ -2569,14 +2567,14 @@
                 "description": "get value calback if exist"
             },
             "class": "Tooltip",
-            "module": "grid"
+            "module": "ui"
         },
         {
             "file": "lib/Select.js",
             "line": 1,
             "description": "Created by panqianjin on 15/11/12.",
             "class": "Select",
-            "module": "grid"
+            "module": "ui"
         },
         {
             "file": "lib/Select.js",
@@ -3659,10 +3657,6 @@
         {
             "message": "unknown tag: show",
             "line": " lib/RadioGroup.js:10"
-        },
-        {
-            "message": "unknown tag: moudle",
-            "line": " lib/Search.js:9"
         },
         {
             "message": "unknown tag: demo",
