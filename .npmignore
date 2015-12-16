@@ -45,3 +45,10 @@ jscoverage_lib/
 example/
 src/
 test/
+doc/
+examples/
+docConfig.js
+gulpfile.js
+karma.conf.js
+cortex.json
+webpack/
