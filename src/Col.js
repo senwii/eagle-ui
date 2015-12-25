@@ -1,6 +1,7 @@
 import React,{ PropTypes, Component } from 'react';
-import classnames from 'classnames';
-
+import classNames from 'classnames';
+import classNameMixin from './utils/ClassNameMixin.js';
+@classNameMixin
 /**
  * 列
  * @class Col
@@ -10,7 +11,9 @@ import classnames from 'classnames';
  * @since 0.1.0
  * */
 export default class Col extends Component{
-
+    static defaultProps={
+        classPrefix:'sm'
+    };
     static propTypes = {
         /**
          * 占几列，共12列
@@ -38,12 +41,13 @@ export default class Col extends Component{
     }
 
     render(){
-
+        let renderStyle=this.props.style||{};
         return (
-            <div {...this.props} className={classnames(
+            <div className={classNames(
+                this.getClassNames(this.props),
                 this.getWidthClass(),
                 this.props.className
-            )} >
+            )} style={renderStyle}>
                 {this.props.children}
             </div>
         );

@@ -20,6 +20,7 @@ export Paging from './Paging.js';
 export Calendar from './Calendar';
 export Tab from './Tab.js';
 export Tabset from './Tabset.js';
+export Star from './Star.js'
 
 export Dialog from './Dialog.js';
 export Tooltip from './Tooltip.js';
@@ -37,6 +38,7 @@ export Table from './Table/Table.js';
 export Tr from './Table/Tr.js';
 export Td from './Table/Td.js';
 export Th from './Table/Th.js';
+
 window['Eagleui'] = {};
 
 [

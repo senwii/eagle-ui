@@ -31,7 +31,7 @@ export default class Table extends Component{
     };
 
     static defaultProps = {
-
+        classPrefix:'table'
     };
 
     constructor(props, context) {
@@ -105,10 +105,12 @@ export default class Table extends Component{
                 },self)}
             </Tr>;
         });
+        console.log(this.props);
         return (
                 <table className={
                 classnames(
-                    this.getClassName('table')
+                    this.getClassNamesForArguments('table'),
+                    this.getClassNames(this.props)
                 )}>
                     <thead>
                     <Tr>

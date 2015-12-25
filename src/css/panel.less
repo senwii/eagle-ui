@@ -18,12 +18,17 @@
     border-color: #ddd;
   }
   .eg-panel-content{
+    .eg-item:not(:first-child){
+      margin-top:30px;
+      padding-bottom:10px;
+    }
   }
   .eg-panel-footer{
     background-color: @panel-default-theme;
     border-top: 1px solid #ddd;
     border-radius:0px 0px 3px 3px;
   }
+
 }
 /**添加padding*/
 .eg-panel-padding{

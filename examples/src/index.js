@@ -7,6 +7,7 @@ import Button from './modules/button';
 import Crumb from './modules/crumb';
 import Demo1 from './modules/demo1';
 import Demo2 from './modules/demo2';
+import Detail from './modules/detail.js';//增加商户详情页面demo
 import Dialog from './modules/dialog';
 import Input from './modules/input';
 import Label from './modules/label';
@@ -19,7 +20,7 @@ import Table from './modules/table';
 import Toast from './modules/toast';
 import ToolTip from './modules/tooltip';
 import Validate from './modules/validate';
-
+import StarDemo from './modules/star.js';
 //require('../less/public.less');
 import css from '../../src/_include.less';
 
@@ -56,6 +57,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Crumb" name="Crumb" component={Crumb} />
                 <Route path="/Demo1" name="Demo1" component={Demo1} />
                 <Route path="/Demo2" name="Demo2" component={Demo2} />
+                <Route path="/Detail" name="Detail" component={Detail} />
                 <Route path="/Dialog" name="Dialog" component={Dialog} />
                 <Route path="/Input" name="Input" component={Input} />
                 <Route path="/Label" name="Label" component={Label} />
@@ -68,6 +70,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Toast" name="Toast" component={Toast} />
                 <Route path="/ToolTip" name="ToolTip" component={ToolTip} />
                 <Route path="/Validate" name="Validate" component={Validate} />
+                <Route path="/Star" name="Star" component={StarDemo} />
                 <Redirect from="/" to="/index" />
             </Router>
         );
