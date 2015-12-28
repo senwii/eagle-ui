@@ -21,6 +21,7 @@ import Toast from './modules/toast';
 import ToolTip from './modules/tooltip';
 import Validate from './modules/validate';
 import StarDemo from './modules/star.js';
+import SliderDemo from './modules/slider.js';
 //require('../less/public.less');
 import css from '../../src/_include.less';
 
@@ -58,6 +59,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Demo1" name="Demo1" component={Demo1} />
                 <Route path="/Demo2" name="Demo2" component={Demo2} />
                 <Route path="/Detail" name="Detail" component={Detail} />
+                <Route path="/Slider" name="Slider" component={SliderDemo} />
                 <Route path="/Dialog" name="Dialog" component={Dialog} />
                 <Route path="/Input" name="Input" component={Input} />
                 <Route path="/Label" name="Label" component={Label} />
