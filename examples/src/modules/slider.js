@@ -4,12 +4,21 @@
 
 
 import React, { Component ,PropTypes} from 'react';
-import Slider from '../../../src/Slider.js';
+import {Button,Column,Slider} from '../../../src/index.js';
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
+        this.state={
+            show:false
+        }
+    }
+    handleSlider(){
+       this.setState({
+           show:true
+       })
     }
     render() {
+        let {show} = this.state;
         let imgs=[
             'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
             'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',
@@ -30,7 +39,11 @@ export default class SliderDemo extends Component {
         let section='闪惠商户培训资料';
         let pageNum=3;
         return (
-            <Slider imgList={imgs} profile={profile} section={section} pageNum={pageNum}/>
+            <div>
+                <Button success onClick={this.handleSlider.bind(this)}>点击出现照片展示插件</Button>
+                <Slider imgList={imgs} profile={profile} section={section} pageNum={pageNum} show={show}/>
+            </div>
+
         );
     }
 };

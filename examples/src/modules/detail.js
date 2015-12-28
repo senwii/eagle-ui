@@ -6,7 +6,7 @@ import querystring from 'querystring';
 
 import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging
     ,Tab,Tabset,Dialog,Item
-    ,Table,Th,Td,Tr,Star,Button,Column} from '../../../src/index.js';
+    ,Table,Th,Td,Tr,Star,Button,Column,Slider} from '../../../src/index.js';
 //测试分页功能
 let page = 1;
 function callback(page){
@@ -19,9 +19,43 @@ function loadPageCallback(pageSize){
 page =location.search ? querystring.parse(location.search.substr(1) ).page*1 : 1;
 var pageSize = location.search ? querystring.parse(location.search.substr(1) ).pageSize*1 : 20;
 /*测试分页结束*/
+/*测试照片展示插件*/
+let imgs=[
+    'http://www.northtimes.com/u/cms/www/201403/201515050uqo.jpg',
+    'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+    'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',
+    'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',
+    'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',
+    'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',
+    'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg'
+];
+let profile=[
+    'A老板2015上传',
+    'B老板2015上传',
+    'C叔2015上传',
+    'D叔2015上传',
+    'E老板2015上传',
+    'F老板2015上传',
+    'G老板2015上传',
+    'H老板2015上传',
+    'I老板2015上传',
+];
+/*测试照片插件数据结束*/
 
 export default class Detail extends Component{
+    constructor(props){
+       super(props);
+        this.state={
+            sliderShow:false
+        }
+    }
+    handleSlider(){
+        this.setState({
+            sliderShow:true
+        })
+    }
     render(){
+        let {sliderShow}=this.state;
         let styleObj={
             visitLabel:{
                 color:'#ee5511',
@@ -372,12 +406,13 @@ export default class Detail extends Component{
                         </Panel>
                         <Panel>
                             <PanelContent >
+                                <Slider imgList={imgs} profile={profile} section={'闪惠商户培训资料'} pageNum={4} show={sliderShow}/>
                                 <Row>
                                     <Col>
                                         <h4>pop</h4>
                                     </Col>
                                     <Col style={{width:'100%',height:'230px'}}>
-                                        <img src='http://www.northtimes.com/u/cms/www/201403/201515050uqo.jpg'/>
+                                        <img src={imgs[0]} onClick={this.handleSlider.bind(this)} style={{cursor:'pointer'}}/>
                                     </Col>
                                 </Row>
                             </PanelContent>

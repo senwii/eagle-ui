@@ -21,14 +21,16 @@
   -webkit-justify-content: center;
   justify-content: center;
 }
-.slider-mask{
-  background:rgba(255,255,255,0.5);
+.eg-slider-mask{
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
-  position: fixed;
   display: -webkit-flex;
   display: flex;
-  .slider-container{
+  .eg-slider-container{
     background: #323232;
     padding:50px 50px 20px 50px;
     position: relative;
@@ -36,8 +38,10 @@
     em{
       cursor:pointer;
       position:absolute;
-      right:7px;
+      right:10px;
       top:0;
+      width:30px;
+      height:30px;
       &:before{
         content:'';
         display: block;
@@ -46,7 +50,7 @@
         right:10px;
         background:#999;
         width:2px;
-        height:14px;
+        height:16px;
         .angleFunc(45deg)
       }
       &:after{
@@ -57,16 +61,16 @@
         right:10px;
         background:#999;
         width:2px;
-        height:14px;
+        height:16px;
         .angleFunc(-45deg)
       }
     }
-    .slider-img-container{
+    .eg-slider-img-container{
       height:280px;
       margin:auto;
       position: relative;
       /*图像展示区域*/
-      .slider-window{
+      .eg-slider-window{
         position: relative;
         overflow: hidden;
         height:inherit;
@@ -105,16 +109,16 @@
         top:45%;
         vertical-align: middle;
       }
-      b.slider-arrow-left{
+      b.eg-slider-arrow-left{
         .angleFunc(-135deg);
         left:-30px;
       }
-      b.slider-arrow-right{
+      b.eg-slider-arrow-right{
         .angleFunc(45deg);
         right:-30px;
       }
       /*提示框*/
-      .slider-img-hint{
+      .eg-slider-img-hint{
         font-size:12px;
         padding-top:2px;
         text-align: center;
@@ -138,13 +142,13 @@
     }
   }
 }
-.slider-img-container-thumbnail{
+.eg-slider-img-container-thumbnail{
   width:380px;
   height:60px;
   margin:50px auto 10px;
   position: relative;
   /*图像展示区域*/
-  .slider-window{
+  .eg-slider-window{
     position: relative;
     overflow: hidden;
     height:inherit;
@@ -184,11 +188,11 @@
     top:45%;
     vertical-align: middle;
   }
-  b.slider-arrow-left{
+  b.eg-slider-arrow-left{
     .angleFunc(-135deg);
     left:-30px;
   }
-  b.slider-arrow-right{
+  b.eg-slider-arrow-right{
     .angleFunc(45deg);
     right:-30px;
   }

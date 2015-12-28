@@ -3,7 +3,7 @@
  */
 
 
-import React, { Component ,PropTypes} from 'react';
+import React, { Component ,PropTypes,findDOMNode} from 'react';
 export default class  Slider extends Component{
     constructor(props,context) {
         super(props, context);
@@ -11,12 +11,14 @@ export default class  Slider extends Component{
         this.state = {
             imgList: props.imgList,
             pageNum:props.pageNum,
+            show:props.show,
             targetIndex:0,
             thumbNailIndex:0
         };
     }
     static defaultProps={
-        pageNum:5
+        pageNum:5,
+        show:false
     };
     static propTypes = {
         /**
@@ -40,8 +42,20 @@ export default class  Slider extends Component{
          * @default 5
          * */
         pageNum:PropTypes.number,
+        /**
+         * 是否显示图片展示slider
+         * @property show
+         * @type boolean
+         * @default false
+         * */
+        show:PropTypes.bool,
         classPrefix:PropTypes.string
     };
+    componentWillReceiveProps(props,context){
+      this.setState({
+          show:props.show
+      })
+    }
     renderDisplay(e){
         //点击下方缩略图的情况
         let index = /img||li/.test(e.target['nodeName'])?e.target.getAttribute('data-index'):eval('return');
@@ -83,17 +97,30 @@ export default class  Slider extends Component{
         let index = this.state.targetIndex - num;
         this.handleIndex.call(this,index);
     }
+    fadeOut(e){
+        if(e.target.className.match('slider-mask')||e.target.nodeName.toLowerCase()=='em'){
+            let node = findDOMNode(this.refs['sliderContainer']);
+            this.setState({
+                show:false
+            });
+            //node.getElementsByClassName('eg-slider-container')[0].classList.add('fadeout');
+            //setTimeout(()=>{node.style.display='none'},800);
+        }
+    }
     render(){
-        let {imgList,targetIndex,thumbNailIndex} = this.state;
+        let {imgList,targetIndex,thumbNailIndex,show} = this.state;
         let {section,profile,pageNum}=this.props;
         let length=imgList.length;
+        let containerStyle={
+            display:show?'flex':'none'
+        };
         return (
-            <div className='slider-mask'>
-                <div className='slider-container'>
-                    <em></em>
-                    <div className='slider-img-container'>
-                        <b className='slider-arrow-left' onClick={()=>this.lowerIndex.call(this)}></b>
-                        <div className='slider-window'  style={{width:'380px'}}>
+            <div className='eg-slider-mask' ref='sliderContainer' style={{...containerStyle}} onClick={this.fadeOut.bind(this)}>
+                <div className='eg-slider-container fadein'>
+                    <em onClick={this.fadeOut.bind(this)}></em>
+                    <div className='eg-slider-img-container'>
+                        <b className='eg-slider-arrow-left' onClick={()=>this.lowerIndex.call(this)}></b>
+                        <div className='eg-slider-window'  style={{width:'380px'}}>
                             <ul style={{width:length*380+'px',left:-targetIndex*380+'px'}}>
                                 {imgList.map((img)=>{
                                     return (
@@ -104,16 +131,16 @@ export default class  Slider extends Component{
                                 })}
                             </ul>
                         </div>
-                        <b className='slider-arrow-right' onClick={()=>this.addIndex.call(this)}></b>
-                        <div className='slider-img-hint'>
+                        <b className='eg-slider-arrow-right' onClick={()=>this.addIndex.call(this)}></b>
+                        <div className='eg-slider-img-hint'>
                             <i>{section}</i>
                             {profile[targetIndex]}
                             <i>{targetIndex+1}/{imgList.length}</i>
                         </div>
                     </div>
-                    <div className='slider-img-container-thumbnail'>
-                        <b className='slider-arrow-left' onClick={()=>{this.lowerIndex.call(this,pageNum)}}></b>
-                        <div className='slider-window'  style={{width:'380px'}}>
+                    <div className='eg-slider-img-container-thumbnail'>
+                        <b className='eg-slider-arrow-left' onClick={()=>{this.lowerIndex.call(this,pageNum)}}></b>
+                        <div className='eg-slider-window'  style={{width:'380px'}}>
                             <ul onClick={this.renderDisplay}
                                 style={{width:100*length/pageNum+'%',
                                         left:-(thumbNailIndex)*100/pageNum+'%'
@@ -124,16 +151,16 @@ export default class  Slider extends Component{
                                         inlineStyle = {
                                             borderColor:'#158acf'
                                         }
-                                    };
+                                    }
                                     return (
-                                        <li data-index={index} style={{width:100/length-1+'%',...inlineStyle}}>
+                                        <li data-index={index} style={{width:100/length-1.1+'%',...inlineStyle}}>
                                             <img src={img} data-index={index}/>
                                         </li>
                                     )
                                 })}
                             </ul>
                         </div>
-                        <b className='slider-arrow-right' onClick={()=>{this.addIndex.call(this,pageNum)}}></b>
+                        <b className='eg-slider-arrow-right' onClick={()=>{this.addIndex.call(this,pageNum)}}></b>
                     </div>
                 </div>
             </div>

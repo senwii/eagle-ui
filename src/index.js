@@ -22,6 +22,7 @@ export Tab from './Tab.js';
 export Tabset from './Tabset.js';
 export Star from './Star.js'
 
+export Slider from './Slider.js';
 export Dialog from './Dialog.js';
 export Tooltip from './Tooltip.js';
 export Panel from './Panel/Panel.js';
@@ -46,7 +47,7 @@ window['Eagleui'] = {};
     'Button','ButtonGroup','CheckboxGroup','Input','RadioGroup','Label','ValidatorPanel',
     'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip',
     'Panel','PanelContent','PanelFooter','PanelHeader','List','Item',
-    'Table','Tr','Td','Th'
+    'Table','Tr','Td','Th','Slider'
 ].forEach(function(clazzName){
     Eagleui[clazzName] =exports[clazzName];
 });
