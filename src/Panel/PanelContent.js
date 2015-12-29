@@ -42,7 +42,8 @@ export default class PanelContent extends Component{
             <div className={
                 classnames(
                     this.getClassName('content')
-                    ,this.props.padding?this.getClassName('padding'):''
+                    ,this.props.padding?this.getClassName('padding'):'',
+                    this.props.className
                 )}>
                 {this.props.children}
             </div>

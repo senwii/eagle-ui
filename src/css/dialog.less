@@ -11,7 +11,42 @@
   width: 100%;
   height: 100%;
 }
-.eg-dialog-close, .eg-tips-close{
+.eg-dialog-close{
+    cursor:pointer;
+    position:absolute;
+    right:0;
+    top:0;
+    width:30px;
+    height:30px;
+    overflow: hidden;
+    text-indent: -999rem;
+    z-index: 9000;
+    margin-top: 0;
+    padding-right:0;
+    &:before{
+      content:'';
+      display: block;
+      position:absolute;
+      top: 8px;
+      right: 15px;
+      background:#999;
+      width:2px;
+      height:16px;
+      .angleFunc(45deg)
+    }
+    &:after{
+      content:'';
+      display: block;
+      position:absolute;
+      top: 8px;
+      right: 15px;
+      background:#999;
+      width:2px;
+      height:16px;
+      .angleFunc(-45deg)
+    }
+}
+.eg-tips-close{
   display: inline-block;
   float: right;
   cursor: pointer;
@@ -19,17 +54,21 @@
   margin-top: -5px;
   padding-right: 5px;
 }
-
-.eg-dialog, .eg-tips{
+.eg-dialog-body{
   .transform(translate(-50%,-50%));
   .border-radius(3px);
   position:fixed;
   top:50%;
   left:50%;
   opacity: 1;
+  z-index: 9000;
+}
+.eg-dialog, .eg-tips{
+
+  .eg-dialog-body;
   background: #fff;
   padding: 10px;
-  z-index: 9000;
+
 }
 .eg-tips-container,.eg-tips-wapper{
   z-index: 9001;

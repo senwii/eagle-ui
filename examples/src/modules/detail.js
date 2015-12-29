@@ -89,6 +89,11 @@ export default class Detail extends Component{
    buttonTest(){
        alert('hello fe');
    }
+    closeDialog(){
+        this.setState({
+            sliderShow:false
+        })
+    }
     render(){
         {/*本示例用到的额外数据说明:
 
@@ -110,24 +115,27 @@ export default class Detail extends Component{
         */}
         let query = this.props.location.query,
             page = query.page*1 ||0,
-            pageSize = query.pageSize*1 || 20;
+            pageSize = query.pageSize*1 || 10;
         let {sliderShow}=this.state;
-        let huiIconSrc = location.origin+'/src/css/img/youhui.png';
+        let huiIconSrc = location.origin+'/examples/imgs/thunder.png';
         let styleObj={
             huiIcon:{
-                width: '26px',
-                marginTop: '-7px',
-                display: 'inline-block',
-                verticalAlign: 'top'
+                position:'absolute',
+                top: '-4px',
+                left:'50%',
+                width:'25px',
+                height:'25px',
+                marginTop: '-9px',
+                marginLeft:'-4px'
             },
             visitMore:{/*定义有效拜访'收起''更多'样式*/
-                position:'absolute',
-                bottom:'1px',
-                right:'10px',
+                //position:'absolute',
+                //bottom:'1px',
+                //right:'6px',
                 cursor:'pointer'
             },
             visitReplay:{/*有效拜访回复样式*/
-                padding:'8px 0 8px 8px',
+                padding:'10px ',
                 background:"#f5f5f5",
                 width:'100%',
                 lineHeight:'18px'
@@ -165,9 +173,11 @@ export default class Detail extends Component{
         return (
             <div style={{color:'#333'}}>
                 {/*照片浏览组件(建议放在dom根节点附近)*/}
-                <Slider showThumbnail  show={sliderShow}
-                        imgList={imgList} profileKey={'profile'} urlKey={'url'} titleKey={'description'}
-                        pageNum={pageNum}/>
+                <Dialog type={'mask'}  show={sliderShow} cancelCallback={this.closeDialog.bind(this)}>
+                    <Slider showThumbnail show
+                            imgList={imgList} profileKey={'profile'} urlKey={'url'} titleKey={'description'}
+                            pageNum={pageNum}/>
+                </Dialog>
                 {/*主页面*/}
                 <Grid className='mg-bottom-40'>
                     <Row>
@@ -185,9 +195,14 @@ export default class Detail extends Component{
                                             <h3>美丽新世界(旗舰店)</h3>
                                             <h5 className={'ft-gray mg-left-10 mg-right-10 '}>shopID:237489</h5>
                                             <Label success >团</Label>
-                                            <img src={huiIconSrc} style={styleObj['huiIcon']}
-                                                 className={'mg-left-10'}
-                                                 width={'10px'} height={'10px'}/>
+                                            <Label active  className={'mg-left-10'}>
+                                                <span style={{position:'relative'}}>
+                                                    惠
+                                                 <img src={huiIconSrc} style={styleObj['huiIcon']}
+                                                     />
+                                                </span>
+
+                                            </Label>
                                             <Label disabled  className={'mg-left-10'}>订</Label>
                                         </Col>
                                         <Col sm={13}>
@@ -196,8 +211,8 @@ export default class Detail extends Component{
                                     </Row>
                                     <Row>
                                         <Col sm={13} >
-                                            <Star Rate={80} size={'16px'} />
-                                            <h5 className={'ft-gray  mg-left-10'} style={{verticalAlign:'top'}}>大客户</h5>
+                                            <Star Rate={80} size={'17px'} />
+                                            <h5 className={'ft-gray  mg-left-10'} style={{verticalAlign:'top',lineHeight:'17px'}}>大客户</h5>
                                         </Col>
                                         <Col sm={13} className='ft-orange'>
                                             198283
@@ -286,7 +301,7 @@ export default class Detail extends Component{
                             <Panel>
                                 <PanelContent>
                                     <Item>
-                                        <Row><Col><h4 style={{'marginBottom':'15px'}} className='eg-item-flag'>合作信息</h4></Col></Row>
+                                        <Row><Col className='mg-bottom-10'><h4 className='eg-item-flag'>合作信息</h4></Col></Row>
                                         {/*合作信息*/}
                                         <Row>
                                             <Col sm={13}>
@@ -310,19 +325,19 @@ export default class Detail extends Component{
                                         </Row>
                                         <Row bottom>
                                             <Col sm={1}>
-                                                <Label active>订</Label>
+                                                <Label className='ft-12' active>订</Label>
                                             </Col>
                                             <Col sm={11}>每满100元减50</Col>
                                         </Row>
                                         <Row bottom>
                                             <Col sm={1}>
-                                                <Label success>惠</Label>
+                                                <Label className='ft-12' success>惠</Label>
                                             </Col>
                                             <Col sm={11}>双人创意套餐A</Col>
                                         </Row>
                                         <Row bottom>
                                             <Col sm={1}>
-                                                <Label success>团</Label>
+                                                <Label className='ft-12' success>团</Label>
                                             </Col>
                                             <Col sm={3}>双人创意套餐A</Col>
                                             <Col sm={2}><h5 className={'ft-orange'} >￥12500</h5></Col>
@@ -332,7 +347,7 @@ export default class Detail extends Component{
                                     </Item>
                                     <Item >
                                         {/*联系人信息*/}
-                                        <Row><Col><h4 className='mg-bottom-15 eg-item-flag'>联系人</h4></Col></Row>
+                                        <Row><Col className='mg-bottom-10'><h4 className='eg-item-flag'>联系人</h4></Col></Row>
                                         <Row bottom>
                                             <Col sm={3}>
                                                 李牛牛
@@ -363,7 +378,7 @@ export default class Detail extends Component{
                                         </Row>
                                     </Item>
                                     <Item>
-                                        <Row><Col><h4 className={'ft-orange eg-item-flag'}>拜访记录</h4></Col></Row>
+                                        <Row><Col className='mg-bottom-10'><h4 className={'eg-item-flag'}>拜访记录</h4></Col></Row>
                                         {/*拜访记录*/}
                                         <Grid>
                                             <Row>
@@ -402,25 +417,27 @@ export default class Detail extends Component{
                                                 </Col>
                                                 <Col sm={1}></Col>
                                             </Row>
-                                            <Row style={{paddingBottom:'20px'}} bottom>
-                                                <div style={styleObj['visitMore']} onClick={this.expandView}>
-                                                    收起
-                                                    <div className='eg-arrow-hollow-up mg-left-10'></div>
-                                                </div>
+                                            <Row bottom>
                                                 <Col className='no-pd-left-right'>
                                                     上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是
                                                     还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。
                                                     上周五去了一趟门店，感觉还是可以的。
-                                                    <div style={styleObj['visitReplay']}>
-                                                        <div>
-                                                            <h5 className={'ft-gray'}>陪访人</h5>
-                                                            <span className={' mg-left-10'}>李经理</span>
-                                                        </div>
-                                                        <div>
-                                                            上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是
-                                                            还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。
-                                                            上周五去了一趟门店，感觉还是可以的。
-                                                        </div>
+                                                </Col>
+                                                <Col sm={12} style={styleObj['visitReplay']}>
+                                                    <div style={{marginBottom:'5px'}}>
+                                                        <h5 className={'ft-gray'}>陪访人</h5>
+                                                        <span className={' mg-left-10'}>李经理</span>
+                                                    </div>
+                                                    <div>
+                                                        上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是
+                                                        还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。
+                                                        上周五去了一趟门店，感觉还是可以的。
+                                                    </div>
+                                                </Col>
+                                                <Col sm={13} className={'mg-top-5'}>
+                                                    <div style={styleObj['visitMore']}>
+                                                        收起
+                                                        <div className='eg-arrow-hollow-up mg-left-10'></div>
                                                     </div>
                                                 </Col>
                                             </Row>
@@ -462,15 +479,17 @@ export default class Detail extends Component{
                                                 </Col>
                                                 <Col sm={1}></Col>
                                             </Row>
-                                            <Row style={{paddingBottom:'20px'}} bottom>
-                                                <div style={styleObj['visitMore']}>
-                                                    更多
-                                                    <div className='eg-arrow-hollow-down mg-left-10'></div>
-                                                </div>
+                                            <Row bottom>
                                                 <Col className='no-pd-left-right'>
                                                     上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是
                                                     还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。
                                                     上周五去了一趟门店，感觉还是可以的。
+                                                </Col>
+                                                <Col sm={13} className={'mg-top-5'}>
+                                                    <div style={styleObj['visitMore']}>
+                                                        更多
+                                                        <div className='eg-arrow-hollow-down mg-left-10'></div>
+                                                    </div>
                                                 </Col>
                                             </Row>
                                         </Grid>
@@ -596,7 +615,7 @@ export default class Detail extends Component{
                                         {/*附近同类门店*/}
                                         <Row><Col><h4 className='eg-item-flag'>附近同类门店</h4></Col></Row>
                                         {
-                                          nearByShops.map((shop,index)=>{
+                                          nearByShops.map((shop)=>{
                                               return (
                                                   <Grid className={'pd-top-bottom-10'}>
                                                       <Row>
@@ -604,7 +623,7 @@ export default class Detail extends Component{
                                                              {shop['name']}
                                                               {
                                                                   shop['labels'].map((label)=>{
-                                                                    return  <Label success className={'mg-left-10'}>{label}</Label>
+                                                                    return  <Label success className={'mg-left-10 ft-12'}>{label}</Label>
                                                                   })
                                                               }
                                                           </Col>
@@ -612,7 +631,7 @@ export default class Detail extends Component{
                                                       <Row bottom className={'pd-bottom-15 pd-top-0'}>
                                                           <Col className={'no-pd-top-bottom'}>
                                                               <Star Rate={shop['rate']} size={'16px'} />
-                                                              <h5 className={'ft-gray'}  style={{verticalAlign:'top'}}>
+                                                              <h5 className={'ft-gray mg-left-5'}  style={{verticalAlign:'top',lineHeight:'16px'}}>
                                                                   {shop['customer']}
                                                               </h5>
                                                           </Col>
@@ -626,14 +645,14 @@ export default class Detail extends Component{
                                             <Row>
                                                 <Col sm={12} >
                                                     70后饭吧(五角场店)
-                                                    <Label success className={'mg-left-10'}>订</Label>
-                                                    <Label active className={'mg-left-10'}>惠</Label>
+                                                    <Label success className={'mg-left-10 ft-12'}>订</Label>
+                                                    <Label active className={'mg-left-10 ft-12'}>惠</Label>
                                                 </Col>
                                             </Row>
                                             <Row bottom className={'pd-bottom-15 pd-top-0'}>
                                                 <Col className={'no-pd-top-bottom'}>
                                                     <Star Rate={80} size={'16px'} />
-                                                    <h5 className={'ft-gray'}  style={{verticalAlign:'top'}}>
+                                                    <h5 className={'ft-gray mg-left-5'}  style={{verticalAlign:'top',lineHeight:'16px'}}>
                                                         大客户</h5>
                                                 </Col>
                                             </Row>

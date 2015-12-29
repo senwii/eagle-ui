@@ -64,14 +64,14 @@ export default class  Slider extends Component{
          * 缩略图的key
          * @property thumbnailKey
          * @type array
-         * @default urlKey
+         * @default 默认会拿urlKey
          * */
         thumbnailKey:PropTypes.string,
         /**
          * 图片数组
          * @property imgList
          * @type Array
-         * @default 图片数组{url,key}
+         * @default 图片数组[{key:value}]
          * */
         imgList:PropTypes.array,
         /**
@@ -163,7 +163,7 @@ export default class  Slider extends Component{
         //设置行内样式借口
         let customizeStyle=this.props.style||{};
         //阻止背景滚动
-        show?document.body.style.cssText='position:fixed':document.body.style.cssText='';
+        //show?document.body.style.cssText='position:fixed':document.body.style.cssText='';
         let thumbnailContainerStyle= { display:showThumbnail?'block':'none'};
         return (
             <div className={classNames(this.getClassNamesForArguments('mask'),

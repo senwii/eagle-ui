@@ -257,50 +257,28 @@ class Dialog extends Component {
     }
 
     /**
+     * 渲染mask
+     * @method mask
+     * @return  {ReactElement}
+     * */
+    mask() {
+        return (
+            <div className={this.getClassName('body')}>
+                {this.props.children}
+                <div className={classnames(
+                    this.getClassNamesForArguments('close')
+                    )} onClick={::this.closeDialog}>x
+                </div>
+            </div>
+        );
+    }
+
+    /**
      * 渲染dialog
      * @method dialog
      * @return  {ReactElement}
      * */
     dialog() {
-        return (
-            <Row className={ classnames(
-                    this.getClassNamesForArguments('dialog')
-                )}>
-                <Col>
-                    <Row className={classnames(
-                   this.getClassNamesForArguments('title')
-                )}>
-                            {this.props.title}
-                            <div className={classnames(
-                    this.getClassNamesForArguments('close')
-                    )} onClick={::this.closeDialog}>x
-                            </div>
-                    </Row>
-                    <Row className={ classnames(
-                    this.getClassNamesForArguments('content'))}>
-                        <Col>
-                            {this.props.children}
-                        </Col>
-                    </Row>
-                    <Row className={ classnames(
-                    this.getClassNamesForArguments('button'))}>
-                        <Col sm={12}>
-                            <Button radius egSize="xs" style={{marginRight:'20px'}} onClick={::this.submitForm}>确定
-                            </Button>
-                            <Button radius white egSize="xs" onClick={::this.cancleDialog}>取消</Button>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        );
-    }
-    /**
-     * 渲染mask
-     * @method mask
-     * @return  {ReactElement}
-     * */
-
-    mask() {
         return (
             <Row className={ classnames(
                     this.getClassNamesForArguments('dialog')

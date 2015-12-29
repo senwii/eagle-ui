@@ -5,7 +5,7 @@
 
 
 import React, { Component ,PropTypes} from 'react';
-import {Button,Column,Slider} from '../../../src/index.js';
+import {Button,Column,Slider,Dialog} from '../../../src/index.js';
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
@@ -13,6 +13,11 @@ export default class SliderDemo extends Component {
             show:false,
             showThumbnail:true
         }
+    }
+    closeDialog(){
+        this.setState({
+            show:false
+        })
     }
     handleSlider(){
         switch(arguments[0]){
@@ -94,11 +99,13 @@ export default class SliderDemo extends Component {
                 <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>
                 <Button success className='mg-left-10' onClick={(e)=>this.handleSlider.call(this,'showDefinedThumbnail')}>点击出现照片展示插件(缩略图自定义)</Button>
                 <Button className='mg-left-10' success onClick={(e)=>this.handleSlider.call(this,'noShowThumbnail')}>点击出现照片展示插件(无缩略图)</Button>
+                <Dialog type={'mask'}  show={show} cancelCallback={this.closeDialog.bind(this)}>
+                    <Slider  show showThumbnail={showThumbnail}
+                                       imgList={imgList}
+                                       profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
+                                       pageNum={pageNum}/>
+                </Dialog>
 
-                <Slider  show={show} showThumbnail={showThumbnail}
-                         imgList={imgList}
-                         profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
-                         pageNum={pageNum}/>
             </div>
 
         );
