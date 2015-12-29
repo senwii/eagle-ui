@@ -185,9 +185,9 @@
     }
 }
 
-.eg-arrow-border-up{
-  width:12px;
-  height:12px;
+.eg-arrow-hollow-up{
+  width:10px;
+  height:10px;
   border:2px solid;
   border-color: #999 transparent transparent #999 ;
   .transform(rotate(45deg));
@@ -195,9 +195,9 @@
   vertical-align: middle;
   margin-bottom: -3px;
 }
-.eg-arrow-border-down{
-  width:12px;
-  height:12px;
+.eg-arrow-hollow-down{
+  width:10px;
+  height:10px;
   border:2px solid;
   border-color:transparent transparent  #999  #999 ;
   .transform(rotate(-45deg));
@@ -299,8 +299,42 @@
         transform: rotate(45deg);
     }
 }
+.eg-item-flag{ /*每一大项左侧的flag*/
+  position:relative;
+  &:before{
+    display: block;
+    content:'';
+    position:absolute;
+    top:0;
+    left:-15px;
+    height:15px;
+    width:3px;
+    background:#ee5511;
+  }
+}
+.mg-top-5{
+  margin-top:5px;
+}
+.mg-top-10{
+  margin-top:10px;
+}
+.mg-top-15{
+  margin-top:15px;
+}
+.mg-top-20{
+  margin-top:20px;
+}
+.mg-top-25{
+  margin-top:25px;
+}
+.mg-top-30{
+  margin-top:30px;
+}
+.mg-top-35{
+  margin-top:35px;
+}
 .mg-top-40{
-    margin-top:40px;
+  margin-top:40px;
 }
 .mg-bottom-40{
     margin-bottom:40px;
@@ -310,6 +344,9 @@
 }
 .mg-bottom-10{
     margin-bottom:10px;
+}
+.mg-left-5{
+  margin-left:5px;
 }
 .mg-left-10{
   margin-left:10px;
@@ -329,9 +366,14 @@
 .pd-bottom-15{
   padding-bottom:15px !important;
 }
+.pd-top-bottom-10{
+  padding-top:10px !important;
+  padding-bottom:10px !important;
+}
 .pd-top-0{
   padding-top:0 !important;
 }
+
 .no-pd-left-right{
   padding-left:0!important;
   padding-right:0!important;
@@ -339,10 +381,6 @@
 .no-pd-top-bottom{
   padding-top:0!important;
   padding-bottom:0!important;
-}
-.pd-top-bottom-10{
-  padding-top:10px !important;
-  padding-bottom:10px !important;
 }
 
 

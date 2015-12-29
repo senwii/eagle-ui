@@ -13,33 +13,65 @@ function callback(page){
     page = page;
     window.location = location.href.replace(/\?.*/,'')+'?page='+page+'&pageSize='+pageSize;
 }
+
 function loadPageCallback(pageSize){
-    window.location = location.href+'?page='+page+'&pageSize='+pageSize;
+    window.location = location.origin+location.pathname+'?page='+page+'&pageSize='+pageSize;
 }
-page =location.search ? querystring.parse(location.search.substr(1) ).page*1 : 1;
-var pageSize = location.search ? querystring.parse(location.search.substr(1) ).pageSize*1 : 20;
+var pageSize = 20;
 /*测试分页结束*/
 /*测试照片展示插件*/
-let imgs=[
-    'http://www.northtimes.com/u/cms/www/201403/201515050uqo.jpg',
-    'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
-    'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',
-    'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',
-    'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',
-    'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',
-    'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg'
+let imgList=[
+    {
+        profile:'1叔2015上传',
+        url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'1哥2015上传',
+        url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'2哥2015上传',
+        url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'3哥2015上传',
+        url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'4哥2015上传',
+        url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'5哥2015上传',
+        url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'5哥2015上传',
+        url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',
+        description:'闪惠商户培训资料',
+        thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'
+    },
+    {
+        profile:'5叔2015上传',
+        url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',
+        description:'熊猫野外生存',
+        thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'
+    }
 ];
-let profile=[
-    'A老板2015上传',
-    'B老板2015上传',
-    'C叔2015上传',
-    'D叔2015上传',
-    'E老板2015上传',
-    'F老板2015上传',
-    'G老板2015上传',
-    'H老板2015上传',
-    'I老板2015上传',
-];
+let pageNum = 4;
+
 /*测试照片插件数据结束*/
 
 export default class Detail extends Component{
@@ -55,27 +87,40 @@ export default class Detail extends Component{
         })
     }
    buttonTest(){
-       alert('hello world');
+       alert('hello fe');
    }
-   expandView(e){
-        this.setState({
-
-        })
-    }
     render(){
-        {/*本示例说明:
+        {/*本示例用到的额外数据说明:
+
             数据模型:
-            1.state={sliderShow:boolean}仅仅用于处理点击图片出现图片浏览插件
+            1.state={sliderShow:boolean}用于调取slider图片浏览插件
+
             样式:
             1.styleObj为示例用到的行内样式
-            2.ft-gray,ft-orange,mg-bottom-10等为eagle-ui库定义的字体及布局样式，不需要自己定义
+            2.ft-gray,ft-orange,mg-bottom-10等为eagle-ui库定义的字体及布局样式,在public.less文件中，不需要自己定义
+            3.detail-hollow-star为使用者自己定义的样式，放在'/example/index.html'之中,未放入项目库，要自己手写
+            4.eg-item-flag样式为组件库提供的样式，定义每一大项左侧的小红条，可以直接调用
+
             函数:
-            1.handleSlider为处理图片展示幻灯片的点击交互函数
-            2.buttonTest为示例点击按钮效果，可以定义页面底部按钮的动作
+            1.handleSlider用于加载slider图片浏览
+            2.buttonTest定义页面所有的按钮动作
+
+            变量:
+            1.huiIconSrc 为闪惠图表的图片地址
         */}
+        let query = this.props.location.query,
+            page = query.page*1 ||0,
+            pageSize = query.pageSize*1 || 20;
         let {sliderShow}=this.state;
+        let huiIconSrc = location.origin+'/src/css/img/youhui.png';
         let styleObj={
-            visitMore:{
+            huiIcon:{
+                width: '26px',
+                marginTop: '-7px',
+                display: 'inline-block',
+                verticalAlign: 'top'
+            },
+            visitMore:{/*定义有效拜访'收起''更多'样式*/
                 position:'absolute',
                 bottom:'1px',
                 right:'10px',
@@ -99,16 +144,7 @@ export default class Detail extends Component{
                 padding:' 6px 10% 6px 50%',
                 width:'100%',
                 boxShadow:'0 -1px 2px rgba(0,0,0,0.5)'
-
-            },
-           itemFlag:{ /*每一大项左侧的flag*/
-               position:'absolute',
-               top:'5px',
-               left:'-15px',
-               height:'15px',
-               width:'3px',
-               background:'#ee5511'
-           }
+            }
         };
         /*附近门店数据*/
         let nearByShops=[
@@ -128,6 +164,11 @@ export default class Detail extends Component{
 
         return (
             <div style={{color:'#333'}}>
+                {/*照片浏览组件(建议放在dom根节点附近)*/}
+                <Slider showThumbnail  show={sliderShow}
+                        imgList={imgList} profileKey={'profile'} urlKey={'url'} titleKey={'description'}
+                        pageNum={pageNum}/>
+                {/*主页面*/}
                 <Grid className='mg-bottom-40'>
                     <Row>
                         <Col sm={12}>
@@ -144,7 +185,9 @@ export default class Detail extends Component{
                                             <h3>美丽新世界(旗舰店)</h3>
                                             <h5 className={'ft-gray mg-left-10 mg-right-10 '}>shopID:237489</h5>
                                             <Label success >团</Label>
-                                            <Label active  className={'mg-left-10'}>惠</Label>
+                                            <img src={huiIconSrc} style={styleObj['huiIcon']}
+                                                 className={'mg-left-10'}
+                                                 width={'10px'} height={'10px'}/>
                                             <Label disabled  className={'mg-left-10'}>订</Label>
                                         </Col>
                                         <Col sm={13}>
@@ -186,10 +229,10 @@ export default class Detail extends Component{
                                     </Row>
                                     <Row>
                                         <Col sm={13} >
-                                            <Button radius egSize="xs" egStyle="white" onClick={this.buttonTest}>查看主站页面</Button>
+                                            <Button radius egSize="sm" egStyle="white" onClick={this.buttonTest}>查看主站页面</Button>
                                         </Col>
-                                        <Col sm={13} className={'ft-gray'}>
-                                            <h5 className='eg-hollow-star mg-right-10'></h5> |
+                                        <Col sm={13} className={'ft-gray mg-top-10'}>
+                                            <h5 className={'detail-hollow-star mg-right-10'}></h5> |
                                             <h5 className={'ft-gray mg-left-10'}>已有21人关注</h5>
                                         </Col>
                                     </Row>
@@ -243,8 +286,7 @@ export default class Detail extends Component{
                             <Panel>
                                 <PanelContent>
                                     <Item>
-                                        <div style={styleObj['itemFlag']}></div>
-                                        <Row><Col><h4 style={{'marginBottom':'15px'}}>合作信息</h4></Col></Row>
+                                        <Row><Col><h4 style={{'marginBottom':'15px'}} className='eg-item-flag'>合作信息</h4></Col></Row>
                                         {/*合作信息*/}
                                         <Row>
                                             <Col sm={13}>
@@ -290,8 +332,7 @@ export default class Detail extends Component{
                                     </Item>
                                     <Item >
                                         {/*联系人信息*/}
-                                        <div style={styleObj['itemFlag']}></div>
-                                        <Row><Col><h4 className='mg-bottom-15'>联系人</h4></Col></Row>
+                                        <Row><Col><h4 className='mg-bottom-15 eg-item-flag'>联系人</h4></Col></Row>
                                         <Row bottom>
                                             <Col sm={3}>
                                                 李牛牛
@@ -322,7 +363,7 @@ export default class Detail extends Component{
                                         </Row>
                                     </Item>
                                     <Item>
-                                        <Row><Col><h4 className={'ft-orange'}>拜访记录</h4></Col></Row>
+                                        <Row><Col><h4 className={'ft-orange eg-item-flag'}>拜访记录</h4></Col></Row>
                                         {/*拜访记录*/}
                                         <Grid>
                                             <Row>
@@ -337,7 +378,7 @@ export default class Detail extends Component{
                                                 </Col>
                                                 <Col sm={13}>
                                                     <h5 className={'ft-gray'}>
-                                                        2015-3-32礼拜一
+                                                        2015-3-32<span className='mg-left-5'>礼拜一</span>
                                                     </h5>
                                                 </Col>
                                             </Row>
@@ -364,9 +405,9 @@ export default class Detail extends Component{
                                             <Row style={{paddingBottom:'20px'}} bottom>
                                                 <div style={styleObj['visitMore']} onClick={this.expandView}>
                                                     收起
-                                                    <div className='eg-arrow-border-up mg-left-10'></div>
+                                                    <div className='eg-arrow-hollow-up mg-left-10'></div>
                                                 </div>
-                                                <Col>
+                                                <Col className='no-pd-left-right'>
                                                     上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是
                                                     还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。
                                                     上周五去了一趟门店，感觉还是可以的。
@@ -397,7 +438,7 @@ export default class Detail extends Component{
                                                 </Col>
                                                 <Col sm={13}>
                                                     <h5 className={'ft-gray'}>
-                                                        2015-3-32礼拜一
+                                                        2015-3-32<span className='mg-left-5'>礼拜一</span>
                                                     </h5>
                                                 </Col>
                                             </Row>
@@ -424,9 +465,9 @@ export default class Detail extends Component{
                                             <Row style={{paddingBottom:'20px'}} bottom>
                                                 <div style={styleObj['visitMore']}>
                                                     更多
-                                                    <div className='eg-arrow-border-down mg-left-10'></div>
+                                                    <div className='eg-arrow-hollow-down mg-left-10'></div>
                                                 </div>
-                                                <Col className='pd-right-0'>
+                                                <Col className='no-pd-left-right'>
                                                     上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是
                                                     还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。
                                                     上周五去了一趟门店，感觉还是可以的。
@@ -438,8 +479,7 @@ export default class Detail extends Component{
                                     </Item>
                                     <Item>
                                         {/*关联客户*/}
-                                        <div style={styleObj['itemFlag']}></div>
-                                        <Row><Col><h4 className='mg-bottom-10'>关联客户</h4></Col></Row>
+                                        <Row><Col><h4 className='mg-bottom-10 eg-item-flag'>关联客户</h4></Col></Row>
                                         <Row>
                                             <Col>上海市舞虾餐饮有限公司(直营)</Col>
                                         </Row>
@@ -449,8 +489,7 @@ export default class Detail extends Component{
                                     </Item>
                                     <Item>
                                         {/*门店历史*/}
-                                        <div style={styleObj['itemFlag']}></div>
-                                        <Row><Col><h4 className='mg-bottom-10'>门店历史</h4></Col></Row>
+                                        <Row><Col><h4 className='mg-bottom-10 eg-item-flag'>门店历史</h4></Col></Row>
                                         <Grid>
                                             <Row>
                                                 <Col sm={13}>
@@ -490,17 +529,16 @@ export default class Detail extends Component{
                                 <PanelContent>
                                     <Item>
                                         {/*归属信息*/}
-                                        <div style={styleObj['itemFlag']}></div>
                                         <Row>
                                             <Col>
-                                                <h4> 归属信息</h4>
+                                                <h4 className='eg-item-flag'> 归属信息</h4>
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col sm={4}>
                                                 <h5 className={'ft-gray'}> 责任销售</h5>
                                             </Col>
-                                            <Col sm={8} className='no-pd-left-right'>
+                                            <Col sm={8} className={'no-pd-left-right'}>
                                                 老大哥
                                                 <span className={' mg-left-10'}> 剩余12天</span>
                                             </Col>
@@ -511,7 +549,7 @@ export default class Detail extends Component{
                                                     组织
                                                 </h5>
                                             </Col>
-                                            <Col sm={8} className='no-pd-left-right'>
+                                            <Col sm={8} className={'no-pd-left-right'}>
                                                 上海大客户团购1-1组
                                             </Col>
                                         </Row>
@@ -520,7 +558,7 @@ export default class Detail extends Component{
                                                 <h5 className={'ft-gray'}>
                                                     战区</h5>
                                             </Col>
-                                            <Col sm={8} className='no-pd-left-right'>
+                                            <Col sm={8} className={'no-pd-left-right'}>
                                                 上海公海
                                             </Col>
                                         </Row>
@@ -529,7 +567,7 @@ export default class Detail extends Component{
                                                 <h5 className={'ft-gray'}>
                                                     电话</h5>
                                             </Col>
-                                            <Col sm={8} className='no-pd-left-right'>
+                                            <Col sm={8} className={'no-pd-left-right'}>
                                                 15005162976
                                             </Col>
                                         </Row>
@@ -540,15 +578,13 @@ export default class Detail extends Component{
                                 <PanelContent >
                                     <Item>
                                         {/*归属信息*/}
-                                        <div style={styleObj['itemFlag']}></div>
-                                        <Slider imgList={imgs} profile={profile} section={'闪惠商户培训资料'} pageNum={4} show={sliderShow}/>
                                         <Row>
                                             <Col>
-                                                <h4>pop</h4>
+                                                <h4 className='eg-item-flag'>pop</h4>
                                             </Col>
                                             <Col style={{width:'100%',height:'230px',position:'relative'}}>
-                                                <img src={imgs[0]} onClick={this.handleSlider.bind(this)} style={{cursor:'pointer'}}/>
-                                                <div style={{position:'absolute',bottom:'2px',right:'25px',color:'#fff'}}>共{imgs.length}张</div>
+                                                <img src={imgList[0]['url']} onClick={this.handleSlider.bind(this)} style={{cursor:'pointer'}}/>
+                                                <div style={{position:'absolute',bottom:'2px',right:'25px',color:'#fff'}}>共{imgList.length}张</div>
                                             </Col>
                                         </Row>
                                     </Item>
@@ -558,8 +594,7 @@ export default class Detail extends Component{
                                 <PanelContent >
                                     <Item>
                                         {/*附近同类门店*/}
-                                        <div style={styleObj['itemFlag']}></div>
-                                        <Row><Col><h4>附近同类门店</h4></Col></Row>
+                                        <Row><Col><h4 className='eg-item-flag'>附近同类门店</h4></Col></Row>
                                         {
                                           nearByShops.map((shop,index)=>{
                                               return (
