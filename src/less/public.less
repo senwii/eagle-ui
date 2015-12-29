@@ -1,0 +1,94 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+body {
+    font: normal @font-size-base  @font-family-base;
+    color: @gray-dark;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    background-color:@body-bg;
+}
+
+ul, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    outline: none;
+    color: @gray-dark;
+    &:hover{
+        text-decoration: @link-hover-decoration;
+    }
+}
+address {
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: normal;
+
+    small,
+    .small {
+        font-weight: normal;
+        color: #777;
+        //font-size: 65%;
+    }
+}
+
+small,
+.small {
+    font-size: floor((100% * @font-size-small / @font-size-base));
+}
+
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+/**清除浮动*/
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content:"";
+}
+.clearfix:after {
+    clear: both;
+}
+
+/**控制块级、内敛*/
+.inline-block{
+    display: inline-block !important;
+}
+.inline{
+    display: inline !important;
+}
+.block{
+    display: block !important;
+}
+.show {
+    .block;
+}
+.hidden {
+    display: none !important;
+}
+.invisible {
+    visibility: hidden;
+}
