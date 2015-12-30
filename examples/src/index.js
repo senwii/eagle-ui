@@ -21,7 +21,7 @@ import Toast from './modules/toast';
 import ToolTip from './modules/tooltip';
 import Validate from './modules/validate';
 import StarDemo from './modules/star.js';
-import SliderDemo from './modules/slider.js';
+import SliderDemo from './modules/imgSlider.js';
 //require('../less/public.less');
 import css from '../../src/_include.less';
 

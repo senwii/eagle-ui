@@ -50,7 +50,7 @@ export default class Star extends Component{
             backgroundSize:size*5+'px auto'
         }:{};
         let shadowPosition=size?{
-            backgroundPositionY:'-'+size+'px'
+            backgroundPosition:"0  -"+size+"px"
         }:{};
         return (
             <div className='eg-star-orange' style={customizeStyle}>

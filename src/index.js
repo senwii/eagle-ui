@@ -22,7 +22,7 @@ export Tab from './Tab.js';
 export Tabset from './Tabset.js';
 export Star from './Star.js'
 
-export Slider from './Slider.js';
+export ImgSlider from './ImgSlider.js';
 export Dialog from './Dialog.js';
 export Tooltip from './Tooltip.js';
 export Panel from './Panel/Panel.js';

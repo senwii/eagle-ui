@@ -6,7 +6,7 @@ import querystring from 'querystring';
 
 import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging
     ,Tab,Tabset,Dialog,Item
-    ,Table,Th,Td,Tr,Star,Button,Column,Slider} from '../../../src/index.js';
+    ,Table,Th,Td,Tr,Star,Button,Column,ImgSlider} from '../../../src/index.js';
 //测试分页功能
 let page = 1;
 function callback(page){
@@ -103,7 +103,7 @@ export default class Detail extends Component{
             样式:
             1.styleObj为示例用到的行内样式
             2.ft-gray,ft-orange,mg-bottom-10等为eagle-ui库定义的字体及布局样式,在public.less文件中，不需要自己定义
-            3.detail-hollow-star为使用者自己定义的样式，放在'/example/index.html'之中,未放入项目库，要自己手写
+            3.detail-hollow-star,shop-detail-hui-icon为使用者自己定义的样式，放在'/example/index.html'之中,未放入项目库，要自己手写
             4.eg-item-flag样式为组件库提供的样式，定义每一大项左侧的小红条，可以直接调用
 
             函数:
@@ -119,15 +119,6 @@ export default class Detail extends Component{
         let {sliderShow}=this.state;
         let huiIconSrc = location.origin+'/examples/imgs/thunder.png';
         let styleObj={
-            huiIcon:{
-                position:'absolute',
-                top: '-4px',
-                left:'50%',
-                width:'25px',
-                height:'25px',
-                marginTop: '-9px',
-                marginLeft:'-4px'
-            },
             visitMore:{/*定义有效拜访'收起''更多'样式*/
                 //position:'absolute',
                 //bottom:'1px',
@@ -174,7 +165,7 @@ export default class Detail extends Component{
             <div style={{color:'#333'}}>
                 {/*照片浏览组件(建议放在dom根节点附近)*/}
                 <Dialog type={'mask'}  show={sliderShow} cancelCallback={this.closeDialog.bind(this)}>
-                    <Slider showThumbnail show
+                    <ImgSlider showThumbnail show={sliderShow}
                             imgList={imgList} profileKey={'profile'} urlKey={'url'} titleKey={'description'}
                             pageNum={pageNum}/>
                 </Dialog>
@@ -198,8 +189,7 @@ export default class Detail extends Component{
                                             <Label active  className={'mg-left-10'}>
                                                 <span style={{position:'relative'}}>
                                                     惠
-                                                 <img src={huiIconSrc} style={styleObj['huiIcon']}
-                                                     />
+                                                 <i className='shop-detail-hui-icon'></i>
                                                 </span>
 
                                             </Label>

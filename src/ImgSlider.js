@@ -18,7 +18,7 @@ import classNames from 'classnames';
  * @show true
  * */
 @ClassNameMixin
-export default class  Slider extends Component{
+export default class ImgSlider extends Component{
     constructor(props,context) {
         super(props, context);
         this.renderDisplay=this.renderDisplay.bind(this);
@@ -101,8 +101,15 @@ export default class  Slider extends Component{
       this.setState({
           show:props.show,
           showThumbnail:props.showThumbnail,
-          thumbnailKey: props.thumbnailKey||props.urlKey
-      })
+          thumbnailKey: props.thumbnailKey||props.urlKey,
+          targetIndex:props.show?this.state.targetIndex:0,
+          thumbNailIndex:props.show?this.state.thumbNailIndex:0
+      });
+        //if(!props.show){
+        //    setTimeout(()=>{
+        //        findDOMNode(this.refs['slider-container']).style.display='none'
+        //    },100)
+        //}
     }
     renderDisplay(e){
         //点击下方缩略图的情况
@@ -166,14 +173,14 @@ export default class  Slider extends Component{
         //show?document.body.style.cssText='position:fixed':document.body.style.cssText='';
         let thumbnailContainerStyle= { display:showThumbnail?'block':'none'};
         return (
-            <div className={classNames(this.getClassNamesForArguments('mask'),
-                                        this.props.className)}
-                 style={{...customizeStyle,...containerStyle}}
-                 onClick={this.fadeOut.bind(this)}>
-                <div className={'eg-slider-container fadein'}>
+            <div onClick={this.fadeOut.bind(this)} >
+                <div ref='slider-container' className={ classNames('eg-slider-container', 'fadein',this.props.className)
+                } style={{...customizeStyle,...containerStyle}} >
                     <em onClick={this.fadeOut.bind(this)}></em>
                     <div className='eg-slider-img-container'>
-                        <b className='eg-slider-arrow-left' onClick={()=>this.lowerIndex.call(this)}></b>
+                        <div className={'eg-slider-field-common eg-slider-field-left'}  onClick={()=>this.lowerIndex.call(this)}>
+                            <b className='eg-slider-arrow-left'></b>
+                        </div>
                         <div className='eg-slider-window'  style={{width:'380px'}}>
                             <ul style={{width:length*380+'px',left:-targetIndex*380+'px'}}>
                                 {imgList.map((img)=>{
@@ -185,7 +192,9 @@ export default class  Slider extends Component{
                                 })}
                             </ul>
                         </div>
-                        <b className='eg-slider-arrow-right' onClick={()=>this.addIndex.call(this)}></b>
+                        <div className={'eg-slider-field-common eg-slider-field-right'}  onClick={()=>this.addIndex.call(this)}>
+                            <b className='eg-slider-arrow-right'></b>
+                        </div>
                         <div className='eg-slider-img-hint'>
                             <i>{imgList[targetIndex][titleKey]}</i>
                             {imgList[targetIndex][profileKey]}
@@ -193,7 +202,9 @@ export default class  Slider extends Component{
                         </div>
                     </div>
                     <div className='eg-slider-img-container-thumbnail' style={{...thumbnailContainerStyle}}>
-                        <b className='eg-slider-arrow-left' onClick={()=>{this.lowerIndex.call(this,pageNum)}}></b>
+                        <div className={'eg-slider-field-common eg-slider-field-left'} onClick={()=>{this.lowerIndex.call(this,pageNum)}}>
+                            <b className='eg-slider-arrow-left' ></b>
+                        </div>
                         <div className='eg-slider-window'  style={{width:'380px'}}>
                             <ul onClick={this.renderDisplay}
                                 style={{width:100*length/pageNum+'%',
@@ -214,7 +225,9 @@ export default class  Slider extends Component{
                                 })}
                             </ul>
                         </div>
-                        <b className='eg-slider-arrow-right' onClick={()=>{this.addIndex.call(this,pageNum)}}></b>
+                        <div className={'eg-slider-field-common eg-slider-field-right'} onClick={()=>{this.addIndex.call(this,pageNum)}}>
+                            <b className='eg-slider-arrow-right' ></b>
+                        </div>
                     </div>
                 </div>
             </div>
