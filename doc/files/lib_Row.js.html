@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -424,6 +450,10 @@ var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _utilsClassNameMixinJs = require(&#x27;./utils/ClassNameMixin.js&#x27;);
+
+var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
+
 /**
  * 行
  * @class Row
@@ -437,7 +467,7 @@ var Row = (function (_Component) {
     _inherits(Row, _Component);
 
     function Row() {
-        _classCallCheck(this, Row);
+        _classCallCheck(this, _Row);
 
         _Component.apply(this, arguments);
     }
@@ -446,17 +476,41 @@ var Row = (function (_Component) {
 
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            _extends({}, this.props, { className: _classnames2[&#x27;default&#x27;](&#x27;eg-row&#x27;, &#x27;clearfix&#x27;, this.props.className) }),
+            _extends({}, this.props, {
+                className: _classnames2[&#x27;default&#x27;](&#x27;eg-row&#x27;, &#x27;clearfix&#x27;, this.getClassNames(this.props), this.props.className) }),
             this.props.children
         );
     };
 
     _createClass(Row, null, [{
+        key: &#x27;defaultProps&#x27;,
+        value: {
+            classPrefix: &#x27;row&#x27;
+        },
+        enumerable: true
+    }, {
         key: &#x27;propTypes&#x27;,
-        value: {},
+        value: {
+            /**
+             * 样式前缀
+             * @property classPrefix
+             * @type String
+             * @default row
+             * */
+            classPrefix: _react.PropTypes.string,
+            /**
+             * 样式前缀
+             * @property bottom
+             * @type String
+             * @default undefined
+             * */
+            bottom: _react.PropTypes.bool
+        },
         enumerable: true
     }]);
 
+    var _Row = Row;
+    Row = _utilsClassNameMixinJs2[&#x27;default&#x27;](Row) || Row;
     return Row;
 })(_react.Component);
 

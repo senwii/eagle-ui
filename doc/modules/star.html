@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Td - eagle-ui</title>
+    <title>star - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -422,377 +422,50 @@
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>Td <small>Class</small></h1>
+    <h1>star <small>Module</small></h1>
 </div>
- <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>表格组件</p>
-</div>
- </div>
 
-<div class="well well-small sign-left2 container-fluid" id="classesItems">
-    <div class="row">
+<div class="clearfix well well-small sign-left1">
     
-        <div class="index-section methods col-sm-4">
-            <h3>Methods</h3>
-            
-            <ul class="index-list methods extends">
-                
-                    <li class="index-item method">
-                        <a href="#" data-tabid="#method" data-anchor="#method_render" data-tablink="render">render</a>
 
-                        
-                        
-                    </li>
-                
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/lib_Star.js.html#l4"><code>lib&#x2F;Star.js:4</code></a>
+        </div>
+    
+
+    
+</div>
+
+
+
+<div class="moduledesc well well-small sign-left3">
+    <div class="stdoc-code"><p>星级评价</p>
+</div>
+</div>
+
+
+
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        
+            <p>This module provides the following classes:</p>
+
+            <ul class="module-classes">
+            
+                <li class="module-class">
+                    <a href="../classes/星星.html">
+                        星星
+                    </a>
+                </li>
+            
             </ul>
-            
-        </div>
-    
-        <div class="index-section properties col-sm-4">
-            <h3>Properties</h3>
-            
-        </div>
-    
-        <div class="index-section events col-sm-4">
-            <h3>Events</h3>
-            
-        </div>
-    </div>
-</div>
-
-<div>
-    <ul id="itemTab" class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
-        
-            <li><a data-toggle="tab" href="#method">Methods</a></li>
-        
-        
-        
-    </ul>
-
-    <div class="tab-content">
-        <div id="class" class="tab-pane active">
-            <div class="well well-small classDetail sign-left1">
-            
-
-            
-                <div class="extends">
-                    Extends Component
-                </div>
-            
-
-            
-                <div class="foundat">
-                    Defined in: <a href="../files/lib_Table_Td.js.html#l25"><code>lib&#x2F;Table&#x2F;Td.js:25</code></a>
-                </div>
-            
-
-            
-                
-                    Module: <a href="../modules/table.html">table</a>
-                
-            
-
-            
-                <p>Available since 0.1.0</p>
-            
-        </div>
-
-        
-            
-                <div class="constructor">
-                    <h2>Constructor</h2>
-                    <div id="method_Td" class="method item">
-    <h3 class="name">Td</h3>
-    <code>
-    Td
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Table_Td.js.html#l25"><code>lib&#x2F;Table&#x2F;Td.js:25</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>Available since 0.1.0</p>
         
     </div>
 
-    <div class="description well well-small sign-left3">
-        
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                
-                <li role="presentation"  class="active"  _no='0'> <a>js</a></li>
-                
-            </ul>
-
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
- */
-import React,{Component} from &#39;react&#39;;
-import Table from &#39;../../../src/Table/Table.js&#39;;
-import Tr from &#39;../../../src/Table/Tr.js&#39;;
-import Td from &#39;../../../src/Table/Td.js&#39;;
-import Th from &#39;../../../src/Table/Th.js&#39;;
-import Column from &#39;../../../src/Table/Column.js&#39;;
-
-import Row from &#39;../../../src/Row.js&#39;;
-import Col from &#39;../../../src/Col.js&#39;;
-
-var tableData=[
-    {name: &#39;Rylan&#39;, email: &#39;Angelita_Weimann42@gmail.com&#39;,score:100},
-    {name: &#39;Amelia&#39;, email: &#39;Dexter.Trantow57@hotmail.com&#39;,score:200},
-    {name: &#39;Estevan&#39;, email: &#39;Aimee7@hotmail.com&#39;,score:106},
-    {name: &#39;Florence&#39;, email: &#39;Jarrod.Bernier13@yahoo.com&#39;,score:233},
-    {name: &#39;Tressa&#39;, email: &#39;Yadira1@hotmail.com&#39;,score:900},
-];
-
-export default class TableCls extends Component{
-    render(){
-        return (
-             &lt;div&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;Table data={tableData}&gt;
-                            &lt;Column
-                                header="Name"
-                                field=&#39;name&#39;
-                                cell={
-                                    &lt;Td data={tableData}&gt;&lt;/Td&gt;
-                                }
-                                /&gt;
-                            &lt;Column
-                                header={&lt;span style={{color:"red"}}&gt;Email&lt;/span&gt;}
-                                field=&#39;email&#39;
-                                cell={
-                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
-                                }
-                                /&gt;
-                            &lt;Column
-                                header={&lt;span style={{color:"green"}}&gt;Score&lt;/span&gt;}
-                                field=&#39;score&#39;
-                                cell={
-                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
-                                }
-                                /&gt;
-                        &lt;/Table&gt;
-                     &lt;/Col&gt;
-                 &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;Table&gt;
-                            &lt;thead&gt;
-                            &lt;Tr&gt;
-                                &lt;Th&gt;数据类型&lt;/Th&gt;
-                                &lt;Th&gt;数据项&lt;/Th&gt;
-                                &lt;Th&gt;昨日&lt;/Th&gt;
-                                &lt;Th&gt;本月&lt;/Th&gt;
-                                &lt;Th&gt;上月&lt;/Th&gt;
-                                &lt;Th&gt;本月城市排名&lt;/Th&gt;
-                            &lt;/Tr&gt;
-                            &lt;/thead&gt;
-                            &lt;tbody&gt;
-                            &lt;Tr&gt;
-                                &lt;Td rowSpan="4"&gt;过程指标&lt;/Td&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td arrow-up&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr split&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td rowSpan="4"&gt;业绩&lt;/Td&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;/tbody&gt;
-                        &lt;/Table&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-            &lt;/div&gt;
-        );
-    }
-}</code></pre>
-</div>
-            </div>
-
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
-        </div>
-    
-</div>
-
-                </div>
-            
-        </div>
-
-        
-            <div id="method" class="tab-pane">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_render" class="method item">
-    <h3 class="name">render</h3>
-    <code>
-    render
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">ReactElement</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Table_Td.js.html#l47"><code>lib&#x2F;Table&#x2F;Td.js:47</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"></div>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">ReactElement</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
+    <div class="yui3-u-1-2">
         
     </div>
 </div>
