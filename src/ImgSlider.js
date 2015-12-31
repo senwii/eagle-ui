@@ -183,10 +183,10 @@ export default class ImgSlider extends Component{
                         </div>
                         <div className='eg-slider-window'  style={{width:'380px'}}>
                             <ul style={{width:length*380+'px',left:-targetIndex*380+'px'}}>
-                                {imgList.map((img)=>{
+                                {imgList.map((img,index)=>{
                                     return (
-                                        <li style={{width:'380px'}}>
-                                            <img src={img[[urlKey]]}/>
+                                        <li style={{width:'380px'}}  key={'img-'+index}>
+                                            <img src={img[[urlKey]]} />
                                         </li>
                                     )
                                 })}
@@ -218,8 +218,8 @@ export default class ImgSlider extends Component{
                                         }
                                     }
                                     return (
-                                        <li data-index={index} style={{width:100/length-1.1+'%',...inlineStyle}}>
-                                            <img src={img[thumbnailKey]} data-index={index}/>
+                                        <li data-index={index} style={{width:100/length-1.1+'%',...inlineStyle}} key={'thumb-'+index}>
+                                            <img src={img[thumbnailKey]} data-index={index} />
                                         </li>
                                     )
                                 })}
