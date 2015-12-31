@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -731,66 +757,31 @@ var Dialog = (function (_Component) {
     };
 
     /**
-     * 渲染dialog
-     * @method dialog
-     * @return  {ReactElement}
-     * */
-
-    Dialog.prototype.dialog = function dialog() {
-        return _react2[&#x27;default&#x27;].createElement(
-            _RowJs2[&#x27;default&#x27;],
-            { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;dialog&#x27;)) },
-            _react2[&#x27;default&#x27;].createElement(
-                _ColJs2[&#x27;default&#x27;],
-                null,
-                _react2[&#x27;default&#x27;].createElement(
-                    _RowJs2[&#x27;default&#x27;],
-                    { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;title&#x27;)) },
-                    this.props.title,
-                    _react2[&#x27;default&#x27;].createElement(
-                        &#x27;div&#x27;,
-                        { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;close&#x27;)), onClick: this.closeDialog.bind(this) },
-                        &#x27;x&#x27;
-                    )
-                ),
-                _react2[&#x27;default&#x27;].createElement(
-                    _RowJs2[&#x27;default&#x27;],
-                    { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;content&#x27;)) },
-                    _react2[&#x27;default&#x27;].createElement(
-                        _ColJs2[&#x27;default&#x27;],
-                        null,
-                        this.props.children
-                    )
-                ),
-                _react2[&#x27;default&#x27;].createElement(
-                    _RowJs2[&#x27;default&#x27;],
-                    { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;button&#x27;)) },
-                    _react2[&#x27;default&#x27;].createElement(
-                        _ColJs2[&#x27;default&#x27;],
-                        { sm: 12 },
-                        _react2[&#x27;default&#x27;].createElement(
-                            _ButtonJs2[&#x27;default&#x27;],
-                            { radius: true, egSize: &#x27;xs&#x27;, style: { marginRight: &#x27;20px&#x27; }, onClick: this.submitForm.bind(this) },
-                            &#x27;确定&#x27;
-                        ),
-                        _react2[&#x27;default&#x27;].createElement(
-                            _ButtonJs2[&#x27;default&#x27;],
-                            { radius: true, white: true, egSize: &#x27;xs&#x27;, onClick: this.cancleDialog.bind(this) },
-                            &#x27;取消&#x27;
-                        )
-                    )
-                )
-            )
-        );
-    };
-
-    /**
      * 渲染mask
      * @method mask
      * @return  {ReactElement}
      * */
 
     Dialog.prototype.mask = function mask() {
+        return _react2[&#x27;default&#x27;].createElement(
+            &#x27;div&#x27;,
+            { className: this.getClassName(&#x27;body&#x27;) },
+            this.props.children,
+            _react2[&#x27;default&#x27;].createElement(
+                &#x27;div&#x27;,
+                { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;close&#x27;)), onClick: this.closeDialog.bind(this) },
+                &#x27;x&#x27;
+            )
+        );
+    };
+
+    /**
+     * 渲染dialog
+     * @method dialog
+     * @return  {ReactElement}
+     * */
+
+    Dialog.prototype.dialog = function dialog() {
         return _react2[&#x27;default&#x27;].createElement(
             _RowJs2[&#x27;default&#x27;],
             { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;dialog&#x27;)) },

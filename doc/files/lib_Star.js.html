@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Td - eagle-ui</title>
+    <title>lib/Star.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -422,379 +422,118 @@
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>Td <small>Class</small></h1>
-</div>
- <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>表格组件</p>
-</div>
- </div>
-
-<div class="well well-small sign-left2 container-fluid" id="classesItems">
-    <div class="row">
-    
-        <div class="index-section methods col-sm-4">
-            <h3>Methods</h3>
-            
-            <ul class="index-list methods extends">
-                
-                    <li class="index-item method">
-                        <a href="#" data-tabid="#method" data-anchor="#method_render" data-tablink="render">render</a>
-
-                        
-                        
-                    </li>
-                
-            </ul>
-            
-        </div>
-    
-        <div class="index-section properties col-sm-4">
-            <h3>Properties</h3>
-            
-        </div>
-    
-        <div class="index-section events col-sm-4">
-            <h3>Events</h3>
-            
-        </div>
-    </div>
+    <h1>lib/Star.js <small>File</small></h1>
 </div>
 
-<div>
-    <ul id="itemTab" class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
-        
-            <li><a data-toggle="tab" href="#method">Methods</a></li>
-        
-        
-        
-    </ul>
-
-    <div class="tab-content">
-        <div id="class" class="tab-pane active">
-            <div class="well well-small classDetail sign-left1">
-            
-
-            
-                <div class="extends">
-                    Extends Component
-                </div>
-            
-
-            
-                <div class="foundat">
-                    Defined in: <a href="../files/lib_Table_Td.js.html#l25"><code>lib&#x2F;Table&#x2F;Td.js:25</code></a>
-                </div>
-            
-
-            
-                
-                    Module: <a href="../modules/table.html">table</a>
-                
-            
-
-            
-                <p>Available since 0.1.0</p>
-            
-        </div>
-
-        
-            
-                <div class="constructor">
-                    <h2>Constructor</h2>
-                    <div id="method_Td" class="method item">
-    <h3 class="name">Td</h3>
-    <code>
-    Td
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Table_Td.js.html#l25"><code>lib&#x2F;Table&#x2F;Td.js:25</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>Available since 0.1.0</p>
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                
-                <li role="presentation"  class="active"  _no='0'> <a>js</a></li>
-                
-            </ul>
-
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+/**
+ * Created by slashhuang on 15/12/25.
  */
-import React,{Component} from &#39;react&#39;;
-import Table from &#39;../../../src/Table/Table.js&#39;;
-import Tr from &#39;../../../src/Table/Tr.js&#39;;
-import Td from &#39;../../../src/Table/Td.js&#39;;
-import Th from &#39;../../../src/Table/Th.js&#39;;
-import Column from &#39;../../../src/Table/Column.js&#39;;
+/**
+ * 星级评价
+ * @class 星星
+ * @module star
+ * @extends Component
+ * @constructor
+ * @since 0.1.0
+ * @demo Star.js {js}
+ * @show true
+ * */
+&#x27;use strict&#x27;;
 
-import Row from &#39;../../../src/Row.js&#39;;
-import Col from &#39;../../../src/Col.js&#39;;
+exports.__esModule = true;
 
-var tableData=[
-    {name: &#39;Rylan&#39;, email: &#39;Angelita_Weimann42@gmail.com&#39;,score:100},
-    {name: &#39;Amelia&#39;, email: &#39;Dexter.Trantow57@hotmail.com&#39;,score:200},
-    {name: &#39;Estevan&#39;, email: &#39;Aimee7@hotmail.com&#39;,score:106},
-    {name: &#39;Florence&#39;, email: &#39;Jarrod.Bernier13@yahoo.com&#39;,score:233},
-    {name: &#39;Tressa&#39;, email: &#39;Yadira1@hotmail.com&#39;,score:900},
-];
+var _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-export default class TableCls extends Component{
-    render(){
-        return (
-             &lt;div&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;Table data={tableData}&gt;
-                            &lt;Column
-                                header="Name"
-                                field=&#39;name&#39;
-                                cell={
-                                    &lt;Td data={tableData}&gt;&lt;/Td&gt;
-                                }
-                                /&gt;
-                            &lt;Column
-                                header={&lt;span style={{color:"red"}}&gt;Email&lt;/span&gt;}
-                                field=&#39;email&#39;
-                                cell={
-                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
-                                }
-                                /&gt;
-                            &lt;Column
-                                header={&lt;span style={{color:"green"}}&gt;Score&lt;/span&gt;}
-                                field=&#39;score&#39;
-                                cell={
-                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
-                                }
-                                /&gt;
-                        &lt;/Table&gt;
-                     &lt;/Col&gt;
-                 &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;Table&gt;
-                            &lt;thead&gt;
-                            &lt;Tr&gt;
-                                &lt;Th&gt;数据类型&lt;/Th&gt;
-                                &lt;Th&gt;数据项&lt;/Th&gt;
-                                &lt;Th&gt;昨日&lt;/Th&gt;
-                                &lt;Th&gt;本月&lt;/Th&gt;
-                                &lt;Th&gt;上月&lt;/Th&gt;
-                                &lt;Th&gt;本月城市排名&lt;/Th&gt;
-                            &lt;/Tr&gt;
-                            &lt;/thead&gt;
-                            &lt;tbody&gt;
-                            &lt;Tr&gt;
-                                &lt;Td rowSpan="4"&gt;过程指标&lt;/Td&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td arrow-up&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr split&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td rowSpan="4"&gt;业绩&lt;/Td&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;Tr&gt;
-                                &lt;Td&gt;消费交易额&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;1876500&lt;/Td&gt;
-                                &lt;Td&gt;200&lt;/Td&gt;
-                            &lt;/Tr&gt;
-                            &lt;/tbody&gt;
-                        &lt;/Table&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-            &lt;/div&gt;
-        );
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (&#x27;value&#x27; in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(&#x27;Cannot call a class as a function&#x27;); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== &#x27;function&#x27; &amp;&amp; superClass !== null) { throw new TypeError(&#x27;Super expression must either be null or a function, not &#x27; + typeof superClass); } subClass.prototype = Object.create(superClass &amp;&amp; superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require(&#x27;react&#x27;);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = require(&#x27;classnames&#x27;);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utilsClassNameMixinJs = require(&#x27;./utils/ClassNameMixin.js&#x27;);
+
+var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
+
+var Star = (function (_Component) {
+    _inherits(Star, _Component);
+
+    _createClass(Star, null, [{
+        key: &#x27;propTypes&#x27;,
+        value: {
+            /**
+             * 星级评价分数
+             * @property Rate
+             * @type number
+             * @default 默认未0分
+             * */
+            Rate: _react.PropTypes.number,
+            /**
+             * 星星大小
+             * @property size
+             * @type String||number
+             * @default undefined  可以取值10-20 默认单位为&#x27;px&#x27;
+             * */
+            size: _react.PropTypes.number || _react.PropTypes.string,
+            classPrefix: _react.PropTypes.string
+        },
+        enumerable: true
+    }, {
+        key: &#x27;defaultProps&#x27;,
+        value: {
+            classPrefix: &#x27;star&#x27;,
+            Rate: 0
+        },
+        enumerable: true
+    }]);
+
+    function Star() {
+        _classCallCheck(this, _Star);
+
+        _Component.call(this);
     }
-}</code></pre>
-</div>
-            </div>
 
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
-        </div>
-    
-</div>
+    Star.prototype.render = function render() {
+        var _props = this.props;
+        var Rate = _props.Rate;
+        var size = _props.size;
 
-                </div>
-            
-        </div>
+        //兼容用户输入px为单位的数据大小
+        size = /px/i.test(size) ? size.replace(&#x27;px&#x27;, &#x27;&#x27;) : size;
+        var customizeStyle = size ? {
+            width: size * 5 + &#x27;px&#x27;,
+            height: size - 1 + &#x27;px&#x27;,
+            backgroundSize: size * 5 + &#x27;px auto&#x27;
+        } : {};
+        var shadowPosition = size ? {
+            backgroundPosition: &quot;0  -&quot; + size + &quot;px&quot;
+        } : {};
+        return _react2[&#x27;default&#x27;].createElement(
+            &#x27;div&#x27;,
+            { className: &#x27;eg-star-orange&#x27;, style: customizeStyle },
+            _react2[&#x27;default&#x27;].createElement(&#x27;div&#x27;, { className: &#x27;eg-star-grey&#x27;, style: _extends({ width: Rate + &#x27;%&#x27; }, shadowPosition) })
+        );
+    };
 
-        
-            <div id="method" class="tab-pane">
-                <h2 class="off-left">Methods</h2>
+    var _Star = Star;
+    Star = _utilsClassNameMixinJs2[&#x27;default&#x27;](Star) || Star;
+    return Star;
+})(_react.Component);
 
-                
-                    <div id="method_render" class="method item">
-    <h3 class="name">render</h3>
-    <code>
-    render
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">ReactElement</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Table_Td.js.html#l47"><code>lib&#x2F;Table&#x2F;Td.js:47</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"></div>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">ReactElement</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-    </div>
+exports[&#x27;default&#x27;] = Star;
+module.exports = exports[&#x27;default&#x27;];
+    </pre>
 </div>
 
                 </div>

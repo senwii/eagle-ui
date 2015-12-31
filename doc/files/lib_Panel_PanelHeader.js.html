@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -453,9 +479,10 @@ var PanelHeader = (function (_Component) {
      * */
 
     PanelHeader.prototype.render = function render() {
+        var renderStyle = this.props.style ? this.props.style : {};
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;)) },
+            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;)), style: renderStyle },
             this.props.children
         );
     };

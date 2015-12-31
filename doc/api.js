@@ -22,6 +22,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Row",
         "Search",
         "Select",
+        "Slider",
         "Tab",
         "Table",
         "Tabset",
@@ -33,12 +34,14 @@ YUI.add("yuidoc-meta", function(Y) {
         "Tr",
         "ValidatorPanel",
         "crumb",
-        "dialog"
+        "dialog",
+        "星星"
     ],
     "modules": [
         "form",
         "grid",
         "panel",
+        "star",
         "table",
         "ui"
     ],
@@ -107,6 +110,16 @@ YUI.add("yuidoc-meta", function(Y) {
             ]
         },
         {
+            "displayName": "star",
+            "name": "star",
+            "description": "星级评价",
+            "classes": [
+                {
+                    "name": "星星"
+                }
+            ]
+        },
+        {
             "displayName": "table",
             "name": "table",
             "description": "表格组件",
@@ -132,6 +145,9 @@ YUI.add("yuidoc-meta", function(Y) {
             "classes": [
                 {
                     "name": "crumb"
+                },
+                {
+                    "name": "Slider"
                 },
                 {
                     "name": "Item"
