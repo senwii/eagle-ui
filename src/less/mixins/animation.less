@@ -16,8 +16,8 @@
     -o-animation-direction: @direction;
 }
 .animation-duration(@duration) {
-    -webkit-animation-duration: @duration;
-    -o-animation-duration: @duration;
+    -webkit-animation-duration:@duration;
+    animation-duration:@duration;
 }
 .animation-fill-mode(@mode) {
     -webkit-animation-fill-mode: @mode;
@@ -94,4 +94,69 @@
 }
 .transition-timing-function(@function:ease) {
     transition-timing-function: @function;
+}
+
+//动画运行时间和状态设置
+.animated(@time,@mode:both) {
+    .animation-duration(@time);
+    .animation-fill-mode(@mode);
+}
+
+//淡入、淡出
+
+@fadeIn-args:{
+    0% {
+        opacity:0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100% {
+        opacity:1;
+    }
+};
+@fadeOut-args:{
+    0% {
+        opacity:1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity:0;
+    }
+};
+.fadein(@type:fadeIn){
+    .keyframes(@type,@fadeIn-args);
+    .fadein{
+        .animation-name(@type);
+    }
+
+}
+.fadeout(@type:fadeOut){
+    .keyframes(@type,@fadeOut-args);
+    .fadeout{
+        .animation-name(@type);
+    }
+}
+//晃动
+/**晃动*/
+@shake-args:{
+    0%,100% {
+        .transform(translate3d(0,0,0));
+    }
+    10%,30%,50%,70%,90% {
+        .transform(translate3d(-10px,0,0));
+    }
+    20%,40%,60%,80% {
+        .transform(translate3d(10px,0,0) );
+    }
+};
+.shake(@name:shake){
+    .keyframes(shake,@shake-args);
+    .shake{
+        .animation-name(@name);
+    }
+
 }

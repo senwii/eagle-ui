@@ -1,6 +1,7 @@
-//import RowLess from './row.less';
-import React, { PropTypes, Component } from 'react';
+import React,{ PropTypes } from 'react';
 import classnames from 'classnames';
+
+import Component from './utils/Component';
 
 /**
  * 行
@@ -16,11 +17,15 @@ export default class Row extends Component{
 
     };
 
+    static defaultProps = {
+        classPrefix:'row'
+    };
+
     render(){
 
         return (
             <div {...this.props} className={classnames(
-                'eg-row',
+                this.getProperty(),
                 'clearfix',
                 this.props.className
             )} >

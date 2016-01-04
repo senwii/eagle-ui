@@ -1,7 +1,9 @@
 .eg-grid{
-    .container-fixed();
+    &.eg-grid-center{
+        .container-fixed();
+    }
 
-    @media (min-width: @screen-sm-min) {
+    /*@media (min-width: @screen-sm-min) {
         width: @container-sm;
     }
     @media (min-width: @screen-md-min) {
@@ -9,7 +11,7 @@
     }
     @media (min-width: @screen-lg-min) {
         width: @container-lg;
-    }
+    }*/
 }
 
 
@@ -74,9 +76,9 @@
     .make-grid(lg);
 }
 
-[class*='eg-sm-']:last-child,[class*='eg-md-']:last-child,[class*='eg-xs-']:last-child,[class*='eg-lg-']:last-child{
+[class*='eg-col-sm-']:last-child,[class*='eg-col-md-']:last-child,[class*='eg-col-xs-']:last-child,[class*='eg-col-lg-']:last-child{
     float: right;
 }
-[class*='eg-sm-'].eg-end,[class*='eg-md-'].eg-end,[class*='eg-xs-'].eg-end,[class*='eg-lg-'].eg-end{
+[class*='eg-col-sm-'].eg-end,[class*='eg-col-md-'].eg-end,[class*='eg-col-xs-'].eg-end,[class*='eg-col-lg-'].eg-end{
     float: left;
 }
