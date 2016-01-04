@@ -605,15 +605,16 @@ export default class Detail extends Component{
                                         {/*附近同类门店*/}
                                         <Row><Col><h4 className='eg-item-flag'>附近同类门店</h4></Col></Row>
                                         {
-                                          nearByShops.map((shop)=>{
+                                          nearByShops.map((shop,index)=>{
                                               return (
-                                                  <Grid className={'pd-top-bottom-10'}>
+                                                  <Grid className={'pd-top-bottom-10'} key={'shop-'+index}>
                                                       <Row>
                                                           <Col sm={12} >
                                                              {shop['name']}
                                                               {
-                                                                  shop['labels'].map((label)=>{
-                                                                    return  <Label success className={'mg-left-10 ft-12'}>{label}</Label>
+                                                                  shop['labels'].map((label,labelIndex)=>{
+                                                                    return  <Label success className={'mg-left-10 ft-12'} key={'label-'+index+'-'+labelIndex}>
+                                                                        {label}</Label>
                                                                   })
                                                               }
                                                           </Col>

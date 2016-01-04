@@ -103,7 +103,8 @@ export default class ImgSlider extends Component{
           showThumbnail:props.showThumbnail,
           thumbnailKey: props.thumbnailKey||props.urlKey,
           targetIndex:props.show?this.state.targetIndex:0,
-          thumbNailIndex:props.show?this.state.thumbNailIndex:0
+          thumbNailIndex:props.show?this.state.thumbNailIndex:0,
+          imgList:props.imgList||this.state.imgList
       });
         //if(!props.show){
         //    setTimeout(()=>{

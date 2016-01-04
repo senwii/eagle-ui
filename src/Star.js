@@ -30,7 +30,10 @@ export default class Star extends Component{
          * @type String||number
          * @default undefined  可以取值10-20 默认单位为'px'
          * */
-        size:PropTypes.number||PropTypes.string,
+        size: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+        ]),
         classPrefix:PropTypes.string
     };
     static defaultProps = {
