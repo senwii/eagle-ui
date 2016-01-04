@@ -26,6 +26,12 @@ module.exports ={
             commonjs2: 'react',
             commonjs: 'react',
             amd: 'react'
+        },
+        'react/lib/ReactDOM': {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
         }
     }],
     module:{
@@ -38,11 +44,6 @@ module.exports ={
             {
                 test: /\.less$/,
                 loader: "style-loader!css-loader!less-loader"
-            },
-            {
-                test: /\.png$/,
-                loader: "url-loader",
-                query: { mimetype: "image/png" }
             }
         ]
     },

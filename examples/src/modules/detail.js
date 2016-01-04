@@ -81,10 +81,11 @@ export default class Detail extends Component{
             sliderShow:false
         }
     }
+    getDialog(d){
+        this.dialog = d;
+    }
     handleSlider(){
-        this.setState({
-            sliderShow:true
-        })
+        this.dialog.open();
     }
    buttonTest(){
        alert('hello fe');
@@ -164,7 +165,7 @@ export default class Detail extends Component{
         return (
             <div style={{color:'#333'}}>
                 {/*照片浏览组件(建议放在dom根节点附近)*/}
-                <Dialog type={'mask'}  show={sliderShow} cancelCallback={this.closeDialog.bind(this)}>
+                <Dialog type={'mask'} ref={::this.getDialog}>
                     <ImgSlider showThumbnail show={sliderShow}
                             imgList={imgList} profileKey={'profile'} urlKey={'url'} titleKey={'description'}
                             pageNum={pageNum}/>

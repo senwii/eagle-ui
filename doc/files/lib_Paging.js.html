@@ -640,6 +640,10 @@ var Paging = (function (_Component) {
         return this.goto(index);
     };
 
+    Paging.prototype.getKey = function getKey() {
+        return new Date().getTime() + (Math.random() * 1e10).toFixed(0);
+    };
+
     /**
      * 生成页码
      * @method generate
@@ -691,7 +695,7 @@ var Paging = (function (_Component) {
 
             htmlList.push(_react2[&#x27;default&#x27;].createElement(
                 &#x27;a&#x27;,
-                { href: &#x27;javascript:void(0);&#x27;, onClick: this.gotoPage.bind(this, i), className: _classnames3[&#x27;default&#x27;]((_classnames = {}, _classnames[this.getClassName(activeClass)] = i == currentPage, _classnames)) },
+                { href: &#x27;javascript:void(0);&#x27;, key: this.getKey(), onClick: this.gotoPage.bind(this, i), className: _classnames3[&#x27;default&#x27;]((_classnames = {}, _classnames[this.getClassName(activeClass)] = i == currentPage, _classnames)) },
                 i
             ));
         }
@@ -702,12 +706,12 @@ var Paging = (function (_Component) {
 
             htmlList.push(_react2[&#x27;default&#x27;].createElement(
                 &#x27;a&#x27;,
-                { href: &#x27;javascript:void(0);&#x27; },
+                { href: &#x27;javascript:void(0);&#x27;, key: this.getKey() },
                 &#x27;...&#x27;
             ));
             htmlList.push(_react2[&#x27;default&#x27;].createElement(
                 &#x27;a&#x27;,
-                { href: &#x27;javascript:void(0);&#x27;, onClick: (_context2 = this.gotoPage).bind.call(_context2, this, this.pages) },
+                { href: &#x27;javascript:void(0);&#x27;, key: this.getKey(), onClick: (_context2 = this.gotoPage).bind.call(_context2, this, this.pages) },
                 this.pages
             ));
         }
@@ -715,7 +719,7 @@ var Paging = (function (_Component) {
         if (this.pages &gt; 1 &amp;&amp; currentPage != this.pages) {
             htmlList.push(_react2[&#x27;default&#x27;].createElement(
                 &#x27;a&#x27;,
-                { href: &#x27;javascript:void(0);&#x27;, onClick: this.next.bind(this) },
+                { href: &#x27;javascript:void(0);&#x27;, key: this.getKey(), onClick: this.next.bind(this) },
                 &#x27;下一页&#x27;
             ));
         }
@@ -740,7 +744,7 @@ var Paging = (function (_Component) {
         for (var i = 1; i &lt; 11; i++) {
             opts.push(_react2[&#x27;default&#x27;].createElement(
                 &#x27;option&#x27;,
-                { value: num * i },
+                { value: num * i, key: this.getKey() },
                 num * i
             ));
         }

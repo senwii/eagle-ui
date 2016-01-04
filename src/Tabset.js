@@ -5,6 +5,7 @@ import React,{Component,PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';
 import Tab from './Tab.js';
+import ReactDom from 'react/lib/ReactDOM';
 /**
  * tab组件
  * @class Tabset
@@ -60,7 +61,7 @@ export default class Tabset extends Component{
         }
     }
     tabItemListMouseLeaveHandler(){
-        let activeTab=React.findDOMNode(this.refs['tabItem'+this.state.active]);
+        let activeTab=ReactDom.findDOMNode(this.refs['tabItem'+this.state.active]);
         this.timeoutObj=setTimeout(function(){
             this.tabItemMouseEnterHandler(activeTab.offsetLeft,activeTab.offsetWidth);
         }.bind(this),400);

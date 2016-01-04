@@ -20,7 +20,7 @@ export default class Col extends Component{
          * @property egSize
          * @type Integer
          * */
-        sm:PropTypes.number.isRequired,
+        sm:PropTypes.number,
         /**
          * 是否是最后一列
          * @property end

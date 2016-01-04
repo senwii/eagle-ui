@@ -8,6 +8,7 @@ import Button from './Button.js';
 import Row from './Row.js';
 import Col from './Col.js';
 import Grid from './Grid.js';
+import ReactDom from 'react/lib/ReactDOM';
 /**
  * 提示组件
  * 类型：分为success,error,loading 三种。默认success
@@ -134,7 +135,7 @@ class Toast extends Component {
     displayNone(){
         let _this =this;
         clearTimeout(this.timer);
-        this.timer = setTimeout(function(){this.removeClass( React.findDOMNode(_this.refs.container),'fadeout')}.bind(this),400);
+        this.timer = setTimeout(function(){this.removeClass( ReactDom.findDOMNode(_this.refs.container),'fadeout')}.bind(this),400);
     }
 
     /**

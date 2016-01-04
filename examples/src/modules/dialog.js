@@ -22,6 +22,11 @@ let Demo= class Demo extends Component{
             title:'这是个提示'
         }
     }
+
+    getScope(dialog){
+        this.dialog = dialog;
+    }
+
     render(){
         return (
          <Grid>
@@ -31,7 +36,7 @@ let Demo= class Demo extends Component{
             <Col sm={3}><Button block radius egSize="sm" onClick={::this.showConfirm}>confirm</Button></Col>
             <Col sm={3}><Button block radius egSize="sm" onClick={::this.showMsak}>mask</Button></Col>
         </Row>
-            <Dialog type={this.state.type} show={this.state.show} title={this.state.title}>
+            <Dialog type={this.state.type} show={this.state.show} title={this.state.title} ref={::this.getScope}>
             ahflaskdjflajsflajsdlf;jkasdfk
                 adfkjasd;fkjas;dlf
                 asdfkn;askdfnas
@@ -40,28 +45,16 @@ let Demo= class Demo extends Component{
         );
     }
     showDialog(){
-        this.setState({
-            show: true,
-            type: 'dialog'
-        })
+        this.dialog.open('dialog');
     }
     showAlert(){
-        this.setState({
-            show: true,
-            type: 'alert'
-        })
+        this.dialog.open('alert');
     }
     showConfirm(){
-        this.setState({
-            show: true,
-            type: 'confirm'
-        })
+        this.dialog.open('confirm');
     }
     showMsak(){
-        this.setState({
-            show: true,
-            type: 'mask'
-        })
+        this.dialog.open('mask');
     }
 };
 

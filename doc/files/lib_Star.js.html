@@ -485,7 +485,7 @@ var Star = (function (_Component) {
              * @type String||number
              * @default undefined  可以取值10-20 默认单位为&#x27;px&#x27;
              * */
-            size: _react.PropTypes.number || _react.PropTypes.string,
+            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
             classPrefix: _react.PropTypes.string
         },
         enumerable: true

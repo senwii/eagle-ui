@@ -1,4 +1,5 @@
 import React,{ PropTypes, Component } from 'react';
+import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import ClassNameMixin from './utils/ClassNameMixin.js';
 
@@ -78,7 +79,7 @@ export default class CalendarPanel extends Component{
 
     inputFocusHandler(e){
 
-        let container = React.findDOMNode(this),
+        let container = ReactDom.findDOMNode(this),
             _this = this,
             calendar = container.querySelector(`.${this.getClassName('container')}`),
             input = e.target;

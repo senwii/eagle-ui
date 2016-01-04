@@ -9,7 +9,9 @@ import Grid from '../../../src/Grid.js';
 import RadioGroup from '../../../src/RadioGroup.js';
 import CheckboxGroup from '../../../src/CheckboxGroup.js';
 import CalendarPanel from '../../../src/CalendarPanel.js';
+import FormGroup from '../../../src/FormGroup.js';
 import querystring from 'querystring';
+import Select from '../../../src/Select.js';
 
 
 let Demo= class Demo extends Component{
@@ -30,6 +32,9 @@ let Demo= class Demo extends Component{
         this.setState({
             show:false
         });
+    }
+    getValueCallback(val){
+        alert(val);
     }
 
     render(){
@@ -55,7 +60,7 @@ let Demo= class Demo extends Component{
                             </RadioGroup>
                         </Col>
                         <Col sm={6}>
-                            <RadioGroup defaultChecked="鸡蛋" name="radio-foot">
+                            <RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={this.getValueCallback}>
                                 <Input  type="radio"  label="大白菜" value="大白菜" />
                                 <Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  />
                                 <Input  type="radio"  label="猪肉" value="猪肉" />
@@ -65,7 +70,67 @@ let Demo= class Demo extends Component{
                         </Col>
                     </Col>
                 </Row>
+                <Row>
+                    <Col><h4>表单</h4></Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <FormGroup>
+                            <Row>
+                                <Col sm={2}>姓名</Col>
+                                <Col sm={10}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                            </Row>
+                            <Row>
+                                <Col sm={2}>姓名</Col>
+                                <Col sm={10}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                            </Row>
+                            <Row>
+                                <Col sm={2}>性别</Col>
+                                <Col sm={10}>
+                                    <RadioGroup defaultChecked="男" name="radio-sex">
+                                        <Input  type="radio"  label="男" value="男" />
+                                        <Input  type="radio"  label="女" value="女"  />
+                                    </RadioGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col sm={2}>体育爱好</Col>
+                                <Col sm={10}>
+                                    <CheckboxGroup>
+                                        <Input  type="checkbox" label="足球" checked   />
+                                        <Input  type="checkbox" label="篮球"    />
+                                        <Input  type="checkbox" label="羽毛球" checked   />
+                                        <Input  type="checkbox" label="乒乓球"    />
+                                    </CheckboxGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col sm={2}>姓名</Col>
+                                <Col sm={13}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                                <FormGroup>
+                                    <Col sm={13}>出生日期</Col>
+                                    <Col sm={13} end><Input name="test" id="test" placeholder="请输入出生日期"   /></Col>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Col sm={13}>省份证</Col>
+                                    <Col sm={13} end><Input name="test" id="test" placeholder="请输入省份证"   /></Col>
+                                </FormGroup>
+                            </Row>
+                            <Row>
+                                <Col sm={2}>所在城市</Col>
+                                <Col sm={10}>
+                                    <Select keys={this.props.keys} callback={function(val,key){console.log(val+':'+key)}}  >
+                                        <item value='bei'>北京</item>
+                                        <item value='shang'>上海</item>
+                                        <item value='nan'>南京</item>
+                                    </Select>
+                                </Col>
+                            </Row>
+                        </FormGroup>
+                    </Col>
+                </Row>
             </Grid>
+
         );
     }
 };

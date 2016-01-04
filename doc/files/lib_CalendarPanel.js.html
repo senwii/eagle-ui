@@ -445,6 +445,10 @@ var _react = require(&#x27;react&#x27;);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
+
+var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -541,7 +545,7 @@ var CalendarPanel = (function (_Component) {
 
     CalendarPanel.prototype.inputFocusHandler = function inputFocusHandler(e) {
 
-        var container = _react2[&#x27;default&#x27;].findDOMNode(this),
+        var container = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this),
             _this = this,
             calendar = container.querySelector(&#x27;.&#x27; + this.getClassName(&#x27;container&#x27;)),
             input = e.target;

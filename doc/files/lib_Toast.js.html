@@ -470,6 +470,10 @@ var _GridJs = require(&#x27;./Grid.js&#x27;);
 
 var _GridJs2 = _interopRequireDefault(_GridJs);
 
+var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
+
+var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 /**
  * 提示组件
  * 类型：分为success,error,loading 三种。默认success
@@ -610,7 +614,7 @@ var Toast = (function (_Component) {
         var _this = this;
         clearTimeout(this.timer);
         this.timer = setTimeout((function () {
-            this.removeClass(_react2[&#x27;default&#x27;].findDOMNode(_this.refs.container), &#x27;fadeout&#x27;);
+            this.removeClass(_reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(_this.refs.container), &#x27;fadeout&#x27;);
         }).bind(this), 400);
     };
 

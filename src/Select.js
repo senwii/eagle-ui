@@ -3,6 +3,7 @@
  */
 import React, {Component, PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
+import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import Input from './Input.js';
 import Row from './Row.js';
@@ -96,8 +97,8 @@ class Select extends Component {
      * */
     componentDidMount() {
         let _this = this;
-        let selectContair = React.findDOMNode(this.refs.selectContair);
-        let selectUl = React.findDOMNode(this.refs.selectUl);
+        let selectContair = ReactDom.findDOMNode(this.refs.selectContair);
+        let selectUl = ReactDom.findDOMNode(this.refs.selectUl);
         document.addEventListener('click', function (e) {
             if (_this.isParent(e.target, selectContair)) {
                 //console.dir('不要动');
@@ -114,7 +115,7 @@ class Select extends Component {
         }
     }
     componentDidUpdate(){
-        let selectUl = React.findDOMNode(this.refs.selectUl);
+        let selectUl = ReactDom.findDOMNode(this.refs.selectUl);
         //this.heightTag = selectUl.offsetHeight;
         let length = selectUl.children.length;
         if(this.state.show){
@@ -155,7 +156,7 @@ class Select extends Component {
             this.setState({
                 show: true
             })
-            React.findDOMNode(this.refs.selectUl).style.height = this.heightTag+'px';
+            ReactDom.findDOMNode(this.refs.selectUl).style.height = this.heightTag+'px';
         }
     }
     /**
@@ -168,9 +169,9 @@ class Select extends Component {
             show: !this.state.show
         })
         if(this.state.show){
-            React.findDOMNode(this.refs.selectUl).style.height = '0';
+            ReactDom.findDOMNode(this.refs.selectUl).style.height = '0';
         }else{
-            React.findDOMNode(this.refs.selectUl).style.height = this.heightTag+'px';
+            ReactDom.findDOMNode(this.refs.selectUl).style.height = this.heightTag+'px';
         }
     }
     /**
@@ -267,7 +268,7 @@ class Select extends Component {
      * @return null
      * */
     chooseItem(event) {
-        let ulChildren = React.findDOMNode(this.refs.selectUl).children;
+        let ulChildren = ReactDom.findDOMNode(this.refs.selectUl).children;
         this.removeAllActive(ulChildren);
         event.target.classList.add('active');
         this.hideUl();
@@ -308,10 +309,10 @@ class Select extends Component {
     * @return null
     * */
     keyIn(event){
-        let selectUl = React.findDOMNode(this.refs.selectUl);
-        let ulChildren = React.findDOMNode(this.refs.selectUl).children;
+        let selectUl = ReactDom.findDOMNode(this.refs.selectUl);
+        let ulChildren = ReactDom.findDOMNode(this.refs.selectUl).children;
         let ulArrey = Array.prototype.slice.call(ulChildren);
-        let inputObj = React.findDOMNode(this.refs.select).children[0];
+        let inputObj = ReactDom.findDOMNode(this.refs.select).children[0];
         let i = -1;
         let obj = ulChildren[0];
         if(event.keyCode == 40 || event.keyCode == 38){
@@ -358,7 +359,7 @@ class Select extends Component {
      * */
     addActive(event){
         let obj = event.target;
-        let ulChildren = React.findDOMNode(this.refs.selectUl).children;
+        let ulChildren = ReactDom.findDOMNode(this.refs.selectUl).children;
         this.removeAllActive(ulChildren,false);
         obj.classList.add('active');
     }

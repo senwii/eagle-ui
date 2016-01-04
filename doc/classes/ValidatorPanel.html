@@ -585,7 +585,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_ValidatorPanel.js.html#l27"><code>lib&#x2F;ValidatorPanel.js:27</code></a>
+                    Defined in: <a href="../files/lib_ValidatorPanel.js.html#l31"><code>lib&#x2F;ValidatorPanel.js:31</code></a>
                 </div>
             
 
@@ -638,7 +638,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l27"><code>lib&#x2F;ValidatorPanel.js:27</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l31"><code>lib&#x2F;ValidatorPanel.js:31</code></a>
         
         </p>
 
@@ -751,12 +751,16 @@ let Demo = class Demo extends Component{
         console.dir(value);
     }
 
+    getDialog(d){
+        this.dialog = d;
+    }
+
     change(value){
        this.setState({
            showTab:value,
-           update:&#39;uid&#39;+(+new Date()),
-           show:false
+           update:&#39;uid&#39;+(+new Date())
        });
+
     }
 
     submit(vals){
@@ -764,9 +768,7 @@ let Demo = class Demo extends Component{
     }
 
     showMask(){
-        this.setState({
-            show:true
-        });
+        this.dialog.open();
     }
 
     checktab(){
@@ -870,7 +872,7 @@ let Demo = class Demo extends Component{
                             &lt;/Tab&gt;
                         &lt;/Tabset&gt;
                     &lt;/Grid&gt;
-                    &lt;Dialog type={&#39;mask&#39;} show={this.state.show}&gt;
+                    &lt;Dialog type={&#39;dialog&#39;} ref={::this.getDialog}&gt;
                         &lt;Grid style={{width:&#39;300px&#39;}}&gt;
                             &lt;ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}&gt;
                                 &lt;Row&gt;
@@ -956,7 +958,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l83"><code>lib&#x2F;ValidatorPanel.js:83</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l87"><code>lib&#x2F;ValidatorPanel.js:87</code></a>
         
         </p>
 
@@ -1004,7 +1006,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l176"><code>lib&#x2F;ValidatorPanel.js:176</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l180"><code>lib&#x2F;ValidatorPanel.js:180</code></a>
         
         </p>
 
@@ -1052,7 +1054,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l72"><code>lib&#x2F;ValidatorPanel.js:72</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l76"><code>lib&#x2F;ValidatorPanel.js:76</code></a>
         
         </p>
 
@@ -1097,7 +1099,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l97"><code>lib&#x2F;ValidatorPanel.js:97</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l101"><code>lib&#x2F;ValidatorPanel.js:101</code></a>
         
         </p>
 
@@ -1158,7 +1160,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l170"><code>lib&#x2F;ValidatorPanel.js:170</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l174"><code>lib&#x2F;ValidatorPanel.js:174</code></a>
         
         </p>
 
@@ -1203,7 +1205,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l163"><code>lib&#x2F;ValidatorPanel.js:163</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l167"><code>lib&#x2F;ValidatorPanel.js:167</code></a>
         
         </p>
 
@@ -1251,7 +1253,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l134"><code>lib&#x2F;ValidatorPanel.js:134</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l138"><code>lib&#x2F;ValidatorPanel.js:138</code></a>
         
         </p>
 
@@ -1296,7 +1298,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l157"><code>lib&#x2F;ValidatorPanel.js:157</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l161"><code>lib&#x2F;ValidatorPanel.js:161</code></a>
         
         </p>
 
@@ -1341,7 +1343,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l150"><code>lib&#x2F;ValidatorPanel.js:150</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l154"><code>lib&#x2F;ValidatorPanel.js:154</code></a>
         
         </p>
 
@@ -1389,7 +1391,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l90"><code>lib&#x2F;ValidatorPanel.js:90</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l94"><code>lib&#x2F;ValidatorPanel.js:94</code></a>
         
         </p>
 
@@ -1437,7 +1439,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l183"><code>lib&#x2F;ValidatorPanel.js:183</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l187"><code>lib&#x2F;ValidatorPanel.js:187</code></a>
         
         </p>
 
@@ -1485,7 +1487,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l142"><code>lib&#x2F;ValidatorPanel.js:142</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l146"><code>lib&#x2F;ValidatorPanel.js:146</code></a>
         
         </p>
 
@@ -1530,7 +1532,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l66"><code>lib&#x2F;ValidatorPanel.js:66</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l70"><code>lib&#x2F;ValidatorPanel.js:70</code></a>
         
         </p>
 

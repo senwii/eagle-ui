@@ -81,12 +81,16 @@ let Demo = class Demo extends Component{
         console.dir(value);
     }
 
+    getDialog(d){
+        this.dialog = d;
+    }
+
     change(value){
        this.setState({
            showTab:value,
-           update:'uid'+(+new Date()),
-           show:false
+           update:'uid'+(+new Date())
        });
+
     }
 
     submit(vals){
@@ -94,9 +98,7 @@ let Demo = class Demo extends Component{
     }
 
     showMask(){
-        this.setState({
-            show:true
-        });
+        this.dialog.open();
     }
 
     checktab(){
@@ -200,7 +202,7 @@ let Demo = class Demo extends Component{
                             </Tab>
                         </Tabset>
                     </Grid>
-                    <Dialog type={'mask'} show={this.state.show}>
+                    <Dialog type={'dialog'} ref={::this.getDialog}>
                         <Grid style={{width:'300px'}}>
                             <ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}>
                                 <Row>
