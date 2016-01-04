@@ -175,6 +175,9 @@ export default class Paging extends Component{
         return this.goto(index);
     }
 
+    getKey(){
+        return new Date().getTime()+(Math.random()*1e10).toFixed(0);
+    }
     /**
      * 生成页码
      * @method generate
@@ -205,19 +208,19 @@ export default class Paging extends Component{
         }
 
         for(;i<=len;i++){
-            htmlList.push(<a href="javascript:void(0);" onClick={this.gotoPage.bind(this,i)} className={classnames({
+            htmlList.push(<a href="javascript:void(0);" key={this.getKey()} onClick={this.gotoPage.bind(this,i)} className={classnames({
               [this.getClassName(activeClass) ]:  i==currentPage
             } ) } >{i}</a> );
         }
         //pages-currentPage =
         let bt = this.pages-currentPage;
         if(bt>=7 ){
-            htmlList.push(<a href="javascript:void(0);">...</a>);
-            htmlList.push(<a href="javascript:void(0);" onClick={::this.gotoPage.bind(this,this.pages)}>{this.pages}</a>);
+            htmlList.push(<a href="javascript:void(0);" key={this.getKey()}>...</a>);
+            htmlList.push(<a href="javascript:void(0);" key={this.getKey()} onClick={::this.gotoPage.bind(this,this.pages)}>{this.pages}</a>);
         }
 
         if(this.pages>1 && currentPage!=this.pages){
-            htmlList.push(<a href="javascript:void(0);" onClick={::this.next}>下一页</a>);
+            htmlList.push(<a href="javascript:void(0);" key={this.getKey()}  onClick={::this.next}>下一页</a>);
 
         }
 
@@ -239,7 +242,7 @@ export default class Paging extends Component{
         let opts = [],num=10;
 
         for(let i=1;i<11;i++){
-            opts.push(<option value={num*i}>{num*i}</option>);
+            opts.push(<option value={num*i}  key={this.getKey()}>{num*i}</option>);
         }
 
         return (

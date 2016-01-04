@@ -12,9 +12,21 @@ import Component from './utils/Component';
  * @since 0.1.0
  * */
 export default class Row extends Component{
-
     static propTypes={
-
+        /**
+         * 样式前缀
+         * @property classPrefix
+         * @type String
+         * @default row
+         * */
+        classPrefix:PropTypes.string,
+        /**
+         * 样式前缀
+         * @property bottom
+         * @type String
+         * @default undefined
+         * */
+        bottom:PropTypes.bool
     };
 
     static defaultProps = {

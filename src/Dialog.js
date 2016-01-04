@@ -2,6 +2,7 @@
  * Created by panqianjin on 15/10/30.
  */
 import React,{Component,PropTypes} from 'react';
+import ReactDom from 'react/lib/ReactDOM';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';
 import Button from './Button.js';
@@ -64,7 +65,8 @@ class Dialog extends Component {
          * @type String
          * @default div
          * */
-        componentTag: PropTypes.string
+        componentTag: PropTypes.string,
+        onInit:PropTypes.func
 
     }
     static defaultProps = {
@@ -80,10 +82,20 @@ class Dialog extends Component {
     constructor(props, context) {
         super(props, context);
         this.flag = true;
+
         this.state = {
-            show: this.props.show,
+            show: this.props.show || false,
+            type:this.props.type,
             init: true
         };
+        this.ref = this.state.type+(+new Date());
+        /*this.props.onInit({
+            open :this.open.bind(this),
+            close:this.close.bind(this)
+        });*/
+    }
+    componentWillMount(){
+
     }
     /**
      * 接收到新props时执行,props是否存在show，是改变state.show，否则不变
@@ -91,15 +103,15 @@ class Dialog extends Component {
      * @method componentWillReceiveProps
      * */
     componentDidMount(){
-        //this.flag = false;
+
     }
     componentWillReceiveProps (nextProps) {
-        if(nextProps.show ){
+        /*if(nextProps.show ){
             this.flag = false;
             this.setState({
                 show:nextProps.show
             });
-        }
+        }*/
 
     }
     /**
@@ -107,14 +119,14 @@ class Dialog extends Component {
      * @return {ReactElement}
      * */
     render() {
-        let showOrHide = this.props.cancelCallback?this.props.show:this.state.show;
+        //let showOrHide = this.props.cancelCallback?this.props.show:this.state.show;
+        let showOrHide = this.state.show;
         return (
-            <Grid ref = 'container' className={classnames(
+            <Grid ref={this.ref} className={classnames(
                 this.getClassName('container'),
-                this.flag ? '':showOrHide?'fadein':'fadeout'
+                this.flag?'': showOrHide?'fadein':'fadeout'
                 )}>
-                {!this.flag && !(this.props.cancelCallback?this.props.show:this.state.show)?this.displayNone():null}
-                {this[this.props.type.toLowerCase()]()}
+                {this[this.state.type.toLowerCase()]() }
                 {this.showOverlay(this.props.tips)}
             </Grid>
         );
@@ -125,7 +137,15 @@ class Dialog extends Component {
     displayNone(){
         let _this =this;
         clearTimeout(this.timer);
-        this.timer = setTimeout(function(){this.removeClass( React.findDOMNode(_this.refs.container),'fadeout')}.bind(this),400);
+        this.timer = setTimeout(function(){this.removeClass( ReactDom.findDOMNode(_this.refs[_this.ref]),'fadeout')}.bind(this),400);
+    }
+
+    open(type=this.state.type){
+        this.flag = false;
+        this.setState({
+            show: true,
+            type:type
+        });
     }
 
     close(callbackId){
@@ -134,11 +154,11 @@ class Dialog extends Component {
            callbackId();
            return this;
         }
-
-        this.flag = false;
+        this.flag = true;
         this.setState({
             show: false
         });
+        this.displayNone();
     }
     /**
      * 点击X，调用cancelCallback（如果存在），否则通过改变自身state来关闭
@@ -257,50 +277,28 @@ class Dialog extends Component {
     }
 
     /**
+     * 渲染mask
+     * @method mask
+     * @return  {ReactElement}
+     * */
+    mask() {
+        return (
+            <div className={this.getClassName('body')}>
+                {this.props.children}
+                <div className={classnames(
+                    this.getClassNamesForArguments('close')
+                    )} onClick={::this.closeDialog}>x
+                </div>
+            </div>
+        );
+    }
+
+    /**
      * 渲染dialog
      * @method dialog
      * @return  {ReactElement}
      * */
     dialog() {
-        return (
-            <Row className={ classnames(
-                    this.getClassNamesForArguments('dialog')
-                )}>
-                <Col>
-                    <Row className={classnames(
-                   this.getClassNamesForArguments('title')
-                )}>
-                            {this.props.title}
-                            <div className={classnames(
-                    this.getClassNamesForArguments('close')
-                    )} onClick={::this.closeDialog}>x
-                            </div>
-                    </Row>
-                    <Row className={ classnames(
-                    this.getClassNamesForArguments('content'))}>
-                        <Col>
-                            {this.props.children}
-                        </Col>
-                    </Row>
-                    <Row className={ classnames(
-                    this.getClassNamesForArguments('button'))}>
-                        <Col sm={12}>
-                            <Button radius egSize="xs" style={{marginRight:'20px'}} onClick={::this.submitForm}>确定
-                            </Button>
-                            <Button radius white egSize="xs" onClick={::this.cancleDialog}>取消</Button>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        );
-    }
-    /**
-     * 渲染mask
-     * @method mask
-     * @return  {ReactElement}
-     * */
-
-    mask() {
         return (
             <Row className={ classnames(
                     this.getClassNamesForArguments('dialog')

@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -569,7 +595,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_Dialog.js.html#l44"><code>lib&#x2F;Dialog.js:44</code></a>
+                    Defined in: <a href="../files/lib_Dialog.js.html#l48"><code>lib&#x2F;Dialog.js:48</code></a>
                 </div>
             
 
@@ -622,7 +648,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l44"><code>lib&#x2F;Dialog.js:44</code></a>
+        <a href="../files/lib_Dialog.js.html#l48"><code>lib&#x2F;Dialog.js:48</code></a>
         
         </p>
 
@@ -676,6 +702,11 @@ let Demo= class Demo extends Component{
             title:&#39;这是个提示&#39;
         }
     }
+
+    getScope(dialog){
+        this.dialog = dialog;
+    }
+
     render(){
         return (
          &lt;Grid&gt;
@@ -685,7 +716,7 @@ let Demo= class Demo extends Component{
             &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showConfirm}&gt;confirm&lt;/Button&gt;&lt;/Col&gt;
             &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showMsak}&gt;mask&lt;/Button&gt;&lt;/Col&gt;
         &lt;/Row&gt;
-            &lt;Dialog type={this.state.type} show={this.state.show} title={this.state.title}&gt;
+            &lt;Dialog type={this.state.type} show={this.state.show} title={this.state.title} ref={::this.getScope}&gt;
             ahflaskdjflajsflajsdlf;jkasdfk
                 adfkjasd;fkjas;dlf
                 asdfkn;askdfnas
@@ -694,28 +725,16 @@ let Demo= class Demo extends Component{
         );
     }
     showDialog(){
-        this.setState({
-            show: true,
-            type: &#39;dialog&#39;
-        })
+        this.dialog.open(&#39;dialog&#39;);
     }
     showAlert(){
-        this.setState({
-            show: true,
-            type: &#39;alert&#39;
-        })
+        this.dialog.open(&#39;alert&#39;);
     }
     showConfirm(){
-        this.setState({
-            show: true,
-            type: &#39;confirm&#39;
-        })
+        this.dialog.open(&#39;confirm&#39;);
     }
     showMsak(){
-        this.setState({
-            show: true,
-            type: &#39;mask&#39;
-        })
+        this.dialog.open(&#39;mask&#39;);
     }
 };
 
@@ -782,7 +801,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l232"><code>lib&#x2F;Dialog.js:232</code></a>
+        <a href="../files/lib_Dialog.js.html#l254"><code>lib&#x2F;Dialog.js:254</code></a>
         
         </p>
 
@@ -855,7 +874,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l212"><code>lib&#x2F;Dialog.js:212</code></a>
+        <a href="../files/lib_Dialog.js.html#l234"><code>lib&#x2F;Dialog.js:234</code></a>
         
         </p>
 
@@ -928,7 +947,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l192"><code>lib&#x2F;Dialog.js:192</code></a>
+        <a href="../files/lib_Dialog.js.html#l214"><code>lib&#x2F;Dialog.js:214</code></a>
         
         </p>
 
@@ -997,7 +1016,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l132"><code>lib&#x2F;Dialog.js:132</code></a>
+        <a href="../files/lib_Dialog.js.html#l146"><code>lib&#x2F;Dialog.js:146</code></a>
         
         </p>
 
@@ -1059,7 +1078,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l276"><code>lib&#x2F;Dialog.js:276</code></a>
+        <a href="../files/lib_Dialog.js.html#l298"><code>lib&#x2F;Dialog.js:298</code></a>
         
         </p>
 
@@ -1132,7 +1151,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l330"><code>lib&#x2F;Dialog.js:330</code></a>
+        <a href="../files/lib_Dialog.js.html#l371"><code>lib&#x2F;Dialog.js:371</code></a>
         
         </p>
 
@@ -1205,7 +1224,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l384"><code>lib&#x2F;Dialog.js:384</code></a>
+        <a href="../files/lib_Dialog.js.html#l352"><code>lib&#x2F;Dialog.js:352</code></a>
         
         </p>
 
@@ -1278,7 +1297,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l151"><code>lib&#x2F;Dialog.js:151</code></a>
+        <a href="../files/lib_Dialog.js.html#l162"><code>lib&#x2F;Dialog.js:162</code></a>
         
         </p>
 
@@ -1350,7 +1369,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l222"><code>lib&#x2F;Dialog.js:222</code></a>
+        <a href="../files/lib_Dialog.js.html#l244"><code>lib&#x2F;Dialog.js:244</code></a>
         
         </p>
 
@@ -1423,7 +1442,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l202"><code>lib&#x2F;Dialog.js:202</code></a>
+        <a href="../files/lib_Dialog.js.html#l224"><code>lib&#x2F;Dialog.js:224</code></a>
         
         </p>
 
@@ -1489,7 +1508,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l83"><code>lib&#x2F;Dialog.js:83</code></a>
+        <a href="../files/lib_Dialog.js.html#l87"><code>lib&#x2F;Dialog.js:87</code></a>
         
         </p>
 
@@ -1537,7 +1556,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l90"><code>lib&#x2F;Dialog.js:90</code></a>
+        <a href="../files/lib_Dialog.js.html#l94"><code>lib&#x2F;Dialog.js:94</code></a>
         
         </p>
 
@@ -1585,7 +1604,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l97"><code>lib&#x2F;Dialog.js:97</code></a>
+        <a href="../files/lib_Dialog.js.html#l101"><code>lib&#x2F;Dialog.js:101</code></a>
         
         </p>
 
@@ -1633,7 +1652,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l76"><code>lib&#x2F;Dialog.js:76</code></a>
+        <a href="../files/lib_Dialog.js.html#l80"><code>lib&#x2F;Dialog.js:80</code></a>
         
         </p>
 
@@ -1681,7 +1700,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l69"><code>lib&#x2F;Dialog.js:69</code></a>
+        <a href="../files/lib_Dialog.js.html#l73"><code>lib&#x2F;Dialog.js:73</code></a>
         
         </p>
 
@@ -1729,7 +1748,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l62"><code>lib&#x2F;Dialog.js:62</code></a>
+        <a href="../files/lib_Dialog.js.html#l66"><code>lib&#x2F;Dialog.js:66</code></a>
         
         </p>
 

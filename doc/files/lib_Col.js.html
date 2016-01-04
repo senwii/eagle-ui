@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -405,8 +431,6 @@
 
 exports.__esModule = true;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (&#x27;value&#x27; in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
@@ -423,6 +447,10 @@ var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _utilsClassNameMixinJs = require(&#x27;./utils/ClassNameMixin.js&#x27;);
+
+var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
+
 /**
  * 列
  * @class Col
@@ -436,7 +464,7 @@ var Col = (function (_Component) {
     _inherits(Col, _Component);
 
     function Col() {
-        _classCallCheck(this, Col);
+        _classCallCheck(this, _Col);
 
         _Component.apply(this, arguments);
     }
@@ -452,15 +480,21 @@ var Col = (function (_Component) {
     };
 
     Col.prototype.render = function render() {
-
+        var renderStyle = this.props.style || {};
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            _extends({}, this.props, { className: _classnames2[&#x27;default&#x27;](this.getWidthClass(), this.props.className) }),
+            { className: _classnames2[&#x27;default&#x27;](this.getClassNames(this.props), this.getWidthClass(), this.props.className), style: renderStyle },
             this.props.children
         );
     };
 
     _createClass(Col, null, [{
+        key: &#x27;defaultProps&#x27;,
+        value: {
+            classPrefix: &#x27;sm&#x27;
+        },
+        enumerable: true
+    }, {
         key: &#x27;propTypes&#x27;,
         value: {
             /**
@@ -468,7 +502,7 @@ var Col = (function (_Component) {
              * @property egSize
              * @type Integer
              * */
-            sm: _react.PropTypes.number.isRequired,
+            sm: _react.PropTypes.number,
             /**
              * 是否是最后一列
              * @property end
@@ -480,6 +514,8 @@ var Col = (function (_Component) {
         enumerable: true
     }]);
 
+    var _Col = Col;
+    Col = _utilsClassNameMixinJs2[&#x27;default&#x27;](Col) || Col;
     return Col;
 })(_react.Component);
 

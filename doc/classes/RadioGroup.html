@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -565,7 +591,9 @@ import Grid from &#39;../../../src/Grid.js&#39;;
 import RadioGroup from &#39;../../../src/RadioGroup.js&#39;;
 import CheckboxGroup from &#39;../../../src/CheckboxGroup.js&#39;;
 import CalendarPanel from &#39;../../../src/CalendarPanel.js&#39;;
+import FormGroup from &#39;../../../src/FormGroup.js&#39;;
 import querystring from &#39;querystring&#39;;
+import Select from &#39;../../../src/Select.js&#39;;
 
 
 let Demo= class Demo extends Component{
@@ -586,6 +614,9 @@ let Demo= class Demo extends Component{
         this.setState({
             show:false
         });
+    }
+    getValueCallback(val){
+        alert(val);
     }
 
     render(){
@@ -611,7 +642,7 @@ let Demo= class Demo extends Component{
                             &lt;/RadioGroup&gt;
                         &lt;/Col&gt;
                         &lt;Col sm={6}&gt;
-                            &lt;RadioGroup defaultChecked="鸡蛋" name="radio-foot"&gt;
+                            &lt;RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={this.getValueCallback}&gt;
                                 &lt;Input  type="radio"  label="大白菜" value="大白菜" /&gt;
                                 &lt;Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  /&gt;
                                 &lt;Input  type="radio"  label="猪肉" value="猪肉" /&gt;
@@ -621,7 +652,67 @@ let Demo= class Demo extends Component{
                         &lt;/Col&gt;
                     &lt;/Col&gt;
                 &lt;/Row&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;&lt;h4&gt;表单&lt;/h4&gt;&lt;/Col&gt;
+                &lt;/Row&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;FormGroup&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                        &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                        &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                    &lt;/RadioGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;CheckboxGroup&gt;
+                                        &lt;Input  type="checkbox" label="足球" checked   /&gt;
+                                        &lt;Input  type="checkbox" label="篮球"    /&gt;
+                                        &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
+                                        &lt;Input  type="checkbox" label="乒乓球"    /&gt;
+                                    &lt;/CheckboxGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                &lt;FormGroup&gt;
+                                    &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
+                                    &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
+                                &lt;/FormGroup&gt;
+                                &lt;FormGroup&gt;
+                                    &lt;Col sm={13}&gt;省份证&lt;/Col&gt;
+                                    &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入省份证"   /&gt;&lt;/Col&gt;
+                                &lt;/FormGroup&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;Select keys={this.props.keys} callback={function(val,key){console.log(val+&#39;:&#39;+key)}}  &gt;
+                                        &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
+                                        &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
+                                        &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
+                                    &lt;/Select&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/FormGroup&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
             &lt;/Grid&gt;
+
         );
     }
 };

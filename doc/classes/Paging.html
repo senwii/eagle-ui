@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -650,24 +676,26 @@ import querystring from &#39;querystring&#39;;
 let page = 1;
 function callback(page){
     page = page;
-    window.location = location.origin+location.pathname+&#39;?page=&#39;+page+&#39;&amp;pageSize=&#39;+pageSize;
+    window.location = location.href.replace(/\?.*/,&#39;&#39;)+&#39;?page=&#39;+page+&#39;&amp;pageSize=&#39;+pageSize;
 }
 
 function loadPageCallback(pageSize){
     window.location = location.origin+location.pathname+&#39;?page=&#39;+page+&#39;&amp;pageSize=&#39;+pageSize;
 }
-
-page =location.search ? querystring.parse(location.search.substr(1) ).page*1 : 1;
-
-var pageSize = location.search ? querystring.parse(location.search.substr(1) ).pageSize*1 : 20;
+var pageSize = 20;
 
 
 export default class PagingCls extends Component{
+
     render(){
+        let query = this.props.location.query,
+        page = query.page*1 ||0,
+        pageSize = query.pageSize*1 || 20;
         return (
             &lt;Row&gt;
                 &lt;Col sm={12}&gt;
-                    &lt;Paging showItemsNumber={true} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize} pageCallback={callback} total={5024} /&gt;
+                    &lt;Paging showItemsNumber={true} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                            pageCallback={callback} total={5024} /&gt;
                 &lt;/Col&gt;
             &lt;/Row&gt;
         );
@@ -729,7 +757,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l214"><code>lib&#x2F;Paging.js:214</code></a>
+        <a href="../files/lib_Paging.js.html#l218"><code>lib&#x2F;Paging.js:218</code></a>
         
         </p>
 
@@ -1209,7 +1237,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l334"><code>lib&#x2F;Paging.js:334</code></a>
+        <a href="../files/lib_Paging.js.html#l338"><code>lib&#x2F;Paging.js:338</code></a>
         
         </p>
 

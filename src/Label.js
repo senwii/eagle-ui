@@ -54,7 +54,7 @@ export default class Label extends Component{
                 classnames(
                     this.getClassName('item'),
                     this.getClassNames(this.props),
-                    this.getClassName(this.props.className)
+                   this.props.className
                     //this.getClassNames(this.state)
                 )
             } onMouseDown={::this.clickHandler}>

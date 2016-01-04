@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -426,6 +452,10 @@ var _utilsClassNameMixin = require(&#x27;./utils/ClassNameMixin&#x27;);
 
 var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
 
+var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
+
+var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -544,8 +574,8 @@ var Select = (function (_Component) {
 
     Select.prototype.componentDidMount = function componentDidMount() {
         var _this = this;
-        var selectContair = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectContair);
-        var selectUl = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl);
+        var selectContair = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectContair);
+        var selectUl = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl);
         document.addEventListener(&#x27;click&#x27;, function (e) {
             if (_this.isParent(e.target, selectContair)) {
                 //console.dir(&#x27;不要动&#x27;);
@@ -563,7 +593,7 @@ var Select = (function (_Component) {
     };
 
     Select.prototype.componentDidUpdate = function componentDidUpdate() {
-        var selectUl = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl);
+        var selectUl = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl);
         //this.heightTag = selectUl.offsetHeight;
         var length = selectUl.children.length;
         if (this.state.show) {
@@ -610,7 +640,7 @@ var Select = (function (_Component) {
             this.setState({
                 show: true
             });
-            _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).style.height = this.heightTag + &#x27;px&#x27;;
+            _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).style.height = this.heightTag + &#x27;px&#x27;;
         }
     };
 
@@ -625,9 +655,9 @@ var Select = (function (_Component) {
             show: !this.state.show
         });
         if (this.state.show) {
-            _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).style.height = &#x27;0&#x27;;
+            _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).style.height = &#x27;0&#x27;;
         } else {
-            _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).style.height = this.heightTag + &#x27;px&#x27;;
+            _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).style.height = this.heightTag + &#x27;px&#x27;;
         }
     };
 
@@ -737,7 +767,7 @@ var Select = (function (_Component) {
      * */
 
     Select.prototype.chooseItem = function chooseItem(event) {
-        var ulChildren = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).children;
+        var ulChildren = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).children;
         this.removeAllActive(ulChildren);
         event.target.classList.add(&#x27;active&#x27;);
         this.hideUl();
@@ -783,10 +813,10 @@ var Select = (function (_Component) {
     * */
 
     Select.prototype.keyIn = function keyIn(event) {
-        var selectUl = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl);
-        var ulChildren = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).children;
+        var selectUl = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl);
+        var ulChildren = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).children;
         var ulArrey = Array.prototype.slice.call(ulChildren);
-        var inputObj = _react2[&#x27;default&#x27;].findDOMNode(this.refs.select).children[0];
+        var inputObj = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.select).children[0];
         var i = -1;
         var obj = ulChildren[0];
         if (event.keyCode == 40 || event.keyCode == 38) {
@@ -835,7 +865,7 @@ var Select = (function (_Component) {
 
     Select.prototype.addActive = function addActive(event) {
         var obj = event.target;
-        var ulChildren = _react2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).children;
+        var ulChildren = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.selectUl).children;
         this.removeAllActive(ulChildren, false);
         obj.classList.add(&#x27;active&#x27;);
     };

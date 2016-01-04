@@ -31,11 +31,12 @@ export default class PanelHeader extends Component{
      * @return {ReactElement}
      * */
     render(){
+        let renderStyle=this.props.style?this.props.style:{};
         return (
             <div className={
                 classnames(
                     this.getClassName('header')
-                )}>
+                )} style={renderStyle}>
                 {this.props.children}
             </div>
         );

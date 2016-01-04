@@ -1,6 +1,7 @@
 import React,{Component,PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';
+import ReactDom from 'react/lib/ReactDOM';
 
 /**
  * 表单验证组件<br />
@@ -609,7 +610,7 @@ export default class ValidatorPanel extends Component {
     }
 
     getForm(){
-        return React.findDOMNode(this.refs[this.props.id?this.props.id:this.formName]);
+        return ReactDom.findDOMNode(this.refs[this.props.id?this.props.id:this.formName]);
     }
     getElements(){
         return this.form.querySelectorAll(`[data-validate]`);

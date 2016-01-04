@@ -112,57 +112,71 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _modulesDemo12 = _interopRequireDefault(_modulesDemo1);
 
-	var _modulesDemo2 = __webpack_require__(275);
+	var _modulesDemo2 = __webpack_require__(277);
 
 	var _modulesDemo22 = _interopRequireDefault(_modulesDemo2);
 
-	var _modulesDialog = __webpack_require__(276);
+	var _modulesDetailJs = __webpack_require__(278);
+
+	var _modulesDetailJs2 = _interopRequireDefault(_modulesDetailJs);
+
+	//增加商户详情页面demo
+
+	var _modulesDialog = __webpack_require__(279);
 
 	var _modulesDialog2 = _interopRequireDefault(_modulesDialog);
 
-	var _modulesInput = __webpack_require__(277);
+	var _modulesInput = __webpack_require__(280);
 
 	var _modulesInput2 = _interopRequireDefault(_modulesInput);
 
-	var _modulesLabel = __webpack_require__(278);
+	var _modulesLabel = __webpack_require__(282);
 
 	var _modulesLabel2 = _interopRequireDefault(_modulesLabel);
 
-	var _modulesPaging = __webpack_require__(279);
+	var _modulesPaging = __webpack_require__(283);
 
 	var _modulesPaging2 = _interopRequireDefault(_modulesPaging);
 
-	var _modulesPanel = __webpack_require__(280);
+	var _modulesPanel = __webpack_require__(284);
 
 	var _modulesPanel2 = _interopRequireDefault(_modulesPanel);
 
-	var _modulesSearch = __webpack_require__(281);
+	var _modulesSearch = __webpack_require__(285);
 
 	var _modulesSearch2 = _interopRequireDefault(_modulesSearch);
 
-	var _modulesSelect = __webpack_require__(282);
+	var _modulesSelect = __webpack_require__(286);
 
 	var _modulesSelect2 = _interopRequireDefault(_modulesSelect);
 
-	var _modulesTab = __webpack_require__(283);
+	var _modulesTab = __webpack_require__(287);
 
 	var _modulesTab2 = _interopRequireDefault(_modulesTab);
 
-	var _modulesTable = __webpack_require__(284);
+	var _modulesTable = __webpack_require__(288);
 
 	var _modulesTable2 = _interopRequireDefault(_modulesTable);
 
-	var _modulesToast = __webpack_require__(286);
+	var _modulesToast = __webpack_require__(290);
 
 	var _modulesToast2 = _interopRequireDefault(_modulesToast);
 
-	var _modulesTooltip = __webpack_require__(287);
+	var _modulesTooltip = __webpack_require__(291);
 
 	var _modulesTooltip2 = _interopRequireDefault(_modulesTooltip);
 
-	var _modulesValidate = __webpack_require__(289);
+	var _modulesValidate = __webpack_require__(293);
 
 	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
+
+	var _modulesStarJs = __webpack_require__(296);
+
+	var _modulesStarJs2 = _interopRequireDefault(_modulesStarJs);
+
+	var _modulesImgSliderJs = __webpack_require__(299);
+
+	var _modulesImgSliderJs2 = _interopRequireDefault(_modulesImgSliderJs);
 
 	//require('../less/public.less');
 
@@ -209,6 +223,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Crumb', name: 'Crumb', component: _modulesCrumb2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Demo1', name: 'Demo1', component: _modulesDemo12['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Demo2', name: 'Demo2', component: _modulesDemo22['default'] }),
+	            _react2['default'].createElement(_reactRouter.Route, { path: '/Detail', name: 'Detail', component: _modulesDetailJs2['default'] }),
+	            _react2['default'].createElement(_reactRouter.Route, { path: '/Slider', name: 'Slider', component: _modulesImgSliderJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Dialog', name: 'Dialog', component: _modulesDialog2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Input', name: 'Input', component: _modulesInput2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Label', name: 'Label', component: _modulesLabel2['default'] }),
@@ -221,6 +237,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Toast', name: 'Toast', component: _modulesToast2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/ToolTip', name: 'ToolTip', component: _modulesTooltip2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Validate', name: 'Validate', component: _modulesValidate2['default'] }),
+	            _react2['default'].createElement(_reactRouter.Route, { path: '/Star', name: 'Star', component: _modulesStarJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Redirect, { from: '/', to: '/index' })
 	        );
 	    };
@@ -1251,7 +1268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * will remain to ensure logic does not differ in production.
 	 */
 
-	var invariant = function (condition, format, a, b, c, d, e, f) {
+	function invariant(condition, format, a, b, c, d, e, f) {
 	  if (process.env.NODE_ENV !== 'production') {
 	    if (format === undefined) {
 	      throw new Error('invariant requires an error message argument');
@@ -1265,15 +1282,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	      var args = [a, b, c, d, e, f];
 	      var argIndex = 0;
-	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
+	      error = new Error(format.replace(/%s/g, function () {
 	        return args[argIndex++];
 	      }));
+	      error.name = 'Invariant Violation';
 	    }
 
 	    error.framesToPop = 1; // we don't care about invariant's own frame
 	    throw error;
 	  }
-	};
+	}
 
 	module.exports = invariant;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
@@ -10700,8 +10718,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    // autoCapitalize and autoCorrect are supported in Mobile Safari for
 	    // keyboard hints.
-	    autoCapitalize: null,
-	    autoCorrect: null,
+	    autoCapitalize: MUST_USE_ATTRIBUTE,
+	    autoCorrect: MUST_USE_ATTRIBUTE,
 	    // autoSave allows WebKit/Blink to persist values of input fields on page reloads
 	    autoSave: null,
 	    // color is for Safari mask-icon link
@@ -10732,9 +10750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    httpEquiv: 'http-equiv'
 	  },
 	  DOMPropertyNames: {
-	    autoCapitalize: 'autocapitalize',
 	    autoComplete: 'autocomplete',
-	    autoCorrect: 'autocorrect',
 	    autoFocus: 'autofocus',
 	    autoPlay: 'autoplay',
 	    autoSave: 'autosave',
@@ -13813,7 +13829,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var value = LinkedValueUtils.getValue(props);
 
 	    if (value != null) {
-	      updateOptions(this, props, value);
+	      updateOptions(this, Boolean(props.multiple), value);
 	    }
 	  }
 	}
@@ -16852,15 +16868,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
 	 * not safe to call document.activeElement if there is nothing focused.
 	 *
-	 * The activeElement will be null only if the document or document body is not yet defined.
+	 * The activeElement will be null only if the document body is not yet defined.
 	 */
-	'use strict';
+	"use strict";
 
 	function getActiveElement() /*?DOMElement*/{
-	  if (typeof document === 'undefined') {
-	    return null;
-	  }
-
 	  try {
 	    return document.activeElement || document.body;
 	  } catch (e) {
@@ -18600,7 +18612,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  'setValueForProperty': 'update attribute',
 	  'setValueForAttribute': 'update attribute',
 	  'deleteValueForProperty': 'remove attribute',
-	  'dangerouslyReplaceNodeWithMarkupByID': 'replace'
+	  'setValueForStyles': 'update styles',
+	  'replaceNodeWithMarkup': 'replace',
+	  'updateTextContent': 'set textContent'
 	};
 
 	function getTotalTime(measurements) {
@@ -18792,18 +18806,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var performance = __webpack_require__(161);
-	var curPerformance = performance;
+
+	var performanceNow;
 
 	/**
 	 * Detect if we can use `window.performance.now()` and gracefully fallback to
 	 * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
 	 * because of Facebook's testing infrastructure.
 	 */
-	if (!curPerformance || !curPerformance.now) {
-	  curPerformance = Date;
+	if (performance.now) {
+	  performanceNow = function () {
+	    return performance.now();
+	  };
+	} else {
+	  performanceNow = function () {
+	    return Date.now();
+	  };
 	}
-
-	var performanceNow = curPerformance.now.bind(curPerformance);
 
 	module.exports = performanceNow;
 
@@ -18852,7 +18871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.3';
+	module.exports = '0.14.5';
 
 /***/ },
 /* 163 */
@@ -19891,17 +19910,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/* utils */
 
-	var _useRoutes2 = __webpack_require__(198);
+	var _useRoutes2 = __webpack_require__(200);
 
 	var _useRoutes3 = _interopRequireDefault(_useRoutes2);
 
 	exports.useRoutes = _useRoutes3['default'];
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
 	exports.createRoutes = _RouteUtils.createRoutes;
 
-	var _RoutingContext2 = __webpack_require__(195);
+	var _RoutingContext2 = __webpack_require__(196);
 
 	var _RoutingContext3 = _interopRequireDefault(_RoutingContext2);
 
@@ -19953,13 +19972,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _historyLibCreateHashHistory2 = _interopRequireDefault(_historyLibCreateHashHistory);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
-	var _RoutingContext = __webpack_require__(195);
+	var _RoutingContext = __webpack_require__(196);
 
 	var _RoutingContext2 = _interopRequireDefault(_RoutingContext);
 
-	var _useRoutes = __webpack_require__(198);
+	var _useRoutes = __webpack_require__(200);
 
 	var _useRoutes2 = _interopRequireDefault(_useRoutes);
 
@@ -20173,25 +20192,29 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(176);
+	var _warning = __webpack_require__(178);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(179);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(179);
+	var _Actions = __webpack_require__(180);
 
-	var _ExecutionEnvironment = __webpack_require__(180);
+	var _ExecutionEnvironment = __webpack_require__(181);
 
-	var _DOMUtils = __webpack_require__(181);
+	var _DOMUtils = __webpack_require__(182);
 
-	var _DOMStateStorage = __webpack_require__(182);
+	var _DOMStateStorage = __webpack_require__(183);
 
-	var _createDOMHistory = __webpack_require__(183);
+	var _createDOMHistory = __webpack_require__(184);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
+
+	var _parsePath = __webpack_require__(191);
+
+	var _parsePath2 = _interopRequireDefault(_parsePath);
 
 	function isAbsolutePath(path) {
 	  return typeof path === 'string' && path.charAt(0) === '/';
@@ -20251,7 +20274,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      key = state = null;
 	    }
 
-	    return history.createLocation(path, state, undefined, key);
+	    var location = _parsePath2['default'](path);
+
+	    return history.createLocation(_extends({}, location, { state: state }), undefined, key);
 	  }
 
 	  function startHashChangeListener(_ref) {
@@ -20338,16 +20363,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  }
 
-	  function pushState(state, path) {
-	    process.env.NODE_ENV !== 'production' ? _warning2['default'](queryKey || state == null, 'You cannot use state without a queryKey it will be dropped') : undefined;
+	  function push(location) {
+	    process.env.NODE_ENV !== 'production' ? _warning2['default'](queryKey || location.state == null, 'You cannot use state without a queryKey it will be dropped') : undefined;
 
-	    history.pushState(state, path);
+	    history.push(location);
 	  }
 
-	  function replaceState(state, path) {
-	    process.env.NODE_ENV !== 'production' ? _warning2['default'](queryKey || state == null, 'You cannot use state without a queryKey it will be dropped') : undefined;
+	  function replace(location) {
+	    process.env.NODE_ENV !== 'production' ? _warning2['default'](queryKey || location.state == null, 'You cannot use state without a queryKey it will be dropped') : undefined;
 
-	    history.replaceState(state, path);
+	    history.replace(location);
 	  }
 
 	  var goIsSupportedWithoutReload = _DOMUtils.supportsGoWithoutReloadUsingHash();
@@ -20376,15 +20401,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (--listenerCount === 0) stopHashChangeListener();
 	  }
 
+	  // deprecated
+	  function pushState(state, path) {
+	    process.env.NODE_ENV !== 'production' ? _warning2['default'](queryKey || state == null, 'You cannot use state without a queryKey it will be dropped') : undefined;
+
+	    history.pushState(state, path);
+	  }
+
+	  // deprecated
+	  function replaceState(state, path) {
+	    process.env.NODE_ENV !== 'production' ? _warning2['default'](queryKey || state == null, 'You cannot use state without a queryKey it will be dropped') : undefined;
+
+	    history.replaceState(state, path);
+	  }
+
 	  return _extends({}, history, {
 	    listenBefore: listenBefore,
 	    listen: listen,
-	    pushState: pushState,
-	    replaceState: replaceState,
+	    push: push,
+	    replace: replace,
 	    go: go,
 	    createHref: createHref,
-	    registerTransitionHook: registerTransitionHook,
-	    unregisterTransitionHook: unregisterTransitionHook
+
+	    registerTransitionHook: registerTransitionHook, // deprecated - warning is in createHistory
+	    unregisterTransitionHook: unregisterTransitionHook, // deprecated - warning is in createHistory
+	    pushState: pushState, // deprecated - warning is in createHistory
+	    replaceState: replaceState // deprecated - warning is in createHistory
 	  });
 	}
 
@@ -20394,6 +20436,73 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+
+	var warning = function() {};
+
+	if (process.env.NODE_ENV !== 'production') {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+
+	module.exports = warning;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+
+/***/ },
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20451,7 +20560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports) {
 
 	/**
@@ -20487,7 +20596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20497,7 +20606,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.canUseDOM = canUseDOM;
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20552,7 +20661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/**
-	 * Returns true if the HTML5 history API is supported. Taken from modernizr.
+	 * Returns true if the HTML5 history API is supported. Taken from Modernizr.
 	 *
 	 * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
 	 * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
@@ -20562,6 +20671,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	function supportsHistory() {
 	  var ua = navigator.userAgent;
 	  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) {
+	    return false;
+	  }
+	  // FIXME: Work around our browser history not working correctly on Chrome
+	  // iOS: https://github.com/rackt/react-router/issues/2565
+	  if (ua.indexOf('CriOS') !== -1) {
 	    return false;
 	  }
 	  return window.history && 'pushState' in window.history;
@@ -20577,7 +20691,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*eslint-disable no-empty */
@@ -20589,7 +20703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(176);
+	var _warning = __webpack_require__(178);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20651,7 +20765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20662,15 +20776,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(179);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _ExecutionEnvironment = __webpack_require__(180);
+	var _ExecutionEnvironment = __webpack_require__(181);
 
-	var _DOMUtils = __webpack_require__(181);
+	var _DOMUtils = __webpack_require__(182);
 
-	var _createHistory = __webpack_require__(184);
+	var _createHistory = __webpack_require__(185);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -20697,9 +20811,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
+	//import warning from 'warning'
 	'use strict';
 
 	exports.__esModule = true;
@@ -20708,23 +20823,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _deepEqual = __webpack_require__(185);
+	var _deepEqual = __webpack_require__(186);
 
 	var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
-	var _AsyncUtils = __webpack_require__(188);
+	var _AsyncUtils = __webpack_require__(189);
 
-	var _Actions = __webpack_require__(179);
+	var _Actions = __webpack_require__(180);
 
-	var _createLocation2 = __webpack_require__(189);
+	var _createLocation2 = __webpack_require__(190);
 
 	var _createLocation3 = _interopRequireDefault(_createLocation2);
 
-	var _runTransitionHook = __webpack_require__(192);
+	var _runTransitionHook = __webpack_require__(193);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(193);
+	var _parsePath = __webpack_require__(191);
+
+	var _parsePath2 = _interopRequireDefault(_parsePath);
+
+	var _deprecate = __webpack_require__(194);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -20844,15 +20963,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (ok) {
 	        // treat PUSH to current path like REPLACE to be consistent with browsers
 	        if (nextLocation.action === _Actions.PUSH) {
-	          var _getCurrentLocation = getCurrentLocation();
+	          var prevPath = createPath(location);
+	          var nextPath = createPath(nextLocation);
 
-	          var pathname = _getCurrentLocation.pathname;
-	          var search = _getCurrentLocation.search;
-
-	          var currentPath = pathname + search;
-	          var path = nextLocation.pathname + nextLocation.search;
-
-	          if (currentPath === path) nextLocation.action = _Actions.REPLACE;
+	          if (nextPath === prevPath) nextLocation.action = _Actions.REPLACE;
 	        }
 
 	        if (finishTransition(nextLocation) !== false) updateLocation(nextLocation);
@@ -20865,20 +20979,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  }
 
-	  function pushState(state, path) {
-	    transitionTo(createLocation(path, state, _Actions.PUSH, createKey()));
+	  function push(location) {
+	    transitionTo(createLocation(location, _Actions.PUSH, createKey()));
 	  }
 
-	  function push(path) {
-	    pushState(null, path);
-	  }
-
-	  function replaceState(state, path) {
-	    transitionTo(createLocation(path, state, _Actions.REPLACE, createKey()));
-	  }
-
-	  function replace(path) {
-	    replaceState(null, path);
+	  function replace(location) {
+	    transitionTo(createLocation(location, _Actions.REPLACE, createKey()));
 	  }
 
 	  function goBack() {
@@ -20893,12 +20999,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return createRandomKey(keyLength);
 	  }
 
-	  function createPath(path) {
-	    if (path == null || typeof path === 'string') return path;
+	  function createPath(location) {
+	    if (location == null || typeof location === 'string') return location;
 
-	    var pathname = path.pathname;
-	    var search = path.search;
-	    var hash = path.hash;
+	    var pathname = location.pathname;
+	    var search = location.search;
+	    var hash = location.hash;
 
 	    var result = pathname;
 
@@ -20909,14 +21015,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return result;
 	  }
 
-	  function createHref(path) {
-	    return createPath(path);
+	  function createHref(location) {
+	    return createPath(location);
 	  }
 
-	  function createLocation(path, state, action) {
-	    var key = arguments.length <= 3 || arguments[3] === undefined ? createKey() : arguments[3];
+	  function createLocation(location, action) {
+	    var key = arguments.length <= 2 || arguments[2] === undefined ? createKey() : arguments[2];
 
-	    return _createLocation3['default'](path, state, action, key);
+	    if (typeof action === 'object') {
+	      //warning(
+	      //  false,
+	      //  'The state (2nd) argument to history.createLocation is deprecated; use a ' +
+	      //  'location descriptor instead'
+	      //)
+
+	      if (typeof location === 'string') location = _parsePath2['default'](location);
+
+	      location = _extends({}, location, { state: action });
+
+	      action = key;
+	      key = arguments[3] || createKey();
+	    }
+
+	    return _createLocation3['default'](location, action, key);
 	  }
 
 	  // deprecated
@@ -20946,12 +21067,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  }
 
+	  // deprecated
+	  function pushState(state, path) {
+	    if (typeof path === 'string') path = _parsePath2['default'](path);
+
+	    push(_extends({ state: state }, path));
+	  }
+
+	  // deprecated
+	  function replaceState(state, path) {
+	    if (typeof path === 'string') path = _parsePath2['default'](path);
+
+	    replace(_extends({ state: state }, path));
+	  }
+
 	  return {
 	    listenBefore: listenBefore,
 	    listen: listen,
 	    transitionTo: transitionTo,
-	    pushState: pushState,
-	    replaceState: replaceState,
 	    push: push,
 	    replace: replace,
 	    go: go,
@@ -20964,7 +21097,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    setState: _deprecate2['default'](setState, 'setState is deprecated; use location.key to save state instead'),
 	    registerTransitionHook: _deprecate2['default'](registerTransitionHook, 'registerTransitionHook is deprecated; use listenBefore instead'),
-	    unregisterTransitionHook: _deprecate2['default'](unregisterTransitionHook, 'unregisterTransitionHook is deprecated; use the callback returned from listenBefore instead')
+	    unregisterTransitionHook: _deprecate2['default'](unregisterTransitionHook, 'unregisterTransitionHook is deprecated; use the callback returned from listenBefore instead'),
+	    pushState: _deprecate2['default'](pushState, 'pushState is deprecated; use push instead'),
+	    replaceState: _deprecate2['default'](replaceState, 'replaceState is deprecated; use replace instead')
 	  };
 	}
 
@@ -20972,12 +21107,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var pSlice = Array.prototype.slice;
-	var objectKeys = __webpack_require__(186);
-	var isArguments = __webpack_require__(187);
+	var objectKeys = __webpack_require__(187);
+	var isArguments = __webpack_require__(188);
 
 	var deepEqual = module.exports = function (actual, expected, opts) {
 	  if (!opts) opts = {};
@@ -21072,7 +21207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports) {
 
 	exports = module.exports = typeof Object.keys === 'function'
@@ -21087,7 +21222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports) {
 
 	var supportsArgumentsClass = (function(){
@@ -21113,7 +21248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21144,32 +21279,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
+	//import warning from 'warning'
 	'use strict';
 
 	exports.__esModule = true;
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _Actions = __webpack_require__(179);
+	var _Actions = __webpack_require__(180);
 
-	var _parsePath = __webpack_require__(190);
+	var _parsePath = __webpack_require__(191);
 
 	var _parsePath2 = _interopRequireDefault(_parsePath);
 
 	function createLocation() {
-	  var path = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
-	  var state = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
-	  var action = arguments.length <= 2 || arguments[2] === undefined ? _Actions.POP : arguments[2];
-	  var key = arguments.length <= 3 || arguments[3] === undefined ? null : arguments[3];
+	  var location = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
+	  var action = arguments.length <= 1 || arguments[1] === undefined ? _Actions.POP : arguments[1];
+	  var key = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
 
-	  if (typeof path === 'string') path = _parsePath2['default'](path);
+	  var _fourthArg = arguments.length <= 3 || arguments[3] === undefined ? null : arguments[3];
 
-	  var pathname = path.pathname || '/';
-	  var search = path.search || '';
-	  var hash = path.hash || '';
+	  if (typeof location === 'string') location = _parsePath2['default'](location);
+
+	  if (typeof action === 'object') {
+	    //warning(
+	    //  false,
+	    //  'The state (2nd) argument to createLocation is deprecated; use a ' +
+	    //  'location descriptor instead'
+	    //)
+
+	    location = _extends({}, location, { state: action });
+
+	    action = key || _Actions.POP;
+	    key = _fourthArg;
+	  }
+
+	  var pathname = location.pathname || '/';
+	  var search = location.search || '';
+	  var hash = location.hash || '';
+	  var state = location.state || null;
 
 	  return {
 	    pathname: pathname,
@@ -21185,7 +21338,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21194,11 +21347,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(176);
+	var _warning = __webpack_require__(178);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _extractPath = __webpack_require__(191);
+	var _extractPath = __webpack_require__(192);
 
 	var _extractPath2 = _interopRequireDefault(_extractPath);
 
@@ -21235,7 +21388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21253,7 +21406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21262,7 +21415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(176);
+	var _warning = __webpack_require__(178);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -21283,32 +21436,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
+/* 194 */
+/***/ function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	//import warning from 'warning'
+
+	"use strict";
 
 	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _warning = __webpack_require__(176);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	function deprecate(fn, message) {
-	  return function () {
-	    process.env.NODE_ENV !== 'production' ? _warning2['default'](false, '[history] ' + message) : undefined;
-	    return fn.apply(this, arguments);
-	  };
+	function deprecate(fn) {
+	  return fn;
+	  //return function () {
+	  //  warning(false, '[history] ' + message)
+	  //  return fn.apply(this, arguments)
+	  //}
 	}
 
-	exports['default'] = deprecate;
-	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+	exports["default"] = deprecate;
+	module.exports = exports["default"];
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21428,7 +21576,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21443,7 +21591,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -21451,9 +21599,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
-	var _getRouteParams = __webpack_require__(196);
+	var _getRouteParams = __webpack_require__(198);
 
 	var _getRouteParams2 = _interopRequireDefault(_getRouteParams);
 
@@ -21574,14 +21722,72 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 196 */
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+
+	var invariant = function(condition, format, a, b, c, d, e, f) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error(
+	        'Minified exception occurred; use the non-minified dev environment ' +
+	        'for the full error message and additional helpful warnings.'
+	      );
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error(
+	        format.replace(/%s/g, function() { return args[argIndex++]; })
+	      );
+	      error.name = 'Invariant Violation';
+	    }
+
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+
+	module.exports = invariant;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+
+/***/ },
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(197);
+	var _PatternUtils = __webpack_require__(199);
 
 	/**
 	 * Extracts an object of params the given route cares about from
@@ -21603,7 +21809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 197 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21617,7 +21823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -21836,7 +22042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 198 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21853,9 +22059,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _historyLibActions = __webpack_require__(179);
+	var _historyLibActions = __webpack_require__(180);
 
-	var _historyLibUseQueries = __webpack_require__(199);
+	var _historyLibUseQueries = __webpack_require__(201);
 
 	var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
 
@@ -22133,10 +22339,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 
@@ -22146,24 +22352,36 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _qs = __webpack_require__(200);
+	var _warning = __webpack_require__(178);
 
-	var _qs2 = _interopRequireDefault(_qs);
+	var _warning2 = _interopRequireDefault(_warning);
 
-	var _runTransitionHook = __webpack_require__(192);
+	var _queryString = __webpack_require__(202);
+
+	var _runTransitionHook = __webpack_require__(193);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _parsePath = __webpack_require__(190);
+	var _parsePath = __webpack_require__(191);
 
 	var _parsePath2 = _interopRequireDefault(_parsePath);
 
+	var _deprecate = __webpack_require__(194);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+
+	var SEARCH_BASE_KEY = '$searchBase';
+
 	function defaultStringifyQuery(query) {
-	  return _qs2['default'].stringify(query, { arrayFormat: 'brackets' }).replace(/%20/g, '+');
+	  return _queryString.stringify(query).replace(/%20/g, '+');
 	}
 
-	function defaultParseQueryString(queryString) {
-	  return _qs2['default'].parse(queryString.replace(/\+/g, '%20'));
+	var defaultParseQueryString = _queryString.parse;
+
+	function isNestedObject(object) {
+	  for (var p in object) {
+	    if (object.hasOwnProperty(p) && typeof object[p] === 'object' && !Array.isArray(object[p]) && object[p] !== null) return true;
+	  }return false;
 	}
 
 	/**
@@ -22185,22 +22403,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (typeof parseQueryString !== 'function') parseQueryString = defaultParseQueryString;
 
 	    function addQuery(location) {
-	      if (location.query == null) location.query = parseQueryString(location.search.substring(1));
+	      if (location.query == null) {
+	        var search = location.search;
+
+	        location.query = parseQueryString(search.substring(1));
+	        location[SEARCH_BASE_KEY] = { search: search, searchBase: '' };
+	      }
+
+	      // TODO: Instead of all the book-keeping here, this should just strip the
+	      // stringified query from the search.
 
 	      return location;
 	    }
 
-	    function appendQuery(path, query) {
+	    function appendQuery(location, query) {
+	      var _extends2;
+
 	      var queryString = undefined;
-	      if (!query || (queryString = stringifyQuery(query)) === '') return path;
+	      if (!query || (queryString = stringifyQuery(query)) === '') return location;
 
-	      if (typeof path === 'string') path = _parsePath2['default'](path);
+	      process.env.NODE_ENV !== 'production' ? _warning2['default'](stringifyQuery !== defaultStringifyQuery || !isNestedObject(query), 'useQueries does not stringify nested query objects by default; ' + 'use a custom stringifyQuery function') : undefined;
 
-	      var search = path.search + (path.search ? '&' : '?') + queryString;
+	      if (typeof location === 'string') location = _parsePath2['default'](location);
 
-	      return _extends({}, path, {
+	      var searchBaseSpec = location[SEARCH_BASE_KEY];
+	      var searchBase = undefined;
+	      if (searchBaseSpec && location.search === searchBaseSpec.search) {
+	        searchBase = searchBaseSpec.searchBase;
+	      } else {
+	        searchBase = location.search || '';
+	      }
+
+	      var search = searchBase + (searchBase ? '&' : '?') + queryString;
+
+	      return _extends({}, location, (_extends2 = {
 	        search: search
-	      });
+	      }, _extends2[SEARCH_BASE_KEY] = { search: search, searchBase: searchBase }, _extends2));
 	    }
 
 	    // Override all read methods with query-aware versions.
@@ -22217,574 +22455,148 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    // Override all write methods with query-aware versions.
-	    function pushState(state, path, query) {
-	      return history.pushState(state, appendQuery(path, query));
+	    function push(location) {
+	      history.push(appendQuery(location, location.query));
 	    }
 
-	    function replaceState(state, path, query) {
-	      return history.replaceState(state, appendQuery(path, query));
+	    function replace(location) {
+	      history.replace(appendQuery(location, location.query));
 	    }
 
-	    function createPath(path, query) {
-	      return history.createPath(appendQuery(path, query));
+	    function createPath(location, query) {
+	      //warning(
+	      //  !query,
+	      //  'the query argument to createPath is deprecated; use a location descriptor instead'
+	      //)
+	      return history.createPath(appendQuery(location, query || location.query));
 	    }
 
-	    function createHref(path, query) {
-	      return history.createHref(appendQuery(path, query));
+	    function createHref(location, query) {
+	      //warning(
+	      //  !query,
+	      //  'the query argument to createHref is deprecated; use a location descriptor instead'
+	      //)
+	      return history.createHref(appendQuery(location, query || location.query));
 	    }
 
 	    function createLocation() {
 	      return addQuery(history.createLocation.apply(history, arguments));
 	    }
 
+	    // deprecated
+	    function pushState(state, path, query) {
+	      if (typeof path === 'string') path = _parsePath2['default'](path);
+
+	      push(_extends({ state: state }, path, { query: query }));
+	    }
+
+	    // deprecated
+	    function replaceState(state, path, query) {
+	      if (typeof path === 'string') path = _parsePath2['default'](path);
+
+	      replace(_extends({ state: state }, path, { query: query }));
+	    }
+
 	    return _extends({}, history, {
 	      listenBefore: listenBefore,
 	      listen: listen,
-	      pushState: pushState,
-	      replaceState: replaceState,
+	      push: push,
+	      replace: replace,
 	      createPath: createPath,
 	      createHref: createHref,
-	      createLocation: createLocation
+	      createLocation: createLocation,
+
+	      pushState: _deprecate2['default'](pushState, 'pushState is deprecated; use push instead'),
+	      replaceState: _deprecate2['default'](replaceState, 'replaceState is deprecated; use replace instead')
 	    });
 	  };
 	}
 
 	exports['default'] = useQueries;
 	module.exports = exports['default'];
-
-/***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Load modules
-
-	var Stringify = __webpack_require__(201);
-	var Parse = __webpack_require__(203);
-
-
-	// Declare internals
-
-	var internals = {};
-
-
-	module.exports = {
-	    stringify: Stringify,
-	    parse: Parse
-	};
-
-
-/***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Load modules
-
-	var Utils = __webpack_require__(202);
-
-
-	// Declare internals
-
-	var internals = {
-	    delimiter: '&',
-	    arrayPrefixGenerators: {
-	        brackets: function (prefix, key) {
-
-	            return prefix + '[]';
-	        },
-	        indices: function (prefix, key) {
-
-	            return prefix + '[' + key + ']';
-	        },
-	        repeat: function (prefix, key) {
-
-	            return prefix;
-	        }
-	    },
-	    strictNullHandling: false
-	};
-
-
-	internals.stringify = function (obj, prefix, generateArrayPrefix, strictNullHandling, filter) {
-
-	    if (typeof filter === 'function') {
-	        obj = filter(prefix, obj);
-	    }
-	    else if (Utils.isBuffer(obj)) {
-	        obj = obj.toString();
-	    }
-	    else if (obj instanceof Date) {
-	        obj = obj.toISOString();
-	    }
-	    else if (obj === null) {
-	        if (strictNullHandling) {
-	            return Utils.encode(prefix);
-	        }
-
-	        obj = '';
-	    }
-
-	    if (typeof obj === 'string' ||
-	        typeof obj === 'number' ||
-	        typeof obj === 'boolean') {
-
-	        return [Utils.encode(prefix) + '=' + Utils.encode(obj)];
-	    }
-
-	    var values = [];
-
-	    if (typeof obj === 'undefined') {
-	        return values;
-	    }
-
-	    var objKeys = Array.isArray(filter) ? filter : Object.keys(obj);
-	    for (var i = 0, il = objKeys.length; i < il; ++i) {
-	        var key = objKeys[i];
-
-	        if (Array.isArray(obj)) {
-	            values = values.concat(internals.stringify(obj[key], generateArrayPrefix(prefix, key), generateArrayPrefix, strictNullHandling, filter));
-	        }
-	        else {
-	            values = values.concat(internals.stringify(obj[key], prefix + '[' + key + ']', generateArrayPrefix, strictNullHandling, filter));
-	        }
-	    }
-
-	    return values;
-	};
-
-
-	module.exports = function (obj, options) {
-
-	    options = options || {};
-	    var delimiter = typeof options.delimiter === 'undefined' ? internals.delimiter : options.delimiter;
-	    var strictNullHandling = typeof options.strictNullHandling === 'boolean' ? options.strictNullHandling : internals.strictNullHandling;
-	    var objKeys;
-	    var filter;
-	    if (typeof options.filter === 'function') {
-	        filter = options.filter;
-	        obj = filter('', obj);
-	    }
-	    else if (Array.isArray(options.filter)) {
-	        objKeys = filter = options.filter;
-	    }
-
-	    var keys = [];
-
-	    if (typeof obj !== 'object' ||
-	        obj === null) {
-
-	        return '';
-	    }
-
-	    var arrayFormat;
-	    if (options.arrayFormat in internals.arrayPrefixGenerators) {
-	        arrayFormat = options.arrayFormat;
-	    }
-	    else if ('indices' in options) {
-	        arrayFormat = options.indices ? 'indices' : 'repeat';
-	    }
-	    else {
-	        arrayFormat = 'indices';
-	    }
-
-	    var generateArrayPrefix = internals.arrayPrefixGenerators[arrayFormat];
-
-	    if (!objKeys) {
-	        objKeys = Object.keys(obj);
-	    }
-	    for (var i = 0, il = objKeys.length; i < il; ++i) {
-	        var key = objKeys[i];
-	        keys = keys.concat(internals.stringify(obj[key], key, generateArrayPrefix, strictNullHandling, filter));
-	    }
-
-	    return keys.join(delimiter);
-	};
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
 /* 202 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// Load modules
+	'use strict';
+	var strictUriEncode = __webpack_require__(203);
 
-
-	// Declare internals
-
-	var internals = {};
-	internals.hexTable = new Array(256);
-	for (var h = 0; h < 256; ++h) {
-	    internals.hexTable[h] = '%' + ((h < 16 ? '0' : '') + h.toString(16)).toUpperCase();
-	}
-
-
-	exports.arrayToObject = function (source, options) {
-
-	    var obj = options.plainObjects ? Object.create(null) : {};
-	    for (var i = 0, il = source.length; i < il; ++i) {
-	        if (typeof source[i] !== 'undefined') {
-
-	            obj[i] = source[i];
-	        }
-	    }
-
-	    return obj;
+	exports.extract = function (str) {
+		return str.split('?')[1] || '';
 	};
 
+	exports.parse = function (str) {
+		if (typeof str !== 'string') {
+			return {};
+		}
 
-	exports.merge = function (target, source, options) {
+		str = str.trim().replace(/^(\?|#|&)/, '');
 
-	    if (!source) {
-	        return target;
-	    }
+		if (!str) {
+			return {};
+		}
 
-	    if (typeof source !== 'object') {
-	        if (Array.isArray(target)) {
-	            target.push(source);
-	        }
-	        else if (typeof target === 'object') {
-	            target[source] = true;
-	        }
-	        else {
-	            target = [target, source];
-	        }
+		return str.split('&').reduce(function (ret, param) {
+			var parts = param.replace(/\+/g, ' ').split('=');
+			// Firefox (pre 40) decodes `%3D` to `=`
+			// https://github.com/sindresorhus/query-string/pull/37
+			var key = parts.shift();
+			var val = parts.length > 0 ? parts.join('=') : undefined;
 
-	        return target;
-	    }
+			key = decodeURIComponent(key);
 
-	    if (typeof target !== 'object') {
-	        target = [target].concat(source);
-	        return target;
-	    }
+			// missing `=` should be `null`:
+			// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+			val = val === undefined ? null : decodeURIComponent(val);
 
-	    if (Array.isArray(target) &&
-	        !Array.isArray(source)) {
+			if (!ret.hasOwnProperty(key)) {
+				ret[key] = val;
+			} else if (Array.isArray(ret[key])) {
+				ret[key].push(val);
+			} else {
+				ret[key] = [ret[key], val];
+			}
 
-	        target = exports.arrayToObject(target, options);
-	    }
-
-	    var keys = Object.keys(source);
-	    for (var k = 0, kl = keys.length; k < kl; ++k) {
-	        var key = keys[k];
-	        var value = source[key];
-
-	        if (!Object.prototype.hasOwnProperty.call(target, key)) {
-	            target[key] = value;
-	        }
-	        else {
-	            target[key] = exports.merge(target[key], value, options);
-	        }
-	    }
-
-	    return target;
+			return ret;
+		}, {});
 	};
 
+	exports.stringify = function (obj) {
+		return obj ? Object.keys(obj).sort().map(function (key) {
+			var val = obj[key];
 
-	exports.decode = function (str) {
+			if (val === undefined) {
+				return '';
+			}
 
-	    try {
-	        return decodeURIComponent(str.replace(/\+/g, ' '));
-	    } catch (e) {
-	        return str;
-	    }
-	};
+			if (val === null) {
+				return key;
+			}
 
-	exports.encode = function (str) {
+			if (Array.isArray(val)) {
+				return val.sort().map(function (val2) {
+					return strictUriEncode(key) + '=' + strictUriEncode(val2);
+				}).join('&');
+			}
 
-	    // This code was originally written by Brian White (mscdex) for the io.js core querystring library.
-	    // It has been adapted here for stricter adherence to RFC 3986
-	    if (str.length === 0) {
-	        return str;
-	    }
-
-	    if (typeof str !== 'string') {
-	        str = '' + str;
-	    }
-
-	    var out = '';
-	    for (var i = 0, il = str.length; i < il; ++i) {
-	        var c = str.charCodeAt(i);
-
-	        if (c === 0x2D || // -
-	            c === 0x2E || // .
-	            c === 0x5F || // _
-	            c === 0x7E || // ~
-	            (c >= 0x30 && c <= 0x39) || // 0-9
-	            (c >= 0x41 && c <= 0x5A) || // a-z
-	            (c >= 0x61 && c <= 0x7A)) { // A-Z
-
-	            out += str[i];
-	            continue;
-	        }
-
-	        if (c < 0x80) {
-	            out += internals.hexTable[c];
-	            continue;
-	        }
-
-	        if (c < 0x800) {
-	            out += internals.hexTable[0xC0 | (c >> 6)] + internals.hexTable[0x80 | (c & 0x3F)];
-	            continue;
-	        }
-
-	        if (c < 0xD800 || c >= 0xE000) {
-	            out += internals.hexTable[0xE0 | (c >> 12)] + internals.hexTable[0x80 | ((c >> 6) & 0x3F)] + internals.hexTable[0x80 | (c & 0x3F)];
-	            continue;
-	        }
-
-	        ++i;
-	        c = 0x10000 + (((c & 0x3FF) << 10) | (str.charCodeAt(i) & 0x3FF));
-	        out += internals.hexTable[0xF0 | (c >> 18)] + internals.hexTable[0x80 | ((c >> 12) & 0x3F)] + internals.hexTable[0x80 | ((c >> 6) & 0x3F)] + internals.hexTable[0x80 | (c & 0x3F)];
-	    }
-
-	    return out;
-	};
-
-	exports.compact = function (obj, refs) {
-
-	    if (typeof obj !== 'object' ||
-	        obj === null) {
-
-	        return obj;
-	    }
-
-	    refs = refs || [];
-	    var lookup = refs.indexOf(obj);
-	    if (lookup !== -1) {
-	        return refs[lookup];
-	    }
-
-	    refs.push(obj);
-
-	    if (Array.isArray(obj)) {
-	        var compacted = [];
-
-	        for (var i = 0, il = obj.length; i < il; ++i) {
-	            if (typeof obj[i] !== 'undefined') {
-	                compacted.push(obj[i]);
-	            }
-	        }
-
-	        return compacted;
-	    }
-
-	    var keys = Object.keys(obj);
-	    for (i = 0, il = keys.length; i < il; ++i) {
-	        var key = keys[i];
-	        obj[key] = exports.compact(obj[key], refs);
-	    }
-
-	    return obj;
-	};
-
-
-	exports.isRegExp = function (obj) {
-
-	    return Object.prototype.toString.call(obj) === '[object RegExp]';
-	};
-
-
-	exports.isBuffer = function (obj) {
-
-	    if (obj === null ||
-	        typeof obj === 'undefined') {
-
-	        return false;
-	    }
-
-	    return !!(obj.constructor &&
-	              obj.constructor.isBuffer &&
-	              obj.constructor.isBuffer(obj));
+			return strictUriEncode(key) + '=' + strictUriEncode(val);
+		}).filter(function (x) {
+			return x.length > 0;
+		}).join('&') : '';
 	};
 
 
 /***/ },
 /* 203 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	// Load modules
-
-	var Utils = __webpack_require__(202);
-
-
-	// Declare internals
-
-	var internals = {
-	    delimiter: '&',
-	    depth: 5,
-	    arrayLimit: 20,
-	    parameterLimit: 1000,
-	    strictNullHandling: false,
-	    plainObjects: false,
-	    allowPrototypes: false
-	};
-
-
-	internals.parseValues = function (str, options) {
-
-	    var obj = {};
-	    var parts = str.split(options.delimiter, options.parameterLimit === Infinity ? undefined : options.parameterLimit);
-
-	    for (var i = 0, il = parts.length; i < il; ++i) {
-	        var part = parts[i];
-	        var pos = part.indexOf(']=') === -1 ? part.indexOf('=') : part.indexOf(']=') + 1;
-
-	        if (pos === -1) {
-	            obj[Utils.decode(part)] = '';
-
-	            if (options.strictNullHandling) {
-	                obj[Utils.decode(part)] = null;
-	            }
-	        }
-	        else {
-	            var key = Utils.decode(part.slice(0, pos));
-	            var val = Utils.decode(part.slice(pos + 1));
-
-	            if (!Object.prototype.hasOwnProperty.call(obj, key)) {
-	                obj[key] = val;
-	            }
-	            else {
-	                obj[key] = [].concat(obj[key]).concat(val);
-	            }
-	        }
-	    }
-
-	    return obj;
-	};
-
-
-	internals.parseObject = function (chain, val, options) {
-
-	    if (!chain.length) {
-	        return val;
-	    }
-
-	    var root = chain.shift();
-
-	    var obj;
-	    if (root === '[]') {
-	        obj = [];
-	        obj = obj.concat(internals.parseObject(chain, val, options));
-	    }
-	    else {
-	        obj = options.plainObjects ? Object.create(null) : {};
-	        var cleanRoot = root[0] === '[' && root[root.length - 1] === ']' ? root.slice(1, root.length - 1) : root;
-	        var index = parseInt(cleanRoot, 10);
-	        var indexString = '' + index;
-	        if (!isNaN(index) &&
-	            root !== cleanRoot &&
-	            indexString === cleanRoot &&
-	            index >= 0 &&
-	            (options.parseArrays &&
-	             index <= options.arrayLimit)) {
-
-	            obj = [];
-	            obj[index] = internals.parseObject(chain, val, options);
-	        }
-	        else {
-	            obj[cleanRoot] = internals.parseObject(chain, val, options);
-	        }
-	    }
-
-	    return obj;
-	};
-
-
-	internals.parseKeys = function (key, val, options) {
-
-	    if (!key) {
-	        return;
-	    }
-
-	    // Transform dot notation to bracket notation
-
-	    if (options.allowDots) {
-	        key = key.replace(/\.([^\.\[]+)/g, '[$1]');
-	    }
-
-	    // The regex chunks
-
-	    var parent = /^([^\[\]]*)/;
-	    var child = /(\[[^\[\]]*\])/g;
-
-	    // Get the parent
-
-	    var segment = parent.exec(key);
-
-	    // Stash the parent if it exists
-
-	    var keys = [];
-	    if (segment[1]) {
-	        // If we aren't using plain objects, optionally prefix keys
-	        // that would overwrite object prototype properties
-	        if (!options.plainObjects &&
-	            Object.prototype.hasOwnProperty(segment[1])) {
-
-	            if (!options.allowPrototypes) {
-	                return;
-	            }
-	        }
-
-	        keys.push(segment[1]);
-	    }
-
-	    // Loop through children appending to the array until we hit depth
-
-	    var i = 0;
-	    while ((segment = child.exec(key)) !== null && i < options.depth) {
-
-	        ++i;
-	        if (!options.plainObjects &&
-	            Object.prototype.hasOwnProperty(segment[1].replace(/\[|\]/g, ''))) {
-
-	            if (!options.allowPrototypes) {
-	                continue;
-	            }
-	        }
-	        keys.push(segment[1]);
-	    }
-
-	    // If there's a remainder, just add whatever is left
-
-	    if (segment) {
-	        keys.push('[' + key.slice(segment.index) + ']');
-	    }
-
-	    return internals.parseObject(keys, val, options);
-	};
-
-
-	module.exports = function (str, options) {
-
-	    options = options || {};
-	    options.delimiter = typeof options.delimiter === 'string' || Utils.isRegExp(options.delimiter) ? options.delimiter : internals.delimiter;
-	    options.depth = typeof options.depth === 'number' ? options.depth : internals.depth;
-	    options.arrayLimit = typeof options.arrayLimit === 'number' ? options.arrayLimit : internals.arrayLimit;
-	    options.parseArrays = options.parseArrays !== false;
-	    options.allowDots = options.allowDots !== false;
-	    options.plainObjects = typeof options.plainObjects === 'boolean' ? options.plainObjects : internals.plainObjects;
-	    options.allowPrototypes = typeof options.allowPrototypes === 'boolean' ? options.allowPrototypes : internals.allowPrototypes;
-	    options.parameterLimit = typeof options.parameterLimit === 'number' ? options.parameterLimit : internals.parameterLimit;
-	    options.strictNullHandling = typeof options.strictNullHandling === 'boolean' ? options.strictNullHandling : internals.strictNullHandling;
-
-	    if (str === '' ||
-	        str === null ||
-	        typeof str === 'undefined') {
-
-	        return options.plainObjects ? Object.create(null) : {};
-	    }
-
-	    var tempObj = typeof str === 'string' ? internals.parseValues(str, options) : str;
-	    var obj = options.plainObjects ? Object.create(null) : {};
-
-	    // Iterate over the keys and setup the new object
-
-	    var keys = Object.keys(tempObj);
-	    for (var i = 0, il = keys.length; i < il; ++i) {
-	        var key = keys[i];
-	        var newObj = internals.parseKeys(key, tempObj[key], options);
-	        obj = Utils.merge(obj, newObj, options);
-	    }
-
-	    return Utils.compact(obj);
+	'use strict';
+	module.exports = function (str) {
+		return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
+			return '%' + c.charCodeAt(0).toString(16);
+		});
 	};
 
 
@@ -22796,7 +22608,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(197);
+	var _PatternUtils = __webpack_require__(199);
 
 	function routeParamsChanged(route, prevState, nextState) {
 	  if (!route.path) return false;
@@ -22997,7 +22809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(197);
+	var _PatternUtils = __webpack_require__(199);
 
 	function deepEqual(a, b) {
 	  if (a == b) return true;
@@ -23171,9 +22983,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _AsyncUtils = __webpack_require__(206);
 
-	var _PatternUtils = __webpack_require__(197);
+	var _PatternUtils = __webpack_require__(199);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
 	function getChildRoutes(route, location, callback) {
 	  if (route.childRoutes) {
@@ -23640,7 +23452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -23715,7 +23527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -23723,9 +23535,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
-	var _PatternUtils = __webpack_require__(197);
+	var _PatternUtils = __webpack_require__(199);
 
 	var _PropTypes = __webpack_require__(210);
 
@@ -23832,7 +23644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -23840,7 +23652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
 	var _PropTypes = __webpack_require__(210);
 
@@ -23904,7 +23716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -23912,7 +23724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
 	var _PropTypes = __webpack_require__(210);
 
@@ -24005,7 +23817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -24116,7 +23928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(178);
+	var _invariant = __webpack_require__(197);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -24128,9 +23940,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _historyLibUseBasename2 = _interopRequireDefault(_historyLibUseBasename);
 
-	var _RouteUtils = __webpack_require__(194);
+	var _RouteUtils = __webpack_require__(195);
 
-	var _useRoutes = __webpack_require__(198);
+	var _useRoutes = __webpack_require__(200);
 
 	var _useRoutes2 = _interopRequireDefault(_useRoutes);
 
@@ -24185,15 +23997,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(178);
+	var _warning = __webpack_require__(178);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	var _invariant = __webpack_require__(179);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(179);
+	var _Actions = __webpack_require__(180);
 
-	var _createHistory = __webpack_require__(184);
+	var _createHistory = __webpack_require__(185);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
+
+	var _parsePath = __webpack_require__(191);
+
+	var _parsePath2 = _interopRequireDefault(_parsePath);
 
 	function createStateStorage(entries) {
 	  return entries.filter(function (entry) {
@@ -24274,7 +24094,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      entry.key = key;
 	    }
 
-	    return history.createLocation(path, state, undefined, key);
+	    var location = _parsePath2['default'](path);
+
+	    return history.createLocation(_extends({}, location, { state: state }), undefined, key);
 	  }
 
 	  function canGo(n) {
@@ -24284,7 +24106,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  function go(n) {
 	    if (n) {
-	      !canGo(n) ? process.env.NODE_ENV !== 'production' ? _invariant2['default'](false, 'Cannot go(%s) there is not enough history', n) : _invariant2['default'](false) : undefined;
+	      if (!canGo(n)) {
+	        process.env.NODE_ENV !== 'production' ? _warning2['default'](false, 'Cannot go(%s) there is not enough history', n) : undefined;
+	        return;
+	      }
 
 	      current += n;
 
@@ -24335,19 +24160,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _ExecutionEnvironment = __webpack_require__(180);
+	var _ExecutionEnvironment = __webpack_require__(181);
 
-	var _runTransitionHook = __webpack_require__(192);
+	var _runTransitionHook = __webpack_require__(193);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _extractPath = __webpack_require__(191);
+	var _extractPath = __webpack_require__(192);
 
 	var _extractPath2 = _interopRequireDefault(_extractPath);
 
-	var _parsePath = __webpack_require__(190);
+	var _parsePath = __webpack_require__(191);
 
 	var _parsePath2 = _interopRequireDefault(_parsePath);
+
+	var _deprecate = __webpack_require__(194);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
 
 	function useBasename(createHistory) {
 	  return function () {
@@ -24381,17 +24210,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return location;
 	    }
 
-	    function prependBasename(path) {
-	      if (!basename) return path;
+	    function prependBasename(location) {
+	      if (!basename) return location;
 
-	      if (typeof path === 'string') path = _parsePath2['default'](path);
+	      if (typeof location === 'string') location = _parsePath2['default'](location);
 
-	      var pname = path.pathname;
+	      var pname = location.pathname;
 	      var normalizedBasename = basename.slice(-1) === '/' ? basename : basename + '/';
 	      var normalizedPathname = pname.charAt(0) === '/' ? pname.slice(1) : pname;
 	      var pathname = normalizedBasename + normalizedPathname;
 
-	      return _extends({}, path, {
+	      return _extends({}, location, {
 	        pathname: pathname
 	      });
 	    }
@@ -24410,44 +24239,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    // Override all write methods with basename-aware versions.
-	    function pushState(state, path) {
-	      history.pushState(state, prependBasename(path));
+	    function push(location) {
+	      history.push(prependBasename(location));
 	    }
 
-	    function push(path) {
-	      pushState(null, path);
+	    function replace(location) {
+	      history.replace(prependBasename(location));
 	    }
 
-	    function replaceState(state, path) {
-	      history.replaceState(state, prependBasename(path));
+	    function createPath(location) {
+	      return history.createPath(prependBasename(location));
 	    }
 
-	    function replace(path) {
-	      replaceState(null, path);
-	    }
-
-	    function createPath(path) {
-	      return history.createPath(prependBasename(path));
-	    }
-
-	    function createHref(path) {
-	      return history.createHref(prependBasename(path));
+	    function createHref(location) {
+	      return history.createHref(prependBasename(location));
 	    }
 
 	    function createLocation() {
 	      return addBasename(history.createLocation.apply(history, arguments));
 	    }
 
+	    // deprecated
+	    function pushState(state, path) {
+	      if (typeof path === 'string') path = _parsePath2['default'](path);
+
+	      push(_extends({ state: state }, path));
+	    }
+
+	    // deprecated
+	    function replaceState(state, path) {
+	      if (typeof path === 'string') path = _parsePath2['default'](path);
+
+	      replace(_extends({ state: state }, path));
+	    }
+
 	    return _extends({}, history, {
 	      listenBefore: listenBefore,
 	      listen: listen,
-	      pushState: pushState,
 	      push: push,
-	      replaceState: replaceState,
 	      replace: replace,
 	      createPath: createPath,
 	      createHref: createHref,
-	      createLocation: createLocation
+	      createLocation: createLocation,
+
+	      pushState: _deprecate2['default'](pushState, 'pushState is deprecated; use push instead'),
+	      replaceState: _deprecate2['default'](replaceState, 'replaceState is deprecated; use replace instead')
 	    });
 	  };
 	}
@@ -24484,7 +24320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -24947,6 +24783,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * 状态
 	   * */
+	  //标签新增命名空间
+	  //标签启用
+	  positive: setNamespace('positive'),
+	  //标签灰色
+	  negative: setNamespace('negative'),
+	  //标签无背景色
+	  neutral: setNamespace('neutral'),
+	  //标签灰白
+	  modest: setNamespace('modest'),
+	  //提示框暖色(黄色)
+	  warm: setNamespace('warm'),
+
 	  //禁用
 	  disabled: setNamespace('disabled'),
 	  //启用
@@ -24968,6 +24816,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  'arrow-up': setNamespace('arrow-up'),
 	  //向下箭头
 	  'arrow-down': setNamespace('arrow-down'),
+	  //下边线
+	  'bottom': setNamespace('bottom'),
 
 	  /**
 	   * 颜色
@@ -25045,7 +24895,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
-	//import RowLess from './row.less';
 	'use strict';
 
 	exports.__esModule = true;
@@ -25067,6 +24916,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames = __webpack_require__(227);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _utilsComponent = __webpack_require__(229);
+
+	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
 	 * 行
@@ -25090,121 +24943,46 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return _react2['default'].createElement(
 	            'div',
-	            _extends({}, this.props, { className: _classnames2['default']('eg-row', 'clearfix', this.props.className) }),
+	            _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), 'clearfix', this.props.className) }),
 	            this.props.children
 	        );
 	    };
 
 	    _createClass(Row, null, [{
 	        key: 'propTypes',
-	        value: {},
+	        value: {
+	            /**
+	             * 样式前缀
+	             * @property classPrefix
+	             * @type String
+	             * @default row
+	             * */
+	            classPrefix: _react.PropTypes.string,
+	            /**
+	             * 样式前缀
+	             * @property bottom
+	             * @type String
+	             * @default undefined
+	             * */
+	            bottom: _react.PropTypes.bool
+	        },
+	        enumerable: true
+	    }, {
+	        key: 'defaultProps',
+	        value: {
+	            classPrefix: 'row'
+	        },
 	        enumerable: true
 	    }]);
 
 	    return Row;
-	})(_react.Component);
+	})(_utilsComponent2['default']);
 
 	exports['default'] = Row;
 	module.exports = exports['default'];
 
 /***/ },
 /* 229 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(17);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(227);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _utilsComponent = __webpack_require__(230);
-
-	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
-
-	/**
-	 * 列
-	 * @class Col
-	 * @module grid
-	 * @extends Component
-	 * @constructor
-	 * @since 0.1.0
-	 * */
-
-	var Col = (function (_Component) {
-	    _inherits(Col, _Component);
-
-	    function Col() {
-	        _classCallCheck(this, Col);
-
-	        _Component.apply(this, arguments);
-	    }
-
-	    Col.prototype.initCallback = function initCallback() {
-	        var sm = this.props.sm;
-
-	        this.setProperty('sm', this.props.egSize + '-' + (sm ? sm : 12));
-	    };
-
-	    Col.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            this.componentTag,
-	            _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), this.props.className) }),
-	            this.props.children
-	        );
-	    };
-
-	    _createClass(Col, null, [{
-	        key: 'propTypes',
-	        value: {
-	            /**
-	             * 占几列，共12列
-	             * @property egSize
-	             * @type Integer
-	             * */
-	            egSize: _react.PropTypes.number,
-	            /**
-	             * 是否是最后一列
-	             * @property end
-	             * @type Boolean
-	             * @default false
-	             * */
-	            end: _react.PropTypes.bool
-	        },
-	        enumerable: true
-	    }, {
-	        key: 'defaultProps',
-	        value: {
-	            classPrefix: 'col',
-	            componentTag: 'div',
-	            egSize: 'md'
-	        },
-	        enumerable: true
-	    }]);
-
-	    return Col;
-	})(_utilsComponent2['default']);
-
-	exports['default'] = Col;
-	module.exports = exports['default'];
-
-/***/ },
-/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25229,15 +25007,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ClassNameMixin2 = _interopRequireDefault(_ClassNameMixin);
 
-	var _PropertyMixin = __webpack_require__(231);
+	var _PropertyMixin = __webpack_require__(230);
 
 	var _PropertyMixin2 = _interopRequireDefault(_PropertyMixin);
 
-	var _MethodMixin = __webpack_require__(232);
+	var _MethodMixin = __webpack_require__(231);
 
 	var _MethodMixin2 = _interopRequireDefault(_MethodMixin);
 
-	var _extend = __webpack_require__(233);
+	var _extend = __webpack_require__(232);
 
 	var _extend2 = _interopRequireDefault(_extend);
 
@@ -25250,6 +25028,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.call(this, props, context);
 
 	        this.otherProps = {};
+	        this.initCallback(this);
+	        //验证
+	        this.setProperty(this.props);
+	        //注册
+	        this.registerMethod(this.otherProps);
+
+	        //ref唯一标识生成
 
 	        this.state = {
 	            _isShow: false
@@ -25260,24 +25045,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.props.initCallback && this.props.initCallback(this);
 	    };
 
-	    BaseComponent.prototype.componentWillMount = function componentWillMount() {
-	        //验证
-	        this.setProperty(this.props);
-	        //注册
-	        this.registerMethod(this.otherProps);
-	        this.initCallback(this);
+	    BaseComponent.prototype.componentWillMount = function componentWillMount() {};
+
+	    BaseComponent.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+	        this.setProperty(nextProps);
+	        return true;
 	    };
+
+	    //renderDom(dom){
+	    //    this.setProperty(this.props);
+	    //    return dom;
+	    //}
 
 	    BaseComponent.prototype.componentDidMount = function componentDidMount() {
 	        this.loadedCallback && this.loadedCallback(this);
 	    };
 
-	    BaseComponent.prototype.setMethod = function setMethod(methodName) {
-	        var method = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];
-
-	        this[methodName + 'Callback'] = function () {
-	            method(arguments);
-	        };
+	    BaseComponent.prototype.setMethod = function setMethod(methodName, method) {
+	        this[methodName + 'Callback'] = (function (method) {
+	            var m = method;
+	            return function () {
+	                m(arguments);
+	            };
+	        })(method);
 	    };
 
 	    //注册回调
@@ -25286,14 +25076,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //注册回调
 	        //otherProps
 	        var method = null,
+	            methodName = '',
 	            other = {};
 	        for (var item in methods) {
-	            method = this.methods[item];
+	            method = this.methods[methodName = item.replace(/^on/, '').toLowerCase()];
 	            if (method) {
-	                this.setMethod(item, method);
-	            } else {
-	                other[item] = methods[item];
+	                this.setMethod(methodName, methods[item]);
 	            }
+	        }
+	        //this.otherProps = other;
+	    };
+
+	    BaseComponent.prototype.setProperties = function setProperties(props) {
+	        for (var item in props) {
+	            this.setProperty(item, props[item]);
 	        }
 	    };
 
@@ -25316,7 +25112,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	                switch (typeof prop) {
 	                    case 'boolean':
-	                        propList.push(item);
+	                        if (props[item]) {
+	                            propList.push(item);
+	                        }
 	                        break;
 	                    case 'function':
 	                        var param = prop.call(this, props[item]);
@@ -25389,7 +25187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 231 */
+/* 230 */
 /***/ function(module, exports) {
 
 	/**
@@ -25417,7 +25215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return { color: val };
 	        },
 	        egStyle: function egStyle(val) {
-	            return getVal(['success', 'error', 'warning', 'danger', 'default'], val);
+	            return getVal(['success', 'error', 'warning', 'danger', 'default', 'link'], val);
 	        },
 	        status: function status(val) {
 	            getVal(['diabled', 'active', 'enable'], val);
@@ -25498,7 +25296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 232 */
+/* 231 */
 /***/ function(module, exports) {
 
 	/**
@@ -25516,6 +25314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        success: true,
 	        cancel: true,
 	        checked: true,
+	        active: true,
 	        getValue: true,
 
 	        update: true,
@@ -25536,7 +25335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25626,6 +25425,103 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(227);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _utilsComponent = __webpack_require__(229);
+
+	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
+
+	/**
+	 * 列
+	 * @class Col
+	 * @module grid
+	 * @extends Component
+	 * @constructor
+	 * @since 0.1.0
+	 * */
+
+	var Col = (function (_Component) {
+	    _inherits(Col, _Component);
+
+	    function Col() {
+	        _classCallCheck(this, Col);
+
+	        _Component.apply(this, arguments);
+	    }
+
+	    Col.prototype.initCallback = function initCallback() {
+	        var sm = this.props.sm;
+
+	        this.setProperty('sm', this.props.egSize + '-' + sm);
+	    };
+
+	    Col.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            this.componentTag,
+	            _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), this.props.className) }),
+	            this.props.children
+	        );
+	    };
+
+	    _createClass(Col, null, [{
+	        key: 'propTypes',
+	        value: {
+	            /**
+	             * 占几列，共12列
+	             * @property egSize
+	             * @type Integer
+	             * */
+	            egSize: _react.PropTypes.string,
+	            /**
+	             * 是否是最后一列
+	             * @property end
+	             * @type Boolean
+	             * @default false
+	             * */
+	            end: _react.PropTypes.bool
+	        },
+	        enumerable: true
+	    }, {
+	        key: 'defaultProps',
+	        value: {
+	            classPrefix: 'col',
+	            componentTag: 'div',
+	            egSize: 'md',
+	            sm: 12
+	        },
+	        enumerable: true
+	    }]);
+
+	    return Col;
+	})(_utilsComponent2['default']);
+
+	exports['default'] = Col;
+	module.exports = exports['default'];
 
 /***/ },
 /* 234 */
@@ -25720,6 +25616,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _react = __webpack_require__(17);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	var _classnames = __webpack_require__(227);
 
@@ -25817,7 +25717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    CalendarPanel.prototype.inputFocusHandler = function inputFocusHandler(e) {
 
-	        var container = _react2['default'].findDOMNode(this),
+	        var container = _reactLibReactDOM2['default'].findDOMNode(this),
 	            _this = this,
 	            calendar = container.querySelector('.' + this.getClassName('container')),
 	            input = e.target;
@@ -26574,7 +26474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (!hasOwnProperty(obj, k)) {
 	      obj[k] = v;
-	    } else if (Array.isArray(obj[k])) {
+	    } else if (isArray(obj[k])) {
 	      obj[k].push(v);
 	    } else {
 	      obj[k] = [obj[k], v];
@@ -26582,6 +26482,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  return obj;
+	};
+
+	var isArray = Array.isArray || function (xs) {
+	  return Object.prototype.toString.call(xs) === '[object Array]';
 	};
 
 
@@ -26636,10 +26540,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  if (typeof obj === 'object') {
-	    return Object.keys(obj).map(function(k) {
+	    return map(objectKeys(obj), function(k) {
 	      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
-	      if (Array.isArray(obj[k])) {
-	        return obj[k].map(function(v) {
+	      if (isArray(obj[k])) {
+	        return map(obj[k], function(v) {
 	          return ks + encodeURIComponent(stringifyPrimitive(v));
 	        }).join(sep);
 	      } else {
@@ -26652,6 +26556,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!name) return '';
 	  return encodeURIComponent(stringifyPrimitive(name)) + eq +
 	         encodeURIComponent(stringifyPrimitive(obj));
+	};
+
+	var isArray = Array.isArray || function (xs) {
+	  return Object.prototype.toString.call(xs) === '[object Array]';
+	};
+
+	function map (xs, f) {
+	  if (xs.map) return xs.map(f);
+	  var res = [];
+	  for (var i = 0; i < xs.length; i++) {
+	    res.push(f(xs[i], i));
+	  }
+	  return res;
+	}
+
+	var objectKeys = Object.keys || function (obj) {
+	  var res = [];
+	  for (var key in obj) {
+	    if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
+	  }
+	  return res;
 	};
 
 
@@ -26688,7 +26613,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -26705,6 +26630,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.apply(this, arguments);
 	    }
 
+	    ButtonCls.prototype.onActive = function onActive() {
+	        alert('测试');
+	    };
+
 	    ButtonCls.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            _srcGridJs2['default'],
@@ -26714,10 +26643,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                null,
 	                _react2['default'].createElement(
 	                    _srcColJs2['default'],
-	                    { sm: 12 },
+	                    null,
 	                    _react2['default'].createElement(
 	                        _srcButtonGroupJs2['default'],
-	                        { justify: true },
+	                        { egType: 'justify', onActive: this.onActive },
 	                        _react2['default'].createElement(
 	                            _srcButtonJs2['default'],
 	                            { radius: true, egSize: 'sm', egStyle: 'warning' },
@@ -26744,7 +26673,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 12 },
 	                    _react2['default'].createElement(
 	                        _srcButtonGroupJs2['default'],
-	                        { tacked: true },
+	                        { egType: 'tacked' },
 	                        _react2['default'].createElement(
 	                            _srcButtonJs2['default'],
 	                            { radius: true, egSize: 'sm', egStyle: '' },
@@ -26811,8 +26740,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 3 },
 	                    _react2['default'].createElement(
 	                        _srcButtonJs2['default'],
-	                        { radius: true, egSize: 'sm', egStyle: 'gray' },
-	                        '灰色'
+	                        { radius: true, egSize: 'sm', egStyle: 'info' },
+	                        'info'
 	                    )
 	                ),
 	                _react2['default'].createElement(
@@ -26829,7 +26758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 3 },
 	                    _react2['default'].createElement(
 	                        _srcButtonJs2['default'],
-	                        { radius: true, egSize: 'sm', egStyle: 'white' },
+	                        { radius: true, egSize: 'sm', egStyle: 'primary' },
 	                        '白色'
 	                    )
 	                ),
@@ -26838,7 +26767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 3 },
 	                    _react2['default'].createElement(
 	                        _srcButtonJs2['default'],
-	                        { radius: true, egSize: 'sm', egStyle: 'white' },
+	                        { radius: true, egSize: 'sm', egStyle: 'primary', disabled: true },
 	                        '白色'
 	                    )
 	                )
@@ -27002,6 +26931,117 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        '小号'
 	                    )
 	                )
+	            ),
+	            _react2['default'].createElement(
+	                _srcRowJs2['default'],
+	                null,
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'warning', hollow: true },
+	                        '警告'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'success', hollow: true },
+	                        '成功'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'danger', hollow: true },
+	                        '危险'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'error', hollow: true },
+	                        '错误'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _srcRowJs2['default'],
+	                null,
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'primary', hollow: true },
+	                        'primary'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'info', hollow: true },
+	                        'infp'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'default', hollow: true },
+	                        'default'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _srcRowJs2['default'],
+	                null,
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'warning', disabled: true, hollow: true },
+	                        '警告'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'success', disabled: true, hollow: true },
+	                        '成功'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'danger', disabled: true, hollow: true },
+	                        '危险'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    { sm: 3 },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { block: true, egSize: 'sm', egStyle: 'error', disabled: true, hollow: true },
+	                        '错误'
+	                    )
+	                )
 	            )
 	        );
 	    };
@@ -27037,9 +27077,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _utilsClassNameMixin = __webpack_require__(225);
+	var _utilsComponent = __webpack_require__(229);
 
-	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
+	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	var _classnames = __webpack_require__(227);
 
@@ -27075,7 +27115,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type Boolean
 	             * @default false
 	             * */
-	            tacked: _react.PropTypes.bool
+	            tacked: _react.PropTypes.bool,
+	            egType: _react.PropTypes.string
 	        },
 	        enumerable: true
 	    }, {
@@ -27093,7 +27134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }]);
 
 	    function ButtonGroup(props, context) {
-	        _classCallCheck(this, _ButtonGroup);
+	        _classCallCheck(this, ButtonGroup);
 
 	        _Component.call(this, props, context);
 	        //this.classNameMixin = new ClassNameMixin(this.props);
@@ -27104,6 +27145,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    ButtonGroup.prototype.mouseDownHandler = function mouseDownHandler(e) {
+	        this.activeCallback && this.activeCallback(e.target, e.target.innerHTML);
 	        this.setState({
 	            active: e.target.innerHTML
 	        });
@@ -27125,15 +27167,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return _react2['default'].createElement(
 	            Component,
-	            _extends({}, this.props, { className: _classnames2['default'](this.getClassNamesForArguments('btn-group'), 'clearfix', this.getClassNames(this.props)) }),
+	            _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), 'clearfix') }),
 	            options
 	        );
 	    };
 
-	    var _ButtonGroup = ButtonGroup;
-	    ButtonGroup = _utilsClassNameMixin2['default'](ButtonGroup) || ButtonGroup;
 	    return ButtonGroup;
-	})(_react.Component);
+	})(_utilsComponent2['default']);
 
 	exports['default'] = ButtonGroup;
 	module.exports = exports['default'];
@@ -27163,7 +27203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _utilsComponent = __webpack_require__(230);
+	var _utilsComponent = __webpack_require__(229);
 
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
@@ -27285,7 +27325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, Button);
 
 	    _Component.call(this, props, context);
-	    //this.classNameMixin = new ClassNameMixin(this.props);
+	    this.setProperty('hollow', 'hollow');
 	  }
 
 	  Button.prototype.render = function render() {
@@ -27293,11 +27333,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //什么颜色，大小  类型
 	    var Component = this.props.componentTag;
 
-	    //let  size= this.classNameMixin.getClassName(egSize);
-
 	    return _react2['default'].createElement(
 	      Component,
-	      _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), this.props.className) }),
+	      _extends({}, this.otherProps, { className: _classnames2['default'](this.getProperty(), this.props.className) }),
 	      this.props.children
 	    );
 	  };
@@ -28156,7 +28194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.Grid = _Grid3['default'];
 
-	var _Col2 = __webpack_require__(229);
+	var _Col2 = __webpack_require__(233);
 
 	var _Col3 = _interopRequireDefault(_Col2);
 
@@ -28258,79 +28296,91 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.Tabset = _TabsetJs2['default'];
 
-	var _DialogJs = __webpack_require__(262);
+	var _StarJs = __webpack_require__(262);
+
+	var _StarJs2 = _interopRequireDefault(_StarJs);
+
+	exports.Star = _StarJs2['default'];
+
+	var _ImgSliderJs = __webpack_require__(263);
+
+	var _ImgSliderJs2 = _interopRequireDefault(_ImgSliderJs);
+
+	exports.ImgSlider = _ImgSliderJs2['default'];
+
+	var _DialogJs = __webpack_require__(264);
 
 	var _DialogJs2 = _interopRequireDefault(_DialogJs);
 
 	exports.Dialog = _DialogJs2['default'];
 
-	var _TooltipJs = __webpack_require__(263);
+	var _TooltipJs = __webpack_require__(265);
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
 	exports.Tooltip = _TooltipJs2['default'];
 
-	var _PanelPanelJs = __webpack_require__(264);
+	var _PanelPanelJs = __webpack_require__(266);
 
 	var _PanelPanelJs2 = _interopRequireDefault(_PanelPanelJs);
 
 	exports.Panel = _PanelPanelJs2['default'];
 
-	var _PanelPanelContentJs = __webpack_require__(265);
+	var _PanelPanelContentJs = __webpack_require__(267);
 
 	var _PanelPanelContentJs2 = _interopRequireDefault(_PanelPanelContentJs);
 
 	exports.PanelContent = _PanelPanelContentJs2['default'];
 
-	var _PanelPanelFooterJs = __webpack_require__(266);
+	var _PanelPanelFooterJs = __webpack_require__(268);
 
 	var _PanelPanelFooterJs2 = _interopRequireDefault(_PanelPanelFooterJs);
 
 	exports.PanelFooter = _PanelPanelFooterJs2['default'];
 
-	var _PanelPanelHeaderJs = __webpack_require__(267);
+	var _PanelPanelHeaderJs = __webpack_require__(269);
 
 	var _PanelPanelHeaderJs2 = _interopRequireDefault(_PanelPanelHeaderJs);
 
 	exports.PanelHeader = _PanelPanelHeaderJs2['default'];
 
-	var _ListJs = __webpack_require__(268);
+	var _ListJs = __webpack_require__(270);
 
 	var _ListJs2 = _interopRequireDefault(_ListJs);
 
 	exports.List = _ListJs2['default'];
 
-	var _ItemJs = __webpack_require__(269);
+	var _ItemJs = __webpack_require__(271);
 
 	var _ItemJs2 = _interopRequireDefault(_ItemJs);
 
 	exports.Item = _ItemJs2['default'];
 
-	var _ValidatorPanel2 = __webpack_require__(270);
+	var _ValidatorPanel2 = __webpack_require__(272);
 
 	var _ValidatorPanel3 = _interopRequireDefault(_ValidatorPanel2);
 
 	exports.ValidatorPanel = _ValidatorPanel3['default'];
 
-	var _TableTableJs = __webpack_require__(271);
+	var _TableTableJs = __webpack_require__(273);
 
 	var _TableTableJs2 = _interopRequireDefault(_TableTableJs);
 
 	exports.Table = _TableTableJs2['default'];
 
-	var _TableTrJs = __webpack_require__(274);
+	var _TableTrJs = __webpack_require__(276);
 
 	var _TableTrJs2 = _interopRequireDefault(_TableTrJs);
 
 	exports.Tr = _TableTrJs2['default'];
 
-	var _TableTdJs = __webpack_require__(273);
+	var _TableTdJs = __webpack_require__(275);
 
 	var _TableTdJs2 = _interopRequireDefault(_TableTdJs);
 
 	exports.Td = _TableTdJs2['default'];
 
-	var _TableThJs = __webpack_require__(272);
+	var _TableThJs = __webpack_require__(274);
 
 	var _TableThJs2 = _interopRequireDefault(_TableThJs);
 
@@ -28338,7 +28388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	window['Eagleui'] = {};
 
-	['Grid', 'Col', 'Row', 'Button', 'ButtonGroup', 'CheckboxGroup', 'Input', 'RadioGroup', 'Label', 'ValidatorPanel', 'Crumb', 'Search', 'Select', 'LabelGroup', 'Toast', 'Paging', 'Calendar', 'Tab', 'Tabset', 'Dialog', 'Tooltip', 'Panel', 'PanelContent', 'PanelFooter', 'PanelHeader', 'List', 'Item', 'Table', 'Tr', 'Td', 'Th'].forEach(function (clazzName) {
+	['Grid', 'Col', 'Row', 'Button', 'ButtonGroup', 'CheckboxGroup', 'Input', 'RadioGroup', 'Label', 'ValidatorPanel', 'Crumb', 'Search', 'Select', 'LabelGroup', 'Toast', 'Paging', 'Calendar', 'Tab', 'Tabset', 'Dialog', 'Tooltip', 'Panel', 'PanelContent', 'PanelFooter', 'PanelHeader', 'List', 'Item', 'Table', 'Tr', 'Td', 'Th', 'ImgSlider'].forEach(function (clazzName) {
 	    Eagleui[clazzName] = exports[clazzName];
 	});
 
@@ -28690,7 +28740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return _react2['default'].createElement(
 	            'a',
-	            _extends({ href: url }, this.props, { className: _classnames2['default'](this.getClassName('item'), this.getClassNames(this.props), this.getClassName(this.props.className)
+	            _extends({ href: url }, this.props, { className: _classnames2['default'](this.getClassName('item'), this.getClassNames(this.props), this.props.className
 	                //this.getClassNames(this.state)
 	                ), onMouseDown: this.clickHandler.bind(this) }),
 	            this.props.children
@@ -28745,7 +28795,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
@@ -28914,6 +28964,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
 
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 	var _classnames = __webpack_require__(227);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -28926,7 +28980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
@@ -29032,8 +29086,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Select.prototype.componentDidMount = function componentDidMount() {
 	        var _this = this;
-	        var selectContair = _react2['default'].findDOMNode(this.refs.selectContair);
-	        var selectUl = _react2['default'].findDOMNode(this.refs.selectUl);
+	        var selectContair = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectContair);
+	        var selectUl = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl);
 	        document.addEventListener('click', function (e) {
 	            if (_this.isParent(e.target, selectContair)) {
 	                //console.dir('不要动');
@@ -29051,7 +29105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Select.prototype.componentDidUpdate = function componentDidUpdate() {
-	        var selectUl = _react2['default'].findDOMNode(this.refs.selectUl);
+	        var selectUl = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl);
 	        //this.heightTag = selectUl.offsetHeight;
 	        var length = selectUl.children.length;
 	        if (this.state.show) {
@@ -29098,7 +29152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.setState({
 	                show: true
 	            });
-	            _react2['default'].findDOMNode(this.refs.selectUl).style.height = this.heightTag + 'px';
+	            _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl).style.height = this.heightTag + 'px';
 	        }
 	    };
 
@@ -29113,9 +29167,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            show: !this.state.show
 	        });
 	        if (this.state.show) {
-	            _react2['default'].findDOMNode(this.refs.selectUl).style.height = '0';
+	            _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl).style.height = '0';
 	        } else {
-	            _react2['default'].findDOMNode(this.refs.selectUl).style.height = this.heightTag + 'px';
+	            _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl).style.height = this.heightTag + 'px';
 	        }
 	    };
 
@@ -29225,7 +29279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    Select.prototype.chooseItem = function chooseItem(event) {
-	        var ulChildren = _react2['default'].findDOMNode(this.refs.selectUl).children;
+	        var ulChildren = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl).children;
 	        this.removeAllActive(ulChildren);
 	        event.target.classList.add('active');
 	        this.hideUl();
@@ -29271,10 +29325,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    * */
 
 	    Select.prototype.keyIn = function keyIn(event) {
-	        var selectUl = _react2['default'].findDOMNode(this.refs.selectUl);
-	        var ulChildren = _react2['default'].findDOMNode(this.refs.selectUl).children;
+	        var selectUl = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl);
+	        var ulChildren = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl).children;
 	        var ulArrey = Array.prototype.slice.call(ulChildren);
-	        var inputObj = _react2['default'].findDOMNode(this.refs.select).children[0];
+	        var inputObj = _reactLibReactDOM2['default'].findDOMNode(this.refs.select).children[0];
 	        var i = -1;
 	        var obj = ulChildren[0];
 	        if (event.keyCode == 40 || event.keyCode == 38) {
@@ -29323,7 +29377,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Select.prototype.addActive = function addActive(event) {
 	        var obj = event.target;
-	        var ulChildren = _react2['default'].findDOMNode(this.refs.selectUl).children;
+	        var ulChildren = _reactLibReactDOM2['default'].findDOMNode(this.refs.selectUl).children;
 	        this.removeAllActive(ulChildren, false);
 	        obj.classList.add('active');
 	    };
@@ -29486,7 +29540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
@@ -29661,13 +29715,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
 	var _GridJs = __webpack_require__(234);
 
 	var _GridJs2 = _interopRequireDefault(_GridJs);
+
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
 	 * 提示组件
@@ -29809,7 +29867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = this;
 	        clearTimeout(this.timer);
 	        this.timer = setTimeout((function () {
-	            this.removeClass(_react2['default'].findDOMNode(_this.refs.container), 'fadeout');
+	            this.removeClass(_reactLibReactDOM2['default'].findDOMNode(_this.refs.container), 'fadeout');
 	        }).bind(this), 400);
 	    };
 
@@ -30092,6 +30150,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this.goto(index);
 	    };
 
+	    Paging.prototype.getKey = function getKey() {
+	        return new Date().getTime() + (Math.random() * 1e10).toFixed(0);
+	    };
+
 	    /**
 	     * 生成页码
 	     * @method generate
@@ -30143,7 +30205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);', onClick: this.gotoPage.bind(this, i), className: _classnames3['default']((_classnames = {}, _classnames[this.getClassName(activeClass)] = i == currentPage, _classnames)) },
+	                { href: 'javascript:void(0);', key: this.getKey(), onClick: this.gotoPage.bind(this, i), className: _classnames3['default']((_classnames = {}, _classnames[this.getClassName(activeClass)] = i == currentPage, _classnames)) },
 	                i
 	            ));
 	        }
@@ -30154,12 +30216,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);' },
+	                { href: 'javascript:void(0);', key: this.getKey() },
 	                '...'
 	            ));
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);', onClick: (_context2 = this.gotoPage).bind.call(_context2, this, this.pages) },
+	                { href: 'javascript:void(0);', key: this.getKey(), onClick: (_context2 = this.gotoPage).bind.call(_context2, this, this.pages) },
 	                this.pages
 	            ));
 	        }
@@ -30167,7 +30229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.pages > 1 && currentPage != this.pages) {
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);', onClick: this.next.bind(this) },
+	                { href: 'javascript:void(0);', key: this.getKey(), onClick: this.next.bind(this) },
 	                '下一页'
 	            ));
 	        }
@@ -30192,7 +30254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (var i = 1; i < 11; i++) {
 	            opts.push(_react2['default'].createElement(
 	                'option',
-	                { value: num * i },
+	                { value: num * i, key: this.getKey() },
 	                num * i
 	            ));
 	        }
@@ -30381,6 +30443,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _TabJs2 = _interopRequireDefault(_TabJs);
 
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 	/**
 	 * tab组件
 	 * @class Tabset
@@ -30448,7 +30514,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Tabset.prototype.tabItemListMouseLeaveHandler = function tabItemListMouseLeaveHandler() {
-	        var activeTab = _react2['default'].findDOMNode(this.refs['tabItem' + this.state.active]);
+	        var activeTab = _reactLibReactDOM2['default'].findDOMNode(this.refs['tabItem' + this.state.active]);
 	        this.timeoutObj = setTimeout((function () {
 	            this.tabItemMouseEnterHandler(activeTab.offsetLeft, activeTab.offsetWidth);
 	        }).bind(this), 400);
@@ -30527,11 +30593,125 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Created by panqianjin on 15/10/30.
+	 * Created by slashhuang on 15/12/25.
 	 */
+	/**
+	 * 星级评价
+	 * @class 星星
+	 * @module star
+	 * @extends Component
+	 * @constructor
+	 * @since 0.1.0
+	 * @demo Star.js {js}
+	 * @show true
+	 * */
 	'use strict';
 
 	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(227);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _utilsClassNameMixinJs = __webpack_require__(225);
+
+	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
+
+	var Star = (function (_Component) {
+	    _inherits(Star, _Component);
+
+	    _createClass(Star, null, [{
+	        key: 'propTypes',
+	        value: {
+	            /**
+	             * 星级评价分数
+	             * @property Rate
+	             * @type number
+	             * @default 默认未0分
+	             * */
+	            Rate: _react.PropTypes.number,
+	            /**
+	             * 星星大小
+	             * @property size
+	             * @type String||number
+	             * @default undefined  可以取值10-20 默认单位为'px'
+	             * */
+	            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+	            classPrefix: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }, {
+	        key: 'defaultProps',
+	        value: {
+	            classPrefix: 'star',
+	            Rate: 0
+	        },
+	        enumerable: true
+	    }]);
+
+	    function Star() {
+	        _classCallCheck(this, _Star);
+
+	        _Component.call(this);
+	    }
+
+	    Star.prototype.render = function render() {
+	        var _props = this.props;
+	        var Rate = _props.Rate;
+	        var size = _props.size;
+
+	        //兼容用户输入px为单位的数据大小
+	        size = /px/i.test(size) ? size.replace('px', '') : size;
+	        var customizeStyle = size ? {
+	            width: size * 5 + 'px',
+	            height: size - 1 + 'px',
+	            backgroundSize: size * 5 + 'px auto'
+	        } : {};
+	        var shadowPosition = size ? {
+	            backgroundPosition: "0  -" + size + "px"
+	        } : {};
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'eg-star-orange', style: customizeStyle },
+	            _react2['default'].createElement('div', { className: 'eg-star-grey', style: _extends({ width: Rate + '%' }, shadowPosition) })
+	        );
+	    };
+
+	    var _Star = Star;
+	    Star = _utilsClassNameMixinJs2['default'](Star) || Star;
+	    return Star;
+	})(_react.Component);
+
+	exports['default'] = Star;
+	module.exports = exports['default'];
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by slashhuang on 15/12/28.
+	 */
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -30553,6 +30733,354 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
+	/**
+	 * 照片浏览组件
+	 * @class Slider
+	 * @module ui
+	 * @extends Component
+	 * @constructor
+	 * @since 0.1.0
+	 * @demo Slider.js {js}
+	 * @show true
+	 * */
+
+	var ImgSlider = (function (_Component) {
+	    _inherits(ImgSlider, _Component);
+
+	    function ImgSlider(props, context) {
+	        _classCallCheck(this, _ImgSlider);
+
+	        _Component.call(this, props, context);
+	        this.renderDisplay = this.renderDisplay.bind(this);
+	        this.state = {
+	            imgList: props.imgList,
+	            thumbnailKey: props.thumbnailKey || props.urlKey,
+	            pageNum: props.pageNum,
+	            show: props.show,
+	            showThumbnail: props.showThumbnail,
+	            targetIndex: 0,
+	            thumbNailIndex: 0
+	        };
+	    }
+
+	    ImgSlider.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+	        this.setState({
+	            show: props.show,
+	            showThumbnail: props.showThumbnail,
+	            thumbnailKey: props.thumbnailKey || props.urlKey,
+	            targetIndex: props.show ? this.state.targetIndex : 0,
+	            thumbNailIndex: props.show ? this.state.thumbNailIndex : 0,
+	            imgList: props.imgList || this.state.imgList
+	        });
+	        //if(!props.show){
+	        //    setTimeout(()=>{
+	        //        findDOMNode(this.refs['slider-container']).style.display='none'
+	        //    },100)
+	        //}
+	    };
+
+	    ImgSlider.prototype.renderDisplay = function renderDisplay(e) {
+	        //点击下方缩略图的情况
+	        var index = /img||li/i.test(e.target['nodeName']) ? e.target.getAttribute('data-index') : eval('return');
+	        this.handleIndex.call(this, index * 1);
+	    };
+
+	    ImgSlider.prototype.handleIndex = function handleIndex(index) {
+	        var length = this.state.imgList.length;
+	        var pageNum = this.props.pageNum;
+	        if (index >= 0) {
+	            //如果图片展示未到尾部，则同时左移
+	            if (index <= length - pageNum) {
+	                this.setState({
+	                    targetIndex: index,
+	                    thumbNailIndex: index
+	                });
+	            } else if (index < length) {
+	                //缩略图已到尾部
+	                this.setState({
+	                    targetIndex: index,
+	                    thumbNailIndex: length - pageNum
+	                });
+	            } else {
+	                //回到最后的状态
+	                this.setState({
+	                    targetIndex: length - 1,
+	                    thumbNailIndex: length - pageNum
+	                });
+	            }
+	        } else {
+	            //回到最初状态
+	            this.setState({
+	                targetIndex: 0,
+	                thumbNailIndex: 0
+	            });
+	        }
+	    };
+
+	    ImgSlider.prototype.addIndex = function addIndex() {
+	        var num = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+
+	        var index = this.state.targetIndex + num;
+	        this.handleIndex.call(this, index);
+	    };
+
+	    ImgSlider.prototype.lowerIndex = function lowerIndex() {
+	        var num = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+
+	        var index = this.state.targetIndex - num;
+	        this.handleIndex.call(this, index);
+	    };
+
+	    ImgSlider.prototype.fadeOut = function fadeOut(e) {
+	        if (e.target.className.match('slider-mask') || e.target.nodeName.toLowerCase() == 'em') {
+	            this.setState({
+	                show: false
+	            });
+	        }
+	    };
+
+	    ImgSlider.prototype.render = function render() {
+	        var _this = this;
+
+	        var _state = this.state;
+	        var imgList = _state.imgList;
+	        var thumbnailKey = _state.thumbnailKey;
+	        var targetIndex = _state.targetIndex;
+	        var thumbNailIndex = _state.thumbNailIndex;
+	        var show = _state.show;
+	        var showThumbnail = _state.showThumbnail;
+	        var _props = this.props;
+	        var profileKey = _props.profileKey;
+	        var urlKey = _props.urlKey;
+	        var titleKey = _props.titleKey;
+	        var pageNum = _props.pageNum;
+
+	        var length = imgList.length;
+	        var containerStyle = { display: show ? 'block' : 'none' };
+	        //设置行内样式借口
+	        var customizeStyle = this.props.style || {};
+	        //阻止背景滚动
+	        //show?document.body.style.cssText='position:fixed':document.body.style.cssText='';
+	        var thumbnailContainerStyle = { display: showThumbnail ? 'block' : 'none' };
+	        return _react2['default'].createElement(
+	            'div',
+	            { onClick: this.fadeOut.bind(this) },
+	            _react2['default'].createElement(
+	                'div',
+	                { ref: 'slider-container', className: _classnames2['default']('eg-slider-container', 'fadein', this.props.className), style: _extends({}, customizeStyle, containerStyle) },
+	                _react2['default'].createElement('em', { onClick: this.fadeOut.bind(this) }),
+	                _react2['default'].createElement(
+	                    'div',
+	                    { className: 'eg-slider-img-container' },
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-field-common eg-slider-field-left', onClick: function () {
+	                                return _this.lowerIndex.call(_this);
+	                            } },
+	                        _react2['default'].createElement('b', { className: 'eg-slider-arrow-left' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-window', style: { width: '380px' } },
+	                        _react2['default'].createElement(
+	                            'ul',
+	                            { style: { width: length * 380 + 'px', left: -targetIndex * 380 + 'px' } },
+	                            imgList.map(function (img, index) {
+	                                return _react2['default'].createElement(
+	                                    'li',
+	                                    { style: { width: '380px' }, key: 'img-' + index },
+	                                    _react2['default'].createElement('img', { src: img[[urlKey]] })
+	                                );
+	                            })
+	                        )
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-field-common eg-slider-field-right', onClick: function () {
+	                                return _this.addIndex.call(_this);
+	                            } },
+	                        _react2['default'].createElement('b', { className: 'eg-slider-arrow-right' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-img-hint' },
+	                        _react2['default'].createElement(
+	                            'i',
+	                            null,
+	                            imgList[targetIndex][titleKey]
+	                        ),
+	                        imgList[targetIndex][profileKey],
+	                        _react2['default'].createElement(
+	                            'i',
+	                            null,
+	                            targetIndex + 1,
+	                            '/',
+	                            imgList.length
+	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    'div',
+	                    { className: 'eg-slider-img-container-thumbnail', style: _extends({}, thumbnailContainerStyle) },
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-field-common eg-slider-field-left', onClick: function () {
+	                                _this.lowerIndex.call(_this, pageNum);
+	                            } },
+	                        _react2['default'].createElement('b', { className: 'eg-slider-arrow-left' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-window', style: { width: '380px' } },
+	                        _react2['default'].createElement(
+	                            'ul',
+	                            { onClick: this.renderDisplay,
+	                                style: { width: 100 * length / pageNum + '%',
+	                                    left: -thumbNailIndex * 100 / pageNum + '%'
+	                                } },
+	                            imgList.map(function (img, index) {
+	                                var inlineStyle = null;
+	                                if (index == targetIndex) {
+	                                    inlineStyle = {
+	                                        borderColor: '#158acf'
+	                                    };
+	                                }
+	                                return _react2['default'].createElement(
+	                                    'li',
+	                                    { 'data-index': index, style: _extends({ width: 100 / length - 1.1 + '%' }, inlineStyle), key: 'thumb-' + index },
+	                                    _react2['default'].createElement('img', { src: img[thumbnailKey], 'data-index': index })
+	                                );
+	                            })
+	                        )
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'eg-slider-field-common eg-slider-field-right', onClick: function () {
+	                                _this.addIndex.call(_this, pageNum);
+	                            } },
+	                        _react2['default'].createElement('b', { className: 'eg-slider-arrow-right' })
+	                    )
+	                )
+	            )
+	        );
+	    };
+
+	    _createClass(ImgSlider, null, [{
+	        key: 'defaultProps',
+	        value: {
+	            pageNum: 5,
+	            show: false,
+	            showThumbnail: true,
+	            classPrefix: 'slider'
+	        },
+	        enumerable: true
+	    }, {
+	        key: 'propTypes',
+	        value: {
+	            /**
+	             * 图片信息(对应图片信息数组对象中图片描述信息的key)
+	             * @property profileKey
+	             * @type string
+	             * @default
+	             * */
+	            profileKey: _react.PropTypes.string,
+	            /**
+	             * 图片信息(对应图片信息数组对象中图片uri信息的key)
+	             * @property urlKey
+	             * @type string
+	             * @default
+	             * */
+	            urlKey: _react.PropTypes.string,
+	            /**
+	             * 图片信息(对应图片信息数组对象中图片大标题信息的key)
+	             * @property titleKey
+	             * @type string
+	             * @default
+	             * */
+	            titleKey: _react.PropTypes.string,
+	            /**
+	             * 缩略图的key
+	             * @property thumbnailKey
+	             * @type array
+	             * @default 默认会拿urlKey
+	             * */
+	            thumbnailKey: _react.PropTypes.string,
+	            /**
+	             * 图片数组
+	             * @property imgList
+	             * @type Array
+	             * @default 图片数组[{key:value}]
+	             * */
+	            imgList: _react.PropTypes.array,
+	            /**
+	             * 图片栏展示数目
+	             * @property pageNum
+	             * @type number
+	             * @default 5
+	             * */
+	            pageNum: _react.PropTypes.number,
+	            /**
+	             * 是否显示图片展示slider
+	             * @property show
+	             * @type boolean
+	             * @default false
+	             * */
+	            show: _react.PropTypes.bool,
+	            /**
+	             * 是否显示slider中的图片缩略图部分
+	             * @property showThumbnail
+	             * @type boolean
+	             * @default true
+	             * */
+	            showThumbnail: _react.PropTypes.bool,
+	            classPrefix: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }]);
+
+	    var _ImgSlider = ImgSlider;
+	    ImgSlider = _utilsClassNameMixin2['default'](ImgSlider) || ImgSlider;
+	    return ImgSlider;
+	})(_react.Component);
+
+	exports['default'] = ImgSlider;
+	module.exports = exports['default'];
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by panqianjin on 15/10/30.
+	 */
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
+	var _utilsClassNameMixin = __webpack_require__(225);
+
+	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
+
+	var _classnames = __webpack_require__(227);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	var _ButtonJs = __webpack_require__(242);
 
 	var _ButtonJs2 = _interopRequireDefault(_ButtonJs);
@@ -30561,7 +31089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
@@ -30628,7 +31156,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type String
 	             * @default div
 	             * */
-	            componentTag: _react.PropTypes.string
+	            componentTag: _react.PropTypes.string,
+	            onInit: _react.PropTypes.func
 
 	        },
 	        enumerable: true
@@ -30651,11 +31180,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.call(this, props, context);
 	        this.flag = true;
+
 	        this.state = {
-	            show: this.props.show,
+	            show: this.props.show || false,
+	            type: this.props.type,
 	            init: true
 	        };
+	        this.ref = this.state.type + +new Date();
+	        /*this.props.onInit({
+	            open :this.open.bind(this),
+	            close:this.close.bind(this)
+	        });*/
 	    }
+
+	    Dialog.prototype.componentWillMount = function componentWillMount() {};
 
 	    /**
 	     * 接收到新props时执行,props是否存在show，是改变state.show，否则不变
@@ -30663,31 +31201,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @method componentWillReceiveProps
 	     * */
 
-	    Dialog.prototype.componentDidMount = function componentDidMount() {
-	        //this.flag = false;
-	    };
+	    Dialog.prototype.componentDidMount = function componentDidMount() {};
 
-	    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        if (nextProps.show) {
-	            this.flag = false;
-	            this.setState({
-	                show: nextProps.show
-	            });
-	        }
-	    };
+	    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {}
+	    /*if(nextProps.show ){
+	        this.flag = false;
+	        this.setState({
+	            show:nextProps.show
+	        });
+	    }*/
 
 	    /**
 	     * @method render
 	     * @return {ReactElement}
 	     * */
+	    ;
 
 	    Dialog.prototype.render = function render() {
-	        var showOrHide = this.props.cancelCallback ? this.props.show : this.state.show;
+	        //let showOrHide = this.props.cancelCallback?this.props.show:this.state.show;
+	        var showOrHide = this.state.show;
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            { ref: 'container', className: _classnames2['default'](this.getClassName('container'), this.flag ? '' : showOrHide ? 'fadein' : 'fadeout') },
-	            !this.flag && !(this.props.cancelCallback ? this.props.show : this.state.show) ? this.displayNone() : null,
-	            this[this.props.type.toLowerCase()](),
+	            { ref: this.ref, className: _classnames2['default'](this.getClassName('container'), this.flag ? '' : showOrHide ? 'fadein' : 'fadeout') },
+	            this[this.state.type.toLowerCase()](),
 	            this.showOverlay(this.props.tips)
 	        );
 	    };
@@ -30700,8 +31236,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = this;
 	        clearTimeout(this.timer);
 	        this.timer = setTimeout((function () {
-	            this.removeClass(_react2['default'].findDOMNode(_this.refs.container), 'fadeout');
+	            this.removeClass(_reactLibReactDOM2['default'].findDOMNode(_this.refs[_this.ref]), 'fadeout');
 	        }).bind(this), 400);
+	    };
+
+	    Dialog.prototype.open = function open() {
+	        var type = arguments.length <= 0 || arguments[0] === undefined ? this.state.type : arguments[0];
+
+	        this.flag = false;
+	        this.setState({
+	            show: true,
+	            type: type
+	        });
 	    };
 
 	    Dialog.prototype.close = function close(callbackId) {
@@ -30710,11 +31256,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            callbackId();
 	            return this;
 	        }
-
-	        this.flag = false;
+	        this.flag = true;
 	        this.setState({
 	            show: false
 	        });
+	        this.displayNone();
 	    };
 
 	    /**
@@ -30856,66 +31402,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    /**
-	     * 渲染dialog
-	     * @method dialog
-	     * @return  {ReactElement}
-	     * */
-
-	    Dialog.prototype.dialog = function dialog() {
-	        return _react2['default'].createElement(
-	            _RowJs2['default'],
-	            { className: _classnames2['default'](this.getClassNamesForArguments('dialog')) },
-	            _react2['default'].createElement(
-	                _ColJs2['default'],
-	                null,
-	                _react2['default'].createElement(
-	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('title')) },
-	                    this.props.title,
-	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: _classnames2['default'](this.getClassNamesForArguments('close')), onClick: this.closeDialog.bind(this) },
-	                        'x'
-	                    )
-	                ),
-	                _react2['default'].createElement(
-	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('content')) },
-	                    _react2['default'].createElement(
-	                        _ColJs2['default'],
-	                        null,
-	                        this.props.children
-	                    )
-	                ),
-	                _react2['default'].createElement(
-	                    _RowJs2['default'],
-	                    { className: _classnames2['default'](this.getClassNamesForArguments('button')) },
-	                    _react2['default'].createElement(
-	                        _ColJs2['default'],
-	                        { sm: 12 },
-	                        _react2['default'].createElement(
-	                            _ButtonJs2['default'],
-	                            { radius: true, egSize: 'xs', style: { marginRight: '20px' }, onClick: this.submitForm.bind(this) },
-	                            '确定'
-	                        ),
-	                        _react2['default'].createElement(
-	                            _ButtonJs2['default'],
-	                            { radius: true, white: true, egSize: 'xs', onClick: this.cancleDialog.bind(this) },
-	                            '取消'
-	                        )
-	                    )
-	                )
-	            )
-	        );
-	    };
-
-	    /**
 	     * 渲染mask
 	     * @method mask
 	     * @return  {ReactElement}
 	     * */
 
 	    Dialog.prototype.mask = function mask() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: this.getClassName('body') },
+	            this.props.children,
+	            _react2['default'].createElement(
+	                'div',
+	                { className: _classnames2['default'](this.getClassNamesForArguments('close')), onClick: this.closeDialog.bind(this) },
+	                'x'
+	            )
+	        );
+	    };
+
+	    /**
+	     * 渲染dialog
+	     * @method dialog
+	     * @return  {ReactElement}
+	     * */
+
+	    Dialog.prototype.dialog = function dialog() {
 	        return _react2['default'].createElement(
 	            _RowJs2['default'],
 	            { className: _classnames2['default'](this.getClassNamesForArguments('dialog')) },
@@ -30954,7 +31465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30992,7 +31503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
@@ -31094,7 +31605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//[this.getClassName('show')]: true
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31150,9 +31661,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    Panel.prototype.render = function render() {
+	        var renderStyle = this.props.style ? this.props.style : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('panel'), this.props.className) }),
+	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('panel'), this.props.className), style: renderStyle }),
 	            this.props.children
 	        );
 	    };
@@ -31176,7 +31688,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 265 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31232,7 +31744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    PanelContent.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('content'), this.props.padding ? this.getClassName('padding') : '') },
+	            { className: _classnames2['default'](this.getClassName('content'), this.props.padding ? this.getClassName('padding') : '', this.props.className) },
 	            this.props.children
 	        );
 	    };
@@ -31267,7 +31779,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 266 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31358,7 +31870,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31413,9 +31925,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    PanelHeader.prototype.render = function render() {
+	        var renderStyle = this.props.style ? this.props.style : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('header')) },
+	            { className: _classnames2['default'](this.getClassName('header')), style: renderStyle },
 	            this.props.children
 	        );
 	    };
@@ -31441,7 +31954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31520,7 +32033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 269 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31573,9 +32086,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    Item.prototype.render = function render() {
+	        var renderStyle = this.props.style || {};
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('item'), this.props.className) },
+	            { className: _classnames2['default'](this.getClassNamesForArguments('item'), this.props.className, this.getClassNames(this.props)), style: renderStyle },
 	            this.props.children
 	        );
 	    };
@@ -31586,7 +32100,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
-	        value: {},
+	        value: {
+	            classPrefix: 'item'
+	        },
 	        enumerable: true
 	    }]);
 
@@ -31599,7 +32115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 270 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31627,6 +32143,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames = __webpack_require__(227);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
 	 * 表单验证组件<br />
@@ -32257,7 +32777,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    ValidatorPanel.prototype.getForm = function getForm() {
-	        return _react2['default'].findDOMNode(this.refs[this.props.id ? this.props.id : this.formName]);
+	        return _reactLibReactDOM2['default'].findDOMNode(this.refs[this.props.id ? this.props.id : this.formName]);
 	    };
 
 	    ValidatorPanel.prototype.getElements = function getElements() {
@@ -32366,7 +32886,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 271 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32395,15 +32915,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	var _ThJs = __webpack_require__(272);
+	var _ThJs = __webpack_require__(274);
 
 	var _ThJs2 = _interopRequireDefault(_ThJs);
 
-	var _TdJs = __webpack_require__(273);
+	var _TdJs = __webpack_require__(275);
 
 	var _TdJs2 = _interopRequireDefault(_TdJs);
 
-	var _TrJs = __webpack_require__(274);
+	var _TrJs = __webpack_require__(276);
 
 	var _TrJs2 = _interopRequireDefault(_TrJs);
 
@@ -32437,7 +32957,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
-	        value: {},
+	        value: {
+	            classPrefix: 'table'
+	        },
 	        enumerable: true
 	    }]);
 
@@ -32523,9 +33045,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }, self)
 	            );
 	        });
+	        console.log(this.props);
 	        return _react2['default'].createElement(
 	            'table',
-	            { className: _classnames2['default'](this.getClassName('table')) },
+	            { className: _classnames2['default'](this.getClassNamesForArguments('table'), this.getClassNames(this.props)) },
 	            _react2['default'].createElement(
 	                'thead',
 	                null,
@@ -32552,7 +33075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 272 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32653,7 +33176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 273 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32735,7 +33258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 274 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32826,7 +33349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 275 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -33637,7 +34160,1466 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 276 */
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by slashhuang on 15/12/25.
+	 */
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _querystring = __webpack_require__(237);
+
+	var _querystring2 = _interopRequireDefault(_querystring);
+
+	var _srcIndexJs = __webpack_require__(246);
+
+	//测试分页功能
+	var page = 1;
+	function callback(page) {
+	    page = page;
+	    window.location = location.href.replace(/\?.*/, '') + '?page=' + page + '&pageSize=' + pageSize;
+	}
+
+	function loadPageCallback(pageSize) {
+	    window.location = location.origin + location.pathname + '?page=' + page + '&pageSize=' + pageSize;
+	}
+	var pageSize = 20;
+	/*测试分页结束*/
+	/*测试照片展示插件*/
+	var imgList = [{
+	    profile: '1叔2015上传',
+	    url: 'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	}, {
+	    profile: '1哥2015上传',
+	    url: 'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'
+	}, {
+	    profile: '2哥2015上传',
+	    url: 'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	}, {
+	    profile: '3哥2015上传',
+	    url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	}, {
+	    profile: '4哥2015上传',
+	    url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'
+	}, {
+	    profile: '5哥2015上传',
+	    url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'
+	}, {
+	    profile: '5哥2015上传',
+	    url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',
+	    description: '闪惠商户培训资料',
+	    thumbnail: 'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'
+	}, {
+	    profile: '5叔2015上传',
+	    url: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',
+	    description: '熊猫野外生存',
+	    thumbnail: 'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'
+	}];
+	var pageNum = 4;
+
+	/*测试照片插件数据结束*/
+
+	var Detail = (function (_Component) {
+	    _inherits(Detail, _Component);
+
+	    function Detail(props) {
+	        _classCallCheck(this, Detail);
+
+	        _Component.call(this, props);
+	        this.state = {
+	            sliderShow: false
+	        };
+	    }
+
+	    Detail.prototype.getDialog = function getDialog(d) {
+	        this.dialog = d;
+	    };
+
+	    Detail.prototype.handleSlider = function handleSlider() {
+	        this.dialog.open();
+	    };
+
+	    Detail.prototype.buttonTest = function buttonTest() {
+	        alert('hello fe');
+	    };
+
+	    Detail.prototype.closeDialog = function closeDialog() {
+	        this.setState({
+	            sliderShow: false
+	        });
+	    };
+
+	    Detail.prototype.render = function render() {
+	        {/*本示例用到的额外数据说明:
+	                数据模型:
+	               1.state={sliderShow:boolean}用于调取slider图片浏览插件
+	                样式:
+	               1.styleObj为示例用到的行内样式
+	               2.ft-gray,ft-orange,mg-bottom-10等为eagle-ui库定义的字体及布局样式,在public.less文件中，不需要自己定义
+	               3.detail-hollow-star,shop-detail-hui-icon为使用者自己定义的样式，放在'/example/index.html'之中,未放入项目库，要自己手写
+	               4.eg-item-flag样式为组件库提供的样式，定义每一大项左侧的小红条，可以直接调用
+	                函数:
+	               1.handleSlider用于加载slider图片浏览
+	               2.buttonTest定义页面所有的按钮动作
+	                变量:
+	               1.huiIconSrc 为闪惠图表的图片地址
+	            */}
+	        var query = this.props.location.query,
+	            page = query.page * 1 || 0,
+	            pageSize = query.pageSize * 1 || 10;
+	        var sliderShow = this.state.sliderShow;
+
+	        var huiIconSrc = location.origin + '/examples/imgs/thunder.png';
+	        var styleObj = {
+	            visitMore: { /*定义有效拜访'收起''更多'样式*/
+	                //position:'absolute',
+	                //bottom:'1px',
+	                //right:'6px',
+	                cursor: 'pointer'
+	            },
+	            visitReplay: { /*有效拜访回复样式*/
+	                padding: '10px ',
+	                background: "#f5f5f5",
+	                width: '100%',
+	                lineHeight: '18px'
+	            },
+	            visitLabel: { /*有效拜访样式*/
+	                color: '#ee5511',
+	                border: '1px solid #ee5511'
+	            },
+	            buttonGroup: { /*页面底部按钮组*/
+	                position: 'fixed',
+	                bottom: '1px',
+	                left: '1px',
+	                background: '#fff',
+	                padding: ' 6px 10% 6px 50%',
+	                width: '100%',
+	                boxShadow: '0 -1px 2px rgba(0,0,0,0.5)'
+	            }
+	        };
+	        /*附近门店数据*/
+	        var nearByShops = [{
+	            name: ' 70后饭吧(五角场店)',
+	            labels: ['订', '惠'],
+	            rate: 80,
+	            customer: '大客户'
+	        }, {
+	            name: ' 80后饭吧(五角场店)',
+	            labels: ['闪', '惠'],
+	            rate: 60,
+	            customer: '小客户'
+	        }];
+
+	        return _react2['default'].createElement(
+	            'div',
+	            { style: { color: '#333' } },
+	            _react2['default'].createElement(
+	                _srcIndexJs.Dialog,
+	                { type: 'mask', ref: this.getDialog.bind(this) },
+	                _react2['default'].createElement(_srcIndexJs.ImgSlider, { showThumbnail: true, show: sliderShow,
+	                    imgList: imgList, profileKey: 'profile', urlKey: 'url', titleKey: 'description',
+	                    pageNum: pageNum })
+	            ),
+	            _react2['default'].createElement(
+	                _srcIndexJs.Grid,
+	                { className: 'mg-bottom-40' },
+	                _react2['default'].createElement(
+	                    _srcIndexJs.Row,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Col,
+	                        { sm: 12 },
+	                        _react2['default'].createElement(
+	                            'h2',
+	                            null,
+	                            '门店详情'
+	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcIndexJs.Row,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Col,
+	                        { sm: 8, style: { paddingRight: '5px' } },
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.Panel,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcIndexJs.PanelContent,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 13 },
+	                                        _react2['default'].createElement(
+	                                            'h3',
+	                                            null,
+	                                            '美丽新世界(旗舰店)'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray mg-left-10 mg-right-10 ' },
+	                                            'shopID:237489'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Label,
+	                                            { success: true },
+	                                            '团'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Label,
+	                                            { active: true, className: 'mg-left-10' },
+	                                            _react2['default'].createElement(
+	                                                'span',
+	                                                { style: { position: 'relative' } },
+	                                                '惠',
+	                                                _react2['default'].createElement('i', { className: 'shop-detail-hui-icon' })
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Label,
+	                                            { disabled: true, className: 'mg-left-10' },
+	                                            '订'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 13 },
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray' },
+	                                            '门店月浏览量'
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 13 },
+	                                        _react2['default'].createElement(_srcIndexJs.Star, { Rate: 80, size: '17px' }),
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray  mg-left-10', style: { verticalAlign: 'top', lineHeight: '17px' } },
+	                                            '大客户'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 13, className: 'ft-orange' },
+	                                        '198283'
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 12 },
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray' },
+	                                            '分类'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: ' mg-left-10' },
+	                                            '美食、小吃、快餐'
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 12 },
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray' },
+	                                            '地址'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: ' mg-left-10' },
+	                                            '上海市 杨浦区 国顺东路237-3（近银扣路）查看地图  '
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 12 },
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray' },
+	                                            '电话'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: ' mg-left-10' },
+	                                            '021-38475738 '
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 12 },
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray' },
+	                                            '分店'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            'span',
+	                                            { className: ' mg-left-10' },
+	                                            '3家 所有分店 '
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 13 },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Button,
+	                                            { radius: true, egSize: 'sm', egStyle: 'white', onClick: this.buttonTest },
+	                                            '查看主站页面'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 13, className: 'ft-gray mg-top-10' },
+	                                        _react2['default'].createElement('h5', { className: 'detail-hollow-star mg-right-10' }),
+	                                        ' |',
+	                                        _react2['default'].createElement(
+	                                            'h5',
+	                                            { className: 'ft-gray mg-left-10' },
+	                                            '已有21人关注'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.Panel,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcIndexJs.PanelContent,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Row,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 4 },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                null,
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray', style: { marginRight: '10px' } },
+	                                                    '当前日佣金基数'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'h1',
+	                                                    { className: 'ft-orange' },
+	                                                    '307.32'
+	                                                )
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 4 },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                null,
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray', style: { marginRight: '10px' } },
+	                                                    '战区市场份额'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    null,
+	                                                    '3.32%'
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                null,
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray', style: { marginRight: '10px' } },
+	                                                    '门店市场份额'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    null,
+	                                                    '3.32%'
+	                                                )
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Col,
+	                                        { sm: 4 },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 5 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '门店补贴'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 7, style: { paddingLeft: 0 } },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    null,
+	                                                    '3.32%'
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 5 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '补贴原因'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 7, style: { paddingLeft: 0 } },
+	                                                '在夏天的话，需要有一些降温的应急补贴'
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.Panel,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcIndexJs.PanelContent,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { className: 'mg-bottom-10' },
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'eg-item-flag' },
+	                                                '合作信息'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                '上月闪惠交易额'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'ft-blue' },
+	                                                '111,220,034'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(_srcIndexJs.Col, { sm: 13 })
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                '上月团购交易额'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'ft-orange' },
+	                                                '111,220,034'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(_srcIndexJs.Col, { sm: 13 })
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        { bottom: true },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 1 },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Label,
+	                                                { className: 'ft-12', active: true },
+	                                                '订'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 11 },
+	                                            '每满100元减50'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        { bottom: true },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 1 },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Label,
+	                                                { className: 'ft-12', success: true },
+	                                                '惠'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 11 },
+	                                            '双人创意套餐A'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        { bottom: true },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 1 },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Label,
+	                                                { className: 'ft-12', success: true },
+	                                                '团'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '双人创意套餐A'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 2 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-orange' },
+	                                                '￥12500'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 2 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray', style: { textDecoration: 'line-through' } },
+	                                                '￥13000'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                '已售120份'
+	                                            )
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { className: 'mg-bottom-10' },
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'eg-item-flag' },
+	                                                '联系人'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        { bottom: true },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '李牛牛',
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-orange mg-left-10' },
+	                                                'kp'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '老板/股东'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '123456789'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { onClick: this.buttonTest, className: 'hover-pointer' },
+	                                                    '编辑'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { className: 'mg-left-10' },
+	                                                    '|'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { className: 'mg-left-10 hover-pointer', onClick: this.buttonTest },
+	                                                    '废弃'
+	                                                )
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        { bottom: true },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '李牛牛',
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray mg-left-10' },
+	                                                '已废弃'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '老板/股东'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 3 },
+	                                            '123456789'
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 13 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { onClick: this.buttonTest, className: 'hover-pointer' },
+	                                                    '  恢复'
+	                                                )
+	                                            )
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { className: 'mg-bottom-10' },
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'eg-item-flag' },
+	                                                '拜访记录'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Grid,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '拜访人'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { className: ' mg-left-10' },
+	                                                    '王军'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '联系人'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { className: ' mg-left-10' },
+	                                                    '李大牛'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'mg-left-10 ft-orange' },
+	                                                    ' KP'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '2015-3-32',
+	                                                    _react2['default'].createElement(
+	                                                        'span',
+	                                                        { className: 'mg-left-5' },
+	                                                        '礼拜一'
+	                                                    )
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Label,
+	                                                    { className: 'ft-12', style: styleObj['visitLabel'] },
+	                                                    '有效拜访'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Label,
+	                                                    null,
+	                                                    _react2['default'].createElement(
+	                                                        'h5',
+	                                                        { className: 'ft-gray' },
+	                                                        '上门'
+	                                                    )
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    _react2['default'].createElement(
+	                                                        _srcIndexJs.Label,
+	                                                        { className: 'ft-gray' },
+	                                                        _react2['default'].createElement(
+	                                                            'h5',
+	                                                            { className: 'ft-gray' },
+	                                                            '谈单'
+	                                                        )
+	                                                    )
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(_srcIndexJs.Col, { sm: 1 })
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            { bottom: true },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { className: 'no-pd-left-right' },
+	                                                '上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是 还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。 上周五去了一趟门店，感觉还是可以的。'
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 12, style: styleObj['visitReplay'] },
+	                                                _react2['default'].createElement(
+	                                                    'div',
+	                                                    { style: { marginBottom: '5px' } },
+	                                                    _react2['default'].createElement(
+	                                                        'h5',
+	                                                        { className: 'ft-gray' },
+	                                                        '陪访人'
+	                                                    ),
+	                                                    _react2['default'].createElement(
+	                                                        'span',
+	                                                        { className: ' mg-left-10' },
+	                                                        '李经理'
+	                                                    )
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    '上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是 还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。 上周五去了一趟门店，感觉还是可以的。'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13, className: 'mg-top-5' },
+	                                                _react2['default'].createElement(
+	                                                    'div',
+	                                                    { style: styleObj['visitMore'] },
+	                                                    '收起',
+	                                                    _react2['default'].createElement('div', { className: 'eg-arrow-hollow-up mg-left-10' })
+	                                                )
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Grid,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '拜访人'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { className: ' mg-left-10' },
+	                                                    '王军'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '联系人'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'span',
+	                                                    { className: ' mg-left-10' },
+	                                                    '李大牛'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'mg-left-10 ft-orange' },
+	                                                    ' KP'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '2015-3-32',
+	                                                    _react2['default'].createElement(
+	                                                        'span',
+	                                                        { className: 'mg-left-5' },
+	                                                        '礼拜一'
+	                                                    )
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Label,
+	                                                    { className: 'ft-12', style: styleObj['visitLabel'] },
+	                                                    '有效拜访'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Label,
+	                                                    null,
+	                                                    _react2['default'].createElement(
+	                                                        'h5',
+	                                                        { className: 'ft-gray' },
+	                                                        '上门'
+	                                                    )
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    _react2['default'].createElement(
+	                                                        _srcIndexJs.Label,
+	                                                        { className: 'ft-gray' },
+	                                                        _react2['default'].createElement(
+	                                                            'h5',
+	                                                            { className: 'ft-gray' },
+	                                                            '谈单'
+	                                                        )
+	                                                    )
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(_srcIndexJs.Col, { sm: 1 })
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            { bottom: true },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { className: 'no-pd-left-right' },
+	                                                '上周五去了一趟门店，感觉还是可以的，店主也是很有合作意向，但是 还要在跟进谈一谈细节，唯一的在阻碍时店主的帐目量，觉得手续费太高，不愿合作。 上周五去了一趟门店，感觉还是可以的。'
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13, className: 'mg-top-5' },
+	                                                _react2['default'].createElement(
+	                                                    'div',
+	                                                    { style: styleObj['visitMore'] },
+	                                                    '更多',
+	                                                    _react2['default'].createElement('div', { className: 'eg-arrow-hollow-down mg-left-10' })
+	                                                )
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(_srcIndexJs.Paging, { loadPageCallback: loadPageCallback,
+	                                        currentPage: page, pageSize: pageSize, pageCallback: callback, total: 5024 })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'mg-bottom-10 eg-item-flag' },
+	                                                '关联客户'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            '上海市舞虾餐饮有限公司(直营)'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            '上海市舞虾餐饮有限公司(加盟)'
+	                                        )
+	                                    )
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'mg-bottom-10 eg-item-flag' },
+	                                                '门店历史'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Grid,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    ' 2014-5-12'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13, end: true },
+	                                                '孙大力',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '将'
+	                                                ),
+	                                                '维护销售',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '从'
+	                                                ),
+	                                                '李啦啦',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    ' 变更为'
+	                                                ),
+	                                                '孙大力',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-orange' },
+	                                                    '(门店系统变更)'
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13 },
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    ' 2014-5-12'
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 13, end: true },
+	                                                '孙大力',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '将'
+	                                                ),
+	                                                '维护销售',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    '从'
+	                                                ),
+	                                                '李啦啦',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray' },
+	                                                    ' 变更为'
+	                                                ),
+	                                                '孙大力',
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-orange' },
+	                                                    '(门店系统变更)'
+	                                                )
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Col,
+	                        { sm: 4 },
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.Panel,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcIndexJs.PanelContent,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'eg-item-flag' },
+	                                                ' 归属信息'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 4 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                ' 责任销售'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 8, className: 'no-pd-left-right' },
+	                                            '老大哥',
+	                                            _react2['default'].createElement(
+	                                                'span',
+	                                                { className: ' mg-left-10' },
+	                                                ' 剩余12天'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 4 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                '组织'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 8, className: 'no-pd-left-right' },
+	                                            '上海大客户团购1-1组'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 4 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                '战区'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 8, className: 'no-pd-left-right' },
+	                                            '上海公海'
+	                                        )
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 4 },
+	                                            _react2['default'].createElement(
+	                                                'h5',
+	                                                { className: 'ft-gray' },
+	                                                '电话'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { sm: 8, className: 'no-pd-left-right' },
+	                                            '15005162976'
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.Panel,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcIndexJs.PanelContent,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'eg-item-flag' },
+	                                                'pop'
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            { style: { width: '100%', height: 'auto', position: 'relative' } },
+	                                            _react2['default'].createElement('img', { src: imgList[0]['url'], onClick: this.handleSlider.bind(this), style: { cursor: 'pointer', display: 'block' } }),
+	                                            _react2['default'].createElement(
+	                                                'div',
+	                                                { style: { position: 'absolute', bottom: '10px', right: '25px', color: '#fff' } },
+	                                                '共',
+	                                                imgList.length,
+	                                                '张'
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.Panel,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcIndexJs.PanelContent,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcIndexJs.Item,
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Row,
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Col,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                'h4',
+	                                                { className: 'eg-item-flag' },
+	                                                '附近同类门店'
+	                                            )
+	                                        )
+	                                    ),
+	                                    nearByShops.map(function (shop, index) {
+	                                        return _react2['default'].createElement(
+	                                            _srcIndexJs.Grid,
+	                                            { className: 'pd-top-bottom-10', key: 'shop-' + index },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Row,
+	                                                null,
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Col,
+	                                                    { sm: 12 },
+	                                                    shop['name'],
+	                                                    shop['labels'].map(function (label, labelIndex) {
+	                                                        return _react2['default'].createElement(
+	                                                            _srcIndexJs.Label,
+	                                                            { success: true, className: 'mg-left-10 ft-12', key: 'label-' + index + '-' + labelIndex },
+	                                                            label
+	                                                        );
+	                                                    })
+	                                                )
+	                                            ),
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Row,
+	                                                { bottom: true, className: 'pd-bottom-15 pd-top-0' },
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Col,
+	                                                    { className: 'no-pd-top-bottom' },
+	                                                    _react2['default'].createElement(_srcIndexJs.Star, { Rate: shop['rate'], size: '16px' }),
+	                                                    _react2['default'].createElement(
+	                                                        'h5',
+	                                                        { className: 'ft-gray mg-left-5', style: { verticalAlign: 'top', lineHeight: '16px' } },
+	                                                        shop['customer']
+	                                                    )
+	                                                )
+	                                            )
+	                                        );
+	                                    }),
+	                                    _react2['default'].createElement(
+	                                        _srcIndexJs.Grid,
+	                                        { className: 'pd-top-bottom-10' },
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            null,
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { sm: 12 },
+	                                                '70后饭吧(五角场店)',
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Label,
+	                                                    { success: true, className: 'mg-left-10 ft-12' },
+	                                                    '订'
+	                                                ),
+	                                                _react2['default'].createElement(
+	                                                    _srcIndexJs.Label,
+	                                                    { active: true, className: 'mg-left-10 ft-12' },
+	                                                    '惠'
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.Row,
+	                                            { bottom: true, className: 'pd-bottom-15 pd-top-0' },
+	                                            _react2['default'].createElement(
+	                                                _srcIndexJs.Col,
+	                                                { className: 'no-pd-top-bottom' },
+	                                                _react2['default'].createElement(_srcIndexJs.Star, { Rate: 80, size: '16px' }),
+	                                                _react2['default'].createElement(
+	                                                    'h5',
+	                                                    { className: 'ft-gray mg-left-5', style: { verticalAlign: 'top', lineHeight: '16px' } },
+	                                                    '大客户'
+	                                                )
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _srcIndexJs.Grid,
+	                { style: styleObj['buttonGroup'] },
+	                _react2['default'].createElement(
+	                    _srcIndexJs.Col,
+	                    { sm: 13 },
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Button,
+	                        { radius: true, egSize: 'sm', egStyle: 'white', onClick: this.buttonTest },
+	                        '报错'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcIndexJs.Col,
+	                    { sm: 13 },
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Button,
+	                        { radius: true, egSize: 'sm', egStyle: 'white', onClick: this.buttonTest },
+	                        '添加联系人'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcIndexJs.Col,
+	                    { sm: 13 },
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Button,
+	                        { radius: true, egSize: 'sm', egStyle: 'white', onClick: this.buttonTest },
+	                        '拜访'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcIndexJs.Col,
+	                    { sm: 13, end: true },
+	                    _react2['default'].createElement(
+	                        _srcIndexJs.Button,
+	                        { radius: true, egSize: 'sm', onClick: this.buttonTest },
+	                        '释放'
+	                    )
+	                )
+	            )
+	        );
+	    };
+
+	    return Detail;
+	})(_react.Component);
+
+	exports['default'] = Detail;
+	module.exports = exports['default'];
+	/*照片浏览组件(建议放在dom根节点附近)*/ /*主页面*/ /*门店信息*/ /*市场份额信息*/ /*合作信息*/ /*联系人信息*/ /*拜访记录*/ /*关联客户*/ /*门店历史*/ /*归属信息*/ /*归属信息*/ /*附近同类门店*/
+
+/***/ },
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -33659,7 +35641,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _srcDialogJs = __webpack_require__(262);
+	var _srcDialogJs = __webpack_require__(264);
 
 	var _srcDialogJs2 = _interopRequireDefault(_srcDialogJs);
 
@@ -33675,7 +35657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -33701,6 +35683,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            title: '这是个提示'
 	        };
 	    }
+
+	    Demo.prototype.getScope = function getScope(dialog) {
+	        this.dialog = dialog;
+	    };
 
 	    Demo.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -33748,38 +35734,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ),
 	            _react2['default'].createElement(
 	                _srcDialogJs2['default'],
-	                { type: this.state.type, show: this.state.show, title: this.state.title },
+	                { type: this.state.type, show: this.state.show, title: this.state.title, ref: this.getScope.bind(this) },
 	                'ahflaskdjflajsflajsdlf;jkasdfk adfkjasd;fkjas;dlf asdfkn;askdfnas'
 	            )
 	        );
 	    };
 
 	    Demo.prototype.showDialog = function showDialog() {
-	        this.setState({
-	            show: true,
-	            type: 'dialog'
-	        });
+	        this.dialog.open('dialog');
 	    };
 
 	    Demo.prototype.showAlert = function showAlert() {
-	        this.setState({
-	            show: true,
-	            type: 'alert'
-	        });
+	        this.dialog.open('alert');
 	    };
 
 	    Demo.prototype.showConfirm = function showConfirm() {
-	        this.setState({
-	            show: true,
-	            type: 'confirm'
-	        });
+	        this.dialog.open('confirm');
 	    };
 
 	    Demo.prototype.showMsak = function showMsak() {
-	        this.setState({
-	            show: true,
-	            type: 'mask'
-	        });
+	        this.dialog.open('mask');
 	    };
 
 	    return Demo;
@@ -33805,7 +35779,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 277 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -33833,7 +35807,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -33853,9 +35827,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcCalendarPanelJs2 = _interopRequireDefault(_srcCalendarPanelJs);
 
+	var _srcFormGroupJs = __webpack_require__(281);
+
+	var _srcFormGroupJs2 = _interopRequireDefault(_srcFormGroupJs);
+
 	var _querystring = __webpack_require__(237);
 
 	var _querystring2 = _interopRequireDefault(_querystring);
+
+	var _srcSelectJs = __webpack_require__(256);
+
+	var _srcSelectJs2 = _interopRequireDefault(_srcSelectJs);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -33880,6 +35862,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setState({
 	            show: false
 	        });
+	    };
+
+	    Demo.prototype.getValueCallback = function getValueCallback(val) {
+	        alert(val);
 	    };
 
 	    Demo.prototype.render = function render() {
@@ -33926,12 +35912,181 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        { sm: 6 },
 	                        _react2['default'].createElement(
 	                            _srcRadioGroupJs2['default'],
-	                            { defaultChecked: '鸡蛋', name: 'radio-foot' },
+	                            { defaultChecked: '鸡蛋', name: 'radio-foot', getValueCallback: this.getValueCallback },
 	                            _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '大白菜', value: '大白菜' }),
 	                            _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '鸡蛋', value: '鸡蛋', disabled: true }),
 	                            _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '猪肉', value: '猪肉' }),
 	                            _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '牛肉', value: '牛肉' }),
 	                            _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '鱼肉', value: '鱼肉', disabled: true })
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _srcRowJs2['default'],
+	                null,
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    null,
+	                    _react2['default'].createElement(
+	                        'h4',
+	                        null,
+	                        '表单'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _srcRowJs2['default'],
+	                null,
+	                _react2['default'].createElement(
+	                    _srcColJs2['default'],
+	                    null,
+	                    _react2['default'].createElement(
+	                        _srcFormGroupJs2['default'],
+	                        null,
+	                        _react2['default'].createElement(
+	                            _srcRowJs2['default'],
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 2 },
+	                                '姓名'
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 10 },
+	                                _react2['default'].createElement(_srcInputJs2['default'], { name: 'test', id: 'test', placeholder: '请输入姓名' })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcRowJs2['default'],
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 2 },
+	                                '姓名'
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 10 },
+	                                _react2['default'].createElement(_srcInputJs2['default'], { name: 'test', id: 'test', placeholder: '请输入姓名' })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcRowJs2['default'],
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 2 },
+	                                '性别'
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 10 },
+	                                _react2['default'].createElement(
+	                                    _srcRadioGroupJs2['default'],
+	                                    { defaultChecked: '男', name: 'radio-sex' },
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '男', value: '男' }),
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { type: 'radio', label: '女', value: '女' })
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcRowJs2['default'],
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 2 },
+	                                '体育爱好'
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 10 },
+	                                _react2['default'].createElement(
+	                                    _srcCheckboxGroupJs2['default'],
+	                                    null,
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { type: 'checkbox', label: '足球', checked: true }),
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { type: 'checkbox', label: '篮球' }),
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { type: 'checkbox', label: '羽毛球', checked: true }),
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { type: 'checkbox', label: '乒乓球' })
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcRowJs2['default'],
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 2 },
+	                                '姓名'
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 13 },
+	                                _react2['default'].createElement(_srcInputJs2['default'], { name: 'test', id: 'test', placeholder: '请输入姓名' })
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcFormGroupJs2['default'],
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcColJs2['default'],
+	                                    { sm: 13 },
+	                                    '出生日期'
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcColJs2['default'],
+	                                    { sm: 13, end: true },
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { name: 'test', id: 'test', placeholder: '请输入出生日期' })
+	                                )
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcFormGroupJs2['default'],
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _srcColJs2['default'],
+	                                    { sm: 13 },
+	                                    '省份证'
+	                                ),
+	                                _react2['default'].createElement(
+	                                    _srcColJs2['default'],
+	                                    { sm: 13, end: true },
+	                                    _react2['default'].createElement(_srcInputJs2['default'], { name: 'test', id: 'test', placeholder: '请输入省份证' })
+	                                )
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcRowJs2['default'],
+	                            null,
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 2 },
+	                                '所在城市'
+	                            ),
+	                            _react2['default'].createElement(
+	                                _srcColJs2['default'],
+	                                { sm: 10 },
+	                                _react2['default'].createElement(
+	                                    _srcSelectJs2['default'],
+	                                    { keys: this.props.keys, callback: function (val, key) {
+	                                            console.log(val + ':' + key);
+	                                        } },
+	                                    _react2['default'].createElement(
+	                                        'item',
+	                                        { value: 'bei' },
+	                                        '北京'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'item',
+	                                        { value: 'shang' },
+	                                        '上海'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'item',
+	                                        { value: 'nan' },
+	                                        '南京'
+	                                    )
+	                                )
+	                            )
 	                        )
 	                    )
 	                )
@@ -33962,7 +36117,79 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 278 */
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(227);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _utilsClassNameMixin = __webpack_require__(225);
+
+	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
+
+	/**
+	 * 多选按钮组组件
+	 * @class CheckboxGroup
+	 * @module form
+	 * @extends Component
+	 * @constructor
+	 * @since 0.1.0
+	 * @demo input.js {js}
+	 * @show true
+	 * */
+
+	var FormGroup = (function (_Component) {
+	    _inherits(FormGroup, _Component);
+
+	    _createClass(FormGroup, null, [{
+	        key: 'propTypes',
+	        value: {},
+	        enumerable: true
+	    }]);
+
+	    function FormGroup(props, context) {
+	        _classCallCheck(this, _FormGroup);
+
+	        _Component.call(this, props, context);
+	    }
+
+	    FormGroup.prototype.render = function render() {
+
+	        return _react2['default'].createElement(
+	            'div',
+	            { style: this.props.style,
+	                className: _classnames2['default'](this.getClassName('form-group'), this.props.className || '') },
+	            this.props.children
+	        );
+	    };
+
+	    var _FormGroup = FormGroup;
+	    FormGroup = _utilsClassNameMixin2['default'](FormGroup) || FormGroup;
+	    return FormGroup;
+	})(_react.Component);
+
+	exports['default'] = FormGroup;
+	module.exports = exports['default'];
+
+/***/ },
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34335,7 +36562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 279 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34363,7 +36590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -34374,16 +36601,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var page = 1;
 	function callback(page) {
 	    page = page;
-	    window.location = location.origin + location.pathname + '?page=' + page + '&pageSize=' + pageSize;
+	    window.location = location.href.replace(/\?.*/, '') + '?page=' + page + '&pageSize=' + pageSize;
 	}
 
 	function loadPageCallback(pageSize) {
 	    window.location = location.origin + location.pathname + '?page=' + page + '&pageSize=' + pageSize;
 	}
-
-	page = location.search ? _querystring2['default'].parse(location.search.substr(1)).page * 1 : 1;
-
-	var pageSize = location.search ? _querystring2['default'].parse(location.search.substr(1)).pageSize * 1 : 20;
+	var pageSize = 20;
 
 	var PagingCls = (function (_Component) {
 	    _inherits(PagingCls, _Component);
@@ -34395,13 +36619,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    PagingCls.prototype.render = function render() {
+	        var query = this.props.location.query,
+	            page = query.page * 1 || 0,
+	            pageSize = query.pageSize * 1 || 20;
 	        return _react2['default'].createElement(
 	            _srcRowJs2['default'],
 	            null,
 	            _react2['default'].createElement(
 	                _srcColJs2['default'],
 	                { sm: 12 },
-	                _react2['default'].createElement(_srcPagingJs2['default'], { showItemsNumber: true, loadPageCallback: loadPageCallback, currentPage: page, pageSize: pageSize, pageCallback: callback, total: 5024 })
+	                _react2['default'].createElement(_srcPagingJs2['default'], { showItemsNumber: true, loadPageCallback: loadPageCallback, currentPage: page, pageSize: pageSize,
+	                    pageCallback: callback, total: 5024 })
 	            )
 	        );
 	    };
@@ -34413,7 +36641,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 280 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34453,23 +36681,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
-	var _srcPanelPanelJs = __webpack_require__(264);
+	var _srcPanelPanelJs = __webpack_require__(266);
 
 	var _srcPanelPanelJs2 = _interopRequireDefault(_srcPanelPanelJs);
 
-	var _srcPanelPanelHeaderJs = __webpack_require__(267);
+	var _srcPanelPanelHeaderJs = __webpack_require__(269);
 
 	var _srcPanelPanelHeaderJs2 = _interopRequireDefault(_srcPanelPanelHeaderJs);
 
-	var _srcPanelPanelFooterJs = __webpack_require__(266);
+	var _srcPanelPanelFooterJs = __webpack_require__(268);
 
 	var _srcPanelPanelFooterJs2 = _interopRequireDefault(_srcPanelPanelFooterJs);
 
-	var _srcPanelPanelContentJs = __webpack_require__(265);
+	var _srcPanelPanelContentJs = __webpack_require__(267);
 
 	var _srcPanelPanelContentJs2 = _interopRequireDefault(_srcPanelPanelContentJs);
 
@@ -34776,7 +37004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 281 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34826,7 +37054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 282 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34864,7 +37092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -34998,7 +37226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 283 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35116,7 +37344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 284 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35136,23 +37364,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _srcTableTableJs = __webpack_require__(271);
+	var _srcTableTableJs = __webpack_require__(273);
 
 	var _srcTableTableJs2 = _interopRequireDefault(_srcTableTableJs);
 
-	var _srcTableTrJs = __webpack_require__(274);
+	var _srcTableTrJs = __webpack_require__(276);
 
 	var _srcTableTrJs2 = _interopRequireDefault(_srcTableTrJs);
 
-	var _srcTableTdJs = __webpack_require__(273);
+	var _srcTableTdJs = __webpack_require__(275);
 
 	var _srcTableTdJs2 = _interopRequireDefault(_srcTableTdJs);
 
-	var _srcTableThJs = __webpack_require__(272);
+	var _srcTableThJs = __webpack_require__(274);
 
 	var _srcTableThJs2 = _interopRequireDefault(_srcTableThJs);
 
-	var _srcTableColumnJs = __webpack_require__(285);
+	var _srcTableColumnJs = __webpack_require__(289);
 
 	var _srcTableColumnJs2 = _interopRequireDefault(_srcTableColumnJs);
 
@@ -35160,7 +37388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -35520,7 +37748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 285 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35610,7 +37838,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 286 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35648,7 +37876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -35742,7 +37970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 287 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35762,7 +37990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _srcTooltipJs = __webpack_require__(263);
+	var _srcTooltipJs = __webpack_require__(265);
 
 	var _srcTooltipJs2 = _interopRequireDefault(_srcTooltipJs);
 
@@ -35770,7 +37998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcButtonJs2 = _interopRequireDefault(_srcButtonJs);
 
-	var _srcTooltipPanelJs = __webpack_require__(288);
+	var _srcTooltipPanelJs = __webpack_require__(292);
 
 	var _srcTooltipPanelJs2 = _interopRequireDefault(_srcTooltipPanelJs);
 
@@ -35877,7 +38105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 288 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35909,7 +38137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _TooltipJs = __webpack_require__(263);
+	var _TooltipJs = __webpack_require__(265);
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
@@ -35921,13 +38149,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _RowJs2 = _interopRequireDefault(_RowJs);
 
-	var _ColJs = __webpack_require__(229);
+	var _ColJs = __webpack_require__(233);
 
 	var _ColJs2 = _interopRequireDefault(_ColJs);
 
 	var _GridJs = __webpack_require__(234);
 
 	var _GridJs2 = _interopRequireDefault(_GridJs);
+
+	var _reactLibReactDOM = __webpack_require__(19);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
 	 * tipsPanel组件
@@ -36063,9 +38295,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var dbody = document.body;
 	        var delement = document.documentElement;
 
-	        var tipNode = _react2['default'].findDOMNode(this.refs.tips);
+	        var tipNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.tips);
 
-	        var eleNode = _react2['default'].findDOMNode(this.refs.container).children[0];
+	        var eleNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.container).children[0];
 
 	        var bodys = {
 	            height: dbody.clientHeight,
@@ -36176,7 +38408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 289 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36208,15 +38440,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRowJs2 = _interopRequireDefault(_srcRowJs);
 
-	var _srcPanelPanelJs = __webpack_require__(290);
+	var _srcPanelPanelJs = __webpack_require__(294);
 
 	var _srcPanelPanelJs2 = _interopRequireDefault(_srcPanelPanelJs);
 
-	var _srcPanelPanelContentJs = __webpack_require__(291);
+	var _srcPanelPanelContentJs = __webpack_require__(295);
 
 	var _srcPanelPanelContentJs2 = _interopRequireDefault(_srcPanelPanelContentJs);
 
-	var _srcColJs = __webpack_require__(229);
+	var _srcColJs = __webpack_require__(233);
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
@@ -36228,7 +38460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcRadioGroupJs2 = _interopRequireDefault(_srcRadioGroupJs);
 
-	var _srcValidatorPanelJs = __webpack_require__(270);
+	var _srcValidatorPanelJs = __webpack_require__(272);
 
 	var _srcValidatorPanelJs2 = _interopRequireDefault(_srcValidatorPanelJs);
 
@@ -36244,7 +38476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcTabsetJs2 = _interopRequireDefault(_srcTabsetJs);
 
-	var _srcDialogJs = __webpack_require__(262);
+	var _srcDialogJs = __webpack_require__(264);
 
 	var _srcDialogJs2 = _interopRequireDefault(_srcDialogJs);
 
@@ -36314,11 +38546,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        console.dir(value);
 	    };
 
+	    Demo.prototype.getDialog = function getDialog(d) {
+	        this.dialog = d;
+	    };
+
 	    Demo.prototype.change = function change(value) {
 	        this.setState({
 	            showTab: value,
-	            update: 'uid' + +new Date(),
-	            show: false
+	            update: 'uid' + +new Date()
 	        });
 	    };
 
@@ -36327,9 +38562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Demo.prototype.showMask = function showMask() {
-	        this.setState({
-	            show: true
-	        });
+	        this.dialog.open();
 	    };
 
 	    Demo.prototype.checktab = function checktab() {
@@ -36508,7 +38741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ),
 	            _react2['default'].createElement(
 	                _srcDialogJs2['default'],
-	                { type: 'mask', show: this.state.show },
+	                { type: 'dialog', ref: this.getDialog.bind(this) },
 	                _react2['default'].createElement(
 	                    _srcGridJs2['default'],
 	                    { style: { width: '300px' } },
@@ -36585,7 +38818,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 290 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36641,9 +38874,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    Panel.prototype.render = function render() {
+	        var renderStyle = this.props.style ? this.props.style : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('panel'), this.props.className) }),
+	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('panel'), this.props.className), style: renderStyle }),
 	            this.props.children
 	        );
 	    };
@@ -36667,7 +38901,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 291 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36723,7 +38957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    PanelContent.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('content'), this.props.padding ? this.getClassName('padding') : '') },
+	            { className: _classnames2['default'](this.getClassName('content'), this.props.padding ? this.getClassName('padding') : '', this.props.className) },
 	            this.props.children
 	        );
 	    };
@@ -36755,6 +38989,246 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react.Component);
 
 	exports['default'] = PanelContent;
+	module.exports = exports['default'];
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by slashhuang on 15/12/21.
+	 */
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _srcStarJs = __webpack_require__(262);
+
+	var _srcStarJs2 = _interopRequireDefault(_srcStarJs);
+
+	__webpack_require__(297);
+
+	var StarDemo = (function (_Component) {
+	    _inherits(StarDemo, _Component);
+
+	    function StarDemo() {
+	        _classCallCheck(this, StarDemo);
+
+	        _Component.apply(this, arguments);
+	    }
+
+	    StarDemo.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 50, size: 15 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 60, size: 16 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 70, size: 17 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 80, size: 18 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 90, size: 19 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 10, size: 14 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 20, size: 13 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 30, size: 12 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 40, size: 11 }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], { Rate: 50, size: 10 }),
+	            _react2['default'].createElement('br', null)
+	        );
+	    };
+
+	    return StarDemo;
+	})(_react.Component);
+
+	exports['default'] = StarDemo;
+	module.exports = exports['default'];
+
+/***/ },
+/* 297 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 298 */,
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by slashhuang on 15/12/28.
+	 * 照片滚动插件demo
+	 */
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(17);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _srcIndexJs = __webpack_require__(246);
+
+	var SliderDemo = (function (_Component) {
+	    _inherits(SliderDemo, _Component);
+
+	    function SliderDemo(props, context) {
+	        _classCallCheck(this, SliderDemo);
+
+	        _Component.call(this, props, context);
+	        this.state = {
+	            show: false,
+	            showThumbnail: true
+	        };
+	    }
+
+	    SliderDemo.prototype.closeDialog = function closeDialog() {
+	        this.setState({
+	            show: false
+	        });
+	    };
+
+	    SliderDemo.prototype.handleSlider = function handleSlider() {
+	        this.dialog.open();
+	        switch (arguments[0]) {
+	            case 'showDefinedThumbnail':
+	                this.setState({
+	                    show: true,
+	                    showThumbnail: true,
+	                    thumbnailKey: 'thumbnail'
+	                });break;
+	            case 'noShowThumbnail':
+	                this.setState({
+	                    show: true,
+	                    showThumbnail: false,
+	                    thumbnailKey: undefined
+	                });break;
+	            default:
+	                this.setState({
+	                    show: true,
+	                    showThumbnail: true,
+	                    thumbnailKey: undefined
+	                });break;
+	        }
+	    };
+
+	    SliderDemo.prototype.getDialog = function getDialog(d) {
+	        this.dialog = d;
+	    };
+
+	    SliderDemo.prototype.render = function render() {
+	        var _this = this;
+
+	        var _state = this.state;
+	        var show = _state.show;
+	        var showThumbnail = _state.showThumbnail;
+	        var thumbnailKey = _state.thumbnailKey;
+
+	        var imgList = [{
+	            profile: '1叔2015上传',
+	            url: 'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '1哥2015上传',
+	            url: 'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '2哥2015上传',
+	            url: 'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '3哥2015上传',
+	            url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '4哥2015上传',
+	            url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '5哥2015上传',
+	            url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '5哥2015上传',
+	            url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',
+	            description: '闪惠商户培训资料',
+	            thumbnail: 'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'
+	        }, {
+	            profile: '5叔2015上传',
+	            url: 'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',
+	            description: '熊猫野外生存',
+	            thumbnail: 'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'
+	        }];
+	        var pageNum = 4;
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(
+	                _srcIndexJs.Button,
+	                { success: true, onClick: function (e) {
+	                        return _this.handleSlider.call(_this);
+	                    } },
+	                '点击出现照片展示插件(缩略图默认)'
+	            ),
+	            _react2['default'].createElement(
+	                _srcIndexJs.Button,
+	                { success: true, className: 'mg-left-10', onClick: function (e) {
+	                        return _this.handleSlider.call(_this, 'showDefinedThumbnail');
+	                    } },
+	                '点击出现照片展示插件(缩略图自定义)'
+	            ),
+	            _react2['default'].createElement(
+	                _srcIndexJs.Button,
+	                { className: 'mg-left-10', success: true, onClick: function (e) {
+	                        return _this.handleSlider.call(_this, 'noShowThumbnail');
+	                    } },
+	                '点击出现照片展示插件(无缩略图)'
+	            ),
+	            _react2['default'].createElement(
+	                _srcIndexJs.Dialog,
+	                { type: 'mask', ref: this.getDialog.bind(this) },
+	                _react2['default'].createElement(_srcIndexJs.ImgSlider, { show: show, showThumbnail: showThumbnail,
+	                    imgList: imgList,
+	                    profileKey: 'profile', urlKey: 'url', titleKey: 'description', thumbnailKey: thumbnailKey,
+	                    pageNum: pageNum })
+	            )
+	        );
+	    };
+
+	    return SliderDemo;
+	})(_react.Component);
+
+	exports['default'] = SliderDemo;
+	;
 	module.exports = exports['default'];
 
 /***/ }

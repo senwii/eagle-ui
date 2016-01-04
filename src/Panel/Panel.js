@@ -29,11 +29,12 @@ export default class Panel extends Component{
      * @return {ReactElement}
      * */
     render(){
+        let renderStyle=this.props.style?this.props.style:{};
         return (
             <div {...this.props} className={
                 classnames(
                     this.getClassName('panel'),this.props.className
-                )}>
+                )} style={renderStyle}>
                 {this.props.children}
             </div>
         );

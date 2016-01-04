@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -420,6 +446,10 @@ var _react = require(&#x27;react&#x27;);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
+
+var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 var _utilsClassNameMixin = require(&#x27;./utils/ClassNameMixin&#x27;);
 
 var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
@@ -503,7 +533,8 @@ var Dialog = (function (_Component) {
              * @type String
              * @default div
              * */
-            componentTag: _react.PropTypes.string
+            componentTag: _react.PropTypes.string,
+            onInit: _react.PropTypes.func
 
         },
         enumerable: true
@@ -526,11 +557,20 @@ var Dialog = (function (_Component) {
 
         _Component.call(this, props, context);
         this.flag = true;
+
         this.state = {
-            show: this.props.show,
+            show: this.props.show || false,
+            type: this.props.type,
             init: true
         };
+        this.ref = this.state.type + +new Date();
+        /*this.props.onInit({
+            open :this.open.bind(this),
+            close:this.close.bind(this)
+        });*/
     }
+
+    Dialog.prototype.componentWillMount = function componentWillMount() {};
 
     /**
      * 接收到新props时执行,props是否存在show，是改变state.show，否则不变
@@ -538,31 +578,29 @@ var Dialog = (function (_Component) {
      * @method componentWillReceiveProps
      * */
 
-    Dialog.prototype.componentDidMount = function componentDidMount() {
-        //this.flag = false;
-    };
+    Dialog.prototype.componentDidMount = function componentDidMount() {};
 
-    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-        if (nextProps.show) {
-            this.flag = false;
-            this.setState({
-                show: nextProps.show
-            });
-        }
-    };
+    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {}
+    /*if(nextProps.show ){
+        this.flag = false;
+        this.setState({
+            show:nextProps.show
+        });
+    }*/
 
     /**
      * @method render
      * @return {ReactElement}
      * */
+    ;
 
     Dialog.prototype.render = function render() {
-        var showOrHide = this.props.cancelCallback ? this.props.show : this.state.show;
+        //let showOrHide = this.props.cancelCallback?this.props.show:this.state.show;
+        var showOrHide = this.state.show;
         return _react2[&#x27;default&#x27;].createElement(
             _GridJs2[&#x27;default&#x27;],
-            { ref: &#x27;container&#x27;, className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;container&#x27;), this.flag ? &#x27;&#x27; : showOrHide ? &#x27;fadein&#x27; : &#x27;fadeout&#x27;) },
-            !this.flag &amp;&amp; !(this.props.cancelCallback ? this.props.show : this.state.show) ? this.displayNone() : null,
-            this[this.props.type.toLowerCase()](),
+            { ref: this.ref, className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;container&#x27;), this.flag ? &#x27;&#x27; : showOrHide ? &#x27;fadein&#x27; : &#x27;fadeout&#x27;) },
+            this[this.state.type.toLowerCase()](),
             this.showOverlay(this.props.tips)
         );
     };
@@ -575,8 +613,18 @@ var Dialog = (function (_Component) {
         var _this = this;
         clearTimeout(this.timer);
         this.timer = setTimeout((function () {
-            this.removeClass(_react2[&#x27;default&#x27;].findDOMNode(_this.refs.container), &#x27;fadeout&#x27;);
+            this.removeClass(_reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(_this.refs[_this.ref]), &#x27;fadeout&#x27;);
         }).bind(this), 400);
+    };
+
+    Dialog.prototype.open = function open() {
+        var type = arguments.length &lt;= 0 || arguments[0] === undefined ? this.state.type : arguments[0];
+
+        this.flag = false;
+        this.setState({
+            show: true,
+            type: type
+        });
     };
 
     Dialog.prototype.close = function close(callbackId) {
@@ -585,11 +633,11 @@ var Dialog = (function (_Component) {
             callbackId();
             return this;
         }
-
-        this.flag = false;
+        this.flag = true;
         this.setState({
             show: false
         });
+        this.displayNone();
     };
 
     /**
@@ -731,66 +779,31 @@ var Dialog = (function (_Component) {
     };
 
     /**
-     * 渲染dialog
-     * @method dialog
-     * @return  {ReactElement}
-     * */
-
-    Dialog.prototype.dialog = function dialog() {
-        return _react2[&#x27;default&#x27;].createElement(
-            _RowJs2[&#x27;default&#x27;],
-            { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;dialog&#x27;)) },
-            _react2[&#x27;default&#x27;].createElement(
-                _ColJs2[&#x27;default&#x27;],
-                null,
-                _react2[&#x27;default&#x27;].createElement(
-                    _RowJs2[&#x27;default&#x27;],
-                    { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;title&#x27;)) },
-                    this.props.title,
-                    _react2[&#x27;default&#x27;].createElement(
-                        &#x27;div&#x27;,
-                        { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;close&#x27;)), onClick: this.closeDialog.bind(this) },
-                        &#x27;x&#x27;
-                    )
-                ),
-                _react2[&#x27;default&#x27;].createElement(
-                    _RowJs2[&#x27;default&#x27;],
-                    { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;content&#x27;)) },
-                    _react2[&#x27;default&#x27;].createElement(
-                        _ColJs2[&#x27;default&#x27;],
-                        null,
-                        this.props.children
-                    )
-                ),
-                _react2[&#x27;default&#x27;].createElement(
-                    _RowJs2[&#x27;default&#x27;],
-                    { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;button&#x27;)) },
-                    _react2[&#x27;default&#x27;].createElement(
-                        _ColJs2[&#x27;default&#x27;],
-                        { sm: 12 },
-                        _react2[&#x27;default&#x27;].createElement(
-                            _ButtonJs2[&#x27;default&#x27;],
-                            { radius: true, egSize: &#x27;xs&#x27;, style: { marginRight: &#x27;20px&#x27; }, onClick: this.submitForm.bind(this) },
-                            &#x27;确定&#x27;
-                        ),
-                        _react2[&#x27;default&#x27;].createElement(
-                            _ButtonJs2[&#x27;default&#x27;],
-                            { radius: true, white: true, egSize: &#x27;xs&#x27;, onClick: this.cancleDialog.bind(this) },
-                            &#x27;取消&#x27;
-                        )
-                    )
-                )
-            )
-        );
-    };
-
-    /**
      * 渲染mask
      * @method mask
      * @return  {ReactElement}
      * */
 
     Dialog.prototype.mask = function mask() {
+        return _react2[&#x27;default&#x27;].createElement(
+            &#x27;div&#x27;,
+            { className: this.getClassName(&#x27;body&#x27;) },
+            this.props.children,
+            _react2[&#x27;default&#x27;].createElement(
+                &#x27;div&#x27;,
+                { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;close&#x27;)), onClick: this.closeDialog.bind(this) },
+                &#x27;x&#x27;
+            )
+        );
+    };
+
+    /**
+     * 渲染dialog
+     * @method dialog
+     * @return  {ReactElement}
+     * */
+
+    Dialog.prototype.dialog = function dialog() {
         return _react2[&#x27;default&#x27;].createElement(
             _RowJs2[&#x27;default&#x27;],
             { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;dialog&#x27;)) },

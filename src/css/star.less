@@ -1,0 +1,18 @@
+.eg-star-orange,.eg-star-grey{
+  background: data-uri('./img/star.png') repeat-x 0 0;
+}
+.eg-star-orange{
+  display: inline-block;
+  width: 70px;
+  height: 13px;
+ // background: data-uri('./img/star.png') repeat-x 0 0;
+  background-size: 70px auto;
+  .eg-star-grey{
+    height: inherit;
+    //background: data-uri('./img/star.png') repeat-x 0 -14px;
+    background-position: 0 -14px;
+    background-size: inherit;
+    overflow: hidden;
+    max-width: 100%;
+  }
+}

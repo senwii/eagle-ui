@@ -11,7 +11,6 @@ import Component from './utils/Component';
  * @since 0.1.0
  * */
 export default class Col extends Component{
-
     static propTypes = {
         /**
          * 占几列，共12列

@@ -194,6 +194,24 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/star.html">star</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/星星.html">星星</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -244,6 +262,14 @@
                        <li>
                             
                            <a href="../classes/crumb.html">crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -450,6 +476,10 @@ var _GridJs = require(&#x27;./Grid.js&#x27;);
 
 var _GridJs2 = _interopRequireDefault(_GridJs);
 
+var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
+
+var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 /**
  * tipsPanel组件
  * 方向可选：top,down,left,right.默认down
@@ -584,9 +614,9 @@ var TooltipPanel = (function (_Component) {
         var dbody = document.body;
         var delement = document.documentElement;
 
-        var tipNode = _react2[&#x27;default&#x27;].findDOMNode(this.refs.tips);
+        var tipNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.tips);
 
-        var eleNode = _react2[&#x27;default&#x27;].findDOMNode(this.refs.container).children[0];
+        var eleNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.container).children[0];
 
         var bodys = {
             height: dbody.clientHeight,
