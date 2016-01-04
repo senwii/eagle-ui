@@ -4630,7 +4630,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type String||number
 	             * @default undefined  可以取值10-20 默认单位为'px'
 	             * */
-	            size: _react.PropTypes.number || _react.PropTypes.string,
+	            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
 	            classPrefix: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -4749,7 +4749,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            showThumbnail: props.showThumbnail,
 	            thumbnailKey: props.thumbnailKey || props.urlKey,
 	            targetIndex: props.show ? this.state.targetIndex : 0,
-	            thumbNailIndex: props.show ? this.state.thumbNailIndex : 0
+	            thumbNailIndex: props.show ? this.state.thumbNailIndex : 0,
+	            imgList: props.imgList || this.state.imgList
 	        });
 	        //if(!props.show){
 	        //    setTimeout(()=>{
@@ -4864,10 +4865,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        _react2['default'].createElement(
 	                            'ul',
 	                            { style: { width: length * 380 + 'px', left: -targetIndex * 380 + 'px' } },
-	                            imgList.map(function (img) {
+	                            imgList.map(function (img, index) {
 	                                return _react2['default'].createElement(
 	                                    'li',
-	                                    { style: { width: '380px' } },
+	                                    { style: { width: '380px' }, key: 'img-' + index },
 	                                    _react2['default'].createElement('img', { src: img[[urlKey]] })
 	                                );
 	                            })
@@ -4926,7 +4927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                }
 	                                return _react2['default'].createElement(
 	                                    'li',
-	                                    { 'data-index': index, style: _extends({ width: 100 / length - 1.1 + '%' }, inlineStyle) },
+	                                    { 'data-index': index, style: _extends({ width: 100 / length - 1.1 + '%' }, inlineStyle), key: 'thumb-' + index },
 	                                    _react2['default'].createElement('img', { src: img[thumbnailKey], 'data-index': index })
 	                                );
 	                            })

@@ -591,9 +591,9 @@ export default class Detail extends Component{
                                             <Col>
                                                 <h4 className='eg-item-flag'>pop</h4>
                                             </Col>
-                                            <Col style={{width:'100%',height:'230px',position:'relative'}}>
-                                                <img src={imgList[0]['url']} onClick={this.handleSlider.bind(this)} style={{cursor:'pointer'}}/>
-                                                <div style={{position:'absolute',bottom:'2px',right:'25px',color:'#fff'}}>共{imgList.length}张</div>
+                                            <Col style={{width:'100%',height:'auto',position:'relative'}}>
+                                                <img src={imgList[0]['url']} onClick={this.handleSlider.bind(this)} style={{cursor:'pointer',display:'block'}}/>
+                                                <div style={{position:'absolute',bottom:'10px',right:'25px',color:'#fff'}}>共{imgList.length}张</div>
                                             </Col>
                                         </Row>
                                     </Item>
