@@ -76,9 +76,17 @@
     .make-grid(lg);
 }
 
-[class*='eg-col-sm-']:last-child,[class*='eg-col-md-']:last-child,[class*='eg-col-xs-']:last-child,[class*='eg-col-lg-']:last-child{
+[class*="eg-col-"] {
+    float: left;
+    padding-left:  ceil((@grid-gutter-width / 2));
+    padding-right: floor((@grid-gutter-width / 2));
+    padding-top:@padding-default;
+    padding-bottom:@padding-default;
+}
+
+[class*='eg-col-']:last-child{
     float: right;
 }
-[class*='eg-col-sm-'].eg-end,[class*='eg-col-md-'].eg-end,[class*='eg-col-xs-'].eg-end,[class*='eg-col-lg-'].eg-end{
+[class*='eg-col-'].eg-end{
     float: left;
 }

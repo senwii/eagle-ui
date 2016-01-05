@@ -39,6 +39,7 @@ export Table from './Table/Table.js';
 export Tr from './Table/Tr.js';
 export Td from './Table/Td.js';
 export Th from './Table/Th.js';
+export FormGroup from './FormGroup.js';
 
 window['Eagleui'] = {};
 
@@ -47,7 +48,7 @@ window['Eagleui'] = {};
     'Button','ButtonGroup','CheckboxGroup','Input','RadioGroup','Label','ValidatorPanel',
     'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip',
     'Panel','PanelContent','PanelFooter','PanelHeader','List','Item',
-    'Table','Tr','Td','Th','ImgSlider'
+    'Table','Tr','Td','Th','ImgSlider','FormGroup'
 ].forEach(function(clazzName){
     Eagleui[clazzName] =exports[clazzName];
 });

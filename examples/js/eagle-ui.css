@@ -1,4 +1,274 @@
 /**晃动*/
+@font-face {
+  font-family: 'icomoon';
+  src: url(b94b3f956f88b3812cccb9df97ad1513.eot);
+  src: url(b94b3f956f88b3812cccb9df97ad1513.eot#iefix) format('embedded-opentype'), url(9e157c800a20dcf7886454dad1b0854b.ttf) format('truetype'), url(1d79956f380be14cfc76f86ab5d6bea1.woff) format('woff'), url(d449174fb1fc2c9396e4b0564e482ac0.svg#icomoon) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-chevron-down:before {
+  content: "\E900";
+}
+.icon-chevron-left:before {
+  content: "\E901";
+}
+.icon-chevron-right:before {
+  content: "\E902";
+}
+.icon-chevron-small-down:before {
+  content: "\E903";
+}
+.icon-chevron-small-left:before {
+  content: "\E904";
+}
+.icon-chevron-small-right:before {
+  content: "\E905";
+}
+.icon-chevron-small-up:before {
+  content: "\E906";
+}
+.icon-chevron-thin-down:before {
+  content: "\E907";
+}
+.icon-chevron-thin-left:before {
+  content: "\E908";
+}
+.icon-chevron-thin-right:before {
+  content: "\E909";
+}
+.icon-chevron-thin-up:before {
+  content: "\E90A";
+}
+.icon-chevron-up:before {
+  content: "\E90B";
+}
+.icon-triangle-down:before {
+  content: "\E90C";
+}
+.icon-triangle-left:before {
+  content: "\E90D";
+}
+.icon-triangle-right:before {
+  content: "\E90E";
+}
+.icon-triangle-up:before {
+  content: "\E90F";
+}
+.icon-check:before {
+  content: "\E910";
+}
+.icon-circle-with-cross:before {
+  content: "\E911";
+}
+.icon-circle-with-minus:before {
+  content: "\E912";
+}
+.icon-circle-with-plus:before {
+  content: "\E913";
+}
+.icon-circle:before {
+  content: "\E92A";
+}
+.icon-cross:before {
+  content: "\E914";
+}
+.icon-edit:before {
+  content: "\E915";
+}
+.icon-email:before {
+  content: "\E916";
+}
+.icon-eye2:before {
+  content: "\E917";
+}
+.icon-folder:before {
+  content: "\E918";
+}
+.icon-forward:before {
+  content: "\E919";
+}
+.icon-heart:before {
+  content: "\E91A";
+}
+.icon-help:before {
+  content: "\E91B";
+}
+.icon-home:before {
+  content: "\E91C";
+}
+.icon-location-pin:before {
+  content: "\E91D";
+}
+.icon-minus:before {
+  content: "\E91E";
+}
+.icon-new-message:before {
+  content: "\E91F";
+}
+.icon-plus:before {
+  content: "\E920";
+}
+.icon-share-alternitive:before {
+  content: "\E921";
+}
+.icon-share:before {
+  content: "\E922";
+}
+.icon-shopping-cart:before {
+  content: "\E923";
+}
+.icon-signal:before {
+  content: "\E924";
+}
+.icon-star-outlined:before {
+  content: "\E925";
+}
+.icon-star:before {
+  content: "\E926";
+}
+.icon-switch2:before {
+  content: "\E927";
+}
+.icon-thumbs-down:before {
+  content: "\E928";
+}
+.icon-thumbs-up:before {
+  content: "\E929";
+}
+.icon-images:before {
+  content: "\E614";
+}
+.icon-camera:before {
+  content: "\E615";
+}
+.icon-location:before {
+  content: "\E64D";
+}
+.icon-location2:before {
+  content: "\E64E";
+}
+.icon-compass:before {
+  content: "\E64F";
+}
+.icon-clock:before {
+  content: "\E654";
+}
+.icon-calendar:before {
+  content: "\E659";
+}
+.icon-printer:before {
+  content: "\E65A";
+}
+.icon-spinner:before {
+  content: "\E680";
+}
+.icon-spinner2:before {
+  content: "\E681";
+}
+.icon-spinner3:before {
+  content: "\E682";
+}
+.icon-spinner6:before {
+  content: "\E685";
+}
+.icon-spinner8:before {
+  content: "\E687";
+}
+.icon-search:before {
+  content: "\E68C";
+}
+.icon-zoom-in:before {
+  content: "\E68D";
+}
+.icon-zoom-out:before {
+  content: "\E68E";
+}
+.icon-enlarge:before {
+  content: "\E68F";
+}
+.icon-lock:before {
+  content: "\E695";
+}
+.icon-unlocked:before {
+  content: "\E696";
+}
+.icon-bin:before {
+  content: "\E6B2";
+}
+.icon-bin2:before {
+  content: "\E6B3";
+}
+.icon-power:before {
+  content: "\E6BB";
+}
+.icon-switch:before {
+  content: "\E6BC";
+}
+.icon-menu:before {
+  content: "\E6C3";
+}
+.icon-attachment:before {
+  content: "\E6D3";
+}
+.icon-eye:before {
+  content: "\E6D4";
+}
+.icon-eye-blocked:before {
+  content: "\E6D7";
+}
+.icon-warning:before {
+  content: "\E70D";
+}
+.icon-checkmark:before {
+  content: "\E716";
+}
+.icon-checkmark2:before {
+  content: "\E717";
+}
+.icon-loop2:before {
+  content: "\E734";
+}
+.icon-shuffle:before {
+  content: "\E736";
+}
+.icon-shift:before {
+  content: "\E755";
+}
+.icon-ctrl:before {
+  content: "\E756";
+}
+.icon-checkbox-checked:before {
+  content: "\E758";
+}
+.icon-checkbox-unchecked:before {
+  content: "\E759";
+}
+.icon-radio-checked:before {
+  content: "\E75A";
+}
+.icon-radio-checked2:before {
+  content: "\E75B";
+}
+.icon-paragraph-justify:before {
+  content: "\E780";
+}
+.icon-embed:before {
+  content: "\E785";
+}
 html {
   font-family: sans-serif;
   /* 1 */
@@ -1325,16 +1595,17 @@ small,
     margin-left: 0%;
   }
 }
-[class*='eg-col-sm-']:last-child,
-[class*='eg-col-md-']:last-child,
-[class*='eg-col-xs-']:last-child,
-[class*='eg-col-lg-']:last-child {
+[class*="eg-col-"] {
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+[class*='eg-col-']:last-child {
   float: right;
 }
-[class*='eg-col-sm-'].eg-end,
-[class*='eg-col-md-'].eg-end,
-[class*='eg-col-xs-'].eg-end,
-[class*='eg-col-lg-'].eg-end {
+[class*='eg-col-'].eg-end {
   float: left;
 }
 .animated {
@@ -2329,6 +2600,112 @@ input[type="button"].eg-btn-block {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+.eg-form-group .eg-input-group {
+  padding-top: 9px;
+}
+.eg-form-group .eg-row > [class*='eg-col-']:first-of-type,
+.eg-form-group > [class*='eg-col-']:first-of-type {
+  text-align: right;
+  padding-top: 15px;
+}
+.eg-input {
+  position: relative;
+}
+.eg-input .box {
+  display: none;
+}
+.eg-input .input-icon {
+  font-size: 16px;
+  display: none;
+}
+.eg-input input:not([type*="checkbox"]):not([type*="radio"]) {
+  border: 1px solid #e1e1e1;
+  font-size: 14px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-clip: padding-box;
+  background-color: #fff;
+  padding: 10px;
+  color: #333;
+  width: 100%;
+  outline: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.eg-input input:not([type*="checkbox"]):not([type*="radio"]):focus {
+  border-color: #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f17741;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f17741;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f17741;
+}
+.eg-input label {
+  display: none;
+}
+.eg-input input[type="checkbox"],
+.eg-input input[type="radio"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  pointer-events: all;
+  opacity: 0;
+  z-index: 2;
+  left: 0;
+}
+.eg-input.show-icon input {
+  padding-right: 15px;
+}
+.eg-input.show-icon .input-icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  right: 10px;
+  top: 50%;
+  display: block;
+}
+.eg-input.checkbox,
+.eg-input.radio {
+  line-height: 18px;
+  position: relative;
+  text-align: left;
+  min-height: 18px;
+  display: inline-block;
+}
+.eg-input.checkbox label,
+.eg-input.radio label {
+  display: inline-block;
+}
+.eg-input.checkbox .input-icon,
+.eg-input.radio .input-icon {
+  display: inline-block;
+  color: #b7b7b7;
+  margin-right: 10px;
+  background: #fff;
+  position: relative;
+  top: 1px;
+}
+.eg-input.checkbox.active .input-icon,
+.eg-input.radio.active .input-icon {
+  color: #ee5511;
+}
+.eg-input.checkbox.disabled label,
+.eg-input.radio.disabled label {
+  color: #919191;
+}
+.eg-input.checkbox.disabled .input-icon,
+.eg-input.radio.disabled .input-icon {
+  color: #d0d0d0;
+  background: #fff;
+}
+.eg-input.radio {
+  border-radius: 50%;
 }
 .eg-star-orange,
 .eg-star-grey {

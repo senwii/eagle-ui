@@ -91,6 +91,12 @@ export default obj=>{
                 type:'property',
                 value:val
             };
+        },
+        icon:val=>{
+            return {
+                type:'property',
+                value:val
+            }
         }
     };
 

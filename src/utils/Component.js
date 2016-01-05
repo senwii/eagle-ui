@@ -25,7 +25,9 @@ export default class BaseComponent extends Component{
         //ref唯一标识生成
 
         this.state={
-            _isShow:false
+            _isShow:false,
+            _checked:false,
+            _active:false
         };
     }
 

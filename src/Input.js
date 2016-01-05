@@ -1,5 +1,5 @@
-import React, {Component,PropTypes} from 'react';
-import ClassNameMixin from './utils/ClassNameMixin';
+import React, {PropTypes} from 'react';
+import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
@@ -13,7 +13,6 @@ import classnames from 'classnames';
  * @demo input.js{js}
  * @show true
  * */
-@ClassNameMixin
 export default class Input extends Component{
 
     static propTypes = {
@@ -38,7 +37,8 @@ export default class Input extends Component{
          * @property label
          * @type String
          * */
-        label:'请选择'
+        label:'请选择',
+        classPrefix:'input'
     };
 
     constructor(props, context) {
@@ -140,19 +140,34 @@ export default class Input extends Component{
         );
     }
 
-    getDefaultClass(){
-        //border:1px solid #fff;
-        return this.getClassName(this.className+this.props.type);
-    }
-
     render(){
-        let {type} = this.props;
-        type = type.toLowerCase();
 
-        if(type!='radio' && type!='checkbox'){
-            type = 'text';
-        }
-        //const {name,id,value,placeholder,autocomplete,disabled,type} = this.props;
-        return this[type]();
+        const {placeholder,disabled,type,active,label} = this.props;
+        //return this[type]();
+
+        const classMap = {
+            checkbox:{
+                active:'icon-checkbox-checked',
+                default:'icon-checkbox-unchecked'
+            },
+            radio:{
+                active:'icon-radio-checked2',
+                default:'icon-circle'
+            }
+        };
+
+        let iconType = classMap[type] ||{};
+
+        return (
+            <div className={classnames(this.getProperty(),type,active,disabled)}>
+                <i className={classnames(
+                    "input-icon",
+                    iconType['default'],
+                    iconType[active]
+                )}></i>
+                <label>{label}</label>
+                <input  type="checkbox" type={type} {...this.otherProps} />
+            </div>
+        );
     }
 }

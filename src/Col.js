@@ -37,6 +37,7 @@ export default class Col extends Component{
     initCallback(){
         let {sm} = this.props;
         this.setProperty('sm',this.props.egSize+'-'+sm );
+        this.setProperty('end','end' );
     }
 
     render(){
