@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import Component from './utils/Component';
 import classnames from 'classnames';
+import SvgIcon from './utils/SvgIcon';
 
 /**
  * input表单组件<br />
@@ -160,6 +161,7 @@ export default class Input extends Component{
 
         return (
             <div className={classnames(this.getProperty(),type,active,disabled)}>
+                <SvgIcon name="check" />
                 <i className={classnames(
                     "input-icon",
                     iconType['default'],
