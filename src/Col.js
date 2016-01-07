@@ -38,6 +38,7 @@ export default class Col extends Component{
         let {sm} = this.props;
         this.setProperty('sm',this.props.egSize+'-'+sm );
         this.setProperty('end','end' );
+        this.setProperty('layer','layer');
     }
 
     render(){

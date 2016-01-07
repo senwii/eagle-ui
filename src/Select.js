@@ -1,14 +1,15 @@
 /**
  * Created by panqianjin on 15/11/12.
  */
-import React, {Component, PropTypes} from 'react';
-import ClassNameMixin from './utils/ClassNameMixin';
+import React, {PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import Input from './Input.js';
 import Row from './Row.js';
 import Col from './Col.js';
 import Grid from './Grid.js';
+
+import Component from './utils/Component';
 /**
  * 下拉选择框组件。
  * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
@@ -19,7 +20,6 @@ import Grid from './Grid.js';
  * @since 0.1.0
  * @demo select.js {js}
  * */
-@ClassNameMixin
 export default
 class Select extends Component {
     static defaultProps = {
@@ -29,7 +29,7 @@ class Select extends Component {
          * @type func
          * @default null
          * */
-        callback: null,
+        getValueCallback: null,
         /**
          * 样式类名前缀
          * @property classPrefix
@@ -38,45 +38,29 @@ class Select extends Component {
          * */
         classPrefix: 'select',
         componentTag: 'div',
-        value: '',
-        /**
-         * option对应的value
-         * @property key
-         * &type String
-         * */
-        key: '',
-        show: false,
-        target: '0',
-        /**
-         * 输入值，用来匹配显示对应列表的内容
-         * @property autoVal
-         * &type String
-         * */
-        autoVal: ''
+        defaultValue:''
     }
 
     constructor(props, context) {
         super(props, context);
         this.heightTag = 0;
         let keys = this.getDefaultKey(this.props.keys);
-        this.state = {
+
+        this.inputId = this.uniqueId();
+
+        /*this.state = {
             show: this.props.show,
-            /**
-             * item content文本值
-             * @type {String}
-             * */
-            //value:this.props.keys == ''?this.props.value:this.props.children[this.props.keys].props.children,
             value: keys,
-            /**
-             * item value值
-             * @type {String}
-             * */
             keys:this.props.keys,
-            /**
-             * 是否可以自由输入
-             * @type {Boolean}
-             * */
             input:this.props.input
+        };*/
+
+        this.optionsList = [];
+
+        this.state = {
+            isShow: false,
+            selectIndex:0,
+            defaultValue:this.props.defaultValue
         };
     }
     getDefaultKey(keys){
@@ -212,7 +196,7 @@ class Select extends Component {
             })*/
             this.hideUl();
         }
-        this.props.callback && this.props.callback(val,key);
+        this.execMethod('getValue',val,key);
     }
     /**
      * 根据当前值是否为select内的值，判断是否改变state的值
@@ -383,7 +367,7 @@ class Select extends Component {
      * @return li {ReactElement}
      * */
     renderLi(){
-        let autoVal = this.state.autoVal == ''? '.*': this.state.autoVal;
+        /*let autoVal = this.state.autoVal == ''? '.*': this.state.autoVal;
         let reg = new RegExp(autoVal,"g");
         let li =React.Children.map(this.props.children,(item,index)=>{
             if(reg.test(item.props.children)){
@@ -396,13 +380,30 @@ class Select extends Component {
     item.props.children
         },this);
 
-        return li;
+        return li;*/
     }
     renderOption(){
-        let option = React.Children.map(this.props.children,(item)=>{
-            return <option value={item.props.value}>{item.props.children}</option>
-        },this);
-        return option;
+        return getOptions;
+    }
+
+    renderInput(){
+        return (
+            <Input
+                ref={this.inputId}
+                value={this.state.value}
+                icon="arrow_drop_down"
+                iconStyle={{
+                        width:'30px',
+                        height:'30px',
+                        top: '15px',
+                        right: '0'
+                    }}
+                onClick={::this.showUl}
+                onChange={::this.handlerValue}
+                onKeyDown={::this.keyIn}
+                onBlur={::this.finishInput}
+            />
+        );
     }
     /**
      * 渲染select
@@ -411,51 +412,51 @@ class Select extends Component {
      * */
     renderSelect() {
         return (
-            <Grid ref='selectContair' className={
-                    classnames(
-                        this.getClassNamesForArguments('container')
-                    )
-                } value={this.state.value}>
-                <select ref='test' {...this.props } defaultValue={this.state.keys} style={{display:'none'}}>
-                    {this.renderOption()}
-                </select>
-                <Input ref='select' value={this.state.value}  onClick={::this.showUl} onChange={::this.handlerValue} onKeyDown={::this.keyIn} onBlur={::this.finishInput}/>
-                <i className={
-                    classnames(
-                        this.getClassName('arrow-down')
-                    )
-                } onClick={::this.toogleUl}></i>
-                <ul ref='selectUl' className={classnames(
-                    this.getClassNamesForArguments('ul'),
-                    this.state.show ?this.getClassName('show'):'height-none'
-                    )
-                }>
-                    {this.renderLi()}
-                </ul>
-            </Grid>
+            <select {...this.props } defaultValue={this.state.defaultValue} style={{display:'none'}}>
+                {this.renderOption()}
+            </select>
         )
     }
+
+    //获取option
+
+    getOptions(){
+
+        let {selectIndex} = this.state;
+
+        this.optionsList.length = 0;
+
+        let option = React.Children.map(this.props.children,(item,i)=>{
+
+            let {value,children,...other}=item.props;
+
+            this.optionsList.push({
+                key:children,
+                value:value
+            });
+            return <option value={value} {selectIndex == i?selected:''}>{children}</option>
+        },this);
+
+        return option;
+    }
+
     /**
      * 根据auto存在与否渲染不同类型的元素
      * @method render
      * @return {ReactElement}
-     * setValues(key){
-     *      this.setState({
-     *          [key]:e.target.value
-     *      })
-     * }
-     * <Input value={this.state.inputValue} onChange={::this.setValues(inputValue)}/>
-     * getValue(value,key){
-     *
-     * }
-     * <Select onChangeCallback={::this.getValue}>
-     *     <option value="1">xxx</option>
-     *     <option value="1">xxx</option>
-     * </Select>
      * */
     render() {
         return (
-            this.props.auto ? this.renderAuto() : this.renderSelect()
+            <this.componentTag className={this.getProperty() } value={this.state.value}>
+                {this.renderSelect()}
+                {this.renderInput() }
+                <ul className={classnames(
+                    this.getClassNamesForArguments('ul')
+                    )
+                }>
+                    {this.renderLi()}
+                </ul>
+            </this.componentTag>
         );
     }
 }

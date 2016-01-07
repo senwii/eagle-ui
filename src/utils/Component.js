@@ -31,6 +31,10 @@ export default class BaseComponent extends Component{
         };
     }
 
+    uniqueId(){
+        return this.classPrefix+(new Date().getTime()+(Math.random()*1e10).toFixed(0) );
+    }
+
     initCallback(){
         this.props.initCallback && this.props.initCallback(this);
     }
@@ -53,13 +57,25 @@ export default class BaseComponent extends Component{
         this.loadedCallback && this.loadedCallback(this);
     }
     setMethod(methodName,method ){
-        this[methodName+'Callback'] =(function(method){
+
+        if(methodName.match('Callback') == null){
+            throw new Error(`The callback method name format is wrong, should be ${methodName}Callback`);
+        }
+
+        this[methodName] =(function(method){
             let m = method;
             return function(){
-                m(arguments );
+                m.apply(m,Array.prototype.slice.call(arguments, 0) );
             };
         })(method);
     }
+
+    execMethod(method){
+        method = method.indexOf('Callback')!=-1?method:method+'Callback';
+        this[method] && this[method].apply(this[method],Array.prototype.slice.call(arguments, 1) );
+        return true;
+    }
+
     //注册回调
     registerMethod(methods){
         //注册回调
@@ -68,9 +84,9 @@ export default class BaseComponent extends Component{
             methodName='',
             other = {};
         for(let item in methods){
-            method = this.methods[methodName = item.replace(/^on/,'').toLowerCase() ];
+            method = this.methods[item];
             if(method){
-                this.setMethod(methodName,methods[item] );
+                this.setMethod(item,methods[item] );
             }
         }
         //this.otherProps = other;

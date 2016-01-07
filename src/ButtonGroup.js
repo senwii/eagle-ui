@@ -53,9 +53,10 @@ export default class ButtonGroup extends Component{
     }
 
     mouseDownHandler(e){
-        this.activeCallback && this.activeCallback(e.target,e.target.innerHTML);
+        let target = e.target;
+        this.execMethod('active',target,target.innerHTML);
         this.setState({
-            active:e.target.innerHTML
+            active:target.innerHTML
         })
     }
 

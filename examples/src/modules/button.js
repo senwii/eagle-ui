@@ -9,7 +9,8 @@ import Col from '../../../src/Col.js';
 import Grid from '../../../src/Grid.js';
 
 export default class ButtonCls extends Component{
-    onActive(){
+    onActive(target,html){
+        console.dir(html);
         alert('测试');
     }
     render(){
@@ -17,7 +18,7 @@ export default class ButtonCls extends Component{
             <Grid>
                 <Row>
                     <Col>
-                        <ButtonGroup egType="justify" onActive={this.onActive}>
+                        <ButtonGroup egType="justify" activeCallback={this.onActive}>
                             <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
                             <Button radius egSize="sm" egStyle="warning">水平按钮组2</Button>
                             <Button radius egSize="sm" egStyle="warning">水平按钮组3</Button>

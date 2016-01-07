@@ -25,23 +25,27 @@ let Demo= class Demo extends Component{
             <Grid>
                 <Row>
                     <Col sm={3}><Button block radius egSize="sm" onClick={::this.changeIn} >切换至限定值模式</Button></Col>
-                <Col sm={8}>
-                <Select keys={this.props.keys} callback={function(val,key){console.log(val+':'+key)}} input={this.state.input} >
-                    <item value='bei'>北京</item>
-                    <item value='shang'>上海</item>
-                    <item value='nan'>南京</item>
-                    <item value='3'>ssdd</item>
-                    <item value='4'>sd饭否否</item>
-                    <item value='5'>南京</item>
-                    <item value='6'>ssdd</item>
-                    <item value='7'>sd饭否否</item>
-                    <item value='8'>北京</item>
-                    <item value='9'>上海</item>
-                    <item value='10'>南京</item>
-                    <item value='11'>ssdd</item>
-                    <item value='12'>sd饭否否</item>
-                </Select>
-                    </Col>
+                <Col sm={9} layer>
+                    <Row>
+                        <Col sm={4} end>
+                            <Select keys={this.props.keys} callback={function(val,key){console.log(val+':'+key)}} input={this.state.input} >
+                                <option value='bei'>北京</option>
+                                <option value='shang'>上海</option>
+                                <option value='nan'>南京</option>
+                                <option value='3'>ssdd</option>
+                                <option value='4'>sd饭否否</option>
+                                <option value='5'>南京</option>
+                                <option value='6'>ssdd</option>
+                                <option value='7'>sd饭否否</option>
+                                <option value='8'>北京</option>
+                                <option value='9'>上海</option>
+                                <option value='10'>南京</option>
+                                <option value='11'>ssdd</option>
+                                <option value='12'>sd饭否否</option>
+                            </Select>
+                        </Col>
+                    </Row>
+                </Col>
                 </Row>
             </Grid>
         );

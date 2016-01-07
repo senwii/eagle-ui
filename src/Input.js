@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import Component from './utils/Component';
 import classnames from 'classnames';
-import SvgIcon from './utils/SvgIcon';
+import Icon from './utils/Icon';
 
 /**
  * input表单组件<br />
@@ -48,127 +48,92 @@ export default class Input extends Component{
         this.className='input-';
 
         this.state={
-            isActive:this.props.checked
+            _active:this.props.checked
         };
     }
 
-    setCheck(){
-        this.setState({
-            isActive:!this.state.isActive
-        });
-    }
-
-    checkbox(){
-        let checked = typeof(this.props.checked)!='undefined' ? this.props.checked : this.state.isActive;
-        return (
-            <div ref="" className={
-                classnames(
-                    this.getClassNamesForArguments(`${this.className}${this.props.type}` ),
-                    {['eg-input-'+this.props.type+'-active']:checked},
-                    {['eg-input-'+this.props.type+'-disabled']:this.props.disabled}
-                )} onClick={::this.setCheck}>
-                <input type={this.props.type} {...this.props} onChange={::this.onchange}   />
-                <div className="box">
-                    <div className={classnames('checkbox',{
-                        [this.getClassName('icon-tick',false)]:checked
-                    })} >
-                        <div className="round"></div>
-                    </div>
-                </div>
-                <label>{this.props.label}</label>
-            </div>
-        );
-    }
-    //暂时用在图片片选框
-    checkboxs(){
-        let checked = typeof(this.props.checked)!='undefined' ? this.props.checked : this.state.isActive;
-        return (
-            <div ref="" className={
-                classnames(
-                    this.getClassNamesForArguments(`${this.className}${this.props.type}` ),
-                    {['eg-input-'+this.props.type+'-active']:checked},
-                    {['eg-input-'+this.props.type+'-disabled']:this.props.disabled}
-                )} onClick={::this.setCheck}>
-                <input  {...this.props} type='checkbox' onChange={::this.onchange}   />
-                <div className="box">
-                    <div className={classnames('checkbox',{
-                        [this.getClassName('icon-tick',false)]:checked
-                    })} >
-                        <div className="round"></div>
-                    </div>
-                </div>
-                <label>{this.props.label}</label>
-            </div>
-        );
-    }
-
-    onchange(e){
-        if(this.props.onCheck){
-            this.props.onCheck(e.target);
-        }
-    }
-
-    radio(){
-        return (
-            <div className={
-                classnames(
-                    this.getClassNamesForArguments(`${this.className}${this.props.type}` ),
-                    {['eg-input-'+this.props.type+'-active']:this.props.checked},
-                    {['eg-input-'+this.props.type+'-disabled']:this.props.disabled}
-                )}>
-                <input type={this.props.type} {...this.props} onChange={::this.onchange}  />
-                <div className="box">
-                    <div className="checkbox">
-                        <div className="round"></div>
-                    </div>
-                </div>
-                <label>{this.props.label}</label>
-            </div>
-        );
-    }
-
-    text(){
-        return (
-            <div className={classnames(
-                {
-                    [this.getClassName('icon-container')]:!!this.props.icon
-                }
-            )}>
-                <input {...this.props} className={classnames(this.getDefaultClass() )} />
-                <i className={'icon-input-right icon-'+this.props.icon} ></i>
-            </div>
-
-        );
-    }
-
-    render(){
-
-        const {placeholder,disabled,type,active,label} = this.props;
-        //return this[type]();
-
+    getIcon(type,checked,icon){
         const classMap = {
-            checkbox:{
-                active:'icon-checkbox-checked',
-                default:'icon-checkbox-unchecked'
-            },
             radio:{
-                active:'icon-radio-checked2',
-                default:'icon-circle'
+                active:'adjust_checked',
+                default:'adjust_unchecked'
+            },
+            checkbox:{
+                active:'checkbox_checked',
+                default:'checkbox_unchecked'
             }
         };
 
-        let iconType = classMap[type] ||{};
+        let iconType = classMap[type];
+
+        let html = null,
+            iconStyle= this.props.iconStyle||{},
+            name ='';
+
+        if(iconType){
+            name = iconType[checked?'active':'default'];
+        }else{
+            name = icon;
+        }
+
+
+        if(name){
+            return (
+                <Icon  className={classnames(
+                    "input-icon"
+                )} name={name} style={iconStyle} />
+            );
+        }
+
+        return html;
+    }
+
+    changeHander(e){
+        let target = e.target,
+            type = target.type.toLowerCase();
+
+        if(this.isRadio(type) ){
+            this.execMethod('active',target);
+
+        }else if(this.isCheckbox(type) ){
+
+            this.setState({
+                _active:!this.state._active
+            });
+            this.execMethod('getValue',target.value ||'',target);
+        }
+
+        if(this.props.onChange){
+            this.props.onChange(e);
+        }
+    }
+
+    isCheckbox(type){
+        return /checkbox/.test(type ||this.props.type);
+    }
+
+    isRadio(type){
+        return /radio/.test(type || this.props.type);
+    }
+
+    render(){
+        const {disabled,type,label,icon} = this.props;
+
+        let {checked} = this.props;
+
+        if(this.isCheckbox()){
+            checked = this.state._active;
+        }
 
         return (
-            <div className={classnames(this.getProperty(),type,active,disabled)}>
-                <SvgIcon name="check" />
-                <i className={classnames(
-                    "input-icon",
-                    iconType['default'],
-                    iconType[active]
-                )}></i>
+            <div className={classnames(this.getProperty(),type,{
+                'active':checked,
+                'disabled':disabled,
+                'show-icon':!!icon
+            })}>
+                {this.getIcon(type,checked,icon)}
                 <label>{label}</label>
-                <input  type="checkbox" type={type} {...this.otherProps} />
+                <input type={type} {...this.otherProps} onChange={::this.changeHander} />
             </div>
         );
     }
