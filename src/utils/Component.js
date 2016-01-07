@@ -23,16 +23,19 @@ export default class BaseComponent extends Component{
         this.registerMethod(this.otherProps);
 
         //ref唯一标识生成
+    }
+    setDefaultState(obj){
 
-        this.state={
+        this.state = extend({},{
             _isShow:false,
             _checked:false,
             _active:false
-        };
+        },obj||{});
+
     }
 
     uniqueId(){
-        return this.classPrefix+(new Date().getTime()+(Math.random()*1e10).toFixed(0) );
+        return (this.classPrefix||'unique')+'_'+(new Date().getTime()+(Math.random()*1e10).toFixed(0) );
     }
 
     initCallback(){
@@ -71,9 +74,10 @@ export default class BaseComponent extends Component{
     }
 
     execMethod(method){
+        let data=null;
         method = method.indexOf('Callback')!=-1?method:method+'Callback';
-        this[method] && this[method].apply(this[method],Array.prototype.slice.call(arguments, 1) );
-        return true;
+        this[method] && (data=this[method].apply(this[method],Array.prototype.slice.call(arguments, 1) ) );
+        return data;
     }
 
     //注册回调
@@ -127,6 +131,9 @@ export default class BaseComponent extends Component{
                         }else if(param.type && param.type == type){
                             this[item] = param.value;
                         }else{
+                            //{
+                            //    border:val
+                            //}
                             styleList.push(param);
                         }
                         break;
@@ -152,7 +159,15 @@ export default class BaseComponent extends Component{
     }
 
     getStyles(style={}){
-        return extend({},style,this._styles);
+
+        let obj = {},
+            styles = this._styles;
+
+        for(let i=0,len=styles.length;i<len;i++){
+            obj = extend({},obj,styles[i]);
+        }
+
+        return extend({},obj,style);
     }
 
     show(){
@@ -165,6 +180,10 @@ export default class BaseComponent extends Component{
         this.setState({
             _isShow:false
         });
+    }
+
+    trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g,"");
     }
 
     getDisplay(){

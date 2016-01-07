@@ -10,17 +10,18 @@
 
     border:@input-border-size @input-border-type darken(@input-border-color,5%);
     .border-radius(0px 0px 4px 4px);
-    max-height: 150px;
+    max-height: @suggestion-max-height;
     overflow: auto;
+
     li{
         //text-indent: 10px;
-        padding: 5px 0;
+        padding: @padding-default 0;
         cursor: pointer;
         &:hover,&:focus{
-            //color:@orange-btn;
+            color:@suggestion-hover-color;
         }
-    }
-    li.active{
-        //color:@orange-btn;
+        &.active{
+            color:@suggestion-active-color;
+        }
     }
 }

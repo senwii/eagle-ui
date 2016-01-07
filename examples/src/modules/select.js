@@ -20,6 +20,11 @@ let Demo= class Demo extends Component{
             input: this.props.input
         }
     }
+
+    getValue(value){
+        console.dir(value);
+    }
+
     render(){
         return (
             <Grid>
@@ -28,20 +33,19 @@ let Demo= class Demo extends Component{
                 <Col sm={9} layer>
                     <Row>
                         <Col sm={4} end>
-                            <Select keys={this.props.keys} callback={function(val,key){console.log(val+':'+key)}} input={this.state.input} >
+                            <Select defaultChecked="上海" getValueCallback={::this.getValue}>
                                 <option value='bei'>北京</option>
                                 <option value='shang'>上海</option>
                                 <option value='nan'>南京</option>
-                                <option value='3'>ssdd</option>
-                                <option value='4'>sd饭否否</option>
-                                <option value='5'>南京</option>
-                                <option value='6'>ssdd</option>
-                                <option value='7'>sd饭否否</option>
-                                <option value='8'>北京</option>
-                                <option value='9'>上海</option>
-                                <option value='10'>南京</option>
-                                <option value='11'>ssdd</option>
-                                <option value='12'>sd饭否否</option>
+                                <option value='3'>杭州</option>
+                                <option value='4'>杭州西</option>
+                                <option value='5'>杭州北站</option>
+                                <option value='6'>广州</option>
+                                <option value='7'>深圳</option>
+                                <option value='8'>澳门</option>
+                                <option value='10'>太原</option>
+                                <option value='11'>台湾</option>
+                                <option value='12'>香港</option>
                             </Select>
                         </Col>
                     </Row>

@@ -39,6 +39,16 @@ export default class Input extends Component{
          * @type String
          * */
         label:'请选择',
+        /**
+         * 需要显示的icon
+         * @property icon
+         * @type String
+         * */
+        /**
+         * 给icon设置样式
+         * @property iconStyle
+         * @type Object
+         * */
         classPrefix:'input'
     };
 
