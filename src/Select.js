@@ -9,7 +9,8 @@ import Row from './Row.js';
 import Col from './Col.js';
 import Grid from './Grid.js';
 
-import Component from './utils/Component';
+import Suggestion from './utils/Suggestion';
+
 /**
  * 下拉选择框组件。
  * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
@@ -20,8 +21,7 @@ import Component from './utils/Component';
  * @since 0.1.0
  * @demo select.js {js}
  * */
-export default
-class Select extends Component {
+export default class Select extends Suggestion {
     static defaultProps = {
         /**
          * 回调方法，主要作用将value传给父级元素。默认为null
@@ -80,7 +80,7 @@ class Select extends Component {
      * @method componentDidMount
      * */
     componentDidMount() {
-        let _this = this;
+        /*let _this = this;
         let selectContair = ReactDom.findDOMNode(this.refs.selectContair);
         let selectUl = ReactDom.findDOMNode(this.refs.selectUl);
         document.addEventListener('click', function (e) {
@@ -96,10 +96,10 @@ class Select extends Component {
          selectUl.style.height = '0';
         if(!this.state.show){
             this.removeClass(selectUl,'height-none');
-        }
+        }*/
     }
     componentDidUpdate(){
-        let selectUl = ReactDom.findDOMNode(this.refs.selectUl);
+        /*let selectUl = ReactDom.findDOMNode(this.refs.selectUl);
         //this.heightTag = selectUl.offsetHeight;
         let length = selectUl.children.length;
         if(this.state.show){
@@ -112,7 +112,7 @@ class Select extends Component {
             selectUl.style.height = '0';
             clearTimeout(this.timer);
             this.timer = setTimeout(function(){this.removeClass(selectUl,'height-none')}.bind(this),400);
-        }
+        }*/
     }
     /**
      * 判断obj是否为parentObj的子元素
@@ -366,7 +366,7 @@ class Select extends Component {
      * @method renderLi
      * @return li {ReactElement}
      * */
-    renderLi(){
+    renderLi(isFocus = true){
         /*let autoVal = this.state.autoVal == ''? '.*': this.state.autoVal;
         let reg = new RegExp(autoVal,"g");
         let li =React.Children.map(this.props.children,(item,index)=>{
@@ -381,9 +381,19 @@ class Select extends Component {
         },this);
 
         return li;*/
+
+        //首先分析文本框中是否有输入的值，如果目标不是isFocus的情况下
+        let li = [];
+        if(isFocus){
+            li = this.optionsList;
+        }else{
+            //查找与输入值匹配的选项
+
+        }
+
     }
     renderOption(){
-        return getOptions;
+        return this.getOptions();
     }
 
     renderInput(){
@@ -398,10 +408,11 @@ class Select extends Component {
                         top: '15px',
                         right: '0'
                     }}
-                onClick={::this.showUl}
-                onChange={::this.handlerValue}
-                onKeyDown={::this.keyIn}
-                onBlur={::this.finishInput}
+                //onClick={::this.showUl}
+                //onChange={::this.handlerValue}
+                //onKeyDown={::this.keyIn}
+                //onBlur={::this.finishInput}
+                onFocus={::this.focusHandler}
             />
         );
     }
@@ -412,7 +423,7 @@ class Select extends Component {
      * */
     renderSelect() {
         return (
-            <select {...this.props } defaultValue={this.state.defaultValue} style={{display:'none'}}>
+            <select {...this.props } defaultValue={this.state.defaultValue} style={{display:'none'}} >
                 {this.renderOption()}
             </select>
         )
@@ -421,9 +432,8 @@ class Select extends Component {
     //获取option
 
     getOptions(){
-
+        console.dir('getoptions');
         let {selectIndex} = this.state;
-
         this.optionsList.length = 0;
 
         let option = React.Children.map(this.props.children,(item,i)=>{
@@ -434,10 +444,14 @@ class Select extends Component {
                 key:children,
                 value:value
             });
-            return <option value={value} {selectIndex == i?selected:''}>{children}</option>
+            return <option value={value} >{children}</option>
         },this);
 
         return option;
+    }
+
+    focusHandler(e){
+        let target =e.target;
     }
 
     /**
@@ -450,12 +464,7 @@ class Select extends Component {
             <this.componentTag className={this.getProperty() } value={this.state.value}>
                 {this.renderSelect()}
                 {this.renderInput() }
-                <ul className={classnames(
-                    this.getClassNamesForArguments('ul')
-                    )
-                }>
-                    {this.renderLi()}
-                </ul>
+                {this.renderSuggestion()}
             </this.componentTag>
         );
     }

@@ -1,0 +1,26 @@
+.eg-suggestion{
+    background: #fff;
+    //display: none;
+    //visibility: hidden;
+    position: absolute;
+    width: 100%;
+    //bottom: 0;
+    left:0;
+    .transition(~"height ease-in-out .4s");
+
+    border:@input-border-size @input-border-type darken(@input-border-color,5%);
+    .border-radius(0px 0px 4px 4px);
+    max-height: 150px;
+    overflow: auto;
+    li{
+        //text-indent: 10px;
+        padding: 5px 0;
+        cursor: pointer;
+        &:hover,&:focus{
+            //color:@orange-btn;
+        }
+    }
+    li.active{
+        //color:@orange-btn;
+    }
+}

@@ -6,6 +6,9 @@ let consts = classConstants;
 
 
 export default obj=>{
+    obj.prototype.getClassNamespace=function(){
+        return consts.classNameNamespace;
+    };
     /**
      * 给className添加前缀后返回className
      * @method getClassName
