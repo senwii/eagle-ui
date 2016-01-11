@@ -12,8 +12,12 @@ import extend from 'extend';
 @MethodMixin
 export default class BaseComponent extends Component{
 
-    constructor(props, context) {
+    constructor(props, context,defaultState) {
         super(props, context);
+
+        if(defaultState){
+            this.setDefaultState(defaultState);
+        }
 
         this.otherProps = {};
         this.initCallback(this);
@@ -64,19 +68,21 @@ export default class BaseComponent extends Component{
         if(methodName.match('Callback') == null){
             throw new Error(`The callback method name format is wrong, should be ${methodName}Callback`);
         }
-
-        this[methodName] =(function(method){
-            let m = method;
-            return function(){
-                m.apply(m,Array.prototype.slice.call(arguments, 0) );
-            };
-        })(method);
+        if(!this[methodName]){
+            this[methodName] =(function(method){
+                let m = method;
+                return function(){
+                    m.apply(m,Array.prototype.slice.call(arguments, 0) );
+                };
+            })(method);
+        }
     }
 
     execMethod(method){
         let data=null;
         method = method.indexOf('Callback')!=-1?method:method+'Callback';
-        this[method] && (data=this[method].apply(this[method],Array.prototype.slice.call(arguments, 1) ) );
+
+        this[method] && (data=this[method].apply(this[method],Array.prototype.slice.call(arguments, 1).concat(this) ) );
         return data;
     }
 

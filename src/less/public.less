@@ -7,7 +7,7 @@ html {
     padding: 0px;
     margin: 0px;
     //-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-backface-visibility: hidden;
+    //-webkit-backface-visibility: hidden;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -471,7 +471,7 @@ small,
 .show {
     .block;
 }
-.hidden {
+.hidden,.hide {
     display: none !important;
 }
 .invisible {
@@ -481,3 +481,27 @@ small,
 //padding margin
 .make-margin(margin,mg,5,40);
 .make-margin(padding,pd,5,40);
+
+//颜色
+.public-color(@color){
+    color: @color;
+}
+
+.color-primary{
+    .public-color(@brand-primary);
+}
+.color-danger{
+    .public-color(@brand-danger);
+}
+.color-warning{
+    .public-color(@brand-warning);
+}
+.color-info{
+    .public-color(@brand-info);
+}
+.color-success{
+    .public-color(@brand-success);
+}
+.color-error{
+    .public-color(@brand-error);
+}

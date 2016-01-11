@@ -10,10 +10,6 @@ import extend from 'extend';
 
 export default class Suggestion extends Component {
 
-    static defaultProps = {
-        delay:400
-    };
-
     constructor(props, context) {
         super(props, context);
 
@@ -23,6 +19,8 @@ export default class Suggestion extends Component {
         //this.setState();
         //缓存
         this._cache={};
+
+        this.suggestion = this.uniqueId();
 
         //selectItem 选中项
         this.selectItem = null;
@@ -36,13 +34,9 @@ export default class Suggestion extends Component {
             _selectedValue:'',
             _key:this.props.defaultChecked||'',
             value:this.props.defaultChecked||'',
-            _activeValue:''
+            _activeValue:'',
+            delay:400
         },obj));
-    }
-    //渲染列表选项
-
-    renderItem(){
-
     }
 
     setCache(key,value){
@@ -51,6 +45,13 @@ export default class Suggestion extends Component {
 
     getCache(key){
         return this._cache[key];
+    }
+
+    setDefaultData(){
+        this.setState({
+            _selectedIndex:-1,
+            _data:this.options
+        });
     }
 
     //搜索 数据查询方式 ajax或者直接查询或者缓存中获取
@@ -78,16 +79,14 @@ export default class Suggestion extends Component {
                     data = str ?str :[];//this._cache[key];
                 }
 
-                this.setCache(key,data);
+                this.setCache(key,data );
             }
-
             //重新绑定data渲染数据
-            if(data && data.length>0){
-                this.setState({
-                    _data:data,
-                    _selectedIndex:-1
-                });
-            }
+            this.setState({
+                _data:data && data.length>0 ? data : [],
+                _selectedIndex:-1
+            });
+
         }catch(ex){
             throw new Error(ex);
         }
@@ -109,14 +108,6 @@ export default class Suggestion extends Component {
         return optionsList;
     }
 
-    hide(){
-        super.hide();
-    }
-
-    show(){
-        super.show();
-    }
-
     moveActive(type){
         let {_data} = this.state;
         let _selectedIndex = this.state._selectedIndex;
@@ -129,11 +120,13 @@ export default class Suggestion extends Component {
         if(_selectedIndex < 0){
             _selectedIndex = _data.length-1;
         }
-        //selectUl.scrollTop = i < 4 ? 0 : (i-3)*30;
+        let data = this.getData(_selectedIndex);
         this.setState({
             _selectedIndex:_selectedIndex,
-            _activeValue:this.state._data[_selectedIndex].key||''
+            _activeValue:data ? data.key: ''
         });
+        //checkedCallback
+        this.execMethod('checked',this.refs[this.suggestion],_selectedIndex);
         /*clearTimeout(this.__clearTimeoutForValue);
         this.__clearTimeoutForValue = setTimeout(,this.props.delay*3);*/
     }
@@ -149,30 +142,31 @@ export default class Suggestion extends Component {
 
             switch (event.keyCode) {
                 case 27:
-                    //this.hide();
+                    this.hide();
                     return;
                 case 38: //up键
-                    //this.show();
+                    this.show();
                     this.moveActive('up');
                     return;
                 case 40: //down键
-                    //this.show();
+                    this.show();
                     this.moveActive('down');
                     return;
                 case 13: //回车
                     event.preventDefault();
                     event.stopPropagation();
-                    if (this.activeIndex === -1) {
+                    if (this.state._selectedIndex <= -1) {
                         //当用户没有选择任何sug项而直接按回车时
-                        this.onEnterCallback(val);
+                        this.execMethod('success',val);
                     } else {
                         //当用户通过上下键选择了某一项sug项后按回车时
-
-                        //this.selectSug($(this.items[this.activeIndex]).html(),this.activeIndex );
+                        this._clickHandler(this.getData(this.state._selectedIndex),'enter');
                     }
-                    this.hide();
                     return;
                 default:
+                    this.setState({
+                        _activeValue:''
+                    });
                     this.valChange(val);
             }
         }
@@ -181,8 +175,9 @@ export default class Suggestion extends Component {
     valChange(key){
         clearTimeout(this.timeOutId);
         this.timeOutId = setTimeout(function() {
+            this.show();
             this.search(key);
-        }.bind(this), this.props.delay);
+        }.bind(this), this.state.delay);
     }
 
     _mouseEnterHandler(i){
@@ -197,15 +192,23 @@ export default class Suggestion extends Component {
         });
     }
 
-    _clickHandler(item){
+    getData(index){
+        let data = this.state._data[index];
+        return data ? typeof(data) =='string' ? JSON.parse(data):data :null;
+    }
+
+    _clickHandler(item,type="click"){
         this.selectItem = item;
 
         this.setValue(item.key);
         this.setState({
+            _activeValue:'',
             _selectedIndex:-1
         });
 
-        this.execMethod('getValue',item.value,item.key);
+        this.execMethod('getValue',item.value,item.key,type);
+
+        this.hide();
     }
 
     renderList(){
@@ -215,11 +218,7 @@ export default class Suggestion extends Component {
             list = [];
 
         for(let i=0,len=data.length,item;i<len;i++){
-            item = data[i];
-            if(typeof(item) =='string' ){
-                item = JSON.parse(item);
-            }
-
+            item =this.getData(i);
             if(value == item.key){
                 this.selectItem = item;
             }
@@ -235,7 +234,7 @@ export default class Suggestion extends Component {
                     )}
                     onMouseEnter={this._mouseEnterHandler.bind(this,i)}
                     onMouseLeave={this._mouseEnterHandler.bind(this,-1)}
-                    onClick={this._clickHandler.bind(this,item)}
+                    onMouseDown={this._clickHandler.bind(this,item,'click')}
                 >{item.key}</li>
             );
         }
@@ -259,9 +258,8 @@ export default class Suggestion extends Component {
     //渲染列表
     renderSuggestion() {
         return (
-            <ul className={classnames(`${this.getClassNamespace()}-suggestion`,{
-                '':!!this.state._key
-            })}>
+            <ul ref={this.suggestion} className={classnames(`${this.getClassNamespace()}-suggestion`,{
+            },this.state._isShow?'':'hide')}>
                 {this.renderList()}
             </ul>
         );

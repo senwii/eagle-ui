@@ -33,20 +33,6 @@ export default class Label extends Component{
         //};
     }
 
-    /**
-     * 点击回调函数
-     * */
-    clickHandler(e){
-        let {clickCallback} = this.props,
-            target = e.target;
-        //,
-        //     active = !this.state.active;
-        //this.setState({
-        //    active:active
-        //});
-        clickCallback && clickCallback(target.getAttribute('value'),target.innerHTML,target,!this.props.active,);
-    }
-
     render(){
         const {url} = this.props;
         return (
@@ -54,10 +40,10 @@ export default class Label extends Component{
                 classnames(
                     this.getClassName('item'),
                     this.getClassNames(this.props),
-                   this.props.className
+                    this.props.className
                     //this.getClassNames(this.state)
                 )
-            } onMouseDown={::this.clickHandler}>
+            } >
                 {this.props.children}
             </a>
         );

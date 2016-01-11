@@ -49,7 +49,19 @@ export default class Input extends Component{
          * @property iconStyle
          * @type Object
          * */
-        classPrefix:'input'
+        classPrefix:'input',
+        /**
+         * icon,input类型只能是text这种的
+         * @property icon
+         * @type String
+         * */
+        icon:'',
+        /**
+         * icon展示的方向，{left,right}
+         * @property iconDirection
+         * @type String
+         * */
+        iconDirection:''
     };
 
     constructor(props, context) {

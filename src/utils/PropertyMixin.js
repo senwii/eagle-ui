@@ -4,7 +4,7 @@
 export default obj=>{
 
     let getVal= function(vals,val){
-        return vals.join(',').match(val.toLowerCase() )!=-1 ? val: '';
+        return (vals.join(',')+',').match(val.toLowerCase()+',' )!=null ? val: '';
     };
 
     let properties={

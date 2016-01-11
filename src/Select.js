@@ -38,7 +38,14 @@ export default class Select extends Suggestion {
          * */
         classPrefix: 'select',
         componentTag: 'div',
-        defaultValue:''
+        defaultValue:'',
+        icon:'arrow_drop_down',
+        iconStyle:{
+            width:'30px',
+            height:'30px',
+            top: '15px',
+            right: '0'
+        }
     }
 
     constructor(props, context) {
@@ -62,18 +69,14 @@ export default class Select extends Suggestion {
     }
 
     renderInput(){
+        let {getValueCallback,children,iconStyle,value,classPrefix,componentTag,defaultValue,...other} = this.props;
 
         return (
             <Input
                 ref={this.inputId}
+                {...other}
                 value={this.getTextValue()}
-                icon="arrow_drop_down"
-                iconStyle={{
-                        width:'30px',
-                        height:'30px',
-                        top: '15px',
-                        right: '0'
-                    }}
+                iconStyle={iconStyle}
                 onKeyUp={this.handler.bind(this,'onKeyUp')}
                 onChange={this.handler.bind(this,'onChange')}
                 onKeyDown={this.handler.bind(this,'onKeyDown')}
@@ -86,14 +89,48 @@ export default class Select extends Suggestion {
     inputBlurHandler(){
 
         this.removeActiveValue();
-
+        this.hide();
         if(this.props.onBlur){
             this.props.onBlur(e);
         }
     }
 
-    focusHandler(){
+    focusHandler(e){
+        this.show();
+        if(this.props.onFocus){
+            this.props.onFocus(e);
+        }else{
+            let val = this.trim(e.target.value);
+            this.setDefaultData();
+        }
 
+    }
+
+    checkedCallback(sug,index){
+        sug = ReactDom.findDOMNode(sug);
+
+        let subItem = sug.firstChild,
+            offestHeight = 0;
+        if(subItem){
+            offestHeight = subItem.offsetHeight;
+            sug.scrollTop = index*offestHeight;
+        }
+    }
+
+    loadedCallback(){
+        //获取高度，然后给ul设置高度
+        //let sug = ReactDom.findDOMNode(this.refs.suggestion );
+        //this.refs.suggestion
+        let item = this.getValue();
+        item && (this.execMethod('getValue',item.value,item.key,'init') );
+    }
+
+    getValueCallback(value,key,type,_this){
+
+        type!='init' &&(setTimeout(()=>{
+            ReactDom.findDOMNode(_this.refs[_this.inputId]).getElementsByTagName('input')[0].blur()
+        }) );
+        _this.props.getValueCallback &&(_this.props.getValueCallback(value,key,type) );
     }
 
     /**
@@ -101,12 +138,15 @@ export default class Select extends Suggestion {
      * @method render
      * @return {ReactElement}
      * */
-    render() {
+    renderSelect(){
         return (
             <this.componentTag className={this.getProperty() } value={this.state.value}>
                 {this.renderInput() }
                 {this.renderSuggestion()}
             </this.componentTag>
         );
+    }
+    render() {
+        return this.renderSelect();
     }
 }
