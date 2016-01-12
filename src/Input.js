@@ -141,17 +141,28 @@ export default class Input extends Component{
     render(){
         const {disabled,type,label,icon} = this.props;
 
+        let {iconDirection} = this.props;
+
         let {checked} = this.props;
 
         if(this.isCheckbox()){
             checked = this.state._active;
         }
 
+        if(icon){
+            if(iconDirection==''){
+                iconDirection = 'right';
+            }
+
+            iconDirection = this.getClassName('icon-'+iconDirection);
+        }
+
         return (
             <div className={classnames(this.getProperty(),type,{
                 'active':checked,
                 'disabled':disabled,
-                'show-icon':!!icon
+                'show-icon':!!icon,
+                [`${iconDirection}`]:!!iconDirection
             })}>
                 {this.getIcon(type,checked,icon)}
                 <label>{label}</label>

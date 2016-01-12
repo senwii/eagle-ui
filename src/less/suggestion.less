@@ -26,3 +26,25 @@
         }
     }
 }
+.eg-suggestion-warp{
+    position: relative;
+    .eg-suggestion{
+        max-height:@suggestion-max-height*3;
+        li:not(.noresult){
+            .transition(~"background ease-in-out .15s,color ease-in-out .15s");
+            &:hover,&:focus{
+                color: @white;
+                background: lighten(@suggestion-hover-color,0%);
+            }
+            &.active{
+                color: @white;
+                background: lighten(@suggestion-hover-color,0%);
+            }
+        }
+    }
+    .subkey{
+        float: right;
+        font-size: @font-size-small;
+        color: @suggestion-subkey-color;
+    }
+}

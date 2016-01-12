@@ -13,7 +13,6 @@ import Input from './modules/input';
 import Label from './modules/label';
 import Paging from './modules/paging';
 import Panel from './modules/panel';
-import Search from './modules/search';
 import Select from './modules/select';
 import Tab from './modules/tab';
 import Table from './modules/table';
@@ -22,6 +21,7 @@ import ToolTip from './modules/tooltip';
 import Validate from './modules/validate';
 import StarDemo from './modules/star.js';
 import SliderDemo from './modules/imgSlider.js';
+import Suggesion from './modules/suggestion.js';
 //require('../less/public.less');
 import css from '../../src/less/eagle-ui.less';
 
@@ -65,7 +65,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Label" name="Label" component={Label} />
                 <Route path="/Paging" name="Paging" component={Paging} />
                 <Route path="/Panel" name="Panel" component={Panel} />
-                <Route path="/Search" name="Search" component={Search} />
+                <Route path="/Suggesion" name="Suggesion" component={Suggesion} />
                 <Route path="/Select" name="Select" component={Select} />
                 <Route path="/Tab" name="Tab" component={Tab} />
                 <Route path="/Table" name="Table" component={Table} />
@@ -73,6 +73,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/ToolTip" name="ToolTip" component={ToolTip} />
                 <Route path="/Validate" name="Validate" component={Validate} />
                 <Route path="/Star" name="Star" component={StarDemo} />
+                <Route path="/Suggesion" name="Suggesion" component={Suggesion} />
                 <Redirect from="/" to="/index" />
             </Router>
         );

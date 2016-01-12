@@ -1,12 +1,10 @@
-/**
- * Created by panqianjin on 15/11/12.
- */
 import React, {PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 
-import Component from './Component';
+import Component from '.././utils/Component';
 import extend from 'extend';
+import 'babel-polyfill';
 
 export default class Suggestion extends Component {
 
@@ -32,8 +30,8 @@ export default class Suggestion extends Component {
             _data:this.options,
             _selectedIndex:-1,
             _selectedValue:'',
-            _key:this.props.defaultChecked||'',
-            value:this.props.defaultChecked||'',
+            _key:this.props.defaultChecked||this.props.value ||'',
+            value:this.props.defaultChecked||this.props.value ||'',
             _activeValue:'',
             delay:400
         },obj));
@@ -55,7 +53,7 @@ export default class Suggestion extends Component {
     }
 
     //搜索 数据查询方式 ajax或者直接查询或者缓存中获取
-    search(key){
+    async search(key){
 
         let data = this.getCache(key),_this = this;
 
@@ -64,8 +62,7 @@ export default class Suggestion extends Component {
             if((!data ||data.length<=0 ) && key!=''){
 
                 //拿取query异步数据
-                data =_this.execMethod('query',key);
-                //data = data(key);
+                data =await _this.execMethod('query',key);
                 //没拿到数据则从原始数据中查询
                 if(!data){
                     //options
@@ -83,9 +80,18 @@ export default class Suggestion extends Component {
             }
             //重新绑定data渲染数据
             this.setState({
-                _data:data && data.length>0 ? data : [],
+                _data:data && data.length>0 ? data : this.props.noResultTips?[
+                    {
+                        key:this.props.noResultTips,
+                        value:'noResult'
+                    }
+                ]:[],
                 _selectedIndex:-1
             });
+
+            if(this.state._data.length > 0){
+                this.show();
+            }
 
         }catch(ex){
             throw new Error(ex);
@@ -96,11 +102,12 @@ export default class Suggestion extends Component {
         let optionsList = [];
         React.Children.map(this.props.children,(item,i)=>{
 
-            let {value,children,...other}=item.props;
+            let {value,children,subKey,...other}=item.props;
 
             optionsList.push({
                 key:children,
                 value:value,
+                subKey:subKey||'',
                 index:i
             });
         },this);
@@ -109,6 +116,7 @@ export default class Suggestion extends Component {
     }
 
     moveActive(type){
+
         let {_data} = this.state;
         let _selectedIndex = this.state._selectedIndex;
         _selectedIndex = type =='up' ? _selectedIndex-1 : _selectedIndex+1;
@@ -133,13 +141,19 @@ export default class Suggestion extends Component {
 
     //监听用户输入
     keyHandler(event){
+        let _this = this;
         if (event.type != 'keydown') {
             var val = this.trim(event.target.value);
             if (val === '') {
                 this.hide();
+                this.entryCallback();
                 return;
+            }else{
+                clearTimeout(this.__entryTimeout);
+                this.__entryTimeout=setTimeout(()=>{
+                    _this.entryCallback(val);
+                },this.state.delay);
             }
-
             switch (event.keyCode) {
                 case 27:
                     this.hide();
@@ -172,15 +186,23 @@ export default class Suggestion extends Component {
         }
     }
 
+    entryCallback(){
+        //可重写
+        //this.hide();
+    }
+
     valChange(key){
         clearTimeout(this.timeOutId);
         this.timeOutId = setTimeout(function() {
-            this.show();
             this.search(key);
         }.bind(this), this.state.delay);
     }
 
-    _mouseEnterHandler(i){
+    _mouseEnterHandler(i,item){
+
+        if(this.isEmptyItems(item.key) ){
+            return this;
+        }
         this.setState({
             _selectedIndex:i
         });
@@ -197,7 +219,17 @@ export default class Suggestion extends Component {
         return data ? typeof(data) =='string' ? JSON.parse(data):data :null;
     }
 
+    isEmptyItems(key){
+
+        return key!='' && key==this.props.noResultTips;
+    }
+
     _clickHandler(item,type="click"){
+
+        if(this.isEmptyItems(item.key) ){
+            return this;
+        }
+
         this.selectItem = item;
 
         this.setValue(item.key);
@@ -209,6 +241,20 @@ export default class Suggestion extends Component {
         this.execMethod('getValue',item.value,item.key,type);
 
         this.hide();
+    }
+
+    renderSubKey(subKey){
+
+        let html = [];
+
+        if(subKey){
+            html.push(
+                <div className="subkey" key={subKey}>
+                    {subKey}
+                </div>
+            );
+        }
+        return html;
     }
 
     renderList(){
@@ -229,13 +275,14 @@ export default class Suggestion extends Component {
                     data-value={item.value}
                     className={classnames(
                         {
-                            'active':i==this.state._selectedIndex//item.value == selectedValue
+                            'active':i==this.state._selectedIndex,
+                            'noresult':this.isEmptyItems(item.key)
                         }
                     )}
-                    onMouseEnter={this._mouseEnterHandler.bind(this,i)}
-                    onMouseLeave={this._mouseEnterHandler.bind(this,-1)}
+                    onMouseEnter={this._mouseEnterHandler.bind(this,i,item)}
+                    onMouseLeave={this._mouseEnterHandler.bind(this,-1,item)}
                     onMouseDown={this._clickHandler.bind(this,item,'click')}
-                >{item.key}</li>
+                >{item.key}{this.renderSubKey(item.subKey)}</li>
             );
         }
         return list;
@@ -259,7 +306,7 @@ export default class Suggestion extends Component {
     renderSuggestion() {
         return (
             <ul ref={this.suggestion} className={classnames(`${this.getClassNamespace()}-suggestion`,{
-            },this.state._isShow?'':'hide')}>
+            },this.state._isShow?'':'hide')} style={{zIndex:this.props.zIndex||1}}>
                 {this.renderList()}
             </ul>
         );

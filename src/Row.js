@@ -40,7 +40,7 @@ export default class Row extends Component{
                 this.getProperty(),
                 'clearfix',
                 this.props.className
-            )} >
+            )} style={this.getStyles(this.props.style)}>
                 {this.props.children}
             </div>
         );

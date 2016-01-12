@@ -53,7 +53,7 @@
             width: @input-icon-size;
             height: @input-icon-size;
             margin-top: -8px;
-            right: @padding-default*2;
+            //right: @padding-default*2;
             top: 50%;
             display: block;
             fill:lighten(@gray-light,10%);
@@ -124,4 +124,11 @@
         text-align: right;
         padding-top: @padding-large-vertical+5;
     }
+}
+
+.eg-input-icon-right{
+    .icon-direction();
+}
+.eg-input-icon-left{
+    .icon-direction(left);
 }

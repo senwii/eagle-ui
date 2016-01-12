@@ -2,18 +2,10 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component,PropTypes} from 'react';
-import Input from '../../../src/Input.js';
-import Panel from '../../../src/Panel/Panel.js';
-import PanelContent from '../../../src/Panel/PanelContent.js';
-import Row from '../../../src/Row.js';
-import Col from '../../../src/Col.js';
-import Grid from '../../../src/Grid.js';
-import RadioGroup from '../../../src/RadioGroup.js';
-import CheckboxGroup from '../../../src/CheckboxGroup.js';
-import CalendarPanel from '../../../src/CalendarPanel.js';
-import FormGroup from '../../../src/FormGroup.js';
+
 import querystring from 'querystring';
-import Select from '../../../src/Select.js';
+
+import {Select,FormGroup,CalendarPanel,CheckboxGroup,RadioGroup,Grid,Row,Col,PanelContent,Panel,Input} from '../../../src/index.js';
 
 
 let Demo= class Demo extends Component{
@@ -132,7 +124,7 @@ let Demo= class Demo extends Component{
                                 <Row>
                                     <Col sm={2}>所在城市</Col>
                                     <Col sm={10}>
-                                        <Select keys={this.props.keys} callback={function(val,key){console.log(val+':'+key)}}  >
+                                        <Select placeholder="请选择城市" >
                                             <item value='bei'>北京</item>
                                             <item value='shang'>上海</item>
                                             <item value='nan'>南京</item>

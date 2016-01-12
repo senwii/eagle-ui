@@ -4,7 +4,9 @@ import classnames from 'classnames';
 import ClassNameMixin from './ClassNameMixin';
 import PropertyMixin from './PropertyMixin';
 import MethodMixin from './MethodMixin';
+
 import extend from 'extend';
+import 'babel-polyfill';
 
 
 @ClassNameMixin
@@ -72,17 +74,19 @@ export default class BaseComponent extends Component{
             this[methodName] =(function(method){
                 let m = method;
                 return function(){
-                    m.apply(m,Array.prototype.slice.call(arguments, 0) );
+                    return m.apply(m,Array.prototype.slice.call(arguments, 0) );
                 };
             })(method);
         }
     }
 
-    execMethod(method){
+    async execMethod(method){
         let data=null;
         method = method.indexOf('Callback')!=-1?method:method+'Callback';
 
-        this[method] && (data=this[method].apply(this[method],Array.prototype.slice.call(arguments, 1).concat(this) ) );
+        if(this[method]){
+            data=await this[method].apply(this[method],Array.prototype.slice.call(arguments, 1).concat(this) );
+        }
         return data;
     }
 
@@ -161,7 +165,7 @@ export default class BaseComponent extends Component{
     getProperty(){
         let p = this.classPrefix ? this.classPrefix+' ':'';
         p +=this._properties.join(' ');
-        return this.getClassName(p,false)+' '+this.getClassName(p);
+        return this.getClassName(p,false)+' '+this.getClassName(p);//eg-padding eg-btn-padding
     }
 
     getStyles(style={}){

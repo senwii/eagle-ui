@@ -46,7 +46,7 @@ export default class Col extends Component{
             <this.componentTag {...this.props} className={classnames(
                 this.getProperty(),
                 this.props.className
-            )} >
+            )}  style={this.getStyles(this.props.style)}>
                 {this.props.children}
             </this.componentTag>
         );

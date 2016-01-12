@@ -10,7 +10,7 @@ export default obj=>{
     let properties={
         //类型
         egType:function(val){
-            return getVal(['tacked','justify','success','error','warning','danger','default'],val);
+            return getVal(['tacked','justify','success','error','warning','danger','default','normal','simple','form'],val);
         },
         egSize:function(val){
             return getVal(['lg','sm','xs','md'],val);
@@ -24,7 +24,7 @@ export default obj=>{
         status:val=>{
             getVal(['diabled','active','enable'],val)
         },
-        diabled:true,
+        disabled:true,
         active:true,
         radius:true,
         radiusSize:val=>{
@@ -55,29 +55,37 @@ export default obj=>{
         column:val=>{
             return val;
         },
+        zIndex:val=>{
+            if(typeof(val) =='string' ){
+                return {
+                    zIndex:val
+                };
+            }
+            return 'zindex';
+        },
         border:val=>{
             if(typeof(val) =='string' ){
-                val = {
+                return {
                     border:val
                 };
             }
-            return val;
+            return  'border';
         },
         padding:val=>{
             if(typeof(val) =='string' ){
-                val = {
+                return {
                     padding:val
                 };
             }
-            return val;
+            return 'padding';
         },
         margin:val=>{
             if(typeof(val) =='string' ){
-                val = {
+                return {
                     margin:val
                 };
             }
-            return val;
+            return 'margin';
         },
         offset:function(val){
             return this.props.egSize+'-offset-'+val;

@@ -430,13 +430,19 @@ h1, h2, h3, h4, h5, h6,
     .small {
         font-weight: normal;
         color: #777;
-        //font-size: 65%;
+        font-size: 65%;
+        margin-left: 10px;
     }
 }
+//h1-h6
+.generic-fonts();
 
 small,
 .small {
-    font-size: floor((100% * @font-size-small / @font-size-base));
+    font-weight: normal;
+    color: #777;
+    font-size: 65%;
+    //font-size: floor((100% * @font-size-small / @font-size-base));
 }
 
 .text-left           { text-align: left; }
@@ -487,21 +493,30 @@ small,
     color: @color;
 }
 
-.color-primary{
+.color-primary,.eg-primary{
     .public-color(@brand-primary);
 }
-.color-danger{
+.color-danger,.eg-danger{
     .public-color(@brand-danger);
 }
-.color-warning{
+.color-warning,.eg-warning{
     .public-color(@brand-warning);
 }
-.color-info{
+.color-info,.eg-info{
     .public-color(@brand-info);
 }
-.color-success{
+.color-success,.eg-success{
     .public-color(@brand-success);
 }
-.color-error{
+.color-error,.eg-error{
     .public-color(@brand-error);
+}
+.eg-radius{
+    .border-radius(@border-radius-base);
+}
+.eg-active{
+    color:@brand-primary;
+}
+.eg-border{
+    border:1px solid darken(@gray-lighter,10%);
 }

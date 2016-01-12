@@ -35,7 +35,8 @@ export default class PanelHeader extends Component{
         return (
             <div className={
                 classnames(
-                    this.getClassName('header')
+                    this.getClassName('header'),
+                    this.props.className
                 )} style={renderStyle}>
                 {this.props.children}
             </div>
