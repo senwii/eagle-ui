@@ -22,9 +22,55 @@
     "email": "min.xiao@dianping.com"
   },
   "bugs": {
+    "mail":  "277407493@qq.com",
+    "web": "http://github.com/xiaoking/eagle-ui/issues",
     "url": "http://github.com/xiaoking/eagle-ui/issues"
   },
   "homepage": "http://github.com/xiaoking/eagle-ui",
+  "maintainers": [
+    {
+      "name": "min xiao",
+      "email": "277407493@qq.com",
+      "web": "http://uedfamily.com/"
+    },
+    {
+      "name": "qianjin.pan",
+      "email": "935829048@qq.com",
+      "web": "http://uedfamily.com/"
+    },
+    {
+      "name": "amber",
+      "email": "906247499@qq.com",
+      "web": "http://uedfamily.com/"
+    },
+    {
+      "name": "slash huang",
+      "email": "627284482@qq.com",
+      "web": "http://uedfamily.com/"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "min xiao",
+      "email": "277407493@qq.com",
+      "web": "http://uedfamily.com/"
+    },
+    {
+      "name": "qianjin.pan",
+      "email": "935829048@qq.com",
+      "web": "http://uedfamily.com/"
+    },
+    {
+      "name": "amber",
+      "email": "906247499@qq.com",
+      "web": "http://uedfamily.com/"
+    },
+    {
+      "name": "slash huang",
+      "email": "627284482@qq.com",
+      "web": "http://uedfamily.com/"
+    }
+  ],
   "dependencies": {
     "ui-svg-icons": "^0.1.1"
   },
