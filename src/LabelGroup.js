@@ -46,7 +46,13 @@ export default class LabelGroup extends Component{
         defaultChecked:PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
-        ])
+        ]),
+        /**
+         * 间距，label集合与左边title的间距
+         * @property spacing
+         * @type Integer
+         * */
+        spacing:PropTypes.number
     };
     static defaultProps = {
         classPrefix:'label-group',
@@ -57,7 +63,9 @@ export default class LabelGroup extends Component{
 
         this.setDefaultState({
             checked:this.props.defaultChecked,
-            itemStyle:{}
+            itemStyle:{
+                marginLeft:this.props.spacing+'px'
+            }
         });
 
         this.isInit = true;
@@ -95,7 +103,7 @@ export default class LabelGroup extends Component{
         let offsetV = ReactDom.findDOMNode(this.refs[this.titleObj] ),
             itemStyle = {};
 
-        if(offsetV){
+        if(offsetV && !this.props.spacing){
             let cssStr = `margin-left:${offsetV.offsetWidth+30}px;`;
             ReactDom.findDOMNode(this.refs[this.itemObj] ).style.cssText = cssStr;
         }
@@ -129,7 +137,7 @@ export default class LabelGroup extends Component{
             )}>
                 {this.renderTitle()}
                 <div className="item-box clearfix" ref={this.itemObj} style={this.state.itemStyle}>
-                    {options}
+                    <div className="item-list">{options}</div>
                 </div>
             </div>
         );

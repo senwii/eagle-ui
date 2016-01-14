@@ -166,7 +166,7 @@ export default class Input extends Component{
             })}>
                 {this.getIcon(type,checked,icon)}
                 <label>{label}</label>
-                <input type={type} {...this.otherProps} onChange={::this.changeHander} />
+                <input type={type} {...this.otherProps} onChange={disabled?()=>{}: this.changeHander.bind(this)} />
             </div>
         );
     }

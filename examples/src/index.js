@@ -1,4 +1,5 @@
 import React, { Component ,PropTypes} from 'react';
+import ReactDom from 'react/lib/ReactDOM';
 import { Redirect, Router, Route } from 'react-router';
 import History from 'history/lib/createHashHistory';
 
@@ -80,7 +81,7 @@ let AppRouter = class AppRouter extends Component {
     }
 }
 
-React.render(
+ReactDom.render(
     <AppRouter />,
     document.getElementById('root')
 );

@@ -68,12 +68,16 @@ export default class Tabset extends Component{
     }
     tabItemMouseEnterHandler(left,width){
         clearTimeout(this.timeoutObj);
-        this.setState({
-            tabSlider:{
-                left,
-                width
-            }
-        });
+        clearTimeout(this.timeoutEnter);
+        this.timeoutEnter = setTimeout(function(){
+            this.setState({
+                tabSlider:{
+                    left,
+                    width
+                }
+            });
+        }.bind(this),200);
+
     }
     render(){
         let headings=React.Children.map(this.props.children,(option,index)=>{

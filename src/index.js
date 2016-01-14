@@ -37,10 +37,10 @@ export Item from './Item.js';
 export ValidatorPanel from './ValidatorPanel';
 
 
-export Table from './Table/Table.js';
-export Tr from './Table/Tr.js';
-export Td from './Table/Td.js';
-export Th from './Table/Th.js';
+export Table from './tables/Table.js';
+export Tr from './tables/Tr.js';
+export Td from './tables/Td.js';
+export Th from './tables/Th.js';
 export FormGroup from './FormGroup.js';
 
 window['Eagleui'] = {};

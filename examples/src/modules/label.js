@@ -29,7 +29,26 @@ let Demo = class Demo extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <LabelGroup title='行政区' defaultChecked='全部' activeCallback={this.show} end>
+                                <LabelGroup spacing={94} title='行政区' defaultChecked='全部' activeCallback={this.show} end>
+                                    <Label value="0" className="all">全部</Label>
+                                    <Label value="1">卢湾区</Label>
+                                    <Label value="10">徐汇区</Label>
+                                    <Label>静安区</Label>
+                                    <Label>长宁区</Label>
+                                    <Label>闵行区</Label>
+                                    <Label>浦东新区</Label>
+                                    <Label>黄浦区</Label>
+                                    <Label>普陀区</Label>
+                                    <Label>闸北区</Label>
+                                    <Label>虹口区</Label>
+                                    <Label>杨浦区</Label>
+                                    <Label>宝山区</Label>
+                                </LabelGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <LabelGroup title='商品类型' defaultChecked='全部' activeCallback={this.show} end>
                                     <Label value="0" className="all">全部</Label>
                                     <Label value="1">卢湾区</Label>
                                     <Label value="10">徐汇区</Label>

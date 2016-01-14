@@ -19,3 +19,25 @@
 .pd-top-0{
     padding-top:0 !important;
 }
+
+.eg-item{
+    background-color: @white;
+    color: #333;
+    position: relative;
+    display: block;
+    font-size: 14px;
+    &:last-child {
+        border-bottom:none
+    }
+}
+.eg-item-border{
+    padding-bottom: 10px;
+    border-bottom:1px solid #ddd
+}
+//抽象出公共的东西
+.eg-list{
+    .eg-item{
+        padding: 10px 15px;
+        border-bottom:1px solid #ddd;
+    }
+}

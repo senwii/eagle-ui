@@ -15,7 +15,7 @@ function callback(page){
 }
 
 function loadPageCallback(pageSize){
-    window.location = location.origin+location.pathname+'?page='+page+'&pageSize='+pageSize;
+    window.location = location.href.replace(/\?.*/,'')+'?page='+page+'&pageSize='+pageSize;
 }
 var pageSize = 20;
 

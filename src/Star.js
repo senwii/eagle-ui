@@ -11,10 +11,11 @@
  * @demo Star.js {js}
  * @show true
  * */
-import React, { Component ,PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import classNames from 'classnames';
-import classNameMixin from './utils/ClassNameMixin.js';
-@classNameMixin
+
+import Component from './utils/Component';
+
 export default class Star extends Component{
     static propTypes = {
         /**
@@ -23,14 +24,14 @@ export default class Star extends Component{
          * @type number
          * @default 默认未0分
          * */
-        Rate:PropTypes.number,
+        rate:PropTypes.number,
         /**
          * 星星大小
          * @property size
          * @type String||number
          * @default undefined  可以取值10-20 默认单位为'px'
          * */
-        size: PropTypes.oneOfType([
+        egSize: PropTypes.oneOfType([
                 PropTypes.string,
                 PropTypes.number
         ]),
@@ -38,13 +39,13 @@ export default class Star extends Component{
     };
     static defaultProps = {
         classPrefix:'star',
-        Rate:0
+        rate:0
     };
-    constructor(){
-        super();
+    constructor(props,context){
+        super(props,context);
     }
     render(){
-        let {Rate,size} = this.props;
+        let {rate,size} = this.props;
         //兼容用户输入px为单位的数据大小
         size=/px/i.test(size)?size.replace('px',''):size;
         let customizeStyle=size?{
@@ -56,8 +57,8 @@ export default class Star extends Component{
             backgroundPosition:"0  -"+size+"px"
         }:{};
         return (
-            <div className='eg-star-orange' style={customizeStyle}>
-                <div className='eg-star-grey' style={{width:Rate+'%',...shadowPosition}}></div>
+            <div className={this.getProperty()} style={customizeStyle}>
+                <div className={this.getClassName('grey')} style={{width:rate+'%',...shadowPosition}}></div>
             </div>
         )
     }
