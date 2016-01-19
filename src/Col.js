@@ -36,15 +36,18 @@ export default class Col extends Component{
 
     initCallback(){
         let {sm} = this.props;
-        this.setProperty('sm',this.props.egSize+'-'+sm );
+        //this.setProperty('sm',this.props.egSize+'-'+sm );
         this.setProperty('end','end' );
         this.setProperty('layer','layer');
+        //
     }
 
     render(){
+        let {sm,egSize} = this.props;
         return (
             <this.componentTag {...this.props} className={classnames(
                 this.getProperty(),
+                this.getClassName(`${egSize}-${sm}`),
                 this.props.className
             )}  style={this.getStyles(this.props.style)}>
                 {this.props.children}

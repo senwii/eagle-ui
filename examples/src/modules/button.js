@@ -43,8 +43,8 @@ export default class ButtonCls extends Component{
                 <Row>
                     <Col sm={3}><Button radius egSize="sm" egStyle="info">info</Button></Col>
                     <Col sm={3}><Button radius egSize="sm" >默认</Button></Col>
-                        <Col sm={3}><Button radius egSize="sm" egStyle="primary">白色</Button></Col>
-                    <Col sm={3}><Button radius egSize="sm" egStyle="primary" disabled>白色</Button></Col>
+                        <Col sm={3}><Button radius egSize="sm" egStyle="white">白色</Button></Col>
+                    <Col sm={3}><Button radius egSize="sm" egStyle="white" disabled>白色</Button></Col>
                 </Row>
                 <Row>
                     <Col sm={3}><Button block radius egSize="sm" egStyle="gray">灰色</Button></Col>

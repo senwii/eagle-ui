@@ -1,7 +1,6 @@
 /**
  * Created by slashhuang on 15/12/21.
  */
-require('../../../src/css/star.less');
 import React, { Component ,PropTypes} from 'react';
 import Star from '../../../src/Star.js';
 

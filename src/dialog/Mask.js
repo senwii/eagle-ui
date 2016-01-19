@@ -12,10 +12,11 @@ export default class Mask extends Component{
 
     static defaultProps = {
         isClose: true,//是否有x图标
-        title: '提示',//标题
+        title: '',//标题
         classPrefix: 'dialog',
         componentTag: 'div',
         contentAlign:'left',
+        outside:false,
         buttons:[
             /*{
                 type: 'success',
@@ -32,6 +33,7 @@ export default class Mask extends Component{
 
     constructor(props, context) {
         super(props, context);
+
     }
 
     static push(key,modal){
@@ -49,11 +51,13 @@ export default class Mask extends Component{
             for(let i =0 ,item,len = buttons.length;i<len;i++){
                 item = buttons[i];
                 btns.push(
-                    <Button key={item.name} egSize="xs" onClick={item.type == 'success' || item.type=='cancel'?this.props[item.type+Callback]:item.callback}>{item.name}</Button>
+                    <Button key={item.name} egSize="xs"
+                            egStyle={item.egStyle?item.egStyle:'default'}
+                            onClick={item.type == 'success' || item.type=='cancel'?this.props[item.type+'Callback']:item.callback}>{item.name}</Button>
                 );
             }
             footer.push(
-                <div className="footer" style={{
+                <div key="mask-footer" className="footer" style={{
                     textAlign:buttonAlign
                 }}>
                     {btns}
@@ -81,21 +85,34 @@ export default class Mask extends Component{
     }
 
     renderDialog(className){
-        const {message,title,successCallback,cancelCallback,isHeaderBackground,isHeader,contentAlign,buttonAlign,id} = this.props;
 
+        const {
+            message,
+            title,
+            successCallback,
+            cancelCallback,
+            isHeaderBackground,
+            isHeader,
+            contentAlign,
+            buttonAlign,
+            id,
+            outside
+            } = this.props;
+
+        this.setProperty('outside',outside);
         return (
             <this.componentTag className={classnames(
                 this.getProperty(),
                 this.getClassName(className)
             )}>
-                {this.renderClose()}
+
                 <div className={
                     classnames(
                         'header',
                         'h4',
                         {
                             'header-bg':isHeaderBackground,
-                            'hide':!isHeader
+                            'hide':!isHeader||title==''
                         }
                     )
                 } style={{
@@ -105,11 +122,12 @@ export default class Mask extends Component{
                     textAlign:contentAlign
                 }}>{masks[id]}</div>
                 {this.renderFooter() }
+                {this.renderClose()}
             </this.componentTag>
         );
     }
 
     render(){
-        return this.renderDialog('alert');
+        return this.renderDialog('masks');
     }
 }

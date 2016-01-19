@@ -2,19 +2,10 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component} from 'react';
-import Input from '../../../src/Input.js';
-import Button from '../../../src/Button.js';
-import Row from '../../../src/Row.js';
-import Panel from '../../../src/panels/Panel.js';
-import PanelContent from '../../../src/panels/PanelContent.js';
-import Col from '../../../src/Col.js';
-import Grid from '../../../src/Grid.js';
-import RadioGroup from '../../../src/RadioGroup.js';
-import ValidatorPanel from '../../../src/ValidatorPanel.js';
-import CalendarPanel from '../../../src/CalendarPanel.js';
-import Tab from '../../../src/Tab.js';
-import Tabset from '../../../src/Tabset.js';
-import Dialog from '../../../src/Dialog.js';
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from '../../../src/index';
+
+
+
 
 let Demo = class Demo extends Component{
 
@@ -38,7 +29,8 @@ let Demo = class Demo extends Component{
                     text:'value值不是字符串',
                     rule:function(value){
                         console.dir(value);
-                        return isNaN(value);
+                        //return isNaN(value);
+                        return true;
                     }
                 }
             },
@@ -82,7 +74,7 @@ let Demo = class Demo extends Component{
     }
 
     getDialog(d){
-        this.dialog = d;
+        //this.dialog = d;
     }
 
     change(value){
@@ -98,7 +90,7 @@ let Demo = class Demo extends Component{
     }
 
     showMask(){
-        this.dialog.open();
+        Dialog.mask('demo2');
     }
 
     checktab(){
@@ -112,6 +104,7 @@ let Demo = class Demo extends Component{
                 </Row>
                 <Row>
                 <Col>
+
                     <Input  type="checkbox"  name="checkbox" value="1"  data-validate />
                     <Input  type="checkbox"   name="checkbox" value="2" data-validate  />
                     <Input  type="checkbox"   name="checkbox" value="3" data-validate  />
@@ -152,7 +145,7 @@ let Demo = class Demo extends Component{
                                                         <Row>
                                                             <Col>
                                                                 <CalendarPanel>
-                                                                    <Input placeholder="请选择日期" icon="calendar" name="date" style={{width:'150px'}} data-validate />
+                                                                    <Input placeholder="请选择日期" icon="calendar" name="date" data-validate />
                                                                 </CalendarPanel>
 
                                                             </Col>
@@ -202,8 +195,8 @@ let Demo = class Demo extends Component{
                             </Tab>
                         </Tabset>
                     </Grid>
-                    <Dialog type={'dialog'} ref={::this.getDialog}>
-                        <Grid style={{width:'300px'}}>
+                    <Dialog id="demo2" egSize="sm" title="表单验证">
+                        <Grid>
                             <ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}>
                                 <Row>
                                     <Col>

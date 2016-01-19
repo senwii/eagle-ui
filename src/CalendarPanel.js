@@ -137,6 +137,7 @@ export default class CalendarPanel extends Component{
                 onFocus={::_this.inputFocusHandler}
                 value={_this.state.value}
                 onChange={::_this.inputChangeHandler}
+                icon={option.props.icon}
                 />;
 
         },this);

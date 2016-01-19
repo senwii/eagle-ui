@@ -183,7 +183,7 @@ class TooltipPanel extends Component {
     getMaxBody(body,doc){
         let maxBody = {
             height: body.height > doc.height ? body.height : doc.height,
-            width: body.width > doc.width ? body.width : doc.width,
+            width: body.width > doc.width ? body.width : doc.width
 
         };
         return maxBody;

@@ -4,6 +4,7 @@ import Alert from './Alert';
 import Confirm from './Confirm';
 
 import BaseDialog from './BaseDialog';
+import extend from 'extend';
 
 export default class DialogFactory{
 
@@ -11,10 +12,11 @@ export default class DialogFactory{
         this.params = {
             children:c,
             type:type,
-            key:key
+            key:key,
+            opts:opts
         };
         //this.type = type;
-        this.baseUtils = BaseDialog.getInstance(opts);
+        this.baseUtils = BaseDialog.getInstance();
         //添加dialog
         //需要对类型做分析
         this.setFactory();
@@ -37,14 +39,14 @@ export default class DialogFactory{
                 default :
                     //将自定义dialog添加进主dialog
                     Mask.push(key,c);
-                    key&&(this.add(key,Mask) );
+                    key&&(this.add(key,Mask,this.params.opts) );
             }
         }
     }
 
     //添加dialog
-    add(key=this.params.key,value=null){
-        this.baseUtils.pushStack(key,value);
+    add(key=this.params.key,value=null,props=null){
+        this.baseUtils.pushStack(key,value,props);
     }
     //删除dialog
     del(key = this.params.key ){
@@ -52,12 +54,13 @@ export default class DialogFactory{
     }
     //获取lialog
     getFactory(key=this.params.key ){
-        let modal = this.baseUtils.get(key);
-        if(!modal){
-            this.setFactory(key,null);
-        }
 
-        modal = this.baseUtils.get(key);
+        let modal = this.baseUtils.get(key);
+
+        if(!modal || modal.length<=0){
+            this.setFactory(key,null);
+            modal = this.baseUtils.get(key);
+        }
 
         return modal;
     }
@@ -67,9 +70,15 @@ export default class DialogFactory{
     }
     show(dialogId,props={} ){
         //先将dialog放入容器，
-        this.baseUtils.renderDialog(this.getFactory(dialogId),props );
-        //打开
-        this.baseUtils.open();
+        //debugger;
+        let _this = this;
+        setTimeout(()=>{
+            const modal = _this.getFactory(dialogId);
+
+            _this.baseUtils.renderDialog(modal[0],extend(true,{},modal[1]||{},props) );
+            //打开
+            _this.baseUtils.open();
+        });
     }
     hide(){
         this.baseUtils.close();

@@ -7,8 +7,10 @@
         border-color: @brand-danger;
     }
     .eg-validate-tips{
-        display: none;
+        visibility: hidden;
+        .transition(~"opacity ease-in-out .4s ");
         position: absolute;
+        opacity: 0;
         left:-9999rem;
         padding: 10px 10px;
         z-index:9010;
@@ -55,5 +57,13 @@
             color: #fff;
 
         }
+    }
+    .fadein{
+        visibility: visible;
+        opacity: 1;
+    }
+    .fadeout{
+        visibility: hidden;
+        opacity: 0;
     }
 }

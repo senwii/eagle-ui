@@ -13,26 +13,51 @@ export default class Dialog extends Component{
     constructor(props, context) {
         super(props, context);
 
-        new DialogFactory(props.key||props.id || props.name,props.type || 'mask',props.children,props.params);
+        this.state={
+            update:this.uniqueId()
+        };
+        this.update(props);
     }
 
     loadedCallback(){
 
     }
+    update(props=this.props){
+        new DialogFactory(props.key||props.id || props.name,props.type || 'mask',props.children,props);
+    }
+
+    componentWillReceiveProps(props){
+        this.update(props);
+    }
+
+    shouldComponentUpdate(props,state){
+        this.update(props);
+        return false;
+    }
 
     static alert(message,opts={}){
         return new Promise((resolve, reject)=>{
             new DialogFactory().show(BaseDialog.ALERT,extend({},{
-                successCallback:resolve,
+                successCallback:()=>{
+                    resolve();
+                    new DialogFactory().hide();
+
+                },
                 message:message
             },opts) );
-        });
+        }).catch((ex)=>{
+                console.dir(ex);
+            });
     }
 
     static confirm(message,opts={}){
         return new Promise((resolve, reject)=>{
             new DialogFactory().show(BaseDialog.CONFRIM,extend({},{
-                successCallback:resolve,
+                successCallback:()=>{
+                    resolve();
+                    new DialogFactory().hide();
+
+                },
                 cancelCallback:()=>{
                     reject();
                     new DialogFactory().hide();
@@ -40,7 +65,9 @@ export default class Dialog extends Component{
                 },
                 message:message
             },opts));
-        });
+        }).catch((ex)=>{
+                console.dir(ex);
+            });
     }
 
     static mask(dialogId,opts={}){
@@ -57,10 +84,11 @@ export default class Dialog extends Component{
                 closeCallback:(type)=>{
                     reject(type);
                     new DialogFactory().hide();
-
                 }
             },opts) );
-        });
+        }).catch((ex)=>{
+                console.dir(ex);
+            });
     }
 
     static close(){
@@ -68,7 +96,7 @@ export default class Dialog extends Component{
     }
 
     render(){
-        return null;
+        return <div style={{display:'none'}}>{this.state.update}</div>;
     }
 
 }

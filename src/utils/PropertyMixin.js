@@ -19,7 +19,7 @@ export default obj=>{
             return {color:val}
         },
         egStyle:function(val){
-            return getVal(['success','error','warning','danger','default','link'],val);
+            return getVal(['success','error','warning','danger','default','link','white'],val);
         },
         status:val=>{
             getVal(['diabled','active','enable'],val)

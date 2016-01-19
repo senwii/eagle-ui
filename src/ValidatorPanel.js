@@ -650,7 +650,7 @@ export default class ValidatorPanel extends Component {
         initCallback.call(this,this.submit.bind(this));
 
         if(submitElement){
-            document.querySelector(submitElement).addEventListener('mousedown',this.submit.bind(this),false);
+            document.querySelector(submitElement).addEventListener('click',this.submit.bind(this),false);
         }
         //let tip = this.getTip();
 

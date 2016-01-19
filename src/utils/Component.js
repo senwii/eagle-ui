@@ -1,16 +1,14 @@
 import React,{Component,PropTypes} from 'react';
 import classnames from 'classnames';
-
-import ClassNameMixin from './ClassNameMixin';
 import PropertyMixin from './PropertyMixin';
+import ClassNameMixin from './ClassNameMixin';
 import MethodMixin from './MethodMixin';
 
 import extend from 'extend';
 import 'babel-polyfill';
 
-
-@ClassNameMixin
 @PropertyMixin
+@ClassNameMixin
 @MethodMixin
 export default class BaseComponent extends Component{
 
@@ -20,11 +18,12 @@ export default class BaseComponent extends Component{
         if(defaultState){
             this.setDefaultState(defaultState);
         }
-
         this.otherProps = {};
+        this._properties = [];
+        this._styles=[];
         this.initCallback(this);
         //验证
-        this.setProperty(this.props);
+        this.replaceProperties(this.props);
         //注册
         this.registerMethod(this.otherProps);
 
@@ -53,7 +52,7 @@ export default class BaseComponent extends Component{
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        this.setProperty(nextProps );
+        this.replaceProperties(nextProps );
         return true;
     }
 
@@ -112,54 +111,62 @@ export default class BaseComponent extends Component{
         }
     }
 
-    setProperty(props,val=''){
-        let prop = null,
-            styleList = [],
-            propList = [];
-
-        if(val!=''){
-            this.properties[props] = val;
-            return this;
+    setProperty(prop,val){
+        if(val!== undefined){
+            this.properties[prop] = val;
+            if(this.props[prop]!==undefined){
+                this.updateProperty({key:prop,value:val},this._properties,this._styles,this.otherProps);
+            }
         }
+    }
+    updateProperty(props,propList,styleList,otherProps){
+        let propKey=props.key,
+            propValue=props.value,
+            propConfig = this.properties[propKey];
 
         const type = 'property';
-        for(let item in props){
-            prop = this.properties[item];
-            if(prop ){
+        if(propConfig ){
 
-                switch (typeof(prop)){
-                    case 'boolean':
-                        if(props[item]){
-                            propList.push(item);
-                        }
-                        break;
-                    case 'function':
-                        let param = prop.call(this,props[item]);
-
-                        if(typeof(param) == 'string' ){
-                            propList.push(param);
-                        }else if(param.type && param.type == type){
-                            this[item] = param.value;
-                        }else{
-                            //{
-                            //    border:val
-                            //}
-                            styleList.push(param);
-                        }
-                        break;
-                    default :
-                        propList.push(prop);
-                        break;
-                }
-
-            }else{
-                this.otherProps[item] = props[item];
+            switch (typeof(propConfig)){
+                case 'boolean':
+                    if(propValue){
+                        propList.push(propKey);
+                    }
+                    break;
+                case 'function':
+                    let param = propConfig.call(this,propValue);
+                    if(typeof(param) == 'string' ){
+                        propList.push(param);
+                    }else if(param.type && param.type == type){
+                        this[propKey] = param.value;
+                    }else{
+                        //{
+                        //    border:val
+                        //}
+                        styleList.push(param);
+                    }
+                    break;
+                default :
+                    propList.push(propConfig);
+                    break;
             }
 
+        }else{
+            otherProps[propKey] = propValue;
         }
-
+    }
+    replaceProperties(props){
+        // 整体替换
+        let propList = [],
+            styleList = [],
+            otherProps={};
+        props=props?props:this.props;
+        for(let key in props){
+            this.updateProperty({key,value:props[key]},propList,styleList,otherProps);
+        }
         this._properties = propList;
         this._styles = styleList;
+        this.otherProps=otherProps;
     }
 
     getProperty(){

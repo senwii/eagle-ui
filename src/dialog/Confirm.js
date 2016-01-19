@@ -46,7 +46,7 @@ export default class Confirm extends Component{
                     textAlign:buttonAlign
                 }}>
                     <Button egSize="xs" onClick={successCallback}>确定</Button>
-                    <Button egSize="xs" onClick={::this.cancelHander}>取消</Button>
+                    <Button egSize="xs" egStyle="white" onClick={::this.cancelHander}>取消</Button>
                 </div>
             </this.componentTag>
         );

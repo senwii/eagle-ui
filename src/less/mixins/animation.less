@@ -127,6 +127,15 @@
         opacity:0;
     }
 };
+@rotate-args:{
+    from{
+        .transform(rotate(0deg));
+    }
+    to{
+        .transform(rotate(360deg));
+    }
+};
+.keyframes(rotate,@rotate-args);
 .fadein(@type:fadeIn){
     .keyframes(@type,@fadeIn-args);
     .fadein{

@@ -19,7 +19,9 @@ let BaseDialog = ((d)=>{
             //内容对其方式
             contentAlign:'center',
             //是否显示蒙版层
-            isMask:true
+            isMask:true,
+            //内容不在content之内 mask属性
+            outside:false
 
         };
     @ClassNameMixin
@@ -31,6 +33,8 @@ let BaseDialog = ((d)=>{
             this.container = d.getElementById(this.wrapName);
 
             this.dialogClass='dialog-mask';
+            this.props = {};
+            this.isShow = false;
 
             if(!this.container){
                 this.createWrap();
@@ -40,16 +44,18 @@ let BaseDialog = ((d)=>{
         }
 
         close(){
-            this.container.style.display='none';
+            //this.isShow = false;
+            this.removeClass(this.container,this.setPrefix('dialog-show') );
         }
 
         open(){
-            this.container.style.display='block';
+            /*this.isShow = true;*/
+            this.addClass(this.container,this.setPrefix('dialog-show') );
         }
 
-        pushStack(key,dialog){
+        pushStack(key,dialog,props){
             //stack
-            stack[key] = dialog;
+            stack[key] =props?[dialog,props]:dialog ;
         }
 
         removeStack(key){
@@ -59,7 +65,9 @@ let BaseDialog = ((d)=>{
 
         //获取dialog
         get(key){
-            return stack[key];
+            let modal = stack[key];
+
+            return modal instanceof Array ? modal :modal?[modal]:[];
         }
 
         setOptions(opts){
@@ -69,11 +77,15 @@ let BaseDialog = ((d)=>{
         //创建放置弹窗的容器
         createWrap(){
             this.props = {};
-            let dom = d.createElement('div');
+            let dom = d.createElement('div'),_this = this;
             dom.id = this.wrapName;
-            dom.className=this.setPrefix(this.dialogClass,false);
-            dom.style.display = "none";
+            dom.className=this.setPrefix(this.dialogClass,false)+' '+this.setPrefix('dialog-hide');
 
+            /*dom.addEventListener("transitionend", ()=>{
+                if(!_this.isShow){
+                    _this.removeClass(_this.container,'show');
+                }
+            });*/
             d.body.appendChild(dom);
             this.container = dom;
         }
@@ -81,9 +93,7 @@ let BaseDialog = ((d)=>{
         renderDialog(Modal,props){
             let params = extend(true,{},options,props||{});
 
-            if(!params.isMask){
-                this.removeClass(this.container,this.setPrefix(this.dialogClass,false) );
-            }
+            this[!params.isMask?'removeClass':'addClass'](this.container,this.setPrefix(this.dialogClass,false) );
 
             ReactDom.render(<Modal {...params} />,this.container);
         }
