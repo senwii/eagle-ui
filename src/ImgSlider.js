@@ -24,7 +24,7 @@ export default class ImgSlider extends Component{
         this.renderDisplay=this.renderDisplay.bind(this);
         this.state = {
             imgList: props.imgList,
-            thumbnailKey: props.thumbnailKey||props.urlKey,
+            thumbnailKey: props.thumbnailKey||props.urlKey||'url',
             pageNum:props.pageNum,
             show:props.show,
             showThumbnail:props.showThumbnail,
@@ -36,7 +36,10 @@ export default class ImgSlider extends Component{
         pageNum:5,
         show:false,
         showThumbnail:true,
-        classPrefix:'slider'
+        classPrefix:'slider',
+        profileKey:'profile',
+        urlKey:'url',
+        titleKey:'description'
     };
     static propTypes = {
         /**
@@ -102,15 +105,11 @@ export default class ImgSlider extends Component{
           show:props.show,
           showThumbnail:props.showThumbnail,
           thumbnailKey: props.thumbnailKey||props.urlKey,
-          targetIndex:props.show?this.state.targetIndex:0,
-          thumbNailIndex:props.show?this.state.thumbNailIndex:0,
+          targetIndex:0,
+          thumbNailIndex:0,
           imgList:props.imgList||this.state.imgList
       });
-        //if(!props.show){
-        //    setTimeout(()=>{
-        //        findDOMNode(this.refs['slider-container']).style.display='none'
-        //    },100)
-        //}
+      let _this = this;
     }
     renderDisplay(e){
         //点击下方缩略图的情况
@@ -121,10 +120,16 @@ export default class ImgSlider extends Component{
         let length = this.state.imgList.length;
         let pageNum = this.props.pageNum;
         if(index>=0){
-            //如果图片展示未到尾部，则同时左移
-            if(index<=length-pageNum) {
+            //1图片总长度小于缩略图预制的长度 2未到最后的情况，展示逻辑放在一起
+            if(length<=pageNum){
                 this.setState({
-                    targetIndex: index,
+                    targetIndex:index,
+                    thumbNailIndex: 0
+                })
+            }
+            else if(index<=length-pageNum) {
+                this.setState({
+                    targetIndex: index==length?length-1:index,
                     thumbNailIndex: index
                 })
             }else if(index<length){
@@ -149,11 +154,12 @@ export default class ImgSlider extends Component{
         }
     }
     addIndex(num=1){
-        let index = this.state.targetIndex + num;
+        let length = this.state.imgList.length;
+        let index = this.state.targetIndex + num-length>=0?length-1:this.state.targetIndex + num;
         this.handleIndex.call(this,index);
     };
     lowerIndex(num=1){
-        let index = this.state.targetIndex - num;
+        let index = this.state.targetIndex - num<0?0:this.state.targetIndex - num;
         this.handleIndex.call(this,index);
     }
     fadeOut(e){
@@ -168,7 +174,7 @@ export default class ImgSlider extends Component{
         let {profileKey,urlKey,titleKey,pageNum}=this.props;
         let length=imgList.length;
         let containerStyle={ display:show?'block':'none'};
-        //设置行内样式借口
+        //设置行内样式
         let customizeStyle=this.props.style||{};
         //阻止背景滚动
         //show?document.body.style.cssText='position:fixed':document.body.style.cssText='';

@@ -130,14 +130,14 @@ let Demo = class Demo extends Component{
                                     <Col>
                                         <PanelContent>
                                             <RadioGroup defaultChecked={this.state.showTab+''} name="radio-foot" getValueCallback={::this.change}>
-                                                <Input  type="radio"  label="显示第一个表单元素" value="0"  />
-                                                <Input  type="radio"  label="显示第二个表单元素" value="1"   />
+                                                <Input  type="radio"  label="非必填项" value="0"  />
+                                                <Input  type="radio"  label="必填项" value="1"   />
                                             </RadioGroup>
                                         </PanelContent>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col sm={5} end>
+                                    <Col sm={8} end>
                                         <ValidatorPanel rules={this.rules} submitElement="#submit" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
                                             <Row>
                                                 <Col>
