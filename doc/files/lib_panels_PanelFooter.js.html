@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>star - eagle-ui</title>
+    <title>lib/panels/PanelFooter.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -194,24 +194,6 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/star.html">star</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
-                       <li>
-                            
-                           <a href="../classes/星星.html">星星</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -261,7 +243,7 @@
                    
                        <li>
                             
-                           <a href="../classes/crumb.html">crumb</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -293,7 +275,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Tab.html">Tab</a>
+                           <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
                            </ul>
@@ -317,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/dialog.html">dialog</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -358,6 +340,22 @@
                        <li>
                             
                            <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
                            <ul>
                                 
                            </ul>
@@ -422,52 +420,98 @@
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>star <small>Module</small></h1>
+    <h1>lib/panels/PanelFooter.js <small>File</small></h1>
 </div>
 
-<div class="clearfix well well-small sign-left1">
-    
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+&#x27;use strict&#x27;;
 
-    
+exports.__esModule = true;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/lib_Star.js.html#l4"><code>lib&#x2F;Star.js:4</code></a>
-        </div>
-    
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (&#x27;value&#x27; in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-    
-</div>
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(&#x27;Cannot call a class as a function&#x27;); } }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== &#x27;function&#x27; &amp;&amp; superClass !== null) { throw new TypeError(&#x27;Super expression must either be null or a function, not &#x27; + typeof superClass); } subClass.prototype = Object.create(superClass &amp;&amp; superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-<div class="moduledesc well well-small sign-left3">
-    <div class="stdoc-code"><p>星级评价</p>
-</div>
-</div>
+var _react = require(&#x27;react&#x27;);
 
+var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require(&#x27;classnames&#x27;);
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+var _classnames2 = _interopRequireDefault(_classnames);
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/星星.html">
-                        星星
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+var _utilsClassNameMixinJs = require(&#x27;../utils/ClassNameMixin.js&#x27;);
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
+
+/**
+ * PanelFooter组件
+ * @class PanelFooter
+ * @constructor
+ * @module panel
+ * @extends Component
+ * @requires React classnames
+ * @since 0.1.0
+ * @demo panel.js {js}
+ * @author bo.an@dianping.com
+ * */
+
+var PanelFooter = (function (_Component) {
+    _inherits(PanelFooter, _Component);
+
+    function PanelFooter() {
+        _classCallCheck(this, _PanelFooter);
+
+        _Component.apply(this, arguments);
+    }
+
+    /**
+     * @method render
+     * @return {ReactElement}
+     * */
+
+    PanelFooter.prototype.render = function render() {
+        return _react2[&#x27;default&#x27;].createElement(
+            &#x27;div&#x27;,
+            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;footer&#x27;), this.props.padding ? this.getClassName(&#x27;padding&#x27;) : &#x27;&#x27;) },
+            this.props.children
+        );
+    };
+
+    _createClass(PanelFooter, null, [{
+        key: &#x27;propTypes&#x27;,
+        value: {
+            /**
+             * 是否加padding
+             * @property padding
+             * @type bool
+             * @default true
+             * */
+            padding: _react.PropTypes.bool
+        },
+        enumerable: true
+    }, {
+        key: &#x27;defaultProps&#x27;,
+        value: {
+            classPrefix: &#x27;panel&#x27;,
+            padding: true
+        },
+        enumerable: true
+    }]);
+
+    var _PanelFooter = PanelFooter;
+    PanelFooter = _utilsClassNameMixinJs2[&#x27;default&#x27;](PanelFooter) || PanelFooter;
+    return PanelFooter;
+})(_react.Component);
+
+exports[&#x27;default&#x27;] = PanelFooter;
+module.exports = exports[&#x27;default&#x27;];
+    </pre>
 </div>
 
                 </div>

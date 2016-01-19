@@ -23,6 +23,7 @@ import Validate from './modules/validate';
 import StarDemo from './modules/star.js';
 import SliderDemo from './modules/imgSlider.js';
 import Suggesion from './modules/suggestion.js';
+import Icon from './modules/icons.js';
 //require('../less/public.less');
 import css from '../../src/less/eagle-ui.less';
 
@@ -30,7 +31,7 @@ let Index = class Index extends Component{
     render() {
         return (
             <div>
-
+                <h1>欢迎使用eagle-ui构建react pc 应用</h1>
             </div>
         );
     }
@@ -75,6 +76,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Validate" name="Validate" component={Validate} />
                 <Route path="/Star" name="Star" component={StarDemo} />
                 <Route path="/Suggesion" name="Suggesion" component={Suggesion} />
+                <Route path="/icon" name="Icon" component={Icon} />
                 <Redirect from="/" to="/index" />
             </Router>
         );

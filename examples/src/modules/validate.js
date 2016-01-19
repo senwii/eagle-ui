@@ -104,11 +104,12 @@ let Demo = class Demo extends Component{
                 </Row>
                 <Row>
                 <Col>
-
+                    <CheckboxGroup>
                     <Input  type="checkbox"  name="checkbox" value="1"  data-validate />
                     <Input  type="checkbox"   name="checkbox" value="2" data-validate  />
                     <Input  type="checkbox"   name="checkbox" value="3" data-validate  />
                     <Input  type="checkbox"   name="checkbox" value="4" data-validate  />
+                    </CheckboxGroup>
                 </Col>
 
                 </Row>
@@ -153,12 +154,12 @@ let Demo = class Demo extends Component{
                                                         {this.checktab()}
                                                         <Row>
                                                             <Col>
-                                                                <Input placeholder="请输入有效的号码" name="number" data-validate />
+                                                                <Input placeholder="请输入手机号码" name="number" data-validate />
                                                             </Col>
                                                         </Row>
                                                         <Row>
                                                             <Col>
-                                                                <Input placeholder="请输入有效的号码" name="equalTo" data-validate />
+                                                                <Input placeholder="请再次确认手机号码" name="equalTo" data-validate />
                                                             </Col>
                                                         </Row>
                                                         <Row>

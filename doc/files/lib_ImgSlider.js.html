@@ -194,24 +194,6 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/star.html">star</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
-                       <li>
-                            
-                           <a href="../classes/星星.html">星星</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -261,7 +243,7 @@
                    
                        <li>
                             
-                           <a href="../classes/crumb.html">crumb</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -293,7 +275,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Tab.html">Tab</a>
+                           <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
                            </ul>
@@ -317,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/dialog.html">dialog</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -358,6 +340,22 @@
                        <li>
                             
                            <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
                            <ul>
                                 
                            </ul>
@@ -478,7 +476,7 @@ var ImgSlider = (function (_Component) {
         this.renderDisplay = this.renderDisplay.bind(this);
         this.state = {
             imgList: props.imgList,
-            thumbnailKey: props.thumbnailKey || props.urlKey,
+            thumbnailKey: props.thumbnailKey || props.urlKey || &#x27;url&#x27;,
             pageNum: props.pageNum,
             show: props.show,
             showThumbnail: props.showThumbnail,
@@ -492,15 +490,11 @@ var ImgSlider = (function (_Component) {
             show: props.show,
             showThumbnail: props.showThumbnail,
             thumbnailKey: props.thumbnailKey || props.urlKey,
-            targetIndex: props.show ? this.state.targetIndex : 0,
-            thumbNailIndex: props.show ? this.state.thumbNailIndex : 0,
+            targetIndex: 0,
+            thumbNailIndex: 0,
             imgList: props.imgList || this.state.imgList
         });
-        //if(!props.show){
-        //    setTimeout(()=&gt;{
-        //        findDOMNode(this.refs[&#x27;slider-container&#x27;]).style.display=&#x27;none&#x27;
-        //    },100)
-        //}
+        var _this = this;
     };
 
     ImgSlider.prototype.renderDisplay = function renderDisplay(e) {
@@ -513,10 +507,15 @@ var ImgSlider = (function (_Component) {
         var length = this.state.imgList.length;
         var pageNum = this.props.pageNum;
         if (index &gt;= 0) {
-            //如果图片展示未到尾部，则同时左移
-            if (index &lt;= length - pageNum) {
+            //1图片总长度小于缩略图预制的长度 2未到最后的情况，展示逻辑放在一起
+            if (length &lt;= pageNum) {
                 this.setState({
                     targetIndex: index,
+                    thumbNailIndex: 0
+                });
+            } else if (index &lt;= length - pageNum) {
+                this.setState({
+                    targetIndex: index == length ? length - 1 : index,
                     thumbNailIndex: index
                 });
             } else if (index &lt; length) {
@@ -544,14 +543,15 @@ var ImgSlider = (function (_Component) {
     ImgSlider.prototype.addIndex = function addIndex() {
         var num = arguments.length &lt;= 0 || arguments[0] === undefined ? 1 : arguments[0];
 
-        var index = this.state.targetIndex + num;
+        var length = this.state.imgList.length;
+        var index = this.state.targetIndex + num - length &gt;= 0 ? length - 1 : this.state.targetIndex + num;
         this.handleIndex.call(this, index);
     };
 
     ImgSlider.prototype.lowerIndex = function lowerIndex() {
         var num = arguments.length &lt;= 0 || arguments[0] === undefined ? 1 : arguments[0];
 
-        var index = this.state.targetIndex - num;
+        var index = this.state.targetIndex - num &lt; 0 ? 0 : this.state.targetIndex - num;
         this.handleIndex.call(this, index);
     };
 
@@ -564,7 +564,7 @@ var ImgSlider = (function (_Component) {
     };
 
     ImgSlider.prototype.render = function render() {
-        var _this = this;
+        var _this2 = this;
 
         var _state = this.state;
         var imgList = _state.imgList;
@@ -581,7 +581,7 @@ var ImgSlider = (function (_Component) {
 
         var length = imgList.length;
         var containerStyle = { display: show ? &#x27;block&#x27; : &#x27;none&#x27; };
-        //设置行内样式借口
+        //设置行内样式
         var customizeStyle = this.props.style || {};
         //阻止背景滚动
         //show?document.body.style.cssText=&#x27;position:fixed&#x27;:document.body.style.cssText=&#x27;&#x27;;
@@ -599,7 +599,7 @@ var ImgSlider = (function (_Component) {
                     _react2[&#x27;default&#x27;].createElement(
                         &#x27;div&#x27;,
                         { className: &#x27;eg-slider-field-common eg-slider-field-left&#x27;, onClick: function () {
-                                return _this.lowerIndex.call(_this);
+                                return _this2.lowerIndex.call(_this2);
                             } },
                         _react2[&#x27;default&#x27;].createElement(&#x27;b&#x27;, { className: &#x27;eg-slider-arrow-left&#x27; })
                     ),
@@ -621,7 +621,7 @@ var ImgSlider = (function (_Component) {
                     _react2[&#x27;default&#x27;].createElement(
                         &#x27;div&#x27;,
                         { className: &#x27;eg-slider-field-common eg-slider-field-right&#x27;, onClick: function () {
-                                return _this.addIndex.call(_this);
+                                return _this2.addIndex.call(_this2);
                             } },
                         _react2[&#x27;default&#x27;].createElement(&#x27;b&#x27;, { className: &#x27;eg-slider-arrow-right&#x27; })
                     ),
@@ -649,7 +649,7 @@ var ImgSlider = (function (_Component) {
                     _react2[&#x27;default&#x27;].createElement(
                         &#x27;div&#x27;,
                         { className: &#x27;eg-slider-field-common eg-slider-field-left&#x27;, onClick: function () {
-                                _this.lowerIndex.call(_this, pageNum);
+                                _this2.lowerIndex.call(_this2, pageNum);
                             } },
                         _react2[&#x27;default&#x27;].createElement(&#x27;b&#x27;, { className: &#x27;eg-slider-arrow-left&#x27; })
                     ),
@@ -680,7 +680,7 @@ var ImgSlider = (function (_Component) {
                     _react2[&#x27;default&#x27;].createElement(
                         &#x27;div&#x27;,
                         { className: &#x27;eg-slider-field-common eg-slider-field-right&#x27;, onClick: function () {
-                                _this.addIndex.call(_this, pageNum);
+                                _this2.addIndex.call(_this2, pageNum);
                             } },
                         _react2[&#x27;default&#x27;].createElement(&#x27;b&#x27;, { className: &#x27;eg-slider-arrow-right&#x27; })
                     )
@@ -695,7 +695,10 @@ var ImgSlider = (function (_Component) {
             pageNum: 5,
             show: false,
             showThumbnail: true,
-            classPrefix: &#x27;slider&#x27;
+            classPrefix: &#x27;slider&#x27;,
+            profileKey: &#x27;profile&#x27;,
+            urlKey: &#x27;url&#x27;,
+            titleKey: &#x27;description&#x27;
         },
         enumerable: true
     }, {

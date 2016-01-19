@@ -7,6 +7,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "CalendarPanel",
         "CheckboxGroup",
         "Col",
+        "Crumb",
+        "Dialog",
         "Grid",
         "Input",
         "Item",
@@ -23,6 +25,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "Search",
         "Select",
         "Slider",
+        "Star",
+        "Suggestion",
         "Tab",
         "Table",
         "Tabset",
@@ -32,16 +36,12 @@ YUI.add("yuidoc-meta", function(Y) {
         "Tooltip",
         "TooltipPanel",
         "Tr",
-        "ValidatorPanel",
-        "crumb",
-        "dialog",
-        "星星"
+        "ValidatorPanel"
     ],
     "modules": [
         "form",
         "grid",
         "panel",
-        "star",
         "table",
         "ui"
     ],
@@ -110,16 +110,6 @@ YUI.add("yuidoc-meta", function(Y) {
             ]
         },
         {
-            "displayName": "star",
-            "name": "star",
-            "description": "星级评价",
-            "classes": [
-                {
-                    "name": "星星"
-                }
-            ]
-        },
-        {
             "displayName": "table",
             "name": "table",
             "description": "表格组件",
@@ -141,10 +131,10 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "ui",
             "name": "ui",
-            "description": "tab组件",
+            "description": "星级评价",
             "classes": [
                 {
-                    "name": "crumb"
+                    "name": "Crumb"
                 },
                 {
                     "name": "Slider"
@@ -156,7 +146,7 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "Search"
                 },
                 {
-                    "name": "Tab"
+                    "name": "Star"
                 },
                 {
                     "name": "Calendar"
@@ -165,7 +155,7 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "CalendarPanel"
                 },
                 {
-                    "name": "dialog"
+                    "name": "Dialog"
                 },
                 {
                     "name": "Label"
@@ -181,6 +171,12 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Tooltip"
+                },
+                {
+                    "name": "Suggestion"
+                },
+                {
+                    "name": "Tab"
                 },
                 {
                     "name": "Tabset"

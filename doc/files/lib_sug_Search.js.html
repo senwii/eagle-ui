@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>星星 - eagle-ui</title>
+    <title>lib/sug/Search.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -194,24 +194,6 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/star.html">star</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
-                       <li>
-                            
-                           <a href="../classes/星星.html">星星</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -261,7 +243,7 @@
                    
                        <li>
                             
-                           <a href="../classes/crumb.html">crumb</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -293,7 +275,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Tab.html">Tab</a>
+                           <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
                            </ul>
@@ -317,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/dialog.html">dialog</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -358,6 +340,22 @@
                        <li>
                             
                            <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
                            <ul>
                                 
                            </ul>
@@ -422,303 +420,199 @@
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>星星 <small>Class</small></h1>
-</div>
- <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>星级评价</p>
-</div>
- </div>
-
-<div class="well well-small sign-left2 container-fluid" id="classesItems">
-    <div class="row">
-    
-        <div class="index-section methods col-sm-4">
-            <h3>Methods</h3>
-            
-        </div>
-    
-        <div class="index-section properties col-sm-4">
-            <h3>Properties</h3>
-            
-            <ul class="index-list properties extends">
-                
-                    <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_Rate" data-tablink="Rate">Rate</a>
-
-                        
-                        
-                    </li>
-                
-                    <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_size" data-tablink="size">size</a>
-
-                        
-                        
-                    </li>
-                
-            </ul>
-            
-        </div>
-    
-        <div class="index-section events col-sm-4">
-            <h3>Events</h3>
-            
-        </div>
-    </div>
+    <h1>lib/sug/Search.js <small>File</small></h1>
 </div>
 
-<div>
-    <ul id="itemTab" class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
-        
-        
-            <li><a data-toggle="tab" href="#property">Properties</a></li>
-        
-        
-    </ul>
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+&#x27;use strict&#x27;;
 
-    <div class="tab-content">
-        <div id="class" class="tab-pane active">
-            <div class="well well-small classDetail sign-left1">
-            
+exports.__esModule = true;
 
-            
-                <div class="extends">
-                    Extends Component
-                </div>
-            
+var _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-            
-                <div class="foundat">
-                    Defined in: <a href="../files/lib_Star.js.html#l4"><code>lib&#x2F;Star.js:4</code></a>
-                </div>
-            
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (&#x27;value&#x27; in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-            
-                
-                    Module: <a href="../modules/star.html">star</a>
-                
-            
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
 
-            
-                <p>Available since 0.1.0</p>
-            
-        </div>
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) &gt;= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-        
-            
-                <div class="constructor">
-                    <h2>Constructor</h2>
-                    <div id="method_星星" class="method item">
-    <h3 class="name">星星</h3>
-    <code>
-    星星
-    
-        <span class="paren">()</span>
-    
-    </code>
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(&#x27;Cannot call a class as a function&#x27;); } }
 
-    
+function _inherits(subClass, superClass) { if (typeof superClass !== &#x27;function&#x27; &amp;&amp; superClass !== null) { throw new TypeError(&#x27;Super expression must either be null or a function, not &#x27; + typeof superClass); } subClass.prototype = Object.create(superClass &amp;&amp; superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-    
+var _react = require(&#x27;react&#x27;);
 
-    
+var _react2 = _interopRequireDefault(_react);
 
-    
+var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
 
-    
+var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
-    
+var _classnames = require(&#x27;classnames&#x27;);
 
-    
+var _classnames2 = _interopRequireDefault(_classnames);
 
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Star.js.html#l4"><code>lib&#x2F;Star.js:4</code></a>
-        
-        </p>
+var _InputJs = require(&#x27;.././Input.js&#x27;);
 
+var _InputJs2 = _interopRequireDefault(_InputJs);
 
-        
+var _Suggestion2 = require(&#x27;./Suggestion&#x27;);
 
-        
-            <p>Available since 0.1.0</p>
-        
-    </div>
+var _Suggestion3 = _interopRequireDefault(_Suggestion2);
 
-    <div class="description well well-small sign-left3">
-        
-    </div>
+var Search = (function (_Suggestion) {
+    _inherits(Search, _Suggestion);
 
-    
+    _createClass(Search, null, [{
+        key: &#x27;defaultProps&#x27;,
+        value: {
+            /**
+             * 回调方法，主要作用将value传给父级元素。默认为null
+             * @property callback
+             * @type func
+             * @default null
+             * */
+            getValueCallback: null,
+            /**
+             * 样式类名前缀
+             * @property classPrefix
+             * @type string
+             *
+             * */
+            classPrefix: &#x27;search&#x27;,
+            componentTag: &#x27;div&#x27;,
+            defaultValue: &#x27;&#x27; /*,
+                             icon:&#x27;arrow_drop_down&#x27;,
+                             iconStyle:{
+                             width:&#x27;30px&#x27;,
+                             height:&#x27;30px&#x27;,
+                             top: &#x27;15px&#x27;,
+                             right: &#x27;0&#x27;
+                             }*/
+        },
+        enumerable: true
+    }]);
 
-    
+    function Search(props, context) {
+        var defaultState = arguments.length &lt;= 2 || arguments[2] === undefined ? {} : arguments[2];
 
-    
-        <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                
-                <li role="presentation"  class="active"  _no='0'> <a>js</a></li>
-                
-            </ul>
+        _classCallCheck(this, Search);
 
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-require(&#39;../../../src/css/star.less&#39;);
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
+        _Suggestion.call(this, props, context);
 
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                &lt;Star Rate={50} size={15}/&gt;&lt;br/&gt;
-                &lt;Star Rate={60} size={16}/&gt;&lt;br/&gt;
-                &lt;Star Rate={70} size={17}/&gt;&lt;br/&gt;
-                &lt;Star Rate={80} size={18}/&gt;&lt;br/&gt;
-                &lt;Star Rate={90} size={19}/&gt;&lt;br/&gt;
-                &lt;Star Rate={10} size={14}/&gt;&lt;br/&gt;
-                &lt;Star Rate={20} size={13}/&gt;&lt;br/&gt;
-                &lt;Star Rate={30} size={12}/&gt;&lt;br/&gt;
-                &lt;Star Rate={40} size={11}/&gt;&lt;br/&gt;
-                &lt;Star Rate={50} size={10}/&gt;&lt;br/&gt;
-            &lt;/div&gt;
-        )
+        this.inputId = this.uniqueId();
+
+        _Suggestion.prototype.setDefaultState.call(this, defaultState);
     }
-}</code></pre>
-</div>
-            </div>
 
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
-        </div>
-    
-</div>
+    Search.prototype.handler = function handler(eventType, e) {
 
-                </div>
-            
-        </div>
+        this.keyHandler(e);
+        this.setState({
+            value: e.target.value
+        });
+        if (this.props[eventType]) {
+            this.props[eventType](e);
+        }
+    };
 
-        
+    Search.prototype.renderInput = function renderInput() {
+        var _props = this.props;
+        var getValueCallback = _props.getValueCallback;
+        var children = _props.children;
+        var iconStyle = _props.iconStyle;
+        var value = _props.value;
+        var classPrefix = _props.classPrefix;
+        var componentTag = _props.componentTag;
+        var defaultValue = _props.defaultValue;
 
-        
-            <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
+        var other = _objectWithoutProperties(_props, [&#x27;getValueCallback&#x27;, &#x27;children&#x27;, &#x27;iconStyle&#x27;, &#x27;value&#x27;, &#x27;classPrefix&#x27;, &#x27;componentTag&#x27;, &#x27;defaultValue&#x27;]);
 
-                
-                    <div id="property_Rate" class="property item">
-    <h3 class="name"><code>Rate</code></h3>
-    <span class="type">Number</span>
+        return _react2[&#x27;default&#x27;].createElement(_InputJs2[&#x27;default&#x27;], _extends({
+            ref: this.inputId
+        }, other, {
+            value: this.getTextValue(),
+            iconStyle: iconStyle,
+            onKeyUp: this.handler.bind(this, &#x27;onKeyUp&#x27;),
+            onChange: this.handler.bind(this, &#x27;onChange&#x27;),
+            onKeyDown: this.handler.bind(this, &#x27;onKeyDown&#x27;),
+            onFocus: this.focusHandler.bind(this),
+            onBlur: this.inputBlurHandler.bind(this)
+        }));
+    };
 
-    
+    Search.prototype.inputBlurHandler = function inputBlurHandler() {
 
-    
+        this.removeActiveValue();
+        this.hide();
+        if (this.props.onBlur) {
+            this.props.onBlur(e);
+        }
+    };
 
-    
+    Search.prototype.focusHandler = function focusHandler(e) {
+        this.show();
+        if (this.props.onFocus) {
+            this.props.onFocus(e);
+        } else {
+            var val = this.trim(e.target.value);
+            this.setDefaultData();
+        }
+    };
 
-    
+    Search.prototype.checkedCallback = function checkedCallback(sug, index) {
+        sug = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(sug);
 
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Star.js.html#l46"><code>lib&#x2F;Star.js:46</code></a>
-        
-        </p>
+        var subItem = sug.firstChild,
+            offestHeight = 0;
+        if (subItem) {
+            offestHeight = subItem.offsetHeight;
+            sug.scrollTop = index * offestHeight;
+        }
+    };
 
-        
+    Search.prototype.loadedCallback = function loadedCallback() {
+        //获取高度，然后给ul设置高度
+        //let sug = ReactDom.findDOMNode(this.refs.suggestion );
+        //this.refs.suggestion
+        var item = this.getValue();
+        item &amp;&amp; this.execMethod(&#x27;getValue&#x27;, item.value, item.key, &#x27;init&#x27;);
+    };
 
-        
-    </div>
+    Search.prototype.getValueCallback = function getValueCallback(value, key, type, _this) {
 
-    <div class="description">
-        <div class="stdoc-code"><p>星级评价分数</p>
-</div>
-    </div>
+        type != &#x27;init&#x27; &amp;&amp; setTimeout(function () {
+            _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(_this.refs[_this.inputId]).getElementsByTagName(&#x27;input&#x27;)[0].blur();
+        });
+        _this.props.getValueCallback &amp;&amp; _this.props.getValueCallback(value, key, type);
+    };
 
-    
-        <p><strong>Default:</strong></p>
-         <code> 默认未0分</code>
-    
+    /**
+     * 根据auto存在与否渲染不同类型的元素
+     * @method render
+     * @return {ReactElement}
+     * */
 
-    
+    Search.prototype.renderSearch = function renderSearch() {
+        return _react2[&#x27;default&#x27;].createElement(
+            this.componentTag,
+            { className: this.getProperty(), value: this.state.value },
+            this.renderInput(),
+            this.renderSuggestion()
+        );
+    };
 
-    
-</div>
+    Search.prototype.render = function render() {
+        return this.renderSearch();
+    };
 
-                
-                    <div id="property_size" class="property item">
-    <h3 class="name"><code>size</code></h3>
-    <span class="type">String |  | Number</span>
+    return Search;
+})(_Suggestion3[&#x27;default&#x27;]);
 
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Star.js.html#l53"><code>lib&#x2F;Star.js:53</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>星星大小</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> undefined  可以取值10-20 默认单位为&#x27;px&#x27;</code>
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-    </div>
+exports[&#x27;default&#x27;] = Search;
+module.exports = exports[&#x27;default&#x27;];
+    </pre>
 </div>
 
                 </div>

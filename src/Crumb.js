@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import Component from './utils/Component';
 /**
  * 面包屑组件
- * @class crumb
+ * @class Crumb
  * @module ui
  * @extends Component
  * @constructor

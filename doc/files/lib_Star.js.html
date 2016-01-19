@@ -194,24 +194,6 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/star.html">star</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
-                       <li>
-                            
-                           <a href="../classes/星星.html">星星</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
                     <a href="../modules/table.html">table</a>
                 </dt>
                 <dd>
@@ -261,7 +243,7 @@
                    
                        <li>
                             
-                           <a href="../classes/crumb.html">crumb</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -293,7 +275,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Tab.html">Tab</a>
+                           <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
                            </ul>
@@ -317,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/dialog.html">dialog</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -358,6 +340,22 @@
                        <li>
                             
                            <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
                            <ul>
                                 
                            </ul>
@@ -427,19 +425,6 @@
 
 <div class="file">
     <pre class="prettyprint linenums" id='src_code'>
-/**
- * Created by slashhuang on 15/12/25.
- */
-/**
- * 星级评价
- * @class 星星
- * @module star
- * @extends Component
- * @constructor
- * @since 0.1.0
- * @demo Star.js {js}
- * @show true
- * */
 &#x27;use strict&#x27;;
 
 exports.__esModule = true;
@@ -462,9 +447,20 @@ var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _utilsClassNameMixinJs = require(&#x27;./utils/ClassNameMixin.js&#x27;);
+var _utilsComponent = require(&#x27;./utils/Component&#x27;);
 
-var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
+var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
+
+/**
+ * 星级评价
+ * @class Star
+ * @module ui
+ * @extends Component
+ * @constructor
+ * @since 0.1.0
+ * @demo star.js {js}
+ * @show true
+ * */
 
 var Star = (function (_Component) {
     _inherits(Star, _Component);
@@ -478,14 +474,14 @@ var Star = (function (_Component) {
              * @type number
              * @default 默认未0分
              * */
-            Rate: _react.PropTypes.number,
+            rate: _react.PropTypes.number,
             /**
              * 星星大小
              * @property size
              * @type String||number
              * @default undefined  可以取值10-20 默认单位为&#x27;px&#x27;
              * */
-            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+            egSize: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
             classPrefix: _react.PropTypes.string
         },
         enumerable: true
@@ -493,20 +489,20 @@ var Star = (function (_Component) {
         key: &#x27;defaultProps&#x27;,
         value: {
             classPrefix: &#x27;star&#x27;,
-            Rate: 0
+            rate: 0
         },
         enumerable: true
     }]);
 
-    function Star() {
-        _classCallCheck(this, _Star);
+    function Star(props, context) {
+        _classCallCheck(this, Star);
 
-        _Component.call(this);
+        _Component.call(this, props, context);
     }
 
     Star.prototype.render = function render() {
         var _props = this.props;
-        var Rate = _props.Rate;
+        var rate = _props.rate;
         var size = _props.size;
 
         //兼容用户输入px为单位的数据大小
@@ -521,15 +517,13 @@ var Star = (function (_Component) {
         } : {};
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: &#x27;eg-star-orange&#x27;, style: customizeStyle },
-            _react2[&#x27;default&#x27;].createElement(&#x27;div&#x27;, { className: &#x27;eg-star-grey&#x27;, style: _extends({ width: Rate + &#x27;%&#x27; }, shadowPosition) })
+            { className: this.getProperty(), style: customizeStyle },
+            _react2[&#x27;default&#x27;].createElement(&#x27;div&#x27;, { className: this.getClassName(&#x27;grey&#x27;), style: _extends({ width: rate + &#x27;%&#x27; }, shadowPosition) })
         );
     };
 
-    var _Star = Star;
-    Star = _utilsClassNameMixinJs2[&#x27;default&#x27;](Star) || Star;
     return Star;
-})(_react.Component);
+})(_utilsComponent2[&#x27;default&#x27;]);
 
 exports[&#x27;default&#x27;] = Star;
 module.exports = exports[&#x27;default&#x27;];

@@ -1,21 +1,19 @@
-/**
- * Created by slashhuang on 15/12/25.
- */
-/**
- * 星级评价
- * @class 星星
- * @module star
- * @extends Component
- * @constructor
- * @since 0.1.0
- * @demo Star.js {js}
- * @show true
- * */
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 
 import Component from './utils/Component';
 
+
+/**
+ * 星级评价
+ * @class Star
+ * @module ui
+ * @extends Component
+ * @constructor
+ * @since 0.1.0
+ * @demo star.js {js}
+ * @show true
+ * */
 export default class Star extends Component{
     static propTypes = {
         /**
