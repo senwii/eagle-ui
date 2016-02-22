@@ -15,7 +15,26 @@ module.exports = {
         name: 'eagle-ui',
 
         //项目描述，可以配置html，会生成到document主页
-        //description: '',
+        description: '<h3>欢迎使用eagle-ui，左侧的导航栏为相关react组件的名称和链接</h3>' +
+            '<p>&nbsp;</p>'+
+            '<h4>您可以点击顶部导航栏的<strong><a href="/documents/eagle-ui/examples/">示例</a></strong>，' +
+        '查看eagle-ui组件的UI效果及功能演示</h4>'+
+        '<p>&nbsp;</p>'+
+        '<h4>您可以通过如下方式查看组件的API</h4>'+
+
+        '<ol>' +
+        '<li><h4>在输入框中输入组件名字进行查询</h4></li>' +
+        '<li><h4>点击左侧API导航栏</h4></li>' +
+        '</ol>'+
+            '<strong>说明:</strong>左侧导航栏中对应的链接名字即为组件名字'+
+        '<p>&nbsp;</p>'+
+            '<h4>您可以采用如下形式在项目中应用eagle-ui</h4>'+
+            '<pre>import {CheckboxGroup}(根据您的需要引入组件) from \'eagle-ui\'使用相关组件</pre>'+
+        '或者' +
+           '<pre>'+
+        '<div>&#60;script src="path to eagle-ui.js" &#62;&#60;/script&#62;的形式使用eagle-ui'+'</div></pre>'
+
+        ,
 
         //版本信息
         version: '0.1.0',
@@ -31,7 +50,7 @@ module.exports = {
                 url: ""
             },
             {
-                name: "例子",
+                name: "示例",
                 url: "/documents/eagle-ui/examples/"
             }
         ]

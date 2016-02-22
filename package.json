@@ -14,7 +14,8 @@
     "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min && node_modules/.bin/gulp style-webpack",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
-    "doc": "smartDoc ||node_modules/.bin/smartDoc"
+    "doc": "smartDoc ||node_modules/.bin/smartDoc",
+    "docBuild": "node_modules/.bin/gulp  && smartDoc ||node_modules/.bin/smartDoc"
   },
   "license": "MIT",
   "author": {

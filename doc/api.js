@@ -49,7 +49,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "form",
             "name": "form",
-            "description": "表单验证组件<br />\n在需要验证的表单元素上添加data-validate属性，<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称--> <br />\n默认规则有<br/>\n<pre>\n    required：是否必填\n    date：日期格式验证\n    number：是否是有效的号码\n    url：url规则验证\n    dateISO：日期ISO验证\n    digits：是否是数字\n    equalTo：值对比\n    minlength：最少输入\n    maxlength：最大输入\n    email：邮箱验证\n    rangelength：字符大小需在某个区间之内\n    min：输入的值需要大于等于此规则定义的值\n    max：输入的值需要小于等于此规则定义的值\n    range：一个区间取值范围\n\n</pre>",
+            "description": "<h5>form表单模块集成了常见的表单元素形式:</h5>\n<strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>\n<strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>\n<strong><a href='../classes/Input.html'>input输入框</a></strong><br>\n<strong><a href='../classes/Select.html'>select下拉框</a></strong><br>\n<strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>\n<h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>\n<iframe src=\"http://uedfamily.com/documents/eagle-ui/examples/#/input\"></iframe>",
             "classes": [
                 {
                     "name": "CheckboxGroup"

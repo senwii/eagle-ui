@@ -753,7 +753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -765,7 +765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -774,19 +774,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -7349,6 +7349,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponentJs2 = _interopRequireDefault(_utilsComponentJs);
 
 	/**
+	 * <h5>form表单模块集成了常见的表单元素形式:</h5>
+	 * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
+	 * <strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>
+	 * <strong><a href='../classes/Input.html'>input输入框</a></strong><br>
+	 * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
+	 * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
+	 * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
+	 * <iframe src="http://uedfamily.com/documents/eagle-ui/examples/#/input"></iframe>
+	 *
+	 * @module form
+	 * @main form
+	 * @static
+	 *
+	 */
+
+	/**
 	 * 多选按钮组组件
 	 * @class CheckboxGroup
 	 * @module form
@@ -13217,7 +13233,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     min：输入的值需要大于等于此规则定义的值
 	 *     max：输入的值需要小于等于此规则定义的值
 	 *     range：一个区间取值范围
-	 *
 	 * </pre>
 	 * @class ValidatorPanel
 	 * @module form

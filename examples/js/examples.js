@@ -9549,6 +9549,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9582,8 +9583,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9594,7 +9593,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 
@@ -13443,7 +13446,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+
 	    return nativeProps;
 	  }
 
@@ -16903,15 +16909,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
+	/* eslint-disable fb-www/typeof-undefined */
+
 	/**
 	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
 	 * not safe to call document.activeElement if there is nothing focused.
 	 *
-	 * The activeElement will be null only if the document body is not yet defined.
+	 * The activeElement will be null only if the document or document body is not
+	 * yet defined.
 	 */
-	"use strict";
+	'use strict';
 
 	function getActiveElement() /*?DOMElement*/{
+	  if (typeof document === 'undefined') {
+	    return null;
+	  }
 	  try {
 	    return document.activeElement || document.body;
 	  } catch (e) {
@@ -18910,7 +18922,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.5';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 184 */
@@ -22634,7 +22646,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	module.exports = function (str) {
 		return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
-			return '%' + c.charCodeAt(0).toString(16);
+			return '%' + c.charCodeAt(0).toString(16).toUpperCase();
 		});
 	};
 
@@ -24952,7 +24964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -24964,7 +24976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -24973,19 +24985,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -34186,6 +34198,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponentJs2 = _interopRequireDefault(_utilsComponentJs);
 
 	/**
+	 * <h5>form表单模块集成了常见的表单元素形式:</h5>
+	 * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
+	 * <strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>
+	 * <strong><a href='../classes/Input.html'>input输入框</a></strong><br>
+	 * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
+	 * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
+	 * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
+	 * <iframe src="http://uedfamily.com/documents/eagle-ui/examples/#/input"></iframe>
+	 *
+	 * @module form
+	 * @main form
+	 * @static
+	 *
+	 */
+
+	/**
 	 * 多选按钮组组件
 	 * @class CheckboxGroup
 	 * @module form
@@ -38519,7 +38547,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     min：输入的值需要大于等于此规则定义的值
 	 *     max：输入的值需要小于等于此规则定义的值
 	 *     range：一个区间取值范围
-	 *
 	 * </pre>
 	 * @class ValidatorPanel
 	 * @module form

@@ -22,7 +22,6 @@ import ReactDom from 'react/lib/ReactDOM';
  *     min：输入的值需要大于等于此规则定义的值
  *     max：输入的值需要小于等于此规则定义的值
  *     range：一个区间取值范围
- *
  * </pre>
  * @class ValidatorPanel
  * @module form
