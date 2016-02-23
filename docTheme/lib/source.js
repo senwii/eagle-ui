@@ -9,6 +9,7 @@ var configStaticFile= {
 
 var addLink = function(paths){
     var link=document.createElement('link');
+    link.rel="stylesheet"
     setTimeout(function(){
         for(var i =0;i<paths.length;i++){
             link.href=paths[i];
