@@ -1,7 +1,7 @@
 module.exports = {
     //扫描的文件路径
     paths: ['lib/'],
-    demoDir:"examples/src/modules/",
+    demoDir:"examples/",
     //文档页面输出路径
     outdir: 'doc/',
     //内置主题
@@ -15,7 +15,8 @@ module.exports = {
         name: 'eagle-ui',
 
         //项目描述，可以配置html，会生成到document主页
-        description: '<h3>欢迎使用eagle-ui，左侧的导航栏为相关react组件的名称和链接</h3>' +
+        description:
+        '<h3>欢迎使用eagle-ui，左侧的导航栏为相关react组件的名称和链接</h3>' +
             '<p>&nbsp;</p>'+
             '<h4>您可以点击顶部导航栏的<strong><a href="/documents/eagle-ui/examples/">示例</a></strong>，' +
         '查看eagle-ui组件的UI效果及功能演示</h4>'+
@@ -57,9 +58,19 @@ module.exports = {
     },
     //demo页面需要加载的js库
     demo: {
-        autoComplete : true//,
-        //paths : ['examples/','bower_components']
-        //link : ['bower_components/react/react.js','bower_components/react/react-dom.js']
-    }
+
+        ////外部资源链接
+        link : ['http://uedfamily.com/documents/eagle-ui/examples/js/eagle-ui.css'],
+
+        //文件复制路径; 将目下的资源复制到doc生成目录中，并在demo页面引用
+        //paths : ['doc/modules/'],
+
+        //是否开启在code编辑器中的自动完成功能(会将link和paths的引入加入)；默认开启；
+        autoComplete : true
+    },
+    ////自定义主题路径
+    //themedir: 'docTheme/',
+    //////自定义helpers
+    //helpers: ["docTheme/dianping-theme.css","docTheme/dianping-theme.js"]
 };
 

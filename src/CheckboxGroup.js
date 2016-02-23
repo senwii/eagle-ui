@@ -16,7 +16,6 @@ import Component from './utils/Component.js';
  * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
  * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
  * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
- * <iframe src="http://uedfamily.com/documents/eagle-ui/examples/#/input"></iframe>
  *
  * @module form
  * @main form
@@ -31,7 +30,18 @@ import Component from './utils/Component.js';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo input.js {js}
+ * @example
+ *          <html>
+ *              <div></div>
+ *              <div id='root'></div>
+ *          </html>
+ *          <script>
+ *              var script=document.createElement('script');
+ *              script.async=true;
+ *              script.src='http://uedfamily.com/documents/eagle-ui/examples/js/examples.js';
+ *              setTimeout(function(){document.body.appendChild(script)},0);
+ *              script.onload = function(e){location.hash='input'};
+ *         </script>
  * @show true
  * */
 export default class CheckboxGroup extends Component{
