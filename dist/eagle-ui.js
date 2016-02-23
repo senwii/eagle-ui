@@ -8766,6 +8766,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.selectItem = null;
 	    }
 
+	    Suggestion.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.options = this.getOptions(nextProps.children);
+	    };
+
 	    Suggestion.prototype.setDefaultState = function setDefaultState(obj) {
 	        _Component.prototype.setDefaultState.call(this, _extend2['default']({}, {
 	            _reload: false,
@@ -8797,7 +8801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //搜索 数据查询方式 ajax或者直接查询或者缓存中获取
 
 	    Suggestion.prototype.search = function search(key) {
-	        var data, _this, str, reg;
+	        var data, _this, str, reg, newData;
 
 	        return regeneratorRuntime.async(function search$(context$2$0) {
 	            while (1) switch (context$2$0.prev = context$2$0.next) {
@@ -8825,41 +8829,42 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	                        data = str ? str : []; //this._cache[key];
 	                    }
-
 	                    this.setCache(key, data);
 
 	                case 8:
-	                    //重新绑定data渲染数据
+	                    newData = [];
+
 	                    this.setState({
-	                        _data: data && data.length > 0 ? data : this.props.noResultTips ? [{
+	                        _data: newData = data && data.length > 0 ? data : this.props.noResultTips ? [{
 	                            key: this.props.noResultTips,
 	                            value: 'noResult'
 	                        }] : [],
 	                        _selectedIndex: -1
 	                    });
-
-	                    if (this.state._data.length > 0) {
+	                    if (newData.length > 0) {
 	                        this.show();
 	                    }
 
-	                    context$2$0.next = 15;
+	                    context$2$0.next = 16;
 	                    break;
 
-	                case 12:
-	                    context$2$0.prev = 12;
+	                case 13:
+	                    context$2$0.prev = 13;
 	                    context$2$0.t0 = context$2$0['catch'](1);
 	                    throw new Error(context$2$0.t0);
 
-	                case 15:
+	                case 16:
 	                case 'end':
 	                    return context$2$0.stop();
 	            }
-	        }, null, this, [[1, 12]]);
+	        }, null, this, [[1, 13]]);
 	    };
 
 	    Suggestion.prototype.getOptions = function getOptions() {
+	        var chElem = arguments.length <= 0 || arguments[0] === undefined ? this.props.children : arguments[0];
+
 	        var optionsList = [];
-	        _react2['default'].Children.map(this.props.children, function (item, i) {
+	        _react2['default'].Children.map(chElem, function (item, i) {
 	            var _item$props = item.props;
 	            var value = _item$props.value;
 	            var children = _item$props.children;
@@ -8910,6 +8915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var val = this.trim(event.target.value);
 	            if (val === '') {
 	                this.hide();
+	                clearTimeout(this.timeOutId);
 	                this.entryCallback();
 	                return;
 	            } else {
@@ -9100,13 +9106,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	///([^}]+"key":"[^"]*北京[^"]*".+?\})/gi
 	//let reg = new RegExp('(\{[^}]+"key":"[^"]*'+key+'[^"]*".+?\})','gi');
 
+	//重新绑定data渲染数据
+
 /***/ },
 /* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Created by panqianjin on 15/11/12.
-	 */
 	'use strict';
 
 	exports.__esModule = true;

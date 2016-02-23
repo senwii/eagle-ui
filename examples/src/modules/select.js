@@ -1,6 +1,4 @@
-/**
- * Created by panqianjin on 15/11/4.
- */
+
 import React,{Component,PropTypes}  from 'react';
 import Select from '../../../src/Select.js';
 import Button from '../../../src/Button.js';
@@ -17,8 +15,13 @@ let Demo= class Demo extends Component{
     constructor(props, context) {
         super(props, context);
         this.state = {
-            input: this.props.input
+            input: this.props.input,
+            options:[]
         }
+
+        setTimeout(()=>{
+            this.setState({options:this.renderC()})
+        }.bind(this) );
     }
 
     getValue(value,key,type){
@@ -30,6 +33,25 @@ let Demo= class Demo extends Component{
         document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>"key":<span class="color-error">${key}</span></b>,<b>"value":<span class="color-error">${value}</span></b>`;
     }
 
+    renderC(){
+
+        return [
+
+            <option value='bei' key="bei">北京</option>,
+            <option value='shang' key="上海">上海</option>,
+            <option value='nan' key="南京">南京</option>,
+            <option value='3' key="杭州">杭州</option>,
+            <option value='4' key="杭州西">杭州西</option>,
+            <option value='5' key="杭州北站">杭州北站</option>,
+            <option value='6' key="广州">广州</option>,
+            <option value='7' key="深圳">深圳</option>,
+            <option value='8' key="澳门">澳门</option>,
+            <option value='10' key="太原">太原</option>,
+            <option value='11' key="台湾">台湾</option>,
+            <option value='12' key="香港">香港</option>
+        ];
+    }
+
     render(){
         return (
             <Grid fluid>
@@ -38,18 +60,7 @@ let Demo= class Demo extends Component{
                         <Row>
                             <Col sm={4} end>
                                 <Select defaultChecked="上海" getValueCallback={::this.getValue} placeholder="请选择" >
-                                    <option value='bei'>北京</option>
-                                    <option value='shang'>上海</option>
-                                    <option value='nan'>南京</option>
-                                    <option value='3'>杭州</option>
-                                    <option value='4'>杭州西</option>
-                                    <option value='5'>杭州北站</option>
-                                    <option value='6'>广州</option>
-                                    <option value='7'>深圳</option>
-                                    <option value='8'>澳门</option>
-                                    <option value='10'>太原</option>
-                                    <option value='11'>台湾</option>
-                                    <option value='12'>香港</option>
+                                    {this.state.options}
                                 </Select>
                             </Col>
                         </Row>

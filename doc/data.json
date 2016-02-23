@@ -1245,7 +1245,7 @@
             "module": "form",
             "namespace": "",
             "file": "lib/Select.js",
-            "line": 48,
+            "line": 45,
             "description": "下拉选择框组件。\n有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item",
             "is_constructor": 1,
             "since": "0.1.0",
@@ -3038,14 +3038,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 1,
-            "description": "Created by panqianjin on 15/11/12.",
-            "class": "Select",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Select.js",
-            "line": 65,
+            "line": 62,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "property",
             "name": "callback",
@@ -3056,7 +3049,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 72,
+            "line": 69,
             "description": "样式类名前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -3841,7 +3834,7 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Select.js:48"
+            "line": " lib/Select.js:45"
         },
         {
             "message": "unknown tag: demo",
@@ -4010,10 +4003,6 @@
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
             "line": " lib/RadioGroup.js:1"
-        },
-        {
-            "message": "Missing item type\nCreated by panqianjin on 15/11/12.",
-            "line": " lib/Select.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",

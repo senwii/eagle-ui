@@ -1,6 +1,4 @@
-/**
- * Created by panqianjin on 15/11/12.
- */
+
 import React, {PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
