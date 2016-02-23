@@ -3,8 +3,8 @@
  * 相关配置文件请写在configStaticFile变量
  */
 var configStaticFile= {
-    "css":["./dianping-theme.css"],
-    "js":["http://uedfamily.com/documents/eagle-ui/examples/js/examples.js","./dianping-theme.js"]
+    "css":["../docTheme/dianping-theme.css"],
+    "js":["http://uedfamily.com/documents/eagle-ui/examples/js/examples.js","../docTheme/dianping-theme.js"]
 };
 
 var addLink = function(paths){

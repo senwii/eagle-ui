@@ -37,7 +37,7 @@ var CopyFile = function(){
     console.log(sourceFilePath.toString());
     var basePath=  path.join(__dirname.replace('docTheme',''));
     var destRoot = path.join(__dirname.replace('docTheme','doc'));
-    var destDir = destRoot+'/docTheme';
+    var destDir = destRoot+'/docTheme/';
     fs.mkdir(destRoot+'/docTheme',function(err){
         if (err) {
             return console.error(err);
@@ -48,7 +48,7 @@ var CopyFile = function(){
     for(var i=0;i<fileArr.length;i++){
         (function(file){
             var readStream = fs.createReadStream(file);
-            var writeStream = fs.createWriteStream(destDir);
+            var writeStream = fs.createWriteStream(destDir+path.basename(file));
             readStream.pipe(writeStream);
             console.log("移动完成")
         })(path.join(basePath,'docTheme',fileArr[i]));
