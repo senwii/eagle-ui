@@ -18,7 +18,7 @@ var addLink = function(paths){
 };
 var addScript = function(paths){
     var script=document.createElement('script');
-    script.async=true;
+    //script.async=true;
     setTimeout(function(){
         for(var i =0;i<paths.length;i++){
             script.src=paths[i];
