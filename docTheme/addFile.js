@@ -9,7 +9,7 @@ var path = require('path');
  */
 var readFileFunc = function(source,callback,addSource){
      fs.readFile(source, function (err, data) {
-        console.log('fuck')
+         console.log('读取自定义配置成功')
         if (err) {
             return console.error(err);
         }
