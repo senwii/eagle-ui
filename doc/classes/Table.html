@@ -442,13 +442,6 @@
                         
                     </li>
                 
-                    <li class="index-item method">
-                        <a href="#" data-tabid="#method" data-anchor="#method_render" data-tablink="render">render</a>
-
-                        
-                        
-                    </li>
-                
             </ul>
             
         </div>
@@ -457,13 +450,6 @@
             <h3>Properties</h3>
             
             <ul class="index-list properties extends">
-                
-                    <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_data" data-tablink="data">data</a>
-
-                        
-                        
-                    </li>
                 
                     <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_data" data-tablink="data">data</a>
@@ -582,6 +568,155 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;table&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Table , Tr ,Td ,Th ,Column,Row,Col} from &#39;eagle-ui.js&#39;;
+var tableData=[
+    {name: &#39;Rylan&#39;, email: &#39;Angelita_Weimann42@gmail.com&#39;,score:100},
+    {name: &#39;Amelia&#39;, email: &#39;Dexter.Trantow57@hotmail.com&#39;,score:200},
+    {name: &#39;Estevan&#39;, email: &#39;Aimee7@hotmail.com&#39;,score:106},
+    {name: &#39;Florence&#39;, email: &#39;Jarrod.Bernier13@yahoo.com&#39;,score:233},
+    {name: &#39;Tressa&#39;, email: &#39;Yadira1@hotmail.com&#39;,score:900},
+];
+export default class TableCls extends Component{
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;Table data={tableData}&gt;
+                            &lt;Column
+                                header="Name"
+                                field=&#39;name&#39;
+                                cell={
+                                    &lt;Td data={tableData}&gt;&lt;/Td&gt;
+                                }
+                                /&gt;
+                            &lt;Column
+                                header={&lt;span style={{color:"red"}}&gt;Email&lt;/span&gt;}
+                                field=&#39;email&#39;
+                                cell={
+                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
+                                }
+                                /&gt;
+                            &lt;Column
+                                header={&lt;span style={{color:"green"}}&gt;Score&lt;/span&gt;}
+                                field=&#39;score&#39;
+                                cell={
+                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
+                                }
+                                /&gt;
+                        &lt;/Table&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;Table&gt;
+                            &lt;thead&gt;
+                            &lt;Tr&gt;
+                                &lt;Th&gt;数据类型&lt;/Th&gt;
+                                &lt;Th&gt;数据项&lt;/Th&gt;
+                                &lt;Th&gt;昨日&lt;/Th&gt;
+                                &lt;Th&gt;本月&lt;/Th&gt;
+                                &lt;Th&gt;上月&lt;/Th&gt;
+                                &lt;Th&gt;本月城市排名&lt;/Th&gt;
+                            &lt;/Tr&gt;
+                            &lt;/thead&gt;
+                            &lt;tbody&gt;
+                            &lt;Tr&gt;
+                                &lt;Td rowSpan="4"&gt;过程指标&lt;/Td&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td arrow-up&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr split&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td rowSpan="4"&gt;业绩&lt;/Td&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;/tbody&gt;
+                        &lt;/Table&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>
@@ -631,79 +766,7 @@
             
         
         
-        <a href="../files/lib_Table_Table.js.html#l117"><code>lib&#x2F;Table&#x2F;Table.js:117</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"></div>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">ReactElement</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_render" class="method item">
-    <h3 class="name">render</h3>
-    <code>
-    render
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">ReactElement</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_tables_Table.js.html#l117"><code>lib&#x2F;tables&#x2F;Table.js:117</code></a>
+        <a href="../files/lib_tables_Table.js.html#l116"><code>lib&#x2F;tables&#x2F;Table.js:116</code></a>
         
         </p>
 
@@ -768,52 +831,7 @@
             
         
         
-        <a href="../files/lib_Table_Table.js.html#l58"><code>lib&#x2F;Table&#x2F;Table.js:58</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>用来渲染表格的数组，可选参数，如果传入data，会更具table下的column标签绑定的属性进行渲染</p>
-</div>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_data" class="property item">
-    <h3 class="name"><code>data</code></h3>
-    <span class="type">Array</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_tables_Table.js.html#l58"><code>lib&#x2F;tables&#x2F;Table.js:58</code></a>
+        <a href="../files/lib_tables_Table.js.html#l57"><code>lib&#x2F;tables&#x2F;Table.js:57</code></a>
         
         </p>
 

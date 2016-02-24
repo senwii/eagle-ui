@@ -1,3 +1,5 @@
 {
-  "filePath":["dianping-theme.css","dianping-theme.js"]
+  "js":["src/dianping-theme.js"],
+  "css":["src/dianping-theme.css"],
+  "external":["http://uedfamily.com/documents/eagle-ui/examples/js/examples.js"]
 }

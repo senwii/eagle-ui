@@ -8,11 +8,10 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * @constructor
  * @module table
  * @extends Component
- * @requires React classnames
  * @since 0.1.0
- * @demo table.js {js}
+ * @demo docDemo/module/table.html {UI展示}
+ * @demo docDemo/table.js {源码}
  * @show true
- * @author bo.an@dianping.com
  * */
 @ClassNameMixin
 export default class Th extends Component{

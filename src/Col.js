@@ -8,7 +8,10 @@ import Component from './utils/Component';
  * @module grid
  * @extends Component
  * @constructor
- * @since 0.1.0
+ * @since 0.1.
+ * @demo docDemo/module/grid.html {UI展示}
+ * @demo docDemo/grid.js {源码}
+ * @show true
  * */
 export default class Col extends Component{
     static propTypes = {

@@ -2,10 +2,6 @@
  * Created by slashhuang on 16/2/23.
  * 相关配置文件请写在configStaticFile变量
  */
-var configStaticFile= {
-    "css":["docTheme/dianping-theme.css"],
-    "js":["docTheme/dianping-theme.js","http://uedfamily.com/documents/eagle-ui/examples/js/examples.js"]
-};
 var filePaths = function(configStaticFile){
     var href = location.href;
     //根据不同的页面加载正确的路径
@@ -16,7 +12,12 @@ var filePaths = function(configStaticFile){
     var newPathObj={};
     for(var key in configStaticFile){
         newPathObj[key] = configStaticFile[key].reduce(function(pre,ele){
-                return pre.concat(ele.indexOf('http')>-1?ele:href+ele);
+            if(ele.indexOf('http')>-1){
+                return pre.concat(ele);
+            }else{
+                var splitArr = ele.split('/');
+                return pre.concat(href+'/docTheme/'+splitArr[splitArr.length-1]);
+            }
         },[])
     }
     return newPathObj;
@@ -29,12 +30,11 @@ var addLink = function(paths){
 
 };
 var addScript = function(paths){
-    debugger;
     var script=document.createElement('script');
-    script.async=true;
     script.src=paths;
     document.head.appendChild(script)
 };
+//根据configStaticFile对象，按照类型加载脚本或者css
 (function(){
     var filePath = filePaths(configStaticFile);
     for(var key in filePath ){
@@ -49,6 +49,12 @@ var addScript = function(paths){
                var cssArr =filePath['css'];
                for(var i=0;i<cssArr.length;i++){
                    addLink(cssArr[i]);
+               }
+               break;
+           case 'external':
+               var externalArr =filePath['external'];
+               for(var i=0;i<externalArr.length;i++){
+                   addScript(externalArr[i]);
                }
                break;
            default:break;

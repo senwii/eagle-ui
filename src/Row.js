@@ -10,6 +10,9 @@ import Component from './utils/Component';
  * @extends Component
  * @constructor
  * @since 0.1.0
+ * @demo docDemo/module/grid.html {UI展示}
+ * @demo docDemo/grid.js {源码}
+ * @show true
  * */
 export default class Row extends Component{
     static propTypes={

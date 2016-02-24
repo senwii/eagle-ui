@@ -12,14 +12,15 @@ import Grid from './Grid.js';
 import Search from './sug/Search';
 
 /**
- * 下拉选择框组件。
- * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
- * @Class Select
- * @Module form
+ * 下拉选择框组件<br>有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
+ * @class Select
+ * @module form
  * @constructor
  * @extends Component
  * @since 0.1.0
- * @demo select.js {js}
+ * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/select.js {源码}
+ * @show true
  * */
 export default class Select extends Search {
     static defaultProps = {

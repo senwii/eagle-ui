@@ -30,18 +30,8 @@ import Component from './utils/Component.js';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @example
- *          <html>
- *              <div></div>
- *              <div id='root'></div>
- *          </html>
- *          <script>
- *              var script=document.createElement('script');
- *              script.async=true;
- *              script.src='http://uedfamily.com/documents/eagle-ui/examples/js/examples.js';
- *              setTimeout(function(){document.body.appendChild(script)},0);
- *              script.onload = function(e){location.hash='input'};
- *         </script>
+ * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/checkboxGroup.js {源码}
  * @show true
  * */
 export default class CheckboxGroup extends Component{

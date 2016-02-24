@@ -656,6 +656,136 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;input&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui.js&#39;;
+let Demo = class Demo extends Component{
+    constructor(props,context){
+        super(props,context);
+        this.rules = {
+            calendar:{
+                required:true
+            },
+            userName:{
+                required:true
+            },
+            checkbox:{
+                required:true,
+                //自定义规则
+                isValueToNumber:{
+                    text:&#39;value值不是字符串&#39;,
+                    rule:function(value){
+                        console.dir(value);
+                        return true;
+                    }
+                }
+            },
+            date:{
+                date:true
+            },
+            number:{
+                number:true,
+                digits:true
+            },
+            equalTo:{
+                digits:true,
+                equalTo:{
+                    params:&#39;[name="number"]&#39;
+                }
+            },
+            minlength:{
+                minlength:{
+                    params:10
+                },
+                maxlength:{
+                    params:15
+                }
+            },
+            email:{
+                email:true
+            }
+        };
+        this.state={
+            showTab:0,
+            update:&#39;uid&#39;,
+            show:false
+        };
+    }
+    submit(vals){
+        alert(&#39;验证成功&#39;+JSON.stringify(vals));
+    }
+    render(){
+        return (
+            &lt;Panel&gt;
+                &lt;Dialog id="demo2" egSize="sm" title="表单验证"&gt;
+                    &lt;Grid&gt;
+                        &lt;ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入姓名"  name="userName" data-validate /&gt;
+
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入有效的号码" name="number" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入有效的号码" name="equalTo" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入您的email" name="email" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Button radius egSize="xs" id="ssubmit" &gt;点我提交表单&lt;/Button&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/ValidatorPanel&gt;
+                    &lt;/Grid&gt;
+                &lt;/Dialog&gt;
+            &lt;/Panel&gt;
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>
@@ -692,7 +822,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l86"><code>lib&#x2F;ValidatorPanel.js:86</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l87"><code>lib&#x2F;ValidatorPanel.js:87</code></a>
         
         </p>
 
@@ -740,7 +870,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l179"><code>lib&#x2F;ValidatorPanel.js:179</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l180"><code>lib&#x2F;ValidatorPanel.js:180</code></a>
         
         </p>
 
@@ -788,7 +918,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l75"><code>lib&#x2F;ValidatorPanel.js:75</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l76"><code>lib&#x2F;ValidatorPanel.js:76</code></a>
         
         </p>
 
@@ -833,7 +963,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l100"><code>lib&#x2F;ValidatorPanel.js:100</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l101"><code>lib&#x2F;ValidatorPanel.js:101</code></a>
         
         </p>
 
@@ -894,7 +1024,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l173"><code>lib&#x2F;ValidatorPanel.js:173</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l174"><code>lib&#x2F;ValidatorPanel.js:174</code></a>
         
         </p>
 
@@ -939,7 +1069,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l166"><code>lib&#x2F;ValidatorPanel.js:166</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l167"><code>lib&#x2F;ValidatorPanel.js:167</code></a>
         
         </p>
 
@@ -987,7 +1117,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l137"><code>lib&#x2F;ValidatorPanel.js:137</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l138"><code>lib&#x2F;ValidatorPanel.js:138</code></a>
         
         </p>
 
@@ -1032,7 +1162,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l160"><code>lib&#x2F;ValidatorPanel.js:160</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l161"><code>lib&#x2F;ValidatorPanel.js:161</code></a>
         
         </p>
 
@@ -1077,7 +1207,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l153"><code>lib&#x2F;ValidatorPanel.js:153</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l154"><code>lib&#x2F;ValidatorPanel.js:154</code></a>
         
         </p>
 
@@ -1125,7 +1255,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l93"><code>lib&#x2F;ValidatorPanel.js:93</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l94"><code>lib&#x2F;ValidatorPanel.js:94</code></a>
         
         </p>
 
@@ -1173,7 +1303,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l186"><code>lib&#x2F;ValidatorPanel.js:186</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l187"><code>lib&#x2F;ValidatorPanel.js:187</code></a>
         
         </p>
 
@@ -1221,7 +1351,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l145"><code>lib&#x2F;ValidatorPanel.js:145</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l146"><code>lib&#x2F;ValidatorPanel.js:146</code></a>
         
         </p>
 
@@ -1266,7 +1396,7 @@
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l69"><code>lib&#x2F;ValidatorPanel.js:69</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l70"><code>lib&#x2F;ValidatorPanel.js:70</code></a>
         
         </p>
 

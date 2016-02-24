@@ -4,6 +4,8 @@
  */
 var fs =require('fs');
 var path = require('path');
+//里面filepath对应的数组路径名称为相应静态资源，会放入doc下的docTheme文件夹
+var sourceFilePath = require('./config.json');
 /**
  * 读取文件
  */
@@ -30,11 +32,9 @@ var writeFiles = function (originData,addSource) {
         });
 };
 /**
- * 复制文件至doc文件夹下的docTheme
+ * 复制js及css至doc文件夹下的docTheme
  */
 var CopyFile = function(){
-    var sourceFilePath = require('./config.json');
-    console.log(sourceFilePath.toString());
     var basePath=  path.join(__dirname.replace('docTheme',''));
     var destRoot = path.join(__dirname.replace('docTheme','doc'));
     var destDir = destRoot+'/docTheme/';
@@ -44,22 +44,23 @@ var CopyFile = function(){
         }
         console.log("目录docTheme创建成功。");
     });
-    var fileArr = sourceFilePath['filePath'];
+    console.log('复制外部文件css和js成功');
+    var fileArr = [].concat(sourceFilePath['js'],sourceFilePath['css']);
     for(var i=0;i<fileArr.length;i++){
         (function(file){
             var readStream = fs.createReadStream(file);
             var writeStream = fs.createWriteStream(destDir+path.basename(file));
             readStream.pipe(writeStream);
-            console.log("移动完成")
         })(path.join(basePath,'docTheme',fileArr[i]));
     }
 };
-//在doc目录下创建docTheme目录
+//复制静态资源
 CopyFile();
-//读取doc目录的assets/js/doc.js中的内容，然后添加外部的代码在doc.js中
+//添加自定义代码至doc目录的assets/js/doc.js中
 var filePath = './doc/assets/js/doc.js';
+var addConfig='window["configStaticFile"]='+fs.readFileSync('docTheme/config.json').toString();
 var addSource=fs.readFileSync('docTheme/lib/source.js').toString();
-readFileFunc(filePath,writeFiles,addSource);
+readFileFunc(filePath,writeFiles,addConfig+';\n'+addSource);
 
 
 

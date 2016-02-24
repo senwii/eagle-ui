@@ -15,7 +15,8 @@ import Component from './utils/Component';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo input.js {js}
+ * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/RadioGroup.js {源码}
  * @show true
  * */
 export default class RadioGroup extends Component{

@@ -598,6 +598,85 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;input&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Input,RadioGroup,Select,FormGroup,CheckboxGroup,Grid,Row,Col,PanelContent,Panel} from &#39;eagle-ui.js&#39;;
+let demo = class extends Component{
+    constructor(props, context) {
+        super(props, context);
+    };
+    getValueCallback(val){
+        alert(val);
+        console.dir(val);
+    }
+
+    getValue(val){
+        alert(val);
+    }
+    change(e){
+        alert(e.target.value);
+    }
+    render(){
+        return (
+            &lt;Row&gt;
+                &lt;Col sm={12}&gt;&lt;Input name="test" id="test" placeholder="请输入" icon="calendar"  /&gt;&lt;/Col&gt;
+                &lt;Col sm={12}&gt;
+                    &lt;CheckboxGroup&gt;
+                        &lt;Input  type="checkbox" checked  disabled={true}  /&gt;
+                        &lt;Input  type="checkbox"  disabled={true}   /&gt;
+                        &lt;Input  type="checkbox" getValueCallback={::this.getValue}  value="ccc"  /&gt;
+                        &lt;Input  type="checkbox" checked onChange={::this.change} value="bbb"  /&gt;
+                    &lt;/CheckboxGroup&gt;
+                &lt;/Col&gt;
+                &lt;Col sm={12}&gt;
+                    &lt;Col sm={6}&gt;
+                        &lt;RadioGroup defaultChecked="石榴" name="radio-test"&gt;
+                            &lt;Input  type="radio"  label="石榴" value="石榴" /&gt;
+                            &lt;Input  type="radio"  label="橘子" value="橘子"  /&gt;
+                            &lt;Input  type="radio"  label="苹果" value="苹果" /&gt;
+                        &lt;/RadioGroup&gt;
+                    &lt;/Col&gt;
+                    &lt;Col sm={6}&gt;
+                        &lt;RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={this.getValueCallback}&gt;
+                            &lt;Input  type="radio"  label="大白菜" value="大白菜" /&gt;
+                            &lt;Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  /&gt;
+                            &lt;Input  type="radio"  label="猪肉" value="猪肉" /&gt;
+                            &lt;Input  type="radio"  label="牛肉" value="牛肉" /&gt;
+                            &lt;Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} /&gt;
+                        &lt;/RadioGroup&gt;
+                    &lt;/Col&gt;
+                &lt;/Col&gt;
+            &lt;/Row&gt;)
+    }
+};</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>
@@ -634,7 +713,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l61"><code>lib&#x2F;Input.js:61</code></a>
+        <a href="../files/lib_Input.js.html#l62"><code>lib&#x2F;Input.js:62</code></a>
         
         </p>
 
@@ -679,7 +758,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l73"><code>lib&#x2F;Input.js:73</code></a>
+        <a href="../files/lib_Input.js.html#l74"><code>lib&#x2F;Input.js:74</code></a>
         
         </p>
 
@@ -724,7 +803,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l84"><code>lib&#x2F;Input.js:84</code></a>
+        <a href="../files/lib_Input.js.html#l85"><code>lib&#x2F;Input.js:85</code></a>
         
         </p>
 
@@ -769,7 +848,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l90"><code>lib&#x2F;Input.js:90</code></a>
+        <a href="../files/lib_Input.js.html#l91"><code>lib&#x2F;Input.js:91</code></a>
         
         </p>
 
@@ -814,7 +893,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l78"><code>lib&#x2F;Input.js:78</code></a>
+        <a href="../files/lib_Input.js.html#l79"><code>lib&#x2F;Input.js:79</code></a>
         
         </p>
 
@@ -859,7 +938,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l67"><code>lib&#x2F;Input.js:67</code></a>
+        <a href="../files/lib_Input.js.html#l68"><code>lib&#x2F;Input.js:68</code></a>
         
         </p>
 
@@ -904,7 +983,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l55"><code>lib&#x2F;Input.js:55</code></a>
+        <a href="../files/lib_Input.js.html#l56"><code>lib&#x2F;Input.js:56</code></a>
         
         </p>
 

@@ -442,13 +442,6 @@
                         
                     </li>
                 
-                    <li class="index-item method">
-                        <a href="#" data-tabid="#method" data-anchor="#method_render" data-tablink="render">render</a>
-
-                        
-                        
-                    </li>
-                
             </ul>
             
         </div>
@@ -562,6 +555,144 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;panel&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Row,Col,Grid,
+    Panel,PanelHeader,PanelFooter,PanelContent,
+    Input,Label,LabelGroup,
+    FormGroup,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui.js&#39;;
+let Demo = class Demo extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            &lt;Grid fluid&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;h3&gt;panel嵌套&lt;small&gt;通过设置panel的heading属性达到此效果&lt;/small&gt;&lt;/h3&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;Panel heading="我是标题"&gt;
+                            &lt;PanelContent&gt;
+                                &lt;Row&gt;
+                                    &lt;Col&gt;
+                                        &lt;FormGroup&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                                &lt;Col sm={10}&gt;
+                                                    &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                                        &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                                        &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                                    &lt;/RadioGroup&gt;
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
+                                                &lt;Col sm={10} layer&gt;
+                                                    &lt;Row style={{margin:0}}&gt;
+                                                        &lt;Col sm={4} end&gt;
+                                                            &lt;Select placeholder="请选择城市" &gt;
+                                                                &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
+                                                                &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
+                                                                &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
+                                                            &lt;/Select&gt;
+                                                        &lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                        &lt;/FormGroup&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                            &lt;/PanelContent&gt;
+                        &lt;/Panel&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;Panel&gt;
+                            &lt;PanelHeader&gt;另一种形式的嵌套&lt;/PanelHeader&gt;
+                            &lt;PanelContent&gt;
+                                &lt;Panel&gt;
+                                    &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                    &lt;PanelContent&gt;
+                                        &lt;Row&gt;
+                                            &lt;Col&gt;
+                                                我是内容区
+                                            &lt;/Col&gt;
+                                        &lt;/Row&gt;
+                                        &lt;Row&gt;
+                                            &lt;Col&gt;
+                                                &lt;Panel&gt;
+                                                    &lt;PanelHeader&gt;另一种形式的嵌套3&lt;/PanelHeader&gt;
+                                                    &lt;PanelContent&gt;
+                                                        &lt;Row&gt;
+                                                            &lt;Col&gt;
+                                                                我是内容区
+                                                            &lt;/Col&gt;
+                                                        &lt;/Row&gt;
+                                                    &lt;/PanelContent&gt;
+                                                &lt;/Panel&gt;
+                                            &lt;/Col&gt;
+                                        &lt;/Row&gt;
+                                    &lt;/PanelContent&gt;
+                                &lt;/Panel&gt;
+                                &lt;Panel&gt;
+                                    &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                    &lt;PanelContent&gt;
+                                        &lt;Row&gt;
+                                            &lt;Col&gt;
+                                                我是内容区
+                                            &lt;/Col&gt;
+                                        &lt;/Row&gt;
+                                    &lt;/PanelContent&gt;
+                                &lt;/Panel&gt;
+                            &lt;/PanelContent&gt;
+                        &lt;/Panel&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+            &lt;/Grid&gt;
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>
@@ -611,79 +742,7 @@
             
         
         
-        <a href="../files/lib_Panel_PanelHeader.js.html#l47"><code>lib&#x2F;Panel&#x2F;PanelHeader.js:47</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"></div>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">ReactElement</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_render" class="method item">
-    <h3 class="name">render</h3>
-    <code>
-    render
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">ReactElement</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_panels_PanelHeader.js.html#l47"><code>lib&#x2F;panels&#x2F;PanelHeader.js:47</code></a>
+        <a href="../files/lib_panels_PanelHeader.js.html#l46"><code>lib&#x2F;panels&#x2F;PanelHeader.js:46</code></a>
         
         </p>
 

@@ -24499,7 +24499,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo input.js{js}
+	 * @demo docDemo/module/input.html {UI展示}
+	 * @demo docDemo/input.js {源码}
 	 * @show true
 	 * */
 
@@ -31074,6 +31075,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
+	 * @demo docDemo/module/grid.html {UI展示}
+	 * @demo docDemo/grid.js {源码}
+	 * @show true
 	 * */
 
 	var Row = (function (_Component) {
@@ -31163,7 +31167,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module grid
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
+	 * @since 0.1.
+	 * @demo docDemo/module/grid.html {UI展示}
+	 * @demo docDemo/grid.js {源码}
+	 * @show true
 	 * */
 
 	var Col = (function (_Component) {
@@ -31268,6 +31275,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
+	 * @demo docDemo/module/grid.html {UI展示}
+	 * @demo docDemo/grid.js {源码}
+	 * @show true
 	 * */
 
 	var Grid = (function (_Component) {
@@ -32823,7 +32833,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo button.js {js}
+	 * @demo docDemo/module/button.html {UI展示}
+	 * @demo docDemo/button.js {源码}
 	 * @show true
 	 * */
 
@@ -32950,7 +32961,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo button.js {js}
+	 * @demo docDemo/module/button.html {UI展示}
+	 * @demo docDemo/button.js {源码}
 	 * @show true
 	 * */
 
@@ -34219,18 +34231,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @example
-	 *          <html>
-	 *              <div></div>
-	 *              <div id='root'></div>
-	 *          </html>
-	 *          <script>
-	 *              var script=document.createElement('script');
-	 *              script.async=true;
-	 *              script.src='http://uedfamily.com/documents/eagle-ui/examples/js/examples.js';
-	 *              setTimeout(function(){document.body.appendChild(script)},0);
-	 *              script.onload = function(e){location.hash='input'};
-	 *         </script>
+	 * @demo docDemo/module/input.html {UI展示}
+	 * @demo docDemo/checkboxGroup.js {源码}
 	 * @show true
 	 * */
 
@@ -34317,7 +34319,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo input.js {js}
+	 * @demo docDemo/module/input.html {UI展示}
+	 * @demo docDemo/RadioGroup.js {源码}
 	 * @show true
 	 * */
 
@@ -35308,14 +35311,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _sugSearch2 = _interopRequireDefault(_sugSearch);
 
 	/**
-	 * 下拉选择框组件。
-	 * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
-	 * @Class Select
-	 * @Module form
+	 * 下拉选择框组件<br>有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
+	 * @class Select
+	 * @module form
 	 * @constructor
 	 * @extends Component
 	 * @since 0.1.0
-	 * @demo select.js {js}
+	 * @demo docDemo/module/input.html {UI展示}
+	 * @demo docDemo/select.js {源码}
+	 * @show true
 	 * */
 
 	var Select = (function (_Search) {
@@ -37999,13 +38003,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Panel组件
 	 * @class Panel
-	 * @constructor
 	 * @module panel
 	 * @extends Component
-	 * @requires React classnames
+	 * @constructor
 	 * @since 0.1.0
-	 * @demo panel.js {js}
-	 * @author bo.an@dianping.com
+	 * @demo docDemo/module/panel.html {UI展示}
+	 * @demo docDemo/panel.js {源码}
+	 * @show true
 	 * */
 
 	var Panel = (function (_Component) {
@@ -38108,14 +38112,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * PanelHeader组件
 	 * @class PanelHeader
-	 * @constructor
 	 * @module panel
+	 * @constructor
 	 * @extends Component
-	 * @requires React classnames
 	 * @since 0.1.0
-	 * @demo src/panel.js {js}
-	 * @demo panel.html {html}
-	 * @author bo.an@dianping.com
+	 * @demo docDemo/module/panel.html {UI展示}
+	 * @demo docDemo/panel.js {源码}
+	 * @show true
 	 * */
 
 	var PanelHeader = (function (_Component) {
@@ -38195,10 +38198,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module panel
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo panel.js {js}
-	 * @author bo.an@dianping.com
+	 * @demo docDemo/module/panel.html {UI展示}
+	 * @demo docDemo/panel.js {源码}
+	 * @show true
 	 * */
 
 	var PanelContent = (function (_Component) {
@@ -38286,10 +38288,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module panel
 	 * @extends Component
-	 * @requires React classnames
 	 * @since 0.1.0
-	 * @demo panel.js {js}
-	 * @author bo.an@dianping.com
+	 * @demo docDemo/module/panel.html {UI展示}
+	 * @demo docDemo/panel.js {源码}
+	 * @show true
 	 * */
 
 	var PanelFooter = (function (_Component) {
@@ -38563,7 +38565,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo validate.js {js}
+	 * @demo docDemo/module/input.html {UI展示}
+	 * @demo docDemo/validate.js {源码}
 	 * @show true
 	 * */
 
@@ -39322,11 +39325,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table
 	 * @extends Component
-	 * @requires React classnames
 	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo docDemo/module/table.html {UI展示}
+	 * @demo docDemo/table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Table = (function (_Component) {
@@ -39497,11 +39499,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table
 	 * @extends Component
-	 * @requires React classnames
 	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo docDemo/module/table.html {UI展示}
+	 * @demo docDemo/table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Th = (function (_Component) {
@@ -39600,9 +39601,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @requires React classnames
 	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo docDemo/module/table.html {UI展示}
+	 * @demo docDemo/table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Td = (function (_Component) {
@@ -39682,9 +39683,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @requires React classnames
 	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo docDemo/module/table.html {UI展示}
+	 * @demo docDemo/table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Tr = (function (_Component) {
@@ -42626,10 +42627,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Demo.prototype.getValue = function getValue(val) {
-	        console.dir(val);
+	        alert(val);
 	    };
 
 	    Demo.prototype.change = function change(e) {
+	        alert(e.target.value);
 	        console.dir(e.target.value);
 	    };
 
@@ -45033,14 +45035,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 表格组件
 	 * @class Th
-	 * @constructor
 	 * @module table
-	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @constructor
+	 * @content {string} type 内容
+	 * @demo docDemo/module/table.html {UI展示}
+	 * @demo docDemo/table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Column = (function (_Component) {

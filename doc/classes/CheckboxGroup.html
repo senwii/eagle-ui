@@ -546,20 +546,43 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>     &lt;html&gt;
-         &lt;div&gt;&lt;/div&gt;
-         &lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
-     &lt;/html&gt;
-     &lt;script&gt;
-         var script=document.createElement(&#39;script&#39;);
-         script.async=true;
-         script.src=&#39;http://uedfamily.com/documents/eagle-ui/examples/js/examples.js&#39;;
-         setTimeout(function(){document.body.appendChild(script)},0);
-         script.onload = function(e){location.hash=&#39;input&#39;};
-    &lt;/script&gt;</code></pre>
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;input&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {CheckboxGroup,Grid,Row,Col,PanelContent,Panel,RadioGroup,Input,Select,FormGroup,} from &#39;eagle-ui.js&#39;;
+let demo = class extends Component{
+    getValue(val){
+        alert(val);
+    }
+    change(e){
+        alert(e.target.value);
+    }
+    render(){
+        return (
+            &lt;CheckboxGroup&gt;
+            &lt;Input  type="checkbox" checked  disabled={true}  /&gt;
+            &lt;Input  type="checkbox"  disabled={true}   /&gt;
+            &lt;Input  type="checkbox" getValueCallback={::this.getValue}  value="ccc"  /&gt;
+            &lt;Input  type="checkbox" checked onChange={::this.change} value="bbb"  /&gt;
+            &lt;/CheckboxGroup&gt;)
+    }
+};</code></pre>
 </div>
             </div>
 

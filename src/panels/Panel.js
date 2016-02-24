@@ -6,13 +6,13 @@ import Component from '../utils/Component';
 /**
  * Panel组件
  * @class Panel
- * @constructor
  * @module panel
  * @extends Component
- * @requires React classnames
+ * @constructor
  * @since 0.1.0
- * @demo panel.js {js}
- * @author bo.an@dianping.com
+ * @demo docDemo/module/panel.html {UI展示}
+ * @demo docDemo/panel.js {源码}
+ * @show true
  * */
 export default class Panel extends Component{
 

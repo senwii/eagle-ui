@@ -542,6 +542,63 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;Demo1&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Search,Select,Input,Grid,Row,Col,List,Item} from &#39;eagle-ui.js&#39;;
+let SearchSec= class SearchSec extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            &lt;Grid&gt;
+                &lt;Row&gt;
+                    &lt;Col sm={5}&gt;
+                        &lt;Select  callback={function(val){alert(val)}}&gt;
+                            &lt;item&gt; 北京&lt;/item&gt;
+                            &lt;item&gt; 上海&lt;/item&gt;
+                            &lt;item&gt; 南京&lt;/item&gt;
+                        &lt;/Select&gt;
+                    &lt;/Col&gt;
+                    &lt;Col sm={5}&gt;
+                        &lt;Search placeholder=&#39;shopId/门店名称&#39; callBack={function(val){alert(val)}}&gt;
+                        &lt;/Search&gt;
+                    &lt;/Col&gt;
+                    &lt;Col sm={2}&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+            &lt;/Grid&gt;
+        )
+    }
+}</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>

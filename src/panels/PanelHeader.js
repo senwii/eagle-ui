@@ -5,14 +5,13 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
 /**
  * PanelHeader组件
  * @class PanelHeader
- * @constructor
  * @module panel
+ * @constructor
  * @extends Component
- * @requires React classnames
  * @since 0.1.0
- * @demo src/panel.js {js}
- * @demo panel.html {html}
- * @author bo.an@dianping.com
+ * @demo docDemo/module/panel.html {UI展示}
+ * @demo docDemo/panel.js {源码}
+ * @show true
  * */
 @ClassNameMixin
 export default class PanelHeader extends Component{

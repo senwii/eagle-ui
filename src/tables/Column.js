@@ -5,14 +5,12 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
 /**
  * 表格组件
  * @class Th
- * @constructor
  * @module table
- * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo table.js {js}
+ * @constructor
+ * @content {string} type 内容
+ * @demo docDemo/module/table.html {UI展示}
+ * @demo docDemo/table.js {源码}
  * @show true
- * @author bo.an@dianping.com
  * */
 @ClassNameMixin
 export default class Column extends Component{

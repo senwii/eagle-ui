@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import Component from './utils/Component';
 import classnames from 'classnames';
 import Icon from './utils/Icon';
-
 /**
  * input表单组件<br />
  * 通过type可以生成radio、checkbox、input等元素标签
@@ -11,7 +10,8 @@ import Icon from './utils/Icon';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo input.js{js}
+ * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/input.js {源码}
  * @show true
  * */
 export default class Input extends Component{

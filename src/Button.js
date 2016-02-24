@@ -12,7 +12,8 @@ import classnames from 'classnames';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo button.js {js}
+ * @demo docDemo/module/button.html {UI展示}
+ * @demo docDemo/button.js {源码}
  * @show true
  * */
 

@@ -8,10 +8,10 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * @constructor
  * @module panel
  * @extends Component
- * @requires React classnames
  * @since 0.1.0
- * @demo panel.js {js}
- * @author bo.an@dianping.com
+ * @demo docDemo/module/panel.html {UI展示}
+ * @demo docDemo/panel.js {源码}
+ * @show true
  * */
 @ClassNameMixin
 export default class PanelFooter extends Component{

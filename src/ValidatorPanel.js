@@ -28,7 +28,8 @@ import ReactDom from 'react/lib/ReactDOM';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo validate.js {js}
+ * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/validate.js {源码}
  * @show true
  * */
 @ClassNameMixin
