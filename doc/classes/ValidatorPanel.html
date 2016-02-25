@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ValidatorPanel - eagle-ui</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="">
+             
+            <img alt="eagle-ui" src="../assets/css/logo.png" title="eagle-ui">
+            
+                eagle-ui
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="">主页</a>
+                    </li>
+                    
+                    <li><a href="/documents/eagle-ui/examples/">示例</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/form.html">form</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Input.html">Input</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/RadioGroup.html">RadioGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Select.html">Select</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/ValidatorPanel.html">ValidatorPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Button.html">Button</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/ButtonGroup.html">ButtonGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid.html">grid</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Row.html">Row</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Col.html">Col</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/panel.html">panel</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Panel.html">Panel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelContent.html">PanelContent</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelFooter.html">PanelFooter</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelHeader.html">PanelHeader</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/table.html">table</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Column.html">Column</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Table.html">Table</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tr.html">Tr</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/ui.html">ui</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Label.html">Label</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Calendar.html">Calendar</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/CalendarPanel.html">CalendarPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Crumb.html">Crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Dialog.html">Dialog</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/LabelGroup.html">LabelGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Paging.html">Paging</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <!--     <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+ -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>ValidatorPanel <small>Class</small></h1>
+</div>
+ <div class="well well-small sign-left3">
+      <div class="stdoc-code"><p>表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />
+<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->
+rules属性提供的规则有<br/></p>
+<pre>
+    required：是否必填
+    date：日期格式验证
+    number：是否是有效的号码
+    url：url规则验证
+    dateISO：日期ISO验证
+    digits：是否是数字
+    equalTo：值对比
+    minlength：最少输入
+    maxlength：最大输入
+    email：邮箱验证
+    rangelength：字符大小需在某个区间之内
+    min：输入的值需要大于等于此规则定义的值
+    max：输入的值需要小于等于此规则定义的值
+    range：一个区间取值范围
+</pre></div>
+ </div>
+
+<div class="well well-small sign-left2 container-fluid" id="classesItems">
+    <div class="row">
+    
+        <div class="index-section methods col-sm-4">
+            <h3>Methods</h3>
+            
+        </div>
+    
+        <div class="index-section properties col-sm-4">
+            <h3>Properties</h3>
+            
+            <ul class="index-list properties extends">
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_componentTag" data-tablink="componentTag">componentTag</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_direction" data-tablink="direction">direction</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_getValueCallback" data-tablink="getValueCallback">getValueCallback</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_message" data-tablink="message">message</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_rules" data-tablink="rules">rules</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_shake" data-tablink="shake">shake</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_submitElement" data-tablink="submitElement">submitElement</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_timeout" data-tablink="timeout">timeout</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_trigger" data-tablink="trigger">trigger</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_update" data-tablink="update">update</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_values" data-tablink="values">values</a>
+
+                        
+                        
+                    </li>
+                
+            </ul>
+            
+        </div>
+    
+        <div class="index-section events col-sm-4">
+            <h3>Events</h3>
+            
+            <ul class="index-list events extends">
+                
+                    <li class="index-item event">
+                        <a href="#" data-tabid="#event" data-anchor="#event_submitCallback" data-tablink="submitCallback">submitCallback</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item event">
+                        <a href="#" data-tabid="#event" data-anchor="#event_validateCallback" data-tablink="validateCallback">validateCallback</a>
+
+                        
+                        
+                    </li>
+                
+            </ul>
+             
+        </div>
+    </div>
+</div>
+
+<div>
+    <ul id="itemTab" class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+        
+        
+            <li><a data-toggle="tab" href="#property">Properties</a></li>
+        
+        
+            <li><a data-toggle="tab" href="#event">Events</a></li>
+        
+    </ul>
+
+    <div class="tab-content">
+        <div id="class" class="tab-pane active">
+            <div class="well well-small classDetail sign-left1">
+            
+
+            
+                <div class="extends">
+                    Extends Component
+                </div>
+            
+
+            
+                <div class="foundat">
+                    Defined in: <a href="../files/lib_ValidatorPanel.js.html#l31"><code>lib&#x2F;ValidatorPanel.js:31</code></a>
+                </div>
+            
+
+            
+                
+                    Module: <a href="../modules/form.html">form</a>
+                
+            
+
+            
+        </div>
+
+        
+            
+                <div class="constructor">
+                    <h2>Constructor</h2>
+                    <div id="method_ValidatorPanel" class="method item">
+    <h3 class="name">ValidatorPanel</h3>
+    <code>
+    ValidatorPanel
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l31"><code>lib&#x2F;ValidatorPanel.js:31</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){location.hash=&#39;input&#39;};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui.js&#39;;
+let Demo = class Demo extends Component{
+    constructor(props,context){
+        super(props,context);
+        this.rules = {
+            calendar:{
+                required:true
+            },
+            userName:{
+                required:true
+            },
+            checkbox:{
+                required:true,
+                //自定义规则
+                isValueToNumber:{
+                    text:&#39;value值不是字符串&#39;,
+                    rule:function(value){
+                        console.dir(value);
+                        return true;
+                    }
+                }
+            },
+            date:{
+                date:true
+            },
+            number:{
+                number:true,
+                digits:true
+            },
+            equalTo:{
+                digits:true,
+                equalTo:{
+                    params:&#39;[name="number"]&#39;
+                }
+            },
+            minlength:{
+                minlength:{
+                    params:10
+                },
+                maxlength:{
+                    params:15
+                }
+            },
+            email:{
+                email:true
+            }
+        };
+        this.state={
+            showTab:0,
+            update:&#39;uid&#39;,
+            show:false
+        };
+    }
+    submit(vals){
+        alert(&#39;验证成功&#39;+JSON.stringify(vals));
+    }
+    render(){
+        return (
+            &lt;Panel&gt;
+                &lt;Dialog id="demo2" egSize="sm" title="表单验证"&gt;
+                    &lt;Grid&gt;
+                        &lt;ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入姓名"  name="userName" data-validate /&gt;
+
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入有效的号码" name="number" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入有效的号码" name="equalTo" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入您的email" name="email" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Button radius egSize="xs" id="ssubmit" &gt;点我提交表单&lt;/Button&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/ValidatorPanel&gt;
+                    &lt;/Grid&gt;
+                &lt;/Dialog&gt;
+            &lt;/Panel&gt;
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+
+        
+            <div id="property" class="tab-pane">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_componentTag" class="property item">
+    <h3 class="name"><code>componentTag</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l86"><code>lib&#x2F;ValidatorPanel.js:86</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>包装容器</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> form</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_direction" class="property item">
+    <h3 class="name"><code>direction</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l179"><code>lib&#x2F;ValidatorPanel.js:179</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>提示方位</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> right</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_getValueCallback" class="property item">
+    <h3 class="name"><code>getValueCallback</code></h3>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l75"><code>lib&#x2F;ValidatorPanel.js:75</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>每次验证时值被改变后都会被触发，会回传当前data-field字段、值和所有值对象</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_message" class="property item">
+    <h3 class="name"><code>message</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l100"><code>lib&#x2F;ValidatorPanel.js:100</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>默认规则提示文案</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> required: &#x27;不能为空&#x27;,
+                    date: &#x27;请正确填写日期&#x27;,
+                    number: &#x27;请输入一个有效的号码&#x27;,
+                    url: &#x27;请输入一个有效的URL&#x27;,
+                    email: &#x27;请输入一个有效的电子邮件地址&#x27;,
+                    dateISO: &#x27;请输入一个有效的日期(ISO)&#x27;,
+                    digits: &#x27;请输入数字&#x27;,
+                    equalTo:&#x27;请再次输入相同的值。&#x27;,
+                    minlength: &#x27;请输入至少{0}字符&#x27;,
+                    maxlength: &#x27;请输入不超过{0}字符&#x27;,
+                    rangelength: &#x27;请输入一个值{0}和{1}字符之间&#x27;,
+                    min: &#x27;请输入一个值大于或等于{0}&#x27;,
+                    max: &#x27;请输入一个值小于或等于{0}&#x27;,
+                    range: &#x27;请输入一个值{0} - {1}&#x27;</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_rules" class="property item">
+    <h3 class="name"><code>rules</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l173"><code>lib&#x2F;ValidatorPanel.js:173</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>规则验证</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_shake" class="property item">
+    <h3 class="name"><code>shake</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l166"><code>lib&#x2F;ValidatorPanel.js:166</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>是否增强文本框提示</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> true</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_submitElement" class="property item">
+    <h3 class="name"><code>submitElement</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l160"><code>lib&#x2F;ValidatorPanel.js:160</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>提交按钮id</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_timeout" class="property item">
+    <h3 class="name"><code>timeout</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l153"><code>lib&#x2F;ValidatorPanel.js:153</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>提示框消失时间</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> 3000</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_trigger" class="property item">
+    <h3 class="name"><code>trigger</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l93"><code>lib&#x2F;ValidatorPanel.js:93</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>触发验证的事件集合</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> blur keyup focus click</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_update" class="property item">
+    <h3 class="name"><code>update</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l186"><code>lib&#x2F;ValidatorPanel.js:186</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>重新更新dom</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> +new Date()</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_values" class="property item">
+    <h3 class="name"><code>values</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l69"><code>lib&#x2F;ValidatorPanel.js:69</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>需要初始化的表单元素默认值(废弃)</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+            <div id="event" class="tab-pane">
+                <h2 class="off-left">Events</h2>
+
+                
+                    <div id="event_submitCallback" class="events item">
+    <h3 class="name"><code>submitCallback</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l137"><code>lib&#x2F;ValidatorPanel.js:137</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+     <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>自定义在提交后的callback</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">opt</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>表单数据结构</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+
+    
+</div>
+
+                
+                    <div id="event_validateCallback" class="events item">
+    <h3 class="name"><code>validateCallback</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ValidatorPanel.js.html#l145"><code>lib&#x2F;ValidatorPanel.js:145</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+     <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>自定义验证规则之外的其他逻辑</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">opt</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>表单数据结构</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+
+    
+</div>
+
+                
+            </div>
+        
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+</html>
