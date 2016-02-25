@@ -38,16 +38,16 @@ YUI.add("yuidoc-meta", function(Y) {
         "ValidatorPanel"
     ],
     "modules": [
-        "form",
-        "grid",
-        "panel",
-        "table",
+        "form(表单)",
+        "grid(布局)",
+        "panel(面板)",
+        "table(表格)",
         "ui"
     ],
     "allModules": [
         {
-            "displayName": "form",
-            "name": "form",
+            "displayName": "form(表单)",
+            "name": "form(表单)",
             "description": "<h5>form表单模块集成了常见的表单元素形式:</h5>\n<strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>\n<strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>\n<strong><a href='../classes/Input.html'>input输入框</a></strong><br>\n<strong><a href='../classes/Select.html'>select下拉框</a></strong><br>\n<strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>\n<h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>",
             "classes": [
                 {
@@ -74,9 +74,9 @@ YUI.add("yuidoc-meta", function(Y) {
             ]
         },
         {
-            "displayName": "grid",
-            "name": "grid",
-            "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
+            "displayName": "grid(布局)",
+            "name": "grid(布局)",
+            "description": "定义行",
             "classes": [
                 {
                     "name": "Row"
@@ -90,8 +90,8 @@ YUI.add("yuidoc-meta", function(Y) {
             ]
         },
         {
-            "displayName": "panel",
-            "name": "panel",
+            "displayName": "panel(面板)",
+            "name": "panel(面板)",
             "description": "<h5>eagle-ui主要面板布局组件</h5>\n<strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>\n<strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>\n<strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>\n<strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>",
             "classes": [
                 {
@@ -109,9 +109,9 @@ YUI.add("yuidoc-meta", function(Y) {
             ]
         },
         {
-            "displayName": "table",
-            "name": "table",
-            "description": "<h5>eagle-ui表格组件</h5>\n<strong><a href='../classes/Table.html'>Table定义表格</a></strong><br>\n<strong><a href='../classes/Th.html'>Th定义表头单元格</a></strong><br>\n<strong><a href='../classes/Tr.html'>Tr定义表格行</a></strong><br>\n<strong><a href='../classes/Td.html'>Td定义表格单元格</a></strong><br>",
+            "displayName": "table(表格)",
+            "name": "table(表格)",
+            "description": "表格组件",
             "classes": [
                 {
                     "name": "Column"

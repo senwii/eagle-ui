@@ -8,7 +8,7 @@ import classnames from 'classnames';
 /**
  * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
  * @class ButtonGroup
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @since 0.1.0

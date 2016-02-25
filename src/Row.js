@@ -6,7 +6,7 @@ import Component from './utils/Component';
 /**
  * 定义行
  * @class Row
- * @module grid
+ * @module grid(布局)
  * @extends Component
  * @constructor
  * @since 0.1.0

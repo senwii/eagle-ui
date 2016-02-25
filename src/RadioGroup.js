@@ -12,7 +12,7 @@ import Component from './utils/Component';
  * RadioGroup需与Input组件配合使用<br/>
  * 它的作用是将type=radio的Input组件在UI上展示在一起
  * @class RadioGroup
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @demo docDemo/module/input.html {UI展示}

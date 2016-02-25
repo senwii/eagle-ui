@@ -9,7 +9,7 @@ import classnames from 'classnames';
  *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
  *  - 也可以自定义行内样式和className名字定义UI展示
  * @class Button
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @demo docDemo/module/button.html {UI展示}

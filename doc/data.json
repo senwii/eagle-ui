@@ -19,7 +19,7 @@
         "lib/panels/Panel.js": {
             "name": "lib/panels/Panel.js",
             "modules": {
-                "panel": 1
+                "panel(面板)": 1
             },
             "classes": {
                 "Panel": 1
@@ -73,7 +73,7 @@
         "lib/tables/Table.js": {
             "name": "lib/tables/Table.js",
             "modules": {
-                "table": 1
+                "table(表格)": 1
             },
             "classes": {
                 "Table": 1
@@ -182,7 +182,7 @@
         "lib/CheckboxGroup.js": {
             "name": "lib/CheckboxGroup.js",
             "modules": {
-                "form": 1
+                "form(表单)": 1
             },
             "classes": {
                 "CheckboxGroup": 1
@@ -221,9 +221,7 @@
         },
         "lib/Grid.js": {
             "name": "lib/Grid.js",
-            "modules": {
-                "grid": 1
-            },
+            "modules": {},
             "classes": {
                 "Grid": 1
             },
@@ -286,7 +284,9 @@
         },
         "lib/Row.js": {
             "name": "lib/Row.js",
-            "modules": {},
+            "modules": {
+                "grid(布局)": 1
+            },
             "classes": {
                 "Row": 1
             },
@@ -385,8 +385,8 @@
         }
     },
     "modules": {
-        "panel": {
-            "name": "panel",
+        "panel(面板)": {
+            "name": "panel(面板)",
             "submodules": {},
             "classes": {
                 "Panel": 1,
@@ -402,8 +402,8 @@
             "description": "<h5>eagle-ui主要面板布局组件</h5>\n<strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>\n<strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>\n<strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>\n<strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>",
             "itemtype": "main"
         },
-        "table": {
-            "name": "table",
+        "table(表格)": {
+            "name": "table(表格)",
             "submodules": {},
             "classes": {
                 "Column": 1,
@@ -414,14 +414,15 @@
             },
             "fors": {},
             "namespaces": {},
-            "tag": "main",
+            "tag": "module",
             "file": "lib/tables/Tr.js",
             "line": 25,
-            "description": "<h5>eagle-ui表格组件</h5>\n<strong><a href='../classes/Table.html'>Table定义表格</a></strong><br>\n<strong><a href='../classes/Th.html'>Th定义表头单元格</a></strong><br>\n<strong><a href='../classes/Tr.html'>Tr定义表格行</a></strong><br>\n<strong><a href='../classes/Td.html'>Td定义表格单元格</a></strong><br>",
-            "itemtype": "main"
+            "description": "表格组件",
+            "itemtype": "main",
+            "static": 1
         },
-        "form": {
-            "name": "form",
+        "form(表单)": {
+            "name": "form(表单)",
             "submodules": {
                 "undefined": 1
             },
@@ -471,8 +472,8 @@
             "description": "<h5>eagle-ui部分UI组件</h5>\n<strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>\n<strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>\n<strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>\n<strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>\n<strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>\n<strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>\n<strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>\n<strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>\n<strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>\n<strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>\n<strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>\n<strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>",
             "itemtype": "main"
         },
-        "grid": {
-            "name": "grid",
+        "grid(布局)": {
+            "name": "grid(布局)",
             "submodules": {},
             "classes": {
                 "Row": 1,
@@ -481,11 +482,12 @@
             },
             "fors": {},
             "namespaces": {},
-            "tag": "main",
+            "tag": "module",
             "file": "lib/Row.js",
             "line": 27,
-            "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
-            "itemtype": "main"
+            "description": "定义行",
+            "itemtype": "main",
+            "static": 1
         }
     },
     "classes": {
@@ -497,7 +499,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "panel",
+            "module": "panel(面板)",
             "namespace": "",
             "file": "lib/panels/Panel.js",
             "line": 42,
@@ -522,7 +524,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "panel",
+            "module": "panel(面板)",
             "namespace": "",
             "file": "lib/panels/PanelContent.js",
             "line": 25,
@@ -547,7 +549,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "panel",
+            "module": "panel(面板)",
             "namespace": "",
             "file": "lib/panels/PanelFooter.js",
             "line": 25,
@@ -572,7 +574,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "panel",
+            "module": "panel(面板)",
             "namespace": "",
             "file": "lib/panels/PanelHeader.js",
             "line": 25,
@@ -597,7 +599,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "table",
+            "module": "table(表格)",
             "namespace": "",
             "file": "lib/tables/Column.js",
             "line": 25,
@@ -622,7 +624,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "table",
+            "module": "table(表格)",
             "namespace": "",
             "file": "lib/tables/Table.js",
             "line": 49,
@@ -648,7 +650,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "table",
+            "module": "table(表格)",
             "namespace": "",
             "file": "lib/tables/Td.js",
             "line": 25,
@@ -673,7 +675,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "table",
+            "module": "table(表格)",
             "namespace": "",
             "file": "lib/tables/Th.js",
             "line": 25,
@@ -698,7 +700,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "table",
+            "module": "table(表格)",
             "namespace": "",
             "file": "lib/tables/Tr.js",
             "line": 25,
@@ -723,7 +725,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/Button.js",
             "line": 30,
@@ -748,7 +750,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/ButtonGroup.js",
             "line": 30,
@@ -826,7 +828,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/CheckboxGroup.js",
             "line": 47,
@@ -851,7 +853,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "grid",
+            "module": "grid(布局)",
             "namespace": "",
             "file": "lib/Col.js",
             "line": 27,
@@ -928,7 +930,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "grid",
+            "module": "grid(布局)",
             "namespace": "",
             "file": "lib/Grid.js",
             "line": 39,
@@ -979,7 +981,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/Input.js",
             "line": 31,
@@ -1080,7 +1082,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/RadioGroup.js",
             "line": 36,
@@ -1105,7 +1107,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "grid",
+            "module": "grid(布局)",
             "namespace": "",
             "file": "lib/Row.js",
             "line": 27,
@@ -1154,7 +1156,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/Select.js",
             "line": 48,
@@ -1360,7 +1362,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "form",
+            "module": "form(表单)",
             "namespace": "",
             "file": "lib/ValidatorPanel.js",
             "line": 31,
@@ -1388,7 +1390,7 @@
             "type": "String",
             "default": "empty",
             "class": "Panel",
-            "module": "panel"
+            "module": "panel(面板)"
         },
         {
             "file": "lib/panels/PanelContent.js",
@@ -1399,7 +1401,7 @@
             "type": "bool",
             "default": "true",
             "class": "PanelContent",
-            "module": "panel"
+            "module": "panel(面板)"
         },
         {
             "file": "lib/panels/PanelFooter.js",
@@ -1410,7 +1412,7 @@
             "type": "bool",
             "default": "true",
             "class": "PanelFooter",
-            "module": "panel"
+            "module": "panel(面板)"
         },
         {
             "file": "lib/sug/Search.js",
@@ -1421,7 +1423,7 @@
             "type": "func",
             "default": "null",
             "class": "Column",
-            "module": "panel"
+            "module": "panel(面板)"
         },
         {
             "file": "lib/sug/Search.js",
@@ -1431,7 +1433,7 @@
             "name": "classPrefix",
             "type": "string",
             "class": "Column",
-            "module": "panel"
+            "module": "panel(面板)"
         },
         {
             "file": "lib/tables/Column.js",
@@ -1441,7 +1443,7 @@
             "name": "header",
             "type": "String",
             "class": "Column",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/tables/Column.js",
@@ -1451,7 +1453,7 @@
             "name": "field",
             "type": "String",
             "class": "Column",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/tables/Column.js",
@@ -1461,7 +1463,7 @@
             "name": "cell",
             "type": "JSX",
             "class": "Column",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/tables/Table.js",
@@ -1471,7 +1473,7 @@
             "name": "data",
             "type": "Array",
             "class": "Table",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/tables/Tr.js",
@@ -1482,14 +1484,14 @@
             "type": "bool",
             "default": "false",
             "class": "Tr",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1514,7 +1516,7 @@
                 "type": "String"
             },
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1539,7 +1541,7 @@
                 "type": "String"
             },
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1559,7 +1561,7 @@
                 "type": "String"
             },
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1584,7 +1586,7 @@
                 "type": "String"
             },
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1609,7 +1611,7 @@
                 "type": "Boolean"
             },
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1630,7 +1632,7 @@
                 }
             ],
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/ClassNameMixin.js",
@@ -1651,42 +1653,42 @@
                 }
             ],
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/MethodMixin.js",
             "line": 1,
             "description": "Created by mac on 16/1/3.",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/PropertyMixin.js",
             "line": 1,
             "description": "Created by mac on 16/1/3.",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/constants.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/constants.js",
             "line": 15,
             "description": "状态",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/constants.js",
             "line": 54,
             "description": "颜色",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/utils/extend.js",
@@ -1703,14 +1705,14 @@
                 }
             ],
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/Button.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Button",
-            "module": "table"
+            "module": "table(表格)"
         },
         {
             "file": "lib/Button.js",
@@ -1721,7 +1723,7 @@
             "type": "String",
             "default": "sm",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1732,7 +1734,7 @@
             "type": "Boolean",
             "default": "false",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1743,7 +1745,7 @@
             "type": "Boolean",
             "default": "true",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1754,7 +1756,7 @@
             "type": "Boolean",
             "default": "false",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1765,7 +1767,7 @@
             "type": "Boolean",
             "default": "false",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1776,7 +1778,7 @@
             "type": "Boolean",
             "default": "false",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1787,7 +1789,7 @@
             "type": "Boolean",
             "default": "''",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1798,7 +1800,7 @@
             "type": "String",
             "default": "btn",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1809,7 +1811,7 @@
             "type": "String",
             "default": "a",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Button.js",
@@ -1820,14 +1822,14 @@
             "type": "Boolean",
             "default": "false",
             "class": "Button",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ButtonGroup.js",
             "line": 1,
             "description": "Created by mac on 15/9/8.",
             "class": "ButtonGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ButtonGroup.js",
@@ -1838,7 +1840,7 @@
             "type": "Boolean",
             "default": "false",
             "class": "ButtonGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ButtonGroup.js",
@@ -1849,14 +1851,14 @@
             "type": "Boolean",
             "default": "false",
             "class": "ButtonGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ButtonGroup.js",
             "line": 72,
             "description": "tacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
             "class": "ButtonGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Calendar.js",
@@ -1961,7 +1963,7 @@
             "name": "egSize",
             "type": "Integer",
             "class": "Col",
-            "module": "grid"
+            "module": "grid(布局)"
         },
         {
             "file": "lib/Col.js",
@@ -1972,14 +1974,14 @@
             "type": "Boolean",
             "default": "false",
             "class": "Col",
-            "module": "grid"
+            "module": "grid(布局)"
         },
         {
             "file": "lib/Crumb.js",
             "line": 1,
             "description": "Created by panqianjin on 15/11/3.",
             "class": "Crumb",
-            "module": "grid"
+            "module": "grid(布局)"
         },
         {
             "file": "lib/Crumb.js",
@@ -2141,7 +2143,7 @@
             "line": 1,
             "description": "Created by slashhuang on 15/12/28.",
             "class": "Slider",
-            "module": "grid"
+            "module": "grid(布局)"
         },
         {
             "file": "lib/ImgSlider.js",
@@ -2239,7 +2241,7 @@
             "name": "type",
             "type": "String",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Input.js",
@@ -2249,7 +2251,7 @@
             "name": "autoComplete",
             "type": "String",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Input.js",
@@ -2259,7 +2261,7 @@
             "name": "label",
             "type": "String",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Input.js",
@@ -2269,7 +2271,7 @@
             "name": "icon",
             "type": "String",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Input.js",
@@ -2279,7 +2281,7 @@
             "name": "iconStyle",
             "type": "Object",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Input.js",
@@ -2289,7 +2291,7 @@
             "name": "icon",
             "type": "String",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Input.js",
@@ -2299,14 +2301,14 @@
             "name": "iconDirection",
             "type": "String",
             "class": "Input",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Label.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Label",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Label.js",
@@ -2600,7 +2602,7 @@
             "name": "name",
             "type": "String",
             "class": "RadioGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/RadioGroup.js",
@@ -2610,7 +2612,7 @@
             "name": "defaultChecked",
             "type": "String",
             "class": "RadioGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/RadioGroup.js",
@@ -2620,7 +2622,7 @@
             "name": "getValueCallback",
             "type": "String",
             "class": "RadioGroup",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Row.js",
@@ -2631,7 +2633,7 @@
             "type": "String",
             "default": "row",
             "class": "Row",
-            "module": "grid"
+            "module": "grid(布局)"
         },
         {
             "file": "lib/Row.js",
@@ -2642,7 +2644,7 @@
             "type": "boolean",
             "default": "undefined",
             "class": "Row",
-            "module": "grid"
+            "module": "grid(布局)"
         },
         {
             "file": "lib/Select.js",
@@ -2676,7 +2678,7 @@
             ],
             "default": "null",
             "class": "Select",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Select.js",
@@ -2686,7 +2688,7 @@
             "name": "classPrefix",
             "type": "string",
             "class": "Select",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/Star.js",
@@ -3064,7 +3066,7 @@
             "name": "values",
             "type": "Object",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3074,7 +3076,7 @@
             "name": "getValueCallback",
             "type": "Function",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3085,7 +3087,7 @@
             "type": "String",
             "default": "form",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3096,7 +3098,7 @@
             "type": "String",
             "default": "blur keyup focus click",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3107,7 +3109,7 @@
             "type": "Object",
             "default": "required: '不能为空',\n                    date: '请正确填写日期',\n                    number: '请输入一个有效的号码',\n                    url: '请输入一个有效的URL',\n                    email: '请输入一个有效的电子邮件地址',\n                    dateISO: '请输入一个有效的日期(ISO)',\n                    digits: '请输入数字',\n                    equalTo:'请再次输入相同的值。',\n                    minlength: '请输入至少{0}字符',\n                    maxlength: '请输入不超过{0}字符',\n                    rangelength: '请输入一个值{0}和{1}字符之间',\n                    min: '请输入一个值大于或等于{0}',\n                    max: '请输入一个值小于或等于{0}',\n                    range: '请输入一个值{0} - {1}'",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3123,7 +3125,7 @@
                 }
             ],
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3139,7 +3141,7 @@
                 }
             ],
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3150,7 +3152,7 @@
             "type": "Number",
             "default": "3000",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3160,7 +3162,7 @@
             "name": "submitElement",
             "type": "String",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3171,7 +3173,7 @@
             "type": "Boolean",
             "default": "true",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3181,7 +3183,7 @@
             "name": "rules",
             "type": "Object",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3192,7 +3194,7 @@
             "type": "String",
             "default": "right",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         },
         {
             "file": "lib/ValidatorPanel.js",
@@ -3203,7 +3205,7 @@
             "type": "String",
             "default": "+new Date()",
             "class": "ValidatorPanel",
-            "module": "form"
+            "module": "form(表单)"
         }
     ],
     "warnings": [

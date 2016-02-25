@@ -6,7 +6,7 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * PanelFooter定义底部区域
  * @class PanelFooter
  * @constructor
- * @module panel
+ * @module panel(面板)
  * @extends Component
  * @demo docDemo/module/panel.html {UI展示}
  * @demo docDemo/panel.js {源码}

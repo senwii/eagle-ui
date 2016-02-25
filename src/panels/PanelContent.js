@@ -6,7 +6,7 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * PanelContent定义内容区域
  * @class PanelContent
  * @constructor
- * @module panel
+ * @module panel(面板)
  * @extends Component
  * @demo docDemo/module/panel.html {UI展示}
  * @demo docDemo/panel.js {源码}

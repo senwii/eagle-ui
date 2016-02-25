@@ -14,7 +14,7 @@ import Search from './sug/Search';
 /**
  * 下拉选择框组件<br>支持在input框中输入文字或者点击下拉菜单中的选项进行查询
  * @class Select
- * @module form
+ * @module form(表单)
  * @constructor
  * @extends Component
  * @demo docDemo/module/select.html {UI展示}

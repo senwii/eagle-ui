@@ -6,7 +6,7 @@ import Icon from './utils/Icon';
  * input表单组件<br />
  * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
  * @class Input
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @demo docDemo/module/input.html {UI展示}

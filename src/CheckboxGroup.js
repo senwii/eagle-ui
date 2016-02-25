@@ -17,8 +17,8 @@ import Component from './utils/Component.js';
  * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
  * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
  *
- * @module form
- * @main form
+ * @module form(表单)
+ * @main form(表单)
  * @static
  *
  */
@@ -27,7 +27,7 @@ import Component from './utils/Component.js';
  * CheckboxGroup需与Input组件配合使用<br/>
  * 它的作用是将type=checkbox的Input组件在UI上展示在一起
  * @class CheckboxGroup
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @demo docDemo/module/input.html {UI展示}

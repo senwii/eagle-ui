@@ -5,7 +5,7 @@ import Component from './utils/Component';
 /**
  * 定义列
  * @class Col
- * @module grid
+ * @module grid(布局)
  * @extends Component
  * @constructor
  * @demo docDemo/module/grid.html {UI展示}

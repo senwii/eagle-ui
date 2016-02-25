@@ -6,7 +6,7 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * 表头单元格组件
  * @class Th
  * @constructor
- * @module table
+ * @module table(表格)
  * @extends Component
  * @demo docDemo/module/table.html {UI展示}
  * @demo docDemo/table.js {源码}

@@ -24494,7 +24494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * input表单组件<br />
 	 * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
 	 * @class Input
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/input.html {UI展示}
@@ -31069,7 +31069,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 定义行
 	 * @class Row
-	 * @module grid
+	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
@@ -31162,7 +31162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 定义列
 	 * @class Col
-	 * @module grid
+	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/grid.html {UI展示}
@@ -31271,7 +31271,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>
 	 * <strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>
 	 * <h6>点击以上链接进行相关查看</h6>
-	 * @module grid
+	 * @module grid(布局)
 	 * @main grid
 	 * @static
 	 *
@@ -31280,7 +31280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 布局组件
 	 * @class Grid
-	 * @module grid
+	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/grid.html {UI展示}
@@ -32839,7 +32839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
 	 * @class ButtonGroup
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
@@ -32968,7 +32968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
 	 *  - 也可以自定义行内样式和className名字定义UI展示
 	 * @class Button
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/button.html {UI展示}
@@ -34248,8 +34248,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
 	 * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
 	 *
-	 * @module form
-	 * @main form
+	 * @module form(表单)
+	 * @main form(表单)
 	 * @static
 	 *
 	 */
@@ -34258,7 +34258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * CheckboxGroup需与Input组件配合使用<br/>
 	 * 它的作用是将type=checkbox的Input组件在UI上展示在一起
 	 * @class CheckboxGroup
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/input.html {UI展示}
@@ -34345,7 +34345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * RadioGroup需与Input组件配合使用<br/>
 	 * 它的作用是将type=radio的Input组件在UI上展示在一起
 	 * @class RadioGroup
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/input.html {UI展示}
@@ -35333,7 +35333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 下拉选择框组件<br>支持在input框中输入文字或者点击下拉菜单中的选项进行查询
 	 * @class Select
-	 * @module form
+	 * @module form(表单)
 	 * @constructor
 	 * @extends Component
 	 * @demo docDemo/module/select.html {UI展示}
@@ -38032,15 +38032,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>
 	 * <strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>
 	 * <strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>
-	 * @module panel
-	 * @main panel
+	 * @module panel(面板)
+	 * @main panel(面板)
 	 * @static
 	 */
 
 	/**
 	 * Panel定义整个容器
 	 * @class Panel
-	 * @module panel
+	 * @module panel(面板)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/panel.html {UI展示}
@@ -38143,7 +38143,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * PanelHeader定义头部区域
 	 * @class PanelHeader
-	 * @module panel
+	 * @module panel(面板)
 	 * @constructor
 	 * @extends Component
 	 * @demo docDemo/module/panel.html {UI展示}
@@ -38221,7 +38221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * PanelContent定义内容区域
 	 * @class PanelContent
 	 * @constructor
-	 * @module panel
+	 * @module panel(面板)
 	 * @extends Component
 	 * @demo docDemo/module/panel.html {UI展示}
 	 * @demo docDemo/panel.js {源码}
@@ -38306,7 +38306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * PanelFooter定义底部区域
 	 * @class PanelFooter
 	 * @constructor
-	 * @module panel
+	 * @module panel(面板)
 	 * @extends Component
 	 * @demo docDemo/module/panel.html {UI展示}
 	 * @demo docDemo/panel.js {源码}
@@ -38543,7 +38543,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     range：一个区间取值范围
 	 * </pre>
 	 * @class ValidatorPanel
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/module/input.html {UI展示}
@@ -39306,7 +39306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <strong><a href='../classes/Th.html'>Th定义表头单元格</a></strong><br>
 	 * <strong><a href='../classes/Tr.html'>Tr定义表格行</a></strong><br>
 	 * <strong><a href='../classes/Td.html'>Td定义表格单元格</a></strong><br>
-	 * @module table
+	 * @module table(表格)
 	 * @main table
 	 * @static
 	 */
@@ -39314,7 +39314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 表格组件
 	 * @class Table
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
 	 * @since 0.1.0
 	 * @demo docDemo/module/table.html {UI展示}
@@ -39483,7 +39483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 表头单元格组件
 	 * @class Th
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
 	 * @demo docDemo/module/table.html {UI展示}
 	 * @demo docDemo/table.js {源码}
@@ -39577,7 +39577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 表格单元格组件
 	 * @class Td
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
 	 * @demo docDemo/module/table.html {UI展示}
 	 * @demo docDemo/table.js {源码}
@@ -39652,7 +39652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 表格行组件
 	 * @class Tr
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
 	 * @demo docDemo/module/table.html {UI展示}
 	 * @demo docDemo/table.js {源码}
@@ -44990,7 +44990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 封装Tr,Td组件，直接配合设置data属性的Table使用
 	 * @class Column
-	 * @module table
+	 * @module table(表格)
 	 * @constructor
 	 * @content {string} type 内容
 	 * @demo docDemo/module/table.html {UI展示}

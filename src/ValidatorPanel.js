@@ -24,7 +24,7 @@ import ReactDom from 'react/lib/ReactDOM';
  *     range：一个区间取值范围
  * </pre>
  * @class ValidatorPanel
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @demo docDemo/module/input.html {UI展示}

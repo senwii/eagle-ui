@@ -9,15 +9,15 @@ import Component from '../utils/Component';
  * <strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>
  * <strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>
  * <strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>
- * @module panel
- * @main panel
+ * @module panel(面板)
+ * @main panel(面板)
  * @static
  */
 
 /**
  * Panel定义整个容器
  * @class Panel
- * @module panel
+ * @module panel(面板)
  * @extends Component
  * @constructor
  * @demo docDemo/module/panel.html {UI展示}

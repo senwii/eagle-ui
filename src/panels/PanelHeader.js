@@ -5,7 +5,7 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
 /**
  * PanelHeader定义头部区域
  * @class PanelHeader
- * @module panel
+ * @module panel(面板)
  * @constructor
  * @extends Component
  * @demo docDemo/module/panel.html {UI展示}
