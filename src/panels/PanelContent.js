@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * PanelContent组件
+ * PanelContent定义内容区域
  * @class PanelContent
  * @constructor
  * @module panel
@@ -29,13 +29,6 @@ export default class PanelContent extends Component{
         classPrefix:'panel',
         padding:true
     };
-
-
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return (
             <div className={

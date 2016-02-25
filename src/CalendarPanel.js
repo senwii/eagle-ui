@@ -13,7 +13,8 @@ import Calendar from './Calendar.js';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo calendar.js {js}
+ * @demo docDemo/module/calendar.html {UI展示}
+ * @demo docDemo/calendar.js {源码}
  * @show true
  * */
 @ClassNameMixin

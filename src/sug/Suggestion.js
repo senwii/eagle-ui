@@ -5,9 +5,7 @@ import classnames from 'classnames';
 import Component from '.././utils/Component';
 import extend from 'extend';
 import 'babel-polyfill';
-
 export default class Suggestion extends Component {
-
     constructor(props, context) {
         super(props, context);
 

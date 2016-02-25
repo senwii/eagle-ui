@@ -4,12 +4,22 @@ import classnames from 'classnames';
 import PanelHeader from './PanelHeader';
 import Component from '../utils/Component';
 /**
- * Panel组件
+ * <h5>eagle-ui主要面板布局组件</h5>
+ * <strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>
+ * <strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>
+ * <strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>
+ * <strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>
+ * @module panel
+ * @main panel
+ * @static
+ */
+
+/**
+ * Panel定义整个容器
  * @class Panel
  * @module panel
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/panel.html {UI展示}
  * @demo docDemo/panel.js {源码}
  * @show true
@@ -43,11 +53,6 @@ export default class Panel extends Component{
 
         return null;
     }
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return (
             <div {...this.props} className={

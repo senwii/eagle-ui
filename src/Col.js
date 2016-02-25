@@ -3,12 +3,11 @@ import classnames from 'classnames';
 
 import Component from './utils/Component';
 /**
- * 列
+ * 定义列
  * @class Col
  * @module grid
  * @extends Component
  * @constructor
- * @since 0.1.
  * @demo docDemo/module/grid.html {UI展示}
  * @demo docDemo/grid.js {源码}
  * @show true
@@ -16,7 +15,7 @@ import Component from './utils/Component';
 export default class Col extends Component{
     static propTypes = {
         /**
-         * 占几列，共12列
+         * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
          * @property egSize
          * @type Integer
          * */

@@ -6,17 +6,16 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
- * 按钮组件
+ *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
+ *  - 也可以自定义行内样式和className名字定义UI展示
  * @class Button
  * @module form
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/button.html {UI展示}
  * @demo docDemo/button.js {源码}
  * @show true
  * */
-
 export default class Button extends Component{
     //static mixins = [ClassNameMixin];
     static propTypes = {

@@ -12,13 +12,12 @@ import Grid from './Grid.js';
 import Search from './sug/Search';
 
 /**
- * 下拉选择框组件<br>有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
+ * 下拉选择框组件<br>支持在input框中输入文字或者点击下拉菜单中的选项进行查询
  * @class Select
  * @module form
  * @constructor
  * @extends Component
- * @since 0.1.0
- * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/module/select.html {UI展示}
  * @demo docDemo/select.js {源码}
  * @show true
  * */
@@ -26,8 +25,10 @@ export default class Select extends Search {
     static defaultProps = {
         /**
          * 回调方法，主要作用将value传给父级元素。默认为null
-         * @property callback
-         * @type func
+         * @event  getValueCallback
+         * @param {primitive/pointer} value 值
+         * @param {string} key 键
+         * @param {string} type 类型
          * @default null
          * */
         getValueCallback: null,
@@ -51,9 +52,7 @@ export default class Select extends Search {
 
     constructor(props, context,defaultState={}) {
         super(props, context);
-
         this.inputId = this.uniqueId();
-
         super.setDefaultState(defaultState);
     }
     entryCallback(){

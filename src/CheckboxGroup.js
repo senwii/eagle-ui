@@ -24,31 +24,26 @@ import Component from './utils/Component.js';
  */
 
 /**
- * 多选按钮组组件
+ * CheckboxGroup需与Input组件配合使用<br/>
+ * 它的作用是将type=checkbox的Input组件在UI上展示在一起
  * @class CheckboxGroup
  * @module form
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/input.html {UI展示}
  * @demo docDemo/checkboxGroup.js {源码}
  * @show true
  * */
 export default class CheckboxGroup extends Component{
-
     static propTypes = {
 
     };
-
     constructor(props, context) {
         super(props, context);
     }
-
     componentDidMount(){
-
     }
     render(){
-
         return (
             <div style={this.props.style}
                  className={classnames(this.getClassName('input-group'),this.props.className || '')}>

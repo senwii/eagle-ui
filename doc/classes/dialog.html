@@ -59,14 +59,6 @@
                    
                        <li>
                             
-                           <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
@@ -113,6 +105,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -125,14 +125,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Grid.html">Grid</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Row.html">Row</a>
                            <ul>
                                 
@@ -142,6 +134,14 @@
                        <li>
                             
                            <a href="../classes/Col.html">Col</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
                            <ul>
                                 
                            </ul>
@@ -201,7 +201,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Th.html">Th</a>
+                           <a href="../classes/Column.html">Column</a>
                            <ul>
                                 
                            </ul>
@@ -218,6 +218,14 @@
                        <li>
                             
                            <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
                            <ul>
                                 
                            </ul>
@@ -243,14 +251,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Crumb.html">Crumb</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
@@ -259,7 +259,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Item.html">Item</a>
+                           <a href="../classes/Label.html">Label</a>
                            <ul>
                                 
                            </ul>
@@ -299,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Dialog.html">Dialog</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -307,7 +307,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Label.html">Label</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -323,23 +323,7 @@
                     
                        <li>
                             
-                           <a href="../classes/List.html">List</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Paging.html">Paging</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -372,6 +356,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -625,6 +617,247 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
+&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    var script=document.createElement(&#39;script&#39;);
+    var href=  location.href;
+    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
+    script.src=relLink;
+    document.body.appendChild(script);
+    script.onload = function(e){setTimeout(function(){location.hash=&#39;dialog&#39;},0)};
+&lt;/script&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
+let Demo= class Demo extends Component{
+    static defaultProps = {
+    };
+    constructor(props, context) {
+        super(props, context);
+    }
+    getScope(dialog){
+        this.dialog = dialog;
+    }
+    show(name){
+        Dialog.mask(name).then(function(){
+            console.dir(&#39;...alert....&#39;);
+            Dialog.close();
+        },function(type){
+            console.dir(type);
+        });
+    }
+    showAlert(){
+        Dialog.alert(&#39;哈哈，我是alert&#39;);
+    }
+    nomask(){
+        Dialog.alert(&#39;哈哈，我是alert&#39;,{
+            isMask:false
+        });
+    }
+
+    showConfirm(){
+        Dialog.confirm(&#39;确定你已经打开了么？&#39;).then(()=&gt;{
+            alert(&#39;确定&#39;);
+        },()=&gt;{
+            alert(&#39;取消&#39;);
+        });
+    }
+
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;Button onClick={::this.show.bind(this,&#39;demo1&#39;)} className="mg-right-15"&gt;点击我mask&lt;/Button&gt;
+                &lt;Button onClick={::this.show.bind(this,&#39;demo2&#39;)} className="mg-right-15"&gt;点击我mask2表单秀&lt;/Button&gt;
+                &lt;Button onClick={::this.show.bind(this,&#39;demo3&#39;)} className="mg-right-15"&gt;点击我mask3 outside&lt;/Button&gt;
+                &lt;Button onClick={::this.showAlert} className="mg-right-15"&gt;点击我alert&lt;/Button&gt;
+                &lt;Button onClick={::this.nomask} className="mg-right-15"&gt;无遮罩显示&lt;/Button&gt;
+                &lt;Button onClick={::this.showConfirm}&gt;点击我Confirm&lt;/Button&gt;
+                &lt;Dialog id="demo1" egSize="xs" buttonAlign="right" title="苍老师你好" buttons={[
+                    {
+                        type: &#39;success&#39;,
+                        name: &#39;确认&#39;,
+                        callback:()=&gt;{}
+                    },
+                    {
+                        type:&#39;cancel&#39;,
+                        egStyle:&#39;white&#39;,
+                        name:&#39;取消&#39;,
+                        callback:()=&gt;{}
+                    },
+                    {
+                        egStyle:&#39;warning&#39;,
+                        name:&#39;自定义按钮&#39;,
+                        callback:()=&gt;{alert(&#39;自定义按钮&#39;);}
+                    }
+                    ]}&gt;
+                    &lt;div&gt;
+                        哈哈，你好苍老师
+                    &lt;/div&gt;
+                &lt;/Dialog&gt;
+                &lt;Dialog id="demo2" egSize="sm" title="表单验证" buttons={[
+                    {
+                        type: &#39;success&#39;,
+                        name: &#39;提交&#39;,
+                        callback:()=&gt;{}
+                    },
+                    {
+                        type:&#39;cancel&#39;,
+                        egStyle:&#39;white&#39;,
+                        name:&#39;取消&#39;,
+                        callback:()=&gt;{}
+                    }
+                    ]}&gt;
+                    &lt;Grid&gt;
+                        &lt;Row&gt;
+                            &lt;Col&gt;
+                                &lt;Panel heading="我是标题"&gt;
+                                    &lt;PanelContent&gt;
+                                        &lt;Row&gt;
+                                            &lt;Col&gt;
+                                                &lt;FormGroup&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                        &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                        &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                                        &lt;Col sm={10}&gt;
+                                                            &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                                                &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                                                &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                                            &lt;/RadioGroup&gt;
+                                                        &lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
+                                                        &lt;Col sm={10}&gt;
+                                                            &lt;CheckboxGroup&gt;
+                                                                &lt;Input  type="checkbox" label="足球" checked   /&gt;
+                                                                &lt;Input  type="checkbox" label="篮球"    /&gt;
+                                                                &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
+                                                                &lt;Input  type="checkbox" label="乒乓球"    /&gt;
+                                                            &lt;/CheckboxGroup&gt;
+                                                        &lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                        &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                        &lt;FormGroup&gt;
+                                                            &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
+                                                            &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
+                                                        &lt;/FormGroup&gt;
+                                                    &lt;/Row&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
+                                                        &lt;Col sm={10} layer&gt;
+                                                            &lt;Row style={{margin:0}}&gt;
+                                                                &lt;Col sm={4} end&gt;
+                                                                    &lt;Select placeholder="请选择城市" &gt;
+                                                                        &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
+                                                                        &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
+                                                                        &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
+                                                                    &lt;/Select&gt;
+                                                                &lt;/Col&gt;
+                                                            &lt;/Row&gt;
+                                                        &lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                &lt;/FormGroup&gt;
+                                            &lt;/Col&gt;
+                                        &lt;/Row&gt;
+                                        &lt;Row&gt;
+                                            &lt;Col padding={&#39;0&#39;}&gt;
+                                                &lt;Panel heading="我是标题二"&gt;
+                                                    &lt;PanelContent padding={true}&gt;
+                                                        我是下一个内容区
+                                                    &lt;/PanelContent&gt;
+                                                &lt;/Panel&gt;
+                                            &lt;/Col&gt;
+
+                                        &lt;/Row&gt;
+                                        &lt;Row&gt;
+                                            &lt;Col padding={&#39;0&#39;}&gt;
+                                                &lt;Panel heading="我是标题三" &gt;
+                                                    &lt;PanelContent padding={true}&gt;
+                                                        我是下一个内容区
+                                                    &lt;/PanelContent&gt;
+                                                &lt;/Panel&gt;
+                                            &lt;/Col&gt;
+
+                                        &lt;/Row&gt;
+                                    &lt;/PanelContent&gt;
+                                &lt;/Panel&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                    &lt;/Grid&gt;
+                &lt;/Dialog&gt;
+                &lt;Dialog id="demo3" title="panel" outside egSize="lg"&gt;
+                    &lt;Panel egType="normal" margin="0"&gt;
+                        &lt;PanelHeader&gt;另一种形式的嵌套&lt;/PanelHeader&gt;
+                        &lt;PanelContent&gt;
+                            &lt;Panel egType="normal"&gt;
+                                &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                &lt;PanelContent&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            我是内容区
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;Panel  margin={&#39;0&#39;}&gt;
+                                                &lt;PanelHeader&gt;另一种形式的嵌套3&lt;/PanelHeader&gt;
+                                                &lt;PanelContent&gt;
+                                                    &lt;Row&gt;
+                                                        &lt;Col&gt;
+                                                            我是内容区
+                                                        &lt;/Col&gt;
+                                                    &lt;/Row&gt;
+                                                &lt;/PanelContent&gt;
+                                            &lt;/Panel&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/PanelContent&gt;
+                            &lt;/Panel&gt;
+                            &lt;Panel margin={&#39;0&#39;}&gt;
+                                &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                &lt;PanelContent&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            我是内容区
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/PanelContent&gt;
+                            &lt;/Panel&gt;
+                        &lt;/PanelContent&gt;
+                    &lt;/Panel&gt;
+                &lt;/Dialog&gt;
+            &lt;/div&gt;
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>
@@ -661,7 +894,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l43"><code>lib&#x2F;Dialog.js:43</code></a>
+        <a href="../files/lib_Dialog.js.html#l44"><code>lib&#x2F;Dialog.js:44</code></a>
         
         </p>
 
@@ -709,7 +942,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l92"><code>lib&#x2F;Dialog.js:92</code></a>
+        <a href="../files/lib_Dialog.js.html#l93"><code>lib&#x2F;Dialog.js:93</code></a>
         
         </p>
 
@@ -776,7 +1009,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l29"><code>lib&#x2F;Dialog.js:29</code></a>
+        <a href="../files/lib_Dialog.js.html#l30"><code>lib&#x2F;Dialog.js:30</code></a>
         
         </p>
 
@@ -821,7 +1054,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l57"><code>lib&#x2F;Dialog.js:57</code></a>
+        <a href="../files/lib_Dialog.js.html#l58"><code>lib&#x2F;Dialog.js:58</code></a>
         
         </p>
 
@@ -869,7 +1102,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l78"><code>lib&#x2F;Dialog.js:78</code></a>
+        <a href="../files/lib_Dialog.js.html#l79"><code>lib&#x2F;Dialog.js:79</code></a>
         
         </p>
 
@@ -917,7 +1150,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l50"><code>lib&#x2F;Dialog.js:50</code></a>
+        <a href="../files/lib_Dialog.js.html#l51"><code>lib&#x2F;Dialog.js:51</code></a>
         
         </p>
 
@@ -965,7 +1198,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l36"><code>lib&#x2F;Dialog.js:36</code></a>
+        <a href="../files/lib_Dialog.js.html#l37"><code>lib&#x2F;Dialog.js:37</code></a>
         
         </p>
 
@@ -1013,7 +1246,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l64"><code>lib&#x2F;Dialog.js:64</code></a>
+        <a href="../files/lib_Dialog.js.html#l65"><code>lib&#x2F;Dialog.js:65</code></a>
         
         </p>
 
@@ -1061,7 +1294,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l71"><code>lib&#x2F;Dialog.js:71</code></a>
+        <a href="../files/lib_Dialog.js.html#l72"><code>lib&#x2F;Dialog.js:72</code></a>
         
         </p>
 
@@ -1109,7 +1342,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l22"><code>lib&#x2F;Dialog.js:22</code></a>
+        <a href="../files/lib_Dialog.js.html#l23"><code>lib&#x2F;Dialog.js:23</code></a>
         
         </p>
 
@@ -1154,7 +1387,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l85"><code>lib&#x2F;Dialog.js:85</code></a>
+        <a href="../files/lib_Dialog.js.html#l86"><code>lib&#x2F;Dialog.js:86</code></a>
         
         </p>
 

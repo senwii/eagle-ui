@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import Component from './utils/Component';
 
 /**
- * 行
+ * 定义行
  * @class Row
  * @module grid
  * @extends Component
@@ -24,9 +24,9 @@ export default class Row extends Component{
          * */
         classPrefix:PropTypes.string,
         /**
-         * 样式前缀
+         * 是否显示下划线
          * @property bottom
-         * @type String
+         * @type boolean
          * @default undefined
          * */
         bottom:PropTypes.bool

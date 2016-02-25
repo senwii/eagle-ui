@@ -4,12 +4,11 @@ import classnames from 'classnames';
 import Icon from './utils/Icon';
 /**
  * input表单组件<br />
- * 通过type可以生成radio、checkbox、input等元素标签
+ * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
  * @class Input
  * @module form
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/input.html {UI展示}
  * @demo docDemo/input.js {源码}
  * @show true

@@ -2,9 +2,7 @@ import React, {PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import Input from '.././Input.js';
-
 import Suggestion from './Suggestion';
-
 export default class Search extends Suggestion {
     static defaultProps = {
         /**
@@ -115,11 +113,6 @@ export default class Search extends Suggestion {
         _this.props.getValueCallback &&(_this.props.getValueCallback(value,key,type) );
     }
 
-    /**
-     * 根据auto存在与否渲染不同类型的元素
-     * @method render
-     * @return {ReactElement}
-     * */
     renderSearch(){
         return (
             <this.componentTag className={this.getProperty() } value={this.state.value}>

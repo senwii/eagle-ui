@@ -6,7 +6,7 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
- * 按钮组组件<br/>
+ * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
  * @class ButtonGroup
  * @module form
  * @extends Component

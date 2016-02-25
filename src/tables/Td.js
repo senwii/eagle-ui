@@ -3,13 +3,11 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * 表格组件
+ * 表格单元格组件
  * @class Td
  * @constructor
  * @module table
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
  * @demo docDemo/module/table.html {UI展示}
  * @demo docDemo/table.js {源码}
  * @show true
@@ -26,11 +24,6 @@ export default class Td extends Component{
     };
 
 
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return (
             <td {...this.props}>

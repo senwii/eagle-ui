@@ -3,7 +3,6 @@
  */
 import React, { Component ,PropTypes} from 'react';
 import Star from '../../../src/Star.js';
-
 export default class StarDemo extends Component {
     render(){
         return(

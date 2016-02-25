@@ -3,13 +3,25 @@ import classnames from 'classnames';
 import ClassNameMixin from './utils/ClassNameMixin';
 
 @ClassNameMixin
+
+/**
+ * <h5>eagle-ui主要栅格化布局组件</h5>
+ * <strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>
+ * <strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>
+ * <strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>
+ * <h6>点击以上链接进行相关查看</h6>
+ * @module grid
+ * @main grid
+ * @static
+ *
+ */
+
 /**
  * 布局组件
  * @class Grid
  * @module grid
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/grid.html {UI展示}
  * @demo docDemo/grid.js {源码}
  * @show true
@@ -18,7 +30,6 @@ export default class Grid extends Component{
 
     static propTypes = {
     };
-
 
     render(){
 

@@ -4,9 +4,9 @@ import classnames from 'classnames';
 import ReactDom from 'react/lib/ReactDOM';
 
 /**
- * 表单验证组件<br />
- * 在需要验证的表单元素上添加data-validate属性，<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称--> <br />
- * 默认规则有<br/>
+ * 表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />
+ * <!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->
+ * rules属性提供的规则有<br/>
  * <pre>
  *     required：是否必填
  *     date：日期格式验证
@@ -27,7 +27,6 @@ import ReactDom from 'react/lib/ReactDOM';
  * @module form
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/input.html {UI展示}
  * @demo docDemo/validate.js {源码}
  * @show true
@@ -105,17 +104,17 @@ export default class ValidatorPanel extends Component {
         },
         initCallback:function(){},
         /**
-         * 验证成功后提交表单
-         * @property submitCallback
-         * @type Function
-         * */
+         * 自定义在提交后的callback
+         * @event submitCallback
+         * @param {object} opt 表单数据结构
+         */
         submitCallback:function(){
             return true;
         },
         /**
-         * 在提交时除验证规则之外的其他逻辑
-         * @property validateCallback
-         * @type Function
+         * 自定义验证规则之外的其他逻辑
+         * @event validateCallback
+         * @param {object} opt 表单数据结构
          * */
         validateCallback:function(){
             return true;

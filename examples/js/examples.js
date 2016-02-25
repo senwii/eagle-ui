@@ -267,7 +267,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Label', name: 'Label', component: _modulesLabel2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Paging', name: 'Paging', component: _modulesPaging2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Panel', name: 'Panel', component: _modulesPanel2['default'] }),
-	            _react2['default'].createElement(_reactRouter.Route, { path: '/Suggesion', name: 'Suggesion', component: _modulesSuggestionJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Select', name: 'Select', component: _modulesSelect2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Tab', name: 'Tab', component: _modulesTab2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Table', name: 'Table', component: _modulesTable2['default'] }),
@@ -275,7 +274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/ToolTip', name: 'ToolTip', component: _modulesTooltip2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Validate', name: 'Validate', component: _modulesValidate2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Star', name: 'Star', component: _modulesStarJs2['default'] }),
-	            _react2['default'].createElement(_reactRouter.Route, { path: '/Suggesion', name: 'Suggesion', component: _modulesSuggestionJs2['default'] }),
+	            _react2['default'].createElement(_reactRouter.Route, { path: '/Suggestion', name: 'Suggestion', component: _modulesSuggestionJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/icon', name: 'Icon', component: _modulesIconsJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Redirect, { from: '/', to: '/index' })
 	        );
@@ -24493,12 +24492,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * input表单组件<br />
-	 * 通过type可以生成radio、checkbox、input等元素标签
+	 * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
 	 * @class Input
 	 * @module form
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/input.html {UI展示}
 	 * @demo docDemo/input.js {源码}
 	 * @show true
@@ -31069,7 +31067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 行
+	 * 定义行
 	 * @class Row
 	 * @module grid
 	 * @extends Component
@@ -31109,9 +31107,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            classPrefix: _react.PropTypes.string,
 	            /**
-	             * 样式前缀
+	             * 是否显示下划线
 	             * @property bottom
-	             * @type String
+	             * @type boolean
 	             * @default undefined
 	             * */
 	            bottom: _react.PropTypes.bool
@@ -31162,12 +31160,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 列
+	 * 定义列
 	 * @class Col
 	 * @module grid
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.
 	 * @demo docDemo/module/grid.html {UI展示}
 	 * @demo docDemo/grid.js {源码}
 	 * @show true
@@ -31207,7 +31204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 占几列，共12列
+	             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
 	             * @property egSize
 	             * @type Integer
 	             * */
@@ -31269,12 +31266,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
 
 	/**
+	 * <h5>eagle-ui主要栅格化布局组件</h5>
+	 * <strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>
+	 * <strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>
+	 * <strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>
+	 * <h6>点击以上链接进行相关查看</h6>
+	 * @module grid
+	 * @main grid
+	 * @static
+	 *
+	 */
+
+	/**
 	 * 布局组件
 	 * @class Grid
 	 * @module grid
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/grid.html {UI展示}
 	 * @demo docDemo/grid.js {源码}
 	 * @show true
@@ -31362,7 +31370,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo calendar.js {js}
+	 * @demo docDemo/module/calendar.html {UI展示}
+	 * @demo docDemo/calendar.js {源码}
 	 * @show true
 	 * */
 
@@ -31551,7 +31560,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo calendar.js {js}
+	 * @demo docDemo/module/calendar.html {UI展示}
+	 * @demo docDemo/calendar.js {源码}
 	 * @show true
 	 * */
 
@@ -32827,7 +32837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 按钮组组件<br/>
+	 * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
 	 * @class ButtonGroup
 	 * @module form
 	 * @extends Component
@@ -32955,12 +32965,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 按钮组件
+	 *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
+	 *  - 也可以自定义行内样式和className名字定义UI展示
 	 * @class Button
 	 * @module form
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/button.html {UI展示}
 	 * @demo docDemo/button.js {源码}
 	 * @show true
@@ -33201,13 +33211,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
+	 * <h5>eagle-ui部分UI组件</h5>
+	 * <strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>
+	 * <strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>
+	 * <strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>
+	 * <strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>
+	 * <strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>
+	 * <strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>
+	 * <strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>
+	 * <strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>
+	 * <strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>
+	 * <strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>
+	 * <strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>
+	 * <strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>
+	 * @module ui
+	 * @main ui
+	 * @static
+	 */
+
+	/**
 	 * 面包屑组件
 	 * @class Crumb
 	 * @module ui
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo crumb.js{js}
+	 * @demo docDemo/module/crumb.html {UI展示}
+	 * @demo docDemo/crumb.js {源码}
 	 * @show true
 	 * */
 
@@ -34225,12 +34255,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	/**
-	 * 多选按钮组组件
+	 * CheckboxGroup需与Input组件配合使用<br/>
+	 * 它的作用是将type=checkbox的Input组件在UI上展示在一起
 	 * @class CheckboxGroup
 	 * @module form
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/input.html {UI展示}
 	 * @demo docDemo/checkboxGroup.js {源码}
 	 * @show true
@@ -34254,7 +34284,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    CheckboxGroup.prototype.componentDidMount = function componentDidMount() {};
 
 	    CheckboxGroup.prototype.render = function render() {
-
 	        return _react2['default'].createElement(
 	            'div',
 	            { style: this.props.style,
@@ -34313,12 +34342,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 单选按钮组组件
+	 * RadioGroup需与Input组件配合使用<br/>
+	 * 它的作用是将type=radio的Input组件在UI上展示在一起
 	 * @class RadioGroup
 	 * @module form
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/input.html {UI展示}
 	 * @demo docDemo/RadioGroup.js {源码}
 	 * @show true
@@ -34460,7 +34489,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo label.js {js}
+	 * @demo docDemo/module/label.html {UI展示}
+	 * @demo docDemo/label.js {源码}
 	 * @show true
 	 * */
 
@@ -34551,27 +34581,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo suggestion.js{js}
+	 * @demo docDemo/module/search.html {UI展示}
+	 * @demo docDemo/search.js {源码}
 	 * @show true
-	 * @class Select
-	 * */
-	/**
-	 * tips组件
-	 * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
-	 * @class Tooltip
-
 	 * */
 
 	var Search = (function (_Suggestion) {
-	  _inherits(Search, _Suggestion);
+	    _inherits(Search, _Suggestion);
 
-	  function Search(props, context) {
-	    _classCallCheck(this, Search);
+	    function Search(props, context) {
+	        _classCallCheck(this, Search);
 
-	    _Suggestion.call(this, props, context);
-	  }
+	        _Suggestion.call(this, props, context);
+	    }
 
-	  return Search;
+	    return Search;
 	})(_Suggestion3['default']);
 
 	exports['default'] = Search;
@@ -34608,7 +34632,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @extends Component
 	 * @since 0.1.0
-	 * @demo suggestion.js {js}
+	 * @demo docDemo/module/suggestion.html {UI展示}
+	 * @demo docDemo/suggestion.js {源码}
+	 * @show true
 	 * */
 
 	var Suggestion = (function (_Search) {
@@ -34840,12 +34866,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        _this.props.getValueCallback && _this.props.getValueCallback(value, key, type);
 	    };
-
-	    /**
-	     * 根据auto存在与否渲染不同类型的元素
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Search.prototype.renderSearch = function renderSearch() {
 	        return _react2['default'].createElement(
@@ -35311,13 +35331,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _sugSearch2 = _interopRequireDefault(_sugSearch);
 
 	/**
-	 * 下拉选择框组件<br>有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
+	 * 下拉选择框组件<br>支持在input框中输入文字或者点击下拉菜单中的选项进行查询
 	 * @class Select
 	 * @module form
 	 * @constructor
 	 * @extends Component
-	 * @since 0.1.0
-	 * @demo docDemo/module/input.html {UI展示}
+	 * @demo docDemo/module/select.html {UI展示}
 	 * @demo docDemo/select.js {源码}
 	 * @show true
 	 * */
@@ -35330,8 +35349,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: {
 	            /**
 	             * 回调方法，主要作用将value传给父级元素。默认为null
-	             * @property callback
-	             * @type func
+	             * @event  getValueCallback
+	             * @param {primitive/pointer} value 值
+	             * @param {string} key 键
+	             * @param {string} type 类型
 	             * @default null
 	             * */
 	            getValueCallback: null,
@@ -35361,9 +35382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _classCallCheck(this, Select);
 
 	        _Search.call(this, props, context);
-
 	        this.inputId = this.uniqueId();
-
 	        _Search.prototype.setDefaultState.call(this, defaultState);
 	    }
 
@@ -35430,7 +35449,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo label.js {js}
+	 * @demo docDemo/module/label.html {UI展示}
+	 * @demo docDemo/label.js {源码}
 	 * @show true
 	 * */
 
@@ -35647,8 +35667,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo toast.js{js}
+	 * @demo docDemo/module/toast.html {UI展示}
+	 * @demo docDemo/toast.js {源码}
 	 * @show true
 	 * */
 
@@ -35780,7 +35800,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo dialog.js{js}
+	 * @demo docDemo/module/dialog.html {UI展示}
+	 * @demo docDemo/dialog.js {源码}
 	 * @show true
 	 * */
 
@@ -37131,7 +37152,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo tab.js{js}
+	 * @demo docDemo/module/tab.html {UI展示}
+	 * @demo docDemo/tab.js {源码}
 	 * @show true
 	 * */
 
@@ -37230,7 +37252,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo tab.js{js}
+	 * @demo docDemo/module/tab.html {UI展示}
+	 * @demo docDemo/tab.js {源码}
 	 * @show true
 	 * */
 
@@ -37404,7 +37427,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo star.js {js}
+	 * @demo docDemo/module/star.html {UI展示}
+	 * @demo docDemo/star.js {源码}
 	 * @show true
 	 * */
 
@@ -37515,7 +37539,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo Slider.js {js}
+	 * @demo docDemo/module/slider.html {UI展示}
+	 * @demo docDemo/slider.js {源码}
 	 * @show true
 	 * */
 
@@ -37880,8 +37905,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @moudle ui
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo tooltip.js{js}
-	 * @show false
+	 * @demo docDemo/module/tooltip.html {UI展示}
+	 * @demo docDemo/tooltip.js {源码}
+	 * @show true
 	 * */
 
 	var Tooltip = (function (_Component) {
@@ -38001,12 +38027,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * Panel组件
+	 * <h5>eagle-ui主要面板布局组件</h5>
+	 * <strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>
+	 * <strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>
+	 * <strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>
+	 * <strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>
+	 * @module panel
+	 * @main panel
+	 * @static
+	 */
+
+	/**
+	 * Panel定义整个容器
 	 * @class Panel
 	 * @module panel
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/panel.html {UI展示}
 	 * @demo docDemo/panel.js {源码}
 	 * @show true
@@ -38038,11 +38074,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return null;
 	    };
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Panel.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -38110,12 +38141,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * PanelHeader组件
+	 * PanelHeader定义头部区域
 	 * @class PanelHeader
 	 * @module panel
 	 * @constructor
 	 * @extends Component
-	 * @since 0.1.0
 	 * @demo docDemo/module/panel.html {UI展示}
 	 * @demo docDemo/panel.js {源码}
 	 * @show true
@@ -38129,11 +38159,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    PanelHeader.prototype.render = function render() {
 	        var renderStyle = this.props.style ? this.props.style : {};
@@ -38193,7 +38218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * PanelContent组件
+	 * PanelContent定义内容区域
 	 * @class PanelContent
 	 * @constructor
 	 * @module panel
@@ -38211,11 +38236,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    PanelContent.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -38283,12 +38303,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * PanelFooter组件
+	 * PanelFooter定义底部区域
 	 * @class PanelFooter
 	 * @constructor
 	 * @module panel
 	 * @extends Component
-	 * @since 0.1.0
 	 * @demo docDemo/module/panel.html {UI展示}
 	 * @demo docDemo/panel.js {源码}
 	 * @show true
@@ -38302,11 +38321,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    PanelFooter.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -38373,17 +38387,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	/**
-	 * 表组件
-	 * @class List
-	 * @constructor
-	 * @module ui
-	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @author bo.an@dianping.com
-	 * */
-
 	var List = (function (_Component) {
 	    _inherits(List, _Component);
 
@@ -38392,11 +38395,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    List.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -38452,17 +38450,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	/**
-	 * 表组件
-	 * @class Item
-	 * @constructor
-	 * @module ui
-	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @author bo.an@dianping.com
-	 * */
-
 	var Item = (function (_Component) {
 	    _inherits(Item, _Component);
 
@@ -38471,11 +38458,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Item.prototype.render = function render() {
 	        var renderStyle = this.props.style || {};
@@ -38541,9 +38523,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
-	 * 表单验证组件<br />
-	 * 在需要验证的表单元素上添加data-validate属性，<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称--> <br />
-	 * 默认规则有<br/>
+	 * 表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />
+	 * <!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->
+	 * rules属性提供的规则有<br/>
 	 * <pre>
 	 *     required：是否必填
 	 *     date：日期格式验证
@@ -38564,7 +38546,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/input.html {UI展示}
 	 * @demo docDemo/validate.js {源码}
 	 * @show true
@@ -38648,17 +38629,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            },
 	            initCallback: function initCallback() {},
 	            /**
-	             * 验证成功后提交表单
-	             * @property submitCallback
-	             * @type Function
-	             * */
+	             * 自定义在提交后的callback
+	             * @event submitCallback
+	             * @param {object} opt 表单数据结构
+	             */
 	            submitCallback: function submitCallback() {
 	                return true;
 	            },
 	            /**
-	             * 在提交时除验证规则之外的其他逻辑
-	             * @property validateCallback
-	             * @type Function
+	             * 自定义验证规则之外的其他逻辑
+	             * @event validateCallback
+	             * @param {object} opt 表单数据结构
 	             * */
 	            validateCallback: function validateCallback() {
 	                return true;
@@ -39320,6 +39301,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _TrJs2 = _interopRequireDefault(_TrJs);
 
 	/**
+	 * <h5>eagle-ui表格组件</h5>
+	 * <strong><a href='../classes/Table.html'>Table定义表格</a></strong><br>
+	 * <strong><a href='../classes/Th.html'>Th定义表头单元格</a></strong><br>
+	 * <strong><a href='../classes/Tr.html'>Tr定义表格行</a></strong><br>
+	 * <strong><a href='../classes/Td.html'>Td定义表格单元格</a></strong><br>
+	 * @module table
+	 * @main table
+	 * @static
+	 */
+	/**
 	 * 表格组件
 	 * @class Table
 	 * @constructor
@@ -39395,11 +39386,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            sortFiled: sortFiled
 	        });
 	    };
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Table.prototype.render = function render() {
 	        var _this = this;
@@ -39494,12 +39480,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
+	 * 表头单元格组件
 	 * @class Th
 	 * @constructor
 	 * @module table
 	 * @extends Component
-	 * @since 0.1.0
 	 * @demo docDemo/module/table.html {UI展示}
 	 * @demo docDemo/table.js {源码}
 	 * @show true
@@ -39533,11 +39518,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        this.props.clickCallback(this.props.field, sortMethod);
 	    };
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Th.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -39594,13 +39574,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
+	 * 表格单元格组件
 	 * @class Td
 	 * @constructor
 	 * @module table
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
 	 * @demo docDemo/module/table.html {UI展示}
 	 * @demo docDemo/table.js {源码}
 	 * @show true
@@ -39614,11 +39592,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Td.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -39676,13 +39649,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
+	 * 表格行组件
 	 * @class Tr
 	 * @constructor
 	 * @module table
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
 	 * @demo docDemo/module/table.html {UI展示}
 	 * @demo docDemo/table.js {源码}
 	 * @show true
@@ -39696,11 +39667,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Tr.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -39765,17 +39731,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixin = __webpack_require__(249);
 
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
-
-	/**
-	 * 多选按钮组组件
-	 * @class CheckboxGroup
-	 * @module form
-	 * @extends Component
-	 * @constructor
-	 * @since 0.1.0
-	 * @demo input.js {js}
-	 * @show true
-	 * */
 
 	var FormGroup = (function (_Component) {
 	    _inherits(FormGroup, _Component);
@@ -45033,8 +44988,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
-	 * @class Th
+	 * 封装Tr,Td组件，直接配合设置data属性的Table使用
+	 * @class Column
 	 * @module table
 	 * @constructor
 	 * @content {string} type 内容
@@ -45052,11 +45007,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _Component.apply(this, arguments);
 	  }
 
-	  /**
-	   * @method render
-	   * @return {ReactElement}
-	   * */
-
 	  Column.prototype.render = function render() {
 	    return null;
 	  };
@@ -45065,9 +45015,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'propTypes',
 	    value: {
 	      /**
-	       * 表头（不加th字段，组件会进行包装）
+	       * 表头样式(设置表头，支持JSX)
 	       * @property header
-	       * @type React节点或者 String
+	       * @type String
 	       * */
 	      header: _react.PropTypes.oneOfType([_react.PropTypes.node, _react.PropTypes.string]),
 	      /**
@@ -45075,7 +45025,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	       * @property field
 	       * @type String
 	       * */
-	      field: _react.PropTypes.string
+	      field: _react.PropTypes.string,
+	      /**
+	       * 用来描述每个竖排单元格的展示形式
+	       * @property cell
+	       * @type JSX
+	       * */
+	      cell: _react.PropTypes.string
+
 	    },
 	    enumerable: true
 	  }, {
@@ -45395,8 +45352,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @moudle ui
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo tooltip.js{js}
-	 * @show false
+	 * @demo docDemo/module/tooltip.html {UI展示}
+	 * @demo docDemo/tooltip.js {源码}
+	 * @show true
 	 * */
 
 	var TooltipPanel = (function (_Component) {

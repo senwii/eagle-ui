@@ -9,12 +9,12 @@ import Input from './Input.js';
 import Component from './utils/Component';
 
 /**
- * 单选按钮组组件
+ * RadioGroup需与Input组件配合使用<br/>
+ * 它的作用是将type=radio的Input组件在UI上展示在一起
  * @class RadioGroup
  * @module form
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/input.html {UI展示}
  * @demo docDemo/RadioGroup.js {源码}
  * @show true

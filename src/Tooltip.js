@@ -15,8 +15,9 @@ import Grid from './Grid.js';
  * @moudle ui
  * @constructor
  * @since 0.1.0
- * @demo tooltip.js{js}
- * @show false
+ * @demo docDemo/module/tooltip.html {UI展示}
+ * @demo docDemo/tooltip.js {源码}
+ * @show true
  * */
 @ClassNameMixin
 export default class Tooltip extends Component {

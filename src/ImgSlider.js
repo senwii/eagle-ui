@@ -14,7 +14,8 @@ import classNames from 'classnames';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo Slider.js {js}
+ * @demo docDemo/module/slider.html {UI展示}
+ * @demo docDemo/slider.js {源码}
  * @show true
  * */
 @ClassNameMixin

@@ -3,12 +3,11 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * 表格组件
+ * 表头单元格组件
  * @class Th
  * @constructor
  * @module table
  * @extends Component
- * @since 0.1.0
  * @demo docDemo/module/table.html {UI展示}
  * @demo docDemo/table.js {源码}
  * @show true
@@ -36,10 +35,7 @@ export default class Th extends Component{
         }
         this.props.clickCallback(this.props.field,sortMethod);
     }
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
+
     render(){
         return (
             <th

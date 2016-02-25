@@ -1,9 +1,6 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
-
 import Component from './utils/Component';
-
-
 /**
  * 星级评价
  * @class Star
@@ -11,7 +8,8 @@ import Component from './utils/Component';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo star.js {js}
+ * @demo docDemo/module/star.html {UI展示}
+ * @demo docDemo/star.js {源码}
  * @show true
  * */
 export default class Star extends Component{
