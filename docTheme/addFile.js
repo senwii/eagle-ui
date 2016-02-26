@@ -4,6 +4,7 @@
  */
 var fs =require('fs');
 var path = require('path');
+require('colors');
 //里面filepath对应的数组路径名称为相应静态资源，会放入doc下的docTheme文件夹
 var sourceFilePath = require('./config.json');
 /**
@@ -11,11 +12,12 @@ var sourceFilePath = require('./config.json');
  */
 var readFileFunc = function(source,callback,addSource){
      fs.readFile(source, function (err, data) {
-         console.log('读取自定义配置成功')
         if (err) {
-            return console.error(err);
+            return console.error(err.red);
         }
         callback(data.toString(),addSource);
+         console.log("----------------------------".blue)
+         console.log('transform lib/source.js and `var configStaticFile` to string'.green)
     });
 };
 /**
@@ -24,11 +26,9 @@ var readFileFunc = function(source,callback,addSource){
 var writeFiles = function (originData,addSource) {
         fs.writeFile(filePath, originData + addSource,  function(err) {
             if (err) {
-                return console.error(err);
+                return console.error(err.red);
             }
-            console.log("外部数据写入成功！");
-            console.log("----------------------------")
-            console.log("在doc中增加文件"+filePath);
+            console.log('success'.bgBlue,"writing lib/source/js and `var configStaticFile` to /doc/assets/js/doc.js ".green);
         });
 };
 /**
@@ -42,17 +42,17 @@ var CopyFile = function(){
         if (err) {
             return console.error(err);
         }
-        console.log("目录docTheme创建成功。");
+        console.log('success'.bgBlue,('make dir docTheme in doc').green);
+        var fileArr = [].concat(sourceFilePath['js'],sourceFilePath['css']);
+        for(var i=0;i<fileArr.length;i++){
+            (function(file){
+                var readStream = fs.createReadStream(file);
+                var writeStream = fs.createWriteStream(destDir+path.basename(file));
+                readStream.pipe(writeStream);
+                console.log('success'.bgBlue,('copy'+file+' to docTheme').green);
+            })(path.join(basePath,'docTheme',fileArr[i]));
+        }
     });
-    console.log('复制外部文件css和js成功');
-    var fileArr = [].concat(sourceFilePath['js'],sourceFilePath['css']);
-    for(var i=0;i<fileArr.length;i++){
-        (function(file){
-            var readStream = fs.createReadStream(file);
-            var writeStream = fs.createWriteStream(destDir+path.basename(file));
-            readStream.pipe(writeStream);
-        })(path.join(basePath,'docTheme',fileArr[i]));
-    }
 };
 //复制静态资源
 CopyFile();
