@@ -2,12 +2,16 @@ import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 import Component from './utils/Component';
 /**
- * 星级评价
+ * 星级评价(Star)组件<br />
+ * 提供的UI展示属性接口包括<br/>
+ * <pre>
+ *     rate：星级评价的分数(满分为100)
+ *     size：星星的大小(默认13*13px)
+ * </pre><br>
  * @class Star
  * @module ui
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/star.html {UI展示}
  * @demo docDemo/star.js {源码}
  * @show true
@@ -15,19 +19,19 @@ import Component from './utils/Component';
 export default class Star extends Component{
     static propTypes = {
         /**
-         * 星级评价分数
+         * 星级评价分数(满分100)
          * @property Rate
          * @type number
-         * @default 默认未0分
+         * @default 0
          * */
         rate:PropTypes.number,
         /**
          * 星星大小
          * @property size
          * @type String||number
-         * @default undefined  可以取值10-20 默认单位为'px'
+         * @default 13  可以取值10-20 默认单位为'px'
          * */
-        egSize: PropTypes.oneOfType([
+        size: PropTypes.oneOfType([
                 PropTypes.string,
                 PropTypes.number
         ]),

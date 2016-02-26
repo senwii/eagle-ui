@@ -4,24 +4,40 @@
  * 统一展示的标签名字为UI展示和源码
  */
 
-var demoArea = $('li[role="presentation"]');
-demoArea.click(function(e){
-    if(e.target.innerHTML.match('UI展示')){
-        operateIframe(true);
-    }else{
-        operateIframe(false);
-    }
-});
-var operateIframe = function (bool) {
+//var demoArea = $('li[role="presentation"]');
+//demoArea.click(function(e){
+//    if(e.target.innerHTML.match('UI展示')){
+//        operateIframe(true);
+//    }else{
+//        operateIframe(false);
+//    }
+//});
+var operateIframe = function () {
     var iframeArea = $('.example-content.showdemo').children();
-    if(bool){
-        iframeArea.eq(0).find('iframe').attr('src','../assets/show.html').
-                   css({ display:'block',width:'100%',height:'200px',overflow:'hidden'})
-        }else{
-        setTimeout(function(){
-            iframeArea.eq(1).find('iframe').css('display','none')
-        },0)
-        }
+    var href= location.href;
+    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/index.html';
+    var getArray = href.split('/');
+    var mapKey = getArray[getArray.length-1];
+    var mapPool={
+        input:['Input','RadioGroup','RadioGroup',''],
+        validate:['ValidatorPanel']
     };
-setTimeout(function(){operateIframe(true)},0);
+    var hash =(function(Pool){
+        for(var key in Pool){
+           for(var k=0;k<Pool.length;k++){
+                if(Pool[key][k]==mapKey){
+                    return Pool[key][k];
+                    break;
+                }
+            }
+        }
+    }(mapPool))
+    iframeArea.eq(0).find('iframe').attr('src',relLink+hash).
+        css({ display:'block',width:'100%',height:'200px',overflow:'hidden'});
+
+    $('.btn.btn-info.btn-viewDemo').off('click');
+    $('.btn.btn-info.btn-viewDemo').html('<a href='+relLink+'></a>');
+
+    };
+setTimeout(function(){operateIframe()},0);
 

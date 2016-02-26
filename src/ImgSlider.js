@@ -8,12 +8,22 @@ import ClassNameMixin from './utils/ClassNameMixin';
 import classNames from 'classnames';
 
 /**
- * 照片浏览组件
+ *  照片浏览组件<br />
+ *  提供的UI展示属性接口如下<br/>
+ * <pre>
+ *     imgList:定义数据源数组Array [obj]
+ *     show:定义隐藏还是展示组件 Boolean
+ *     urlKey:定义大图展示中的图片地址对应imgList数组对象的key
+ *     titleKey:定义大图展示下方文字对应imgList数组对象的key
+ *     profileKey: 定义大图展示下方文字对应imgList数组对象的key
+ *     showThumbnail:定义是否展示缩略图 Boolean
+ *     thumbnailKey:定义缩略图对应imgList数组对象的key
+ *     pageNum:定义每页展示缩略图的个数
+ * </pre>
  * @class Slider
  * @module ui
  * @extends Component
  * @constructor
- * @since 0.1.0
  * @demo docDemo/module/slider.html {UI展示}
  * @demo docDemo/slider.js {源码}
  * @show true

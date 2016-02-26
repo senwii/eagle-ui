@@ -7391,7 +7391,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/module/input.html {UI展示}
 	 * @demo docDemo/checkboxGroup.js {源码}
 	 * @show true
 	 * */
@@ -11905,12 +11904,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 星级评价
+	 * 星级评价(Star)组件<br />
+	 * 提供的UI展示属性接口包括<br/>
+	 * <pre>
+	 *     rate：星级评价的分数(满分为100)
+	 *     size：星星的大小(默认13*13px)
+	 * </pre><br>
 	 * @class Star
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/star.html {UI展示}
 	 * @demo docDemo/star.js {源码}
 	 * @show true
@@ -11923,19 +11926,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 星级评价分数
+	             * 星级评价分数(满分100)
 	             * @property Rate
 	             * @type number
-	             * @default 默认未0分
+	             * @default 0
 	             * */
 	            rate: _react.PropTypes.number,
 	            /**
 	             * 星星大小
 	             * @property size
 	             * @type String||number
-	             * @default undefined  可以取值10-20 默认单位为'px'
+	             * @default 13  可以取值10-20 默认单位为'px'
 	             * */
-	            egSize: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+	            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
 	            classPrefix: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -12017,12 +12020,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 照片浏览组件
+	 *  照片浏览组件<br />
+	 *  提供的UI展示属性接口如下<br/>
+	 * <pre>
+	 *     imgList:定义数据源数组Array [obj]
+	 *     show:定义隐藏还是展示组件 Boolean
+	 *     urlKey:定义大图展示中的图片地址对应imgList数组对象的key
+	 *     titleKey:定义大图展示下方文字对应imgList数组对象的key
+	 *     profileKey: 定义大图展示下方文字对应imgList数组对象的key
+	 *     showThumbnail:定义是否展示缩略图 Boolean
+	 *     thumbnailKey:定义缩略图对应imgList数组对象的key
+	 *     pageNum:定义每页展示缩略图的个数
+	 * </pre>
 	 * @class Slider
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
 	 * @demo docDemo/module/slider.html {UI展示}
 	 * @demo docDemo/slider.js {源码}
 	 * @show true
