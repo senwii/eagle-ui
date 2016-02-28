@@ -9,7 +9,7 @@ import ClassNameMixin from './utils/ClassNameMixin.js';
  * @module ui
  * @extends Component
  * @requires React classnames
- * @since 0.1.0
+ * @demo docDemo/empty.html {UI展示}
  * @demo paging.js {js}
  * @show true
  * @author min.xiao@dianping.com

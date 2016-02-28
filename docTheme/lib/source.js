@@ -4,7 +4,7 @@
  */
 var filePaths = function(configStaticFile){
     var href = location.href;
-    //根据不同的页面加载正确的路径
+    //根据不同的页面加载正确的路径，兼容http网上地址
     var regExp = /(module.*|classes.*)+/i;
     if(href.match(regExp)){
         href = href.replace(regExp,'');

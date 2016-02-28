@@ -20,7 +20,7 @@ import Component from '../utils/Component';
  * @module panel(面板)
  * @extends Component
  * @constructor
- * @demo docDemo/module/panel.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/panel.js {源码}
  * @show true
  * */

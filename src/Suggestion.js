@@ -6,8 +6,7 @@ import Search from './sug/Search';
  * @Module ui
  * @constructor
  * @extends Component
- * @since 0.1.0
- * @demo docDemo/module/suggestion.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/suggestion.js {源码}
  * @show true
  * */

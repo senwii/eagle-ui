@@ -27,7 +27,7 @@ import ReactDom from 'react/lib/ReactDOM';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/validate.js {源码}
  * @show true
  * */

@@ -24,7 +24,7 @@ import classNames from 'classnames';
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/module/slider.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/slider.js {源码}
  * @show true
  * */

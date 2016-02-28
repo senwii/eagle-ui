@@ -43,7 +43,13 @@ var CopyFile = function(){
             return console.error(err);
         }
         console.log('success'.bgBlue,('make dir docTheme in doc').green);
-        var fileArr = [].concat(sourceFilePath['js'],sourceFilePath['css']);
+        var fileArr =(function(){
+            var initArr = [];
+            for(var key in sourceFilePath){
+                initArr = initArr.concat(sourceFilePath[key]);
+            }
+            return initArr;
+        }());
         for(var i=0;i<fileArr.length;i++){
             (function(file){
                 var readStream = fs.createReadStream(file);

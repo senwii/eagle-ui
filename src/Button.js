@@ -12,7 +12,7 @@ import classnames from 'classnames';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo docDemo/module/button.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/button.js {源码}
  * @show true
  * */

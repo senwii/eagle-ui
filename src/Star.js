@@ -12,7 +12,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/module/star.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/star.js {源码}
  * @show true
  * */

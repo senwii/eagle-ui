@@ -22,7 +22,7 @@ import ClassNameMixin from './utils/ClassNameMixin';
  * @module grid(布局)
  * @extends Component
  * @constructor
- * @demo docDemo/module/grid.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/grid.js {源码}
  * @show true
  * */

@@ -305,8 +305,7 @@ $(function() {
     autoHeight();
 });
 window["configStaticFile"]={
-  "js":["src/dianping-theme.js"],
-  "css":["src/dianping-theme.css"]
+  "js":["src/dianping-theme.js"]
 };
 /**
  * Created by slashhuang on 16/2/23.
@@ -314,7 +313,7 @@ window["configStaticFile"]={
  */
 var filePaths = function(configStaticFile){
     var href = location.href;
-    //根据不同的页面加载正确的路径
+    //根据不同的页面加载正确的路径，兼容http网上地址
     var regExp = /(module.*|classes.*)+/i;
     if(href.match(regExp)){
         href = href.replace(regExp,'');

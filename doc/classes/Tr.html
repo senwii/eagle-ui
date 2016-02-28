@@ -554,17 +554,8 @@
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html&gt;
-&lt;div id=&#39;root&#39;&gt;&lt;/div&gt;
-&lt;/html&gt;
-&lt;script&gt;
-    var script=document.createElement(&#39;script&#39;);
-    var href=  location.href;
-    var relLink = href.substring(0,href.indexOf(&#39;eagle-ui&#39;))+&#39;eagle-ui/examples/js/examples.js&#39;;
-    script.src=relLink;
-    document.body.appendChild(script);
-    script.onload = function(e){location.hash=&#39;table&#39;};
-&lt;/script&gt;</code></pre>
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;
+&lt;/html&gt;</code></pre>
 </div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
 import {Table , Tr ,Td ,Th ,Column,Row,Col} from &#39;eagle-ui.js&#39;;
 var tableData=[

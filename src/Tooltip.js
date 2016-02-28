@@ -14,8 +14,7 @@ import Grid from './Grid.js';
  * @class Tooltip
  * @moudle ui
  * @constructor
- * @since 0.1.0
- * @demo docDemo/module/tooltip.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/tooltip.js {源码}
  * @show true
  * */

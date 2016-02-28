@@ -15,7 +15,7 @@ import Component from './utils/Component';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo docDemo/module/input.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/RadioGroup.js {源码}
  * @show true
  * */

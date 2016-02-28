@@ -19,7 +19,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/module/toast.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/toast.js {源码}
  * @show true
  * */

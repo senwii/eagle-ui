@@ -17,7 +17,7 @@ import Search from './sug/Search';
  * @module form(表单)
  * @constructor
  * @extends Component
- * @demo docDemo/module/select.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/select.js {源码}
  * @show true
  * */

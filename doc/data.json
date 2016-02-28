@@ -507,7 +507,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='panel'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Row,Col,Grid,\n\t    Panel,PanelHeader,PanelFooter,PanelContent,\n\t    Input,Label,LabelGroup,\n\t    FormGroup,RadioGroup,CheckboxGroup,Select} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col>\n\t                        <h3>panel嵌套<small>通过设置panel的heading属性达到此效果</small></h3>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel heading=\"我是标题\">\n\t                            <PanelContent>\n\t                                <Row>\n\t                                    <Col>\n\t                                        <FormGroup>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>性别</Col>\n\t                                                <Col sm={10}>\n\t                                                    <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                        <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                        <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                    </RadioGroup>\n\t                                                </Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>所在城市</Col>\n\t                                                <Col sm={10} layer>\n\t                                                    <Row style={{margin:0}}>\n\t                                                        <Col sm={4} end>\n\t                                                            <Select placeholder=\"请选择城市\" >\n\t                                                                <item value='bei'>北京</item>\n\t                                                                <item value='shang'>上海</item>\n\t                                                                <item value='nan'>南京</item>\n\t                                                            </Select>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </FormGroup>\n\t                                    </Col>\n\t                                </Row>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel>\n\t                            <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                            <PanelContent>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                <Panel>\n\t                                                    <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                    <PanelContent>\n\t                                                        <Row>\n\t                                                            <Col>\n\t                                                                我是内容区\n\t                                                            </Col>\n\t                                                        </Row>\n\t                                                    </PanelContent>\n\t                                                </Panel>\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t};\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -532,7 +532,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='panel'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Row,Col,Grid,\n\t    Panel,PanelHeader,PanelFooter,PanelContent,\n\t    Input,Label,LabelGroup,\n\t    FormGroup,RadioGroup,CheckboxGroup,Select} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col>\n\t                        <h3>panel嵌套<small>通过设置panel的heading属性达到此效果</small></h3>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel heading=\"我是标题\">\n\t                            <PanelContent>\n\t                                <Row>\n\t                                    <Col>\n\t                                        <FormGroup>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>性别</Col>\n\t                                                <Col sm={10}>\n\t                                                    <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                        <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                        <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                    </RadioGroup>\n\t                                                </Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>所在城市</Col>\n\t                                                <Col sm={10} layer>\n\t                                                    <Row style={{margin:0}}>\n\t                                                        <Col sm={4} end>\n\t                                                            <Select placeholder=\"请选择城市\" >\n\t                                                                <item value='bei'>北京</item>\n\t                                                                <item value='shang'>上海</item>\n\t                                                                <item value='nan'>南京</item>\n\t                                                            </Select>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </FormGroup>\n\t                                    </Col>\n\t                                </Row>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel>\n\t                            <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                            <PanelContent>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                <Panel>\n\t                                                    <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                    <PanelContent>\n\t                                                        <Row>\n\t                                                            <Col>\n\t                                                                我是内容区\n\t                                                            </Col>\n\t                                                        </Row>\n\t                                                    </PanelContent>\n\t                                                </Panel>\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t};\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -557,7 +557,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='panel'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Row,Col,Grid,\n\t    Panel,PanelHeader,PanelFooter,PanelContent,\n\t    Input,Label,LabelGroup,\n\t    FormGroup,RadioGroup,CheckboxGroup,Select} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col>\n\t                        <h3>panel嵌套<small>通过设置panel的heading属性达到此效果</small></h3>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel heading=\"我是标题\">\n\t                            <PanelContent>\n\t                                <Row>\n\t                                    <Col>\n\t                                        <FormGroup>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>性别</Col>\n\t                                                <Col sm={10}>\n\t                                                    <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                        <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                        <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                    </RadioGroup>\n\t                                                </Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>所在城市</Col>\n\t                                                <Col sm={10} layer>\n\t                                                    <Row style={{margin:0}}>\n\t                                                        <Col sm={4} end>\n\t                                                            <Select placeholder=\"请选择城市\" >\n\t                                                                <item value='bei'>北京</item>\n\t                                                                <item value='shang'>上海</item>\n\t                                                                <item value='nan'>南京</item>\n\t                                                            </Select>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </FormGroup>\n\t                                    </Col>\n\t                                </Row>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel>\n\t                            <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                            <PanelContent>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                <Panel>\n\t                                                    <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                    <PanelContent>\n\t                                                        <Row>\n\t                                                            <Col>\n\t                                                                我是内容区\n\t                                                            </Col>\n\t                                                        </Row>\n\t                                                    </PanelContent>\n\t                                                </Panel>\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t};\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -582,7 +582,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='panel'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Row,Col,Grid,\n\t    Panel,PanelHeader,PanelFooter,PanelContent,\n\t    Input,Label,LabelGroup,\n\t    FormGroup,RadioGroup,CheckboxGroup,Select} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col>\n\t                        <h3>panel嵌套<small>通过设置panel的heading属性达到此效果</small></h3>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel heading=\"我是标题\">\n\t                            <PanelContent>\n\t                                <Row>\n\t                                    <Col>\n\t                                        <FormGroup>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>姓名</Col>\n\t                                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>性别</Col>\n\t                                                <Col sm={10}>\n\t                                                    <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                        <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                        <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                    </RadioGroup>\n\t                                                </Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col sm={2}>所在城市</Col>\n\t                                                <Col sm={10} layer>\n\t                                                    <Row style={{margin:0}}>\n\t                                                        <Col sm={4} end>\n\t                                                            <Select placeholder=\"请选择城市\" >\n\t                                                                <item value='bei'>北京</item>\n\t                                                                <item value='shang'>上海</item>\n\t                                                                <item value='nan'>南京</item>\n\t                                                            </Select>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </FormGroup>\n\t                                    </Col>\n\t                                </Row>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Panel>\n\t                            <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                            <PanelContent>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                <Panel>\n\t                                                    <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                    <PanelContent>\n\t                                                        <Row>\n\t                                                            <Col>\n\t                                                                我是内容区\n\t                                                            </Col>\n\t                                                        </Row>\n\t                                                    </PanelContent>\n\t                                                </Panel>\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                                <Panel>\n\t                                    <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                我是内容区\n\t                                            </Col>\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                            </PanelContent>\n\t                        </Panel>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t};\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -607,7 +607,7 @@
             "is_constructor": 1,
             "content": "{string} type 内容",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='table'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Table , Tr ,Td ,Th ,Column,Row,Col} from 'eagle-ui.js';\n\tvar tableData=[\n\t    {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:100},\n\t    {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:200},\n\t    {name: 'Estevan', email: 'Aimee7@hotmail.com',score:106},\n\t    {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:233},\n\t    {name: 'Tressa', email: 'Yadira1@hotmail.com',score:900},\n\t];\n\texport default class TableCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Table data={tableData}>\n\t                            <Column\n\t                                header=\"Name\"\n\t                                field='name'\n\t                                cell={\n\t                                    <Td data={tableData}></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"red\"}}>Email</span>}\n\t                                field='email'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"green\"}}>Score</span>}\n\t                                field='score'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Table>\n\t                            <thead>\n\t                            <Tr>\n\t                                <Th>数据类型</Th>\n\t                                <Th>数据项</Th>\n\t                                <Th>昨日</Th>\n\t                                <Th>本月</Th>\n\t                                <Th>上月</Th>\n\t                                <Th>本月城市排名</Th>\n\t                            </Tr>\n\t                            </thead>\n\t                            <tbody>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">过程指标</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td arrow-up>消费交易额</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr split>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">业绩</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            </tbody>\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -631,9 +631,8 @@
             "description": "表格组件",
             "is_constructor": 1,
             "extends": "Component",
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='table'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Table , Tr ,Td ,Th ,Column,Row,Col} from 'eagle-ui.js';\n\tvar tableData=[\n\t    {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:100},\n\t    {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:200},\n\t    {name: 'Estevan', email: 'Aimee7@hotmail.com',score:106},\n\t    {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:233},\n\t    {name: 'Tressa', email: 'Yadira1@hotmail.com',score:900},\n\t];\n\texport default class TableCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Table data={tableData}>\n\t                            <Column\n\t                                header=\"Name\"\n\t                                field='name'\n\t                                cell={\n\t                                    <Td data={tableData}></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"red\"}}>Email</span>}\n\t                                field='email'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"green\"}}>Score</span>}\n\t                                field='score'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Table>\n\t                            <thead>\n\t                            <Tr>\n\t                                <Th>数据类型</Th>\n\t                                <Th>数据项</Th>\n\t                                <Th>昨日</Th>\n\t                                <Th>本月</Th>\n\t                                <Th>上月</Th>\n\t                                <Th>本月城市排名</Th>\n\t                            </Tr>\n\t                            </thead>\n\t                            <tbody>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">过程指标</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td arrow-up>消费交易额</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr split>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">业绩</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            </tbody>\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -658,7 +657,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='table'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Table , Tr ,Td ,Th ,Column,Row,Col} from 'eagle-ui.js';\n\tvar tableData=[\n\t    {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:100},\n\t    {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:200},\n\t    {name: 'Estevan', email: 'Aimee7@hotmail.com',score:106},\n\t    {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:233},\n\t    {name: 'Tressa', email: 'Yadira1@hotmail.com',score:900},\n\t];\n\texport default class TableCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Table data={tableData}>\n\t                            <Column\n\t                                header=\"Name\"\n\t                                field='name'\n\t                                cell={\n\t                                    <Td data={tableData}></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"red\"}}>Email</span>}\n\t                                field='email'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"green\"}}>Score</span>}\n\t                                field='score'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Table>\n\t                            <thead>\n\t                            <Tr>\n\t                                <Th>数据类型</Th>\n\t                                <Th>数据项</Th>\n\t                                <Th>昨日</Th>\n\t                                <Th>本月</Th>\n\t                                <Th>上月</Th>\n\t                                <Th>本月城市排名</Th>\n\t                            </Tr>\n\t                            </thead>\n\t                            <tbody>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">过程指标</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td arrow-up>消费交易额</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr split>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">业绩</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            </tbody>\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -683,7 +682,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='table'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Table , Tr ,Td ,Th ,Column,Row,Col} from 'eagle-ui.js';\n\tvar tableData=[\n\t    {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:100},\n\t    {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:200},\n\t    {name: 'Estevan', email: 'Aimee7@hotmail.com',score:106},\n\t    {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:233},\n\t    {name: 'Tressa', email: 'Yadira1@hotmail.com',score:900},\n\t];\n\texport default class TableCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Table data={tableData}>\n\t                            <Column\n\t                                header=\"Name\"\n\t                                field='name'\n\t                                cell={\n\t                                    <Td data={tableData}></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"red\"}}>Email</span>}\n\t                                field='email'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"green\"}}>Score</span>}\n\t                                field='score'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Table>\n\t                            <thead>\n\t                            <Tr>\n\t                                <Th>数据类型</Th>\n\t                                <Th>数据项</Th>\n\t                                <Th>昨日</Th>\n\t                                <Th>本月</Th>\n\t                                <Th>上月</Th>\n\t                                <Th>本月城市排名</Th>\n\t                            </Tr>\n\t                            </thead>\n\t                            <tbody>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">过程指标</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td arrow-up>消费交易额</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr split>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">业绩</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            </tbody>\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -708,7 +707,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='table'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Table , Tr ,Td ,Th ,Column,Row,Col} from 'eagle-ui.js';\n\tvar tableData=[\n\t    {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:100},\n\t    {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:200},\n\t    {name: 'Estevan', email: 'Aimee7@hotmail.com',score:106},\n\t    {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:233},\n\t    {name: 'Tressa', email: 'Yadira1@hotmail.com',score:900},\n\t];\n\texport default class TableCls extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Table data={tableData}>\n\t                            <Column\n\t                                header=\"Name\"\n\t                                field='name'\n\t                                cell={\n\t                                    <Td data={tableData}></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"red\"}}>Email</span>}\n\t                                field='email'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                            <Column\n\t                                header={<span style={{color:\"green\"}}>Score</span>}\n\t                                field='score'\n\t                                cell={\n\t                                    <Td data={tableData} ></Td>\n\t                                }\n\t                                />\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <Table>\n\t                            <thead>\n\t                            <Tr>\n\t                                <Th>数据类型</Th>\n\t                                <Th>数据项</Th>\n\t                                <Th>昨日</Th>\n\t                                <Th>本月</Th>\n\t                                <Th>上月</Th>\n\t                                <Th>本月城市排名</Th>\n\t                            </Tr>\n\t                            </thead>\n\t                            <tbody>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">过程指标</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td arrow-up>消费交易额</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr split>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td arrow-down>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td rowSpan=\"4\">业绩</Td>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            <Tr>\n\t                                <Td>消费交易额</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>1876500</Td>\n\t                                <Td>200</Td>\n\t                            </Tr>\n\t                            </tbody>\n\t                        </Table>\n\t                    </Col>\n\t                </Row>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -733,7 +732,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='button'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React, { Component ,PropTypes} from 'react';\n\timport {ButtonGroup, Button ,Row ,Col ,Grid }from 'eagle-ui.js';\n\texport default class ButtonCls extends Component{\n\t    onActive(target,html){\n\t        alert('测试');\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col>\n\t                        <ButtonGroup egType=\"justify\" activeCallback={this.onActive}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组1</Button>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组2</Button>\n\t                        </ButtonGroup>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={12}>\n\t                        <ButtonGroup egType=\"tacked\">\n\t                            <Button radius egSize=\"sm\" egStyle=\"\">垂直按钮组1</Button>\n\t                            <Button radius egSize=\"sm\" egStyle=\"\">垂直按钮组2</Button>\n\t                        </ButtonGroup>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"warning\">警告</Button></Col>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"success\">成功</Button></Col>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"danger\">危险</Button></Col>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"error\">错误</Button></Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" egStyle=\"success\" disabled>成功不可点</Button></Col>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" >默认</Button></Col>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" disabled>默认不可点</Button></Col>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" egStyle=\"link\" >链接</Button></Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -759,7 +758,7 @@
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='button'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React, { Component ,PropTypes} from 'react';\n\timport {ButtonGroup, Button ,Row ,Col ,Grid }from 'eagle-ui.js';\n\texport default class ButtonCls extends Component{\n\t    onActive(target,html){\n\t        alert('测试');\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col>\n\t                        <ButtonGroup egType=\"justify\" activeCallback={this.onActive}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组1</Button>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组2</Button>\n\t                        </ButtonGroup>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={12}>\n\t                        <ButtonGroup egType=\"tacked\">\n\t                            <Button radius egSize=\"sm\" egStyle=\"\">垂直按钮组1</Button>\n\t                            <Button radius egSize=\"sm\" egStyle=\"\">垂直按钮组2</Button>\n\t                        </ButtonGroup>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"warning\">警告</Button></Col>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"success\">成功</Button></Col>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"danger\">危险</Button></Col>\n\t                    <Col sm={3}><Button radius egSize=\"sm\" egStyle=\"error\">错误</Button></Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" egStyle=\"success\" disabled>成功不可点</Button></Col>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" >默认</Button></Col>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" disabled>默认不可点</Button></Col>\n\t                    <Col sm={3}><Button block radius egSize=\"sm\" egStyle=\"link\" >链接</Button></Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -783,9 +782,8 @@
             "description": "日历组件<br />\n需要和CalendarPanel组合使用",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='calendar'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component,PropTypes} from 'react';\n\timport {Input,Row ,Col,Grid,CalendarPanel} from 'eagle-ui.js';\n\timport querystring from 'querystring';\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false\n\t        }\n\t    };\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={12}>\n\t                        <CalendarPanel startDate=\"2015-11-11\">\n\t                            <Input placeholder=\"请选择日期\" style={{width:'150px'}} />\n\t                        </CalendarPanel>\n\t\n\t                    </Col>\n\t                    <Col sm={1} end>\n\t                        每日邮报报道,英国华威大学划艇队推出了2016年新版裸体日历,小伙子们在镜头前“坦诚相见”,大秀肌肉。这是该校划艇队第六次拍摄这种日历。 长期锻炼的队员们骄傲的\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={3}>\n\t                        <CalendarPanel startDate=\"2015-11-11\" endDate=\"2015-12-1\">\n\t                            <Input placeholder=\"请选择日期\" style={{width:'150px'}} />\n\t                        </CalendarPanel>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -809,9 +807,8 @@
             "description": "CalendarPanel组件",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='calendar'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component,PropTypes} from 'react';\n\timport {Input,Row ,Col,Grid,CalendarPanel} from 'eagle-ui.js';\n\timport querystring from 'querystring';\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false\n\t        }\n\t    };\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={12}>\n\t                        <CalendarPanel startDate=\"2015-11-11\">\n\t                            <Input placeholder=\"请选择日期\" style={{width:'150px'}} />\n\t                        </CalendarPanel>\n\t\n\t                    </Col>\n\t                    <Col sm={1} end>\n\t                        每日邮报报道,英国华威大学划艇队推出了2016年新版裸体日历,小伙子们在镜头前“坦诚相见”,大秀肌肉。这是该校划艇队第六次拍摄这种日历。 长期锻炼的队员们骄傲的\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={3}>\n\t                        <CalendarPanel startDate=\"2015-11-11\" endDate=\"2015-12-1\">\n\t                            <Input placeholder=\"请选择日期\" style={{width:'150px'}} />\n\t                        </CalendarPanel>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
@@ -836,9 +833,11 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {CheckboxGroup,Grid,Row,Col,PanelContent,Panel,RadioGroup,Input,Select,FormGroup,} from 'eagle-ui.js';\n\tlet demo = class extends Component{\n\t    getValue(val){\n\t        alert(val);\n\t    }\n\t    change(e){\n\t        alert(e.target.value);\n\t    }\n\t    render(){\n\t        return (\n\t            <CheckboxGroup>\n\t            <Input  type=\"checkbox\" checked  disabled={true}  />\n\t            <Input  type=\"checkbox\"  disabled={true}   />\n\t            <Input  type=\"checkbox\" getValueCallback={::this.getValue}  value=\"ccc\"  />\n\t            <Input  type=\"checkbox\" checked onChange={::this.change} value=\"bbb\"  />\n\t            </CheckboxGroup>)\n\t    }\n\t};"
             ],
             "exampleTitles": [
+                "UI展示",
                 "源码"
             ],
             "show": true
@@ -859,7 +858,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='Demo1'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Search,Select,Input,Grid,Row,Col,List,Item} from 'eagle-ui.js';\n\tlet SearchSec= class SearchSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={5}>\n\t                        <Select  callback={function(val){alert(val)}}>\n\t                            <item> 北京</item>\n\t                            <item> 上海</item>\n\t                            <item> 南京</item>\n\t                        </Select>\n\t                    </Col>\n\t                    <Col sm={5}>\n\t                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}>\n\t                        </Search>\n\t                    </Col>\n\t                    <Col sm={2}>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        )\n\t    }\n\t}\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -883,9 +882,8 @@
             "description": "面包屑组件",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='crumb'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React, { Component ,PropTypes} from 'react';\n\timport {Crumb} from 'eagle-ui.js';\n\texport default class CrumbCls extends Component {\n\t    render() {\n\t        return (\n\t            <Crumb>\n\t                <item url=\"dddd.html\">菜单</item>\n\t                <item url=\"dddd.html\">菜单</item>\n\t                <item url=\"dddd.html\">菜单</item>\n\t                <item url=\"dddd.html\">菜单</item>\n\t                <item url=\"dddd.html\">菜单</item>\n\t                <item url='baidu.html'>菜单</item>\n\t            </Crumb>\n\t        );\n\t    }\n\t}\n\t"
             ],
             "exampleTitles": [
@@ -909,9 +907,8 @@
             "description": "弹出层组件",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='dialog'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\n\tlet Demo= class Demo extends Component{\n\t    static defaultProps = {\n\t    };\n\t    constructor(props, context) {\n\t        super(props, context);\n\t    }\n\t    getScope(dialog){\n\t        this.dialog = dialog;\n\t    }\n\t    show(name){\n\t        Dialog.mask(name).then(function(){\n\t            console.dir('...alert....');\n\t            Dialog.close();\n\t        },function(type){\n\t            console.dir(type);\n\t        });\n\t    }\n\t    showAlert(){\n\t        Dialog.alert('哈哈，我是alert');\n\t    }\n\t    nomask(){\n\t        Dialog.alert('哈哈，我是alert',{\n\t            isMask:false\n\t        });\n\t    }\n\t\n\t    showConfirm(){\n\t        Dialog.confirm('确定你已经打开了么？').then(()=>{\n\t            alert('确定');\n\t        },()=>{\n\t            alert('取消');\n\t        });\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <div>\n\t                <Button onClick={::this.show.bind(this,'demo1')} className=\"mg-right-15\">点击我mask</Button>\n\t                <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n\t                <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask3 outside</Button>\n\t                <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n\t                <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n\t                <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n\t                <Dialog id=\"demo1\" egSize=\"xs\" buttonAlign=\"right\" title=\"苍老师你好\" buttons={[\n\t                    {\n\t                        type: 'success',\n\t                        name: '确认',\n\t                        callback:()=>{}\n\t                    },\n\t                    {\n\t                        type:'cancel',\n\t                        egStyle:'white',\n\t                        name:'取消',\n\t                        callback:()=>{}\n\t                    },\n\t                    {\n\t                        egStyle:'warning',\n\t                        name:'自定义按钮',\n\t                        callback:()=>{alert('自定义按钮');}\n\t                    }\n\t                    ]}>\n\t                    <div>\n\t                        哈哈，你好苍老师\n\t                    </div>\n\t                </Dialog>\n\t                <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\" buttons={[\n\t                    {\n\t                        type: 'success',\n\t                        name: '提交',\n\t                        callback:()=>{}\n\t                    },\n\t                    {\n\t                        type:'cancel',\n\t                        egStyle:'white',\n\t                        name:'取消',\n\t                        callback:()=>{}\n\t                    }\n\t                    ]}>\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col>\n\t                                <Panel heading=\"我是标题\">\n\t                                    <PanelContent>\n\t                                        <Row>\n\t                                            <Col>\n\t                                                <FormGroup>\n\t                                                    <Row>\n\t                                                        <Col sm={2}>姓名</Col>\n\t                                                        <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                    </Row>\n\t                                                    <Row>\n\t                                                        <Col sm={2}>姓名</Col>\n\t                                                        <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                    </Row>\n\t                                                    <Row>\n\t                                                        <Col sm={2}>性别</Col>\n\t                                                        <Col sm={10}>\n\t                                                            <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                                <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                                <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                            </RadioGroup>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                    <Row>\n\t                                                        <Col sm={2}>体育爱好</Col>\n\t                                                        <Col sm={10}>\n\t                                                            <CheckboxGroup>\n\t                                                                <Input  type=\"checkbox\" label=\"足球\" checked   />\n\t                                                                <Input  type=\"checkbox\" label=\"篮球\"    />\n\t                                                                <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n\t                                                                <Input  type=\"checkbox\" label=\"乒乓球\"    />\n\t                                                            </CheckboxGroup>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                    <Row>\n\t                                                        <Col sm={2}>姓名</Col>\n\t                                                        <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                        <FormGroup>\n\t                                                            <Col sm={13}>出生日期</Col>\n\t                                                            <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n\t                                                        </FormGroup>\n\t                                                    </Row>\n\t                                                    <Row>\n\t                                                        <Col sm={2}>所在城市</Col>\n\t                                                        <Col sm={10} layer>\n\t                                                            <Row style={{margin:0}}>\n\t                                                                <Col sm={4} end>\n\t                                                                    <Select placeholder=\"请选择城市\" >\n\t                                                                        <item value='bei'>北京</item>\n\t                                                                        <item value='shang'>上海</item>\n\t                                                                        <item value='nan'>南京</item>\n\t                                                                    </Select>\n\t                                                                </Col>\n\t                                                            </Row>\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                </FormGroup>\n\t                                            </Col>\n\t                                        </Row>\n\t                                        <Row>\n\t                                            <Col padding={'0'}>\n\t                                                <Panel heading=\"我是标题二\">\n\t                                                    <PanelContent padding={true}>\n\t                                                        我是下一个内容区\n\t                                                    </PanelContent>\n\t                                                </Panel>\n\t                                            </Col>\n\t\n\t                                        </Row>\n\t                                        <Row>\n\t                                            <Col padding={'0'}>\n\t                                                <Panel heading=\"我是标题三\" >\n\t                                                    <PanelContent padding={true}>\n\t                                                        我是下一个内容区\n\t                                                    </PanelContent>\n\t                                                </Panel>\n\t                                            </Col>\n\t\n\t                                        </Row>\n\t                                    </PanelContent>\n\t                                </Panel>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </Dialog>\n\t                <Dialog id=\"demo3\" title=\"panel\" outside egSize=\"lg\">\n\t                    <Panel egType=\"normal\" margin=\"0\">\n\t                        <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                        <PanelContent>\n\t                            <Panel egType=\"normal\">\n\t                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                <PanelContent>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            我是内容区\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Panel  margin={'0'}>\n\t                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                <PanelContent>\n\t                                                    <Row>\n\t                                                        <Col>\n\t                                                            我是内容区\n\t                                                        </Col>\n\t                                                    </Row>\n\t                                                </PanelContent>\n\t                                            </Panel>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </PanelContent>\n\t                            </Panel>\n\t                            <Panel margin={'0'}>\n\t                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                <PanelContent>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            我是内容区\n\t                                        </Col>\n\t                                    </Row>\n\t                                </PanelContent>\n\t                            </Panel>\n\t                        </PanelContent>\n\t                    </Panel>\n\t                </Dialog>\n\t            </div>\n\t        );\n\t    }\n\t};"
             ],
             "exampleTitles": [
@@ -936,7 +933,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='Demo1'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Search,Select,Input,Grid,Row,Col,List,Item} from 'eagle-ui.js';\n\tlet SearchSec= class SearchSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={5}>\n\t                        <Select  callback={function(val){alert(val)}}>\n\t                            <item> 北京</item>\n\t                            <item> 上海</item>\n\t                            <item> 南京</item>\n\t                        </Select>\n\t                    </Col>\n\t                    <Col sm={5}>\n\t                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}>\n\t                        </Search>\n\t                    </Col>\n\t                    <Col sm={2}>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        )\n\t    }\n\t}\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -961,7 +958,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='slider'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React, { Component ,PropTypes} from 'react';\n\timport {Button,Column,ImgSlider,Dialog} from 'eagle-ui.js';\n\texport default class SliderDemo extends Component {\n\t    constructor(props,context) {\n\t        super(props,context);\n\t        this.state={\n\t            show:false,\n\t            showThumbnail:true\n\t        }\n\t    }\n\t    closeDialog(){\n\t        this.setState({\n\t            show:false\n\t        })\n\t    }\n\t    handleSlider(){\n\t        Dialog.mask('imgslider');\n\t        switch(arguments[0]){\n\t            case 'showDefinedThumbnail':\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:true,\n\t                    thumbnailKey:'thumbnail'\n\t                });break;\n\t            case 'noShowThumbnail':\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:false,\n\t                    thumbnailKey:undefined\n\t                });break;\n\t            default :\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:true,\n\t                    thumbnailKey:undefined\n\t                });break;\n\t        }\n\t    }\n\t    getDialog(d){\n\t        this.dialog = d;\n\t    }\n\t    render() {\n\t        let {show,showThumbnail,thumbnailKey} = this.state;\n\t        let imgList=[\n\t            {\n\t                profile:'1叔2015上传',\n\t                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'1哥2015上传',\n\t                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'2哥2015上传',\n\t                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'3哥2015上传',\n\t                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'4哥2015上传',\n\t                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5哥2015上传',\n\t                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n\t            }\n\t        ];\n\t        let pageNum=4;\n\t        return (\n\t            <div>\n\t                <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>\n\t                <Button success className='mg-left-10' onClick={(e)=>this.handleSlider.call(this,'showDefinedThumbnail')}>点击出现照片展示插件(缩略图自定义)</Button>\n\t                <Button className='mg-left-10' success onClick={(e)=>this.handleSlider.call(this,'noShowThumbnail')}>点击出现照片展示插件(无缩略图)</Button>\n\t                <Dialog id=\"imgslider\" outside>\n\t                    <ImgSlider  show={show} showThumbnail={showThumbnail}\n\t                                imgList={imgList}\n\t                                profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}\n\t                                pageNum={pageNum}/>\n\t                </Dialog>\n\t\n\t            </div>\n\t\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -986,7 +983,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='input'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Input,RadioGroup,Select,FormGroup,CheckboxGroup,Grid,Row,Col,PanelContent,Panel} from 'eagle-ui.js';\n\tlet demo = class extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t    };\n\t    getValueCallback(val){\n\t        alert(val);\n\t        console.dir(val);\n\t    }\n\t\n\t    getValue(val){\n\t        alert(val);\n\t    }\n\t    change(e){\n\t        alert(e.target.value);\n\t    }\n\t    render(){\n\t        return (\n\t            <Row>\n\t                <Col sm={12}><Input name=\"test\" id=\"test\" placeholder=\"请输入\" icon=\"calendar\"  /></Col>\n\t                <Col sm={12}>\n\t                    <CheckboxGroup>\n\t                        <Input  type=\"checkbox\" checked  disabled={true}  />\n\t                        <Input  type=\"checkbox\"  disabled={true}   />\n\t                        <Input  type=\"checkbox\" getValueCallback={::this.getValue}  value=\"ccc\"  />\n\t                        <Input  type=\"checkbox\" checked onChange={::this.change} value=\"bbb\"  />\n\t                    </CheckboxGroup>\n\t                </Col>\n\t                <Col sm={12}>\n\t                    <Col sm={6}>\n\t                        <RadioGroup defaultChecked=\"石榴\" name=\"radio-test\">\n\t                            <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n\t                            <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n\t                            <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n\t                        </RadioGroup>\n\t                    </Col>\n\t                    <Col sm={6}>\n\t                        <RadioGroup defaultChecked=\"鸡蛋\" name=\"radio-foot\" getValueCallback={this.getValueCallback}>\n\t                            <Input  type=\"radio\"  label=\"大白菜\" value=\"大白菜\" />\n\t                            <Input  type=\"radio\"  label=\"鸡蛋\" value=\"鸡蛋\" disabled={true}  />\n\t                            <Input  type=\"radio\"  label=\"猪肉\" value=\"猪肉\" />\n\t                            <Input  type=\"radio\"  label=\"牛肉\" value=\"牛肉\" />\n\t                            <Input  type=\"radio\"  label=\"鱼肉\" value=\"鱼肉\" disabled={true} />\n\t                        </RadioGroup>\n\t                    </Col>\n\t                </Col>\n\t            </Row>)\n\t    }\n\t};"
             ],
             "exampleTitles": [
@@ -1010,9 +1007,8 @@
             "description": "标签",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='label'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel style={{\n\t                margin:'20px'\n\t            }}>\n\t                <PanelContent >\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup spacing={94} title='行政区' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup title='商品类型' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup defaultChecked='卢湾区' activeCallback={this.show} end>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>普通标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup egType=\"simple\" activeCallback={this.show}>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label url=\"http://baidu.com\">点击跳转至百度</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>form标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\">121212121</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>单个标签</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={2}>\n\t                                <Label active egSize=\"xs\">选中</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"success\">成功</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"error\">错误</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label disabled>禁用</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label egStyle=\"warning\" egSize=\"lg\" >warning</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label >默认</Label>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </PanelContent>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1036,9 +1032,8 @@
             "description": "标签组",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='label'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel style={{\n\t                margin:'20px'\n\t            }}>\n\t                <PanelContent >\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup spacing={94} title='行政区' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup title='商品类型' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup defaultChecked='卢湾区' activeCallback={this.show} end>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>普通标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup egType=\"simple\" activeCallback={this.show}>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label url=\"http://baidu.com\">点击跳转至百度</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>form标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\">121212121</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>单个标签</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={2}>\n\t                                <Label active egSize=\"xs\">选中</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"success\">成功</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"error\">错误</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label disabled>禁用</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label egStyle=\"warning\" egSize=\"lg\" >warning</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label >默认</Label>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </PanelContent>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1065,9 +1060,12 @@
             "requires": [
                 "React classnames"
             ],
-            "since": "0.1.0",
-            "example": [],
-            "exampleTitles": [],
+            "example": [
+                "\t<html lang=\"en\">\n\t</html>"
+            ],
+            "exampleTitles": [
+                "UI展示"
+            ],
             "show": true,
             "author": "min.xiao@dianping.com"
         },
@@ -1087,7 +1085,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='input'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component,PropTypes} from 'react';\n\timport {RadioGroup,Input,Select,FormGroup,CheckboxGroup,Grid,Row,Col,PanelContent,Panel} from 'eagle-ui.js';\n\tlet Demo= class Demo extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t\n\t        this.state = {\n\t            show:false\n\t        }\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    getValueCallback(val){\n\t        alert(val);\n\t        console.dir(val);\n\t    }\n\t    getValue(val){\n\t        alert(val);\n\t    }\n\t    change(e){\n\t        alert(e.target.value);\n\t        console.dir(e.target.value);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel>\n\t                <PanelContent>\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col sm={12}>\n\t                                <Col sm={6}>\n\t                                    <RadioGroup defaultChecked=\"石榴\" name=\"radio-test\">\n\t                                        <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n\t                                        <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n\t                                        <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n\t                                    </RadioGroup>\n\t                                </Col>\n\t                                <Col sm={6}>\n\t                                    <RadioGroup defaultChecked=\"鸡蛋\" name=\"radio-foot\" getValueCallback={this.getValueCallback}>\n\t                                        <Input  type=\"radio\"  label=\"大白菜\" value=\"大白菜\" />\n\t                                        <Input  type=\"radio\"  label=\"鸡蛋\" value=\"鸡蛋\" disabled={true}  />\n\t                                        <Input  type=\"radio\"  label=\"猪肉\" value=\"猪肉\" />\n\t                                        <Input  type=\"radio\"  label=\"牛肉\" value=\"牛肉\" />\n\t                                        <Input  type=\"radio\"  label=\"鱼肉\" value=\"鱼肉\" disabled={true} />\n\t                                    </RadioGroup>\n\t                                </Col>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </PanelContent>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1111,9 +1109,8 @@
             "description": "定义行",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='Demo1'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Search,Select,Input,Grid,Row,Col,List,Item} from 'eagle-ui.js';\n\tlet SearchSec= class SearchSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={5}>\n\t                        <Select  callback={function(val){alert(val)}}>\n\t                            <item> 北京</item>\n\t                            <item> 上海</item>\n\t                            <item> 南京</item>\n\t                        </Select>\n\t                    </Col>\n\t                    <Col sm={5}>\n\t                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}>\n\t                        </Search>\n\t                    </Col>\n\t                    <Col sm={2}>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        )\n\t    }\n\t}\n\t\n\t\n\t"
             ],
             "exampleTitles": [
@@ -1136,9 +1133,8 @@
             "line": 23,
             "description": "搜索按钮组件\n参数： id/callBack/placeholder 均可不传",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='suggestion'},0)};\n\t</script>"
+                "\t<html lang=\"en\">\n\t</html>"
             ],
             "exampleTitles": [
                 "UI展示"
@@ -1161,7 +1157,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='select'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component,PropTypes} from 'react';\n\timport querystring from 'querystring';\n\timport {Select,FormGroup,CalendarPanel,CheckboxGroup,RadioGroup,Grid,Row,Col,PanelContent,Panel,Input} from '../../../src/index.js';\n\tlet Demo= class Demo extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false\n\t        }\n\t    };\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    getValueCallback(val){\n\t        alert(val);\n\t        console.dir(val);\n\t    }\n\t    getValue(val){\n\t        alert(val);\n\t    }\n\t    change(e){\n\t        alert(e.target.value);\n\t        console.dir(e.target.value);\n\t    }\n\t    render(){\n\t\n\t        return (\n\t            <Panel>\n\t                <PanelContent>\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col>\n\t                                <FormGroup>\n\t                                    <Row>\n\t                                        <Col sm={2}>所在城市</Col>\n\t                                        <Col sm={10}>\n\t                                            <Select placeholder=\"请选择城市\" >\n\t                                                <item value='bei'>北京</item>\n\t                                                <item value='shang'>上海</item>\n\t                                                <item value='nan'>南京</item>\n\t                                            </Select>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </FormGroup>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </PanelContent>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1186,7 +1182,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='star'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React, { Component ,PropTypes} from 'react';\n\timport {Star} from 'eagle-ui.js';\n\texport default class StarDemo extends Component {\n\t    render(){\n\t        return(\n\t            <div>\n\t                <Star rate={50} size={15}/><br/>\n\t                <Star rate={60} size={16}/><br/>\n\t                <Star rate={70} size={17}/><br/>\n\t                <Star rate={80} size={18}/><br/>\n\t                <Star rate={90} size={19}/><br/>\n\t                <Star rate={10} size={14}/><br/>\n\t                <Star rate={20} size={13}/><br/>\n\t                <Star rate={30} size={12}/><br/>\n\t                <Star rate={40} size={11}/><br/>\n\t                <Star rate={50} size={10}/><br/>\n\t                <Star/><br/>\n\t            </div>\n\t        )\n\t    }\n\t}\n\t\n\t"
             ],
             "exampleTitles": [
@@ -1210,9 +1206,8 @@
             "description": "搜索联想组件。",
             "is_constructor": 1,
             "extends": "Component",
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='suggestion'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component,PropTypes}  from 'react';\n\timport {Suggestion , Button , Grid ,Row , Col ,Item } from 'eagle-ui.js';\n\tlet Demo= class Demo extends Component{\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    };\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input\n\t        }\n\t    }\n\t    query(){\n\t        //可以返回ajax\n\t        return [\n\t            {\n\t                key:'上海',\n\t                value:'shanghai',\n\t                subKey:'10个区'\n\t            },\n\t            {\n\t                key:'北京',\n\t                value:'beijing',\n\t                subKey:'10个区'\n\t            },\n\t            {\n\t                key:'哈尔滨',\n\t                value:'haerbin',\n\t                subKey:'5010个区'\n\t            },\n\t            {\n\t                key:'南京',\n\t                value:'nanjing',\n\t                subKey:'10个区'\n\t            },\n\t            {\n\t                key:'南宁',\n\t                value:'nanning',\n\t                subKey:'120个区'\n\t            },\n\t            {\n\t                key:'天津',\n\t                value:'tianjing',\n\t                subKey:'312310个区'\n\t            },\n\t            {\n\t                key:'深圳',\n\t                value:'shenzhen',\n\t                subKey:'101个区'\n\t            }\n\t        ];\n\t    }\n\t\n\t    getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col>\n\t                        <div id=\"showtip\" className=\"color-info\"></div>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={10} layer padding={\"0\"}>\n\t                        <Suggestion\n\t                            getValueCallback={::this.getValue}\n\t                            queryCallback={::this.query}\n\t                            icon=\"search\"\n\t                            iconDirection=\"left\"\n\t                            placeholder=\"请输入key搜索\" />\n\t                    </Col>\n\t                    <Col sm={2} end padding={\"0\"}>\n\t                        <Button type=\"submit\">查询</Button>\n\t                    </Col>\n\t                </Row>\n\t\n\t                <Row>\n\t                    <Col sm={10} layer end>\n\t                        <Row>\n\t                            <Col sm={10} end>\n\t                                <Suggestion\n\t                                    getValueCallback={::this.getValue}\n\t                                    queryCallback={::this.query}\n\t                                    icon=\"search\"\n\t                                    iconDirection=\"left\"\n\t                                    value=\"上海\"\n\t                                    placeholder=\"请输入key搜索\" />\n\t                            </Col>\n\t                        </Row>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col sm={10} layer>\n\t                        <Row>\n\t                            <Col sm={10} end>\n\t                                <Suggestion\n\t                                    getValueCallback={::this.getValue}\n\t                                    icon=\"search\"\n\t                                    iconDirection=\"left\"\n\t                                    placeholder=\"请输入测、测试、试进行搜索\">\n\t                                    <Item value=\"测试测试\" subKey=\"222222\">\n\t                                        测试测试\n\t                                    </Item>\n\t                                    <Item value=\"测试\" subKey=\"达到\">\n\t                                        测试\n\t                                    </Item>\n\t                                    <Item value=\"试验\" subKey=\"dsadsad\">\n\t                                        试验\n\t                                    </Item>\n\t                                    <Item value=\"测验\">\n\t                                        测验\n\t                                    </Item>\n\t                                    <Item value=\"检测\" >\n\t                                        检测\n\t                                    </Item>\n\t                                </Suggestion>\n\t                            </Col>\n\t                        </Row>\n\t                    </Col>\n\t                    <Col sm=\"2\">请输入测、测试、试进行搜索</Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t};"
             ],
             "exampleTitles": [
@@ -1236,9 +1231,8 @@
             "description": "tab组件",
             "extends": "Component",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='tab'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Tab ,Tabset} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.state={\n\t            tabIndex:2\n\t        };\n\t    }\n\t    callback(index){\n\t        if(this.state.tabIndex!==index){\n\t            this.setState({\n\t                tabIndex:index\n\t            });\n\t        }\n\t    }\n\t    tab3(){\n\t        if(this.state.tabIndex==2){\n\t            return (<div>tab3</div>);\n\t        }\n\t    }\n\t    tab2(){\n\t        if(this.state.tabIndex==1){\n\t            return (<div>tab2</div>);\n\t        }\n\t    }\n\t    tab1(){\n\t        if(this.state.tabIndex==0){\n\t            return (<div>tab1</div>);\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n\t                <Tab heading='tab1'>\n\t                    {::this.tab1()}\n\t                </Tab>\n\t                <Tab heading='tab2'>\n\t                    {::this.tab2()}\n\t                </Tab>\n\t                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n\t                    {::this.tab3()}\n\t                </Tab>\n\t                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n\t                    nadkfnpasknfsaknf\n\t                </Tab>\n\t                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n\t                    nadkfnpasknfsaknf\n\t                </Tab>\n\t            </Tabset>\n\t        );\n\t    }\n\t};"
             ],
             "exampleTitles": [
@@ -1264,7 +1258,7 @@
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='tab'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Tab ,Tabset} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.state={\n\t            tabIndex:2\n\t        };\n\t    }\n\t    callback(index){\n\t        if(this.state.tabIndex!==index){\n\t            this.setState({\n\t                tabIndex:index\n\t            });\n\t        }\n\t    }\n\t    tab3(){\n\t        if(this.state.tabIndex==2){\n\t            return (<div>tab3</div>);\n\t        }\n\t    }\n\t    tab2(){\n\t        if(this.state.tabIndex==1){\n\t            return (<div>tab2</div>);\n\t        }\n\t    }\n\t    tab1(){\n\t        if(this.state.tabIndex==0){\n\t            return (<div>tab1</div>);\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n\t                <Tab heading='tab1'>\n\t                    {::this.tab1()}\n\t                </Tab>\n\t                <Tab heading='tab2'>\n\t                    {::this.tab2()}\n\t                </Tab>\n\t                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n\t                    {::this.tab3()}\n\t                </Tab>\n\t                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n\t                    nadkfnpasknfsaknf\n\t                </Tab>\n\t                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n\t                    nadkfnpasknfsaknf\n\t                </Tab>\n\t            </Tabset>\n\t        );\n\t    }\n\t};"
             ],
             "exampleTitles": [
@@ -1289,7 +1283,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){setTimeout(function(){location.hash='toast'},0)};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {ButtonGroup,Toast,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui.js';\n\tlet Demo= class Demo extends Component{\n\t    static defaultProps = {\n\t        show: false,\n\t        type: \"success\"\n\t    }\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            isMask:true\n\t        }\n\t    }\n\t    showToast(){\n\t        let msg = arguments[0].getAttribute('data-message');\n\t\n\t        this.setState({\n\t            type:arguments[0].getAttribute('data-value'),\n\t            message:msg,\n\t            isMask:msg=='无遮罩加载成功' ?false:true\n\t        });\n\t        Dialog.mask('toast');\n\t    }\n\t    render(){\n\t\n\t        return (\n\t            <Grid>\n\t                <ButtonGroup egType=\"justify\" activeCallback={::this.showToast}>\n\t                    <Button data-value=\"success\" data-message=\"数据载入成功\">显示success</Button>\n\t                    <Button data-value=\"error\"  data-message=\"数据加载失败\">显示error</Button>\n\t                    <Button data-value=\"loading\"  data-message=\"加载中...\">显示loading</Button>\n\t                    <Button data-value=\"success\"  data-message=\"无遮罩加载成功\">无遮罩toast</Button>\n\t                </ButtonGroup>\n\t\n\t                <Dialog id=\"toast\" isClose={false} isMask={this.state.isMask}>\n\t                    <Toast type={this.state.type}>{this.state.message}</Toast>\n\t                </Dialog>\n\t            </Grid>\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1313,9 +1307,8 @@
             "description": "tips组件\n只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中",
             "moudle": "ui",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='toolTip'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Tooltip,Button,TooltipPanel} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <div style={{width:'300px',marginBottom:'200px'}}>sadasda\n\t                    <TooltipPanel direction='top'>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边2</Button>\n\t                    </TooltipPanel>\n\t                </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t                <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='top'>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边</Button>\n\t                </TooltipPanel>\n\t                <div>\n\t                    <TooltipPanel direction='left'>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t                    <div style={{float:'right'}}>\n\t                        <TooltipPanel direction='right'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1339,9 +1332,8 @@
             "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认",
             "moudle": "ui",
             "is_constructor": 1,
-            "since": "0.1.0",
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='toolTip'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Tooltip,Button,TooltipPanel} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    render(){\n\t        return (\n\t            <div>\n\t                <div style={{width:'300px',marginBottom:'200px'}}>sadasda\n\t                    <TooltipPanel direction='top'>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边2</Button>\n\t                    </TooltipPanel>\n\t                </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t                <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='top'>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在上边</Button>\n\t                </TooltipPanel>\n\t                <div>\n\t                    <TooltipPanel direction='left'>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t                    <div style={{float:'right'}}>\n\t                        <TooltipPanel direction='right'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
@@ -1366,7 +1358,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t<html>\n\t<div id='root'></div>\n\t</html>\n\t<script>\n\t    var script=document.createElement('script');\n\t    var href=  location.href;\n\t    var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/js/examples.js';\n\t    script.src=relLink;\n\t    document.body.appendChild(script);\n\t    script.onload = function(e){location.hash='input'};\n\t</script>",
+                "\t<html lang=\"en\">\n\t</html>",
                 "\timport React,{Component} from 'react';\n\timport {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.rules = {\n\t            calendar:{\n\t                required:true\n\t            },\n\t            userName:{\n\t                required:true\n\t            },\n\t            checkbox:{\n\t                required:true,\n\t                //自定义规则\n\t                isValueToNumber:{\n\t                    text:'value值不是字符串',\n\t                    rule:function(value){\n\t                        console.dir(value);\n\t                        return true;\n\t                    }\n\t                }\n\t            },\n\t            date:{\n\t                date:true\n\t            },\n\t            number:{\n\t                number:true,\n\t                digits:true\n\t            },\n\t            equalTo:{\n\t                digits:true,\n\t                equalTo:{\n\t                    params:'[name=\"number\"]'\n\t                }\n\t            },\n\t            minlength:{\n\t                minlength:{\n\t                    params:10\n\t                },\n\t                maxlength:{\n\t                    params:15\n\t                }\n\t            },\n\t            email:{\n\t                email:true\n\t            }\n\t        };\n\t        this.state={\n\t            showTab:0,\n\t            update:'uid',\n\t            show:false\n\t        };\n\t    }\n\t    submit(vals){\n\t        alert('验证成功'+JSON.stringify(vals));\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel>\n\t                <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n\t                    <Grid>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </Grid>\n\t                </Dialog>\n\t            </Panel>\n\t        );\n\t    }\n\t};"
             ],
             "exampleTitles": [
@@ -1463,7 +1455,7 @@
         },
         {
             "file": "lib/tables/Table.js",
-            "line": 67,
+            "line": 66,
             "description": "用来渲染表格的数组，可选参数，如果传入data，会更具table下的column标签绑定的属性进行渲染",
             "itemtype": "property",
             "name": "data",
@@ -1858,7 +1850,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 44,
+            "line": 43,
             "description": "样式类名前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -1869,7 +1861,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 51,
+            "line": 50,
             "description": "起始日期",
             "itemtype": "property",
             "name": "startDate",
@@ -1880,7 +1872,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 58,
+            "line": 57,
             "description": "终止日期",
             "itemtype": "property",
             "name": "endDate",
@@ -1891,7 +1883,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 65,
+            "line": 64,
             "description": "默认选中日期",
             "itemtype": "property",
             "name": "defaultDate",
@@ -1902,7 +1894,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 72,
+            "line": 71,
             "description": "日期格式",
             "itemtype": "property",
             "name": "format",
@@ -1913,7 +1905,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 79,
+            "line": 78,
             "description": "选择某个具体日期后执行的回调函数",
             "itemtype": "property",
             "name": "selectCallback",
@@ -1924,19 +1916,19 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 181,
+            "line": 180,
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/Calendar.js",
-            "line": 190,
+            "line": 189,
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/CalendarPanel.js",
-            "line": 60,
+            "line": 59,
             "description": "通过传入此函数获取日期值",
             "itemtype": "property",
             "name": "getValueCallback",
@@ -1981,7 +1973,7 @@
         },
         {
             "file": "lib/Crumb.js",
-            "line": 67,
+            "line": 66,
             "description": "类名样式前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -1992,7 +1984,7 @@
         },
         {
             "file": "lib/Crumb.js",
-            "line": 74,
+            "line": 73,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -2003,7 +1995,7 @@
         },
         {
             "file": "lib/Crumb.js",
-            "line": 98,
+            "line": 97,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -2015,7 +2007,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 23,
+            "line": 22,
             "description": "点击确认按钮后会执行此回调，默认调用Dialog.confirm会返回promise",
             "itemtype": "property",
             "name": "successCallback",
@@ -2026,7 +2018,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 30,
+            "line": 29,
             "description": "点击取消按钮或关闭后会执行此回调，默认调用Dialog.confirm会返回promise",
             "itemtype": "property",
             "name": "cancelCallback",
@@ -2037,7 +2029,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 37,
+            "line": 36,
             "description": "是否显示标题栏背景色",
             "itemtype": "property",
             "name": "isHeaderBackground",
@@ -2048,7 +2040,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 44,
+            "line": 43,
             "description": "底部按钮对齐方式 center、right or left",
             "itemtype": "property",
             "name": "buttonAlign",
@@ -2059,7 +2051,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 51,
+            "line": 50,
             "description": "是否显示标题栏",
             "itemtype": "property",
             "name": "isHeader",
@@ -2070,7 +2062,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 58,
+            "line": 57,
             "description": "内容区域对齐方式",
             "itemtype": "property",
             "name": "contentAlign",
@@ -2081,7 +2073,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 65,
+            "line": 64,
             "description": "是否显示遮罩层",
             "itemtype": "property",
             "name": "isMask",
@@ -2092,7 +2084,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 72,
+            "line": 71,
             "description": "内容不在content之内 mask属性",
             "itemtype": "property",
             "name": "outside",
@@ -2103,7 +2095,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 79,
+            "line": 78,
             "description": "是否显示关闭 mask常用属性",
             "itemtype": "property",
             "name": "isClose",
@@ -2114,7 +2106,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 86,
+            "line": 85,
             "description": "标题",
             "itemtype": "property",
             "name": "title",
@@ -2125,7 +2117,7 @@
         },
         {
             "file": "lib/Dialog.js",
-            "line": 93,
+            "line": 92,
             "description": "底部按钮组\n例如：\n        [\n            {\n                type: 'success',\n                name: '确认',\n                callback:()=>{}\n            },\n            {\n                type:'cancel',\n                egStyle:'white',\n                name:'取消',\n                callback:()=>{}\n            },\n            {\n                egStyle:'warning',\n                name:'自定义按钮',\n                callback:()=>{alert('自定义按钮');}\n            }\n        ]",
             "itemtype": "property",
             "name": "buttons",
@@ -2308,7 +2300,7 @@
         },
         {
             "file": "lib/Label.js",
-            "line": 68,
+            "line": 67,
             "description": "点击回调函数",
             "class": "Label",
             "module": "ui"
@@ -2322,7 +2314,7 @@
         },
         {
             "file": "lib/LabelGroup.js",
-            "line": 58,
+            "line": 57,
             "description": "左侧总标题",
             "itemtype": "property",
             "name": "title",
@@ -2332,7 +2324,7 @@
         },
         {
             "file": "lib/LabelGroup.js",
-            "line": 64,
+            "line": 63,
             "description": "标签展现形式{form|simple|default}",
             "itemtype": "property",
             "name": "egType",
@@ -2343,7 +2335,7 @@
         },
         {
             "file": "lib/LabelGroup.js",
-            "line": 71,
+            "line": 70,
             "description": "点击后触发的回调，所有label会被继承",
             "itemtype": "property",
             "name": "activeCallback",
@@ -2353,7 +2345,7 @@
         },
         {
             "file": "lib/LabelGroup.js",
-            "line": 77,
+            "line": 76,
             "description": "默认选中的项",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2363,7 +2355,7 @@
         },
         {
             "file": "lib/LabelGroup.js",
-            "line": 83,
+            "line": 82,
             "description": "间距，label集合与左边title的间距",
             "itemtype": "property",
             "name": "spacing",
@@ -2622,7 +2614,7 @@
         },
         {
             "file": "lib/Row.js",
-            "line": 60,
+            "line": 59,
             "description": "样式前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -2633,7 +2625,7 @@
         },
         {
             "file": "lib/Row.js",
-            "line": 67,
+            "line": 66,
             "description": "是否显示下划线",
             "itemtype": "property",
             "name": "bottom",
@@ -2710,7 +2702,7 @@
         },
         {
             "file": "lib/Suggestion.js",
-            "line": 66,
+            "line": 65,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "property",
             "name": "callback",
@@ -2721,7 +2713,7 @@
         },
         {
             "file": "lib/Suggestion.js",
-            "line": 73,
+            "line": 72,
             "description": "样式类名前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -2837,7 +2829,7 @@
         },
         {
             "file": "lib/Tooltip.js",
-            "line": 62,
+            "line": 61,
             "description": "提示是否展示",
             "itemtype": "property",
             "name": "show",
@@ -2848,7 +2840,7 @@
         },
         {
             "file": "lib/Tooltip.js",
-            "line": 69,
+            "line": 68,
             "description": "提示内容",
             "itemtype": "property",
             "name": "msg",
@@ -2859,7 +2851,7 @@
         },
         {
             "file": "lib/Tooltip.js",
-            "line": 76,
+            "line": 75,
             "description": "提示方向",
             "itemtype": "property",
             "name": "direction",
@@ -2870,7 +2862,7 @@
         },
         {
             "file": "lib/Tooltip.js",
-            "line": 99,
+            "line": 98,
             "description": "接收到新props时执行,state.show变为nextProps.show\n接收到新props时执行,state.show变为nextProps.show\n实现隐藏与显示",
             "itemtype": "method",
             "name": "componentWillReceiveProps",
@@ -2889,7 +2881,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 73,
+            "line": 72,
             "description": "提示是否展示",
             "itemtype": "property",
             "name": "show",
@@ -2900,7 +2892,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 80,
+            "line": 79,
             "description": "提示内容",
             "itemtype": "property",
             "name": "msg",
@@ -2911,7 +2903,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 87,
+            "line": 86,
             "description": "提示方向",
             "itemtype": "property",
             "name": "direction",
@@ -2922,7 +2914,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 115,
+            "line": 114,
             "description": "显示与否由父组件控制",
             "type": "Boolean",
             "class": "TooltipPanel",
@@ -2930,7 +2922,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 123,
+            "line": 122,
             "description": "渲染完成时进行方向和边界判断，调整tips的位置",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -2942,7 +2934,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 133,
+            "line": 132,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -2953,7 +2945,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 153,
+            "line": 152,
             "description": "鼠标over，set show true,tips显示",
             "itemtype": "method",
             "name": "showTips",
@@ -2965,7 +2957,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 165,
+            "line": 164,
             "description": "鼠标leave，set show false, tips隐藏",
             "itemtype": "method",
             "name": "hideTips",
@@ -2977,7 +2969,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 177,
+            "line": 176,
             "description": "tips方向和边界判断，调整tips的位置",
             "itemtype": "method",
             "name": "changeStyle",
@@ -2996,7 +2988,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 241,
+            "line": 240,
             "description": "获得浏览器的边界大小",
             "itemtype": "method",
             "name": "getMaxBody",
@@ -3021,7 +3013,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 258,
+            "line": 257,
             "description": "判断是否满足边界条件,是返回true否返回false",
             "itemtype": "method",
             "name": "isValidate",
@@ -3370,6 +3362,10 @@
             "line": " lib/CheckboxGroup.js:47"
         },
         {
+            "message": "unknown tag: demo",
+            "line": " lib/CheckboxGroup.js:47"
+        },
+        {
             "message": "unknown tag: show",
             "line": " lib/CheckboxGroup.js:47"
         },
@@ -3468,6 +3464,10 @@
         {
             "message": "unknown tag: show",
             "line": " lib/LabelGroup.js:40"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Paging.js:25"
         },
         {
             "message": "unknown tag: demo",
@@ -3671,11 +3671,11 @@
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:181"
+            "line": " lib/Calendar.js:180"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:190"
+            "line": " lib/Calendar.js:189"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
@@ -3695,7 +3695,7 @@
         },
         {
             "message": "Missing item type\n点击回调函数",
-            "line": " lib/Label.js:68"
+            "line": " lib/Label.js:67"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
@@ -3747,7 +3747,7 @@
         },
         {
             "message": "Missing item type\n显示与否由父组件控制",
-            "line": " lib/TooltipPanel.js:115"
+            "line": " lib/TooltipPanel.js:114"
         }
     ]
 }

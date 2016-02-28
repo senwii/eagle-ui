@@ -13,8 +13,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @since 0.1.0
- * @demo docDemo/module/label.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/label.js {源码}
  * @show true
  * */

@@ -137,6 +137,11 @@
 <script src="js/examples.js"></script>
 <script>
 
+    if(window!==window.parent){
+        //如果为iframe的形式，则移除iframe页面左侧的导航栏
+        $('#menu').remove();
+        $('.content').css({'margin-left':'10px'})
+    }
     $('#menu a').click(function(){
         $(this).parents('.menu').find('.active').removeClass('active');
         $(this).addClass('active');

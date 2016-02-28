@@ -13,7 +13,7 @@ import ReactDom from 'react/lib/ReactDOM';
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo docDemo/module/tab.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/tab.js {源码}
  * @show true
  * */

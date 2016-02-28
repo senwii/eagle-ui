@@ -33,8 +33,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @since 0.1.0
- * @demo docDemo/module/crumb.html {UI展示}
+ * @demo docDemo/empty.html {UI展示}
  * @demo docDemo/crumb.js {源码}
  * @show true
  * */
