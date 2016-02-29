@@ -17,8 +17,8 @@ import Search from './sug/Search';
  * @module form(表单)
  * @constructor
  * @extends Component
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/select.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/select.js {源码}
  * @show true
  * */
 export default class Select extends Search {

@@ -20,8 +20,8 @@ import Tr from './Tr.js'
  * @constructor
  * @module table(表格)
  * @extends Component
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/table.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/table.js {源码}
  * @show true
  * */
 @ClassNameMixin

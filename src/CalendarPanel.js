@@ -7,8 +7,9 @@ import Input from './Input.js';
 import Calendar from './Calendar.js';
 
 /**
- * CalendarPanel组件
- * CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
+ * CalendarPanel组件<br>
+ * 接受Calendar的所有属性接口，额外增加一个getValueCallback方法
+ *
  * 主要属性接口:
  * <ul>
  *     <li>getValueCallback参数为<code>格式化后的string</code></li>
@@ -19,8 +20,8 @@ import Calendar from './Calendar.js';
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/calendar.js {源码}
+ * @demo  empty.html {UI展示}
+ * @demo  src/modules/calendar.js {源码}
  * @show true
  * */
 @ClassNameMixin

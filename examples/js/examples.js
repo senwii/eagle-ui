@@ -24512,8 +24512,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/input.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/input.js {源码}
 	 * @show true
 	 * */
 
@@ -31087,8 +31087,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/grid.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/Demo1.js {源码}
 	 * @show true
 	 * */
 
@@ -31179,8 +31179,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/grid.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/Demo1.js {源码}
 	 * @show true
 	 * */
 
@@ -31297,8 +31297,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/grid.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/Demo1.js {源码}
 	 * @show true
 	 * */
 
@@ -31378,8 +31378,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _CalendarJs2 = _interopRequireDefault(_CalendarJs);
 
 	/**
-	 * CalendarPanel组件
-	 * CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
+	 * CalendarPanel组件<br>
+	 * 接受Calendar的所有属性接口，额外增加一个getValueCallback方法
+	 *
 	 * 主要属性接口:
 	 * <ul>
 	 *     <li>getValueCallback参数为<code>格式化后的string</code></li>
@@ -31390,8 +31391,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/calendar.js {源码}
+	 * @demo  empty.html {UI展示}
+	 * @demo  src/modules/calendar.js {源码}
 	 * @show true
 	 * */
 
@@ -31574,7 +31575,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 日历组件<br />
-	 * 需要和CalendarPanel组合使用
+	 * 需要和CalendarPanel组合使用<br/>
+	 * 主要UI属性接口:
 	 * <ul>
 	 *     <li>startDate:定义起始日期<br>
 	 *         例如<code>
@@ -31596,9 +31598,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *          format='yyyy-MM-dd'
 	 *         </code>
 	 *     </li>
-	 *      <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>配合CalendarPanel使用时,不需要定义</strong><br>
+	 *      <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>&nbsp;&nbsp;&nbsp;配合CalendarPanel使用时,不需要定义</strong><br>
 	 *         例如<code>
-	 *         selectCallback(dateString);参数为format后的日期
+	 *         selectCallback(dateString);参数为经过format处理后的日期
 	 *         </code>
 	 *     </li>
 	 * </ul>
@@ -31606,8 +31608,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/calendar.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/calendar.js {源码}
 	 * @show true
 	 * */
 
@@ -32883,8 +32885,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/button.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/button.js {源码}
 	 * @show true
 	 * */
 
@@ -33011,8 +33013,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/button.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/button.js {源码}
 	 * @show true
 	 * */
 
@@ -33275,8 +33277,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/crumb.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/crumb.js {源码}
 	 * @show true
 	 * */
 
@@ -34285,8 +34287,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/checkboxGroup.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/input.js {源码}
 	 * @show true
 	 * */
 
@@ -34372,8 +34374,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/RadioGroup.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/input.js {源码}
 	 * @show true
 	 * */
 
@@ -34511,7 +34513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Label
 	 * @module ui
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
+	 * @demo empty.html {UI展示}
 	 * @demo src/modules/label.js {源码}
 	 * @show true
 	 * */
@@ -35356,8 +35358,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @constructor
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/select.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/select.js {源码}
 	 * @show true
 	 * */
 
@@ -35468,8 +35470,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/label.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/label.js {源码}
 	 * @show true
 	 * */
 
@@ -35818,8 +35820,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/dialog.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/dialog.js {源码}
 	 * @show true
 	 * */
 
@@ -36783,8 +36785,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @requires React classnames
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo paging.js {js}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/paging.js {源码}
 	 * @show true
 	 * @author min.xiao@dianping.com
 	 * */
@@ -37451,7 +37453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
+	 * @demo empty.html {UI展示}
 	 * @demo src/modules/star.js {源码}
 	 * @show true
 	 * */
@@ -37619,7 +37621,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
+	 * @demo empty.html {UI展示}
 	 * @demo src/modules/imgSlider.js {源码}
 	 * @show true
 	 * */
@@ -37984,8 +37986,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Tooltip
 	 * @moudle ui
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/tooltip.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/tooltip.js {源码}
 	 * @show true
 	 * */
 
@@ -38122,8 +38124,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module panel(面板)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/panel.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/panel.js {源码}
 	 * @show true
 	 * */
 
@@ -38225,8 +38227,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module panel(面板)
 	 * @constructor
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/panel.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/panel.js {源码}
 	 * @show true
 	 * */
 
@@ -38302,8 +38304,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module panel(面板)
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/panel.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/panel.js {源码}
 	 * @show true
 	 * */
 
@@ -38387,8 +38389,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module panel(面板)
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/panel.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/panel.js {源码}
 	 * @show true
 	 * */
 
@@ -38625,8 +38627,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/validate.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/validate.js {源码}
 	 * @show true
 	 * */
 
@@ -39395,8 +39397,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/table.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/table.js {源码}
 	 * @show true
 	 * */
 
@@ -39563,8 +39565,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/table.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/table.js {源码}
 	 * @show true
 	 * */
 
@@ -39657,8 +39659,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/table.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/table.js {源码}
 	 * @show true
 	 * */
 
@@ -39732,8 +39734,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/table.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/table.js {源码}
 	 * @show true
 	 * */
 
@@ -45071,8 +45073,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module table(表格)
 	 * @constructor
 	 * @content {string} type 内容
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/table.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/table.js {源码}
 	 * @show true
 	 * */
 
@@ -45429,8 +45431,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class TooltipPanel
 	 * @moudle ui
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/tooltip.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/tooltip.js {源码}
 	 * @show true
 	 * */
 

@@ -8,8 +8,8 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * @module table(表格)
  * @constructor
  * @content {string} type 内容
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/table.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/table.js {源码}
  * @show true
  * */
 @ClassNameMixin

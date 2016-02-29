@@ -65,10 +65,22 @@ var operateIframe = function () {
     //第一次进页面的时候，加载页面，并执行自适应
     var iframeArea = $('.example-content.showdemo').children();
     if($('li[role="presentation"].active').html().match('展示')){
-        iframeArea.eq(0).find('iframe').attr('src',iframeLink).css(iframeStyle)
-        .load(function(){
-               hideCode()
-        });
+        //创建iframe，完全抛弃smartDoc那一套
+        var iframeDoc = document.createDocumentFragment();
+        var iframe = document.createElement('iframe');
+        iframe.src = iframeLink;
+        $(iframe).css(iframeStyle);
+        iframeDoc.appendChild(iframe);
+        iframeArea.eq(0).find('iframe').replaceWith($(iframeDoc));
+        setTimeout(function(){
+            iframeArea.eq(0).find('iframe').css(iframeStyle)
+                .load(function(){
+                    hideCode()
+                });
+        },0)
+
+
+
     }
     $('.btn.btn-info.btn-viewDemo').html('<a target="_blank" style="color:#fff" href='+iframeLink+'>view Demo</a>');
     //隐藏编辑代码按钮

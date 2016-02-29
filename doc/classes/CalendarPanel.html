@@ -415,9 +415,9 @@
     <h1>CalendarPanel <small>Class</small></h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>CalendarPanel组件
-CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
-主要属性接口:</p>
+      <div class="stdoc-code"><p>CalendarPanel组件<br>
+接受Calendar的所有属性接口，额外增加一个getValueCallback方法</p>
+<p>主要属性接口:</p>
 <ul>
     <li>getValueCallback参数为<code>格式化后的string</code></li>
     <li style='color:red'><a href='./Calendar.html'>其他属性定义请参照Calendar组件</a></li>
@@ -559,18 +559,28 @@ CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;
-&lt;/html&gt;</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component,PropTypes} from &#39;react&#39;;
-import {Input,Row ,Col,Grid,CalendarPanel} from &#39;eagle-ui.js&#39;;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;&lt;/html&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component,PropTypes} from &#39;react&#39;;
+import Input from &#39;../../../src/Input.js&#39;;
+import Row from &#39;../../../src/Row.js&#39;;
+import Col from &#39;../../../src/Col.js&#39;;
+import Grid from &#39;../../../src/Grid.js&#39;;
+import CalendarPanel from &#39;../../../src/CalendarPanel.js&#39;;
 import querystring from &#39;querystring&#39;;
+
+
 export default class Calendar extends Component{
     constructor(props, context) {
         super(props, context);
+
         this.state = {
             show:false
         }
     };
+
     focus(){
         this.setState({
             show:true
@@ -583,26 +593,27 @@ export default class Calendar extends Component{
     }
 
     render(){
+
         return (
             &lt;Grid&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={12}&gt;
-                        &lt;CalendarPanel startDate="2015-11-11"&gt;
-                            &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
-                        &lt;/CalendarPanel&gt;
+            &lt;Row&gt;
+                &lt;Col sm={12}&gt;
+                    &lt;CalendarPanel startDate="2015-11-11"&gt;
+                        &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
+                    &lt;/CalendarPanel&gt;
 
-                    &lt;/Col&gt;
-                    &lt;Col sm={1} end&gt;
-                        每日邮报报道,英国华威大学划艇队推出了2016年新版裸体日历,小伙子们在镜头前“坦诚相见”,大秀肌肉。这是该校划艇队第六次拍摄这种日历。 长期锻炼的队员们骄傲的
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;
-                        &lt;CalendarPanel startDate="2015-11-11" endDate="2015-12-1"&gt;
-                            &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
+                &lt;/Col&gt;
+                &lt;Col sm={1} end&gt;
+                    每日邮报报道,英国华威大学划艇队推出了2016年新版裸体日历,小伙子们在镜头前“坦诚相见”,大秀肌肉。这是该校划艇队第六次拍摄这种日历。 长期锻炼的队员们骄傲的
+                &lt;/Col&gt;
+            &lt;/Row&gt;
+            &lt;Row&gt;
+                &lt;Col sm={3}&gt;
+                    &lt;CalendarPanel startDate="2015-11-11" endDate="2015-12-1"&gt;
+                        &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
+                    &lt;/CalendarPanel&gt;
+                &lt;/Col&gt;
+            &lt;/Row&gt;
             &lt;/Grid&gt;
         );
     }
@@ -652,7 +663,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_CalendarPanel.js.html#l66"><code>lib&#x2F;CalendarPanel.js:66</code></a>
+        <a href="../files/lib_CalendarPanel.js.html#l67"><code>lib&#x2F;CalendarPanel.js:67</code></a>
         
         </p>
 

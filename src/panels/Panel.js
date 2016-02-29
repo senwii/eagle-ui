@@ -20,8 +20,8 @@ import Component from '../utils/Component';
  * @module panel(面板)
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/panel.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/panel.js {源码}
  * @show true
  * */
 export default class Panel extends Component{

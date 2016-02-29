@@ -582,17 +582,24 @@
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;
-&lt;/html&gt;</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
-import {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from &#39;eagle-ui.js&#39;;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;&lt;/html&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component} from &#39;react&#39;;
+import {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from &#39;../../../src/index.js&#39;;
+
 let Demo = class Demo extends Component{
+
     constructor(props,context){
         super(props,context);
+
     }
+
     show(value,text,target,active){
         console.dir(value);
     }
+
     render(){
         return (
             &lt;Panel style={{
@@ -743,7 +750,15 @@ let Demo = class Demo extends Component{
             &lt;/Panel&gt;
         );
     }
-};</code></pre>
+};
+
+export default class LabelCls extends Component{
+    render(){
+        return (
+            &lt;Demo /&gt;
+        );
+    }
+}</code></pre>
 </div>
             </div>
 

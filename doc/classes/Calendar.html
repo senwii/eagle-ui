@@ -416,7 +416,8 @@
 </div>
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><p>日历组件<br />
-需要和CalendarPanel组合使用</p>
+需要和CalendarPanel组合使用<br/>
+主要UI属性接口:</p>
 <ul>
     <li>startDate:定义起始日期<br>
         例如<code>
@@ -438,9 +439,9 @@
          format=&#39;yyyy-MM-dd&#39;
         </code>
     </li>
-     <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>配合CalendarPanel使用时,不需要定义</strong><br>
+     <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>&nbsp;&nbsp;&nbsp;配合CalendarPanel使用时,不需要定义</strong><br>
         例如<code>
-        selectCallback(dateString);参数为format后的日期
+        selectCallback(dateString);参数为经过format处理后的日期
         </code>
     </li>
 </ul></div>
@@ -615,18 +616,28 @@
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;
-&lt;/html&gt;</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component,PropTypes} from &#39;react&#39;;
-import {Input,Row ,Col,Grid,CalendarPanel} from &#39;eagle-ui.js&#39;;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;&lt;/html&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component,PropTypes} from &#39;react&#39;;
+import Input from &#39;../../../src/Input.js&#39;;
+import Row from &#39;../../../src/Row.js&#39;;
+import Col from &#39;../../../src/Col.js&#39;;
+import Grid from &#39;../../../src/Grid.js&#39;;
+import CalendarPanel from &#39;../../../src/CalendarPanel.js&#39;;
 import querystring from &#39;querystring&#39;;
+
+
 export default class Calendar extends Component{
     constructor(props, context) {
         super(props, context);
+
         this.state = {
             show:false
         }
     };
+
     focus(){
         this.setState({
             show:true
@@ -639,26 +650,27 @@ export default class Calendar extends Component{
     }
 
     render(){
+
         return (
             &lt;Grid&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={12}&gt;
-                        &lt;CalendarPanel startDate="2015-11-11"&gt;
-                            &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
-                        &lt;/CalendarPanel&gt;
+            &lt;Row&gt;
+                &lt;Col sm={12}&gt;
+                    &lt;CalendarPanel startDate="2015-11-11"&gt;
+                        &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
+                    &lt;/CalendarPanel&gt;
 
-                    &lt;/Col&gt;
-                    &lt;Col sm={1} end&gt;
-                        每日邮报报道,英国华威大学划艇队推出了2016年新版裸体日历,小伙子们在镜头前“坦诚相见”,大秀肌肉。这是该校划艇队第六次拍摄这种日历。 长期锻炼的队员们骄傲的
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;
-                        &lt;CalendarPanel startDate="2015-11-11" endDate="2015-12-1"&gt;
-                            &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
+                &lt;/Col&gt;
+                &lt;Col sm={1} end&gt;
+                    每日邮报报道,英国华威大学划艇队推出了2016年新版裸体日历,小伙子们在镜头前“坦诚相见”,大秀肌肉。这是该校划艇队第六次拍摄这种日历。 长期锻炼的队员们骄傲的
+                &lt;/Col&gt;
+            &lt;/Row&gt;
+            &lt;Row&gt;
+                &lt;Col sm={3}&gt;
+                    &lt;CalendarPanel startDate="2015-11-11" endDate="2015-12-1"&gt;
+                        &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
+                    &lt;/CalendarPanel&gt;
+                &lt;/Col&gt;
+            &lt;/Row&gt;
             &lt;/Grid&gt;
         );
     }
@@ -706,7 +718,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l85"><code>lib&#x2F;Calendar.js:85</code></a>
+        <a href="../files/lib_Calendar.js.html#l86"><code>lib&#x2F;Calendar.js:86</code></a>
         
         </p>
 
@@ -754,7 +766,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l78"><code>lib&#x2F;Calendar.js:78</code></a>
+        <a href="../files/lib_Calendar.js.html#l79"><code>lib&#x2F;Calendar.js:79</code></a>
         
         </p>
 
@@ -802,7 +814,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l92"><code>lib&#x2F;Calendar.js:92</code></a>
+        <a href="../files/lib_Calendar.js.html#l93"><code>lib&#x2F;Calendar.js:93</code></a>
         
         </p>
 
@@ -850,7 +862,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l71"><code>lib&#x2F;Calendar.js:71</code></a>
+        <a href="../files/lib_Calendar.js.html#l72"><code>lib&#x2F;Calendar.js:72</code></a>
         
         </p>
 
@@ -906,7 +918,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l99"><code>lib&#x2F;Calendar.js:99</code></a>
+        <a href="../files/lib_Calendar.js.html#l100"><code>lib&#x2F;Calendar.js:100</code></a>
         
         </p>
 

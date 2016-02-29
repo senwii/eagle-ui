@@ -15,7 +15,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
+ * @demo empty.html {UI展示}
  * @demo src/modules/star.js {源码}
  * @show true
  * */

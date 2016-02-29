@@ -8,8 +8,8 @@ import Component from './utils/Component';
  * @module grid(布局)
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/grid.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/Demo1.js {源码}
  * @show true
  * */
 export default class Col extends Component{

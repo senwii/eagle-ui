@@ -28,8 +28,8 @@
          * @class 组件名字
          * @module 模块英文名(模块中文名)
          * @constructor
-         * @demo docDemo/empty.html {UI展示}
-         * @demo docDemo/checkboxGroup.js(这里的路径可以在在docDemo下面自己写符合组件的精简代码，也可以直接指向src/modules/路径) {源码}
+         * @demo empty.html {UI展示}
+         * @demo src/modules/例子名.js {源码}
          * @show true
          * */
 ```

@@ -443,7 +443,8 @@ var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 /**
  * 日历组件&lt;br /&gt;
- * 需要和CalendarPanel组合使用
+ * 需要和CalendarPanel组合使用&lt;br/&gt;
+ * 主要UI属性接口:
  * &lt;ul&gt;
  *     &lt;li&gt;startDate:定义起始日期&lt;br&gt;
  *         例如&lt;code&gt;
@@ -465,9 +466,9 @@ var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
  *          format=&#x27;yyyy-MM-dd&#x27;
  *         &lt;/code&gt;
  *     &lt;/li&gt;
- *      &lt;li&gt;selectCallback:选择某个具体日期后执行的回调函数&lt;strong style=&#x27;color:blue&#x27;&gt;配合CalendarPanel使用时,不需要定义&lt;/strong&gt;&lt;br&gt;
+ *      &lt;li&gt;selectCallback:选择某个具体日期后执行的回调函数&lt;strong style=&#x27;color:blue&#x27;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;配合CalendarPanel使用时,不需要定义&lt;/strong&gt;&lt;br&gt;
  *         例如&lt;code&gt;
- *         selectCallback(dateString);参数为format后的日期
+ *         selectCallback(dateString);参数为经过format处理后的日期
  *         &lt;/code&gt;
  *     &lt;/li&gt;
  * &lt;/ul&gt;
@@ -475,8 +476,8 @@ var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/calendar.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/calendar.js {源码}
  * @show true
  * */
 

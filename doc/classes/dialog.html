@@ -624,19 +624,27 @@
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;
-&lt;/html&gt;</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
-import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;&lt;/html&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by min.xiao
+ */
+import React,{Component} from &#39;react&#39;;
+
+import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;../../../src/index&#39;;
+
 let Demo= class Demo extends Component{
+
     static defaultProps = {
     };
+
     constructor(props, context) {
         super(props, context);
     }
+
     getScope(dialog){
         this.dialog = dialog;
     }
+
     show(name){
         Dialog.mask(name).then(function(){
             console.dir(&#39;...alert....&#39;);
@@ -645,6 +653,7 @@ let Demo= class Demo extends Component{
             console.dir(type);
         });
     }
+
     showAlert(){
         Dialog.alert(&#39;哈哈，我是alert&#39;);
     }
@@ -707,90 +716,90 @@ let Demo= class Demo extends Component{
                     }
                     ]}&gt;
                     &lt;Grid&gt;
-                        &lt;Row&gt;
-                            &lt;Col&gt;
-                                &lt;Panel heading="我是标题"&gt;
-                                    &lt;PanelContent&gt;
-                                        &lt;Row&gt;
-                                            &lt;Col&gt;
-                                                &lt;FormGroup&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                                        &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
-                                                    &lt;/Row&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                                        &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
-                                                    &lt;/Row&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col sm={2}&gt;性别&lt;/Col&gt;
-                                                        &lt;Col sm={10}&gt;
-                                                            &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
-                                                                &lt;Input  type="radio"  label="男" value="男" /&gt;
-                                                                &lt;Input  type="radio"  label="女" value="女"  /&gt;
-                                                            &lt;/RadioGroup&gt;
-                                                        &lt;/Col&gt;
-                                                    &lt;/Row&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
-                                                        &lt;Col sm={10}&gt;
-                                                            &lt;CheckboxGroup&gt;
-                                                                &lt;Input  type="checkbox" label="足球" checked   /&gt;
-                                                                &lt;Input  type="checkbox" label="篮球"    /&gt;
-                                                                &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
-                                                                &lt;Input  type="checkbox" label="乒乓球"    /&gt;
-                                                            &lt;/CheckboxGroup&gt;
-                                                        &lt;/Col&gt;
-                                                    &lt;/Row&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                                        &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
-                                                        &lt;FormGroup&gt;
-                                                            &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
-                                                            &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
-                                                        &lt;/FormGroup&gt;
-                                                    &lt;/Row&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
-                                                        &lt;Col sm={10} layer&gt;
-                                                            &lt;Row style={{margin:0}}&gt;
-                                                                &lt;Col sm={4} end&gt;
-                                                                    &lt;Select placeholder="请选择城市" &gt;
-                                                                        &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
-                                                                        &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
-                                                                        &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
-                                                                    &lt;/Select&gt;
-                                                                &lt;/Col&gt;
-                                                            &lt;/Row&gt;
-                                                        &lt;/Col&gt;
-                                                    &lt;/Row&gt;
-                                                &lt;/FormGroup&gt;
-                                            &lt;/Col&gt;
-                                        &lt;/Row&gt;
-                                        &lt;Row&gt;
-                                            &lt;Col padding={&#39;0&#39;}&gt;
-                                                &lt;Panel heading="我是标题二"&gt;
-                                                    &lt;PanelContent padding={true}&gt;
-                                                        我是下一个内容区
-                                                    &lt;/PanelContent&gt;
-                                                &lt;/Panel&gt;
-                                            &lt;/Col&gt;
+                    &lt;Row&gt;
+                        &lt;Col&gt;
+                            &lt;Panel heading="我是标题"&gt;
+                                &lt;PanelContent&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;FormGroup&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;
+                                                        &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                                            &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                                            &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                                        &lt;/RadioGroup&gt;
+                                                    &lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;
+                                                        &lt;CheckboxGroup&gt;
+                                                            &lt;Input  type="checkbox" label="足球" checked   /&gt;
+                                                            &lt;Input  type="checkbox" label="篮球"    /&gt;
+                                                            &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
+                                                            &lt;Input  type="checkbox" label="乒乓球"    /&gt;
+                                                        &lt;/CheckboxGroup&gt;
+                                                    &lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                    &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                    &lt;FormGroup&gt;
+                                                        &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
+                                                        &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
+                                                    &lt;/FormGroup&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
+                                                    &lt;Col sm={10} layer&gt;
+                                                        &lt;Row style={{margin:0}}&gt;
+                                                            &lt;Col sm={4} end&gt;
+                                                                &lt;Select placeholder="请选择城市" &gt;
+                                                                    &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
+                                                                    &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
+                                                                    &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
+                                                                &lt;/Select&gt;
+                                                            &lt;/Col&gt;
+                                                        &lt;/Row&gt;
+                                                    &lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                            &lt;/FormGroup&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col padding={&#39;0&#39;}&gt;
+                                            &lt;Panel heading="我是标题二"&gt;
+                                                &lt;PanelContent padding={true}&gt;
+                                                    我是下一个内容区
+                                                &lt;/PanelContent&gt;
+                                            &lt;/Panel&gt;
+                                        &lt;/Col&gt;
 
-                                        &lt;/Row&gt;
-                                        &lt;Row&gt;
-                                            &lt;Col padding={&#39;0&#39;}&gt;
-                                                &lt;Panel heading="我是标题三" &gt;
-                                                    &lt;PanelContent padding={true}&gt;
-                                                        我是下一个内容区
-                                                    &lt;/PanelContent&gt;
-                                                &lt;/Panel&gt;
-                                            &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col padding={&#39;0&#39;}&gt;
+                                            &lt;Panel heading="我是标题三" &gt;
+                                                &lt;PanelContent padding={true}&gt;
+                                                    我是下一个内容区
+                                                &lt;/PanelContent&gt;
+                                            &lt;/Panel&gt;
+                                        &lt;/Col&gt;
 
-                                        &lt;/Row&gt;
-                                    &lt;/PanelContent&gt;
-                                &lt;/Panel&gt;
-                            &lt;/Col&gt;
-                        &lt;/Row&gt;
+                                    &lt;/Row&gt;
+                                &lt;/PanelContent&gt;
+                            &lt;/Panel&gt;
+                        &lt;/Col&gt;
+                    &lt;/Row&gt;
                     &lt;/Grid&gt;
                 &lt;/Dialog&gt;
                 &lt;Dialog id="demo3" title="panel" outside egSize="lg"&gt;
@@ -836,8 +845,43 @@ let Demo= class Demo extends Component{
                 &lt;/Dialog&gt;
             &lt;/div&gt;
         );
+        /*return (
+         &lt;Grid&gt;
+        &lt;Row&gt;
+            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showDialog}&gt;dialog&lt;/Button&gt;&lt;/Col&gt;
+            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showAlert}&gt;alert&lt;/Button&gt;&lt;/Col&gt;
+            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showConfirm}&gt;confirm&lt;/Button&gt;&lt;/Col&gt;
+            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showMsak}&gt;mask&lt;/Button&gt;&lt;/Col&gt;
+        &lt;/Row&gt;
+            &lt;Dialog type={this.state.type} show={this.state.show} title={this.state.title} ref={::this.getScope}&gt;
+            ahflaskdjflajsflajsdlf;jkasdfk
+                adfkjasd;fkjas;dlf
+                asdfkn;askdfnas
+            &lt;/Dialog&gt;
+           &lt;/Grid&gt;
+        );*/
     }
-};</code></pre>
+    /*showDialog(){
+        this.dialog.open(&#39;dialog&#39;);
+    }
+    showAlert(){
+        this.dialog.open(&#39;alert&#39;);
+    }
+    showConfirm(){
+        this.dialog.open(&#39;confirm&#39;);
+    }
+    showMsak(){
+        this.dialog.open(&#39;mask&#39;);
+    }*/
+};
+
+export default class DialogCls extends Component{
+    render(){
+        return (
+            &lt;Demo  /&gt;
+        );
+    }
+}</code></pre>
 </div>
             </div>
 

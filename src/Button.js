@@ -12,8 +12,8 @@ import classnames from 'classnames';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/button.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/button.js {源码}
  * @show true
  * */
 export default class Button extends Component{

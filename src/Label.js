@@ -10,7 +10,7 @@ import Component from './utils/Component';
  * @class Label
  * @module ui
  * @constructor
- * @demo docDemo/empty.html {UI展示}
+ * @demo empty.html {UI展示}
  * @demo src/modules/label.js {源码}
  * @show true
  * */
