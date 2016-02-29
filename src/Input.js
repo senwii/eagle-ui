@@ -3,6 +3,21 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 import Icon from './utils/Icon';
 /**
+ * <h5>form表单模块集成了常见的表单元素形式:</h5>
+ * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
+ * <strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>
+ * <strong><a href='../classes/Input.html'>input输入框</a></strong><br>
+ * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
+ * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
+ * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
+ *
+ * @module form(表单)
+ * @main form(表单)
+ * @static
+ *
+ */
+
+/**
  * input表单组件<br />
  * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
  * @class Input

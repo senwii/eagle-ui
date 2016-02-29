@@ -7369,21 +7369,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponentJs2 = _interopRequireDefault(_utilsComponentJs);
 
 	/**
-	 * <h5>form表单模块集成了常见的表单元素形式:</h5>
-	 * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
-	 * <strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>
-	 * <strong><a href='../classes/Input.html'>input输入框</a></strong><br>
-	 * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
-	 * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
-	 * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
-	 *
-	 * @module form(表单)
-	 * @main form(表单)
-	 * @static
-	 *
-	 */
-
-	/**
 	 * CheckboxGroup需与Input组件配合使用<br/>
 	 * 它的作用是将type=checkbox的Input组件在UI上展示在一起
 	 * @class CheckboxGroup
@@ -7464,6 +7449,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsIcon = __webpack_require__(248);
 
 	var _utilsIcon2 = _interopRequireDefault(_utilsIcon);
+
+	/**
+	 * <h5>form表单模块集成了常见的表单元素形式:</h5>
+	 * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
+	 * <strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>
+	 * <strong><a href='../classes/Input.html'>input输入框</a></strong><br>
+	 * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
+	 * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
+	 * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
+	 *
+	 * @module form(表单)
+	 * @main form(表单)
+	 * @static
+	 *
+	 */
 
 	/**
 	 * input表单组件<br />

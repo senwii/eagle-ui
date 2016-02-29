@@ -181,9 +181,7 @@
         },
         "lib/CheckboxGroup.js": {
             "name": "lib/CheckboxGroup.js",
-            "modules": {
-                "form(表单)": 1
-            },
+            "modules": {},
             "classes": {
                 "CheckboxGroup": 1
             },
@@ -239,7 +237,9 @@
         },
         "lib/Input.js": {
             "name": "lib/Input.js",
-            "modules": {},
+            "modules": {
+                "form(表单)": 1
+            },
             "classes": {
                 "Input": 1
             },
@@ -427,13 +427,13 @@
                 "undefined": 1
             },
             "classes": {
-                "Input": 1,
+                "CheckboxGroup": 1,
                 "RadioGroup": 1,
                 "Select": 1,
                 "ValidatorPanel": 1,
                 "Button": 1,
                 "ButtonGroup": 1,
-                "CheckboxGroup": 1
+                "Input": 1
             },
             "fors": {},
             "namespaces": {},
@@ -828,7 +828,7 @@
             "module": "form(表单)",
             "namespace": "",
             "file": "lib/CheckboxGroup.js",
-            "line": 47,
+            "line": 32,
             "description": "CheckboxGroup需与Input组件配合使用<br/>\n它的作用是将type=checkbox的Input组件在UI上展示在一起",
             "extends": "Component",
             "is_constructor": 1,
@@ -978,7 +978,7 @@
             "module": "form(表单)",
             "namespace": "",
             "file": "lib/Input.js",
-            "line": 31,
+            "line": 46,
             "description": "input表单组件<br />\n设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式",
             "extends": "Component",
             "is_constructor": 1,
@@ -2223,7 +2223,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 55,
+            "line": 70,
             "description": "生成不同的元素标签",
             "itemtype": "property",
             "name": "type",
@@ -2233,7 +2233,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 61,
+            "line": 76,
             "description": "默认输入提示",
             "itemtype": "property",
             "name": "autoComplete",
@@ -2243,7 +2243,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 67,
+            "line": 82,
             "description": "type为radio或checkbox时，需要显示的标签信息",
             "itemtype": "property",
             "name": "label",
@@ -2253,7 +2253,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 73,
+            "line": 88,
             "description": "需要显示的icon",
             "itemtype": "property",
             "name": "icon",
@@ -2263,7 +2263,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 78,
+            "line": 93,
             "description": "给icon设置样式",
             "itemtype": "property",
             "name": "iconStyle",
@@ -2273,7 +2273,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 84,
+            "line": 99,
             "description": "icon,input类型只能是text这种的",
             "itemtype": "property",
             "name": "icon",
@@ -2283,7 +2283,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 90,
+            "line": 105,
             "description": "icon展示的方向，{left,right}",
             "itemtype": "property",
             "name": "iconDirection",
@@ -3359,15 +3359,15 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/CheckboxGroup.js:47"
+            "line": " lib/CheckboxGroup.js:32"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/CheckboxGroup.js:47"
+            "line": " lib/CheckboxGroup.js:32"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/CheckboxGroup.js:47"
+            "line": " lib/CheckboxGroup.js:32"
         },
         {
             "message": "unknown tag: demo",
@@ -3431,15 +3431,15 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Input.js:31"
+            "line": " lib/Input.js:46"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Input.js:31"
+            "line": " lib/Input.js:46"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Input.js:31"
+            "line": " lib/Input.js:46"
         },
         {
             "message": "unknown tag: demo",

@@ -51,7 +51,7 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "<h5>form表单模块集成了常见的表单元素形式:</h5>\n<strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>\n<strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>\n<strong><a href='../classes/Input.html'>input输入框</a></strong><br>\n<strong><a href='../classes/Select.html'>select下拉框</a></strong><br>\n<strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>\n<h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>",
             "classes": [
                 {
-                    "name": "Input"
+                    "name": "CheckboxGroup"
                 },
                 {
                     "name": "RadioGroup"
@@ -69,7 +69,7 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "ButtonGroup"
                 },
                 {
-                    "name": "CheckboxGroup"
+                    "name": "Input"
                 }
             ]
         },
