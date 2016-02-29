@@ -5,6 +5,33 @@ import ClassNameMixin from './utils/ClassNameMixin.js';
 /**
  * 日历组件<br />
  * 需要和CalendarPanel组合使用
+ * <ul>
+ *     <li>startDate:定义起始日期<br>
+ *         例如<code>
+ *                 startDate="2015-11-11"
+ *         </code>
+ *     </li>
+ *     <li>endDate:定义结束日期<br>
+ *         例如<code>
+ *            endDate="2015-12-1"
+ *         </code>
+ *     </li>
+ *     <li>defaultDate:默认今天<br>
+ *         默认<code>
+ *            defaultDate=new Date()
+ *         </code>
+ *     </li>
+ *      <li>format:日期格式<br>
+ *         默认<code>
+ *          format='yyyy-MM-dd'
+ *         </code>
+ *     </li>
+ *      <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>配合CalendarPanel使用时,不需要定义</strong><br>
+ *         例如<code>
+ *         selectCallback(dateString);参数为format后的日期
+ *         </code>
+ *     </li>
+ * </ul>
  * @class Calendar
  * @module ui
  * @extends Component
@@ -16,12 +43,6 @@ import ClassNameMixin from './utils/ClassNameMixin.js';
 @ClassNameMixin
 export default class Calendar extends Component{
     static propTypes = {
-        /**
-         * 样式类名前缀
-         * @property classPrefix
-         * @type String
-         * @default calendar
-         * */
         classPrefix:PropTypes.string,
         /**
          * 起始日期
@@ -53,9 +74,9 @@ export default class Calendar extends Component{
         format:PropTypes.string,
         /**
          * 选择某个具体日期后执行的回调函数
-         * @property selectCallback
-         * @type Function
-         * @default empty
+         * @event  selectCallback
+         * @param {string} date 日期
+         * @default void
          * */
         selectCallback:PropTypes.func
     };

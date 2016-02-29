@@ -5,6 +5,9 @@
  */
 
 var operateIframe = function () {
+    $(document).ready(function(){
+       $('pre').addClass('code prettyprint');
+    });
     //映射iframe的地址
     var href= location.href;
     var relLink = href.substring(0,href.indexOf('eagle-ui'))+'eagle-ui/examples/#/';
@@ -66,8 +69,6 @@ var operateIframe = function () {
         .load(function(){
                hideCode()
         });
-
-
     }
     $('.btn.btn-info.btn-viewDemo').html('<a target="_blank" style="color:#fff" href='+iframeLink+'>view Demo</a>');
     //隐藏编辑代码按钮

@@ -457,6 +457,13 @@ var _CalendarJs2 = _interopRequireDefault(_CalendarJs);
 
 /**
  * CalendarPanel组件
+ * CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
+ * 主要属性接口:
+ * &lt;ul&gt;
+ *     &lt;li&gt;getValueCallback参数为&lt;code&gt;格式化后的string&lt;/code&gt;&lt;/li&gt;
+ *     &lt;li style=&#x27;color:red&#x27;&gt;&lt;a href=&#x27;./Calendar.html&#x27;&gt;其他属性定义请参照Calendar组件&lt;/a&gt;&lt;/li&gt;
+ * &lt;/ul&gt;
+ *
  * @class CalendarPanel
  * @module ui
  * @extends Component
@@ -477,8 +484,8 @@ var CalendarPanel = (function (_Component) {
             componentTag: _react.PropTypes.string,
             /**
              * 通过传入此函数获取日期值
-             * @property getValueCallback
-             * @type Function
+             * @event  getValueCallback
+             * @param {string} date 日期
              * */
             getValueCallback: _react.PropTypes.func
         },

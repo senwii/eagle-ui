@@ -779,7 +779,7 @@
             "namespace": "",
             "file": "lib/Calendar.js",
             "line": 25,
-            "description": "日历组件<br />\n需要和CalendarPanel组合使用",
+            "description": "日历组件<br />\n需要和CalendarPanel组合使用\n<ul>\n    <li>startDate:定义起始日期<br>\n        例如<code>\n                startDate=\"2015-11-11\"\n        </code>\n    </li>\n    <li>endDate:定义结束日期<br>\n        例如<code>\n           endDate=\"2015-12-1\"\n        </code>\n    </li>\n    <li>defaultDate:默认今天<br>\n        默认<code>\n           defaultDate=new Date()\n        </code>\n    </li>\n     <li>format:日期格式<br>\n        默认<code>\n         format='yyyy-MM-dd'\n        </code>\n    </li>\n     <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>配合CalendarPanel使用时,不需要定义</strong><br>\n        例如<code>\n        selectCallback(dateString);参数为format后的日期\n        </code>\n    </li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -804,7 +804,7 @@
             "namespace": "",
             "file": "lib/CalendarPanel.js",
             "line": 39,
-            "description": "CalendarPanel组件",
+            "description": "CalendarPanel组件\nCalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar\n主要属性接口:\n<ul>\n    <li>getValueCallback参数为<code>格式化后的string</code></li>\n    <li style='color:red'><a href='./Calendar.html'>其他属性定义请参照Calendar组件</a></li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -954,12 +954,12 @@
             "namespace": "",
             "file": "lib/ImgSlider.js",
             "line": 31,
-            "description": "照片浏览组件<br />\n提供的UI展示属性接口如下<br/>\n <pre>\n   imgList:定义数据源数组Array [obj]\n   show:定义隐藏还是展示组件 Boolean 默认false\n   urlKey:定义大图展示中的图片地址对应imgList数组对象的key\n   titleKey:定义大图展示下方文字对应imgList数组对象的key\n   profileKey: 定义大图展示下方文字对应imgList数组对象的key\n   showThumbnail:定义是否展示缩略图 Boolean 默认true\n   thumbnailKey:定义缩略图对应imgList数组对象的key 默认和urlKey保持一致\n   pageNum:定义每页展示缩略图的个数 默认为5\n </pre>",
+            "description": "照片浏览组件<br />\n提供的UI展示属性接口如下<br/>\n <ul>\n   <li>imgList:定义数据源数组<br>\n       例如\n       <pre><code>\n                [{\n                      profile:'1叔2015上传',\n                      url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                      description:'闪惠商户培训资料',\n                      thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n                   }]\n       </code></pre>\n   </li>\n   <li>show:定义隐藏还是展示组件\n       <code>\n           <strong>默认</strong>false\n       </code>\n   </li>\n   <li>urlKey:定义大图对应imgList数组中的key\n       <code>\n           在本例子中就是url\n       </code>\n   </li>\n   <li>titleKey:定义大图下方文字对应imgList数组的key\n       <code>\n           在本例子中就是description\n       </code>\n   </li>\n   <li>profileKey: 定义大图下方文字对应imgList数组的key\n       <code>\n           在本例子中就是profile\n       </code>\n   </li>\n   <li>showThumbnail:定义是否展示缩略图\n       <code>\n           <strong>默认</strong>true\n       </code>\n   </li>\n   <li>thumbnailKey:定义缩略图对应imgList数组的key\n       <code>\n           <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail\n       </code>\n   </li>\n    <li>pageNum:定义每页缩略图的个数\n       <code>\n           <strong>默认</strong>为5\n       </code>\n   </li>\n </ul>\n 使用方式:\n <pre><code>&#60;imgSlider show={true} showThumbnail={true}\n          imgList={imgList}\n          profileKey={'profile'}\n          urlKey={'url'}\n          titleKey={'description'}\n          thumbnailKey={thumbnailKey} /&#62;</code>\n </pre>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
                 "\t<html lang=\"en\">\n\t</html>",
-                "\timport React, { Component ,PropTypes} from 'react';\n\timport {Button,Column,ImgSlider,Dialog} from '../../../src/index.js';\n\t\n\texport default class SliderDemo extends Component {\n\t    constructor(props,context) {\n\t        super(props,context);\n\t        this.state={\n\t            show:true,\n\t            showThumbnail:true\n\t        }\n\t    }\n\t    handleSlider(){\n\t        switch(arguments[0]){\n\t            case 'showDefinedThumbnail':\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:true,\n\t                    thumbnailKey:'thumbnail'\n\t                });break;\n\t            case 'noShowThumbnail':\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:false,\n\t                    thumbnailKey:undefined\n\t                });break;\n\t            default :\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:true,\n\t                    thumbnailKey:undefined\n\t                });break;\n\t        }\n\t    }\n\t    render() {\n\t        let {show,showThumbnail,thumbnailKey} = this.state;\n\t        let imgList=[\n\t            {\n\t                profile:'1叔2015上传',\n\t                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'1哥2015上传',\n\t                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'2哥2015上传',\n\t                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'3哥2015上传',\n\t                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'4哥2015上传',\n\t                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5哥2015上传',\n\t                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5哥2015上传',\n\t                url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5叔2015上传',\n\t                url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',\n\t                description:'熊猫野外生存',\n\t                thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'\n\t            }\n\t        ];\n\t        let pageNum=4;\n\t        return (\n\t            <div>\n\t                <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>\n\t                <Button success className='mg-left-10' onClick={(e)=>this.handleSlider.call(this,'showDefinedThumbnail')}>点击出现照片展示插件(缩略图自定义)</Button>\n\t                <Button className='mg-left-10' success onClick={(e)=>this.handleSlider.call(this,'noShowThumbnail')}>点击出现照片展示插件(无缩略图)</Button>\n\t                <ImgSlider  show={show} showThumbnail={showThumbnail}\n\t                            imgList={imgList}\n\t                            profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}\n\t                            pageNum={pageNum}/>\n\t            </div>\n\t\n\t        );\n\t    }\n\t};\n\t"
+                "\timport React, { Component ,PropTypes} from 'react';\n\timport {Button,Column,ImgSlider} from '../../../src/index.js';\n\t\n\texport default class SliderDemo extends Component {\n\t    constructor(props,context) {\n\t        super(props,context);\n\t        this.state={\n\t            show:true,\n\t            showThumbnail:true\n\t        }\n\t    }\n\t    handleSlider(){\n\t        switch(arguments[0]){\n\t            case 'showDefinedThumbnail':\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:true,\n\t                    thumbnailKey:'thumbnail'\n\t                });break;\n\t            case 'noShowThumbnail':\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:false,\n\t                    thumbnailKey:undefined\n\t                });break;\n\t            default :\n\t                this.setState({\n\t                    show:true,\n\t                    showThumbnail:true,\n\t                    thumbnailKey:undefined\n\t                });break;\n\t        }\n\t    }\n\t    render() {\n\t        let {show,showThumbnail,thumbnailKey} = this.state;\n\t        let imgList=[\n\t            {\n\t                profile:'1叔2015上传',\n\t                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'1哥2015上传',\n\t                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'2哥2015上传',\n\t                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'3哥2015上传',\n\t                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'4哥2015上传',\n\t                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5哥2015上传',\n\t                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5哥2015上传',\n\t                url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',\n\t                description:'闪惠商户培训资料',\n\t                thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'\n\t            },\n\t            {\n\t                profile:'5叔2015上传',\n\t                url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',\n\t                description:'熊猫野外生存',\n\t                thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'\n\t            }\n\t        ];\n\t        let pageNum=4;\n\t        return (\n\t            <div>\n\t                <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>\n\t                <Button success className='mg-left-10' onClick={(e)=>this.handleSlider.call(this,'showDefinedThumbnail')}>点击出现照片展示插件(缩略图自定义)</Button>\n\t                <Button className='mg-left-10' success onClick={(e)=>this.handleSlider.call(this,'noShowThumbnail')}>点击出现照片展示插件(无缩略图)</Button>\n\t                <ImgSlider  show={show} showThumbnail={showThumbnail}\n\t                            imgList={imgList}\n\t                            profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}\n\t                            pageNum={pageNum}/>\n\t            </div>\n\t\n\t        );\n\t    }\n\t};\n\t"
             ],
             "exampleTitles": [
                 "UI展示",
@@ -1005,11 +1005,10 @@
             "file": "lib/Label.js",
             "line": 30,
             "description": "标签",
-            "extends": "Component",
             "is_constructor": 1,
             "example": [
                 "\t<html lang=\"en\">\n\t</html>",
-                "\timport React,{Component} from 'react';\n\timport {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from 'eagle-ui.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel style={{\n\t                margin:'20px'\n\t            }}>\n\t                <PanelContent >\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup spacing={94} title='行政区' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup title='商品类型' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup defaultChecked='卢湾区' activeCallback={this.show} end>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>普通标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup egType=\"simple\" activeCallback={this.show}>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label url=\"http://baidu.com\">点击跳转至百度</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>form标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\">121212121</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>单个标签</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={2}>\n\t                                <Label active egSize=\"xs\">选中</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"success\">成功</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"error\">错误</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label disabled>禁用</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label egStyle=\"warning\" egSize=\"lg\" >warning</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label >默认</Label>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </PanelContent>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from '../../../src/index.js';\n\t\n\tlet Demo = class Demo extends Component{\n\t\n\t    constructor(props,context){\n\t        super(props,context);\n\t\n\t    }\n\t\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <Panel style={{\n\t                margin:'20px'\n\t            }}>\n\t                <PanelContent >\n\t                    <Grid>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup spacing={94} title='行政区' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup title='商品类型' defaultChecked='全部' activeCallback={this.show} end>\n\t                                    <Label value=\"0\" className=\"all\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup defaultChecked='卢湾区' activeCallback={this.show} end>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label>浦东新区</Label>\n\t                                    <Label>黄浦区</Label>\n\t                                    <Label>普陀区</Label>\n\t                                    <Label>闸北区</Label>\n\t                                    <Label>虹口区</Label>\n\t                                    <Label>杨浦区</Label>\n\t                                    <Label>宝山区</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>普通标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <LabelGroup egType=\"simple\" activeCallback={this.show}>\n\t                                    <Label value=\"0\">全部</Label>\n\t                                    <Label value=\"1\">卢湾区</Label>\n\t                                    <Label value=\"10\">徐汇区</Label>\n\t                                    <Label>静安区</Label>\n\t                                    <Label>长宁区</Label>\n\t                                    <Label>闵行区</Label>\n\t                                    <Label url=\"http://baidu.com\">点击跳转至百度</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>form标签组</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\">121212121</Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                            <Col sm={6}>\n\t                                <LabelGroup egType=\"form\" >\n\t                                    <Label value=\"0\">当前日佣金基数</Label>\n\t                                    <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n\t                                </LabelGroup>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col>\n\t                                <h3>单个标签</h3>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={2}>\n\t                                <Label active egSize=\"xs\">选中</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"success\">成功</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label  egStyle=\"error\">错误</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label disabled>禁用</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label egStyle=\"warning\" egSize=\"lg\" >warning</Label>\n\t                            </Col>\n\t                            <Col sm={2}>\n\t                                <Label >默认</Label>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </PanelContent>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t\n\texport default class LabelCls extends Component{\n\t    render(){\n\t        return (\n\t            <Demo />\n\t        );\n\t    }\n\t}\n\t"
             ],
             "exampleTitles": [
                 "UI展示",
@@ -1178,12 +1177,12 @@
             "namespace": "",
             "file": "lib/Star.js",
             "line": 27,
-            "description": "星级评价(Star)组件<br />\n提供的UI展示属性接口包括<br/>\n<pre>\n    rate：星级评价的分数(满分为100)\n    size：星星的大小(默认13*13px)\n</pre><br>",
+            "description": "星级评价(Star)组件<br />\n提供的UI展示属性接口包括<br/>\n<ul>\n    <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>\n    <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Star rate={50} size={10}/&#62;</code>\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
                 "\t<html lang=\"en\">\n\t</html>",
-                "\timport React, { Component ,PropTypes} from 'react';\n\timport {Star} from 'eagle-ui.js';\n\texport default class StarDemo extends Component {\n\t    render(){\n\t        return(\n\t            <div>\n\t                <Star rate={50} size={15}/><br/>\n\t                <Star rate={60} size={16}/><br/>\n\t                <Star rate={70} size={17}/><br/>\n\t                <Star rate={80} size={18}/><br/>\n\t                <Star rate={90} size={19}/><br/>\n\t                <Star rate={10} size={14}/><br/>\n\t                <Star rate={20} size={13}/><br/>\n\t                <Star rate={30} size={12}/><br/>\n\t                <Star rate={40} size={11}/><br/>\n\t                <Star rate={50} size={10}/><br/>\n\t                <Star/><br/>\n\t            </div>\n\t        )\n\t    }\n\t}\n\t\n\t"
+                "\t/**\n\t * Created by slashhuang on 15/12/21.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport Star from '../../../src/Star.js';\n\texport default class StarDemo extends Component {\n\t    render(){\n\t        return(\n\t            <div>\n\t                <Star rate={50} size={15}/><br/>\n\t                <Star rate={60} size={16}/><br/>\n\t                <Star rate={70} size={17}/><br/>\n\t                <Star rate={80} size={18}/><br/>\n\t                <Star rate={90} size={19}/><br/>\n\t                <Star rate={10} size={14}/><br/>\n\t                <Star rate={20} size={13}/><br/>\n\t                <Star rate={30} size={12}/><br/>\n\t                <Star rate={40} size={11}/><br/>\n\t                <Star rate={50} size={10}/><br/>\n\t                <Star/><br/>\n\t            </div>\n\t        )\n\t    }\n\t}\n\t\n\t"
             ],
             "exampleTitles": [
                 "UI展示",
@@ -1850,18 +1849,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 43,
-            "description": "样式类名前缀",
-            "itemtype": "property",
-            "name": "classPrefix",
-            "type": "String",
-            "default": "calendar",
-            "class": "Calendar",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Calendar.js",
-            "line": 50,
+            "line": 71,
             "description": "起始日期",
             "itemtype": "property",
             "name": "startDate",
@@ -1872,7 +1860,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 57,
+            "line": 78,
             "description": "终止日期",
             "itemtype": "property",
             "name": "endDate",
@@ -1883,7 +1871,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 64,
+            "line": 85,
             "description": "默认选中日期",
             "itemtype": "property",
             "name": "defaultDate",
@@ -1894,7 +1882,7 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 71,
+            "line": 92,
             "description": "日期格式",
             "itemtype": "property",
             "name": "format",
@@ -1905,34 +1893,46 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 78,
+            "line": 99,
             "description": "选择某个具体日期后执行的回调函数",
-            "itemtype": "property",
+            "itemtype": "event",
             "name": "selectCallback",
-            "type": "Function",
-            "default": "empty",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "日期",
+                    "type": "String"
+                }
+            ],
+            "default": "void",
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/Calendar.js",
-            "line": 180,
+            "line": 201,
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/Calendar.js",
-            "line": 189,
+            "line": 210,
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/CalendarPanel.js",
-            "line": 59,
+            "line": 66,
             "description": "通过传入此函数获取日期值",
-            "itemtype": "property",
+            "itemtype": "event",
             "name": "getValueCallback",
-            "type": "Function",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "日期",
+                    "type": "String"
+                }
+            ],
             "class": "CalendarPanel",
             "module": "ui"
         },
@@ -2135,7 +2135,7 @@
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 291,
+            "line": 337,
             "description": "slider的图片数组",
             "itemtype": "property",
             "name": "imgList",
@@ -2146,7 +2146,7 @@
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 298,
+            "line": 344,
             "description": "是否展示slider",
             "itemtype": "property",
             "name": "show",
@@ -2157,51 +2157,51 @@
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 305,
+            "line": 351,
             "description": "图片信息(对应imgList中大图标题信息的key))",
             "itemtype": "property",
             "name": "urlKey",
             "type": "string",
-            "default": "'url'",
+            "default": "url",
             "class": "Slider",
             "module": "ui"
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 312,
+            "line": 358,
             "description": "图片信息(对应图片信息数组对象中图片描述信息的key)",
             "itemtype": "property",
             "name": "profileKey",
             "type": "string",
-            "default": "'profile'",
+            "default": "profile",
             "class": "Slider",
             "module": "ui"
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 319,
+            "line": 365,
             "description": "图片描述信息(对应imgList中大图标题信息的key)",
             "itemtype": "property",
             "name": "titleKey",
             "type": "string",
-            "default": "'description'",
+            "default": "description",
             "class": "Slider",
             "module": "ui"
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 326,
+            "line": 372,
             "description": "是否显示slider的图片缩略图部分",
             "itemtype": "property",
             "name": "showThumbnail",
             "type": "boolean",
-            "default": "true(默认展示)",
+            "default": "true",
             "class": "Slider",
             "module": "ui"
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 333,
+            "line": 379,
             "description": "缩略图的key",
             "itemtype": "property",
             "name": "thumbnailKey",
@@ -2212,12 +2212,12 @@
         },
         {
             "file": "lib/ImgSlider.js",
-            "line": 340,
+            "line": 386,
             "description": "缩略图展示数目",
             "itemtype": "property",
             "name": "pageNum",
             "type": "number",
-            "default": "5(默认为5)",
+            "default": "5",
             "class": "Slider",
             "module": "ui"
         },
@@ -2300,7 +2300,7 @@
         },
         {
             "file": "lib/Label.js",
-            "line": 67,
+            "line": 66,
             "description": "点击回调函数",
             "class": "Label",
             "module": "ui"
@@ -2680,7 +2680,7 @@
         },
         {
             "file": "lib/Star.js",
-            "line": 49,
+            "line": 52,
             "description": "星级评价分数(满分100)",
             "itemtype": "property",
             "name": "Rate",
@@ -2691,7 +2691,7 @@
         },
         {
             "file": "lib/Star.js",
-            "line": 56,
+            "line": 59,
             "description": "星星大小",
             "itemtype": "property",
             "name": "size",
@@ -3671,11 +3671,11 @@
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:180"
+            "line": " lib/Calendar.js:201"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:189"
+            "line": " lib/Calendar.js:210"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
@@ -3695,7 +3695,7 @@
         },
         {
             "message": "Missing item type\n点击回调函数",
-            "line": " lib/Label.js:67"
+            "line": " lib/Label.js:66"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",

@@ -9,10 +9,9 @@ import Component from './utils/Component';
  * 标签
  * @class Label
  * @module ui
- * @extends Component
  * @constructor
  * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/label.js {源码}
+ * @demo src/modules/label.js {源码}
  * @show true
  * */
 export default class Label extends Component{

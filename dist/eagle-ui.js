@@ -8216,10 +8216,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 标签
 	 * @class Label
 	 * @module ui
-	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/label.js {源码}
+	 * @demo src/modules/label.js {源码}
 	 * @show true
 	 * */
 
@@ -11005,6 +11004,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 日历组件<br />
 	 * 需要和CalendarPanel组合使用
+	 * <ul>
+	 *     <li>startDate:定义起始日期<br>
+	 *         例如<code>
+	 *                 startDate="2015-11-11"
+	 *         </code>
+	 *     </li>
+	 *     <li>endDate:定义结束日期<br>
+	 *         例如<code>
+	 *            endDate="2015-12-1"
+	 *         </code>
+	 *     </li>
+	 *     <li>defaultDate:默认今天<br>
+	 *         默认<code>
+	 *            defaultDate=new Date()
+	 *         </code>
+	 *     </li>
+	 *      <li>format:日期格式<br>
+	 *         默认<code>
+	 *          format='yyyy-MM-dd'
+	 *         </code>
+	 *     </li>
+	 *      <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>配合CalendarPanel使用时,不需要定义</strong><br>
+	 *         例如<code>
+	 *         selectCallback(dateString);参数为format后的日期
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class Calendar
 	 * @module ui
 	 * @extends Component
@@ -11020,12 +11046,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Calendar, null, [{
 	        key: 'propTypes',
 	        value: {
-	            /**
-	             * 样式类名前缀
-	             * @property classPrefix
-	             * @type String
-	             * @default calendar
-	             * */
 	            classPrefix: _react.PropTypes.string,
 	            /**
 	             * 起始日期
@@ -11057,9 +11077,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            format: _react.PropTypes.string,
 	            /**
 	             * 选择某个具体日期后执行的回调函数
-	             * @property selectCallback
-	             * @type Function
-	             * @default empty
+	             * @event  selectCallback
+	             * @param {string} date 日期
+	             * @default void
 	             * */
 	            selectCallback: _react.PropTypes.func
 	        },
@@ -11898,16 +11918,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * 星级评价(Star)组件<br />
 	 * 提供的UI展示属性接口包括<br/>
-	 * <pre>
-	 *     rate：星级评价的分数(满分为100)
-	 *     size：星星的大小(默认13*13px)
-	 * </pre><br>
+	 * <ul>
+	 *     <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>
+	 *     <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>
+	 * </ul><br>
+	 * 使用方式:
+	 * <pre><code>&#60;Star rate={50} size={10}/&#62;</code>
+	 * </pre>
 	 * @class Star
 	 * @module ui
 	 * @extends Component
 	 * @constructor
 	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/star.js {源码}
+	 * @demo src/modules/star.js {源码}
 	 * @show true
 	 * */
 
@@ -12014,15 +12037,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 *  照片浏览组件<br />
 	 *  提供的UI展示属性接口如下<br/>
-	 * <pre>
-	 *     imgList:定义数据源数组Array [obj]
-	 *     show:定义隐藏还是展示组件 Boolean 默认false
-	 *     urlKey:定义大图展示中的图片地址对应imgList数组对象的key
-	 *     titleKey:定义大图展示下方文字对应imgList数组对象的key
-	 *     profileKey: 定义大图展示下方文字对应imgList数组对象的key
-	 *     showThumbnail:定义是否展示缩略图 Boolean 默认true
-	 *     thumbnailKey:定义缩略图对应imgList数组对象的key 默认和urlKey保持一致
-	 *     pageNum:定义每页展示缩略图的个数 默认为5
+	 * <ul>
+	 *     <li>imgList:定义数据源数组<br>
+	 *         例如
+	 *         <pre><code>
+	 *                  [{
+	                        profile:'1叔2015上传',
+	                        url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+	                        description:'闪惠商户培训资料',
+	                        thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	                     }]
+	 *         </code></pre>
+	 *     </li>
+	 *     <li>show:定义隐藏还是展示组件
+	 *         <code>
+	 *             <strong>默认</strong>false
+	 *         </code>
+	 *     </li>
+	 *     <li>urlKey:定义大图对应imgList数组中的key
+	 *         <code>
+	 *             在本例子中就是url
+	 *         </code>
+	 *     </li>
+	 *     <li>titleKey:定义大图下方文字对应imgList数组的key
+	 *         <code>
+	 *             在本例子中就是description
+	 *         </code>
+	 *     </li>
+	 *     <li>profileKey: 定义大图下方文字对应imgList数组的key
+	 *         <code>
+	 *             在本例子中就是profile
+	 *         </code>
+	 *     </li>
+	 *     <li>showThumbnail:定义是否展示缩略图
+	 *         <code>
+	 *             <strong>默认</strong>true
+	 *         </code>
+	 *     </li>
+	 *     <li>thumbnailKey:定义缩略图对应imgList数组的key
+	 *         <code>
+	 *             <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail
+	 *         </code>
+	 *     </li>
+	 *      <li>pageNum:定义每页缩略图的个数
+	 *         <code>
+	 *             <strong>默认</strong>为5
+	 *         </code>
+	 *     </li>
+	 * </ul>
+	 * 使用方式:
+	 * <pre><code>&#60;imgSlider show={true} showThumbnail={true}
+	            imgList={imgList}
+	            profileKey={'profile'}
+	            urlKey={'url'}
+	            titleKey={'description'}
+	            thumbnailKey={thumbnailKey} /&#62;</code>
 	 * </pre>
 	 * @class Slider
 	 * @module ui
@@ -12289,28 +12358,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 图片信息(对应imgList中大图标题信息的key))
 	             * @property urlKey
 	             * @type string
-	             * @default  'url'
+	             * @default  url
 	             * */
 	            urlKey: _react.PropTypes.string,
 	            /**
 	             * 图片信息(对应图片信息数组对象中图片描述信息的key)
 	             * @property profileKey
 	             * @type string
-	             * @default  'profile'
+	             * @default  profile
 	             * */
 	            profileKey: _react.PropTypes.string,
 	            /**
 	             * 图片描述信息(对应imgList中大图标题信息的key)
 	             * @property titleKey
 	             * @type string
-	             * @default 'description'
+	             * @default description
 	             * */
 	            titleKey: _react.PropTypes.string,
 	            /**
 	             * 是否显示slider的图片缩略图部分
 	             * @property showThumbnail
 	             * @type boolean
-	             * @default true(默认展示)
+	             * @default true
 	             * */
 	            showThumbnail: _react.PropTypes.bool,
 	            /**
@@ -12324,7 +12393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 缩略图展示数目
 	             * @property pageNum
 	             * @type number
-	             * @default 5(默认为5)
+	             * @default 5
 	             * */
 	            pageNum: _react.PropTypes.number,
 	            classPrefix: _react.PropTypes.string
@@ -12384,6 +12453,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * CalendarPanel组件
+	 * CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
+	 * 主要属性接口:
+	 * <ul>
+	 *     <li>getValueCallback参数为<code>格式化后的string</code></li>
+	 *     <li style='color:red'><a href='./Calendar.html'>其他属性定义请参照Calendar组件</a></li>
+	 * </ul>
+	 *
 	 * @class CalendarPanel
 	 * @module ui
 	 * @extends Component
@@ -12404,8 +12480,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            componentTag: _react.PropTypes.string,
 	            /**
 	             * 通过传入此函数获取日期值
-	             * @property getValueCallback
-	             * @type Function
+	             * @event  getValueCallback
+	             * @param {string} date 日期
 	             * */
 	            getValueCallback: _react.PropTypes.func
 	        },

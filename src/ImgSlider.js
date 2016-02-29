@@ -10,15 +10,61 @@ import classNames from 'classnames';
 /**
  *  照片浏览组件<br />
  *  提供的UI展示属性接口如下<br/>
- * <pre>
- *     imgList:定义数据源数组Array
- *     show:定义隐藏还是展示组件     <strong>默认false </strong>
- *     urlKey:定义大图对应imgList数组中的key
- *     titleKey:定义大图下方文字对应imgList数组的key
- *     profileKey: 定义大图下方文字对应imgList数组的key
- *     showThumbnail:定义是否展示缩略图   <strong>默认true </strong>
- *     thumbnailKey:定义缩略图对应imgList数组的key   <strong>默认和urlKey保持一致</strong>
- *     pageNum:定义每页缩略图的个数   <strong>默认为5</strong>
+ * <ul>
+ *     <li>imgList:定义数据源数组<br>
+ *         例如
+ *         <pre><code>
+ *                  [{
+                        profile:'1叔2015上传',
+                        url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+                        description:'闪惠商户培训资料',
+                        thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+                     }]
+ *         </code></pre>
+ *     </li>
+ *     <li>show:定义隐藏还是展示组件
+ *         <code>
+ *             <strong>默认</strong>false
+ *         </code>
+ *     </li>
+ *     <li>urlKey:定义大图对应imgList数组中的key
+ *         <code>
+ *             在本例子中就是url
+ *         </code>
+ *     </li>
+ *     <li>titleKey:定义大图下方文字对应imgList数组的key
+ *         <code>
+ *             在本例子中就是description
+ *         </code>
+ *     </li>
+ *     <li>profileKey: 定义大图下方文字对应imgList数组的key
+ *         <code>
+ *             在本例子中就是profile
+ *         </code>
+ *     </li>
+ *     <li>showThumbnail:定义是否展示缩略图
+ *         <code>
+ *             <strong>默认</strong>true
+ *         </code>
+ *     </li>
+ *     <li>thumbnailKey:定义缩略图对应imgList数组的key
+ *         <code>
+ *             <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail
+ *         </code>
+ *     </li>
+ *      <li>pageNum:定义每页缩略图的个数
+ *         <code>
+ *             <strong>默认</strong>为5
+ *         </code>
+ *     </li>
+ * </ul>
+ * 使用方式:
+ * <pre><code>&#60;imgSlider show={true} showThumbnail={true}
+            imgList={imgList}
+            profileKey={'profile'}
+            urlKey={'url'}
+            titleKey={'description'}
+            thumbnailKey={thumbnailKey} /&#62;</code>
  * </pre>
  * @class Slider
  * @module ui
@@ -71,28 +117,28 @@ export default class ImgSlider extends Component{
          * 图片信息(对应imgList中大图标题信息的key))
          * @property urlKey
          * @type string
-         * @default  'url'
+         * @default  url
          * */
         urlKey:PropTypes.string,
         /**
          * 图片信息(对应图片信息数组对象中图片描述信息的key)
          * @property profileKey
          * @type string
-         * @default  'profile'
+         * @default  profile
          * */
         profileKey:PropTypes.string,
         /**
          * 图片描述信息(对应imgList中大图标题信息的key)
          * @property titleKey
          * @type string
-         * @default 'description'
+         * @default description
          * */
         titleKey:PropTypes.string,
         /**
          * 是否显示slider的图片缩略图部分
          * @property showThumbnail
          * @type boolean
-         * @default true(默认展示)
+         * @default true
          * */
         showThumbnail:PropTypes.bool,
         /**
@@ -106,7 +152,7 @@ export default class ImgSlider extends Component{
          * 缩略图展示数目
          * @property pageNum
          * @type number
-         * @default 5(默认为5)
+         * @default 5
          * */
         pageNum:PropTypes.number,
         classPrefix:PropTypes.string

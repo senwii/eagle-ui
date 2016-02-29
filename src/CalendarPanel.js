@@ -8,6 +8,13 @@ import Calendar from './Calendar.js';
 
 /**
  * CalendarPanel组件
+ * CalendarPanel组件UI接口和Calendar基本保持一致，请查看Calendar
+ * 主要属性接口:
+ * <ul>
+ *     <li>getValueCallback参数为<code>格式化后的string</code></li>
+ *     <li style='color:red'><a href='./Calendar.html'>其他属性定义请参照Calendar组件</a></li>
+ * </ul>
+ *
  * @class CalendarPanel
  * @module ui
  * @extends Component
@@ -25,8 +32,8 @@ export default class CalendarPanel extends Component{
         componentTag:PropTypes.string,
         /**
          * 通过传入此函数获取日期值
-         * @property getValueCallback
-         * @type Function
+         * @event  getValueCallback
+         * @param {string} date 日期
          * */
         getValueCallback:PropTypes.func
     };
