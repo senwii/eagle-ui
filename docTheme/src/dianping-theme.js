@@ -64,8 +64,7 @@ var operateIframe = function () {
     if($('li[role="presentation"].active').html().match('展示')){
         iframeArea.eq(0).find('iframe').attr('src',iframeLink).css(iframeStyle)
         .load(function(){
-                setTimeout(function(){hideCode();},0);
-            //the console won't show anything even if the iframe is loaded.
+               hideCode()
         });
 
 

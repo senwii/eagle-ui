@@ -11,14 +11,14 @@ import classNames from 'classnames';
  *  照片浏览组件<br />
  *  提供的UI展示属性接口如下<br/>
  * <pre>
- *     imgList:定义数据源数组Array [obj]
- *     show:定义隐藏还是展示组件 Boolean 默认false
- *     urlKey:定义大图展示中的图片地址对应imgList数组对象的key
- *     titleKey:定义大图展示下方文字对应imgList数组对象的key
- *     profileKey: 定义大图展示下方文字对应imgList数组对象的key
- *     showThumbnail:定义是否展示缩略图 Boolean 默认true
- *     thumbnailKey:定义缩略图对应imgList数组对象的key 默认和urlKey保持一致
- *     pageNum:定义每页展示缩略图的个数 默认为5
+ *     imgList:定义数据源数组Array
+ *     show:定义隐藏还是展示组件     <strong>默认false </strong>
+ *     urlKey:定义大图对应imgList数组中的key
+ *     titleKey:定义大图下方文字对应imgList数组的key
+ *     profileKey: 定义大图下方文字对应imgList数组的key
+ *     showThumbnail:定义是否展示缩略图   <strong>默认true </strong>
+ *     thumbnailKey:定义缩略图对应imgList数组的key   <strong>默认和urlKey保持一致</strong>
+ *     pageNum:定义每页缩略图的个数   <strong>默认为5</strong>
  * </pre>
  * @class Slider
  * @module ui
