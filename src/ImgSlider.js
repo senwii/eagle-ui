@@ -12,20 +12,20 @@ import classNames from 'classnames';
  *  提供的UI展示属性接口如下<br/>
  * <pre>
  *     imgList:定义数据源数组Array [obj]
- *     show:定义隐藏还是展示组件 Boolean
+ *     show:定义隐藏还是展示组件 Boolean 默认false
  *     urlKey:定义大图展示中的图片地址对应imgList数组对象的key
  *     titleKey:定义大图展示下方文字对应imgList数组对象的key
  *     profileKey: 定义大图展示下方文字对应imgList数组对象的key
- *     showThumbnail:定义是否展示缩略图 Boolean
- *     thumbnailKey:定义缩略图对应imgList数组对象的key
- *     pageNum:定义每页展示缩略图的个数
+ *     showThumbnail:定义是否展示缩略图 Boolean 默认true
+ *     thumbnailKey:定义缩略图对应imgList数组对象的key 默认和urlKey保持一致
+ *     pageNum:定义每页展示缩略图的个数 默认为5
  * </pre>
  * @class Slider
  * @module ui
  * @extends Component
  * @constructor
  * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/slider.js {源码}
+ * @demo src/modules/imgSlider.js {源码}
  * @show true
  * */
 @ClassNameMixin
@@ -54,61 +54,61 @@ export default class ImgSlider extends Component{
     };
     static propTypes = {
         /**
-         * 图片信息(对应图片信息数组对象中图片描述信息的key)
-         * @property profileKey
-         * @type string
-         * @default
+         * slider的图片数组
+         * @property imgList
+         * @type Array
+         * @default 图片数组(包含大图地址、描述等信息)
          * */
-        profileKey:PropTypes.string,
+        imgList:PropTypes.array,
         /**
-         * 图片信息(对应图片信息数组对象中图片uri信息的key)
+         * 是否展示slider
+         * @property show
+         * @type boolean
+         * @default false(默认不展示)
+         * */
+        show:PropTypes.bool,
+        /**
+         * 图片信息(对应imgList中大图标题信息的key))
          * @property urlKey
          * @type string
-         * @default
+         * @default  'url'
          * */
         urlKey:PropTypes.string,
         /**
-         * 图片信息(对应图片信息数组对象中图片大标题信息的key)
+         * 图片信息(对应图片信息数组对象中图片描述信息的key)
+         * @property profileKey
+         * @type string
+         * @default  'profile'
+         * */
+        profileKey:PropTypes.string,
+        /**
+         * 图片描述信息(对应imgList中大图标题信息的key)
          * @property titleKey
          * @type string
-         * @default
+         * @default 'description'
          * */
         titleKey:PropTypes.string,
+        /**
+         * 是否显示slider的图片缩略图部分
+         * @property showThumbnail
+         * @type boolean
+         * @default true(默认展示)
+         * */
+        showThumbnail:PropTypes.bool,
         /**
          * 缩略图的key
          * @property thumbnailKey
          * @type array
-         * @default 默认会拿urlKey
+         * @default 默认和urlKey保持一致
          * */
         thumbnailKey:PropTypes.string,
         /**
-         * 图片数组
-         * @property imgList
-         * @type Array
-         * @default 图片数组[{key:value}]
-         * */
-        imgList:PropTypes.array,
-        /**
-         * 图片栏展示数目
+         * 缩略图展示数目
          * @property pageNum
          * @type number
-         * @default 5
+         * @default 5(默认为5)
          * */
         pageNum:PropTypes.number,
-        /**
-         * 是否显示图片展示slider
-         * @property show
-         * @type boolean
-         * @default false
-         * */
-        show:PropTypes.bool,
-        /**
-         * 是否显示slider中的图片缩略图部分
-         * @property showThumbnail
-         * @type boolean
-         * @default true
-         * */
-        showThumbnail:PropTypes.bool,
         classPrefix:PropTypes.string
     };
     componentWillReceiveProps(props){

@@ -5,7 +5,7 @@ export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
         this.state={
-            show:false,
+            show:true,
             showThumbnail:true
         }
     }
