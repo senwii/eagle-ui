@@ -73,7 +73,7 @@ var operateIframe = function () {
         iframeDoc.appendChild(iframe);
         iframeArea.eq(0).find('iframe').replaceWith($(iframeDoc));
         setTimeout(function(){
-            iframeArea.eq(0).find('iframe').css(iframeStyle)
+            iframeArea.eq(0).find('iframe')
                 .load(function(){
                     hideCode()
                 });
