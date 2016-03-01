@@ -34604,8 +34604,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Search
 	 * @module ui
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/search.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/suggestion.js {源码}
 	 * @show true
 	 * */
 
@@ -34654,8 +34654,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @Module ui
 	 * @constructor
 	 * @extends Component
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/suggestion.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/suggestion.js {源码}
 	 * @show true
 	 * */
 
@@ -35688,8 +35688,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/toast.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/toast.js {源码}
 	 * @show true
 	 * */
 
@@ -37171,8 +37171,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/tab.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/tab.js {源码}
 	 * @show true
 	 * */
 
@@ -37271,8 +37271,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo docDemo/empty.html {UI展示}
-	 * @demo docDemo/tab.js {源码}
+	 * @demo empty.html {UI展示}
+	 * @demo src/modules/tab.js {源码}
 	 * @show true
 	 * */
 

@@ -78,9 +78,6 @@ var operateIframe = function () {
                     hideCode()
                 });
         },0)
-
-
-
     }
     $('.btn.btn-info.btn-viewDemo').html('<a target="_blank" style="color:#fff" href='+iframeLink+'>view Demo</a>');
     //隐藏编辑代码按钮

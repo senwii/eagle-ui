@@ -11,8 +11,8 @@ import classnames from 'classnames';
  * @module ui
  * @extends Component
  * @constructor
- * @demo docDemo/empty.html {UI展示}
- * @demo docDemo/tab.js {源码}
+ * @demo empty.html {UI展示}
+ * @demo src/modules/tab.js {源码}
  * @show true
  * */
 @ClassNameMixin

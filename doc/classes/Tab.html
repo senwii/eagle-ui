@@ -530,6 +530,91 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
+                
+            </ul>
+
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;&lt;/html&gt;</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component} from &#39;react&#39;;
+import Tab from &#39;../../../src/Tab.js&#39;;
+import Tabset from &#39;../../../src/Tabset.js&#39;;
+
+let Demo = class Demo extends Component{
+
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            tabIndex:2
+        };
+    }
+
+    callback(index){
+        if(this.state.tabIndex!==index){
+            this.setState({
+                tabIndex:index
+            });
+        }
+    }
+
+    tab3(){
+        if(this.state.tabIndex==2){
+            return (&lt;div&gt;tab3&lt;/div&gt;);
+        }
+    }
+    tab2(){
+        if(this.state.tabIndex==1){
+            return (&lt;div&gt;tab2&lt;/div&gt;);
+        }
+    }
+    tab1(){
+        if(this.state.tabIndex==0){
+            return (&lt;div&gt;tab1&lt;/div&gt;);
+        }
+    }
+
+
+    render(){
+        return (
+            &lt;Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}&gt;
+                &lt;Tab heading=&#39;tab1&#39;&gt;
+                    {::this.tab1()}
+                &lt;/Tab&gt;
+                &lt;Tab heading=&#39;tab2&#39;&gt;
+                    {::this.tab2()}
+                &lt;/Tab&gt;
+                &lt;Tab heading=&#39;tabasjdfnl;adfnaf;adlkf3&#39;&gt;
+                    {::this.tab3()}
+                &lt;/Tab&gt;
+                &lt;Tab heading=&#39;tabasjdfnl;adfnaf;adlkf3&#39;&gt;
+                    nadkfnpasknfsaknf
+                &lt;/Tab&gt;
+                &lt;Tab heading=&#39;tabasjdfnl;adfnaf;adlkf3&#39;&gt;
+                    nadkfnpasknfsaknf
+                &lt;/Tab&gt;
+            &lt;/Tabset&gt;
+        );
+    }
+}
+
+export default Demo;</code></pre>
+</div>
+            </div>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+        </div>
+    
 </div>
 
                 </div>
