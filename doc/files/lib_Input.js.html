@@ -464,7 +464,32 @@ var _utilsIcon2 = _interopRequireDefault(_utilsIcon);
 
 /**
  * input表单组件&lt;br /&gt;
- * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
+ * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.&lt;br/&gt;
+ * 提供自动补全功能，autoComplete为true即可。
+ *
+ * 主要属性和接口：
+ * &lt;ul&gt;
+ *     &lt;li&gt;type:input的不同类型，可选&#x27;text,radio..&#x27;等，默认text&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Input  type=&quot;radio&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;autoComplete:是否自动补全，默认false&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Button radius egSize=&quot;sm&quot; egStyle=&quot;warning&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;label:type为radio,checkbox时，需要显示的标签信息。默认&#x27;&#x27;&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Input  type=&quot;radio&quot;  label=&quot;大白菜&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;onChange:状态改变时的回调方法，默认null&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Input  type=&quot;checkbox&quot; checked onChange={::this.change} value=&quot;bbb&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ * &lt;/ul&gt;
  * @class Input
  * @module form(表单)
  * @extends Component

@@ -15,42 +15,42 @@ import classnames from 'classnames';
  * <ul>
  *     <li>egSize:按钮颜色<br>
  *         如：<code>
- *            <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
+ *            Button radius egSize="sm" egStyle="warning"
  *         </code>
  *     </li>
  *     <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
  *         如：<code>
- *            <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
+ *            Button radius egSize="sm" egStyle="warning"
  *         </code>
  *     </li>
  *     <li>disabled:按钮禁用状态，默认false<br>
  *         如：<code>
- *            <Button radius disabled>水平按钮组1</Button>
+ *            Button radius disabled
  *         </code>
  *     </li>
  *     <li>enable:按钮的可用状态，默认true<br>
  *         如：<code>
- *            <Button radius enable>水平按钮组1</Button>
+ *            Button radius enable
  *         </code>
  *     </li>
  *     <li>active:按钮选中状态，默认false<br>
  *         如：<code>
- *            <Button radius active>水平按钮组1</Button>
+ *            Button radius active
  *         </code>
  *     </li>
  *      <li>radius:按钮圆角状态<br>
  *         如：<code>
- *            <Button radius >水平按钮组1</Button>
+ *            Button radius
  *         </code>
  *     </li>
  *     <li>round:按钮椭圆角<br>
  *         如：<code>
- *            <Button round >水平按钮组1</Button>
+ *            Button round
  *         </code>
  *     </li>
  *     <li>block:是否块级显示，默认false<br>
  *         如：<code>
- *            <Button block>水平按钮组1</Button>
+ *            Button block
  *         </code>
  *     </li>
  * </ul>

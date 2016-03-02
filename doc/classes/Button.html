@@ -417,7 +417,52 @@
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><ul>
 <li>按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/></li>
-<li>也可以自定义行内样式和className名字定义UI展示</li>
+<li>也可以自定义行内样式和className名字定义UI展示<br/></li>
+<li>支持disabled, active, enable等属性定义<br/></li>
+<li>可以通过egSize 设置大小，可选xs、sm、lg。<br/></li>
+<li>通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success
+主要属性和接口：<ul>
+ <li>egSize:按钮颜色<br>
+     如：<code>
+        Button radius egSize="sm" egStyle="warning"
+     </code>
+ </li>
+ <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
+     如：<code>
+        Button radius egSize="sm" egStyle="warning"
+     </code>
+ </li>
+ <li>disabled:按钮禁用状态，默认false<br>
+     如：<code>
+        Button radius disabled
+     </code>
+ </li>
+ <li>enable:按钮的可用状态，默认true<br>
+     如：<code>
+        Button radius enable
+     </code>
+ </li>
+ <li>active:按钮选中状态，默认false<br>
+     如：<code>
+        Button radius active
+     </code>
+ </li>
+  <li>radius:按钮圆角状态<br>
+     如：<code>
+        Button radius
+     </code>
+ </li>
+ <li>round:按钮椭圆角<br>
+     如：<code>
+        Button round
+     </code>
+ </li>
+ <li>block:是否块级显示，默认false<br>
+     如：<code>
+        Button block
+     </code>
+ </li>
+</ul></li>
 </ul>
 </div>
  </div>
@@ -1701,7 +1746,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l72"><code>lib&#x2F;Button.js:72</code></a>
+        <a href="../files/lib_Button.js.html#l118"><code>lib&#x2F;Button.js:118</code></a>
         
         </p>
 
@@ -1749,7 +1794,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l117"><code>lib&#x2F;Button.js:117</code></a>
+        <a href="../files/lib_Button.js.html#l163"><code>lib&#x2F;Button.js:163</code></a>
         
         </p>
 
@@ -1797,7 +1842,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l103"><code>lib&#x2F;Button.js:103</code></a>
+        <a href="../files/lib_Button.js.html#l149"><code>lib&#x2F;Button.js:149</code></a>
         
         </p>
 
@@ -1845,7 +1890,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l110"><code>lib&#x2F;Button.js:110</code></a>
+        <a href="../files/lib_Button.js.html#l156"><code>lib&#x2F;Button.js:156</code></a>
         
         </p>
 
@@ -1893,7 +1938,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l57"><code>lib&#x2F;Button.js:57</code></a>
+        <a href="../files/lib_Button.js.html#l103"><code>lib&#x2F;Button.js:103</code></a>
         
         </p>
 
@@ -1941,7 +1986,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l50"><code>lib&#x2F;Button.js:50</code></a>
+        <a href="../files/lib_Button.js.html#l96"><code>lib&#x2F;Button.js:96</code></a>
         
         </p>
 
@@ -1989,7 +2034,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l96"><code>lib&#x2F;Button.js:96</code></a>
+        <a href="../files/lib_Button.js.html#l142"><code>lib&#x2F;Button.js:142</code></a>
         
         </p>
 
@@ -2037,7 +2082,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l64"><code>lib&#x2F;Button.js:64</code></a>
+        <a href="../files/lib_Button.js.html#l110"><code>lib&#x2F;Button.js:110</code></a>
         
         </p>
 
@@ -2085,7 +2130,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l79"><code>lib&#x2F;Button.js:79</code></a>
+        <a href="../files/lib_Button.js.html#l125"><code>lib&#x2F;Button.js:125</code></a>
         
         </p>
 
@@ -2133,7 +2178,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l86"><code>lib&#x2F;Button.js:86</code></a>
+        <a href="../files/lib_Button.js.html#l132"><code>lib&#x2F;Button.js:132</code></a>
         
         </p>
 

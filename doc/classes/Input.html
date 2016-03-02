@@ -416,8 +416,31 @@
 </div>
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><p>input表单组件<br />
-设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式</p>
-</div>
+设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.<br/>
+提供自动补全功能，autoComplete为true即可。</p>
+<p>主要属性和接口：</p>
+<ul>
+    <li>type:input的不同类型，可选&#39;text,radio..&#39;等，默认text<br>
+        如：<code>
+           Input  type="radio"
+        </code>
+    </li>
+    <li>autoComplete:是否自动补全，默认false<br>
+        如：<code>
+           Button radius egSize="sm" egStyle="warning"
+        </code>
+    </li>
+    <li>label:type为radio,checkbox时，需要显示的标签信息。默认&#39;&#39;<br>
+        如：<code>
+           Input  type="radio"  label="大白菜"
+        </code>
+    </li>
+    <li>onChange:状态改变时的回调方法，默认null<br>
+        如：<code>
+           Input  type="checkbox" checked onChange={::this.change} value="bbb"
+        </code>
+    </li>
+</ul></div>
  </div>
 
 <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -793,7 +816,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l76"><code>lib&#x2F;Input.js:76</code></a>
+        <a href="../files/lib_Input.js.html#l101"><code>lib&#x2F;Input.js:101</code></a>
         
         </p>
 
@@ -838,7 +861,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l88"><code>lib&#x2F;Input.js:88</code></a>
+        <a href="../files/lib_Input.js.html#l113"><code>lib&#x2F;Input.js:113</code></a>
         
         </p>
 
@@ -883,7 +906,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l99"><code>lib&#x2F;Input.js:99</code></a>
+        <a href="../files/lib_Input.js.html#l124"><code>lib&#x2F;Input.js:124</code></a>
         
         </p>
 
@@ -928,7 +951,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l105"><code>lib&#x2F;Input.js:105</code></a>
+        <a href="../files/lib_Input.js.html#l130"><code>lib&#x2F;Input.js:130</code></a>
         
         </p>
 
@@ -973,7 +996,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l93"><code>lib&#x2F;Input.js:93</code></a>
+        <a href="../files/lib_Input.js.html#l118"><code>lib&#x2F;Input.js:118</code></a>
         
         </p>
 
@@ -1018,7 +1041,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l82"><code>lib&#x2F;Input.js:82</code></a>
+        <a href="../files/lib_Input.js.html#l107"><code>lib&#x2F;Input.js:107</code></a>
         
         </p>
 
@@ -1063,7 +1086,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_Input.js.html#l70"><code>lib&#x2F;Input.js:70</code></a>
+        <a href="../files/lib_Input.js.html#l95"><code>lib&#x2F;Input.js:95</code></a>
         
         </p>
 

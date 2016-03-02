@@ -448,6 +448,14 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 /**
  * 按钮组组件配合Button组件,提供了横、竖两种排列方式&lt;br/&gt;
+ *  主要属性和接口：
+ * &lt;ul&gt;
+ *     &lt;li&gt;egType:是否自适应宽度或者垂直排列，可选&#x27;justify,tacked&#x27;默认&#x27;&#x27;&lt;br&gt;
+ *         如：&lt;code&gt;
+ *           &lt;ButtonGroup egType=&quot;justify&quot;&gt;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ * &lt;/ul&gt;
  * @class ButtonGroup
  * @module form(表单)
  * @extends Component
@@ -478,6 +486,12 @@ var ButtonGroup = (function (_Component) {
              * @default false
              * */
             tacked: _react.PropTypes.bool,
+            /**
+             * 是否有自适应宽度，垂直排列等属性
+             * @property egType
+             * @type String
+             * @default &#x27;&#x27;
+             * */
             egType: _react.PropTypes.string
         },
         enumerable: true

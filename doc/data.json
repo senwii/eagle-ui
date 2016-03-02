@@ -728,7 +728,7 @@
             "namespace": "",
             "file": "lib/Button.js",
             "line": 30,
-            "description": "- 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>\n- 也可以自定义行内样式和className名字定义UI展示",
+            "description": "- 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>\n- 也可以自定义行内样式和className名字定义UI展示<br/>\n- 支持disabled, active, enable等属性定义<br/>\n- 可以通过egSize 设置大小，可选xs、sm、lg。<br/>\n- 通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success\n主要属性和接口：\n <ul>\n   <li>egSize:按钮颜色<br>\n       如：<code>\n          Button radius egSize=\"sm\" egStyle=\"warning\"\n       </code>\n   </li>\n   <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>\n       如：<code>\n          Button radius egSize=\"sm\" egStyle=\"warning\"\n       </code>\n   </li>\n   <li>disabled:按钮禁用状态，默认false<br>\n       如：<code>\n          Button radius disabled\n       </code>\n   </li>\n   <li>enable:按钮的可用状态，默认true<br>\n       如：<code>\n          Button radius enable\n       </code>\n   </li>\n   <li>active:按钮选中状态，默认false<br>\n       如：<code>\n          Button radius active\n       </code>\n   </li>\n    <li>radius:按钮圆角状态<br>\n       如：<code>\n          Button radius\n       </code>\n   </li>\n   <li>round:按钮椭圆角<br>\n       如：<code>\n          Button round\n       </code>\n   </li>\n   <li>block:是否块级显示，默认false<br>\n       如：<code>\n          Button block\n       </code>\n   </li>\n </ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -753,7 +753,7 @@
             "namespace": "",
             "file": "lib/ButtonGroup.js",
             "line": 30,
-            "description": "按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>",
+            "description": "按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>\n 主要属性和接口：\n<ul>\n    <li>egType:是否自适应宽度或者垂直排列，可选'justify,tacked'默认''<br>\n        如：<code>\n          <ButtonGroup egType=\"justify\">\n        </code>\n    </li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "since": "0.1.0",
@@ -829,7 +829,7 @@
             "namespace": "",
             "file": "lib/CheckboxGroup.js",
             "line": 32,
-            "description": "CheckboxGroup需与Input组件配合使用<br/>\n它的作用是将type=checkbox的Input组件在UI上展示在一起",
+            "description": "CheckboxGroup需与Input组件配合使用<br/>\n它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -979,7 +979,7 @@
             "namespace": "",
             "file": "lib/Input.js",
             "line": 46,
-            "description": "input表单组件<br />\n设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式",
+            "description": "input表单组件<br />\n设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.<br/>\n提供自动补全功能，autoComplete为true即可。\n\n主要属性和接口：\n<ul>\n    <li>type:input的不同类型，可选'text,radio..'等，默认text<br>\n        如：<code>\n           Input  type=\"radio\"\n        </code>\n    </li>\n    <li>autoComplete:是否自动补全，默认false<br>\n        如：<code>\n           Button radius egSize=\"sm\" egStyle=\"warning\"\n        </code>\n    </li>\n    <li>label:type为radio,checkbox时，需要显示的标签信息。默认''<br>\n        如：<code>\n           Input  type=\"radio\"  label=\"大白菜\"\n        </code>\n    </li>\n    <li>onChange:状态改变时的回调方法，默认null<br>\n        如：<code>\n           Input  type=\"checkbox\" checked onChange={::this.change} value=\"bbb\"\n        </code>\n    </li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -1082,7 +1082,7 @@
             "namespace": "",
             "file": "lib/RadioGroup.js",
             "line": 36,
-            "description": "RadioGroup需与Input组件配合使用<br/>\n它的作用是将type=radio的Input组件在UI上展示在一起",
+            "description": "RadioGroup需与Input组件配合使用<br/>\n它的作用是将type=radio的Input组件在UI上展示在一起\n主要属性接口：\n<ul>\n    <li>name:radio组的name值<br>\n        如：<code>\n            name='fruits'\n        </code>\n    </li>\n    <li>defaultChecked:默认选中值<br>\n        如：<code>defaultChecked=\"石榴\"</code>\n    </li>\n    <li>getValueCallback:获取选中值的回调函数<br>\n        如：<code>getValueCallback={a()};a为对应的方法</code>\n    </li>\n\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -1156,7 +1156,7 @@
             "namespace": "",
             "file": "lib/Select.js",
             "line": 48,
-            "description": "下拉选择框组件<br>支持在input框中输入文字或者点击下拉菜单中的选项进行查询",
+            "description": "下拉选择框组件<br>\n    支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。\n主要属性接口：\n<ul>\n    <li>defaultChecked:默认显示的选项即选中的选项<br>\n        如：<code>\n            defaultChecked=\"上海\"\n        </code>\n    </li>\n    <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>\n        如：<code>getValueCallback={::this.getValue}</code>\n    </li>\n    <li>placeholder:提示框的内容<br>\n        如：<code>placeholder=\"请选择\"</code>\n    </li>\n\n</ul>",
             "is_constructor": 1,
             "extends": "Component",
             "example": [
@@ -1707,7 +1707,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 50,
+            "line": 96,
             "description": "按钮尺寸,分别为xs、sm、lg",
             "itemtype": "property",
             "name": "egSize",
@@ -1718,7 +1718,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 57,
+            "line": 103,
             "description": "禁用",
             "itemtype": "property",
             "name": "disabled",
@@ -1729,7 +1729,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 64,
+            "line": 110,
             "description": "启用",
             "itemtype": "property",
             "name": "enable",
@@ -1740,7 +1740,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 72,
+            "line": 118,
             "description": "选中",
             "itemtype": "property",
             "name": "active",
@@ -1751,7 +1751,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 79,
+            "line": 125,
             "description": "圆角",
             "itemtype": "property",
             "name": "radius",
@@ -1762,7 +1762,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 86,
+            "line": 132,
             "description": "椭圆角",
             "itemtype": "property",
             "name": "round",
@@ -1773,7 +1773,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 96,
+            "line": 142,
             "description": "颜色[error、warning、danger、link、gray、white、success、'']",
             "itemtype": "property",
             "name": "egStyle",
@@ -1784,7 +1784,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 103,
+            "line": 149,
             "description": "样式前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -1795,7 +1795,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 110,
+            "line": 156,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -1806,7 +1806,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 117,
+            "line": 163,
             "description": "块级显示",
             "itemtype": "property",
             "name": "block",
@@ -1824,7 +1824,7 @@
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 48,
+            "line": 56,
             "description": "是否自适应宽度",
             "itemtype": "property",
             "name": "justify",
@@ -1835,7 +1835,7 @@
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 55,
+            "line": 63,
             "description": "是否垂直排列",
             "itemtype": "property",
             "name": "tacked",
@@ -1846,7 +1846,18 @@
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 72,
+            "line": 70,
+            "description": "是否有自适应宽度，垂直排列等属性",
+            "itemtype": "property",
+            "name": "egType",
+            "type": "String",
+            "default": "''",
+            "class": "ButtonGroup",
+            "module": "form(表单)"
+        },
+        {
+            "file": "lib/ButtonGroup.js",
+            "line": 86,
             "description": "tacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
             "class": "ButtonGroup",
             "module": "form(表单)"
@@ -2227,7 +2238,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 70,
+            "line": 95,
             "description": "生成不同的元素标签",
             "itemtype": "property",
             "name": "type",
@@ -2237,7 +2248,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 76,
+            "line": 101,
             "description": "默认输入提示",
             "itemtype": "property",
             "name": "autoComplete",
@@ -2247,7 +2258,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 82,
+            "line": 107,
             "description": "type为radio或checkbox时，需要显示的标签信息",
             "itemtype": "property",
             "name": "label",
@@ -2257,7 +2268,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 88,
+            "line": 113,
             "description": "需要显示的icon",
             "itemtype": "property",
             "name": "icon",
@@ -2267,7 +2278,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 93,
+            "line": 118,
             "description": "给icon设置样式",
             "itemtype": "property",
             "name": "iconStyle",
@@ -2277,7 +2288,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 99,
+            "line": 124,
             "description": "icon,input类型只能是text这种的",
             "itemtype": "property",
             "name": "icon",
@@ -2287,7 +2298,7 @@
         },
         {
             "file": "lib/Input.js",
-            "line": 105,
+            "line": 130,
             "description": "icon展示的方向，{left,right}",
             "itemtype": "property",
             "name": "iconDirection",
@@ -2588,31 +2599,39 @@
         },
         {
             "file": "lib/RadioGroup.js",
-            "line": 54,
+            "line": 69,
             "description": "radio name",
             "itemtype": "property",
             "name": "name",
             "type": "String",
+            "default": "''",
             "class": "RadioGroup",
             "module": "form(表单)"
         },
         {
             "file": "lib/RadioGroup.js",
-            "line": 60,
+            "line": 76,
             "description": "默认选中项",
             "itemtype": "property",
             "name": "defaultChecked",
             "type": "String",
+            "default": "''",
             "class": "RadioGroup",
             "module": "form(表单)"
         },
         {
             "file": "lib/RadioGroup.js",
-            "line": 66,
+            "line": 83,
             "description": "获取选中的值",
-            "itemtype": "property",
+            "itemtype": "event",
             "name": "getValueCallback",
-            "type": "String",
+            "params": [
+                {
+                    "name": "null",
+                    "description": ""
+                }
+            ],
+            "default": "void",
             "class": "RadioGroup",
             "module": "form(表单)"
         },
@@ -2647,7 +2666,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 65,
+            "line": 81,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2674,11 +2693,22 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 74,
+            "line": 90,
             "description": "样式类名前缀",
             "itemtype": "property",
             "name": "classPrefix",
             "type": "string",
+            "class": "Select",
+            "module": "form(表单)"
+        },
+        {
+            "file": "lib/Select.js",
+            "line": 98,
+            "description": "默认选中值，即初始显示内容",
+            "itemtype": "property",
+            "name": "defaultChecked",
+            "type": "String",
+            "default": "''",
             "class": "Select",
             "module": "form(表单)"
         },
@@ -3671,7 +3701,7 @@
         },
         {
             "message": "Missing item type\ntacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
-            "line": " lib/ButtonGroup.js:72"
+            "line": " lib/ButtonGroup.js:86"
         },
         {
             "message": "Missing item type",

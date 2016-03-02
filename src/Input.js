@@ -26,22 +26,22 @@ import Icon from './utils/Icon';
  * <ul>
  *     <li>type:input的不同类型，可选'text,radio..'等，默认text<br>
  *         如：<code>
- *            <Input  type="radio"  label="男" value="男" />
+ *            Input  type="radio"
  *         </code>
  *     </li>
  *     <li>autoComplete:是否自动补全，默认false<br>
  *         如：<code>
- *            <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
+ *            Button radius egSize="sm" egStyle="warning"
  *         </code>
  *     </li>
  *     <li>label:type为radio,checkbox时，需要显示的标签信息。默认''<br>
  *         如：<code>
- *            <Input  type="radio"  label="大白菜" value="大白菜" />
+ *            Input  type="radio"  label="大白菜"
  *         </code>
  *     </li>
  *     <li>onChange:状态改变时的回调方法，默认null<br>
  *         如：<code>
- *            <Input  type="checkbox" checked onChange={::this.change} value="bbb"  />
+ *            Input  type="checkbox" checked onChange={::this.change} value="bbb"
  *         </code>
  *     </li>
  * </ul>

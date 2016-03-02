@@ -24507,7 +24507,32 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * input表单组件<br />
-	 * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式
+	 * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.<br/>
+	 * 提供自动补全功能，autoComplete为true即可。
+	 *
+	 * 主要属性和接口：
+	 * <ul>
+	 *     <li>type:input的不同类型，可选'text,radio..'等，默认text<br>
+	 *         如：<code>
+	 *            Input  type="radio"
+	 *         </code>
+	 *     </li>
+	 *     <li>autoComplete:是否自动补全，默认false<br>
+	 *         如：<code>
+	 *            Button radius egSize="sm" egStyle="warning"
+	 *         </code>
+	 *     </li>
+	 *     <li>label:type为radio,checkbox时，需要显示的标签信息。默认''<br>
+	 *         如：<code>
+	 *            Input  type="radio"  label="大白菜"
+	 *         </code>
+	 *     </li>
+	 *     <li>onChange:状态改变时的回调方法，默认null<br>
+	 *         如：<code>
+	 *            Input  type="checkbox" checked onChange={::this.change} value="bbb"
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class Input
 	 * @module form(表单)
 	 * @extends Component
@@ -35175,6 +35200,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
+	 *  主要属性和接口：
+	 * <ul>
+	 *     <li>egType:是否自适应宽度或者垂直排列，可选'justify,tacked'默认''<br>
+	 *         如：<code>
+	 *           <ButtonGroup egType="justify">
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class ButtonGroup
 	 * @module form(表单)
 	 * @extends Component
@@ -35205,6 +35238,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @default false
 	             * */
 	            tacked: _react.PropTypes.bool,
+	            /**
+	             * 是否有自适应宽度，垂直排列等属性
+	             * @property egType
+	             * @type String
+	             * @default ''
+	             * */
 	            egType: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -35303,7 +35342,53 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
-	 *  - 也可以自定义行内样式和className名字定义UI展示
+	 *  - 也可以自定义行内样式和className名字定义UI展示<br/>
+	 *  - 支持disabled, active, enable等属性定义<br/>
+	 *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
+	 *  - 通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success
+	 *  主要属性和接口：
+	 * <ul>
+	 *     <li>egSize:按钮颜色<br>
+	 *         如：<code>
+	 *            Button radius egSize="sm" egStyle="warning"
+	 *         </code>
+	 *     </li>
+	 *     <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
+	 *         如：<code>
+	 *            Button radius egSize="sm" egStyle="warning"
+	 *         </code>
+	 *     </li>
+	 *     <li>disabled:按钮禁用状态，默认false<br>
+	 *         如：<code>
+	 *            Button radius disabled
+	 *         </code>
+	 *     </li>
+	 *     <li>enable:按钮的可用状态，默认true<br>
+	 *         如：<code>
+	 *            Button radius enable
+	 *         </code>
+	 *     </li>
+	 *     <li>active:按钮选中状态，默认false<br>
+	 *         如：<code>
+	 *            Button radius active
+	 *         </code>
+	 *     </li>
+	 *      <li>radius:按钮圆角状态<br>
+	 *         如：<code>
+	 *            Button radius
+	 *         </code>
+	 *     </li>
+	 *     <li>round:按钮椭圆角<br>
+	 *         如：<code>
+	 *            Button round
+	 *         </code>
+	 *     </li>
+	 *     <li>block:是否块级显示，默认false<br>
+	 *         如：<code>
+	 *            Button block
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class Button
 	 * @module form(表单)
 	 * @extends Component
@@ -36577,7 +36662,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * CheckboxGroup需与Input组件配合使用<br/>
-	 * 它的作用是将type=checkbox的Input组件在UI上展示在一起
+	 * 它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能
 	 * @class CheckboxGroup
 	 * @module form(表单)
 	 * @extends Component
@@ -36665,6 +36750,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * RadioGroup需与Input组件配合使用<br/>
 	 * 它的作用是将type=radio的Input组件在UI上展示在一起
+	 * 主要属性接口：
+	 * <ul>
+	 *     <li>name:radio组的name值<br>
+	 *         如：<code>
+	 *             name='fruits'
+	 *         </code>
+	 *     </li>
+	 *     <li>defaultChecked:默认选中值<br>
+	 *         如：<code>defaultChecked="石榴"</code>
+	 *     </li>
+	 *     <li>getValueCallback:获取选中值的回调函数<br>
+	 *         如：<code>getValueCallback={a()};a为对应的方法</code>
+	 *     </li>
+	 *
+	 * </ul>
 	 * @class RadioGroup
 	 * @module form(表单)
 	 * @extends Component
@@ -36684,18 +36784,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * radio name
 	             * @property name
 	             * @type String
+	             * @default ''
 	             * */
 	            name: _react.PropTypes.string,
 	            /**
 	             * 默认选中项
 	             * @property defaultChecked
 	             * @type String
+	             * @default ''
 	             * */
 	            defaultChecked: _react.PropTypes.string,
 	            /**
 	             * 获取选中的值
-	             * @property getValueCallback
-	             * @type String
+	             * @event getValueCallback
+	             * @param null
+	             * @default void
 	             * */
 	            getValueCallback: _react.PropTypes.func
 	        },
@@ -37648,7 +37751,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _sugSearch2 = _interopRequireDefault(_sugSearch);
 
 	/**
-	 * 下拉选择框组件<br>支持在input框中输入文字或者点击下拉菜单中的选项进行查询
+	 * 下拉选择框组件<br>
+	 *     支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。
+	 * 主要属性接口：
+	 * <ul>
+	 *     <li>defaultChecked:默认显示的选项即选中的选项<br>
+	 *         如：<code>
+	 *             defaultChecked="上海"
+	 *         </code>
+	 *     </li>
+	 *     <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>
+	 *         如：<code>getValueCallback={::this.getValue}</code>
+	 *     </li>
+	 *     <li>placeholder:提示框的内容<br>
+	 *         如：<code>placeholder="请选择"</code>
+	 *     </li>
+	 *
+	 * </ul>
 	 * @class Select
 	 * @module form(表单)
 	 * @constructor
@@ -37677,11 +37796,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 样式类名前缀
 	             * @property classPrefix
 	             * @type string
-	             *
 	             * */
 	            classPrefix: 'select',
 	            componentTag: 'div',
 	            defaultValue: '',
+	            /**
+	             * 默认选中值，即初始显示内容
+	             * @property defaultChecked
+	             * @type String
+	             * @default ''
+	             * */
+	            defaultChecked: '',
 	            icon: 'arrow_drop_down',
 	            iconStyle: {
 	                width: '30px',

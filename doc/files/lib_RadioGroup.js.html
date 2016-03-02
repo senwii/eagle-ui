@@ -455,6 +455,21 @@ var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 /**
  * RadioGroup需与Input组件配合使用&lt;br/&gt;
  * 它的作用是将type=radio的Input组件在UI上展示在一起
+ * 主要属性接口：
+ * &lt;ul&gt;
+ *     &lt;li&gt;name:radio组的name值&lt;br&gt;
+ *         如：&lt;code&gt;
+ *             name=&#x27;fruits&#x27;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;defaultChecked:默认选中值&lt;br&gt;
+ *         如：&lt;code&gt;defaultChecked=&quot;石榴&quot;&lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;getValueCallback:获取选中值的回调函数&lt;br&gt;
+ *         如：&lt;code&gt;getValueCallback={a()};a为对应的方法&lt;/code&gt;
+ *     &lt;/li&gt;
+ *
+ * &lt;/ul&gt;
  * @class RadioGroup
  * @module form(表单)
  * @extends Component
@@ -474,18 +489,21 @@ var RadioGroup = (function (_Component) {
              * radio name
              * @property name
              * @type String
+             * @default &#x27;&#x27;
              * */
             name: _react.PropTypes.string,
             /**
              * 默认选中项
              * @property defaultChecked
              * @type String
+             * @default &#x27;&#x27;
              * */
             defaultChecked: _react.PropTypes.string,
             /**
              * 获取选中的值
-             * @property getValueCallback
-             * @type String
+             * @event getValueCallback
+             * @param null
+             * @default void
              * */
             getValueCallback: _react.PropTypes.func
         },
