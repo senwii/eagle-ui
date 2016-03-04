@@ -108,7 +108,7 @@ let Demo = class Demo extends Component{
                 </Row>
                 <Row>
                     <Col>
-                        <h3>panel嵌套<small>通过设置panel的heading属性达到此效果</small></h3>
+                        <h3>panel嵌套<small>通过设置PanelHeader的leftFlag属性达到此效果</small></h3>
                     </Col>
                 </Row>
                 <Row>

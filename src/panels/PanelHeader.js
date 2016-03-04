@@ -32,12 +32,11 @@ export default class PanelHeader extends Component{
         let renderStyle=this.props.style?this.props.style:{};
         return (
             <div className={
-                this.props.leftFlag?classnames(
+                classnames(
                     this.getClassName('header'),
-                    this.getClassName('header-flag'),
-                    this.props.className
-                ):classnames(
-                    this.getClassName('header'),
+                    {
+                        [this.getClassName('header-flag')]:this.props.leftFlag
+                    },
                     this.props.className
                 )} style={renderStyle}>
                 {this.props.children}
