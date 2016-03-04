@@ -415,7 +415,10 @@
     <h1>Panel <small>Class</small></h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>Panel定义整个容器</p>
+      <div class="stdoc-code"><p>Panel定义整个容器<br />
+和PanelHeader,PanelContent,PanelFooter配合使用<br />
+Panel是上面三个标签的父容器，<br />
+可以依据不同情况决定是否添加PanelHeader和PanelFooter</p>
 </div>
  </div>
 
@@ -433,7 +436,7 @@
             <ul class="index-list properties extends">
                 
                     <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_heading" data-tablink="heading">heading</a>
+                        <a href="#" data-tabid="#property" data-anchor="#property_egType" data-tablink="egType">egType</a>
 
                         
                         
@@ -670,7 +673,8 @@ let Demo = class Demo extends Component{
                 &lt;/Row&gt;
                 &lt;Row&gt;
                     &lt;Col&gt;
-                        &lt;Panel heading="我是标题"&gt;
+                        &lt;Panel&gt;
+                            &lt;PanelHeader leftFlag&gt;我是标题&lt;/PanelHeader&gt;
                             &lt;PanelContent&gt;
                                 &lt;Row&gt;
                                     &lt;Col&gt;
@@ -730,7 +734,8 @@ let Demo = class Demo extends Component{
                                 &lt;/Row&gt;
                                 &lt;Row&gt;
                                     &lt;Col padding={&#39;0&#39;}&gt;
-                                        &lt;Panel heading="我是标题二"&gt;
+                                        &lt;Panel&gt;
+                                            &lt;PanelHeader leftFlag&gt;我是标题二&lt;/PanelHeader&gt;
                                             &lt;PanelContent padding={true}&gt;
                                                 我是下一个内容区
                                             &lt;/PanelContent&gt;
@@ -740,7 +745,8 @@ let Demo = class Demo extends Component{
                                 &lt;/Row&gt;
                                 &lt;Row&gt;
                                     &lt;Col padding={&#39;0&#39;}&gt;
-                                        &lt;Panel heading="我是标题三" &gt;
+                                        &lt;Panel&gt;
+                                            &lt;PanelHeader leftFlag&gt;我是标题三&lt;/PanelHeader&gt;
                                             &lt;PanelContent padding={true}&gt;
                                                 我是下一个内容区
                                             &lt;/PanelContent&gt;
@@ -876,8 +882,8 @@ export default Demo;</code></pre>
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_heading" class="property item">
-    <h3 class="name"><code>heading</code></h3>
+                    <div id="property_egType" class="property item">
+    <h3 class="name"><code>egType</code></h3>
     <span class="type">String</span>
 
     
@@ -899,7 +905,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_panels_Panel.js.html#l92"><code>lib&#x2F;panels&#x2F;Panel.js:92</code></a>
+        <a href="../files/lib_panels_Panel.js.html#l76"><code>lib&#x2F;panels&#x2F;Panel.js:76</code></a>
         
         </p>
 
@@ -909,13 +915,13 @@ export default Demo;</code></pre>
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>标题</p>
+        <div class="stdoc-code"><p>panel的样式风格，默认为default，还可以设置为normal</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> empty</code>
+         <code> &#x27;default&#x27;</code>
     
 
     

@@ -15,7 +15,10 @@ import Component from '../utils/Component';
  */
 
 /**
- * Panel定义整个容器
+ * Panel定义整个容器<br />
+ * 和PanelHeader,PanelContent,PanelFooter配合使用<br />
+ * Panel是上面三个标签的父容器，<br />
+ * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
  * @class Panel
  * @module panel(面板)
  * @extends Component
@@ -28,38 +31,26 @@ export default class Panel extends Component{
 
     static propTypes = {
         /**
-         * 标题
-         * @property heading
+         * panel的样式风格，默认为default，还可以设置为normal
+         * @property egType
          * @type String
-         * @default empty
+         * @default 'default'
          * */
-        heading:PropTypes.string
+        egType:PropTypes.string
     };
 
     static defaultProps = {
 
-        heading:'',
+        egType:'default',
         classPrefix:'panel'
     };
 
-    renderHeading(){
-        const {heading} = this.props;
-
-        if(heading){
-            return (
-                <PanelHeader className={this.getClassName('panel-header-flag',false)}><h4>{heading}</h4></PanelHeader>
-            );
-        }
-
-        return null;
-    }
     render(){
         return (
             <div {...this.props} className={
                 classnames(
                     this.getProperty(),this.props.className
                 )}  style={this.getStyles(this.props.style)}>
-                {this.renderHeading()}
                 {this.props.children}
             </div>
         );

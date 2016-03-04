@@ -447,7 +447,8 @@ var _classnames = require(&#x27;classnames&#x27;);
 var _classnames2 = _interopRequireDefault(_classnames);
 
 /**
- * tab组件
+ * 导航标签组件，用户可以在不同的tab之间进行切换&lt;br/&gt;
+ * 需要和Tabset组件配合使用,Tabset相当于是Tab的容器
  * @class Tab
  * @module ui
  * @extends Component
@@ -487,9 +488,22 @@ var Tab = (function (_Component) {
     };
 
     _createClass(Tab, null, [{
+        key: &#x27;propTypes&#x27;,
+        value: {
+            /**
+             * tab导航标签的title
+             * @property heading
+             * @type String
+             * @default &#x27;tab&#x27;
+             * */
+            heading: _react.PropTypes.string
+        },
+        enumerable: true
+    }, {
         key: &#x27;defaultProps&#x27;,
         value: {
-            classPrefix: &#x27;tab&#x27;
+            classPrefix: &#x27;tab&#x27;,
+            heading: &#x27;tab&#x27;
         },
         enumerable: true
     }]);

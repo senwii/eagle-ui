@@ -465,14 +465,22 @@ var PanelHeader = (function (_Component) {
         var renderStyle = this.props.style ? this.props.style : {};
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), this.props.className), style: renderStyle },
+            { className: this.props.leftFlag ? _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), this.getClassName(&#x27;header-flag&#x27;), this.props.className) : _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), this.props.className), style: renderStyle },
             this.props.children
         );
     };
 
     _createClass(PanelHeader, null, [{
         key: &#x27;propTypes&#x27;,
-        value: {},
+        value: {
+            /**
+             * 是否要在标题左侧添加高亮flag
+             * @property leftFlag
+             * @type Boolean
+             * @default false
+             * */
+            leftFlag: _react.PropTypes.bool
+        },
         enumerable: true
     }, {
         key: &#x27;defaultProps&#x27;,
