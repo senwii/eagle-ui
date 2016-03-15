@@ -20,8 +20,8 @@ import Calendar from './Calendar.js';
  * @module ui
  * @extends Component
  * @constructor
- * @demo  empty.html {UI展示}
- * @demo  src/modules/calendar.js {源码}
+ * @demo  star.js {UI展示}
+ * @demo  calendar.js {源码}
  * @show true
  * */
 @ClassNameMixin

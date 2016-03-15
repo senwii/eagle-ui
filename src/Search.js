@@ -8,8 +8,8 @@ import Suggestion from './Suggestion';
  * @class Search
  * @module ui
  * @constructor
- * @demo empty.html {UI展示}
- * @demo src/modules/suggestion.js {源码}
+ * @demo star.js {UI展示}
+ * @demo suggestion.js {源码}
  * @show true
  * */
 export default class Search extends Suggestion {

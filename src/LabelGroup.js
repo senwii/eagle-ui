@@ -13,8 +13,8 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo empty.html {UI展示}
- * @demo src/modules/label.js {源码}
+ * @demo star.js {UI展示}
+ * @demo label.js {源码}
  * @show true
  * */
 export default class LabelGroup extends Component{

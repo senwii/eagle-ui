@@ -33,8 +33,8 @@ import Search from './sug/Search';
  * @module form(表单)
  * @constructor
  * @extends Component
- * @demo empty.html {UI展示}
- * @demo src/modules/select.js {源码}
+ * @demo star.js {UI展示}
+ * @demo select.js {源码}
  * @show true
  * */
 export default class Select extends Search {

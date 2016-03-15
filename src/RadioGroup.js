@@ -30,8 +30,8 @@ import Component from './utils/Component';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo empty.html {UI展示}
- * @demo src/modules/input.js {源码}
+ * @demo star.js {UI展示}
+ * @demo input.js {源码}
  * @show true
  * */
 export default class RadioGroup extends Component{

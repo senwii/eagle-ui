@@ -28,7 +28,7 @@
          * @class 组件名字
          * @module 模块英文名(模块中文名)
          * @constructor
-         * @demo empty.html {UI展示}
+         * @demo star.js {UI展示}
          * @demo src/modules/例子名.js {源码}
          * @show true
          * */

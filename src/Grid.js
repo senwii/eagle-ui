@@ -22,8 +22,8 @@ import ClassNameMixin from './utils/ClassNameMixin';
  * @module grid(布局)
  * @extends Component
  * @constructor
- * @demo empty.html {UI展示}
- * @demo src/modules/Demo1.js {源码}
+ * @demo star.js {UI展示}
+ * @demo Demo1.js {源码}
  * @show true
  * */
 export default class Grid extends Component{

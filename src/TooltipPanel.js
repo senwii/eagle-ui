@@ -17,8 +17,8 @@ import ReactDom from 'react/lib/ReactDOM';
  * @class TooltipPanel
  * @moudle ui
  * @constructor
- * @demo empty.html {UI展示}
- * @demo src/modules/tooltip.js {源码}
+ * @demo star.js {UI展示}
+ * @demo tooltip.js {源码}
  * @show true
  * */
 @ClassNameMixin

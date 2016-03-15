@@ -558,7 +558,30 @@
             </ul>
 
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>&lt;html lang="en"&gt;&lt;/html&gt;</code></pre>
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by slashhuang on 15/12/21.
+ */
+import React, { Component ,PropTypes} from &#39;react&#39;;
+import Star from &#39;../../../src/Star.js&#39;;
+export default class StarDemo extends Component {
+    render(){
+        return(
+            &lt;div&gt;
+                &lt;Star rate={50} size={15}/&gt;&lt;br/&gt;
+                &lt;Star rate={60} size={16}/&gt;&lt;br/&gt;
+                &lt;Star rate={70} size={17}/&gt;&lt;br/&gt;
+                &lt;Star rate={80} size={18}/&gt;&lt;br/&gt;
+                &lt;Star rate={90} size={19}/&gt;&lt;br/&gt;
+                &lt;Star rate={10} size={14}/&gt;&lt;br/&gt;
+                &lt;Star rate={20} size={13}/&gt;&lt;br/&gt;
+                &lt;Star rate={30} size={12}/&gt;&lt;br/&gt;
+                &lt;Star rate={40} size={11}/&gt;&lt;br/&gt;
+                &lt;Star rate={50} size={10}/&gt;&lt;br/&gt;
+                &lt;Star/&gt;&lt;br/&gt;
+            &lt;/div&gt;
+        )
+    }
+}</code></pre>
 </div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
  * Created by mac on 15/11/4.
  */
