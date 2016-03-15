@@ -4,7 +4,11 @@ import classnames from 'classnames';
 import Component from './utils/Component';
 
 /**
- * 定义行
+ * 定义栅格中的一行，配合Col组件使用
+ * <h5>提供的UI接口:</h5>
+ * <ul>
+ *     <li>end:是否显示下边框</li>
+ * </ul>
  * @class Row
  * @module grid(布局)
  * @extends Component

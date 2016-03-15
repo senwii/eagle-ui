@@ -31107,7 +31107,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 定义行
+	 * 定义栅格中的一行，配合Col组件使用
+	 * <h5>提供的UI接口:</h5>
+	 * <ul>
+	 *     <li>end:是否显示下边框</li>
+	 * </ul>
 	 * @class Row
 	 * @module grid(布局)
 	 * @extends Component
@@ -31199,7 +31203,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 定义列
+	 * 定义栅格中的一列，配合Col组件使用
+	 * <h5>主要的UI属性接口包括:</h5>
+	 * <ul>
+	 *     <li>sm:定义宽度占父元素(100%)的sm/12比例</li>
+	 * </ul><br>
+	 * 使用方式:
+	 * <pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>
+	 * </pre>
 	 * @class Col
 	 * @module grid(布局)
 	 * @extends Component
@@ -31242,11 +31253,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Col, null, [{
 	        key: 'propTypes',
 	        value: {
-	            /**
-	             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
-	             * @property egSize
-	             * @type Integer
-	             * */
 	            egSize: _react.PropTypes.string,
 	            /**
 	             * 是否是最后一列
@@ -31254,7 +31260,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type Boolean
 	             * @default false
 	             * */
-	            end: _react.PropTypes.bool
+	            end: _react.PropTypes.bool,
+	            /**
+	             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
+	             * @property sm
+	             * @type Number
+	             * @default 12(一整行)
+	             * */
+	            sm: _react.PropTypes.number
 	        },
 	        enumerable: true
 	    }, {
@@ -31306,18 +31319,26 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * <h5>eagle-ui主要栅格化布局组件</h5>
+	 * <pre><code>
+	 *     &#60;Grid&#62;//定义栅格
+	 *         &#60;Col sm={6}&#62;//定义一列，总长度为12份
+	 *             &#60;Row&#62; &#60;/Row&#62;//定义一行
+	 *         &#60;/Col&#62;
+	 *     &#60;/Grid&#62;
+	 * </code></pre>
+	 *
 	 * <strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>
 	 * <strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>
 	 * <strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>
 	 * <h6>点击以上链接进行相关查看</h6>
 	 * @module grid(布局)
-	 * @main grid
+	 * @main grid(布局)
 	 * @static
 	 *
 	 */
 
 	/**
-	 * 布局组件
+	 * 定义栅格容器,配合Col和Row使用
 	 * @class Grid
 	 * @module grid(布局)
 	 * @extends Component
@@ -38288,10 +38309,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.apply(this, arguments);
 	    }
 
+	    Panel.prototype.renderHeading = function renderHeading() {
+	        var heading = this.props.heading;
+
+	        if (heading) {
+	            return _react2['default'].createElement(
+	                _PanelHeader2['default'],
+	                { className: this.getClassName('panel-header-flag', false) },
+	                _react2['default'].createElement(
+	                    'h4',
+	                    null,
+	                    heading
+	                )
+	            );
+	        }
+
+	        return null;
+	    };
+
 	    Panel.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'div',
 	            _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), this.props.className), style: this.getStyles(this.props.style) }),
+	            this.renderHeading(),
 	            this.props.children
 	        );
 	    };
@@ -38305,7 +38345,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type String
 	             * @default 'default'
 	             * */
-	            egType: _react.PropTypes.string
+	            egType: _react.PropTypes.string,
+	            /**
+	             * 标
+	             * @property heading
+	             * @type String
+	             * @default empty
+	             * */
+	            heading: _react.PropTypes.string
 	        },
 	        enumerable: true
 	    }, {
@@ -38378,7 +38425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var renderStyle = this.props.style ? this.props.style : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames3['default'](this.getClassName('header'), (_classnames = {}, _classnames[this.getClassName('header-flag')] = this.props.leftFlag, _classnames), this.props.className), style: renderStyle },
+	            { className: _classnames3['default'](this.getClassName('header'), (_classnames = {}, _classnames[this.getClassName('header-flag')] = this.props.leftFlag || false, _classnames), this.props.className), style: renderStyle },
 	            this.props.children
 	        );
 	    };

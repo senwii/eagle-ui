@@ -481,10 +481,29 @@ var Panel = (function (_Component) {
         _Component.apply(this, arguments);
     }
 
+    Panel.prototype.renderHeading = function renderHeading() {
+        var heading = this.props.heading;
+
+        if (heading) {
+            return _react2[&#x27;default&#x27;].createElement(
+                _PanelHeader2[&#x27;default&#x27;],
+                { className: this.getClassName(&#x27;panel-header-flag&#x27;, false) },
+                _react2[&#x27;default&#x27;].createElement(
+                    &#x27;h4&#x27;,
+                    null,
+                    heading
+                )
+            );
+        }
+
+        return null;
+    };
+
     Panel.prototype.render = function render() {
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
             _extends({}, this.props, { className: _classnames2[&#x27;default&#x27;](this.getProperty(), this.props.className), style: this.getStyles(this.props.style) }),
+            this.renderHeading(),
             this.props.children
         );
     };
@@ -498,7 +517,14 @@ var Panel = (function (_Component) {
              * @type String
              * @default &#x27;default&#x27;
              * */
-            egType: _react.PropTypes.string
+            egType: _react.PropTypes.string,
+            /**
+             * 标
+             * @property heading
+             * @type String
+             * @default empty
+             * */
+            heading: _react.PropTypes.string
         },
         enumerable: true
     }, {

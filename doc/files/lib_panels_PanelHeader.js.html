@@ -467,7 +467,7 @@ var PanelHeader = (function (_Component) {
         var renderStyle = this.props.style ? this.props.style : {};
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames3[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), (_classnames = {}, _classnames[this.getClassName(&#x27;header-flag&#x27;)] = this.props.leftFlag, _classnames), this.props.className), style: renderStyle },
+            { className: _classnames3[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), (_classnames = {}, _classnames[this.getClassName(&#x27;header-flag&#x27;)] = this.props.leftFlag || false, _classnames), this.props.className), style: renderStyle },
             this.props.children
         );
     };

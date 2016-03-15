@@ -444,7 +444,14 @@ var _utilsComponent = require(&#x27;./utils/Component&#x27;);
 var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 /**
- * 定义列
+ * 定义栅格中的一列，配合Col组件使用
+ * &lt;h5&gt;主要的UI属性接口包括:&lt;/h5&gt;
+ * &lt;ul&gt;
+ *     &lt;li&gt;sm:定义宽度占父元素(100%)的sm/12比例&lt;/li&gt;
+ * &lt;/ul&gt;&lt;br&gt;
+ * 使用方式:
+ * &lt;pre&gt;&lt;code&gt;&amp;#60;Col sm={5} &amp;#62;&amp;#60;/Col&amp;#62;&lt;/code&gt;
+ * &lt;/pre&gt;
  * @class Col
  * @module grid(布局)
  * @extends Component
@@ -487,11 +494,6 @@ var Col = (function (_Component) {
     _createClass(Col, null, [{
         key: &#x27;propTypes&#x27;,
         value: {
-            /**
-             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
-             * @property egSize
-             * @type Integer
-             * */
             egSize: _react.PropTypes.string,
             /**
              * 是否是最后一列
@@ -499,7 +501,14 @@ var Col = (function (_Component) {
              * @type Boolean
              * @default false
              * */
-            end: _react.PropTypes.bool
+            end: _react.PropTypes.bool,
+            /**
+             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
+             * @property sm
+             * @type Number
+             * @default 12(一整行)
+             * */
+            sm: _react.PropTypes.number
         },
         enumerable: true
     }, {

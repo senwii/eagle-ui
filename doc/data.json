@@ -219,7 +219,9 @@
         },
         "lib/Grid.js": {
             "name": "lib/Grid.js",
-            "modules": {},
+            "modules": {
+                "grid(布局)": 1
+            },
             "classes": {
                 "Grid": 1
             },
@@ -284,9 +286,7 @@
         },
         "lib/Row.js": {
             "name": "lib/Row.js",
-            "modules": {
-                "grid(布局)": 1
-            },
+            "modules": {},
             "classes": {
                 "Row": 1
             },
@@ -482,12 +482,11 @@
             },
             "fors": {},
             "namespaces": {},
-            "tag": "module",
+            "tag": "main",
             "file": "lib/Row.js",
             "line": 27,
-            "description": "定义行",
-            "itemtype": "main",
-            "static": 1
+            "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<pre><code>\n    &#60;Grid&#62;//定义栅格\n        &#60;Col sm={6}&#62;//定义一列，总长度为12份\n            &#60;Row&#62; &#60;/Row&#62;//定义一行\n        &#60;/Col&#62;\n    &#60;/Grid&#62;\n</code></pre>\n\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
+            "itemtype": "main"
         }
     },
     "classes": {
@@ -854,7 +853,7 @@
             "namespace": "",
             "file": "lib/Col.js",
             "line": 27,
-            "description": "定义列",
+            "description": "定义栅格中的一列，配合Col组件使用\n<h5>主要的UI属性接口包括:</h5>\n<ul>\n    <li>sm:定义宽度占父元素(100%)的sm/12比例</li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -928,8 +927,8 @@
             "module": "grid(布局)",
             "namespace": "",
             "file": "lib/Grid.js",
-            "line": 39,
-            "description": "布局组件",
+            "line": 47,
+            "description": "定义栅格容器,配合Col和Row使用",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -1107,7 +1106,7 @@
             "namespace": "",
             "file": "lib/Row.js",
             "line": 27,
-            "description": "定义行",
+            "description": "定义栅格中的一行，配合Col组件使用\n<h5>提供的UI接口:</h5>\n<ul>\n    <li>end:是否显示下边框</li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -1374,12 +1373,23 @@
     "classitems": [
         {
             "file": "lib/panels/Panel.js",
-            "line": 76,
+            "line": 95,
             "description": "panel的样式风格，默认为default，还可以设置为normal",
             "itemtype": "property",
             "name": "egType",
             "type": "String",
             "default": "'default'",
+            "class": "Panel",
+            "module": "panel(面板)"
+        },
+        {
+            "file": "lib/panels/Panel.js",
+            "line": 102,
+            "description": "标",
+            "itemtype": "property",
+            "name": "heading",
+            "type": "String",
+            "default": "empty",
             "class": "Panel",
             "module": "panel(面板)"
         },
@@ -1971,22 +1981,23 @@
         },
         {
             "file": "lib/Col.js",
-            "line": 71,
-            "description": "总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12",
-            "itemtype": "property",
-            "name": "egSize",
-            "type": "Integer",
-            "class": "Col",
-            "module": "grid(布局)"
-        },
-        {
-            "file": "lib/Col.js",
-            "line": 77,
+            "line": 79,
             "description": "是否是最后一列",
             "itemtype": "property",
             "name": "end",
             "type": "Boolean",
             "default": "false",
+            "class": "Col",
+            "module": "grid(布局)"
+        },
+        {
+            "file": "lib/Col.js",
+            "line": 86,
+            "description": "总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12",
+            "itemtype": "property",
+            "name": "sm",
+            "type": "Number",
+            "default": "12(一整行)",
             "class": "Col",
             "module": "grid(布局)"
         },
@@ -2648,7 +2659,7 @@
         },
         {
             "file": "lib/Row.js",
-            "line": 59,
+            "line": 63,
             "description": "样式前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -2659,7 +2670,7 @@
         },
         {
             "file": "lib/Row.js",
-            "line": 66,
+            "line": 70,
             "description": "是否显示下划线",
             "itemtype": "property",
             "name": "bottom",
@@ -3480,15 +3491,15 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Grid.js:39"
+            "line": " lib/Grid.js:47"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Grid.js:39"
+            "line": " lib/Grid.js:47"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Grid.js:39"
+            "line": " lib/Grid.js:47"
         },
         {
             "message": "unknown tag: demo",

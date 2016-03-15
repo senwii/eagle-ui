@@ -415,8 +415,14 @@
     <h1>Col <small>Class</small></h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>定义列</p>
-</div>
+      <div class="stdoc-code"><p>定义栅格中的一列，配合Col组件使用</p>
+<p><h5>主要的UI属性接口包括:</h5></p>
+<p><ul>
+    <li>sm:定义宽度占父元素(100%)的sm/12比例</li>
+</ul><br>
+使用方式:</p>
+<pre class="code prettyprint"><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>
+</pre></div>
  </div>
 
 <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -433,14 +439,14 @@
             <ul class="index-list properties extends">
                 
                     <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_egSize" data-tablink="egSize">egSize</a>
+                        <a href="#" data-tabid="#property" data-anchor="#property_end" data-tablink="end">end</a>
 
                         
                         
                     </li>
                 
                     <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_end" data-tablink="end">end</a>
+                        <a href="#" data-tabid="#property" data-anchor="#property_sm" data-tablink="sm">sm</a>
 
                         
                         
@@ -878,51 +884,6 @@ export default class Test extends Component{
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_egSize" class="property item">
-    <h3 class="name"><code>egSize</code></h3>
-    <span class="type">Integer</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Col.js.html#l71"><code>lib&#x2F;Col.js:71</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12</p>
-</div>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="property_end" class="property item">
     <h3 class="name"><code>end</code></h3>
     <span class="type">Boolean</span>
@@ -946,7 +907,7 @@ export default class Test extends Component{
             
         
         
-        <a href="../files/lib_Col.js.html#l77"><code>lib&#x2F;Col.js:77</code></a>
+        <a href="../files/lib_Col.js.html#l79"><code>lib&#x2F;Col.js:79</code></a>
         
         </p>
 
@@ -963,6 +924,54 @@ export default class Test extends Component{
     
         <p><strong>Default:</strong></p>
          <code> false</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_sm" class="property item">
+    <h3 class="name"><code>sm</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Col.js.html#l86"><code>lib&#x2F;Col.js:86</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> 12(一整行)</code>
     
 
     
