@@ -16,6 +16,13 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
 export default class PanelHeader extends Component{
 
     static propTypes = {
+        /**
+         * 是否要在标题左侧添加高亮flag
+         * @property leftFlag
+         * @type Boolean
+         * @default false
+         * */
+        leftFlag:PropTypes.bool
     };
 
     static defaultProps = {
@@ -27,6 +34,9 @@ export default class PanelHeader extends Component{
             <div className={
                 classnames(
                     this.getClassName('header'),
+                    {
+                        [this.getClassName('header-flag')]:this.props.leftFlag
+                    },
                     this.props.className
                 )} style={renderStyle}>
                 {this.props.children}

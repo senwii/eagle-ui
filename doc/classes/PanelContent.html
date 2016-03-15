@@ -688,12 +688,13 @@ let Demo = class Demo extends Component{
                 &lt;/Row&gt;
                 &lt;Row&gt;
                     &lt;Col&gt;
-                        &lt;h3&gt;panel嵌套&lt;small&gt;通过设置panel的heading属性达到此效果&lt;/small&gt;&lt;/h3&gt;
+                        &lt;h3&gt;panel嵌套&lt;small&gt;通过设置PanelHeader的leftFlag属性达到此效果&lt;/small&gt;&lt;/h3&gt;
                     &lt;/Col&gt;
                 &lt;/Row&gt;
                 &lt;Row&gt;
                     &lt;Col&gt;
-                        &lt;Panel heading="我是标题"&gt;
+                        &lt;Panel&gt;
+                            &lt;PanelHeader leftFlag&gt;我是标题&lt;/PanelHeader&gt;
                             &lt;PanelContent&gt;
                                 &lt;Row&gt;
                                     &lt;Col&gt;
@@ -753,7 +754,8 @@ let Demo = class Demo extends Component{
                                 &lt;/Row&gt;
                                 &lt;Row&gt;
                                     &lt;Col padding={&#39;0&#39;}&gt;
-                                        &lt;Panel heading="我是标题二"&gt;
+                                        &lt;Panel&gt;
+                                            &lt;PanelHeader leftFlag&gt;我是标题二&lt;/PanelHeader&gt;
                                             &lt;PanelContent padding={true}&gt;
                                                 我是下一个内容区
                                             &lt;/PanelContent&gt;
@@ -763,7 +765,8 @@ let Demo = class Demo extends Component{
                                 &lt;/Row&gt;
                                 &lt;Row&gt;
                                     &lt;Col padding={&#39;0&#39;}&gt;
-                                        &lt;Panel heading="我是标题三" &gt;
+                                        &lt;Panel&gt;
+                                            &lt;PanelHeader leftFlag&gt;我是标题三&lt;/PanelHeader&gt;
                                             &lt;PanelContent padding={true}&gt;
                                                 我是下一个内容区
                                             &lt;/PanelContent&gt;

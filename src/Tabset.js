@@ -7,7 +7,8 @@ import classnames from 'classnames';
 import Tab from './Tab.js';
 import ReactDom from 'react/lib/ReactDOM';
 /**
- * tab组件
+ * 导航标签组件，用户可以在不同的tab之间进行切换<br/>
+ * 需要和Tab组件配合使用,Tabset相当于是Tab的容器
  * @class Tabset
  * @module ui
  * @extends Component
@@ -32,7 +33,14 @@ export default class Tabset extends Component{
          * @type Number
          * @default 0
          * */
-        activeTab:PropTypes.number
+        activeTab:PropTypes.number,
+        /**
+         * 回调方法，当用户切换不同tab时，会调用这个回调。
+         * @event  tabCallback
+         * @param {Number} activeTabIndex 当前激活的是第几个tab，从0开始计数
+         * @default undefined
+         * */
+        tabCallback:PropTypes.func
     };
 
     constructor(props, context) {

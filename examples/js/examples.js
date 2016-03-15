@@ -37291,7 +37291,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * tab组件
+	 * 导航标签组件，用户可以在不同的tab之间进行切换<br/>
+	 * 需要和Tabset组件配合使用,Tabset相当于是Tab的容器
 	 * @class Tab
 	 * @module ui
 	 * @extends Component
@@ -37331,9 +37332,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    _createClass(Tab, null, [{
+	        key: 'propTypes',
+	        value: {
+	            /**
+	             * tab导航标签的title
+	             * @property heading
+	             * @type String
+	             * @default 'tab'
+	             * */
+	            heading: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }, {
 	        key: 'defaultProps',
 	        value: {
-	            classPrefix: 'tab'
+	            classPrefix: 'tab',
+	            heading: 'tab'
 	        },
 	        enumerable: true
 	    }]);
@@ -37390,7 +37404,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
-	 * tab组件
+	 * 导航标签组件，用户可以在不同的tab之间进行切换<br/>
+	 * 需要和Tab组件配合使用,Tabset相当于是Tab的容器
 	 * @class Tabset
 	 * @module ui
 	 * @extends Component
@@ -37420,7 +37435,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type Number
 	             * @default 0
 	             * */
-	            activeTab: _react.PropTypes.number
+	            activeTab: _react.PropTypes.number,
+	            /**
+	             * 回调方法，当用户切换不同tab时，会调用这个回调。
+	             * @event  tabCallback
+	             * @param {Number} activeTabIndex 当前激活的是第几个tab，从0开始计数
+	             * @default undefined
+	             * */
+	            tabCallback: _react.PropTypes.func
 	        },
 	        enumerable: true
 	    }]);
@@ -38244,7 +38266,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	/**
-	 * Panel定义整个容器
+	 * Panel定义整个容器<br />
+	 * 和PanelHeader,PanelContent,PanelFooter配合使用<br />
+	 * Panel是上面三个标签的父容器，<br />
+	 * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
 	 * @class Panel
 	 * @module panel(面板)
 	 * @extends Component
@@ -38263,29 +38288,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.apply(this, arguments);
 	    }
 
-	    Panel.prototype.renderHeading = function renderHeading() {
-	        var heading = this.props.heading;
-
-	        if (heading) {
-	            return _react2['default'].createElement(
-	                _PanelHeader2['default'],
-	                { className: this.getClassName('panel-header-flag', false) },
-	                _react2['default'].createElement(
-	                    'h4',
-	                    null,
-	                    heading
-	                )
-	            );
-	        }
-
-	        return null;
-	    };
-
 	    Panel.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'div',
 	            _extends({}, this.props, { className: _classnames2['default'](this.getProperty(), this.props.className), style: this.getStyles(this.props.style) }),
-	            this.renderHeading(),
 	            this.props.children
 	        );
 	    };
@@ -38294,19 +38300,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 标题
-	             * @property heading
+	             * panel的样式风格，默认为default，还可以设置为normal
+	             * @property egType
 	             * @type String
-	             * @default empty
+	             * @default 'default'
 	             * */
-	            heading: _react.PropTypes.string
+	            egType: _react.PropTypes.string
 	        },
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
 	        value: {
 
-	            heading: '',
+	            egType: 'default',
 	            classPrefix: 'panel'
 	        },
 	        enumerable: true
@@ -38338,9 +38344,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(247);
+	var _classnames2 = __webpack_require__(247);
 
-	var _classnames2 = _interopRequireDefault(_classnames);
+	var _classnames3 = _interopRequireDefault(_classnames2);
 
 	var _utilsClassNameMixinJs = __webpack_require__(249);
 
@@ -38367,17 +38373,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    PanelHeader.prototype.render = function render() {
+	        var _classnames;
+
 	        var renderStyle = this.props.style ? this.props.style : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('header'), this.props.className), style: renderStyle },
+	            { className: _classnames3['default'](this.getClassName('header'), (_classnames = {}, _classnames[this.getClassName('header-flag')] = this.props.leftFlag, _classnames), this.props.className), style: renderStyle },
 	            this.props.children
 	        );
 	    };
 
 	    _createClass(PanelHeader, null, [{
 	        key: 'propTypes',
-	        value: {},
+	        value: {
+	            /**
+	             * 是否要在标题左侧添加高亮flag
+	             * @property leftFlag
+	             * @type Boolean
+	             * @default false
+	             * */
+	            leftFlag: _react.PropTypes.bool
+	        },
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
@@ -44033,7 +44049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        _react2['default'].createElement(
 	                            'small',
 	                            null,
-	                            '通过设置panel的heading属性达到此效果'
+	                            '通过设置PanelHeader的leftFlag属性达到此效果'
 	                        )
 	                    )
 	                )
@@ -44046,7 +44062,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    null,
 	                    _react2['default'].createElement(
 	                        _srcIndexJs.Panel,
-	                        { heading: '我是标题' },
+	                        null,
+	                        _react2['default'].createElement(
+	                            _srcIndexJs.PanelHeader,
+	                            { leftFlag: true },
+	                            '我是标题'
+	                        ),
 	                        _react2['default'].createElement(
 	                            _srcIndexJs.PanelContent,
 	                            null,
@@ -44206,7 +44227,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                    { padding: '0' },
 	                                    _react2['default'].createElement(
 	                                        _srcIndexJs.Panel,
-	                                        { heading: '我是标题二' },
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.PanelHeader,
+	                                            { leftFlag: true },
+	                                            '我是标题二'
+	                                        ),
 	                                        _react2['default'].createElement(
 	                                            _srcIndexJs.PanelContent,
 	                                            { padding: true },
@@ -44223,7 +44249,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                    { padding: '0' },
 	                                    _react2['default'].createElement(
 	                                        _srcIndexJs.Panel,
-	                                        { heading: '我是标题三' },
+	                                        null,
+	                                        _react2['default'].createElement(
+	                                            _srcIndexJs.PanelHeader,
+	                                            { leftFlag: true },
+	                                            '我是标题三'
+	                                        ),
 	                                        _react2['default'].createElement(
 	                                            _srcIndexJs.PanelContent,
 	                                            { padding: true },
@@ -44685,6 +44716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    Demo.prototype.callback = function callback(index) {
+	        console.log('i', index);
 	        if (this.state.tabIndex !== index) {
 	            this.setState({
 	                tabIndex: index
@@ -44728,7 +44760,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            { activeTab: this.state.tabIndex, tabCallback: this.callback.bind(this) },
 	            _react2['default'].createElement(
 	                _srcTabJs2['default'],
-	                { heading: 'tab1' },
+	                null,
 	                this.tab1.call(this)
 	            ),
 	            _react2['default'].createElement(

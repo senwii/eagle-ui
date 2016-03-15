@@ -459,7 +459,10 @@ var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
  */
 
 /**
- * Panel定义整个容器
+ * Panel定义整个容器&lt;br /&gt;
+ * 和PanelHeader,PanelContent,PanelFooter配合使用&lt;br /&gt;
+ * Panel是上面三个标签的父容器，&lt;br /&gt;
+ * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
  * @class Panel
  * @module panel(面板)
  * @extends Component
@@ -478,29 +481,10 @@ var Panel = (function (_Component) {
         _Component.apply(this, arguments);
     }
 
-    Panel.prototype.renderHeading = function renderHeading() {
-        var heading = this.props.heading;
-
-        if (heading) {
-            return _react2[&#x27;default&#x27;].createElement(
-                _PanelHeader2[&#x27;default&#x27;],
-                { className: this.getClassName(&#x27;panel-header-flag&#x27;, false) },
-                _react2[&#x27;default&#x27;].createElement(
-                    &#x27;h4&#x27;,
-                    null,
-                    heading
-                )
-            );
-        }
-
-        return null;
-    };
-
     Panel.prototype.render = function render() {
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
             _extends({}, this.props, { className: _classnames2[&#x27;default&#x27;](this.getProperty(), this.props.className), style: this.getStyles(this.props.style) }),
-            this.renderHeading(),
             this.props.children
         );
     };
@@ -509,19 +493,19 @@ var Panel = (function (_Component) {
         key: &#x27;propTypes&#x27;,
         value: {
             /**
-             * 标题
-             * @property heading
+             * panel的样式风格，默认为default，还可以设置为normal
+             * @property egType
              * @type String
-             * @default empty
+             * @default &#x27;default&#x27;
              * */
-            heading: _react.PropTypes.string
+            egType: _react.PropTypes.string
         },
         enumerable: true
     }, {
         key: &#x27;defaultProps&#x27;,
         value: {
 
-            heading: &#x27;&#x27;,
+            egType: &#x27;default&#x27;,
             classPrefix: &#x27;panel&#x27;
         },
         enumerable: true

@@ -108,12 +108,13 @@ let Demo = class Demo extends Component{
                 </Row>
                 <Row>
                     <Col>
-                        <h3>panel嵌套<small>通过设置panel的heading属性达到此效果</small></h3>
+                        <h3>panel嵌套<small>通过设置PanelHeader的leftFlag属性达到此效果</small></h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Panel heading="我是标题">
+                        <Panel>
+                            <PanelHeader leftFlag>我是标题</PanelHeader>
                             <PanelContent>
                                 <Row>
                                     <Col>
@@ -173,7 +174,8 @@ let Demo = class Demo extends Component{
                                 </Row>
                                 <Row>
                                     <Col padding={'0'}>
-                                        <Panel heading="我是标题二">
+                                        <Panel>
+                                            <PanelHeader leftFlag>我是标题二</PanelHeader>
                                             <PanelContent padding={true}>
                                                 我是下一个内容区
                                             </PanelContent>
@@ -183,7 +185,8 @@ let Demo = class Demo extends Component{
                                 </Row>
                                 <Row>
                                     <Col padding={'0'}>
-                                        <Panel heading="我是标题三" >
+                                        <Panel>
+                                            <PanelHeader leftFlag>我是标题三</PanelHeader>
                                             <PanelContent padding={true}>
                                                 我是下一个内容区
                                             </PanelContent>
