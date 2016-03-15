@@ -36,7 +36,14 @@ export default class Panel extends Component{
          * @type String
          * @default 'default'
          * */
-        egType:PropTypes.string
+        egType:PropTypes.string,
+        /**
+         * 标
+         * @property heading
+         * @type String
+         * @default empty
+         * */
+        heading:PropTypes.string
     };
 
     static defaultProps = {
@@ -45,12 +52,25 @@ export default class Panel extends Component{
         classPrefix:'panel'
     };
 
+    renderHeading(){
+        const {heading} = this.props;
+
+        if(heading){
+            return (
+                <PanelHeader className={this.getClassName('panel-header-flag',false)}><h4>{heading}</h4></PanelHeader>
+            );
+        }
+
+        return null;
+    }
+
     render(){
         return (
             <div {...this.props} className={
                 classnames(
                     this.getProperty(),this.props.className
                 )}  style={this.getStyles(this.props.style)}>
+                {this.renderHeading()}
                 {this.props.children}
             </div>
         );
