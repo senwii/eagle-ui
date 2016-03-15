@@ -4,12 +4,18 @@ import classnames from 'classnames';
 import Component from './utils/Component';
 
 /**
- * 行
+ * 定义栅格中的一行，配合Col组件使用
+ * <h5>提供的UI接口:</h5>
+ * <ul>
+ *     <li>end:是否显示下边框</li>
+ * </ul>
  * @class Row
- * @module grid
+ * @module grid(布局)
  * @extends Component
  * @constructor
- * @since 0.1.0
+ * @demo star.js {UI展示}
+ * @demo Demo1.js {源码}
+ * @show true
  * */
 export default class Row extends Component{
     static propTypes={
@@ -21,9 +27,9 @@ export default class Row extends Component{
          * */
         classPrefix:PropTypes.string,
         /**
-         * 样式前缀
+         * 是否显示下划线
          * @property bottom
-         * @type String
+         * @type boolean
          * @default undefined
          * */
         bottom:PropTypes.bool

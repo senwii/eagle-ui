@@ -6,13 +6,22 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
- * 按钮组组件<br/>
+ * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
+ *  主要属性和接口：
+ * <ul>
+ *     <li>egType:是否自适应宽度或者垂直排列，可选'justify,tacked'默认''<br>
+ *         如：<code>
+ *           <ButtonGroup egType="justify">
+ *         </code>
+ *     </li>
+ * </ul>
  * @class ButtonGroup
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo button.js {js}
+ * @demo star.js {UI展示}
+ * @demo button.js {源码}
  * @show true
  * */
 export default class ButtonGroup extends Component{
@@ -32,6 +41,12 @@ export default class ButtonGroup extends Component{
          * @default false
          * */
         tacked:PropTypes.bool,
+        /**
+         * 是否有自适应宽度，垂直排列等属性
+         * @property egType
+         * @type String
+         * @default ''
+         * */
         egType:PropTypes.string
     };
 

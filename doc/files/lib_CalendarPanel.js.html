@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">示例</a>
                     </li>
                     
                 </ul>
@@ -52,7 +52,7 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/form.html">form</a>
+                    <a href="../modules/form(表单).html">form(表单)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -60,14 +60,6 @@
                        <li>
                             
                            <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
@@ -113,24 +105,24 @@
                            </ul>
                        </li>
                     
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/grid.html">grid</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
                        <li>
                             
-                           <a href="../classes/Grid.html">Grid</a>
+                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
                        </li>
                     
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
                        <li>
                             
                            <a href="../classes/Row.html">Row</a>
@@ -147,12 +139,20 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/panel.html">panel</a>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -194,14 +194,14 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/table.html">table</a>
+                    <a href="../modules/table(表格).html">table(表格)</a>
                 </dt>
                 <dd>
                     <ul>
                    
                        <li>
                             
-                           <a href="../classes/Th.html">Th</a>
+                           <a href="../classes/Column.html">Column</a>
                            <ul>
                                 
                            </ul>
@@ -218,6 +218,14 @@
                        <li>
                             
                            <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
                            <ul>
                                 
                            </ul>
@@ -243,14 +251,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Crumb.html">Crumb</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
@@ -259,7 +259,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Item.html">Item</a>
+                           <a href="../classes/Label.html">Label</a>
                            <ul>
                                 
                            </ul>
@@ -299,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Dialog.html">Dialog</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -307,7 +307,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Label.html">Label</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -323,23 +323,7 @@
                     
                        <li>
                             
-                           <a href="../classes/List.html">List</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Paging.html">Paging</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -372,6 +356,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -464,13 +456,21 @@ var _CalendarJs = require(&#x27;./Calendar.js&#x27;);
 var _CalendarJs2 = _interopRequireDefault(_CalendarJs);
 
 /**
- * CalendarPanel组件
+ * CalendarPanel组件&lt;br&gt;
+ * 接受Calendar的所有属性接口，额外增加一个getValueCallback方法
+ *
+ * 主要属性接口:
+ * &lt;ul&gt;
+ *     &lt;li&gt;getValueCallback参数为&lt;code&gt;格式化后的string&lt;/code&gt;&lt;/li&gt;
+ *     &lt;li style=&#x27;color:red&#x27;&gt;&lt;a href=&#x27;./Calendar.html&#x27;&gt;其他属性定义请参照Calendar组件&lt;/a&gt;&lt;/li&gt;
+ * &lt;/ul&gt;
+ *
  * @class CalendarPanel
  * @module ui
  * @extends Component
  * @constructor
- * @since 0.1.0
- * @demo calendar.js {js}
+ * @demo  star.js {UI展示}
+ * @demo  calendar.js {源码}
  * @show true
  * */
 
@@ -485,8 +485,8 @@ var CalendarPanel = (function (_Component) {
             componentTag: _react.PropTypes.string,
             /**
              * 通过传入此函数获取日期值
-             * @property getValueCallback
-             * @type Function
+             * @event  getValueCallback
+             * @param {string} date 日期
              * */
             getValueCallback: _react.PropTypes.func
         },

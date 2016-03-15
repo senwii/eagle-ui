@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">示例</a>
                     </li>
                     
                 </ul>
@@ -52,7 +52,7 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/form.html">form</a>
+                    <a href="../modules/form(表单).html">form(表单)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -60,14 +60,6 @@
                        <li>
                             
                            <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
@@ -113,24 +105,24 @@
                            </ul>
                        </li>
                     
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/grid.html">grid</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
                        <li>
                             
-                           <a href="../classes/Grid.html">Grid</a>
+                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
                        </li>
                     
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
                        <li>
                             
                            <a href="../classes/Row.html">Row</a>
@@ -147,12 +139,20 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/panel.html">panel</a>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -194,14 +194,14 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/table.html">table</a>
+                    <a href="../modules/table(表格).html">table(表格)</a>
                 </dt>
                 <dd>
                     <ul>
                    
                        <li>
                             
-                           <a href="../classes/Th.html">Th</a>
+                           <a href="../classes/Column.html">Column</a>
                            <ul>
                                 
                            </ul>
@@ -218,6 +218,14 @@
                        <li>
                             
                            <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
                            <ul>
                                 
                            </ul>
@@ -243,14 +251,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Crumb.html">Crumb</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
@@ -259,7 +259,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Item.html">Item</a>
+                           <a href="../classes/Label.html">Label</a>
                            <ul>
                                 
                            </ul>
@@ -299,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Dialog.html">Dialog</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -307,7 +307,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Label.html">Label</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -323,23 +323,7 @@
                     
                        <li>
                             
-                           <a href="../classes/List.html">List</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Paging.html">Paging</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -372,6 +356,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -424,8 +416,35 @@
 </div>
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><p>日历组件<br />
-需要和CalendarPanel组合使用</p>
-</div>
+需要和CalendarPanel组合使用<br/>
+主要UI属性接口:</p>
+<ul>
+    <li>startDate:定义起始日期<br>
+        例如<code>
+                startDate="2015-11-11"
+        </code>
+    </li>
+    <li>endDate:定义结束日期<br>
+        例如<code>
+           endDate="2015-12-1"
+        </code>
+    </li>
+    <li>defaultDate:默认今天<br>
+        默认<code>
+           defaultDate=new Date()
+        </code>
+    </li>
+     <li>format:日期格式<br>
+        默认<code>
+         format=&#39;yyyy-MM-dd&#39;
+        </code>
+    </li>
+     <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>&nbsp;&nbsp;&nbsp;配合CalendarPanel使用时,不需要定义</strong><br>
+        例如<code>
+        selectCallback(dateString);参数为经过format处理后的日期
+        </code>
+    </li>
+</ul></div>
  </div>
 
 <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -440,13 +459,6 @@
             <h3>Properties</h3>
             
             <ul class="index-list properties extends">
-                
-                    <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_classPrefix" data-tablink="classPrefix">classPrefix</a>
-
-                        
-                        
-                    </li>
                 
                     <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_defaultDate" data-tablink="defaultDate">defaultDate</a>
@@ -470,13 +482,6 @@
                     </li>
                 
                     <li class="index-item property">
-                        <a href="#" data-tabid="#property" data-anchor="#property_selectCallback" data-tablink="selectCallback">selectCallback</a>
-
-                        
-                        
-                    </li>
-                
-                    <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_startDate" data-tablink="startDate">startDate</a>
 
                         
@@ -490,6 +495,17 @@
         <div class="index-section events col-sm-4">
             <h3>Events</h3>
             
+            <ul class="index-list events extends">
+                
+                    <li class="index-item event">
+                        <a href="#" data-tabid="#event" data-anchor="#event_selectCallback" data-tablink="selectCallback">selectCallback</a>
+
+                        
+                        
+                    </li>
+                
+            </ul>
+             
         </div>
     </div>
 </div>
@@ -501,6 +517,8 @@
         
             <li><a data-toggle="tab" href="#property">Properties</a></li>
         
+        
+            <li><a data-toggle="tab" href="#event">Events</a></li>
         
     </ul>
 
@@ -527,8 +545,6 @@
                 
             
 
-            
-                <p>Available since 0.1.0</p>
             
         </div>
 
@@ -578,8 +594,6 @@
         
 
         
-            <p>Available since 0.1.0</p>
-        
     </div>
 
     <div class="description well well-small sign-left3">
@@ -595,12 +609,38 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
-                <li role="presentation"  class="active"  _no='0'> <a>js</a></li>
+                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
+                
+                <li role="presentation"   _no='1'> <a>源码</a></li>
                 
             </ul>
 
             <div class="example-content  showdemo ">
                 <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by slashhuang on 15/12/21.
+ */
+import React, { Component ,PropTypes} from &#39;react&#39;;
+import Star from &#39;../../../src/Star.js&#39;;
+export default class StarDemo extends Component {
+    render(){
+        return(
+            &lt;div&gt;
+                &lt;Star rate={50} size={15}/&gt;&lt;br/&gt;
+                &lt;Star rate={60} size={16}/&gt;&lt;br/&gt;
+                &lt;Star rate={70} size={17}/&gt;&lt;br/&gt;
+                &lt;Star rate={80} size={18}/&gt;&lt;br/&gt;
+                &lt;Star rate={90} size={19}/&gt;&lt;br/&gt;
+                &lt;Star rate={10} size={14}/&gt;&lt;br/&gt;
+                &lt;Star rate={20} size={13}/&gt;&lt;br/&gt;
+                &lt;Star rate={30} size={12}/&gt;&lt;br/&gt;
+                &lt;Star rate={40} size={11}/&gt;&lt;br/&gt;
+                &lt;Star rate={50} size={10}/&gt;&lt;br/&gt;
+                &lt;Star/&gt;&lt;br/&gt;
+            &lt;/div&gt;
+        )
+    }
+}</code></pre>
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
  * Created by mac on 15/11/4.
  */
 import React,{Component,PropTypes} from &#39;react&#39;;
@@ -678,54 +718,6 @@ export default class Calendar extends Component{
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_classPrefix" class="property item">
-    <h3 class="name"><code>classPrefix</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Calendar.js.html#l43"><code>lib&#x2F;Calendar.js:43</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>样式类名前缀</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> calendar</code>
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="property_defaultDate" class="property item">
     <h3 class="name"><code>defaultDate</code></h3>
     <span class="type">String</span>
@@ -749,7 +741,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l64"><code>lib&#x2F;Calendar.js:64</code></a>
+        <a href="../files/lib_Calendar.js.html#l86"><code>lib&#x2F;Calendar.js:86</code></a>
         
         </p>
 
@@ -797,7 +789,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l57"><code>lib&#x2F;Calendar.js:57</code></a>
+        <a href="../files/lib_Calendar.js.html#l79"><code>lib&#x2F;Calendar.js:79</code></a>
         
         </p>
 
@@ -845,7 +837,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l71"><code>lib&#x2F;Calendar.js:71</code></a>
+        <a href="../files/lib_Calendar.js.html#l93"><code>lib&#x2F;Calendar.js:93</code></a>
         
         </p>
 
@@ -862,54 +854,6 @@ export default class Calendar extends Component{
     
         <p><strong>Default:</strong></p>
          <code> &#x27;yyyy-MM-dd&#x27;</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_selectCallback" class="property item">
-    <h3 class="name"><code>selectCallback</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Calendar.js.html#l78"><code>lib&#x2F;Calendar.js:78</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>选择某个具体日期后执行的回调函数</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> empty</code>
     
 
     
@@ -941,7 +885,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l50"><code>lib&#x2F;Calendar.js:50</code></a>
+        <a href="../files/lib_Calendar.js.html#l72"><code>lib&#x2F;Calendar.js:72</code></a>
         
         </p>
 
@@ -969,6 +913,81 @@ export default class Calendar extends Component{
             </div>
         
 
+        
+            <div id="event" class="tab-pane">
+                <h2 class="off-left">Events</h2>
+
+                
+                    <div id="event_selectCallback" class="events item">
+    <h3 class="name"><code>selectCallback</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Calendar.js.html#l100"><code>lib&#x2F;Calendar.js:100</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+     <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>选择某个具体日期后执行的回调函数</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">date</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>日期</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+
+    
+</div>
+
+                
+            </div>
         
     </div>
 </div>

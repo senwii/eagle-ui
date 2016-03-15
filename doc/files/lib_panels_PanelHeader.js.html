@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">示例</a>
                     </li>
                     
                 </ul>
@@ -52,7 +52,7 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/form.html">form</a>
+                    <a href="../modules/form(表单).html">form(表单)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -60,14 +60,6 @@
                        <li>
                             
                            <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
@@ -113,24 +105,24 @@
                            </ul>
                        </li>
                     
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/grid.html">grid</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
                        <li>
                             
-                           <a href="../classes/Grid.html">Grid</a>
+                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
                        </li>
                     
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
                        <li>
                             
                            <a href="../classes/Row.html">Row</a>
@@ -147,12 +139,20 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/panel.html">panel</a>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -194,14 +194,14 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/table.html">table</a>
+                    <a href="../modules/table(表格).html">table(表格)</a>
                 </dt>
                 <dd>
                     <ul>
                    
                        <li>
                             
-                           <a href="../classes/Th.html">Th</a>
+                           <a href="../classes/Column.html">Column</a>
                            <ul>
                                 
                            </ul>
@@ -218,6 +218,14 @@
                        <li>
                             
                            <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
                            <ul>
                                 
                            </ul>
@@ -243,14 +251,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Crumb.html">Crumb</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
@@ -259,7 +259,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Item.html">Item</a>
+                           <a href="../classes/Label.html">Label</a>
                            <ul>
                                 
                            </ul>
@@ -299,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Dialog.html">Dialog</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -307,7 +307,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Label.html">Label</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -323,23 +323,7 @@
                     
                        <li>
                             
-                           <a href="../classes/List.html">List</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Paging.html">Paging</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -372,6 +356,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -441,25 +433,23 @@ var _react = require(&#x27;react&#x27;);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = require(&#x27;classnames&#x27;);
+var _classnames2 = require(&#x27;classnames&#x27;);
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _classnames3 = _interopRequireDefault(_classnames2);
 
 var _utilsClassNameMixinJs = require(&#x27;../utils/ClassNameMixin.js&#x27;);
 
 var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 /**
- * PanelHeader组件
+ * PanelHeader定义头部区域
  * @class PanelHeader
+ * @module panel(面板)
  * @constructor
- * @module panel
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo src/panel.js {js}
- * @demo panel.html {html}
- * @author bo.an@dianping.com
+ * @demo star.js {UI展示}
+ * @demo panel.js {源码}
+ * @show true
  * */
 
 var PanelHeader = (function (_Component) {
@@ -471,23 +461,28 @@ var PanelHeader = (function (_Component) {
         _Component.apply(this, arguments);
     }
 
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
-
     PanelHeader.prototype.render = function render() {
+        var _classnames;
+
         var renderStyle = this.props.style ? this.props.style : {};
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), this.props.className), style: renderStyle },
+            { className: _classnames3[&#x27;default&#x27;](this.getClassName(&#x27;header&#x27;), (_classnames = {}, _classnames[this.getClassName(&#x27;header-flag&#x27;)] = this.props.leftFlag || false, _classnames), this.props.className), style: renderStyle },
             this.props.children
         );
     };
 
     _createClass(PanelHeader, null, [{
         key: &#x27;propTypes&#x27;,
-        value: {},
+        value: {
+            /**
+             * 是否要在标题左侧添加高亮flag
+             * @property leftFlag
+             * @type Boolean
+             * @default false
+             * */
+            leftFlag: _react.PropTypes.bool
+        },
         enumerable: true
     }, {
         key: &#x27;defaultProps&#x27;,

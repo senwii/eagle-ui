@@ -6,8 +6,8 @@ import Dialog from './dialog/Dialog';
  * @module ui
  * @extends Component
  * @constructor
- * @since 0.1.0
- * @demo dialog.js{js}
+ * @demo star.js {UI展示}
+ * @demo dialog.js {源码}
  * @show true
  * */
 

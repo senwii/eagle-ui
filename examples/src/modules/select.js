@@ -21,7 +21,7 @@ let Demo= class Demo extends Component{
         }
     }
 
-    getValue(value,key,type){
+        getValue(value,key,type){
         let stype = {
             'init':'加载时调用',
             'enter':'回车时调用',

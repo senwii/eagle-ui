@@ -9,8 +9,8 @@ import ClassNameMixin from './utils/ClassNameMixin.js';
  * @module ui
  * @extends Component
  * @requires React classnames
- * @since 0.1.0
- * @demo paging.js {js}
+ * @demo star.js {UI展示}
+ * @demo paging.js {源码}
  * @show true
  * @author min.xiao@dianping.com
  * */

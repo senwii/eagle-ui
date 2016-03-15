@@ -4,21 +4,41 @@ import classnames from 'classnames';
 import PanelHeader from './PanelHeader';
 import Component from '../utils/Component';
 /**
- * Panel组件
+ * <h5>eagle-ui主要面板布局组件</h5>
+ * <strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>
+ * <strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>
+ * <strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>
+ * <strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>
+ * @module panel(面板)
+ * @main panel(面板)
+ * @static
+ */
+
+/**
+ * Panel定义整个容器<br />
+ * 和PanelHeader,PanelContent,PanelFooter配合使用<br />
+ * Panel是上面三个标签的父容器，<br />
+ * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
  * @class Panel
- * @constructor
- * @module panel
+ * @module panel(面板)
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo panel.js {js}
- * @author bo.an@dianping.com
+ * @constructor
+ * @demo star.js {UI展示}
+ * @demo panel.js {源码}
+ * @show true
  * */
 export default class Panel extends Component{
 
     static propTypes = {
         /**
-         * 标题
+         * panel的样式风格，默认为default，还可以设置为normal
+         * @property egType
+         * @type String
+         * @default 'default'
+         * */
+        egType:PropTypes.string,
+        /**
+         * 标
          * @property heading
          * @type String
          * @default empty
@@ -28,7 +48,7 @@ export default class Panel extends Component{
 
     static defaultProps = {
 
-        heading:'',
+        egType:'default',
         classPrefix:'panel'
     };
 
@@ -44,10 +64,6 @@ export default class Panel extends Component{
         return null;
     }
 
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return (
             <div {...this.props} className={

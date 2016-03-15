@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">示例</a>
                     </li>
                     
                 </ul>
@@ -52,7 +52,7 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/form.html">form</a>
+                    <a href="../modules/form(表单).html">form(表单)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -60,14 +60,6 @@
                        <li>
                             
                            <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
@@ -113,24 +105,24 @@
                            </ul>
                        </li>
                     
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/grid.html">grid</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
                        <li>
                             
-                           <a href="../classes/Grid.html">Grid</a>
+                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
                        </li>
                     
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
                        <li>
                             
                            <a href="../classes/Row.html">Row</a>
@@ -147,12 +139,20 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/panel.html">panel</a>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -194,14 +194,14 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/table.html">table</a>
+                    <a href="../modules/table(表格).html">table(表格)</a>
                 </dt>
                 <dd>
                     <ul>
                    
                        <li>
                             
-                           <a href="../classes/Th.html">Th</a>
+                           <a href="../classes/Column.html">Column</a>
                            <ul>
                                 
                            </ul>
@@ -218,6 +218,14 @@
                        <li>
                             
                            <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
                            <ul>
                                 
                            </ul>
@@ -243,14 +251,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Crumb.html">Crumb</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
@@ -259,7 +259,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Item.html">Item</a>
+                           <a href="../classes/Label.html">Label</a>
                            <ul>
                                 
                            </ul>
@@ -299,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Dialog.html">Dialog</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -307,7 +307,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Label.html">Label</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -323,23 +323,7 @@
                     
                        <li>
                             
-                           <a href="../classes/List.html">List</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Paging.html">Paging</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -372,6 +356,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -473,14 +465,30 @@ var _sugSearch = require(&#x27;./sug/Search&#x27;);
 var _sugSearch2 = _interopRequireDefault(_sugSearch);
 
 /**
- * 下拉选择框组件。
- * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
- * @Class Select
- * @Module form
+ * 下拉选择框组件&lt;br&gt;
+ *     支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。
+ * 主要属性接口：
+ * &lt;ul&gt;
+ *     &lt;li&gt;defaultChecked:默认显示的选项即选中的选项&lt;br&gt;
+ *         如：&lt;code&gt;
+ *             defaultChecked=&quot;上海&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素&lt;br&gt;
+ *         如：&lt;code&gt;getValueCallback={::this.getValue}&lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;placeholder:提示框的内容&lt;br&gt;
+ *         如：&lt;code&gt;placeholder=&quot;请选择&quot;&lt;/code&gt;
+ *     &lt;/li&gt;
+ *
+ * &lt;/ul&gt;
+ * @class Select
+ * @module form(表单)
  * @constructor
  * @extends Component
- * @since 0.1.0
- * @demo select.js {js}
+ * @demo star.js {UI展示}
+ * @demo select.js {源码}
+ * @show true
  * */
 
 var Select = (function (_Search) {
@@ -491,8 +499,10 @@ var Select = (function (_Search) {
         value: {
             /**
              * 回调方法，主要作用将value传给父级元素。默认为null
-             * @property callback
-             * @type func
+             * @event  getValueCallback
+             * @param {primitive/pointer} value 值
+             * @param {string} key 键
+             * @param {string} type 类型
              * @default null
              * */
             getValueCallback: null,
@@ -500,11 +510,17 @@ var Select = (function (_Search) {
              * 样式类名前缀
              * @property classPrefix
              * @type string
-             *
              * */
             classPrefix: &#x27;select&#x27;,
             componentTag: &#x27;div&#x27;,
             defaultValue: &#x27;&#x27;,
+            /**
+             * 默认选中值，即初始显示内容
+             * @property defaultChecked
+             * @type String
+             * @default &#x27;&#x27;
+             * */
+            defaultChecked: &#x27;&#x27;,
             icon: &#x27;arrow_drop_down&#x27;,
             iconStyle: {
                 width: &#x27;30px&#x27;,
@@ -522,9 +538,7 @@ var Select = (function (_Search) {
         _classCallCheck(this, Select);
 
         _Search.call(this, props, context);
-
         this.inputId = this.uniqueId();
-
         _Search.prototype.setDefaultState.call(this, defaultState);
     }
 

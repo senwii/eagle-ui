@@ -7,14 +7,13 @@ YUI.add("yuidoc-meta", function(Y) {
         "CalendarPanel",
         "CheckboxGroup",
         "Col",
+        "Column",
         "Crumb",
         "Dialog",
         "Grid",
         "Input",
-        "Item",
         "Label",
         "LabelGroup",
-        "List",
         "Paging",
         "Panel",
         "PanelContent",
@@ -39,23 +38,20 @@ YUI.add("yuidoc-meta", function(Y) {
         "ValidatorPanel"
     ],
     "modules": [
-        "form",
-        "grid",
-        "panel",
-        "table",
+        "form(表单)",
+        "grid(布局)",
+        "panel(面板)",
+        "table(表格)",
         "ui"
     ],
     "allModules": [
         {
-            "displayName": "form",
-            "name": "form",
-            "description": "表单验证组件<br />\n在需要验证的表单元素上添加data-validate属性，<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称--> <br />\n默认规则有<br/>\n<pre>\n    required：是否必填\n    date：日期格式验证\n    number：是否是有效的号码\n    url：url规则验证\n    dateISO：日期ISO验证\n    digits：是否是数字\n    equalTo：值对比\n    minlength：最少输入\n    maxlength：最大输入\n    email：邮箱验证\n    rangelength：字符大小需在某个区间之内\n    min：输入的值需要大于等于此规则定义的值\n    max：输入的值需要小于等于此规则定义的值\n    range：一个区间取值范围\n\n</pre>",
+            "displayName": "form(表单)",
+            "name": "form(表单)",
+            "description": "<h5>form表单模块集成了常见的表单元素形式:</h5>\n<strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>\n<strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>\n<strong><a href='../classes/Input.html'>input输入框</a></strong><br>\n<strong><a href='../classes/Select.html'>select下拉框</a></strong><br>\n<strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>\n<h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>",
             "classes": [
                 {
                     "name": "CheckboxGroup"
-                },
-                {
-                    "name": "Input"
                 },
                 {
                     "name": "RadioGroup"
@@ -71,29 +67,32 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "ButtonGroup"
+                },
+                {
+                    "name": "Input"
                 }
             ]
         },
         {
-            "displayName": "grid",
-            "name": "grid",
-            "description": "行",
+            "displayName": "grid(布局)",
+            "name": "grid(布局)",
+            "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<pre><code>\n    &#60;Grid&#62;//定义栅格\n        &#60;Col sm={6}&#62;//定义一列，总长度为12份\n            &#60;Row&#62; &#60;/Row&#62;//定义一行\n        &#60;/Col&#62;\n    &#60;/Grid&#62;\n</code></pre>\n\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
             "classes": [
-                {
-                    "name": "Grid"
-                },
                 {
                     "name": "Row"
                 },
                 {
                     "name": "Col"
+                },
+                {
+                    "name": "Grid"
                 }
             ]
         },
         {
-            "displayName": "panel",
-            "name": "panel",
-            "description": "Panel组件",
+            "displayName": "panel(面板)",
+            "name": "panel(面板)",
+            "description": "<h5>eagle-ui主要面板布局组件</h5>\n<strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>\n<strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>\n<strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>\n<strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>",
             "classes": [
                 {
                     "name": "Panel"
@@ -110,18 +109,21 @@ YUI.add("yuidoc-meta", function(Y) {
             ]
         },
         {
-            "displayName": "table",
-            "name": "table",
+            "displayName": "table(表格)",
+            "name": "table(表格)",
             "description": "表格组件",
             "classes": [
                 {
-                    "name": "Th"
+                    "name": "Column"
                 },
                 {
                     "name": "Table"
                 },
                 {
                     "name": "Td"
+                },
+                {
+                    "name": "Th"
                 },
                 {
                     "name": "Tr"
@@ -131,16 +133,13 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "ui",
             "name": "ui",
-            "description": "星级评价",
+            "description": "<h5>eagle-ui部分UI组件</h5>\n<strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>\n<strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>\n<strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>\n<strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>\n<strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>\n<strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>\n<strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>\n<strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>\n<strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>\n<strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>\n<strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>\n<strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>",
             "classes": [
-                {
-                    "name": "Crumb"
-                },
                 {
                     "name": "Slider"
                 },
                 {
-                    "name": "Item"
+                    "name": "Label"
                 },
                 {
                     "name": "Search"
@@ -155,22 +154,16 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "CalendarPanel"
                 },
                 {
-                    "name": "Dialog"
+                    "name": "Crumb"
                 },
                 {
-                    "name": "Label"
+                    "name": "Dialog"
                 },
                 {
                     "name": "LabelGroup"
                 },
                 {
-                    "name": "List"
-                },
-                {
                     "name": "Paging"
-                },
-                {
-                    "name": "Tooltip"
                 },
                 {
                     "name": "Suggestion"
@@ -183,6 +176,9 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Toast"
+                },
+                {
+                    "name": "Tooltip"
                 },
                 {
                     "name": "TooltipPanel"

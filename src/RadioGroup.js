@@ -9,13 +9,29 @@ import Input from './Input.js';
 import Component from './utils/Component';
 
 /**
- * 单选按钮组组件
+ * RadioGroup需与Input组件配合使用<br/>
+ * 它的作用是将type=radio的Input组件在UI上展示在一起
+ * 主要属性接口：
+ * <ul>
+ *     <li>name:radio组的name值<br>
+ *         如：<code>
+ *             name='fruits'
+ *         </code>
+ *     </li>
+ *     <li>defaultChecked:默认选中值<br>
+ *         如：<code>defaultChecked="石榴"</code>
+ *     </li>
+ *     <li>getValueCallback:获取选中值的回调函数<br>
+ *         如：<code>getValueCallback={a()};a为对应的方法</code>
+ *     </li>
+ *
+ * </ul>
  * @class RadioGroup
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
- * @since 0.1.0
- * @demo input.js {js}
+ * @demo star.js {UI展示}
+ * @demo input.js {源码}
  * @show true
  * */
 export default class RadioGroup extends Component{
@@ -25,18 +41,21 @@ export default class RadioGroup extends Component{
          * radio name
          * @property name
          * @type String
+         * @default ''
          * */
         name:PropTypes.string,
         /**
          * 默认选中项
          * @property defaultChecked
          * @type String
+         * @default ''
          * */
         defaultChecked:PropTypes.string,
         /**
          * 获取选中的值
-         * @property getValueCallback
-         * @type String
+         * @event getValueCallback
+         * @param null
+         * @default void
          * */
         getValueCallback:PropTypes.func
     };

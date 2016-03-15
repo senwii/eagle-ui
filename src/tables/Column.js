@@ -3,25 +3,23 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * 表格组件
- * @class Th
+ * 封装Tr,Td组件，直接配合设置data属性的Table使用
+ * @class Column
+ * @module table(表格)
  * @constructor
- * @module table
- * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo table.js {js}
+ * @content {string} type 内容
+ * @demo star.js {UI展示}
+ * @demo table.js {源码}
  * @show true
- * @author bo.an@dianping.com
  * */
 @ClassNameMixin
 export default class Column extends Component{
 
     static propTypes = {
         /**
-         * 表头（不加th字段，组件会进行包装）
+         * 表头样式(设置表头，支持JSX)
          * @property header
-         * @type React节点或者 String
+         * @type String
          * */
         header:PropTypes.oneOfType([
             PropTypes.node,
@@ -32,19 +30,20 @@ export default class Column extends Component{
          * @property field
          * @type String
          * */
-        field:PropTypes.string
+        field:PropTypes.string,
+        /**
+         * 用来描述每个竖排单元格的展示形式
+         * @property cell
+         * @type JSX
+         * */
+        cell:PropTypes.string
+
     };
 
     static defaultProps = {
 
     };
 
-
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return null;
 

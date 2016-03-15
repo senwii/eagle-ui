@@ -3,7 +3,6 @@
  */
 import React, { Component ,PropTypes} from 'react';
 import Star from '../../../src/Star.js';
-
 export default class StarDemo extends Component {
     render(){
         return(
@@ -18,6 +17,7 @@ export default class StarDemo extends Component {
                 <Star rate={30} size={12}/><br/>
                 <Star rate={40} size={11}/><br/>
                 <Star rate={50} size={10}/><br/>
+                <Star/><br/>
             </div>
         )
     }

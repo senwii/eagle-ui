@@ -16,6 +16,7 @@ let Demo = class Demo extends Component{
     }
 
     callback(index){
+        console.log('i',index);
         if(this.state.tabIndex!==index){
             this.setState({
                 tabIndex:index
@@ -43,7 +44,7 @@ let Demo = class Demo extends Component{
     render(){
         return (
             <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>
-                <Tab heading='tab1'>
+                <Tab>
                     {::this.tab1()}
                 </Tab>
                 <Tab heading='tab2'>

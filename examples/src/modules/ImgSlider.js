@@ -1,21 +1,15 @@
 import React, { Component ,PropTypes} from 'react';
-import {Button,Column,ImgSlider,Dialog} from '../../../src/index.js';
+import {Button,Column,ImgSlider} from '../../../src/index.js';
 
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
         this.state={
-            show:false,
+            show:true,
             showThumbnail:true
         }
     }
-    closeDialog(){
-        this.setState({
-            show:false
-        })
-    }
     handleSlider(){
-        Dialog.mask('imgslider');
         switch(arguments[0]){
             case 'showDefinedThumbnail':
                 this.setState({
@@ -36,9 +30,6 @@ export default class SliderDemo extends Component {
                     thumbnailKey:undefined
                 });break;
         }
-    }
-    getDialog(d){
-        this.dialog = d;
     }
     render() {
         let {show,showThumbnail,thumbnailKey} = this.state;
@@ -98,13 +89,10 @@ export default class SliderDemo extends Component {
                 <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>
                 <Button success className='mg-left-10' onClick={(e)=>this.handleSlider.call(this,'showDefinedThumbnail')}>点击出现照片展示插件(缩略图自定义)</Button>
                 <Button className='mg-left-10' success onClick={(e)=>this.handleSlider.call(this,'noShowThumbnail')}>点击出现照片展示插件(无缩略图)</Button>
-                <Dialog id="imgslider" outside>
-                    <ImgSlider  show={show} showThumbnail={showThumbnail}
-                                       imgList={imgList}
-                                       profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
-                                       pageNum={pageNum}/>
-                </Dialog>
-
+                <ImgSlider  show={show} showThumbnail={showThumbnail}
+                            imgList={imgList}
+                            profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
+                            pageNum={pageNum}/>
             </div>
 
         );

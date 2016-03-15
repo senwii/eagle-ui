@@ -3,15 +3,14 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * PanelFooter组件
+ * PanelFooter定义底部区域
  * @class PanelFooter
  * @constructor
- * @module panel
+ * @module panel(面板)
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo panel.js {js}
- * @author bo.an@dianping.com
+ * @demo star.js {UI展示}
+ * @demo panel.js {源码}
+ * @show true
  * */
 @ClassNameMixin
 export default class PanelFooter extends Component{
@@ -31,11 +30,6 @@ export default class PanelFooter extends Component{
         classPrefix:'panel',
         padding:true
     };
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return (
             <div className={

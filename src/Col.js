@@ -3,20 +3,24 @@ import classnames from 'classnames';
 
 import Component from './utils/Component';
 /**
- * 列
+ * 定义栅格中的一列，配合Col组件使用
+ * <h5>主要的UI属性接口包括:</h5>
+ * <ul>
+ *     <li>sm:定义宽度占父元素(100%)的sm/12比例</li>
+ * </ul><br>
+ * 使用方式:
+ * <pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>
+ * </pre>
  * @class Col
- * @module grid
+ * @module grid(布局)
  * @extends Component
  * @constructor
- * @since 0.1.0
+ * @demo star.js {UI展示}
+ * @demo Demo1.js {源码}
+ * @show true
  * */
 export default class Col extends Component{
     static propTypes = {
-        /**
-         * 占几列，共12列
-         * @property egSize
-         * @type Integer
-         * */
         egSize:PropTypes.string,
         /**
          * 是否是最后一列
@@ -24,7 +28,14 @@ export default class Col extends Component{
          * @type Boolean
          * @default false
          * */
-        end:PropTypes.bool
+        end:PropTypes.bool,
+        /**
+         * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
+         * @property sm
+         * @type Number
+         * @default 12(一整行)
+         * */
+        sm:PropTypes.number
     };
 
     static defaultProps = {

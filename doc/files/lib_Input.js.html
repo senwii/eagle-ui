@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">例子</a>
+                    <li><a href="/documents/eagle-ui/examples/">示例</a>
                     </li>
                     
                 </ul>
@@ -52,7 +52,7 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/form.html">form</a>
+                    <a href="../modules/form(表单).html">form(表单)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -60,14 +60,6 @@
                        <li>
                             
                            <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
@@ -113,24 +105,24 @@
                            </ul>
                        </li>
                     
-                    </ul>
-                </dd>
-             
-                <dt>
-                    <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/grid.html">grid</a>
-                </dt>
-                <dd>
-                    <ul>
-                   
                        <li>
                             
-                           <a href="../classes/Grid.html">Grid</a>
+                           <a href="../classes/Input.html">Input</a>
                            <ul>
                                 
                            </ul>
                        </li>
                     
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
                        <li>
                             
                            <a href="../classes/Row.html">Row</a>
@@ -147,12 +139,20 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/panel.html">panel</a>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
                 </dt>
                 <dd>
                     <ul>
@@ -194,14 +194,14 @@
              
                 <dt>
                     <span class="glyphicon glyphicon-minus"></span>
-                    <a href="../modules/table.html">table</a>
+                    <a href="../modules/table(表格).html">table(表格)</a>
                 </dt>
                 <dd>
                     <ul>
                    
                        <li>
                             
-                           <a href="../classes/Th.html">Th</a>
+                           <a href="../classes/Column.html">Column</a>
                            <ul>
                                 
                            </ul>
@@ -218,6 +218,14 @@
                        <li>
                             
                            <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
                            <ul>
                                 
                            </ul>
@@ -243,14 +251,6 @@
                    
                        <li>
                             
-                           <a href="../classes/Crumb.html">Crumb</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
@@ -259,7 +259,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Item.html">Item</a>
+                           <a href="../classes/Label.html">Label</a>
                            <ul>
                                 
                            </ul>
@@ -299,7 +299,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Dialog.html">Dialog</a>
+                           <a href="../classes/Crumb.html">Crumb</a>
                            <ul>
                                 
                            </ul>
@@ -307,7 +307,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Label.html">Label</a>
+                           <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
                            </ul>
@@ -323,23 +323,7 @@
                     
                        <li>
                             
-                           <a href="../classes/List.html">List</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Paging.html">Paging</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -372,6 +356,14 @@
                        <li>
                             
                            <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
                            <ul>
                                 
                            </ul>
@@ -456,14 +448,54 @@ var _utilsIcon = require(&#x27;./utils/Icon&#x27;);
 var _utilsIcon2 = _interopRequireDefault(_utilsIcon);
 
 /**
+ * &lt;h5&gt;form表单模块集成了常见的表单元素形式:&lt;/h5&gt;
+ * &lt;strong&gt;&lt;a href=&#x27;../classes/CheckboxGroup.html&#x27;&gt;checkbox多选框&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+ * &lt;strong&gt;&lt;a href=&#x27;../classes/RadioGroup.html&#x27;&gt;radio单选框&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+ * &lt;strong&gt;&lt;a href=&#x27;../classes/Input.html&#x27;&gt;input输入框&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+ * &lt;strong&gt;&lt;a href=&#x27;../classes/Select.html&#x27;&gt;select下拉框&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+ * &lt;strong&gt;&lt;a href=&#x27;../classes/ButtonGroup.html&#x27;&gt;button按钮组&lt;/a&gt;&lt;/strong&gt;
+ * &lt;h6&gt;点击以上链接或者左侧导航栏的组件名称链接进行查看&lt;/h6&gt;
+ *
+ * @module form(表单)
+ * @main form(表单)
+ * @static
+ *
+ */
+
+/**
  * input表单组件&lt;br /&gt;
- * 通过type可以生成radio、checkbox、input等元素标签
+ * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.&lt;br/&gt;
+ * 提供自动补全功能，autoComplete为true即可。
+ *
+ * 主要属性和接口：
+ * &lt;ul&gt;
+ *     &lt;li&gt;type:input的不同类型，可选&#x27;text,radio..&#x27;等，默认text&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Input  type=&quot;radio&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;autoComplete:是否自动补全，默认false&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Button radius egSize=&quot;sm&quot; egStyle=&quot;warning&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;label:type为radio,checkbox时，需要显示的标签信息。默认&#x27;&#x27;&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Input  type=&quot;radio&quot;  label=&quot;大白菜&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;onChange:状态改变时的回调方法，默认null&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            Input  type=&quot;checkbox&quot; checked onChange={::this.change} value=&quot;bbb&quot;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ * &lt;/ul&gt;
  * @class Input
- * @module form
+ * @module form(表单)
  * @extends Component
  * @constructor
- * @since 0.1.0
- * @demo input.js{js}
+ * @demo star.js {UI展示}
+ * @demo input.js {源码}
  * @show true
  * */
 

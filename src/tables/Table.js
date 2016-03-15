@@ -4,18 +4,25 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
 import Th from './Th.js';
 import Td from './Td.js';
 import Tr from './Tr.js'
-
+/**
+ * <h5>eagle-ui表格组件</h5>
+ * <strong><a href='../classes/Table.html'>Table定义表格</a></strong><br>
+ * <strong><a href='../classes/Th.html'>Th定义表头单元格</a></strong><br>
+ * <strong><a href='../classes/Tr.html'>Tr定义表格行</a></strong><br>
+ * <strong><a href='../classes/Td.html'>Td定义表格单元格</a></strong><br>
+ * @module table(表格)
+ * @main table
+ * @static
+ */
 /**
  * 表格组件
  * @class Table
  * @constructor
- * @module table
+ * @module table(表格)
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo table.js {js}
+ * @demo star.js {UI展示}
+ * @demo table.js {源码}
  * @show true
- * @author bo.an@dianping.com
  * */
 @ClassNameMixin
 export default class Table extends Component{
@@ -74,10 +81,6 @@ export default class Table extends Component{
         });
     };
 
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         if(!this.props.data){
             return(

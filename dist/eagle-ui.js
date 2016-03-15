@@ -701,12 +701,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
 
 	/**
-	 * 布局组件
+	 * <h5>eagle-ui主要栅格化布局组件</h5>
+	 * <pre><code>
+	 *     &#60;Grid&#62;//定义栅格
+	 *         &#60;Col sm={6}&#62;//定义一列，总长度为12份
+	 *             &#60;Row&#62; &#60;/Row&#62;//定义一行
+	 *         &#60;/Col&#62;
+	 *     &#60;/Grid&#62;
+	 * </code></pre>
+	 *
+	 * <strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>
+	 * <strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>
+	 * <strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>
+	 * <h6>点击以上链接进行相关查看</h6>
+	 * @module grid(布局)
+	 * @main grid(布局)
+	 * @static
+	 *
+	 */
+
+	/**
+	 * 定义栅格容器,配合Col和Row使用
 	 * @class Grid
-	 * @module grid
+	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
+	 * @demo star.js {UI展示}
+	 * @demo Demo1.js {源码}
+	 * @show true
 	 * */
 
 	var Grid = (function (_Component) {
@@ -753,7 +775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -765,7 +787,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -774,19 +796,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -1057,12 +1079,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 列
+	 * 定义栅格中的一列，配合Col组件使用
+	 * <h5>主要的UI属性接口包括:</h5>
+	 * <ul>
+	 *     <li>sm:定义宽度占父元素(100%)的sm/12比例</li>
+	 * </ul><br>
+	 * 使用方式:
+	 * <pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>
+	 * </pre>
 	 * @class Col
-	 * @module grid
+	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
+	 * @demo star.js {UI展示}
+	 * @demo Demo1.js {源码}
+	 * @show true
 	 * */
 
 	var Col = (function (_Component) {
@@ -1098,11 +1129,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Col, null, [{
 	        key: 'propTypes',
 	        value: {
-	            /**
-	             * 占几列，共12列
-	             * @property egSize
-	             * @type Integer
-	             * */
 	            egSize: _react.PropTypes.string,
 	            /**
 	             * 是否是最后一列
@@ -1110,7 +1136,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type Boolean
 	             * @default false
 	             * */
-	            end: _react.PropTypes.bool
+	            end: _react.PropTypes.bool,
+	            /**
+	             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
+	             * @property sm
+	             * @type Number
+	             * @default 12(一整行)
+	             * */
+	            sm: _react.PropTypes.number
 	        },
 	        enumerable: true
 	    }, {
@@ -6959,12 +6992,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 行
+	 * 定义栅格中的一行，配合Col组件使用
+	 * <h5>提供的UI接口:</h5>
+	 * <ul>
+	 *     <li>end:是否显示下边框</li>
+	 * </ul>
 	 * @class Row
-	 * @module grid
+	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
+	 * @demo star.js {UI展示}
+	 * @demo Demo1.js {源码}
+	 * @show true
 	 * */
 
 	var Row = (function (_Component) {
@@ -6996,9 +7035,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            classPrefix: _react.PropTypes.string,
 	            /**
-	             * 样式前缀
+	             * 是否显示下划线
 	             * @property bottom
-	             * @type String
+	             * @type boolean
 	             * @default undefined
 	             * */
 	            bottom: _react.PropTypes.bool
@@ -7052,13 +7091,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 按钮组件
+	 *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
+	 *  - 也可以自定义行内样式和className名字定义UI展示<br/>
+	 *  - 支持disabled, active, enable等属性定义<br/>
+	 *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
+	 *  - 通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success
+	 *  主要属性和接口：
+	 * <ul>
+	 *     <li>egSize:按钮颜色<br>
+	 *         如：<code>
+	 *            Button radius egSize="sm" egStyle="warning"
+	 *         </code>
+	 *     </li>
+	 *     <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
+	 *         如：<code>
+	 *            Button radius egSize="sm" egStyle="warning"
+	 *         </code>
+	 *     </li>
+	 *     <li>disabled:按钮禁用状态，默认false<br>
+	 *         如：<code>
+	 *            Button radius disabled
+	 *         </code>
+	 *     </li>
+	 *     <li>enable:按钮的可用状态，默认true<br>
+	 *         如：<code>
+	 *            Button radius enable
+	 *         </code>
+	 *     </li>
+	 *     <li>active:按钮选中状态，默认false<br>
+	 *         如：<code>
+	 *            Button radius active
+	 *         </code>
+	 *     </li>
+	 *      <li>radius:按钮圆角状态<br>
+	 *         如：<code>
+	 *            Button radius
+	 *         </code>
+	 *     </li>
+	 *     <li>round:按钮椭圆角<br>
+	 *         如：<code>
+	 *            Button round
+	 *         </code>
+	 *     </li>
+	 *     <li>block:是否块级显示，默认false<br>
+	 *         如：<code>
+	 *            Button block
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class Button
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo button.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo button.js {源码}
 	 * @show true
 	 * */
 
@@ -7220,13 +7306,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 按钮组组件<br/>
+	 * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
+	 *  主要属性和接口：
+	 * <ul>
+	 *     <li>egType:是否自适应宽度或者垂直排列，可选'justify,tacked'默认''<br>
+	 *         如：<code>
+	 *           <ButtonGroup egType="justify">
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class ButtonGroup
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo button.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo button.js {源码}
 	 * @show true
 	 * */
 
@@ -7250,6 +7345,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @default false
 	             * */
 	            tacked: _react.PropTypes.bool,
+	            /**
+	             * 是否有自适应宽度，垂直排列等属性
+	             * @property egType
+	             * @type String
+	             * @default ''
+	             * */
 	            egType: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -7349,13 +7450,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponentJs2 = _interopRequireDefault(_utilsComponentJs);
 
 	/**
-	 * 多选按钮组组件
+	 * CheckboxGroup需与Input组件配合使用<br/>
+	 * 它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能
 	 * @class CheckboxGroup
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo input.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo input.js {源码}
 	 * @show true
 	 * */
 
@@ -7377,7 +7479,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    CheckboxGroup.prototype.componentDidMount = function componentDidMount() {};
 
 	    CheckboxGroup.prototype.render = function render() {
-
 	        return _react2['default'].createElement(
 	            'div',
 	            { style: this.props.style,
@@ -7431,14 +7532,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsIcon2 = _interopRequireDefault(_utilsIcon);
 
 	/**
+	 * <h5>form表单模块集成了常见的表单元素形式:</h5>
+	 * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
+	 * <strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>
+	 * <strong><a href='../classes/Input.html'>input输入框</a></strong><br>
+	 * <strong><a href='../classes/Select.html'>select下拉框</a></strong><br>
+	 * <strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>
+	 * <h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>
+	 *
+	 * @module form(表单)
+	 * @main form(表单)
+	 * @static
+	 *
+	 */
+
+	/**
 	 * input表单组件<br />
-	 * 通过type可以生成radio、checkbox、input等元素标签
+	 * 设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.<br/>
+	 * 提供自动补全功能，autoComplete为true即可。
+	 *
+	 * 主要属性和接口：
+	 * <ul>
+	 *     <li>type:input的不同类型，可选'text,radio..'等，默认text<br>
+	 *         如：<code>
+	 *            Input  type="radio"
+	 *         </code>
+	 *     </li>
+	 *     <li>autoComplete:是否自动补全，默认false<br>
+	 *         如：<code>
+	 *            Button radius egSize="sm" egStyle="warning"
+	 *         </code>
+	 *     </li>
+	 *     <li>label:type为radio,checkbox时，需要显示的标签信息。默认''<br>
+	 *         如：<code>
+	 *            Input  type="radio"  label="大白菜"
+	 *         </code>
+	 *     </li>
+	 *     <li>onChange:状态改变时的回调方法，默认null<br>
+	 *         如：<code>
+	 *            Input  type="checkbox" checked onChange={::this.change} value="bbb"
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class Input
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo input.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo input.js {源码}
 	 * @show true
 	 * */
 
@@ -8037,13 +8178,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 单选按钮组组件
+	 * RadioGroup需与Input组件配合使用<br/>
+	 * 它的作用是将type=radio的Input组件在UI上展示在一起
+	 * 主要属性接口：
+	 * <ul>
+	 *     <li>name:radio组的name值<br>
+	 *         如：<code>
+	 *             name='fruits'
+	 *         </code>
+	 *     </li>
+	 *     <li>defaultChecked:默认选中值<br>
+	 *         如：<code>defaultChecked="石榴"</code>
+	 *     </li>
+	 *     <li>getValueCallback:获取选中值的回调函数<br>
+	 *         如：<code>getValueCallback={a()};a为对应的方法</code>
+	 *     </li>
+	 *
+	 * </ul>
 	 * @class RadioGroup
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo input.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo input.js {源码}
 	 * @show true
 	 * */
 
@@ -8057,18 +8214,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * radio name
 	             * @property name
 	             * @type String
+	             * @default ''
 	             * */
 	            name: _react.PropTypes.string,
 	            /**
 	             * 默认选中项
 	             * @property defaultChecked
 	             * @type String
+	             * @default ''
 	             * */
 	            defaultChecked: _react.PropTypes.string,
 	            /**
 	             * 获取选中的值
-	             * @property getValueCallback
-	             * @type String
+	             * @event getValueCallback
+	             * @param null
+	             * @default void
 	             * */
 	            getValueCallback: _react.PropTypes.func
 	        },
@@ -8180,10 +8340,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 标签
 	 * @class Label
 	 * @module ui
-	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo label.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo label.js {源码}
 	 * @show true
 	 * */
 
@@ -8275,13 +8434,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
+	 * <h5>eagle-ui部分UI组件</h5>
+	 * <strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>
+	 * <strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>
+	 * <strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>
+	 * <strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>
+	 * <strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>
+	 * <strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>
+	 * <strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>
+	 * <strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>
+	 * <strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>
+	 * <strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>
+	 * <strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>
+	 * <strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>
+	 * @module ui
+	 * @main ui
+	 * @static
+	 */
+
+	/**
 	 * 面包屑组件
 	 * @class Crumb
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo crumb.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo crumb.js {源码}
 	 * @show true
 	 * */
 
@@ -8391,28 +8569,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Search
 	 * @module ui
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo suggestion.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo suggestion.js {源码}
 	 * @show true
-	 * @class Select
-	 * */
-	/**
-	 * tips组件
-	 * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
-	 * @class Tooltip
-
 	 * */
 
 	var Search = (function (_Suggestion) {
-	  _inherits(Search, _Suggestion);
+	    _inherits(Search, _Suggestion);
 
-	  function Search(props, context) {
-	    _classCallCheck(this, Search);
+	    function Search(props, context) {
+	        _classCallCheck(this, Search);
 
-	    _Suggestion.call(this, props, context);
-	  }
+	        _Suggestion.call(this, props, context);
+	    }
 
-	  return Search;
+	    return Search;
 	})(_Suggestion3['default']);
 
 	exports['default'] = Search;
@@ -8448,8 +8619,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @Module ui
 	 * @constructor
 	 * @extends Component
-	 * @since 0.1.0
-	 * @demo suggestion.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo suggestion.js {源码}
+	 * @show true
 	 * */
 
 	var Suggestion = (function (_Search) {
@@ -8681,12 +8853,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        _this.props.getValueCallback && _this.props.getValueCallback(value, key, type);
 	    };
-
-	    /**
-	     * 根据auto存在与否渲染不同类型的元素
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Search.prototype.renderSearch = function renderSearch() {
 	        return _react2['default'].createElement(
@@ -9152,14 +9318,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _sugSearch2 = _interopRequireDefault(_sugSearch);
 
 	/**
-	 * 下拉选择框组件。
-	 * 有input参数可以自由输入，否则不在列表中的输入值将改变为第一个item
-	 * @Class Select
-	 * @Module form
+	 * 下拉选择框组件<br>
+	 *     支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。
+	 * 主要属性接口：
+	 * <ul>
+	 *     <li>defaultChecked:默认显示的选项即选中的选项<br>
+	 *         如：<code>
+	 *             defaultChecked="上海"
+	 *         </code>
+	 *     </li>
+	 *     <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>
+	 *         如：<code>getValueCallback={::this.getValue}</code>
+	 *     </li>
+	 *     <li>placeholder:提示框的内容<br>
+	 *         如：<code>placeholder="请选择"</code>
+	 *     </li>
+	 *
+	 * </ul>
+	 * @class Select
+	 * @module form(表单)
 	 * @constructor
 	 * @extends Component
-	 * @since 0.1.0
-	 * @demo select.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo select.js {源码}
+	 * @show true
 	 * */
 
 	var Select = (function (_Search) {
@@ -9170,8 +9352,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: {
 	            /**
 	             * 回调方法，主要作用将value传给父级元素。默认为null
-	             * @property callback
-	             * @type func
+	             * @event  getValueCallback
+	             * @param {primitive/pointer} value 值
+	             * @param {string} key 键
+	             * @param {string} type 类型
 	             * @default null
 	             * */
 	            getValueCallback: null,
@@ -9179,11 +9363,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 样式类名前缀
 	             * @property classPrefix
 	             * @type string
-	             *
 	             * */
 	            classPrefix: 'select',
 	            componentTag: 'div',
 	            defaultValue: '',
+	            /**
+	             * 默认选中值，即初始显示内容
+	             * @property defaultChecked
+	             * @type String
+	             * @default ''
+	             * */
+	            defaultChecked: '',
 	            icon: 'arrow_drop_down',
 	            iconStyle: {
 	                width: '30px',
@@ -9201,9 +9391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _classCallCheck(this, Select);
 
 	        _Search.call(this, props, context);
-
 	        this.inputId = this.uniqueId();
-
 	        _Search.prototype.setDefaultState.call(this, defaultState);
 	    }
 
@@ -9269,8 +9457,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo label.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo label.js {源码}
 	 * @show true
 	 * */
 
@@ -9487,8 +9675,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo toast.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo toast.js {源码}
 	 * @show true
 	 * */
 
@@ -9619,8 +9807,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo dialog.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo dialog.js {源码}
 	 * @show true
 	 * */
 
@@ -10584,8 +10772,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo paging.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo paging.js {源码}
 	 * @show true
 	 * @author min.xiao@dianping.com
 	 * */
@@ -10961,13 +11149,41 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 日历组件<br />
-	 * 需要和CalendarPanel组合使用
+	 * 需要和CalendarPanel组合使用<br/>
+	 * 主要UI属性接口:
+	 * <ul>
+	 *     <li>startDate:定义起始日期<br>
+	 *         例如<code>
+	 *                 startDate="2015-11-11"
+	 *         </code>
+	 *     </li>
+	 *     <li>endDate:定义结束日期<br>
+	 *         例如<code>
+	 *            endDate="2015-12-1"
+	 *         </code>
+	 *     </li>
+	 *     <li>defaultDate:默认今天<br>
+	 *         默认<code>
+	 *            defaultDate=new Date()
+	 *         </code>
+	 *     </li>
+	 *      <li>format:日期格式<br>
+	 *         默认<code>
+	 *          format='yyyy-MM-dd'
+	 *         </code>
+	 *     </li>
+	 *      <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>&nbsp;&nbsp;&nbsp;配合CalendarPanel使用时,不需要定义</strong><br>
+	 *         例如<code>
+	 *         selectCallback(dateString);参数为经过format处理后的日期
+	 *         </code>
+	 *     </li>
+	 * </ul>
 	 * @class Calendar
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo calendar.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo calendar.js {源码}
 	 * @show true
 	 * */
 
@@ -10977,12 +11193,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Calendar, null, [{
 	        key: 'propTypes',
 	        value: {
-	            /**
-	             * 样式类名前缀
-	             * @property classPrefix
-	             * @type String
-	             * @default calendar
-	             * */
 	            classPrefix: _react.PropTypes.string,
 	            /**
 	             * 起始日期
@@ -11014,9 +11224,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            format: _react.PropTypes.string,
 	            /**
 	             * 选择某个具体日期后执行的回调函数
-	             * @property selectCallback
-	             * @type Function
-	             * @default empty
+	             * @event  selectCallback
+	             * @param {string} date 日期
+	             * @default void
 	             * */
 	            selectCallback: _react.PropTypes.func
 	        },
@@ -11579,13 +11789,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * tab组件
+	 * 导航标签组件，用户可以在不同的tab之间进行切换<br/>
+	 * 需要和Tabset组件配合使用,Tabset相当于是Tab的容器
 	 * @class Tab
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo tab.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo tab.js {源码}
 	 * @show true
 	 * */
 
@@ -11619,9 +11830,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    _createClass(Tab, null, [{
+	        key: 'propTypes',
+	        value: {
+	            /**
+	             * tab导航标签的title
+	             * @property heading
+	             * @type String
+	             * @default 'tab'
+	             * */
+	            heading: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }, {
 	        key: 'defaultProps',
 	        value: {
-	            classPrefix: 'tab'
+	            classPrefix: 'tab',
+	            heading: 'tab'
 	        },
 	        enumerable: true
 	    }]);
@@ -11678,13 +11902,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
-	 * tab组件
+	 * 导航标签组件，用户可以在不同的tab之间进行切换<br/>
+	 * 需要和Tab组件配合使用,Tabset相当于是Tab的容器
 	 * @class Tabset
 	 * @module ui
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo tab.js{js}
+	 * @demo star.js {UI展示}
+	 * @demo tab.js {源码}
 	 * @show true
 	 * */
 
@@ -11707,7 +11933,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type Number
 	             * @default 0
 	             * */
-	            activeTab: _react.PropTypes.number
+	            activeTab: _react.PropTypes.number,
+	            /**
+	             * 回调方法，当用户切换不同tab时，会调用这个回调。
+	             * @event  tabCallback
+	             * @param {Number} activeTabIndex 当前激活的是第几个tab，从0开始计数
+	             * @default undefined
+	             * */
+	            tabCallback: _react.PropTypes.func
 	        },
 	        enumerable: true
 	    }]);
@@ -11852,13 +12085,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 星级评价
+	 * 星级评价(Star)组件<br />
+	 * 提供的UI展示属性接口包括<br/>
+	 * <ul>
+	 *     <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>
+	 *     <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>
+	 * </ul><br>
+	 * 使用方式:
+	 * <pre><code>&#60;Star rate={50} size={10}/&#62;</code>
+	 * </pre>
 	 * @class Star
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo star.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo star.js {源码}
 	 * @show true
 	 * */
 
@@ -11869,19 +12110,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 星级评价分数
+	             * 星级评价分数(满分100)
 	             * @property Rate
 	             * @type number
-	             * @default 默认未0分
+	             * @default 0
 	             * */
 	            rate: _react.PropTypes.number,
 	            /**
 	             * 星星大小
 	             * @property size
 	             * @type String||number
-	             * @default undefined  可以取值10-20 默认单位为'px'
+	             * @default 13  可以取值10-20 默认单位为'px'
 	             * */
-	            egSize: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+	            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
 	            classPrefix: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -11963,13 +12204,70 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 照片浏览组件
+	 *  照片浏览组件<br />
+	 *  提供的UI展示属性接口如下<br/>
+	 * <ul>
+	 *     <li>imgList:定义数据源数组<br>
+	 *         例如
+	 *         <pre><code>
+	 *                  [{
+	                        profile:'1叔2015上传',
+	                        url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',
+	                        description:'闪惠商户培训资料',
+	                        thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'
+	                     }]
+	 *         </code></pre>
+	 *     </li>
+	 *     <li>show:定义隐藏还是展示组件
+	 *         <code>
+	 *             <strong>默认</strong>false
+	 *         </code>
+	 *     </li>
+	 *     <li>urlKey:定义大图对应imgList数组中的key
+	 *         <code>
+	 *             在本例子中就是url
+	 *         </code>
+	 *     </li>
+	 *     <li>titleKey:定义大图下方文字对应imgList数组的key
+	 *         <code>
+	 *             在本例子中就是description
+	 *         </code>
+	 *     </li>
+	 *     <li>profileKey: 定义大图下方文字对应imgList数组的key
+	 *         <code>
+	 *             在本例子中就是profile
+	 *         </code>
+	 *     </li>
+	 *     <li>showThumbnail:定义是否展示缩略图
+	 *         <code>
+	 *             <strong>默认</strong>true
+	 *         </code>
+	 *     </li>
+	 *     <li>thumbnailKey:定义缩略图对应imgList数组的key
+	 *         <code>
+	 *             <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail
+	 *         </code>
+	 *     </li>
+	 *      <li>pageNum:定义每页缩略图的个数
+	 *         <code>
+	 *             <strong>默认</strong>为5
+	 *         </code>
+	 *     </li>
+	 * </ul>
+	 * 使用方式:
+	 * <pre><code>&#60;imgSlider show={true} showThumbnail={true}
+	            imgList={imgList}
+	            profileKey={'profile'}
+	            urlKey={'url'}
+	            titleKey={'description'}
+	            thumbnailKey={thumbnailKey} /&#62;</code>
+	 * </pre>
 	 * @class Slider
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo Slider.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo imgSlider.js {源码}
 	 * @show true
 	 * */
 
@@ -12212,61 +12510,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 图片信息(对应图片信息数组对象中图片描述信息的key)
-	             * @property profileKey
-	             * @type string
-	             * @default
-	             * */
-	            profileKey: _react.PropTypes.string,
-	            /**
-	             * 图片信息(对应图片信息数组对象中图片uri信息的key)
-	             * @property urlKey
-	             * @type string
-	             * @default
-	             * */
-	            urlKey: _react.PropTypes.string,
-	            /**
-	             * 图片信息(对应图片信息数组对象中图片大标题信息的key)
-	             * @property titleKey
-	             * @type string
-	             * @default
-	             * */
-	            titleKey: _react.PropTypes.string,
-	            /**
-	             * 缩略图的key
-	             * @property thumbnailKey
-	             * @type array
-	             * @default 默认会拿urlKey
-	             * */
-	            thumbnailKey: _react.PropTypes.string,
-	            /**
-	             * 图片数组
+	             * slider的图片数组
 	             * @property imgList
 	             * @type Array
-	             * @default 图片数组[{key:value}]
+	             * @default 图片数组(包含大图地址、描述等信息)
 	             * */
 	            imgList: _react.PropTypes.array,
 	            /**
-	             * 图片栏展示数目
-	             * @property pageNum
-	             * @type number
-	             * @default 5
-	             * */
-	            pageNum: _react.PropTypes.number,
-	            /**
-	             * 是否显示图片展示slider
+	             * 是否展示slider
 	             * @property show
 	             * @type boolean
-	             * @default false
+	             * @default false(默认不展示)
 	             * */
 	            show: _react.PropTypes.bool,
 	            /**
-	             * 是否显示slider中的图片缩略图部分
+	             * 图片信息(对应imgList中大图标题信息的key))
+	             * @property urlKey
+	             * @type string
+	             * @default  url
+	             * */
+	            urlKey: _react.PropTypes.string,
+	            /**
+	             * 图片信息(对应图片信息数组对象中图片描述信息的key)
+	             * @property profileKey
+	             * @type string
+	             * @default  profile
+	             * */
+	            profileKey: _react.PropTypes.string,
+	            /**
+	             * 图片描述信息(对应imgList中大图标题信息的key)
+	             * @property titleKey
+	             * @type string
+	             * @default description
+	             * */
+	            titleKey: _react.PropTypes.string,
+	            /**
+	             * 是否显示slider的图片缩略图部分
 	             * @property showThumbnail
 	             * @type boolean
 	             * @default true
 	             * */
 	            showThumbnail: _react.PropTypes.bool,
+	            /**
+	             * 缩略图的key
+	             * @property thumbnailKey
+	             * @type array
+	             * @default 默认和urlKey保持一致
+	             * */
+	            thumbnailKey: _react.PropTypes.string,
+	            /**
+	             * 缩略图展示数目
+	             * @property pageNum
+	             * @type number
+	             * @default 5
+	             * */
+	            pageNum: _react.PropTypes.number,
 	            classPrefix: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -12323,13 +12621,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _CalendarJs2 = _interopRequireDefault(_CalendarJs);
 
 	/**
-	 * CalendarPanel组件
+	 * CalendarPanel组件<br>
+	 * 接受Calendar的所有属性接口，额外增加一个getValueCallback方法
+	 *
+	 * 主要属性接口:
+	 * <ul>
+	 *     <li>getValueCallback参数为<code>格式化后的string</code></li>
+	 *     <li style='color:red'><a href='./Calendar.html'>其他属性定义请参照Calendar组件</a></li>
+	 * </ul>
+	 *
 	 * @class CalendarPanel
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo calendar.js {js}
+	 * @demo  star.js {UI展示}
+	 * @demo  calendar.js {源码}
 	 * @show true
 	 * */
 
@@ -12344,8 +12650,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            componentTag: _react.PropTypes.string,
 	            /**
 	             * 通过传入此函数获取日期值
-	             * @property getValueCallback
-	             * @type Function
+	             * @event  getValueCallback
+	             * @param {string} date 日期
 	             * */
 	            getValueCallback: _react.PropTypes.func
 	        },
@@ -12535,9 +12841,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Tooltip
 	 * @moudle ui
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo tooltip.js{js}
-	 * @show false
+	 * @demo star.js {UI展示}
+	 * @demo tooltip.js {源码}
+	 * @show true
 	 * */
 
 	var Tooltip = (function (_Component) {
@@ -12657,15 +12963,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * Panel组件
+	 * <h5>eagle-ui主要面板布局组件</h5>
+	 * <strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>
+	 * <strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>
+	 * <strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>
+	 * <strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>
+	 * @module panel(面板)
+	 * @main panel(面板)
+	 * @static
+	 */
+
+	/**
+	 * Panel定义整个容器<br />
+	 * 和PanelHeader,PanelContent,PanelFooter配合使用<br />
+	 * Panel是上面三个标签的父容器，<br />
+	 * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
 	 * @class Panel
-	 * @constructor
-	 * @module panel
+	 * @module panel(面板)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo panel.js {js}
-	 * @author bo.an@dianping.com
+	 * @constructor
+	 * @demo star.js {UI展示}
+	 * @demo panel.js {源码}
+	 * @show true
 	 * */
 
 	var Panel = (function (_Component) {
@@ -12695,11 +13014,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return null;
 	    };
 
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
-
 	    Panel.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'div',
@@ -12713,7 +13027,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 标题
+	             * panel的样式风格，默认为default，还可以设置为normal
+	             * @property egType
+	             * @type String
+	             * @default 'default'
+	             * */
+	            egType: _react.PropTypes.string,
+	            /**
+	             * 标
 	             * @property heading
 	             * @type String
 	             * @default empty
@@ -12725,7 +13046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'defaultProps',
 	        value: {
 
-	            heading: '',
+	            egType: 'default',
 	            classPrefix: 'panel'
 	        },
 	        enumerable: true
@@ -12757,25 +13078,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(45);
+	var _classnames2 = __webpack_require__(45);
 
-	var _classnames2 = _interopRequireDefault(_classnames);
+	var _classnames3 = _interopRequireDefault(_classnames2);
 
 	var _utilsClassNameMixinJs = __webpack_require__(46);
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * PanelHeader组件
+	 * PanelHeader定义头部区域
 	 * @class PanelHeader
+	 * @module panel(面板)
 	 * @constructor
-	 * @module panel
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo src/panel.js {js}
-	 * @demo panel.html {html}
-	 * @author bo.an@dianping.com
+	 * @demo star.js {UI展示}
+	 * @demo panel.js {源码}
+	 * @show true
 	 * */
 
 	var PanelHeader = (function (_Component) {
@@ -12787,23 +13106,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.apply(this, arguments);
 	    }
 
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
-
 	    PanelHeader.prototype.render = function render() {
+	        var _classnames;
+
 	        var renderStyle = this.props.style ? this.props.style : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('header'), this.props.className), style: renderStyle },
+	            { className: _classnames3['default'](this.getClassName('header'), (_classnames = {}, _classnames[this.getClassName('header-flag')] = this.props.leftFlag || false, _classnames), this.props.className), style: renderStyle },
 	            this.props.children
 	        );
 	    };
 
 	    _createClass(PanelHeader, null, [{
 	        key: 'propTypes',
-	        value: {},
+	        value: {
+	            /**
+	             * 是否要在标题左侧添加高亮flag
+	             * @property leftFlag
+	             * @type Boolean
+	             * @default false
+	             * */
+	            leftFlag: _react.PropTypes.bool
+	        },
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
@@ -12850,15 +13174,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * PanelContent组件
+	 * PanelContent定义内容区域
 	 * @class PanelContent
 	 * @constructor
-	 * @module panel
+	 * @module panel(面板)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo panel.js {js}
-	 * @author bo.an@dianping.com
+	 * @demo star.js {UI展示}
+	 * @demo panel.js {源码}
+	 * @show true
 	 * */
 
 	var PanelContent = (function (_Component) {
@@ -12869,11 +13192,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    PanelContent.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -12941,15 +13259,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * PanelFooter组件
+	 * PanelFooter定义底部区域
 	 * @class PanelFooter
 	 * @constructor
-	 * @module panel
+	 * @module panel(面板)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo panel.js {js}
-	 * @author bo.an@dianping.com
+	 * @demo star.js {UI展示}
+	 * @demo panel.js {源码}
+	 * @show true
 	 * */
 
 	var PanelFooter = (function (_Component) {
@@ -12960,11 +13277,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    PanelFooter.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -13031,17 +13343,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	/**
-	 * 表组件
-	 * @class List
-	 * @constructor
-	 * @module ui
-	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @author bo.an@dianping.com
-	 * */
-
 	var List = (function (_Component) {
 	    _inherits(List, _Component);
 
@@ -13050,11 +13351,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    List.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -13110,17 +13406,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	/**
-	 * 表组件
-	 * @class Item
-	 * @constructor
-	 * @module ui
-	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @author bo.an@dianping.com
-	 * */
-
 	var Item = (function (_Component) {
 	    _inherits(Item, _Component);
 
@@ -13129,11 +13414,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Item.prototype.render = function render() {
 	        var renderStyle = this.props.style || {};
@@ -13199,9 +13479,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
 
 	/**
-	 * 表单验证组件<br />
-	 * 在需要验证的表单元素上添加data-validate属性，<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称--> <br />
-	 * 默认规则有<br/>
+	 * 表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />
+	 * <!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->
+	 * rules属性提供的规则有<br/>
 	 * <pre>
 	 *     required：是否必填
 	 *     date：日期格式验证
@@ -13217,14 +13497,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     min：输入的值需要大于等于此规则定义的值
 	 *     max：输入的值需要小于等于此规则定义的值
 	 *     range：一个区间取值范围
-	 *
 	 * </pre>
 	 * @class ValidatorPanel
-	 * @module form
+	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @since 0.1.0
-	 * @demo validate.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo validate.js {源码}
 	 * @show true
 	 * */
 
@@ -13306,17 +13585,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            },
 	            initCallback: function initCallback() {},
 	            /**
-	             * 验证成功后提交表单
-	             * @property submitCallback
-	             * @type Function
-	             * */
+	             * 自定义在提交后的callback
+	             * @event submitCallback
+	             * @param {object} opt 表单数据结构
+	             */
 	            submitCallback: function submitCallback() {
 	                return true;
 	            },
 	            /**
-	             * 在提交时除验证规则之外的其他逻辑
-	             * @property validateCallback
-	             * @type Function
+	             * 自定义验证规则之外的其他逻辑
+	             * @event validateCallback
+	             * @param {object} opt 表单数据结构
 	             * */
 	            validateCallback: function validateCallback() {
 	                return true;
@@ -13978,16 +14257,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _TrJs2 = _interopRequireDefault(_TrJs);
 
 	/**
+	 * <h5>eagle-ui表格组件</h5>
+	 * <strong><a href='../classes/Table.html'>Table定义表格</a></strong><br>
+	 * <strong><a href='../classes/Th.html'>Th定义表头单元格</a></strong><br>
+	 * <strong><a href='../classes/Tr.html'>Tr定义表格行</a></strong><br>
+	 * <strong><a href='../classes/Td.html'>Td定义表格单元格</a></strong><br>
+	 * @module table(表格)
+	 * @main table
+	 * @static
+	 */
+	/**
 	 * 表格组件
 	 * @class Table
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Table = (function (_Component) {
@@ -14054,11 +14341,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            sortFiled: sortFiled
 	        });
 	    };
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Table.prototype.render = function render() {
 	        var _this = this;
@@ -14153,16 +14435,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
+	 * 表头单元格组件
 	 * @class Th
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Th = (function (_Component) {
@@ -14193,11 +14473,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        this.props.clickCallback(this.props.field, sortMethod);
 	    };
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Th.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -14254,16 +14529,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
+	 * 表格单元格组件
 	 * @class Td
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Td = (function (_Component) {
@@ -14274,11 +14547,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Td.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -14336,16 +14604,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
 	/**
-	 * 表格组件
+	 * 表格行组件
 	 * @class Tr
 	 * @constructor
-	 * @module table
+	 * @module table(表格)
 	 * @extends Component
-	 * @requires React classnames
-	 * @since 0.1.0
-	 * @demo table.js {js}
+	 * @demo star.js {UI展示}
+	 * @demo table.js {源码}
 	 * @show true
-	 * @author bo.an@dianping.com
 	 * */
 
 	var Tr = (function (_Component) {
@@ -14356,11 +14622,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.apply(this, arguments);
 	    }
-
-	    /**
-	     * @method render
-	     * @return {ReactElement}
-	     * */
 
 	    Tr.prototype.render = function render() {
 	        return _react2['default'].createElement(
@@ -14425,17 +14686,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixin = __webpack_require__(46);
 
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
-
-	/**
-	 * 多选按钮组组件
-	 * @class CheckboxGroup
-	 * @module form
-	 * @extends Component
-	 * @constructor
-	 * @since 0.1.0
-	 * @demo input.js {js}
-	 * @show true
-	 * */
 
 	var FormGroup = (function (_Component) {
 	    _inherits(FormGroup, _Component);

@@ -8,19 +8,11 @@ import Suggestion from './Suggestion';
  * @class Search
  * @module ui
  * @constructor
- * @since 0.1.0
- * @demo suggestion.js{js}
+ * @demo star.js {UI展示}
+ * @demo suggestion.js {源码}
  * @show true
- * @class Select
- * */
-/**
- * tips组件
- * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
- * @class Tooltip
-
  * */
 export default class Search extends Suggestion {
-
     constructor(props, context) {
         super(props, context);
     }

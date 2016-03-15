@@ -3,39 +3,40 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * PanelHeader组件
+ * PanelHeader定义头部区域
  * @class PanelHeader
+ * @module panel(面板)
  * @constructor
- * @module panel
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo src/panel.js {js}
- * @demo panel.html {html}
- * @author bo.an@dianping.com
+ * @demo star.js {UI展示}
+ * @demo panel.js {源码}
+ * @show true
  * */
 @ClassNameMixin
 export default class PanelHeader extends Component{
 
     static propTypes = {
+        /**
+         * 是否要在标题左侧添加高亮flag
+         * @property leftFlag
+         * @type Boolean
+         * @default false
+         * */
+        leftFlag:PropTypes.bool
     };
 
     static defaultProps = {
         classPrefix:'panel'
     };
-
-
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         let renderStyle=this.props.style?this.props.style:{};
         return (
             <div className={
                 classnames(
                     this.getClassName('header'),
+                    {
+                        [this.getClassName('header-flag')]:this.props.leftFlag || false
+                    },
                     this.props.className
                 )} style={renderStyle}>
                 {this.props.children}

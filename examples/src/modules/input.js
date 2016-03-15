@@ -33,10 +33,11 @@ let Demo= class Demo extends Component{
     }
 
     getValue(val){
-        console.dir(val);
+        alert(val);
     }
 
     change(e){
+        alert(e.target.value);
         console.dir(e.target.value);
     }
 

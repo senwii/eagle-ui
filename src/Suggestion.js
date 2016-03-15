@@ -1,21 +1,19 @@
 import React, {PropTypes} from 'react';
-
 import Search from './sug/Search';
-
 /**
  * 搜索联想组件。
  * @Class Suggestion
  * @Module ui
  * @constructor
  * @extends Component
- * @since 0.1.0
- * @demo suggestion.js {js}
+ * @demo star.js {UI展示}
+ * @demo suggestion.js {源码}
+ * @show true
  * */
 export default class Suggestion extends Search {
     constructor(props, context) {
         super(props, context,{});
     }
-
     static defaultProps = {
         /**
          * 回调方法，主要作用将value传给父级元素。默认为null

@@ -3,16 +3,14 @@ import classnames from 'classnames';
 import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
- * 表格组件
+ * 表格行组件
  * @class Tr
  * @constructor
- * @module table
+ * @module table(表格)
  * @extends Component
- * @requires React classnames
- * @since 0.1.0
- * @demo table.js {js}
+ * @demo star.js {UI展示}
+ * @demo table.js {源码}
  * @show true
- * @author bo.an@dianping.com
  * */
 @ClassNameMixin
 export default class Tr extends Component{
@@ -30,13 +28,6 @@ export default class Tr extends Component{
     static defaultProps = {
         classPrefix:'tr'
     };
-
-
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
         return (
             <tr className={
