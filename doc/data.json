@@ -1154,13 +1154,13 @@
             "module": "form(表单)",
             "namespace": "",
             "file": "lib/Select.js",
-            "line": 48,
+            "line": 45,
             "description": "下拉选择框组件<br>\n    支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。\n主要属性接口：\n<ul>\n    <li>defaultChecked:默认显示的选项即选中的选项<br>\n        如：<code>\n            defaultChecked=\"上海\"\n        </code>\n    </li>\n    <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>\n        如：<code>getValueCallback={::this.getValue}</code>\n    </li>\n    <li>placeholder:提示框的内容<br>\n        如：<code>placeholder=\"请选择\"</code>\n    </li>\n\n</ul>",
             "is_constructor": 1,
             "extends": "Component",
             "example": [
                 "\t/**\n\t * Created by slashhuang on 15/12/21.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport Star from '../../../src/Star.js';\n\texport default class StarDemo extends Component {\n\t    render(){\n\t        return(\n\t            <div>\n\t                <Star rate={50} size={15}/><br/>\n\t                <Star rate={60} size={16}/><br/>\n\t                <Star rate={70} size={17}/><br/>\n\t                <Star rate={80} size={18}/><br/>\n\t                <Star rate={90} size={19}/><br/>\n\t                <Star rate={10} size={14}/><br/>\n\t                <Star rate={20} size={13}/><br/>\n\t                <Star rate={30} size={12}/><br/>\n\t                <Star rate={40} size={11}/><br/>\n\t                <Star rate={50} size={10}/><br/>\n\t                <Star/><br/>\n\t            </div>\n\t        )\n\t    }\n\t}\n\t\n\t",
-                "\t/**\n\t * Created by panqianjin on 15/11/4.\n\t */\n\timport React,{Component,PropTypes}  from 'react';\n\timport Select from '../../../src/Select.js';\n\timport Button from '../../../src/Button.js';\n\timport Grid from '../../../src/Grid.js';\n\timport Row from '../../../src/Row.js';\n\timport Col from '../../../src/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input\n\t        }\n\t    }\n\t\n\t        getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col sm={9} layer end>\n\t                        <Row>\n\t                            <Col sm={4} end>\n\t                                <Select defaultChecked=\"上海\" getValueCallback={::this.getValue} placeholder=\"请选择\" >\n\t                                    <option value='bei'>北京</option>\n\t                                    <option value='shang'>上海</option>\n\t                                    <option value='nan'>南京</option>\n\t                                    <option value='3'>杭州</option>\n\t                                    <option value='4'>杭州西</option>\n\t                                    <option value='5'>杭州北站</option>\n\t                                    <option value='6'>广州</option>\n\t                                    <option value='7'>深圳</option>\n\t                                    <option value='8'>澳门</option>\n\t                                    <option value='10'>太原</option>\n\t                                    <option value='11'>台湾</option>\n\t                                    <option value='12'>香港</option>\n\t                                </Select>\n\t                            </Col>\n\t                        </Row>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <div id=\"showtip\" className=\"color-info\"></div>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t}\n\t\n\texport default Demo;"
+                "\t\n\timport React,{Component,PropTypes}  from 'react';\n\timport Select from '../../../src/Select.js';\n\timport Button from '../../../src/Button.js';\n\timport Grid from '../../../src/Grid.js';\n\timport Row from '../../../src/Row.js';\n\timport Col from '../../../src/Col.js';\n\tlet Demo= class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input,\n\t            options:[]\n\t        }\n\t\n\t        setTimeout(()=>{\n\t            this.setState({options:this.renderC()})\n\t        }.bind(this) );\n\t    }\n\t\n\t        getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t\n\t    renderC(){\n\t\n\t        return [\n\t\n\t            <option value='bei' key=\"bei\">北京</option>,\n\t            <option value='shang' key=\"上海\">上海</option>,\n\t            <option value='nan' key=\"南京\">南京</option>,\n\t            <option value='3' key=\"杭州\">杭州</option>,\n\t            <option value='4' key=\"杭州西\">杭州西</option>,\n\t            <option value='5' key=\"杭州北站\">杭州北站</option>,\n\t            <option value='6' key=\"广州\">广州</option>,\n\t            <option value='7' key=\"深圳\">深圳</option>,\n\t            <option value='8' key=\"澳门\">澳门</option>,\n\t            <option value='10' key=\"太原\">太原</option>,\n\t            <option value='11' key=\"台湾\">台湾</option>,\n\t            <option value='12' key=\"香港\">香港</option>\n\t        ];\n\t    }\n\t\n\t    render(){\n\t        return (\n\t            <Grid fluid>\n\t                <Row>\n\t                    <Col sm={9} layer end>\n\t                        <Row>\n\t                            <Col sm={4} end>\n\t                                <Select defaultChecked=\"上海\" getValueCallback={::this.getValue} placeholder=\"请选择\" >\n\t                                    {this.state.options}\n\t                                </Select>\n\t                            </Col>\n\t                        </Row>\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                    <Col>\n\t                        <div id=\"showtip\" className=\"color-info\"></div>\n\t                    </Col>\n\t                </Row>\n\t            </Grid>\n\t        );\n\t    }\n\t}\n\t\n\texport default Demo;"
             ],
             "exampleTitles": [
                 "UI展示",
@@ -2681,14 +2681,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 1,
-            "description": "Created by panqianjin on 15/11/12.",
-            "class": "Select",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Select.js",
-            "line": 81,
+            "line": 78,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2715,7 +2708,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 90,
+            "line": 87,
             "description": "样式类名前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -2725,7 +2718,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 98,
+            "line": 95,
             "description": "默认选中值，即初始显示内容",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -3599,15 +3592,15 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Select.js:48"
+            "line": " lib/Select.js:45"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Select.js:48"
+            "line": " lib/Select.js:45"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Select.js:48"
+            "line": " lib/Select.js:45"
         },
         {
             "message": "unknown tag: demo",
@@ -3804,10 +3797,6 @@
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
             "line": " lib/RadioGroup.js:1"
-        },
-        {
-            "message": "Missing item type\nCreated by panqianjin on 15/11/12.",
-            "line": " lib/Select.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",

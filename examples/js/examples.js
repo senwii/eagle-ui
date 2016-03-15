@@ -35091,6 +35091,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.selectItem = null;
 	    }
 
+	    Suggestion.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.options = this.getOptions(nextProps.children);
+	    };
+
 	    Suggestion.prototype.setDefaultState = function setDefaultState(obj) {
 	        _Component.prototype.setDefaultState.call(this, _extend2['default']({}, {
 	            _reload: false,
@@ -35122,7 +35126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //搜索 数据查询方式 ajax或者直接查询或者缓存中获取
 
 	    Suggestion.prototype.search = function search(key) {
-	        var data, _this, str, reg;
+	        var data, _this, str, reg, newData;
 
 	        return regeneratorRuntime.async(function search$(context$2$0) {
 	            while (1) switch (context$2$0.prev = context$2$0.next) {
@@ -35150,41 +35154,42 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	                        data = str ? str : []; //this._cache[key];
 	                    }
-
 	                    this.setCache(key, data);
 
 	                case 8:
-	                    //重新绑定data渲染数据
+	                    newData = [];
+
 	                    this.setState({
-	                        _data: data && data.length > 0 ? data : this.props.noResultTips ? [{
+	                        _data: newData = data && data.length > 0 ? data : this.props.noResultTips ? [{
 	                            key: this.props.noResultTips,
 	                            value: 'noResult'
 	                        }] : [],
 	                        _selectedIndex: -1
 	                    });
-
-	                    if (this.state._data.length > 0) {
+	                    if (newData.length > 0) {
 	                        this.show();
 	                    }
 
-	                    context$2$0.next = 15;
+	                    context$2$0.next = 16;
 	                    break;
 
-	                case 12:
-	                    context$2$0.prev = 12;
+	                case 13:
+	                    context$2$0.prev = 13;
 	                    context$2$0.t0 = context$2$0['catch'](1);
 	                    throw new Error(context$2$0.t0);
 
-	                case 15:
+	                case 16:
 	                case 'end':
 	                    return context$2$0.stop();
 	            }
-	        }, null, this, [[1, 12]]);
+	        }, null, this, [[1, 13]]);
 	    };
 
 	    Suggestion.prototype.getOptions = function getOptions() {
+	        var chElem = arguments.length <= 0 || arguments[0] === undefined ? this.props.children : arguments[0];
+
 	        var optionsList = [];
-	        _react2['default'].Children.map(this.props.children, function (item, i) {
+	        _react2['default'].Children.map(chElem, function (item, i) {
 	            var _item$props = item.props;
 	            var value = _item$props.value;
 	            var children = _item$props.children;
@@ -35235,6 +35240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var val = this.trim(event.target.value);
 	            if (val === '') {
 	                this.hide();
+	                clearTimeout(this.timeOutId);
 	                this.entryCallback();
 	                return;
 	            } else {
@@ -35425,13 +35431,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	///([^}]+"key":"[^"]*北京[^"]*".+?\})/gi
 	//let reg = new RegExp('(\{[^}]+"key":"[^"]*'+key+'[^"]*".+?\})','gi');
 
+	//重新绑定data渲染数据
+
 /***/ },
 /* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Created by panqianjin on 15/11/12.
-	 */
 	'use strict';
 
 	exports.__esModule = true;
@@ -44549,9 +44554,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Created by panqianjin on 15/11/4.
-	 */
 	'use strict';
 
 	exports.__esModule = true;
@@ -44601,12 +44603,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }]);
 
 	    function Demo(props, context) {
+	        var _this = this;
+
 	        _classCallCheck(this, Demo);
 
 	        _Component.call(this, props, context);
 	        this.state = {
-	            input: this.props.input
+	            input: this.props.input,
+	            options: []
 	        };
+
+	        setTimeout((function () {
+	            _this.setState({ options: _this.renderC() });
+	        }).bind(this));
 	    }
 
 	    Demo.prototype.getValue = function getValue(value, key, type) {
@@ -44616,6 +44625,59 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'click': '点击每一项元素时调用'
 	        };
 	        document.getElementById('showtip').innerHTML = '<strong>' + stype[type] + '</strong>的值为：<b>"key":<span class="color-error">' + key + '</span></b>,<b>"value":<span class="color-error">' + value + '</span></b>';
+	    };
+
+	    Demo.prototype.renderC = function renderC() {
+
+	        return [_react2['default'].createElement(
+	            'option',
+	            { value: 'bei', key: 'bei' },
+	            '北京'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: 'shang', key: '上海' },
+	            '上海'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: 'nan', key: '南京' },
+	            '南京'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '3', key: '杭州' },
+	            '杭州'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '4', key: '杭州西' },
+	            '杭州西'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '5', key: '杭州北站' },
+	            '杭州北站'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '6', key: '广州' },
+	            '广州'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '7', key: '深圳' },
+	            '深圳'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '8', key: '澳门' },
+	            '澳门'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '10', key: '太原' },
+	            '太原'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '11', key: '台湾' },
+	            '台湾'
+	        ), _react2['default'].createElement(
+	            'option',
+	            { value: '12', key: '香港' },
+	            '香港'
+	        )];
 	    };
 
 	    Demo.prototype.render = function render() {
@@ -44637,66 +44699,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            _react2['default'].createElement(
 	                                _srcSelectJs2['default'],
 	                                { defaultChecked: '上海', getValueCallback: this.getValue.bind(this), placeholder: '请选择' },
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: 'bei' },
-	                                    '北京'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: 'shang' },
-	                                    '上海'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: 'nan' },
-	                                    '南京'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '3' },
-	                                    '杭州'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '4' },
-	                                    '杭州西'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '5' },
-	                                    '杭州北站'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '6' },
-	                                    '广州'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '7' },
-	                                    '深圳'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '8' },
-	                                    '澳门'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '10' },
-	                                    '太原'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '11' },
-	                                    '台湾'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'option',
-	                                    { value: '12' },
-	                                    '香港'
-	                                )
+	                                this.state.options
 	                            )
 	                        )
 	                    )

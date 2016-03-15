@@ -508,7 +508,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_Select.js.html#l48"><code>lib&#x2F;Select.js:48</code></a>
+                    Defined in: <a href="../files/lib_Select.js.html#l45"><code>lib&#x2F;Select.js:45</code></a>
                 </div>
             
 
@@ -559,7 +559,7 @@
             
         
         
-        <a href="../files/lib_Select.js.html#l48"><code>lib&#x2F;Select.js:48</code></a>
+        <a href="../files/lib_Select.js.html#l45"><code>lib&#x2F;Select.js:45</code></a>
         
         </p>
 
@@ -613,10 +613,7 @@ export default class StarDemo extends Component {
         )
     }
 }</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by panqianjin on 15/11/4.
- */
-import React,{Component,PropTypes}  from &#39;react&#39;;
+</div><div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component,PropTypes}  from &#39;react&#39;;
 import Select from &#39;../../../src/Select.js&#39;;
 import Button from &#39;../../../src/Button.js&#39;;
 import Grid from &#39;../../../src/Grid.js&#39;;
@@ -632,8 +629,13 @@ let Demo= class Demo extends Component{
     constructor(props, context) {
         super(props, context);
         this.state = {
-            input: this.props.input
+            input: this.props.input,
+            options:[]
         }
+
+        setTimeout(()=&gt;{
+            this.setState({options:this.renderC()})
+        }.bind(this) );
     }
 
         getValue(value,key,type){
@@ -645,6 +647,25 @@ let Demo= class Demo extends Component{
         document.getElementById(&#39;showtip&#39;).innerHTML = <code>&amp;lt;strong&amp;gt;${stype[type]}&amp;lt;&#x2F;strong&amp;gt;的值为：&amp;lt;b&amp;gt;&quot;key&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${key}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;,&amp;lt;b&amp;gt;&quot;value&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${value}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;</code>;
     }
 
+    renderC(){
+
+        return [
+
+            &lt;option value=&#39;bei&#39; key="bei"&gt;北京&lt;/option&gt;,
+            &lt;option value=&#39;shang&#39; key="上海"&gt;上海&lt;/option&gt;,
+            &lt;option value=&#39;nan&#39; key="南京"&gt;南京&lt;/option&gt;,
+            &lt;option value=&#39;3&#39; key="杭州"&gt;杭州&lt;/option&gt;,
+            &lt;option value=&#39;4&#39; key="杭州西"&gt;杭州西&lt;/option&gt;,
+            &lt;option value=&#39;5&#39; key="杭州北站"&gt;杭州北站&lt;/option&gt;,
+            &lt;option value=&#39;6&#39; key="广州"&gt;广州&lt;/option&gt;,
+            &lt;option value=&#39;7&#39; key="深圳"&gt;深圳&lt;/option&gt;,
+            &lt;option value=&#39;8&#39; key="澳门"&gt;澳门&lt;/option&gt;,
+            &lt;option value=&#39;10&#39; key="太原"&gt;太原&lt;/option&gt;,
+            &lt;option value=&#39;11&#39; key="台湾"&gt;台湾&lt;/option&gt;,
+            &lt;option value=&#39;12&#39; key="香港"&gt;香港&lt;/option&gt;
+        ];
+    }
+
     render(){
         return (
             &lt;Grid fluid&gt;
@@ -653,18 +674,7 @@ let Demo= class Demo extends Component{
                         &lt;Row&gt;
                             &lt;Col sm={4} end&gt;
                                 &lt;Select defaultChecked="上海" getValueCallback={::this.getValue} placeholder="请选择" &gt;
-                                    &lt;option value=&#39;bei&#39;&gt;北京&lt;/option&gt;
-                                    &lt;option value=&#39;shang&#39;&gt;上海&lt;/option&gt;
-                                    &lt;option value=&#39;nan&#39;&gt;南京&lt;/option&gt;
-                                    &lt;option value=&#39;3&#39;&gt;杭州&lt;/option&gt;
-                                    &lt;option value=&#39;4&#39;&gt;杭州西&lt;/option&gt;
-                                    &lt;option value=&#39;5&#39;&gt;杭州北站&lt;/option&gt;
-                                    &lt;option value=&#39;6&#39;&gt;广州&lt;/option&gt;
-                                    &lt;option value=&#39;7&#39;&gt;深圳&lt;/option&gt;
-                                    &lt;option value=&#39;8&#39;&gt;澳门&lt;/option&gt;
-                                    &lt;option value=&#39;10&#39;&gt;太原&lt;/option&gt;
-                                    &lt;option value=&#39;11&#39;&gt;台湾&lt;/option&gt;
-                                    &lt;option value=&#39;12&#39;&gt;香港&lt;/option&gt;
+                                    {this.state.options}
                                 &lt;/Select&gt;
                             &lt;/Col&gt;
                         &lt;/Row&gt;
@@ -724,7 +734,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Select.js.html#l90"><code>lib&#x2F;Select.js:90</code></a>
+        <a href="../files/lib_Select.js.html#l87"><code>lib&#x2F;Select.js:87</code></a>
         
         </p>
 
@@ -769,7 +779,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Select.js.html#l98"><code>lib&#x2F;Select.js:98</code></a>
+        <a href="../files/lib_Select.js.html#l95"><code>lib&#x2F;Select.js:95</code></a>
         
         </p>
 
@@ -825,7 +835,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Select.js.html#l81"><code>lib&#x2F;Select.js:81</code></a>
+        <a href="../files/lib_Select.js.html#l78"><code>lib&#x2F;Select.js:78</code></a>
         
         </p>
 

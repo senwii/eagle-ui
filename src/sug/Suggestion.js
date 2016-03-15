@@ -22,6 +22,10 @@ export default class Suggestion extends Component {
         this.selectItem = null;
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.options = this.getOptions(nextProps.children);
+    }
+
     setDefaultState(obj){
         super.setDefaultState(extend({},{
             _reload:false,
@@ -54,7 +58,6 @@ export default class Suggestion extends Component {
     async search(key){
 
         let data = this.getCache(key),_this = this;
-
         //缓存中没有数据
         try{
             if((!data ||data.length<=0 ) && key!=''){
@@ -73,21 +76,21 @@ export default class Suggestion extends Component {
 
                     data = str ?str :[];//this._cache[key];
                 }
-
                 this.setCache(key,data );
             }
+
             //重新绑定data渲染数据
+            let newData = [];
             this.setState({
-                _data:data && data.length>0 ? data : this.props.noResultTips?[
+                _data:(newData=data && data.length>0 ? data : this.props.noResultTips?[
                     {
                         key:this.props.noResultTips,
                         value:'noResult'
                     }
-                ]:[],
+                ]:[]),
                 _selectedIndex:-1
             });
-
-            if(this.state._data.length > 0){
+            if(newData.length > 0){
                 this.show();
             }
 
@@ -96,9 +99,9 @@ export default class Suggestion extends Component {
         }
     }
 
-    getOptions(){
+    getOptions(chElem = this.props.children){
         let optionsList = [];
-        React.Children.map(this.props.children,(item,i)=>{
+        React.Children.map(chElem,(item,i)=>{
 
             let {value,children,subKey,...other}=item.props;
 
@@ -144,6 +147,7 @@ export default class Suggestion extends Component {
             var val = this.trim(event.target.value);
             if (val === '') {
                 this.hide();
+                clearTimeout(this.timeOutId);
                 this.entryCallback();
                 return;
             }else{
