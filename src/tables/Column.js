@@ -23,7 +23,7 @@ export default class Column extends Component{
          * */
         header:PropTypes.oneOfType([
             PropTypes.node,
-            PropTypes.string,
+            PropTypes.string
         ]),
         /**
          * 用来声明需要绑定数组对象中的哪一个属性

@@ -39,6 +39,7 @@ export default class Th extends Component{
     render(){
         return (
             <th
+                {...this.props}
                 onClick={::this.sortHandler}>
                 {this.props.children}
                 {this.props.sort==='des'? <span>↓</span>:this.props.sort==='asc'?<span>↑</span>:null}

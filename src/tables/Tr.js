@@ -30,9 +30,10 @@ export default class Tr extends Component{
     };
     render(){
         return (
-            <tr className={
+            <tr {...this.props} className={
                 classnames(
-                    this.props.split ? this.getClassName('split') : null
+                    this.props.split ? this.getClassName('split') : null,
+                    this.props.className
                 )
                 }>
                 {this.props.children}

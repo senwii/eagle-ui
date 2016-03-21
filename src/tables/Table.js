@@ -108,12 +108,12 @@ export default class Table extends Component{
                 },self)}
             </Tr>;
         });
-        console.log(this.props);
         return (
-                <table className={
+                <table {...this.props} className={
                 classnames(
                     this.getClassNamesForArguments('table'),
-                    this.getClassNames(this.props)
+                    this.getClassNames(this.props),
+                    this.props.className
                 )}>
                     <thead>
                     <Tr>
