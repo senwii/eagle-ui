@@ -14382,10 +14382,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }, self)
 	            );
 	        });
-	        console.log(this.props);
 	        return _react2['default'].createElement(
 	            'table',
-	            { className: _classnames2['default'](this.getClassNamesForArguments('table'), this.getClassNames(this.props)) },
+	            _extends({}, this.props, { className: _classnames2['default'](this.getClassNamesForArguments('table'), this.getClassNames(this.props), this.props.className) }),
 	            _react2['default'].createElement(
 	                'thead',
 	                null,
@@ -14418,6 +14417,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -14482,8 +14483,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Th.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'th',
-	            {
-	                onClick: this.sortHandler.bind(this) },
+	            _extends({}, this.props, {
+	                onClick: this.sortHandler.bind(this) }),
 	            this.props.children,
 	            this.props.sort === 'des' ? _react2['default'].createElement(
 	                'span',
@@ -14588,6 +14589,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -14631,7 +14634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Tr.prototype.render = function render() {
 	        return _react2['default'].createElement(
 	            'tr',
-	            { className: _classnames2['default'](this.props.split ? this.getClassName('split') : null) },
+	            _extends({}, this.props, { className: _classnames2['default'](this.props.split ? this.getClassName('split') : null, this.props.className) }),
 	            this.props.children
 	        );
 	    };
