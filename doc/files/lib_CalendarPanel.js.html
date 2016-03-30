@@ -447,6 +447,10 @@ var _utilsClassNameMixinJs = require(&#x27;./utils/ClassNameMixin.js&#x27;);
 
 var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
+var _utilsComponent = require(&#x27;./utils/Component&#x27;);
+
+var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
+
 var _InputJs = require(&#x27;./Input.js&#x27;);
 
 var _InputJs2 = _interopRequireDefault(_InputJs);
@@ -508,6 +512,8 @@ var CalendarPanel = (function (_Component) {
 
         _Component.call(this, props, context);
 
+        this.calendarContainer = this.uniqueId();
+
         this.state = {
             isShow: false,
             value: &#x27;&#x27;,
@@ -543,7 +549,7 @@ var CalendarPanel = (function (_Component) {
 
     CalendarPanel.prototype.inputFocusHandler = function inputFocusHandler(e) {
 
-        var container = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this),
+        var container = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.calendarContainer]),
             _this = this,
             calendar = container.querySelector(&#x27;.&#x27; + this.getClassName(&#x27;container&#x27;)),
             input = e.target;
@@ -604,7 +610,7 @@ var CalendarPanel = (function (_Component) {
 
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;panel&#x27;)) },
+            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;panel&#x27;)), ref: this.calendarContainer },
             options,
             _react2[&#x27;default&#x27;].createElement(_CalendarJs2[&#x27;default&#x27;], _extends({}, this.props, {
                 show: this.state.isShow,
@@ -618,7 +624,7 @@ var CalendarPanel = (function (_Component) {
     var _CalendarPanel = CalendarPanel;
     CalendarPanel = _utilsClassNameMixinJs2[&#x27;default&#x27;](CalendarPanel) || CalendarPanel;
     return CalendarPanel;
-})(_react.Component);
+})(_utilsComponent2[&#x27;default&#x27;]);
 
 exports[&#x27;default&#x27;] = CalendarPanel;
 module.exports = exports[&#x27;default&#x27;];

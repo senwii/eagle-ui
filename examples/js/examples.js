@@ -31403,6 +31403,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
+	var _utilsComponent = __webpack_require__(246);
+
+	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
+
 	var _InputJs = __webpack_require__(245);
 
 	var _InputJs2 = _interopRequireDefault(_InputJs);
@@ -31464,6 +31468,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.call(this, props, context);
 
+	        this.calendarContainer = this.uniqueId();
+
 	        this.state = {
 	            isShow: false,
 	            value: '',
@@ -31499,7 +31505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    CalendarPanel.prototype.inputFocusHandler = function inputFocusHandler(e) {
 
-	        var container = _reactLibReactDOM2['default'].findDOMNode(this),
+	        var container = _reactLibReactDOM2['default'].findDOMNode(this.refs[this.calendarContainer]),
 	            _this = this,
 	            calendar = container.querySelector('.' + this.getClassName('container')),
 	            input = e.target;
@@ -31560,7 +31566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('panel')) },
+	            { className: _classnames2['default'](this.getClassName('panel')), ref: this.calendarContainer },
 	            options,
 	            _react2['default'].createElement(_CalendarJs2['default'], _extends({}, this.props, {
 	                show: this.state.isShow,
@@ -31574,7 +31580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _CalendarPanel = CalendarPanel;
 	    CalendarPanel = _utilsClassNameMixinJs2['default'](CalendarPanel) || CalendarPanel;
 	    return CalendarPanel;
-	})(_react.Component);
+	})(_utilsComponent2['default']);
 
 	exports['default'] = CalendarPanel;
 	module.exports = exports['default'];

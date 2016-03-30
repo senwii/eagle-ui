@@ -1,7 +1,8 @@
-import React,{ PropTypes, Component } from 'react';
+import React,{ PropTypes } from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import ClassNameMixin from './utils/ClassNameMixin.js';
+import Component from './utils/Component';
 
 import Input from './Input.js';
 import Calendar from './Calendar.js';
@@ -50,6 +51,8 @@ export default class CalendarPanel extends Component{
     constructor(props, context) {
         super(props, context);
 
+        this.calendarContainer = this.uniqueId();
+
         this.state = {
             isShow:false,
             value:'',
@@ -87,7 +90,7 @@ export default class CalendarPanel extends Component{
 
     inputFocusHandler(e){
 
-        let container = ReactDom.findDOMNode(this),
+        let container = ReactDom.findDOMNode(this.refs[this.calendarContainer]),
             _this = this,
             calendar = container.querySelector(`.${this.getClassName('container')}`),
             input = e.target;
@@ -153,7 +156,7 @@ export default class CalendarPanel extends Component{
         return (
             <div className={
                 classnames(this.getClassName('panel') )
-            }>
+            } ref={this.calendarContainer}>
                 {options}
                 <Calendar
                     {...this.props}

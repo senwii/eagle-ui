@@ -576,10 +576,9 @@ var Table = (function (_Component) {
                 }, self)
             );
         });
-        console.log(this.props);
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;table&#x27;,
-            { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;table&#x27;), this.getClassNames(this.props)) },
+            _extends({}, this.props, { className: _classnames2[&#x27;default&#x27;](this.getClassNamesForArguments(&#x27;table&#x27;), this.getClassNames(this.props), this.props.className) }),
             _react2[&#x27;default&#x27;].createElement(
                 &#x27;thead&#x27;,
                 null,

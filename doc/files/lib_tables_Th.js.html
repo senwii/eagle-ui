@@ -421,6 +421,8 @@
 
 exports.__esModule = true;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (&#x27;value&#x27; in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
@@ -484,8 +486,8 @@ var Th = (function (_Component) {
     Th.prototype.render = function render() {
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;th&#x27;,
-            {
-                onClick: this.sortHandler.bind(this) },
+            _extends({}, this.props, {
+                onClick: this.sortHandler.bind(this) }),
             this.props.children,
             this.props.sort === &#x27;des&#x27; ? _react2[&#x27;default&#x27;].createElement(
                 &#x27;span&#x27;,
