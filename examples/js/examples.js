@@ -31472,7 +31472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this.state = {
 	            isShow: false,
-	            value: '',
+	            value: this.props.defaultDate || '',
 	            windowType: 0
 	        };
 	    }

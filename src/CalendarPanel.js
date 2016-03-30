@@ -55,7 +55,7 @@ export default class CalendarPanel extends Component{
 
         this.state = {
             isShow:false,
-            value:'',
+            value:this.props.defaultDate || '',
             windowType:0
         };
     }
