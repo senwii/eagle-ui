@@ -149,7 +149,7 @@ export default class Calendar extends Component{
                         'no-hover':d==' ',
                         [this.getClassName('selected')]:(this.isOptionSelect(selectedDate,defaultDate) && defaultDate.getDate()==d &&!disabled )
                     })
-                } onMouseDown={disabled ||d==' '? '':_this.dateClick.bind(_this,`${year}/${month+1}/${d}`)} >{d}</span></td> );
+                } onMouseDown={disabled ||d==' '? ()=>{}:_this.dateClick.bind(_this,`${year}/${month+1}/${d}`)} >{d}</span></td> );
             }
         }
         return dom;
