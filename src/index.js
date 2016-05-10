@@ -27,6 +27,7 @@ export CalendarPanel from './CalendarPanel.js';
 
 export Dialog from './Dialog.js';
 export Tooltip from './Tooltip.js';
+export TooltipPanel from './TooltipPanel.js';
 export Panel from './panels/Panel.js';
 export PanelContent from './panels/PanelContent.js';
 export PanelFooter from './panels/PanelFooter.js';
@@ -50,7 +51,7 @@ window['Eagleui'] = {};
 [
     'Grid','Col','Row',
     'Button','ButtonGroup','CheckboxGroup','Input','RadioGroup','Label','ValidatorPanel',
-    'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip',
+    'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip','TooltipPanel',
     'Panel','PanelContent','PanelFooter','PanelHeader','List','Item',
     'Table','Tr','Td','Th','ImgSlider','FormGroup','Suggestion','ImgSlider','CalendarPanel','Star','Icon'
 ].forEach(function(clazzName){
