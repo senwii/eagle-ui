@@ -253,73 +253,79 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.Tooltip = _TooltipJs2['default'];
 
-	var _panelsPanelJs = __webpack_require__(277);
+	var _TooltipPanelJs = __webpack_require__(277);
+
+	var _TooltipPanelJs2 = _interopRequireDefault(_TooltipPanelJs);
+
+	exports.TooltipPanel = _TooltipPanelJs2['default'];
+
+	var _panelsPanelJs = __webpack_require__(278);
 
 	var _panelsPanelJs2 = _interopRequireDefault(_panelsPanelJs);
 
 	exports.Panel = _panelsPanelJs2['default'];
 
-	var _panelsPanelContentJs = __webpack_require__(279);
+	var _panelsPanelContentJs = __webpack_require__(280);
 
 	var _panelsPanelContentJs2 = _interopRequireDefault(_panelsPanelContentJs);
 
 	exports.PanelContent = _panelsPanelContentJs2['default'];
 
-	var _panelsPanelFooterJs = __webpack_require__(280);
+	var _panelsPanelFooterJs = __webpack_require__(281);
 
 	var _panelsPanelFooterJs2 = _interopRequireDefault(_panelsPanelFooterJs);
 
 	exports.PanelFooter = _panelsPanelFooterJs2['default'];
 
-	var _panelsPanelHeaderJs = __webpack_require__(278);
+	var _panelsPanelHeaderJs = __webpack_require__(279);
 
 	var _panelsPanelHeaderJs2 = _interopRequireDefault(_panelsPanelHeaderJs);
 
 	exports.PanelHeader = _panelsPanelHeaderJs2['default'];
 
-	var _ListJs = __webpack_require__(281);
+	var _ListJs = __webpack_require__(282);
 
 	var _ListJs2 = _interopRequireDefault(_ListJs);
 
 	exports.List = _ListJs2['default'];
 
-	var _ItemJs = __webpack_require__(282);
+	var _ItemJs = __webpack_require__(283);
 
 	var _ItemJs2 = _interopRequireDefault(_ItemJs);
 
 	exports.Item = _ItemJs2['default'];
 
-	var _ValidatorPanel2 = __webpack_require__(283);
+	var _ValidatorPanel2 = __webpack_require__(284);
 
 	var _ValidatorPanel3 = _interopRequireDefault(_ValidatorPanel2);
 
 	exports.ValidatorPanel = _ValidatorPanel3['default'];
 
-	var _tablesTableJs = __webpack_require__(284);
+	var _tablesTableJs = __webpack_require__(285);
 
 	var _tablesTableJs2 = _interopRequireDefault(_tablesTableJs);
 
 	exports.Table = _tablesTableJs2['default'];
 
-	var _tablesTrJs = __webpack_require__(287);
+	var _tablesTrJs = __webpack_require__(288);
 
 	var _tablesTrJs2 = _interopRequireDefault(_tablesTrJs);
 
 	exports.Tr = _tablesTrJs2['default'];
 
-	var _tablesTdJs = __webpack_require__(286);
+	var _tablesTdJs = __webpack_require__(287);
 
 	var _tablesTdJs2 = _interopRequireDefault(_tablesTdJs);
 
 	exports.Td = _tablesTdJs2['default'];
 
-	var _tablesThJs = __webpack_require__(285);
+	var _tablesThJs = __webpack_require__(286);
 
 	var _tablesThJs2 = _interopRequireDefault(_tablesThJs);
 
 	exports.Th = _tablesThJs2['default'];
 
-	var _FormGroupJs = __webpack_require__(288);
+	var _FormGroupJs = __webpack_require__(289);
 
 	var _FormGroupJs2 = _interopRequireDefault(_FormGroupJs);
 
@@ -333,7 +339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	window['Eagleui'] = {};
 
-	['Grid', 'Col', 'Row', 'Button', 'ButtonGroup', 'CheckboxGroup', 'Input', 'RadioGroup', 'Label', 'ValidatorPanel', 'Crumb', 'Search', 'Select', 'LabelGroup', 'Toast', 'Paging', 'Calendar', 'Tab', 'Tabset', 'Dialog', 'Tooltip', 'Panel', 'PanelContent', 'PanelFooter', 'PanelHeader', 'List', 'Item', 'Table', 'Tr', 'Td', 'Th', 'ImgSlider', 'FormGroup', 'Suggestion', 'ImgSlider', 'CalendarPanel', 'Star', 'Icon'].forEach(function (clazzName) {
+	['Grid', 'Col', 'Row', 'Button', 'ButtonGroup', 'CheckboxGroup', 'Input', 'RadioGroup', 'Label', 'ValidatorPanel', 'Crumb', 'Search', 'Select', 'LabelGroup', 'Toast', 'Paging', 'Calendar', 'Tab', 'Tabset', 'Dialog', 'Tooltip', 'TooltipPanel', 'Panel', 'PanelContent', 'PanelFooter', 'PanelHeader', 'List', 'Item', 'Table', 'Tr', 'Td', 'Th', 'ImgSlider', 'FormGroup', 'Suggestion', 'ImgSlider', 'CalendarPanel', 'Star', 'Icon'].forEach(function (clazzName) {
 	    Eagleui[clazzName] = exports[clazzName];
 	});
 
@@ -12943,6 +12949,309 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * Created by panqianjin on 15/11/17.
+	 */
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(44);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _utilsClassNameMixin = __webpack_require__(46);
+
+	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
+
+	var _classnames = __webpack_require__(45);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _TooltipJs = __webpack_require__(276);
+
+	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
+
+	var _ButtonJs = __webpack_require__(244);
+
+	var _ButtonJs2 = _interopRequireDefault(_ButtonJs);
+
+	var _RowJs = __webpack_require__(243);
+
+	var _RowJs2 = _interopRequireDefault(_RowJs);
+
+	var _ColJs = __webpack_require__(48);
+
+	var _ColJs2 = _interopRequireDefault(_ColJs);
+
+	var _GridJs = __webpack_require__(43);
+
+	var _GridJs2 = _interopRequireDefault(_GridJs);
+
+	var _reactLibReactDOM = __webpack_require__(44);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
+	/**
+	 * tipsPanel组件
+	 * 方向可选：top,down,left,right.默认down
+	 * 存在边界判断，若指定方向容纳不了提示，会转为默认
+	 * @class TooltipPanel
+	 * @moudle ui
+	 * @constructor
+	 * @demo star.js {UI展示}
+	 * @demo tooltip.js {源码}
+	 * @show true
+	 * */
+
+	var TooltipPanel = (function (_Component) {
+	    _inherits(TooltipPanel, _Component);
+
+	    _createClass(TooltipPanel, null, [{
+	        key: 'propType',
+	        value: {
+	            /**
+	             * 提示是否展示
+	             * @property show
+	             * @type Boolean
+	             * @default false
+	             * */
+	            show: _react.PropTypes.boolean,
+	            /**
+	             * 提示内容
+	             * @property msg
+	             * @type String
+	             * @default 这是个提示
+	             * */
+	            msg: _react.PropTypes.string,
+	            /**
+	             * 提示方向
+	             * @property direction
+	             * @type String
+	             * @default down
+	             * */
+	            direction: _react.PropTypes.string,
+	            classPrefix: _react.PropTypes.string,
+	            componentTag: _react.PropTypes.string
+	        },
+	        enumerable: true
+	    }, {
+	        key: 'defaultProps',
+	        value: {
+	            show: false,
+	            msg: "这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示",
+	            direction: 'down',
+	            classPrefix: 'tooltip',
+	            componentTag: 'div'
+	        },
+	        enumerable: true
+	    }]);
+
+	    function TooltipPanel(props, context) {
+	        _classCallCheck(this, _TooltipPanel);
+
+	        _Component.call(this, props, context);
+	        this.state = {
+	            /**
+	             * 显示与否由父组件控制
+	             * @type Boolean
+	             * */
+	            show: this.props.show
+	        };
+	    }
+
+	    /**
+	     * 渲染完成时进行方向和边界判断，调整tips的位置
+	     * @method componentDidMount
+	     * @return null
+	     * */
+
+	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
+	        this.changeStyle(this.props.direction);
+	    };
+
+	    /**
+	     * @method render
+	     * @return ReactElement
+	     * */
+
+	    TooltipPanel.prototype.render = function render() {
+	        var componentTag = this.props.children.props.componentTag;
+
+	        //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
+	        return _react2['default'].createElement(
+	            _GridJs2['default'],
+	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
+	            _react2['default'].cloneElement(this.props.children, {
+	                onMouseEnter: this.showTips.bind(this),
+	                onMouseOut: this.hideTips.bind(this)
+	            }),
+	            _react2['default'].createElement(_TooltipJs2['default'], _extends({ ref: 'tips' }, this.props, { show: this.state.show }))
+	        );
+	    };
+
+	    /**
+	     * 鼠标over，set show true,tips显示
+	     * @method showTips
+	     * @return null
+	     * */
+
+	    TooltipPanel.prototype.showTips = function showTips() {
+	        this.setState({
+	            show: true
+	        });
+	    };
+
+	    /**
+	     * 鼠标leave，set show false, tips隐藏
+	     * @method hideTips
+	     * @return null
+	     * */
+
+	    TooltipPanel.prototype.hideTips = function hideTips() {
+	        this.setState({
+	            show: false
+	        });
+	    };
+
+	    /**
+	     * tips方向和边界判断，调整tips的位置
+	     * @method changeStyle
+	     * @param direction {String}
+	     * @return null
+	     * */
+
+	    TooltipPanel.prototype.changeStyle = function changeStyle(direction) {
+	        var dir = direction;
+	        var dbody = document.body;
+	        var delement = document.documentElement;
+
+	        var tipNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.tips);
+
+	        var eleNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.container).children[0];
+
+	        var bodys = {
+	            height: dbody.clientHeight,
+	            width: dbody.clientWidth
+	        };
+	        var doc = {
+	            height: delement.clientHeight,
+	            width: delement.clientWidth
+	        };
+	        var tips = {
+	            height: tipNode.offsetHeight,
+	            width: tipNode.offsetWidth
+	        };
+	        var element = {
+	            height: eleNode.offsetHeight,
+	            width: eleNode.offsetWidth,
+	            left: eleNode.parentNode.offsetLeft,
+	            top: eleNode.parentNode.offsetTop
+	        };
+	        var maxBody = this.getMaxBody(bodys, doc);
+	        var validate = this.isValidate(dir, tips, element, maxBody);
+	        if (!validate) {
+	            var arrow = tipNode.children[0];
+	            this.removeClass(arrow, _classnames2['default'](this.getClassName('arrow-' + dir)));
+	            this.addClass(arrow, _classnames2['default'](this.getClassName('arrow-down')));
+	            dir = 'down';
+	        }
+	        switch (dir) {
+	            case 'down':
+	                tipNode.style.left = '0';
+	                break;
+	            case 'top':
+	                tipNode.style.top = '-' + (tips.height + 10) + 'px';
+	                tipNode.style.left = '0';
+	                break;
+	            case 'left':
+	                tipNode.style.left = '-' + (tips.width + 5) + 'px';
+	                tipNode.style.top = (element.height - tips.height) / 2 - 5 + 'px';
+	                break;
+	            case 'right':
+	                tipNode.style.left = 'auto';
+	                tipNode.style.right = '-' + (tips.width + 5) + 'px';
+	                tipNode.style.top = (element.height - tips.height) / 2 - 5 + 'px';
+	                break;
+	            default:
+	                break;
+	        }
+	    };
+
+	    /**
+	     * 获得浏览器的边界大小
+	     * @method getMaxBody
+	     * @param body {Object}
+	     * @param doc {Object}
+	     * @return maxBody {Object}
+	     * */
+
+	    TooltipPanel.prototype.getMaxBody = function getMaxBody(body, doc) {
+	        var maxBody = {
+	            height: body.height > doc.height ? body.height : doc.height,
+	            width: body.width > doc.width ? body.width : doc.width
+
+	        };
+	        return maxBody;
+	    };
+
+	    /**
+	     * 判断是否满足边界条件,是返回true否返回false
+	     * @method isValidate
+	     * @param dir {String}
+	     * @param tips {Object}
+	     * @param ele {Object}
+	     * @param maxBody {Object}
+	     * @return flag {Boolean}
+	     * */
+
+	    TooltipPanel.prototype.isValidate = function isValidate(dir, tips, ele, maxBody) {
+	        var flag = false;
+	        switch (dir) {
+	            case 'down':
+	                flag = maxBody.height - ele.top > ele.height + tips.height ? true : false;
+	                return flag;
+	                break;
+	            case 'top':
+	                flag = ele.top > tips.height ? true : false;
+	                return flag;
+	                break;
+	            case 'left':
+	                flag = ele.left > tips.width ? true : false;
+	                return flag;
+	                break;
+	            case 'right':
+	                flag = maxBody.width - ele.left > ele.width + tips.width ? true : false;
+	                return flag;
+	                break;
+	            default:
+	                return flag;
+	                break;
+	        }
+	    };
+
+	    var _TooltipPanel = TooltipPanel;
+	    TooltipPanel = _utilsClassNameMixin2['default'](TooltipPanel) || TooltipPanel;
+	    return TooltipPanel;
+	})(_react.Component);
+
+	exports['default'] = TooltipPanel;
+	module.exports = exports['default'];
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	exports.__esModule = true;
@@ -12965,7 +13274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _PanelHeader = __webpack_require__(278);
+	var _PanelHeader = __webpack_require__(279);
 
 	var _PanelHeader2 = _interopRequireDefault(_PanelHeader);
 
@@ -13070,7 +13379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13157,7 +13466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13242,7 +13551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13327,7 +13636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13390,7 +13699,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13456,7 +13765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14226,7 +14535,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14255,15 +14564,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	var _ThJs = __webpack_require__(285);
+	var _ThJs = __webpack_require__(286);
 
 	var _ThJs2 = _interopRequireDefault(_ThJs);
 
-	var _TdJs = __webpack_require__(286);
+	var _TdJs = __webpack_require__(287);
 
 	var _TdJs2 = _interopRequireDefault(_TdJs);
 
-	var _TrJs = __webpack_require__(287);
+	var _TrJs = __webpack_require__(288);
 
 	var _TrJs2 = _interopRequireDefault(_TrJs);
 
@@ -14417,7 +14726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14513,7 +14822,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14588,7 +14897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14674,7 +14983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
