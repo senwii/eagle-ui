@@ -3332,9 +3332,10 @@ b.eg-slider-arrow-right {
   position: relative;
 }
 .eg-tooltip-container:hover .eg-tooltip-wraper {
-  display: block;
+  visibility: visible;
 }
 .eg-tooltip-container .eg-tooltip-wraper {
+  visibility: hidden;
   position: absolute;
   min-width: 90px;
   z-index: 9001;

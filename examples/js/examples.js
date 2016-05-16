@@ -45807,11 +45807,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                'sadasda',
 	                _react2['default'].createElement(
 	                    _srcTooltipPanelJs2['default'],
-	                    { direction: 'top' },
+	                    { direction: 'bottom' },
 	                    _react2['default'].createElement(
 	                        _srcButtonJs2['default'],
 	                        { radius: true, egSize: 'sm', egStyle: 'warning' },
-	                        '应在上边2'
+	                        '应在下边2'
 	                    )
 	                )
 	            ),

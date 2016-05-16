@@ -10,8 +10,8 @@ let Demo = class Demo extends Component{
         return (
             <div>
             <div style={{width:'300px',marginBottom:'200px'}}>sadasda
-                <TooltipPanel direction='top'>
-                <Button radius egSize="sm" egStyle="warning">应在上边2</Button>
+                <TooltipPanel direction='bottom'>
+                <Button radius egSize="sm" egStyle="warning">应在下边2</Button>
                 </TooltipPanel>
             </div>
                 <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>
