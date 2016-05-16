@@ -10348,7 +10348,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setProperty('outside', outside);
 	        return _react2['default'].createElement(
 	            this.componentTag,
-	            { className: _classnames2['default'](this.getProperty(), this.getClassName(className)) },
+	            { className: _classnames2['default'](this.getProperty(), this.getClassName(className), this.props.className), style: this.props.style },
 	            _react2['default'].createElement(
 	                'div',
 	                { className: _classnames2['default']('header', 'h4', {
