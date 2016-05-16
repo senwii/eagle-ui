@@ -21,21 +21,23 @@ let Demo = class Demo extends Component{
                 <TooltipPanel direction='right' style={{marginLeft:'100px'}}>
                     <Button radius egSize="sm" egStyle="warning">应在右边</Button>
                 </TooltipPanel>
-                <TooltipPanel direction='down' style={{marginLeft:'100px'}}>
+                <TooltipPanel direction='down' style={{marginLeft:'100px'}} msg={<div>hello world,hello world</div>}>
                     <Button radius egSize="sm" egStyle="warning">应在下边</Button>
                 </TooltipPanel>
-                <TooltipPanel direction='top'>
-                    <Button radius egSize="sm" egStyle="warning">应在上边</Button>
-                </TooltipPanel>
                 <div>
-                    <TooltipPanel direction='left'>
+                    <TooltipPanel direction='left' msg={<div>hello world,hello world</div>}>
                         <Button radius egSize="sm" egStyle="warning">应在左边2</Button>
                     </TooltipPanel>
-                    <div style={{float:'right'}}>
-                        <TooltipPanel direction='right'>
+                    <div style={{marginTop:'30px'}}>
+                        <TooltipPanel direction='right' msg={<div>hello world,hello world</div>}>
                             <Button radius egSize="sm" egStyle="warning">应在右边2</Button>
                         </TooltipPanel>
                     </div>
+                    <TooltipPanel direction='top'
+                                  style={{float:'left',marginLeft:'300px'}}
+                                  msg={<div style={{width:'200px'}}>hello world,hello world<button style={{color:'red'}}>press</button></div>}>
+                        <Button radius egSize="sm" egStyle="warning">上边应在上边</Button>
+                    </TooltipPanel>
                 </div>
             </div>)
     }

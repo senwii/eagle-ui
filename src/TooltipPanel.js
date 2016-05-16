@@ -73,7 +73,7 @@ class TooltipPanel extends Component {
      * @return null
      * */
     componentDidMount(){
-        this.changeStyle(this.props.direction);
+        setTimeout(()=>this.changeStyle(this.props.direction),0);
     }
     /**
      * @method render
@@ -83,36 +83,33 @@ class TooltipPanel extends Component {
         let {componentTag} = this.props.children.props;
         //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
         return (
-            <Grid  {...this.props} className={classnames(
+            <Grid  {...this.props} ref='tip-container' className={classnames(
                 this.getClassName('container'))} ref='container' >
-                    {React.cloneElement(this.props.children,{
-                        onMouseEnter: ::this.showTips,
-                        onMouseOut: ::this.hideTips
-                        }) }
-                    <Tooltip ref='tips' {...this.props} show={this.state.show} />
+                {this.props.children}
+                    <Tooltip ref='tips' {...this.props} />
             </Grid>
         );
     }
-   /**
-    * 鼠标over，set show true,tips显示
-    * @method showTips
-    * @return null
-    * */
-    showTips() {
-        this.setState({
-            show: true
-        });
-    }
-    /**
-     * 鼠标leave，set show false, tips隐藏
-     * @method hideTips
-     * @return null
-     * */
-    hideTips() {
-        this.setState({
-            show: false
-        });
-    }
+   ///**
+   // * 鼠标over，set show true,tips显示
+   // * @method showTips
+   // * @return null
+   // * */
+   // showTips() {
+   //     this.setState({
+   //         show: true
+   //     });
+   // }
+   // /**
+   //  * 鼠标leave，set show false, tips隐藏
+   //  * @method hideTips
+   //  * @return null
+   //  * */
+   // hideTips() {
+   //     this.setState({
+   //         show: false
+   //     });
+   // }
     /**
      * tips方向和边界判断，调整tips的位置
      * @method changeStyle
@@ -122,6 +119,7 @@ class TooltipPanel extends Component {
     changeStyle(direction){
         let dir = direction;
         let [dbody,delement,tipNode,eleNode] = [document.body,document.documentElement,ReactDom.findDOMNode(this.refs.tips),ReactDom.findDOMNode(this.refs.container).children[0]];
+        console.log(tipNode);
         let bodys = {
             height: dbody.clientHeight,
             width: dbody.clientWidth
@@ -139,7 +137,7 @@ class TooltipPanel extends Component {
             width: eleNode.offsetWidth,
             left: eleNode.parentNode.offsetLeft,
             top: eleNode.parentNode.offsetTop
-        }
+        };
         let maxBody = this.getMaxBody(bodys,doc);
         let validate = this.isValidate(dir,tips,element,maxBody);
         if(!validate){
@@ -154,20 +152,20 @@ class TooltipPanel extends Component {
         }
         switch(dir){
             case 'down':
-                tipNode.style.left = '0';
+                tipNode.style.top = element.height+'px';
+                tipNode.style.left = (element.width - tipNode.offsetWidth)/2+'px';
                 break;
             case 'top':
-                tipNode.style.top = '-'+(tips.height + 10)+'px';
-                tipNode.style.left = '0';
+                tipNode.style.top ='-'+(tips.height + 10)+'px';
+                tipNode.style.left = (element.width - tipNode.offsetWidth)/2+'px';
                 break;
             case 'left':
-                tipNode.style.left = '-'+(tips.width+5)+'px';
-                tipNode.style.top = ((element.height - tips.height)/2 - 5)+'px';
+                tipNode.style.right = element.width+5+'px';
+                tipNode.style.top = ((element.height - tipNode.offsetHeight)/2 - 5)+'px';
                 break;
             case 'right':
-                tipNode.style.left = 'auto';
-                tipNode.style.right = '-'+(tips.width+5)+'px';
-                tipNode.style.top = ((element.height - tips.height)/2 - 5)+'px';
+                tipNode.style.left = element.width+5+'px';
+                tipNode.style.top = ((element.height - tipNode.offsetHeight)/2 - 5)+'px';
                 break;
             default :
                 break;

@@ -3331,13 +3331,12 @@ b.eg-slider-arrow-right {
   display: inline-block;
   position: relative;
 }
-.eg-tooltip-container .eg-tooltip-wraper {
-  visibility: hidden;
+.eg-tooltip-container:hover .eg-tooltip-wraper {
   display: block;
+}
+.eg-tooltip-container .eg-tooltip-wraper {
   position: absolute;
-  left: -999rem;
   min-width: 90px;
-  max-width: 150px;
   z-index: 9001;
   margin: 5px 0;
   background: rgba(0, 0, 0, 0.6);
@@ -3354,7 +3353,6 @@ b.eg-slider-arrow-right {
   padding: 5px;
   color: #fff;
   min-width: 90px;
-  max-width: 100px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down,
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top,
@@ -3369,26 +3367,30 @@ b.eg-slider-arrow-right {
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down {
   border-color: transparent transparent #000 transparent;
-  left: 43%;
+  left: 50%;
+  margin-left: -4px;
   top: -5px;
   border-width: 0 5px 5px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top {
   border-color: #000 transparent transparent transparent;
-  left: 43%;
+  left: 50%;
+  margin-left: -4px;
   bottom: -5px;
   border-width: 5px 5px 0;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left {
   border-color: transparent transparent transparent #000;
   right: -5px;
-  top: 43%;
+  top: 50%;
+  margin-top: -4px;
   border-width: 5px 0 5px 5px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
   border-color: transparent #000 transparent transparent;
   left: -10px;
-  top: 43%;
+  top: 50%;
+  margin-top: -4px;
   border-width: 5px;
 }
 .eg-tooltip-container .eg-tooltip-show {

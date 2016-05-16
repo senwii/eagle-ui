@@ -9548,6 +9548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9581,8 +9582,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9593,7 +9592,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 
@@ -13442,7 +13445,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+
 	    return nativeProps;
 	  }
 
@@ -16902,15 +16908,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
+	/* eslint-disable fb-www/typeof-undefined */
+
 	/**
 	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
 	 * not safe to call document.activeElement if there is nothing focused.
 	 *
-	 * The activeElement will be null only if the document body is not yet defined.
+	 * The activeElement will be null only if the document or document body is not
+	 * yet defined.
 	 */
-	"use strict";
+	'use strict';
 
 	function getActiveElement() /*?DOMElement*/{
+	  if (typeof document === 'undefined') {
+	    return null;
+	  }
 	  try {
 	    return document.activeElement || document.body;
 	  } catch (e) {
@@ -18909,7 +18921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.5';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 184 */
@@ -22633,7 +22645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	module.exports = function (str) {
 		return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
-			return '%' + c.charCodeAt(0).toString(16);
+			return '%' + c.charCodeAt(0).toString(16).toUpperCase();
 		});
 	};
 
@@ -24991,7 +25003,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -25003,7 +25015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -25012,19 +25024,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -38378,7 +38390,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
-	        this.changeStyle(this.props.direction);
+	        var _this = this;
+
+	        setTimeout(function () {
+	            return _this.changeStyle(_this.props.direction);
+	        }, 0);
 	    };
 
 	    /**
@@ -38392,39 +38408,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
-	            _react2['default'].cloneElement(this.props.children, {
-	                onMouseEnter: this.showTips.bind(this),
-	                onMouseOut: this.hideTips.bind(this)
-	            }),
-	            _react2['default'].createElement(_TooltipJs2['default'], _extends({ ref: 'tips' }, this.props, { show: this.state.show }))
+	            _extends({}, this.props, { ref: 'tip-container', className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
+	            this.props.children,
+	            _react2['default'].createElement(_TooltipJs2['default'], _extends({ ref: 'tips' }, this.props))
 	        );
 	    };
 
-	    /**
-	     * 鼠标over，set show true,tips显示
-	     * @method showTips
-	     * @return null
-	     * */
-
-	    TooltipPanel.prototype.showTips = function showTips() {
-	        this.setState({
-	            show: true
-	        });
-	    };
-
-	    /**
-	     * 鼠标leave，set show false, tips隐藏
-	     * @method hideTips
-	     * @return null
-	     * */
-
-	    TooltipPanel.prototype.hideTips = function hideTips() {
-	        this.setState({
-	            show: false
-	        });
-	    };
-
+	    ///**
+	    // * 鼠标over，set show true,tips显示
+	    // * @method showTips
+	    // * @return null
+	    // * */
+	    // showTips() {
+	    //     this.setState({
+	    //         show: true
+	    //     });
+	    // }
+	    // /**
+	    //  * 鼠标leave，set show false, tips隐藏
+	    //  * @method hideTips
+	    //  * @return null
+	    //  * */
+	    // hideTips() {
+	    //     this.setState({
+	    //         show: false
+	    //     });
+	    // }
 	    /**
 	     * tips方向和边界判断，调整tips的位置
 	     * @method changeStyle
@@ -38441,6 +38450,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var eleNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.container).children[0];
 
+	        console.log(tipNode);
 	        var bodys = {
 	            height: dbody.clientHeight,
 	            width: dbody.clientWidth
@@ -38469,20 +38479,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        switch (dir) {
 	            case 'down':
-	                tipNode.style.left = '0';
+	                tipNode.style.top = element.height + 'px';
+	                tipNode.style.left = (element.width - tipNode.offsetWidth) / 2 + 'px';
 	                break;
 	            case 'top':
 	                tipNode.style.top = '-' + (tips.height + 10) + 'px';
-	                tipNode.style.left = '0';
+	                tipNode.style.left = (element.width - tipNode.offsetWidth) / 2 + 'px';
 	                break;
 	            case 'left':
-	                tipNode.style.left = '-' + (tips.width + 5) + 'px';
-	                tipNode.style.top = (element.height - tips.height) / 2 - 5 + 'px';
+	                tipNode.style.right = element.width + 5 + 'px';
+	                tipNode.style.top = (element.height - tipNode.offsetHeight) / 2 - 5 + 'px';
 	                break;
 	            case 'right':
-	                tipNode.style.left = 'auto';
-	                tipNode.style.right = '-' + (tips.width + 5) + 'px';
-	                tipNode.style.top = (element.height - tips.height) / 2 - 5 + 'px';
+	                tipNode.style.left = element.width + 5 + 'px';
+	                tipNode.style.top = (element.height - tipNode.offsetHeight) / 2 - 5 + 'px';
 	                break;
 	            default:
 	                break;
@@ -45830,7 +45840,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ),
 	            _react2['default'].createElement(
 	                _srcTooltipPanelJs2['default'],
-	                { direction: 'down', style: { marginLeft: '100px' } },
+	                { direction: 'down', style: { marginLeft: '100px' }, msg: _react2['default'].createElement(
+	                        'div',
+	                        null,
+	                        'hello world,hello world'
+	                    ) },
 	                _react2['default'].createElement(
 	                    _srcButtonJs2['default'],
 	                    { radius: true, egSize: 'sm', egStyle: 'warning' },
@@ -45838,20 +45852,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                )
 	            ),
 	            _react2['default'].createElement(
-	                _srcTooltipPanelJs2['default'],
-	                { direction: 'top' },
-	                _react2['default'].createElement(
-	                    _srcButtonJs2['default'],
-	                    { radius: true, egSize: 'sm', egStyle: 'warning' },
-	                    '应在上边'
-	                )
-	            ),
-	            _react2['default'].createElement(
 	                'div',
 	                null,
 	                _react2['default'].createElement(
 	                    _srcTooltipPanelJs2['default'],
-	                    { direction: 'left' },
+	                    { direction: 'left', msg: _react2['default'].createElement(
+	                            'div',
+	                            null,
+	                            'hello world,hello world'
+	                        ) },
 	                    _react2['default'].createElement(
 	                        _srcButtonJs2['default'],
 	                        { radius: true, egSize: 'sm', egStyle: 'warning' },
@@ -45860,15 +45869,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	                ),
 	                _react2['default'].createElement(
 	                    'div',
-	                    { style: { float: 'right' } },
+	                    { style: { marginTop: '30px' } },
 	                    _react2['default'].createElement(
 	                        _srcTooltipPanelJs2['default'],
-	                        { direction: 'right' },
+	                        { direction: 'right', msg: _react2['default'].createElement(
+	                                'div',
+	                                null,
+	                                'hello world,hello world'
+	                            ) },
 	                        _react2['default'].createElement(
 	                            _srcButtonJs2['default'],
 	                            { radius: true, egSize: 'sm', egStyle: 'warning' },
 	                            '应在右边2'
 	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _srcTooltipPanelJs2['default'],
+	                    { direction: 'top',
+	                        style: { float: 'left', marginLeft: '300px' },
+	                        msg: _react2['default'].createElement(
+	                            'div',
+	                            { style: { width: '200px' } },
+	                            'hello world,hello world',
+	                            _react2['default'].createElement(
+	                                'button',
+	                                { style: { color: 'red' } },
+	                                'press'
+	                            )
+	                        ) },
+	                    _react2['default'].createElement(
+	                        _srcButtonJs2['default'],
+	                        { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                        '上边应在上边'
 	                    )
 	                )
 	            )
