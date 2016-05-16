@@ -53,7 +53,7 @@ let Demo= class Demo extends Component{
                 <Button onClick={::this.showAlert} className="mg-right-15">点击我alert</Button>
                 <Button onClick={::this.nomask} className="mg-right-15">无遮罩显示</Button>
                 <Button onClick={::this.showConfirm}>点击我Confirm</Button>
-                <Dialog id="demo1" egSize="xs" buttonAlign="right" title="苍老师你好" buttons={[
+                <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好" buttons={[
                     {
                         type: 'success',
                         name: '确认',

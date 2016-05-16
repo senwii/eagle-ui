@@ -103,8 +103,9 @@ export default class Mask extends Component{
         return (
             <this.componentTag className={classnames(
                 this.getProperty(),
-                this.getClassName(className)
-            )}>
+                this.getClassName(className),
+                this.props.className
+            )} style={this.props.style}>
 
                 <div className={
                     classnames(

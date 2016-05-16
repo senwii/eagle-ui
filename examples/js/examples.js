@@ -36513,7 +36513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setProperty('outside', outside);
 	        return _react2['default'].createElement(
 	            this.componentTag,
-	            { className: _classnames2['default'](this.getProperty(), this.getClassName(className)) },
+	            { className: _classnames2['default'](this.getProperty(), this.getClassName(className), this.props.className), style: this.props.style },
 	            _react2['default'].createElement(
 	                'div',
 	                { className: _classnames2['default']('header', 'h4', {
@@ -42733,7 +42733,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ),
 	            _react2['default'].createElement(
 	                _srcIndex.Dialog,
-	                { id: 'demo1', egSize: 'xs', buttonAlign: 'right', title: '苍老师你好', buttons: [{
+	                { id: 'demo1', egSize: 'xs', className: 'xxx', buttonAlign: 'right', title: '苍老师你好', buttons: [{
 	                        type: 'success',
 	                        name: '确认',
 	                        callback: function callback() {}
