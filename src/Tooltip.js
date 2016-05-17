@@ -79,8 +79,7 @@ export default class Tooltip extends Component {
                 )}></div>
                     <div className={classnames(
                     this.getClassName('content')
-                )}>
-                        {this.props.msg}
+                )}>{this.props.msg}
                     </div>
 
             </Grid>

@@ -31,7 +31,7 @@ let Index = class Index extends Component{
     render() {
         return (
             <div>
-                <h1>欢迎使用eagle-ui构建react pc 应用</h1>
+                <h1>欢迎使用eagle-ui构建react的pc 应用</h1>
             </div>
         );
     }

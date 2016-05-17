@@ -67,6 +67,14 @@ class TooltipPanel extends Component {
             show: this.props.show
         }
     }
+
+    /**
+     * 动态更新展示
+     */
+    componentDidUpdate(){
+
+        setTimeout(()=>this.changeStyle(this.props.direction),0);
+    }
     /**
      * 渲染完成时进行方向和边界判断，调整tips的位置
      * @method componentDidMount
@@ -119,7 +127,6 @@ class TooltipPanel extends Component {
     changeStyle(direction){
         let dir = direction;
         let [dbody,delement,tipNode,eleNode] = [document.body,document.documentElement,ReactDom.findDOMNode(this.refs.tips),ReactDom.findDOMNode(this.refs.container).children[0]];
-        console.log(tipNode);
         let bodys = {
             height: dbody.clientHeight,
             width: dbody.clientWidth
