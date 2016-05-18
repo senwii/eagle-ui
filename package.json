@@ -1,9 +1,9 @@
 {
   "name": "eagle-ui",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "This is a used to develop the background management system based on the react to develop a set of UI framework",
   "main": "lib",
-  "repository": "git://github.com/xiaoking/eagle-ui.git",
+  "repository": "git@github.com:future-team/eagle-ui.git",
   "keywords": [
     "engle-ui",
     "ui",
@@ -24,10 +24,10 @@
   },
   "bugs": {
     "mail":  "277407493@qq.com",
-    "web": "http://github.com/xiaoking/eagle-ui/issues",
-    "url": "http://github.com/xiaoking/eagle-ui/issues"
+    "web": "https://github.com/future-team/eagle-ui/issues",
+    "url": "https://github.com/future-team/eagle-ui/issues"
   },
-  "homepage": "http://github.com/xiaoking/eagle-ui",
+  "homepage": "https://github.com/future-team/eagle-ui",
   "maintainers": [
     {
       "name": "min xiao",
