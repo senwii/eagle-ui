@@ -6,10 +6,22 @@ import Tooltip from '../../../src/Tooltip.js';
 import Button from '../../../src/Button.js';
 import TooltipPanel from '../../../src/TooltipPanel.js';
 let Demo = class Demo extends Component{
+    constructor(){
+        "use strict";
+        super();
+        this.state={
+        test:'_'
+        }
+    }
+    change(){
+        setTimeout(()=>this.setState({
+            test:'hello world hello worldhello worldhello worldhello worldhello world'
+        }));
+    }
     render(){
         return (
             <div>
-            <div style={{width:'300px',marginBottom:'200px'}}>sadasda
+            <div style={{width:'300px',marginBottom:'200px'}} onClick={()=>this.change()}>
                 <TooltipPanel direction='bottom'>
                 <Button radius egSize="sm" egStyle="warning">应在下边2</Button>
                 </TooltipPanel>
@@ -35,7 +47,7 @@ let Demo = class Demo extends Component{
                     </div>
                     <TooltipPanel direction='top'
                                   style={{float:'left',marginLeft:'300px'}}
-                                  msg={<div style={{width:'200px'}}>hello world,hello world<button style={{color:'red'}}>press</button></div>}>
+                                  msg={this.state.test}>
                         <Button radius egSize="sm" egStyle="warning">上边应在上边</Button>
                     </TooltipPanel>
                 </div>

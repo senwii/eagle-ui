@@ -38384,16 +38384,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    /**
+	     * 动态更新展示
+	     */
+
+	    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {
+	        var _this = this;
+
+	        setTimeout(function () {
+	            return _this.changeStyle(_this.props.direction);
+	        }, 0);
+	    };
+
+	    /**
 	     * 渲染完成时进行方向和边界判断，调整tips的位置
 	     * @method componentDidMount
 	     * @return null
 	     * */
 
 	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
-	        var _this = this;
+	        var _this2 = this;
 
 	        setTimeout(function () {
-	            return _this.changeStyle(_this.props.direction);
+	            return _this2.changeStyle(_this2.props.direction);
 	        }, 0);
 	    };
 
@@ -38450,7 +38462,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var eleNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.container).children[0];
 
-	        console.log(tipNode);
 	        var bodys = {
 	            height: dbody.clientHeight,
 	            width: dbody.clientWidth
@@ -45792,19 +45803,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _inherits(Demo, _Component);
 
 	    function Demo() {
+	        "use strict";
+
 	        _classCallCheck(this, Demo);
 
-	        _Component.apply(this, arguments);
+	        _Component.call(this);
+	        this.state = {
+	            test: '_'
+	        };
 	    }
 
+	    Demo.prototype.change = function change() {
+	        var _this = this;
+
+	        setTimeout(function () {
+	            return _this.setState({
+	                test: 'hello world hello worldhello worldhello worldhello worldhello world'
+	            });
+	        });
+	    };
+
 	    Demo.prototype.render = function render() {
+	        var _this2 = this;
+
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
 	            _react2['default'].createElement(
 	                'div',
-	                { style: { width: '300px', marginBottom: '200px' } },
-	                'sadasda',
+	                { style: { width: '300px', marginBottom: '200px' }, onClick: function () {
+	                        return _this2.change();
+	                    } },
 	                _react2['default'].createElement(
 	                    _srcTooltipPanelJs2['default'],
 	                    { direction: 'bottom' },
@@ -45888,16 +45917,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _srcTooltipPanelJs2['default'],
 	                    { direction: 'top',
 	                        style: { float: 'left', marginLeft: '300px' },
-	                        msg: _react2['default'].createElement(
-	                            'div',
-	                            { style: { width: '200px' } },
-	                            'hello world,hello world',
-	                            _react2['default'].createElement(
-	                                'button',
-	                                { style: { color: 'red' } },
-	                                'press'
-	                            )
-	                        ) },
+	                        msg: this.state.test },
 	                    _react2['default'].createElement(
 	                        _srcButtonJs2['default'],
 	                        { radius: true, egSize: 'sm', egStyle: 'warning' },
