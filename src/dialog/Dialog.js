@@ -51,23 +51,26 @@ export default class Dialog extends Component{
     }
 
     static confirm(message,opts={}){
-        return new Promise((resolve, reject)=>{
-            new DialogFactory().show(BaseDialog.CONFRIM,extend({},{
-                successCallback:()=>{
-                    resolve();
-                    new DialogFactory().hide();
+        try{
+            return new Promise((resolve, reject)=>{
+                new DialogFactory().show(BaseDialog.CONFRIM,extend({},{
+                    successCallback:()=>{
+                        resolve();
+                        new DialogFactory().hide();
 
-                },
-                cancelCallback:()=>{
-                    reject();
-                    new DialogFactory().hide();
+                    },
+                    cancelCallback:()=>{
+                        reject();
+                        new DialogFactory().hide();
 
-                },
-                message:message
-            },opts));
-        }).catch((ex)=>{
-                console.dir(ex);
+                    },
+                    message:message
+                },opts));
             });
+        }catch(ex){
+            console.dir(ex);
+        }
+
     }
 
     static mask(dialogId,opts={}){
