@@ -16,12 +16,19 @@ let Demo= class Demo extends Component{
         super(props, context);
         this.state = {
             input: this.props.input,
-            options:[]
-        }
+            options:[],
+            defaultCity:''
+        };
 
         setTimeout(()=>{
             this.setState({options:this.renderC()})
         }.bind(this) );
+
+        setTimeout(function(){
+            this.setState({
+                defaultCity:'上海'
+            });
+        }.bind(this),2000 );
     }
 
         getValue(value,key,type){
@@ -53,13 +60,14 @@ let Demo= class Demo extends Component{
     }
 
     render(){
+        console.dir(this.state.defaultCity);
         return (
             <Grid fluid>
                 <Row>
                     <Col sm={9} layer end>
                         <Row>
                             <Col sm={4} end>
-                                <Select defaultChecked="上海" getValueCallback={::this.getValue} placeholder="请选择" >
+                                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" >
                                     {this.state.options}
                                 </Select>
                             </Col>

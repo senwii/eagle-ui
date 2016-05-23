@@ -35093,6 +35093,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Suggestion.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        this.options = this.getOptions(nextProps.children);
+	        this.setState({
+	            value: nextProps.defaultChecked || nextProps.value || ''
+	        });
 	    };
 
 	    Suggestion.prototype.setDefaultState = function setDefaultState(obj) {
@@ -44927,12 +44930,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.call(this, props, context);
 	        this.state = {
 	            input: this.props.input,
-	            options: []
+	            options: [],
+	            defaultCity: ''
 	        };
 
 	        setTimeout((function () {
 	            _this.setState({ options: _this.renderC() });
 	        }).bind(this));
+
+	        setTimeout((function () {
+	            this.setState({
+	                defaultCity: '上海'
+	            });
+	        }).bind(this), 2000);
 	    }
 
 	    Demo.prototype.getValue = function getValue(value, key, type) {
@@ -44998,6 +45008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Demo.prototype.render = function render() {
+	        console.dir(this.state.defaultCity);
 	        return _react2['default'].createElement(
 	            _srcGridJs2['default'],
 	            { fluid: true },
@@ -45015,7 +45026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            { sm: 4, end: true },
 	                            _react2['default'].createElement(
 	                                _srcSelectJs2['default'],
-	                                { defaultChecked: '上海', getValueCallback: this.getValue.bind(this), placeholder: '请选择' },
+	                                { defaultChecked: this.state.defaultCity, getValueCallback: this.getValue.bind(this), placeholder: '请选择' },
 	                                this.state.options
 	                            )
 	                        )

@@ -24,6 +24,9 @@ export default class Suggestion extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.options = this.getOptions(nextProps.children);
+        this.setState({
+            value:nextProps.defaultChecked||nextProps.value ||''
+        });
     }
 
     setDefaultState(obj){

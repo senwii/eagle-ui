@@ -8940,6 +8940,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Suggestion.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        this.options = this.getOptions(nextProps.children);
+	        this.setState({
+	            value: nextProps.defaultChecked || nextProps.value || ''
+	        });
 	    };
 
 	    Suggestion.prototype.setDefaultState = function setDefaultState(obj) {
