@@ -38381,11 +38381,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 
 	    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {
-	        var _this = this;
-
-	        setTimeout(function () {
-	            return _this.changeStyle(_this.props.direction);
-	        }, 0);
+	        this.changeStyle(this.props.direction);
+	        //setTimeout(()=>this.changeStyle(this.props.direction),0);
 	    };
 
 	    /**
@@ -38395,11 +38392,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
-	        var _this2 = this;
-
-	        setTimeout(function () {
-	            return _this2.changeStyle(_this2.props.direction);
-	        }, 0);
+	        this.changeStyle(this.props.direction);
+	        //setTimeout(()=>this.changeStyle(this.props.direction),0);
 	    };
 
 	    /**
@@ -38413,7 +38407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            _extends({}, this.props, { ref: 'tip-container', className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
+	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
 	            this.props.children,
 	            _react2['default'].createElement(_TooltipJs2['default'], _extends({ ref: 'tips' }, this.props))
 	        );
@@ -45812,6 +45806,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.state = {
 	            test: '_'
 	        };
+
+	        setTimeout((function () {
+	            this.setState({
+	                test: 'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'
+	            });
+	        }).bind(this), 2000);
 	    }
 
 	    Demo.prototype.change = function change() {

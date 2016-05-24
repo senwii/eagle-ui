@@ -11,7 +11,13 @@ let Demo = class Demo extends Component{
         super();
         this.state={
         test:'_'
-        }
+        };
+
+        setTimeout(function(){
+            this.setState({
+                test:'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'
+            });
+        }.bind(this),2000);
     }
     change(){
         setTimeout(()=>this.setState({

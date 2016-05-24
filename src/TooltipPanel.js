@@ -48,14 +48,14 @@ class TooltipPanel extends Component {
         direction: PropTypes.string,
         classPrefix: PropTypes.string,
         componentTag:PropTypes.string
-    }
+    };
     static defaultProps = {
         show: false,
         msg: "这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示",
         direction: 'down',
         classPrefix: 'tooltip',
         componentTag: 'div'
-    }
+    };
 
     constructor(props, context) {
         super(props, context);
@@ -72,8 +72,7 @@ class TooltipPanel extends Component {
      * 动态更新展示
      */
     componentDidUpdate(){
-
-        setTimeout(()=>this.changeStyle(this.props.direction),0);
+        this.changeStyle(this.props.direction);
     }
     /**
      * 渲染完成时进行方向和边界判断，调整tips的位置
@@ -81,7 +80,7 @@ class TooltipPanel extends Component {
      * @return null
      * */
     componentDidMount(){
-        setTimeout(()=>this.changeStyle(this.props.direction),0);
+        this.changeStyle(this.props.direction);
     }
     /**
      * @method render
@@ -91,10 +90,10 @@ class TooltipPanel extends Component {
         let {componentTag} = this.props.children.props;
         //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
         return (
-            <Grid  {...this.props} ref='tip-container' className={classnames(
+            <Grid  {...this.props} className={classnames(
                 this.getClassName('container'))} ref='container' >
                 {this.props.children}
-                    <Tooltip ref='tips' {...this.props} />
+                <Tooltip ref='tips' {...this.props} />
             </Grid>
         );
     }
@@ -126,7 +125,12 @@ class TooltipPanel extends Component {
      * */
     changeStyle(direction){
         let dir = direction;
-        let [dbody,delement,tipNode,eleNode] = [document.body,document.documentElement,ReactDom.findDOMNode(this.refs.tips),ReactDom.findDOMNode(this.refs.container).children[0]];
+        let [dbody,delement,tipNode,eleNode] = [
+            document.body,
+            document.documentElement,
+            ReactDom.findDOMNode(this.refs.tips),
+            ReactDom.findDOMNode(this.refs.container).children[0]];
+
         let bodys = {
             height: dbody.clientHeight,
             width: dbody.clientWidth
