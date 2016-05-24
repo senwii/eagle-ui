@@ -37243,7 +37243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                { defaultValue: this.props.pageSize, onChange: this.changePageSizeHandler.bind(this) },
 	                opts
 	            ),
-	            '  页'
+	            '  条'
 	        );
 	    };
 
@@ -38382,7 +38382,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {
 	        this.changeStyle(this.props.direction);
-	        //setTimeout(()=>this.changeStyle(this.props.direction),0);
 	    };
 
 	    /**
@@ -38393,7 +38392,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
 	        this.changeStyle(this.props.direction);
-	        //setTimeout(()=>this.changeStyle(this.props.direction),0);
 	    };
 
 	    /**

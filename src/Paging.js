@@ -255,7 +255,7 @@ export default class Paging extends Component{
                         opts
                     }
                 </select>
-                &nbsp;&nbsp;页
+                &nbsp;&nbsp;条
             </span>
         );
     }
