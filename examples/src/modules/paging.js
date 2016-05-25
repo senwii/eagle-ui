@@ -29,7 +29,7 @@ export default class PagingCls extends Component{
         return (
             <Row>
                 <Col sm={12}>
-                    <Paging showItemsNumber={true} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                    <Paging showItemsNumber={true} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
                             pageCallback={callback} total={5024} />
                 </Col>
             </Row>

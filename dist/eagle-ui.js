@@ -10851,6 +10851,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            pageSize: 20,
 	            classPrefix: 'paging',
 	            componentTag: 'div',
+	            chooseMaxPageSize: 0,
 	            /**
 	             * 跟showItemsNumber一起使用 arguments{pageSize}
 	             * @property loadPageCallback
@@ -11069,14 +11070,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Paging.prototype.accordingNumber = function accordingNumber() {
 	        var opts = [],
-	            num = 10;
+	            num = 10,
+	            chooseMaxPageSize = this.props.chooseMaxPageSize || 100;
 
-	        for (var i = 1; i < 11; i++) {
-	            opts.push(_react2['default'].createElement(
-	                'option',
-	                { value: num * i, key: num * i },
-	                num * i
-	            ));
+	        for (var i = 1, n = undefined; i < 11; i++) {
+	            n = num * i;
+	            if (n <= chooseMaxPageSize) {
+
+	                opts.push(_react2['default'].createElement(
+	                    'option',
+	                    { value: n, key: n },
+	                    n
+	                ));
+	            } else {
+	                break;
+	            }
 	        }
 
 	        return _react2['default'].createElement(

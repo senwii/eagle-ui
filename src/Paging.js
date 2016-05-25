@@ -59,13 +59,14 @@ export default class Paging extends Component{
          * @type Boolean
          * */
         showItemsNumber:PropTypes.bool
-    }
+    };
     static defaultProps = {
         activeClass:'active',
         currentPage:1,
         pageSize:20,
         classPrefix:'paging',
         componentTag:'div',
+        chooseMaxPageSize:0,
         /**
          * 跟showItemsNumber一起使用 arguments{pageSize}
          * @property loadPageCallback
@@ -239,10 +240,17 @@ export default class Paging extends Component{
     }
 
     accordingNumber(){
-        let opts = [],num=10;
+        let opts = [],num=10,chooseMaxPageSize = this.props.chooseMaxPageSize || 100;
 
-        for(let i=1;i<11;i++){
-            opts.push(<option value={num*i}  key={num*i}>{num*i}</option>);
+        for(let i=1,n;i<11;i++){
+            n=num*i;
+            if(n<=chooseMaxPageSize){
+
+                opts.push(<option value={n}  key={n}>{n}</option>);
+            }else{
+                break;
+            }
+
         }
 
         return (
