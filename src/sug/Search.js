@@ -62,6 +62,9 @@ export default class Search extends Suggestion {
                 onKeyDown={this.handler.bind(this,'onKeyDown')}
                 onFocus={::this.focusHandler}
                 onBlur={::this.inputBlurHandler}
+                iconClickCallback={function(){
+                    ReactDom.findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
+                }.bind(this) }
                 />
         );
     }

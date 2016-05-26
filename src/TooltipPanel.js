@@ -149,7 +149,7 @@ class TooltipPanel extends Component {
             left: eleNode.parentNode.offsetLeft,
             top: eleNode.parentNode.offsetTop
         };
-        let maxBody = this.getMaxBody(bodys,doc);
+        /*let maxBody = this.getMaxBody(bodys,doc);
         let validate = this.isValidate(dir,tips,element,maxBody);
         if(!validate){
             let arrow = tipNode.children[0];
@@ -160,7 +160,7 @@ class TooltipPanel extends Component {
                 this.getClassName('arrow-down')
             ));
             dir = 'down';
-        }
+        }*/
         switch(dir){
             case 'down':
                 tipNode.style.top = element.height+'px';

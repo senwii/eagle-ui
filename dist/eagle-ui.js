@@ -7641,7 +7641,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @property iconDirection
 	             * @type String
 	             * */
-	            iconDirection: ''
+	            iconDirection: '',
+	            /**
+	             * icon点击事件
+	             * @property iconClickCallback
+	             * @type Function
+	             * */
+	            iconClickCallback: function iconClickCallback() {}
 	        },
 	        enumerable: true
 	    }]);
@@ -7683,7 +7689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        if (name) {
-	            return _react2['default'].createElement(_utilsIcon2['default'], { className: _classnames3['default']("input-icon"), name: name, style: iconStyle });
+	            return _react2['default'].createElement(_utilsIcon2['default'], { onClick: this.props.iconClickCallback, className: _classnames3['default']("input-icon"), name: name, style: iconStyle });
 	        }
 
 	        return html;
@@ -8810,7 +8816,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onChange: this.handler.bind(this, 'onChange'),
 	            onKeyDown: this.handler.bind(this, 'onKeyDown'),
 	            onFocus: this.focusHandler.bind(this),
-	            onBlur: this.inputBlurHandler.bind(this)
+	            onBlur: this.inputBlurHandler.bind(this),
+	            iconClickCallback: (function () {
+	                _reactLibReactDOM2['default'].findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
+	            }).bind(this)
 	        }));
 	    };
 
@@ -13172,14 +13181,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            left: eleNode.parentNode.offsetLeft,
 	            top: eleNode.parentNode.offsetTop
 	        };
-	        var maxBody = this.getMaxBody(bodys, doc);
-	        var validate = this.isValidate(dir, tips, element, maxBody);
-	        if (!validate) {
-	            var arrow = tipNode.children[0];
-	            this.removeClass(arrow, _classnames2['default'](this.getClassName('arrow-' + dir)));
-	            this.addClass(arrow, _classnames2['default'](this.getClassName('arrow-down')));
+	        /*let maxBody = this.getMaxBody(bodys,doc);
+	        let validate = this.isValidate(dir,tips,element,maxBody);
+	        if(!validate){
+	            let arrow = tipNode.children[0];
+	            this.removeClass(arrow,classnames(
+	                this.getClassName('arrow-'+dir)
+	            ));
+	            this.addClass(arrow,classnames(
+	                this.getClassName('arrow-down')
+	            ));
 	            dir = 'down';
-	        }
+	        }*/
 	        switch (dir) {
 	            case 'down':
 	                tipNode.style.top = element.height + 'px';

@@ -100,7 +100,13 @@ export default class Input extends Component{
          * @property iconDirection
          * @type String
          * */
-        iconDirection:''
+        iconDirection:'',
+        /**
+         * icon点击事件
+         * @property iconClickCallback
+         * @type Function
+         * */
+        iconClickCallback:()=>{}
     };
 
     constructor(props, context) {
@@ -140,7 +146,7 @@ export default class Input extends Component{
 
         if(name){
             return (
-                <Icon  className={classnames(
+                <Icon onClick={this.props.iconClickCallback}  className={classnames(
                     "input-icon"
                 )} name={name} style={iconStyle} />
             );
