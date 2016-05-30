@@ -93,7 +93,7 @@ class TooltipPanel extends Component {
             <Grid  {...this.props} className={classnames(
                 this.getClassName('container'))} ref='container' >
                 {this.props.children}
-                <Tooltip ref='tips' {...this.props} />
+                <Tooltip {...this.props} ref={(obj)=>{this.tips=obj}}  />
             </Grid>
         );
     }
@@ -128,7 +128,7 @@ class TooltipPanel extends Component {
         let [dbody,delement,tipNode,eleNode] = [
             document.body,
             document.documentElement,
-            ReactDom.findDOMNode(this.refs.tips),
+            ReactDom.findDOMNode(this.tips),
             ReactDom.findDOMNode(this.refs.container).children[0]];
 
         let bodys = {

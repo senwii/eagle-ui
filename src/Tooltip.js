@@ -66,7 +66,7 @@ export default class Tooltip extends Component {
     }
     render() {
         return (
-            <Grid ref= {this.props.ref} className={classnames(
+            <Grid ref= "tips" className={classnames(
                 this.getClassName('wraper'),
                 {
 

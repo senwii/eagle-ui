@@ -12947,7 +12947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            { ref: this.props.ref, className: _classnames3['default'](this.getClassName('wraper'), (_classnames = {}, _classnames[this.getClassName('show')] = this.state.show, _classnames)) },
+	            { ref: 'tips', className: _classnames3['default'](this.getClassName('wraper'), (_classnames = {}, _classnames[this.getClassName('show')] = this.state.show, _classnames)) },
 	            _react2['default'].createElement('div', { className: _classnames3['default'](this.getClassName('arrow-' + this.props.direction)) }),
 	            _react2['default'].createElement(
 	                'div',
@@ -13116,6 +13116,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * */
 
 	    TooltipPanel.prototype.render = function render() {
+	        var _this = this;
+
 	        var componentTag = this.props.children.props.componentTag;
 
 	        //  <componentTag {...this.props} onMouseEnter={::this.showTips} onMouseOut={::this.hideTips}/>
@@ -13123,7 +13125,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _GridJs2['default'],
 	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
 	            this.props.children,
-	            _react2['default'].createElement(_TooltipJs2['default'], _extends({ ref: 'tips' }, this.props))
+	            _react2['default'].createElement(_TooltipJs2['default'], _extends({}, this.props, { ref: function (obj) {
+	                    _this.tips = obj;
+	                } }))
 	        );
 	    };
 
@@ -13159,7 +13163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var dbody = document.body;
 	        var delement = document.documentElement;
 
-	        var tipNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.tips);
+	        var tipNode = _reactLibReactDOM2['default'].findDOMNode(this.tips);
 
 	        var eleNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.container).children[0];
 
