@@ -655,22 +655,48 @@
  * Created by slashhuang on 15/12/21.
  */
 import React, { Component ,PropTypes} from &#39;react&#39;;
+import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
 import Star from &#39;../../../src/Star.js&#39;;
 export default class StarDemo extends Component {
     render(){
         return(
             &lt;div&gt;
-                &lt;Star rate={50} size={15}/&gt;&lt;br/&gt;
-                &lt;Star rate={60} size={16}/&gt;&lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;&lt;br/&gt;
-                &lt;Star rate={80} size={18}/&gt;&lt;br/&gt;
-                &lt;Star rate={90} size={19}/&gt;&lt;br/&gt;
-                &lt;Star rate={10} size={14}/&gt;&lt;br/&gt;
-                &lt;Star rate={20} size={13}/&gt;&lt;br/&gt;
-                &lt;Star rate={30} size={12}/&gt;&lt;br/&gt;
-                &lt;Star rate={40} size={11}/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={10}/&gt;&lt;br/&gt;
+                不可修改数据
+                &lt;br/&gt;
                 &lt;Star/&gt;&lt;br/&gt;
+                &lt;Star rate={50} size={15}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={60} size={16} /&gt;
+                &lt;br/&gt;
+                &lt;Star rate={70} size={17}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={80} size={18} /&gt;
+                &lt;br/&gt;
+                可鼠标浮动修改数据
+                &lt;br/&gt;
+                &lt;Star rate={90} size={18}  disable={false}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={10} size={19}  disable={false}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={20} size={20} disable={false}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={30} size={21} disable={false}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={40} size={22} disable={false}/&gt;
+                &lt;br/&gt;
+                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
+                &lt;br/&gt;
+                &lt;div
+                    style={{
+                    background:&#39;orangered&#39;,
+                    display:&#39;inline-block&#39;,
+                    color:&#39;#fff&#39;,
+                    cursor:&#39;pointer&#39;,
+                    padding:&#39;3px&#39;}}
+                    onClick={()=&gt;{
+                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
+                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
+
             &lt;/div&gt;
         )
     }
@@ -706,7 +732,7 @@ export default class PagingCls extends Component{
         return (
             &lt;Row&gt;
                 &lt;Col sm={12}&gt;
-                    &lt;Paging showItemsNumber={true} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                    &lt;Paging showItemsNumber={true} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
                             pageCallback={callback} total={5024} /&gt;
                 &lt;/Col&gt;
             &lt;/Row&gt;
@@ -769,7 +795,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l214"><code>lib&#x2F;Paging.js:214</code></a>
+        <a href="../files/lib_Paging.js.html#l215"><code>lib&#x2F;Paging.js:215</code></a>
         
         </p>
 
@@ -842,7 +868,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l162"><code>lib&#x2F;Paging.js:162</code></a>
+        <a href="../files/lib_Paging.js.html#l163"><code>lib&#x2F;Paging.js:163</code></a>
         
         </p>
 
@@ -927,7 +953,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l172"><code>lib&#x2F;Paging.js:172</code></a>
+        <a href="../files/lib_Paging.js.html#l173"><code>lib&#x2F;Paging.js:173</code></a>
         
         </p>
 
@@ -1036,7 +1062,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l201"><code>lib&#x2F;Paging.js:201</code></a>
+        <a href="../files/lib_Paging.js.html#l202"><code>lib&#x2F;Paging.js:202</code></a>
         
         </p>
 
@@ -1131,7 +1157,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l144"><code>lib&#x2F;Paging.js:144</code></a>
+        <a href="../files/lib_Paging.js.html#l145"><code>lib&#x2F;Paging.js:145</code></a>
         
         </p>
 
@@ -1188,7 +1214,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l153"><code>lib&#x2F;Paging.js:153</code></a>
+        <a href="../files/lib_Paging.js.html#l154"><code>lib&#x2F;Paging.js:154</code></a>
         
         </p>
 
@@ -1249,7 +1275,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l338"><code>lib&#x2F;Paging.js:338</code></a>
+        <a href="../files/lib_Paging.js.html#l346"><code>lib&#x2F;Paging.js:346</code></a>
         
         </p>
 
@@ -1409,7 +1435,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l95"><code>lib&#x2F;Paging.js:95</code></a>
+        <a href="../files/lib_Paging.js.html#l96"><code>lib&#x2F;Paging.js:96</code></a>
         
         </p>
 

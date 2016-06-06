@@ -551,7 +551,13 @@ var Input = (function (_Component) {
              * @property iconDirection
              * @type String
              * */
-            iconDirection: &#x27;&#x27;
+            iconDirection: &#x27;&#x27;,
+            /**
+             * icon点击事件
+             * @property iconClickCallback
+             * @type Function
+             * */
+            iconClickCallback: function iconClickCallback() {}
         },
         enumerable: true
     }]);
@@ -593,7 +599,7 @@ var Input = (function (_Component) {
         }
 
         if (name) {
-            return _react2[&#x27;default&#x27;].createElement(_utilsIcon2[&#x27;default&#x27;], { className: _classnames3[&#x27;default&#x27;](&quot;input-icon&quot;), name: name, style: iconStyle });
+            return _react2[&#x27;default&#x27;].createElement(_utilsIcon2[&#x27;default&#x27;], { onClick: this.props.iconClickCallback, className: _classnames3[&#x27;default&#x27;](&quot;input-icon&quot;), name: name, style: iconStyle });
         }
 
         return html;

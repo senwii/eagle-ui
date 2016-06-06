@@ -9548,6 +9548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9581,8 +9582,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9593,7 +9592,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 
@@ -13442,7 +13445,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+
 	    return nativeProps;
 	  }
 
@@ -16902,15 +16908,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
+	/* eslint-disable fb-www/typeof-undefined */
+
 	/**
 	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
 	 * not safe to call document.activeElement if there is nothing focused.
 	 *
-	 * The activeElement will be null only if the document body is not yet defined.
+	 * The activeElement will be null only if the document or document body is not
+	 * yet defined.
 	 */
-	"use strict";
+	'use strict';
 
 	function getActiveElement() /*?DOMElement*/{
+	  if (typeof document === 'undefined') {
+	    return null;
+	  }
 	  try {
 	    return document.activeElement || document.body;
 	  } catch (e) {
@@ -18909,7 +18921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.5';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 184 */
@@ -22633,7 +22645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	module.exports = function (str) {
 		return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
-			return '%' + c.charCodeAt(0).toString(16);
+			return '%' + c.charCodeAt(0).toString(16).toUpperCase();
 		});
 	};
 
@@ -24997,7 +25009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -25009,7 +25021,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -25018,19 +25030,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -37673,6 +37685,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @default 13  可以取值10-20 默认单位为'px'
 	             * */
 	            size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+	            /**
+	             * 星星是否可以自己设置
+	             * 设置单位为1个星星
+	             * @property disable
+	             * @type boolean
+	             * @default false
+	             *
+	             */
+	            disable: _react.PropTypes.bool,
 	            classPrefix: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -37680,7 +37701,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'defaultProps',
 	        value: {
 	            classPrefix: 'star',
-	            rate: 0
+	            rate: 0,
+	            disable: true
 	        },
 	        enumerable: true
 	    }]);
@@ -37689,26 +37711,56 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _classCallCheck(this, Star);
 
 	        _Component.call(this, props, context);
+	        this.state = {
+	            rate: props.rate,
+	            size: props.size,
+	            disable: props.disable
+	        };
+	        this.Rate = props.rate;
 	    }
 
+	    Star.prototype.renderCustomize = function renderCustomize(e) {
+	        var disable = this.state.disable;
+
+	        var newPositionX = e.clientX;
+	        var newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth * 5 + 1) * 20;
+	        this.setState({
+	            rate: newRate
+	        });
+	        this.Rate = newRate;
+	    };
+
 	    Star.prototype.render = function render() {
-	        var _props = this.props;
-	        var rate = _props.rate;
-	        var size = _props.size;
+	        var _this = this;
+
+	        var _state = this.state;
+	        var rate = _state.rate;
+	        var size = _state.size;
 
 	        //兼容用户输入px为单位的数据大小
 	        size = /px/i.test(size) ? size.replace('px', '') : size;
 	        var customizeStyle = size ? {
 	            width: size * 5 + 'px',
 	            height: size - 1 + 'px',
-	            backgroundSize: size * 5 + 'px auto'
+	            backgroundSize: size * 5 + 'px auto',
+	            cursor: !this.state.disable ? 'pointer' : 'hand'
 	        } : {};
 	        var shadowPosition = size ? {
 	            backgroundPosition: "0  -" + size + "px"
 	        } : {};
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: this.getProperty(), style: customizeStyle },
+	            { className: this.getProperty(),
+	                style: customizeStyle,
+	                onMouseMove: function (e) {
+	                    !_this.state.disable && _this.renderCustomize(e);
+	                },
+	                ref: function (node) {
+	                    if (!_this.positionX) {
+	                        _this.positionX = node.offsetLeft;
+	                        _this.offsetWidth = node.offsetWidth;
+	                    }
+	                } },
 	            _react2['default'].createElement('div', { className: this.getClassName('grey'), style: _extends({ width: rate + '%' }, shadowPosition) })
 	        );
 	    };
@@ -46343,6 +46395,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactLibReactDOM = __webpack_require__(40);
+
 	var _srcStarJs = __webpack_require__(486);
 
 	var _srcStarJs2 = _interopRequireDefault(_srcStarJs);
@@ -46357,9 +46411,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    StarDemo.prototype.render = function render() {
+	        var _this = this;
+
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
+	            '不可修改数据',
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(_srcStarJs2['default'], null),
+	            _react2['default'].createElement('br', null),
 	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 50, size: 15 }),
 	            _react2['default'].createElement('br', null),
 	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 60, size: 16 }),
@@ -46368,20 +46428,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement('br', null),
 	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 80, size: 18 }),
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 90, size: 19 }),
+	            '可鼠标浮动修改数据',
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 10, size: 14 }),
+	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 90, size: 18, disable: false }),
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 20, size: 13 }),
+	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 10, size: 19, disable: false }),
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 30, size: 12 }),
+	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 20, size: 20, disable: false }),
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 40, size: 11 }),
+	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 30, size: 21, disable: false }),
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 50, size: 10 }),
+	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 40, size: 22, disable: false }),
 	            _react2['default'].createElement('br', null),
-	            _react2['default'].createElement(_srcStarJs2['default'], null),
-	            _react2['default'].createElement('br', null)
+	            _react2['default'].createElement(_srcStarJs2['default'], { rate: 50, size: 23, disable: false, ref: 'test' }),
+	            _react2['default'].createElement('br', null),
+	            _react2['default'].createElement(
+	                'div',
+	                {
+	                    style: {
+	                        background: 'orangered',
+	                        display: 'inline-block',
+	                        color: '#fff',
+	                        cursor: 'pointer',
+	                        padding: '3px' },
+	                    onClick: function () {
+	                        alert('rate is' + _this.refs['test'].Rate);
+	                    } },
+	                '点击获取最后一组星星的红色比率数据'
+	            )
 	        );
 	    };
 

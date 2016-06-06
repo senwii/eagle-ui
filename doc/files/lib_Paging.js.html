@@ -511,6 +511,7 @@ var Paging = (function (_Component) {
             pageSize: 20,
             classPrefix: &#x27;paging&#x27;,
             componentTag: &#x27;div&#x27;,
+            chooseMaxPageSize: 0,
             /**
              * 跟showItemsNumber一起使用 arguments{pageSize}
              * @property loadPageCallback
@@ -729,14 +730,21 @@ var Paging = (function (_Component) {
 
     Paging.prototype.accordingNumber = function accordingNumber() {
         var opts = [],
-            num = 10;
+            num = 10,
+            chooseMaxPageSize = this.props.chooseMaxPageSize || 100;
 
-        for (var i = 1; i &lt; 11; i++) {
-            opts.push(_react2[&#x27;default&#x27;].createElement(
-                &#x27;option&#x27;,
-                { value: num * i, key: num * i },
-                num * i
-            ));
+        for (var i = 1, n = undefined; i &lt; 11; i++) {
+            n = num * i;
+            if (n &lt;= chooseMaxPageSize) {
+
+                opts.push(_react2[&#x27;default&#x27;].createElement(
+                    &#x27;option&#x27;,
+                    { value: n, key: n },
+                    n
+                ));
+            } else {
+                break;
+            }
         }
 
         return _react2[&#x27;default&#x27;].createElement(
@@ -750,7 +758,7 @@ var Paging = (function (_Component) {
                 { defaultValue: this.props.pageSize, onChange: this.changePageSizeHandler.bind(this) },
                 opts
             ),
-            &#x27;  页&#x27;
+            &#x27;  条&#x27;
         );
     };
 

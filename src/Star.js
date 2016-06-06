@@ -40,9 +40,11 @@ export default class Star extends Component{
         ]),
         /**
          * 星星是否可以自己设置
+         * 设置单位为1个星星
          * @property disable
          * @type boolean
          * @default false
+         *
          */
         disable:PropTypes.bool,
         classPrefix:PropTypes.string
@@ -64,7 +66,7 @@ export default class Star extends Component{
     renderCustomize(e) {
         let {disable}= this.state;
         let newPositionX = e.clientX;
-        let newRate = Math.round((newPositionX - this.positionX) / this.offsetWidth*10) * 10;
+        let newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth*5+1) * 20;
         this.setState({
             rate:newRate
         });

@@ -530,7 +530,10 @@ var Search = (function (_Suggestion) {
             onChange: this.handler.bind(this, &#x27;onChange&#x27;),
             onKeyDown: this.handler.bind(this, &#x27;onKeyDown&#x27;),
             onFocus: this.focusHandler.bind(this),
-            onBlur: this.inputBlurHandler.bind(this)
+            onBlur: this.inputBlurHandler.bind(this),
+            iconClickCallback: (function () {
+                _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.inputId]).getElementsByTagName(&#x27;input&#x27;)[0].focus();
+            }).bind(this)
         }));
     };
 

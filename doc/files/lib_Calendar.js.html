@@ -605,7 +605,7 @@ var Calendar = (function (_Component) {
                     { key: d + j + &#x27;day&#x27; },
                     _react2[&#x27;default&#x27;].createElement(
                         &#x27;span&#x27;,
-                        { className: _classnames5[&#x27;default&#x27;](this.getClassName(&#x27;item&#x27;), (_classnames = {}, _classnames[this.getClassName(&#x27;active&#x27;, false)] = this.isToday(year, month + 1, d), _classnames[this.getClassName(&#x27;disabled&#x27;)] = disabled, _classnames[&#x27;no-hover&#x27;] = d == &#x27; &#x27;, _classnames[this.getClassName(&#x27;selected&#x27;)] = this.isOptionSelect(selectedDate, defaultDate) &amp;&amp; defaultDate.getDate() == d &amp;&amp; !disabled, _classnames)), onMouseDown: disabled || d == &#x27; &#x27; ? &#x27;&#x27; : _this.dateClick.bind(_this, year + &#x27;/&#x27; + (month + 1) + &#x27;/&#x27; + d) },
+                        { className: _classnames5[&#x27;default&#x27;](this.getClassName(&#x27;item&#x27;), (_classnames = {}, _classnames[this.getClassName(&#x27;active&#x27;, false)] = this.isToday(year, month + 1, d), _classnames[this.getClassName(&#x27;disabled&#x27;)] = disabled, _classnames[&#x27;no-hover&#x27;] = d == &#x27; &#x27;, _classnames[this.getClassName(&#x27;selected&#x27;)] = this.isOptionSelect(selectedDate, defaultDate) &amp;&amp; defaultDate.getDate() == d &amp;&amp; !disabled, _classnames)), onMouseDown: disabled || d == &#x27; &#x27; ? function () {} : _this.dateClick.bind(_this, year + &#x27;/&#x27; + (month + 1) + &#x27;/&#x27; + d) },
                         d
                     )
                 ));
