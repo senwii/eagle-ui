@@ -38,29 +38,64 @@ export default class Star extends Component{
                 PropTypes.string,
                 PropTypes.number
         ]),
+        /**
+         * 星星是否可以自己设置
+         * @property disable
+         * @type boolean
+         * @default false
+         */
+        disable:PropTypes.bool,
         classPrefix:PropTypes.string
     };
     static defaultProps = {
         classPrefix:'star',
-        rate:0
+        rate:0,
+        disable:true
     };
     constructor(props,context){
         super(props,context);
+        this.state={
+            rate:props.rate,
+            size:props.size,
+            disable:props.disable
+        };
+        this.Rate = props.rate;
     }
+    renderCustomize(e) {
+        let {disable}= this.state;
+        let newPositionX = e.clientX;
+        let newRate = Math.round((newPositionX - this.positionX) / this.offsetWidth*10) * 10;
+        this.setState({
+            rate:newRate
+        });
+        this.Rate = newRate;
+    }
+
     render(){
-        let {rate,size} = this.props;
+        let {rate,size} = this.state;
         //兼容用户输入px为单位的数据大小
         size=/px/i.test(size)?size.replace('px',''):size;
         let customizeStyle=size?{
             width:size*5+'px',
             height:size-1+'px',
-            backgroundSize:size*5+'px auto'
+            backgroundSize:size*5+'px auto',
+            cursor:!this.state.disable?'pointer':'hand'
         }:{};
         let shadowPosition=size?{
             backgroundPosition:"0  -"+size+"px"
         }:{};
         return (
-            <div className={this.getProperty()} style={customizeStyle}>
+            <div className={this.getProperty()}
+                 style={customizeStyle}
+                 onMouseMove={(e)=>{
+                    !this.state.disable&&this.renderCustomize(e)
+                    }}
+                 ref={(node)=>{
+                    if(!this.positionX) {
+                       this.positionX = node.offsetLeft;
+                        this.offsetWidth = node.offsetWidth;
+                    }
+                 }}>
                 <div className={this.getClassName('grey')} style={{width:rate+'%',...shadowPosition}}></div>
             </div>
         )
