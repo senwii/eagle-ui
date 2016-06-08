@@ -1180,7 +1180,7 @@
             "namespace": "",
             "file": "lib/Star.js",
             "line": 27,
-            "description": "星级评价(Star)组件<br />\n提供的UI展示属性接口包括<br/>\n<ul>\n    <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>\n    <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Star rate={50} size={10}/&#62;</code>\n</pre>",
+            "description": "星级评价(Star)组件<br />\n提供的UI展示属性接口包括<br/>\n<ul>\n    <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>\n    <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>\n    <li>disable：是否可以手动设置星星比率<code>默认为true[不可以]</code></li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Star rate={50} size={10}/&#62;</code>\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
@@ -2739,7 +2739,7 @@
         },
         {
             "file": "lib/Star.js",
-            "line": 52,
+            "line": 53,
             "description": "星级评价分数(满分100)",
             "itemtype": "property",
             "name": "Rate",
@@ -2750,7 +2750,7 @@
         },
         {
             "file": "lib/Star.js",
-            "line": 59,
+            "line": 60,
             "description": "星星大小",
             "itemtype": "property",
             "name": "size",
@@ -2761,7 +2761,7 @@
         },
         {
             "file": "lib/Star.js",
-            "line": 66,
+            "line": 67,
             "description": "星星是否可以自己设置\n设置单位为1个星星",
             "itemtype": "property",
             "name": "disable",

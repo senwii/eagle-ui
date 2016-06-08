@@ -7,6 +7,7 @@ import Component from './utils/Component';
  * <ul>
  *     <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>
  *     <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>
+ *     <li>disable：是否可以手动设置星星比率<code>默认为true[不可以]</code></li>
  * </ul><br>
  * 使用方式:
  * <pre><code>&#60;Star rate={50} size={10}/&#62;</code>
@@ -47,25 +48,32 @@ export default class Star extends Component{
          *
          */
         disable:PropTypes.bool,
+        /**
+         * 用于不同的css写法导致的位置微调
+         */
+        adjust:PropTypes.number,
         classPrefix:PropTypes.string
     };
     static defaultProps = {
         classPrefix:'star',
         rate:0,
-        disable:true
+        disable:true,
+        adjust:0
     };
     constructor(props,context){
         super(props,context);
         this.state={
             rate:props.rate,
             size:props.size,
-            disable:props.disable
+            disable:props.disable,
+            adjust:props.adjust
         };
         this.Rate = props.rate;
     }
     renderCustomize(e) {
         let {disable}= this.state;
         let newPositionX = e.clientX;
+        debugger;
         let newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth*5+1) * 20;
         this.setState({
             rate:newRate
@@ -94,8 +102,13 @@ export default class Star extends Component{
                     }}
                  ref={(node)=>{
                     if(!this.positionX) {
-                       this.positionX = node.offsetLeft;
-                        this.offsetWidth = node.offsetWidth;
+                        this.offsetWidth=node.offsetWidth;
+                        this.positionX = 0;
+                        while(node){
+                            this.positionX += node.offsetLeft;
+                            node = node.offsetParent;
+                        }
+                        this.positionX+=this.state.adjust;
                     }
                  }}>
                 <div className={this.getClassName('grey')} style={{width:rate+'%',...shadowPosition}}></div>

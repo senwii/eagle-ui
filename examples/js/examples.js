@@ -37652,6 +37652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <ul>
 	 *     <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>
 	 *     <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>
+	 *     <li>disable：是否可以手动设置星星比率<code>默认为true[不可以]</code></li>
 	 * </ul><br>
 	 * 使用方式:
 	 * <pre><code>&#60;Star rate={50} size={10}/&#62;</code>
