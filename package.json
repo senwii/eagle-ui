@@ -1,6 +1,6 @@
 {
   "name": "eagle-ui",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "This is a used to develop the background management system based on the react to develop a set of UI framework",
   "main": "lib",
   "repository": "git@github.com:future-team/eagle-ui.git",
