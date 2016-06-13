@@ -73,11 +73,12 @@ export default class Star extends Component{
     renderCustomize(e) {
         let {disable}= this.state;
         let newPositionX = e.clientX;
-        debugger;
+
         let newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth*5+1) * 20;
         this.setState({
             rate:newRate
         });
+        this.props.activeCallback &&(this.props.activeCallback(newRate) );
         this.Rate = newRate;
     }
 

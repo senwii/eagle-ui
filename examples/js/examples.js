@@ -9548,7 +9548,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var EventInterface = {
 	  type: null,
-	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9582,6 +9581,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
+	  this.target = nativeEventTarget;
+	  this.currentTarget = nativeEventTarget;
 
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9592,11 +9593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      if (propName === 'target') {
-	        this.target = nativeEventTarget;
-	      } else {
-	        this[propName] = nativeEvent[propName];
-	      }
+	      this[propName] = nativeEvent[propName];
 	    }
 	  }
 
@@ -13445,10 +13442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    if (content) {
-	      nativeProps.children = content;
-	    }
-
+	    nativeProps.children = content;
 	    return nativeProps;
 	  }
 
@@ -16908,21 +16902,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
-	/* eslint-disable fb-www/typeof-undefined */
-
 	/**
 	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
 	 * not safe to call document.activeElement if there is nothing focused.
 	 *
-	 * The activeElement will be null only if the document or document body is not
-	 * yet defined.
+	 * The activeElement will be null only if the document body is not yet defined.
 	 */
-	'use strict';
+	"use strict";
 
 	function getActiveElement() /*?DOMElement*/{
-	  if (typeof document === 'undefined') {
-	    return null;
-	  }
 	  try {
 	    return document.activeElement || document.body;
 	  } catch (e) {
@@ -18921,7 +18909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = '0.14.7';
+	module.exports = '0.14.5';
 
 /***/ },
 /* 184 */
@@ -22645,7 +22633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	module.exports = function (str) {
 		return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
-			return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+			return '%' + c.charCodeAt(0).toString(16);
 		});
 	};
 
@@ -25009,7 +24997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
+	  Copyright (c) 2015 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -25021,7 +25009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = [];
+			var classes = '';
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -25030,19 +25018,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
+					classes += ' ' + arg;
 				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
+					classes += ' ' + classNames.apply(null, arg);
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
+							classes += ' ' + key;
 						}
 					}
 				}
 			}
 
-			return classes.join(' ');
+			return classes.substr(1);
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -37695,6 +37683,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	             *
 	             */
 	            disable: _react.PropTypes.bool,
+	            /**
+	             * 用于不同的css写法导致的位置微调
+	             */
+	            adjust: _react.PropTypes.number,
 	            classPrefix: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -37703,7 +37695,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: {
 	            classPrefix: 'star',
 	            rate: 0,
-	            disable: true
+	            disable: true,
+	            adjust: 0
 	        },
 	        enumerable: true
 	    }]);
@@ -37715,7 +37708,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.state = {
 	            rate: props.rate,
 	            size: props.size,
-	            disable: props.disable
+	            disable: props.disable,
+	            adjust: props.adjust
 	        };
 	        this.Rate = props.rate;
 	    }
@@ -37724,10 +37718,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var disable = this.state.disable;
 
 	        var newPositionX = e.clientX;
+
 	        var newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth * 5 + 1) * 20;
 	        this.setState({
 	            rate: newRate
 	        });
+	        this.props.activeCallback && this.props.activeCallback(newRate);
 	        this.Rate = newRate;
 	    };
 
@@ -37758,8 +37754,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                },
 	                ref: function (node) {
 	                    if (!_this.positionX) {
-	                        _this.positionX = node.offsetLeft;
 	                        _this.offsetWidth = node.offsetWidth;
+	                        _this.positionX = 0;
+	                        while (node) {
+	                            _this.positionX += node.offsetLeft;
+	                            node = node.offsetParent;
+	                        }
+	                        _this.positionX += _this.state.adjust;
 	                    }
 	                } },
 	            _react2['default'].createElement('div', { className: this.getClassName('grey'), style: _extends({ width: rate + '%' }, shadowPosition) })
