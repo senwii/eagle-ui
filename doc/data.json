@@ -1307,11 +1307,10 @@
             "file": "lib/Tooltip.js",
             "line": 44,
             "description": "tips组件\n只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中",
-            "moudle": "ui",
             "is_constructor": 1,
             "example": [
                 "\t/**\n\t * Created by slashhuang on 15/12/21.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport {findDOMNode} from 'react/lib/ReactDOM';\n\timport Star from '../../../src/Star.js';\n\texport default class StarDemo extends Component {\n\t    render(){\n\t        return(\n\t            <div>\n\t                不可修改数据\n\t                <br/>\n\t                <Star/><br/>\n\t                <Star rate={50} size={15}/>\n\t                <br/>\n\t                <Star rate={60} size={16} />\n\t                <br/>\n\t                <Star rate={70} size={17}/>\n\t                <br/>\n\t                <Star rate={80} size={18} />\n\t                <br/>\n\t                可鼠标浮动修改数据\n\t                <br/>\n\t                <Star rate={90} size={18}  disable={false}/>\n\t                <br/>\n\t                <Star rate={10} size={19}  disable={false}/>\n\t                <br/>\n\t                <Star rate={20} size={20} disable={false}/>\n\t                <br/>\n\t                <Star rate={30} size={21} disable={false}/>\n\t                <br/>\n\t                <Star rate={40} size={22} disable={false}/>\n\t                <br/>\n\t                <Star rate={50} size={23} disable={false} ref='test'/>\n\t                <br/>\n\t                <div\n\t                    style={{\n\t                    background:'orangered',\n\t                    display:'inline-block',\n\t                    color:'#fff',\n\t                    cursor:'pointer',\n\t                    padding:'3px'}}\n\t                    onClick={()=>{\n\t                    alert('rate is'+this.refs['test'].Rate)\n\t                }}>点击获取最后一组星星的红色比率数据</div>\n\t\n\t            </div>\n\t        )\n\t    }\n\t}\n\t\n\t",
-                "\t/**\n\t * Created by panqianjin on 15/11/17.\n\t */\n\timport React,{Component} from 'react';\n\timport Tooltip from '../../../src/Tooltip.js';\n\timport Button from '../../../src/Button.js';\n\timport TooltipPanel from '../../../src/TooltipPanel.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(){\n\t        \"use strict\";\n\t        super();\n\t        this.state={\n\t        test:'_'\n\t        };\n\t\n\t        setTimeout(function(){\n\t            this.setState({\n\t                test:'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'\n\t            });\n\t        }.bind(this),2000);\n\t    }\n\t    change(){\n\t        setTimeout(()=>this.setState({\n\t            test:'hello world hello worldhello worldhello worldhello worldhello world'\n\t        }));\n\t    }\n\t    render(){\n\t        return (\n\t            <div>\n\t            <div style={{width:'300px',marginBottom:'200px'}} onClick={()=>this.change()}>\n\t                <TooltipPanel direction='bottom'>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边2</Button>\n\t                </TooltipPanel>\n\t            </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t            <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t            </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}} msg={<div>hello world,hello world</div>}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t                <div>\n\t                    <TooltipPanel direction='left' msg={<div>hello world,hello world</div>}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t                    <div style={{marginTop:'30px'}}>\n\t                        <TooltipPanel direction='right' msg={<div>hello world,hello world</div>}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                    <TooltipPanel direction='top'\n\t                                  style={{float:'left',marginLeft:'300px'}}\n\t                                  msg={this.state.test}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">上边应在上边</Button>\n\t                    </TooltipPanel>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\texport default Demo;"
+                "\t/**\n\t * Created by panqianjin on 15/11/17.\n\t */\n\timport React,{Component} from 'react';\n\timport Tooltip from '../../../src/Tooltip.js';\n\timport Button from '../../../src/Button.js';\n\timport TooltipPanel from '../../../src/TooltipPanel.js';\n\tlet Demo = class Demo extends Component {\n\t    constructor() {\n\t        \"use strict\";\n\t        super();\n\t        this.state = {\n\t            test: '_'\n\t        };\n\t\n\t        setTimeout(function () {\n\t            this.setState({\n\t                test: 'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'\n\t            });\n\t        }.bind(this), 2000);\n\t    }\n\t\n\t    change() {\n\t        setTimeout(()=>this.setState({\n\t            test: 'hello world hello worldhello worldhello worldhello worldhello world'\n\t        }));\n\t    }\n\t\n\t    render() {\n\t        return (\n\t            <div>\n\t                <div id='a' style={{width:'500px',height:'500px',border:'1px solid #f00',position:'relative'}}>\n\t                    <div style={{width:'300px',height:'300px',background:'#fff',position:'absolute'}}\n\t                         onClick={()=>this.change()}>\n\t                        <TooltipPanel direction='top' wapper='a'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在上，边界为a</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                    <div style={{marginTop:'300px'}}>\n\t                        <TooltipPanel direction='left' wrapper='a'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在左，边界为a</Button>\n\t                        </TooltipPanel>\n\t                        <TooltipPanel direction='right' style={{marginLeft:'250px'}}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右，边界为可视窗口</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t                <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}} msg={<div>hello world,hello world</div>}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t\n\t                <div>\n\t                    <TooltipPanel direction='left' msg={<div>hello world,hello world</div>}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t\n\t                    <div style={{marginTop:'30px'}}>\n\t                        <TooltipPanel direction='right' msg={<div>hello world,hello world</div>}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                    <TooltipPanel direction='top'\n\t                                  style={{float:'left',marginLeft:'300px'}}\n\t                                  msg={this.state.test}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">上边应在上边</Button>\n\t                    </TooltipPanel>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\texport default Demo;"
             ],
             "exampleTitles": [
                 "UI展示",
@@ -1331,12 +1330,11 @@
             "namespace": "",
             "file": "lib/TooltipPanel.js",
             "line": 54,
-            "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认",
-            "moudle": "ui",
+            "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认\n可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。\n主要属性和接口：\n<ul>\n    <li>direction:提示的方向，取值范围［top,down,left,right］默认down<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n    <li>msg:提示文字，必须要写，不然默认的没什么用吧<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a' msg='this is msg'\n        </code>\n    </li>\n    <li>wrapper:指定边界元素，默认为可视窗口，如下则id为a的div为边界元素<br>\n        如：<code>\n           TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n</ul>",
             "is_constructor": 1,
             "example": [
                 "\t/**\n\t * Created by slashhuang on 15/12/21.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport {findDOMNode} from 'react/lib/ReactDOM';\n\timport Star from '../../../src/Star.js';\n\texport default class StarDemo extends Component {\n\t    render(){\n\t        return(\n\t            <div>\n\t                不可修改数据\n\t                <br/>\n\t                <Star/><br/>\n\t                <Star rate={50} size={15}/>\n\t                <br/>\n\t                <Star rate={60} size={16} />\n\t                <br/>\n\t                <Star rate={70} size={17}/>\n\t                <br/>\n\t                <Star rate={80} size={18} />\n\t                <br/>\n\t                可鼠标浮动修改数据\n\t                <br/>\n\t                <Star rate={90} size={18}  disable={false}/>\n\t                <br/>\n\t                <Star rate={10} size={19}  disable={false}/>\n\t                <br/>\n\t                <Star rate={20} size={20} disable={false}/>\n\t                <br/>\n\t                <Star rate={30} size={21} disable={false}/>\n\t                <br/>\n\t                <Star rate={40} size={22} disable={false}/>\n\t                <br/>\n\t                <Star rate={50} size={23} disable={false} ref='test'/>\n\t                <br/>\n\t                <div\n\t                    style={{\n\t                    background:'orangered',\n\t                    display:'inline-block',\n\t                    color:'#fff',\n\t                    cursor:'pointer',\n\t                    padding:'3px'}}\n\t                    onClick={()=>{\n\t                    alert('rate is'+this.refs['test'].Rate)\n\t                }}>点击获取最后一组星星的红色比率数据</div>\n\t\n\t            </div>\n\t        )\n\t    }\n\t}\n\t\n\t",
-                "\t/**\n\t * Created by panqianjin on 15/11/17.\n\t */\n\timport React,{Component} from 'react';\n\timport Tooltip from '../../../src/Tooltip.js';\n\timport Button from '../../../src/Button.js';\n\timport TooltipPanel from '../../../src/TooltipPanel.js';\n\tlet Demo = class Demo extends Component{\n\t    constructor(){\n\t        \"use strict\";\n\t        super();\n\t        this.state={\n\t        test:'_'\n\t        };\n\t\n\t        setTimeout(function(){\n\t            this.setState({\n\t                test:'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'\n\t            });\n\t        }.bind(this),2000);\n\t    }\n\t    change(){\n\t        setTimeout(()=>this.setState({\n\t            test:'hello world hello worldhello worldhello worldhello worldhello world'\n\t        }));\n\t    }\n\t    render(){\n\t        return (\n\t            <div>\n\t            <div style={{width:'300px',marginBottom:'200px'}} onClick={()=>this.change()}>\n\t                <TooltipPanel direction='bottom'>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边2</Button>\n\t                </TooltipPanel>\n\t            </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t            <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t            </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}} msg={<div>hello world,hello world</div>}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t                <div>\n\t                    <TooltipPanel direction='left' msg={<div>hello world,hello world</div>}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t                    <div style={{marginTop:'30px'}}>\n\t                        <TooltipPanel direction='right' msg={<div>hello world,hello world</div>}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                    <TooltipPanel direction='top'\n\t                                  style={{float:'left',marginLeft:'300px'}}\n\t                                  msg={this.state.test}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">上边应在上边</Button>\n\t                    </TooltipPanel>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\texport default Demo;"
+                "\t/**\n\t * Created by panqianjin on 15/11/17.\n\t */\n\timport React,{Component} from 'react';\n\timport Tooltip from '../../../src/Tooltip.js';\n\timport Button from '../../../src/Button.js';\n\timport TooltipPanel from '../../../src/TooltipPanel.js';\n\tlet Demo = class Demo extends Component {\n\t    constructor() {\n\t        \"use strict\";\n\t        super();\n\t        this.state = {\n\t            test: '_'\n\t        };\n\t\n\t        setTimeout(function () {\n\t            this.setState({\n\t                test: 'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'\n\t            });\n\t        }.bind(this), 2000);\n\t    }\n\t\n\t    change() {\n\t        setTimeout(()=>this.setState({\n\t            test: 'hello world hello worldhello worldhello worldhello worldhello world'\n\t        }));\n\t    }\n\t\n\t    render() {\n\t        return (\n\t            <div>\n\t                <div id='a' style={{width:'500px',height:'500px',border:'1px solid #f00',position:'relative'}}>\n\t                    <div style={{width:'300px',height:'300px',background:'#fff',position:'absolute'}}\n\t                         onClick={()=>this.change()}>\n\t                        <TooltipPanel direction='top' wapper='a'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在上，边界为a</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                    <div style={{marginTop:'300px'}}>\n\t                        <TooltipPanel direction='left' wrapper='a'>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在左，边界为a</Button>\n\t                        </TooltipPanel>\n\t                        <TooltipPanel direction='right' style={{marginLeft:'250px'}}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右，边界为可视窗口</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                </div>\n\t                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>\n\t                <TooltipPanel direction='left' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边</Button>\n\t                </TooltipPanel>\n\t                <TooltipPanel direction='down' style={{marginLeft:'100px'}} msg={<div>hello world,hello world</div>}>\n\t                    <Button radius egSize=\"sm\" egStyle=\"warning\">应在下边</Button>\n\t                </TooltipPanel>\n\t\n\t                <div>\n\t                    <TooltipPanel direction='left' msg={<div>hello world,hello world</div>}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">应在左边2</Button>\n\t                    </TooltipPanel>\n\t\n\t                    <div style={{marginTop:'30px'}}>\n\t                        <TooltipPanel direction='right' msg={<div>hello world,hello world</div>}>\n\t                            <Button radius egSize=\"sm\" egStyle=\"warning\">应在右边2</Button>\n\t                        </TooltipPanel>\n\t                    </div>\n\t                    <TooltipPanel direction='top'\n\t                                  style={{float:'left',marginLeft:'300px'}}\n\t                                  msg={this.state.test}>\n\t                        <Button radius egSize=\"sm\" egStyle=\"warning\">上边应在上边</Button>\n\t                    </TooltipPanel>\n\t                </div>\n\t            </div>)\n\t    }\n\t};\n\texport default Demo;"
             ],
             "exampleTitles": [
                 "UI展示",
@@ -2771,6 +2769,13 @@
             "module": "ui"
         },
         {
+            "file": "lib/Star.js",
+            "line": 76,
+            "description": "用于不同的css写法导致的位置微调",
+            "class": "Star",
+            "module": "ui"
+        },
+        {
             "file": "lib/Suggestion.js",
             "line": 65,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
@@ -2979,18 +2984,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 72,
-            "description": "提示是否展示",
-            "itemtype": "property",
-            "name": "show",
-            "type": "Boolean",
-            "default": "false",
-            "class": "TooltipPanel",
-            "module": "ui"
-        },
-        {
-            "file": "lib/TooltipPanel.js",
-            "line": 79,
+            "line": 91,
             "description": "提示内容",
             "itemtype": "property",
             "name": "msg",
@@ -3001,7 +2995,18 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 86,
+            "line": 98,
+            "description": "是否指定tips的边界，如果指定超出该边界则改变方向，否则默认以可是窗口边界来判断",
+            "itemtype": "property",
+            "name": "wrapper",
+            "type": "string",
+            "default": "''",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 105,
             "description": "提示方向",
             "itemtype": "property",
             "name": "direction",
@@ -3012,7 +3017,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 114,
+            "line": 134,
             "description": "显示与否由父组件控制",
             "type": "Boolean",
             "class": "TooltipPanel",
@@ -3020,14 +3025,14 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 122,
+            "line": 143,
             "description": "动态更新展示",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 130,
+            "line": 151,
             "description": "渲染完成时进行方向和边界判断，调整tips的位置",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -3039,7 +3044,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 140,
+            "line": 161,
             "itemtype": "method",
             "name": "render",
             "return": {
@@ -3051,6 +3056,27 @@
         {
             "file": "lib/TooltipPanel.js",
             "line": 181,
+            "description": "获得限制区域的宽，若未指定则默认可视区域大小",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 200,
+            "description": "获取元素的client",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 212,
+            "description": "获取offset",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 249,
             "description": "tips方向和边界判断，调整tips的位置",
             "itemtype": "method",
             "name": "changeStyle",
@@ -3069,7 +3095,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 249,
+            "line": 290,
             "description": "获得浏览器的边界大小",
             "itemtype": "method",
             "name": "getMaxBody",
@@ -3094,8 +3120,15 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 266,
-            "description": "判断是否满足边界条件,是返回true否返回false",
+            "line": 307,
+            "description": "如果方向改变，重新设置方向",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 317,
+            "description": "判断是否满足边界条件,返回满足的方向\n不满足的话应该说直接取相反方向",
             "itemtype": "method",
             "name": "isValidate",
             "params": [
@@ -3667,10 +3700,6 @@
             "line": " lib/Toast.js:52"
         },
         {
-            "message": "unknown tag: moudle",
-            "line": " lib/Tooltip.js:44"
-        },
-        {
             "message": "unknown tag: demo",
             "line": " lib/Tooltip.js:44"
         },
@@ -3681,10 +3710,6 @@
         {
             "message": "unknown tag: show",
             "line": " lib/Tooltip.js:44"
-        },
-        {
-            "message": "unknown tag: moudle",
-            "line": " lib/TooltipPanel.js:54"
         },
         {
             "message": "unknown tag: demo",
@@ -3803,6 +3828,10 @@
             "line": " lib/RadioGroup.js:1"
         },
         {
+            "message": "Missing item type\n用于不同的css写法导致的位置微调",
+            "line": " lib/Star.js:76"
+        },
+        {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
             "line": " lib/Tab.js:1"
         },
@@ -3824,11 +3853,27 @@
         },
         {
             "message": "Missing item type\n显示与否由父组件控制",
-            "line": " lib/TooltipPanel.js:114"
+            "line": " lib/TooltipPanel.js:134"
         },
         {
             "message": "Missing item type\n动态更新展示",
-            "line": " lib/TooltipPanel.js:122"
+            "line": " lib/TooltipPanel.js:143"
+        },
+        {
+            "message": "Missing item type\n获得限制区域的宽，若未指定则默认可视区域大小",
+            "line": " lib/TooltipPanel.js:181"
+        },
+        {
+            "message": "Missing item type\n获取元素的client",
+            "line": " lib/TooltipPanel.js:200"
+        },
+        {
+            "message": "Missing item type\n获取offset",
+            "line": " lib/TooltipPanel.js:212"
+        },
+        {
+            "message": "Missing item type\n如果方向改变，重新设置方向",
+            "line": " lib/TooltipPanel.js:307"
         }
     ]
 }

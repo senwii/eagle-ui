@@ -1,6 +1,3 @@
-/**
- * Created by panqianjin on 15/11/17.
- */
 import React,{Component,PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';
@@ -12,7 +9,7 @@ import Grid from './Grid.js';
  * tips组件
  * 只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中
  * @class Tooltip
- * @moudle ui
+ * @module ui
  * @constructor
  * @demo star.js {UI展示}
  * @demo tooltip.js {源码}

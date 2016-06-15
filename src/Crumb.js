@@ -1,6 +1,3 @@
-/**
- * Created by panqianjin on 15/11/3.
- */
 import React,{PropTypes} from 'react';
 import classnames from 'classnames';
 

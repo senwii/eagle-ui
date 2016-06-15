@@ -1,6 +1,3 @@
-/**
- * Created by panqianjin on 15/10/30.
- */
 import React,{PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';

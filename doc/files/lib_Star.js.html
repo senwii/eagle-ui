@@ -492,6 +492,10 @@ var Star = (function (_Component) {
              *
              */
             disable: _react.PropTypes.bool,
+            /**
+             * 用于不同的css写法导致的位置微调
+             */
+            adjust: _react.PropTypes.number,
             classPrefix: _react.PropTypes.string
         },
         enumerable: true
@@ -500,7 +504,8 @@ var Star = (function (_Component) {
         value: {
             classPrefix: &#x27;star&#x27;,
             rate: 0,
-            disable: true
+            disable: true,
+            adjust: 0
         },
         enumerable: true
     }]);
@@ -512,7 +517,8 @@ var Star = (function (_Component) {
         this.state = {
             rate: props.rate,
             size: props.size,
-            disable: props.disable
+            disable: props.disable,
+            adjust: props.adjust
         };
         this.Rate = props.rate;
     }
@@ -521,10 +527,12 @@ var Star = (function (_Component) {
         var disable = this.state.disable;
 
         var newPositionX = e.clientX;
+
         var newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth * 5 + 1) * 20;
         this.setState({
             rate: newRate
         });
+        this.props.activeCallback &amp;&amp; this.props.activeCallback(newRate);
         this.Rate = newRate;
     };
 
@@ -555,8 +563,13 @@ var Star = (function (_Component) {
                 },
                 ref: function (node) {
                     if (!_this.positionX) {
-                        _this.positionX = node.offsetLeft;
                         _this.offsetWidth = node.offsetWidth;
+                        _this.positionX = 0;
+                        while (node) {
+                            _this.positionX += node.offsetLeft;
+                            node = node.offsetParent;
+                        }
+                        _this.positionX += _this.state.adjust;
                     }
                 } },
             _react2[&#x27;default&#x27;].createElement(&#x27;div&#x27;, { className: this.getClassName(&#x27;grey&#x27;), style: _extends({ width: rate + &#x27;%&#x27; }, shadowPosition) })
