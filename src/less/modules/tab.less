@@ -1,8 +1,8 @@
 
-@tab-active-color:@brand-primary;
-@tab-hover-color:#bbb;
 
 .eg-tab-item{
+  border-bottom-width:1px;
+  border-bottom-style:solid ;
   cursor:pointer;
   display: inline-block;
   min-width: 100px;
@@ -12,10 +12,7 @@
   &:hover{
     text-decoration: none;
   }
-  border-bottom: 1px solid @tab-hover-color;
-  border-bottom: 1px solid #dddddd;
   &.eg-tab-active{
-    color:@tab-active-color;
     cursor: default;
   }
 }
@@ -28,7 +25,8 @@
   position: absolute;
   bottom: 0;
   .eg-tabset-slider{
-    border-bottom: solid 4px @tab-active-color;
+    border-bottom-style: solid;
+    border-bottom-width:4px;
     height: 0;
     width: 85px;
     position: absolute;
@@ -41,3 +39,4 @@
     transition: all cubic-bezier(.2,.2,.45,1.5) .44s;
   }
 }
+.tab-skin();

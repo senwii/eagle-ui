@@ -1,0 +1,61 @@
+@import "variable";
+@import "mixins/button";
+@import "mixins/label";
+@import "mixins/tab";
+
+@brand-primary:             purple;
+
+body{
+
+  .color-white{
+    color: @white;
+  }
+  .color-primary{
+    color: @brand-primary;
+  }
+  .color-success{
+    color: @brand-success;
+  }
+  .color-info{
+    color: @brand-info;
+  }
+  .color-warning{
+    color: @brand-warning;
+  }
+  .color-danger{
+    color: @brand-danger;
+  }
+  .color-error{
+    color: @brand-error;
+  }
+
+  //btn
+  .btn-skin();
+  //label
+  .label-skin();
+  //tab
+  .tab-skin();
+  //checkbox radio
+  .eg-input.checkbox, .eg-input.radio{
+    .input-icon{
+      fill:lighten(@gray-light,10%);
+    }
+    &.active{
+      .input-icon{
+        fill: @brand-primary;
+      }
+
+    }
+    &.disabled{
+      @color:lighten(@gray-light,35%);
+      label{
+        color: lighten(@gray-light,10%);
+
+      }
+      .input-icon{
+        fill: @color;
+      }
+
+    }
+  }
+}

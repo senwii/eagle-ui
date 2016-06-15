@@ -49,47 +49,8 @@
         }
     }
 }
-.eg-btn-white {
-    .button-variant(@btn-white-color; @btn-white-bg; @btn-white-border);
-}
-// Success appears as green
-.eg-btn-success {
-    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-    &.eg-btn-hollow{
-        .button-variant(@btn-hollow-color; @btn-hollow-bg; @btn-success-border);
-    }
-}
-// Info appears as blue-green
-.eg-btn-info {
-    .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
-    &.eg-btn-hollow{
-        .button-variant(@btn-hollow-color; @btn-hollow-bg; @btn-info-border);
-    }
-}
-// Warning appears as orange
-.eg-btn-warning {
-    .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
-    &.eg-btn-hollow{
-        .button-variant(@btn-hollow-color; @btn-hollow-bg; @btn-warning-border);
-    }
-}
-// Danger and error appear as red
-.eg-btn-danger {
-    .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
-    &.eg-btn-hollow{
-        .button-variant(@btn-hollow-color; @btn-hollow-bg; @btn-danger-border);
-    }
-}
-.eg-btn-error {
-    .button-variant(@btn-error-color; @btn-error-bg; @btn-error-border);
-    &.eg-btn-hollow{
-        .button-variant(@btn-hollow-color; @btn-hollow-bg; @btn-error-border);
-    }
-}
-.eg-btn-link {
-    border:none;
-    .button-variant(@gray-dark; transparent; @btn-error-border);
-}
+
+
 
 .eg-btn-lg {
     .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-base);
@@ -123,3 +84,5 @@ input[type="button"] {
         width: 100%;
     }
 }
+
+.btn-skin();
