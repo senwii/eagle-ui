@@ -1,3 +1,5 @@
+@col:#fff;
+@back-col: #000;
 .eg-tooltip-container {
   display: inline-block;
   position: relative;
@@ -12,15 +14,15 @@
     min-width: 90px;
     z-index: 9001;
     margin: 5px 0;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
+    background: @back-col;
+    opacity: 0.6;
+    color: @col;
     font-size: 13px;
     text-align: left;
     .border-radius(3px);
     .eg-tooltip-content {
       text-align: center;
       padding: 5px;
-      color: #fff;
       min-width: 90px;
     }
     .eg-tooltip-arrow-down, .eg-tooltip-arrow-top, .eg-tooltip-arrow-left,.eg-tooltip-arrow-right {
@@ -29,7 +31,7 @@
       height: 0;
       width: 0;
       line-height: 0;
-      opacity: 0.6;
+      opacity: 1;
     }
     .eg-tooltip-arrow-down{
       border-color: transparent transparent #000 transparent;

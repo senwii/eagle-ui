@@ -136,7 +136,7 @@ class TooltipPanel extends Component {
     }
 
     /**
-     * 获取元素的client
+     * 获取元素的client宽高
      * */
     getClientWH(obj) {
         let wh = {
@@ -147,7 +147,8 @@ class TooltipPanel extends Component {
     }
 
     /**
-     * 获取offset
+     * 获取tips的offset
+     * 宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差
      * */
     getOffsetWH(obj) {
         let wh = {
@@ -160,17 +161,21 @@ class TooltipPanel extends Component {
         wh.top = this.getTrueLT(obj, false, warpNode);
         return wh
     }
-
+    /**
+     * 获取处理之后的offset，top和left
+     * */
     getTrueLT(tipNode, isLeft, warpNode) {
         let tipNodeLT = this.getOffsetLT(tipNode,isLeft);
-        debugger
         if (warpNode) {
             let warpLT = this.getOffsetLT(warpNode,isLeft);
             tipNodeLT = tipNodeLT - warpLT;
         }
         return tipNodeLT;
     }
-
+    /**
+     * 获取offset top、left。
+     * 两者获取方式相同，根据isleft区分left或top
+     * */
     getOffsetLT(ele, isLeft) {
         let dir = isLeft ? 'offsetLeft' : 'offsetTop';
         let actuDir = ele[dir],
@@ -194,25 +199,25 @@ class TooltipPanel extends Component {
             ReactDom.findDOMNode(this.tips),
             ReactDom.findDOMNode(this.refs.container).children[0]];
         let tips = this.getOffsetWH(tipNode);
-        let element = this.getOffsetWH(arrowNode);
+        let arrow = this.getOffsetWH(arrowNode);
         let warpperWH = this.getWarpperWH();
-        dir = this.isValidate(dir, tips, element, warpperWH);
+        dir = this.isValidate(dir, tips, arrow, warpperWH);
         switch (dir) {
             case 'down':
-                tipNode.style.top = element.height + 'px';
-                tipNode.style.left = (element.width - tips.width) / 2 + 'px';
+                tipNode.style.top = arrow.height + 'px';
+                tipNode.style.left = (arrow.width - tips.width) / 2 + 'px';
                 break;
             case 'top':
                 tipNode.style.top = '-' + (tips.height + 10) + 'px';
-                tipNode.style.left = (element.width - tips.width) / 2 + 'px';
+                tipNode.style.left = (arrow.width - tips.width) / 2 + 'px';
                 break;
             case 'left':
-                tipNode.style.right = element.width + 5 + 'px';
-                tipNode.style.top = ((element.height - tips.height) / 2 - 5) + 'px';
+                tipNode.style.right = arrow.width + 5 + 'px';
+                tipNode.style.top = ((arrow.height - tips.height) / 2 - 5) + 'px';
                 break;
             case 'right':
-                tipNode.style.left = element.width + 5 + 'px';
-                tipNode.style.top = ((element.height - tips.height) / 2 - 5) + 'px';
+                tipNode.style.left = arrow.width + 5 + 'px';
+                tipNode.style.top = ((arrow.height - tips.height) / 2 - 5) + 'px';
                 break;
             default :
                 break;
@@ -237,7 +242,7 @@ class TooltipPanel extends Component {
     }
 
     /**
-     * 如果方向改变，重新设置方向
+     * 如果方向改变，重新设置箭头方向
      * */
     getNewArrow(tipNode, dir) {
         let arrow = tipNode.children[0];
@@ -256,7 +261,7 @@ class TooltipPanel extends Component {
      * @param dir {String}
      * @param tips {Object}
      * @param ele {Object}
-     * @param maxBody {Object}
+     * @param maxBody {Object} 边界
      * @return flag {Boolean}
      * */
     isValidate(dir, tips, ele, maxBody) {
