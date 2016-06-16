@@ -1,5 +1,3 @@
-@col:#fff;
-@back-col: #000;
 .eg-tooltip-container {
   display: inline-block;
   position: relative;
@@ -14,9 +12,6 @@
     min-width: 90px;
     z-index: 9001;
     margin: 5px 0;
-    background: @back-col;
-    opacity: 0.6;
-    color: @col;
     font-size: 13px;
     text-align: left;
     .border-radius(3px);
@@ -31,31 +26,26 @@
       height: 0;
       width: 0;
       line-height: 0;
-      opacity: 1;
     }
     .eg-tooltip-arrow-down{
-      border-color: transparent transparent #000 transparent;
       left: 50%;
       margin-left:-4px;
       top: -5px;
       border-width: 0 5px 5px;
     }
     .eg-tooltip-arrow-top {
-      border-color: #000 transparent transparent transparent;
       left: 50%;
       margin-left:-4px;
       bottom: -5px;
       border-width:5px 5px 0;
     }
     .eg-tooltip-arrow-left {
-      border-color: transparent transparent transparent #000;
       right: -5px;
       top: 50%;
       margin-top:-4px;
       border-width: 5px 0 5px 5px;
     }
     .eg-tooltip-arrow-right{
-      border-color: transparent #000 transparent transparent;
       left: -10px;
       top: 50%;
       margin-top:-4px;
@@ -68,3 +58,4 @@
   }
 
 }
+.tooltip-skin();
