@@ -50,7 +50,6 @@ export default class Search extends Suggestion {
 
     renderInput(){
         let {getValueCallback,children,iconStyle,value,classPrefix,componentTag,defaultValue,...other} = this.props;
-
         return (
             <Input
                 ref={this.inputId}

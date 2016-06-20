@@ -33,10 +33,11 @@ export default class Column extends Component{
         field:PropTypes.string,
         /**
          * 用来描述每个竖排单元格的展示形式
+         * 不应该为string
          * @property cell
-         * @type JSX
+         * @type Object
          * */
-        cell:PropTypes.string
+        cell:PropTypes.object
 
     };
 

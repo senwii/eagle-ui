@@ -111,7 +111,10 @@ export default class LabelGroup extends Component{
 
     render(){
         let _this = this;
-        let options = React.Children.map(this.props.children,(option)=>{
+        /**
+         * key 重复，使用component生成唯一key
+         * */
+        let options = React.Children.map(this.props.children,(option,index)=>{
             let {
                 activeCallback,
                 url,
@@ -119,10 +122,10 @@ export default class LabelGroup extends Component{
                 value,
                 ...other,
                 } = option.props;
-
             return <Label
                 {...other}
-                key={children}
+                //key={children+index}
+                key={_this.uniqueId()}
                 url={url ? url:_this.props.url}
                 value = {value?value:children}
                 activeCallback={_this.activeHandler.bind(_this,activeCallback ? activeCallback:_this.props.activeCallback)}

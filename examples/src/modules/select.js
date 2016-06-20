@@ -1,4 +1,3 @@
-
 import React,{Component,PropTypes}  from 'react';
 import Select from '../../../src/Select.js';
 import Button from '../../../src/Button.js';
@@ -19,7 +18,6 @@ let Demo= class Demo extends Component{
             options:[],
             defaultCity:''
         };
-
         setTimeout(()=>{
             this.setState({options:this.renderC()})
         }.bind(this) );

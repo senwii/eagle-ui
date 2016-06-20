@@ -173,7 +173,7 @@ let Demo = class Demo extends Component{
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col padding={'0'}>
+                                    <Col padding={0}>
                                         <Panel>
                                             <PanelHeader leftFlag>我是标题二</PanelHeader>
                                             <PanelContent padding={true}>
@@ -184,7 +184,7 @@ let Demo = class Demo extends Component{
 
                                 </Row>
                                 <Row>
-                                    <Col padding={'0'}>
+                                    <Col padding={0}>
                                         <Panel>
                                             <PanelHeader leftFlag>我是标题三</PanelHeader>
                                             <PanelContent padding={true}>
@@ -266,7 +266,7 @@ let Demo = class Demo extends Component{
                                         </Row>
                                         <Row>
                                             <Col>
-                                                <Panel  margin={'0'}>
+                                                <Panel  margin={0}>
                                                     <PanelHeader>另一种形式的嵌套3</PanelHeader>
                                                     <PanelContent>
                                                         <Row>
@@ -280,7 +280,7 @@ let Demo = class Demo extends Component{
                                         </Row>
                                     </PanelContent>
                                 </Panel>
-                                <Panel margin={'0'}>
+                                <Panel margin={0}>
                                     <PanelHeader>另一种形式的嵌套2</PanelHeader>
                                     <PanelContent>
                                         <Row>

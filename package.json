@@ -23,7 +23,7 @@
     "email": "min.xiao@dianping.com"
   },
   "bugs": {
-    "mail":  "277407493@qq.com",
+    "mail": "277407493@qq.com",
     "web": "https://github.com/future-team/eagle-ui/issues",
     "url": "https://github.com/future-team/eagle-ui/issues"
   },
@@ -103,8 +103,8 @@
     "karma-jasmine": "^0.3.6",
     "karma-webpack": "^1.7.0",
     "less-loader": "^2.2.0",
+    "react": "^15.1.0",
     "raw-loader": "^0.5.1",
-    "react": "^0.14.5",
     "react-hot-loader": "^1.3.0",
     "react-router": "^1.0.2",
     "style-loader": "^0.12.3",

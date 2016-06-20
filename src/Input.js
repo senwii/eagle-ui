@@ -201,7 +201,6 @@ export default class Input extends Component{
 
             iconDirection = this.getClassName('icon-'+iconDirection);
         }
-
         return (
             <div className={classnames(this.getProperty(),type,{
                 'active':checked,

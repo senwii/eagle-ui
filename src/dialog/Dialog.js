@@ -22,8 +22,11 @@ export default class Dialog extends Component{
     loadedCallback(){
 
     }
+    /**
+     * key 报warning，暂时改为keys
+     * */
     update(props=this.props){
-        new DialogFactory(props.key||props.id || props.name,props.type || 'mask',props.children,props);
+        new DialogFactory(props.keys||props.id || props.name,props.type || 'mask',props.children,props);
     }
 
     componentWillReceiveProps(props){
