@@ -160,7 +160,7 @@ gulp.task('skin', function () {
       .pipe(less())
       .pipe(gulp.dest('dist'));
 });
-gulp.task('default', ['babel','require-webpack','example-webpack'/*, 'html', 'asset'*/]);
+gulp.task('default', ['babel','require-webpack','example-webpack','skin'/*, 'html', 'asset'*/]);
 gulp.task('test',['karma']);
 gulp.task('demo', ['demo-webpack','open']);
 gulp.task('min',['min-webpack']);
