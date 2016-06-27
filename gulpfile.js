@@ -6,7 +6,7 @@ var demoWebpackConfig = require('./webpack/demo.config');
 var webpackConfig = require('./webpack/webpack.config');
 var WebpackDevServer = require("webpack-dev-server");
 var open = require('gulp-open');
-
+var less=require('gulp-less');
 var babel = require('gulp-babel');
 
 var error = function(e){
@@ -155,7 +155,11 @@ gulp.task('style-webpack', function(done) {
 gulp.task('watch', function () {
   gulp.watch(['./lib/**/*.*'], ['demo']);
 });
-
+gulp.task('skin', function () {
+  gulp.src(['src/less/skin.less']) //多个文件以数组形式传入
+      .pipe(less())
+      .pipe(gulp.dest('dist'));
+});
 gulp.task('default', ['babel','require-webpack','example-webpack'/*, 'html', 'asset'*/]);
 gulp.task('test',['karma']);
 gulp.task('demo', ['demo-webpack','open']);
