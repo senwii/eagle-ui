@@ -18,10 +18,10 @@ function loadPageCallback(pageSize){
     window.location = location.href.replace(/\?.*/,'')+'?page='+page+'&pageSize='+pageSize;
 }
 var pageSize = 20;
-
+let arrs = [10,15,23,35,40],
+    arr1 = '1';
 
 export default class PagingCls extends Component{
-
     render(){
         let query = this.props.location.query,
         page = query.page*1 ||0,
@@ -30,7 +30,7 @@ export default class PagingCls extends Component{
             <Row>
                 <Col sm={12}>
                     <Paging showItemsNumber={true} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
-                            pageCallback={callback} total={5024} />
+                            pageCallback={callback} total={5024} choosePageSize={arr1}/>
                 </Col>
             </Row>
         );

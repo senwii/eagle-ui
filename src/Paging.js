@@ -58,7 +58,14 @@ export default class Paging extends Component{
          * @property showItemsNumber
          * @type Boolean
          * */
-        showItemsNumber:PropTypes.bool
+        showItemsNumber:PropTypes.bool,
+        /**
+         * 自定义每页显示数量数组,需为非空数组。默认为[]
+         * @property choosePageSize
+         * @type array
+         * @default []
+         * */
+        choosePageSize:PropTypes.array
     };
     static defaultProps = {
         activeClass:'active',
@@ -67,6 +74,10 @@ export default class Paging extends Component{
         classPrefix:'paging',
         componentTag:'div',
         chooseMaxPageSize:0,
+        /**
+         * 默认每页显示数量为［］
+         * */
+        choosePageSize:[],
         /**
          * 跟showItemsNumber一起使用 arguments{pageSize}
          * @property loadPageCallback
@@ -240,17 +251,25 @@ export default class Paging extends Component{
     }
 
     accordingNumber(){
-        let opts = [],num=10,chooseMaxPageSize = this.props.chooseMaxPageSize || 100;
+        let opts = [],num=10,choosePageSize = this.props.choosePageSize,chooseMaxPageSize = this.props.chooseMaxPageSize || 100;
+        /**
+         * if 提供自定义数组 且非空。
+         * */
+        if(choosePageSize instanceof Array && choosePageSize.length > 0){
+            choosePageSize.forEach((i)=>{
+                opts.push(<option value={i}  key={i}>{i}</option>);
+            })
+        }else{
+            for(let i=1,n;i<11;i++){
+                n=num*i;
+                if(n<=chooseMaxPageSize){
 
-        for(let i=1,n;i<11;i++){
-            n=num*i;
-            if(n<=chooseMaxPageSize){
+                    opts.push(<option value={n}  key={n}>{n}</option>);
+                }else{
+                    break;
+                }
 
-                opts.push(<option value={n}  key={n}>{n}</option>);
-            }else{
-                break;
             }
-
         }
 
         return (
