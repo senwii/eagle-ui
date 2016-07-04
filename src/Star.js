@@ -101,16 +101,22 @@ export default class Star extends Component{
                  onMouseMove={(e)=>{
                     !this.state.disable&&this.renderCustomize(e)
                     }}
-                 ref={(node)=>{
-                    if(!this.positionX) {
-                        this.offsetWidth=node.offsetWidth;
-                        this.positionX = 0;
-                        while(node){
-                            this.positionX += node.offsetLeft;
+                 ref={(targetNode)=>{
+                 let self=this;
+                    function calculateCoor(){
+                        let node=targetNode;
+                        self.offsetWidth = node.offsetWidth;
+                        self.positionX = 0;
+                        while (node) {
+                            self.positionX += node.offsetLeft;
                             node = node.offsetParent;
                         }
-                        this.positionX+=this.state.adjust;
+                        self.positionX += self.state.adjust;
                     }
+                    if(!this.positionX) {
+                        calculateCoor();
+                    }
+                    window.onresize=calculateCoor;
                  }}>
                 <div className={this.getClassName('grey')} style={{width:rate+'%',...shadowPosition}}></div>
             </div>

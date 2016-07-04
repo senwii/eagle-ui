@@ -43,20 +43,36 @@ export default class CalendarPanel extends Component{
     static defaultProps = {
         classPrefix:'calendar',
         componentTag:'Input',
+        calendarType:'date',
         getValueCallback:function(date){
             console.warn('通过向CalendarPanel传入回调函数"getValueCallback"可以获取到当前选取的日期值，当前选取的日期为：'+date);
         }
     };
-
+    getFormat(){
+        let formatMap={
+                date:'yyyy-MM-dd',
+                month:'MM',
+                year:'yyyy'
+            };
+        return formatMap[this.props.calendarType]
+    }
+    getWindowType(){
+        let typeMap={
+            date:0,
+            month:1,
+            year:2
+        },
+        windowType=typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0
+        return windowType;
+    }
     constructor(props, context) {
         super(props, context);
-
         this.calendarContainer = this.uniqueId();
 
         this.state = {
             isShow:false,
             value:this.props.defaultDate || '',
-            windowType:0
+            windowType:this.getWindowType()
         };
     }
 
@@ -102,7 +118,7 @@ export default class CalendarPanel extends Component{
         this.input = input;
         this.setState({
             isShow:true,
-            windowType:0
+            windowType:this.getWindowType()
         });
     }
 
@@ -159,6 +175,7 @@ export default class CalendarPanel extends Component{
             } ref={this.calendarContainer}>
                 {options}
                 <Calendar
+                    format={this.getFormat()}
                     {...this.props}
                     show={this.state.isShow}
                     selectCallback={::this.selectCallback}

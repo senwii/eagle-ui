@@ -74,6 +74,13 @@ export default class Calendar extends Component{
          * */
         format:PropTypes.string,
         /**
+         * 日期选择控件类型,date表示可以选择年月日，year只能选择年份，month只能选择月份
+         * @property calendarType
+         * @type string
+         * @default 'date'
+         * */
+        calendarType:PropTypes.string,
+        /**
          * 选择某个具体日期后执行的回调函数
          * @event  selectCallback
          * @param {string} date 日期
@@ -341,7 +348,9 @@ export default class Calendar extends Component{
         return (
 
             <table className="calendar">
-                <thead className="eg-calendar-header">
+                <thead style={{
+                    display:(this.props.calendarType=='month'?'none':'table-header-group')
+                }} className="eg-calendar-header">
                 <tr>
                 <th>
                     <div className={this.getClassName('icon-prev',false)} onMouseDown={this.switchYear.bind(this,'-1')}></div>
@@ -437,10 +446,22 @@ export default class Calendar extends Component{
         let selected = this.getSelectedDate(),
             year = selected.getFullYear();
 
-        this.setState({
-            selectedDate:new Date(typeof(type)=='string'?year + eval("(" + type + ")"):type,selected.getMonth(),1 )
-        });
-        typeof(type)!='string' &&(this.switchWindow(1) );
+        if(this.props.calendarType=='year'){
+            let date=type+'/'+(selected.getMonth()+1)+'/'+'1';
+            let d= date.split('/'),
+                {selectCallback} = this.props;
+            selectCallback && selectCallback(this.getDate(d[0],d[1],d[2]),d );
+            this.setState({
+                currentDate:new Date(date),
+                selectedDate:new Date(typeof(type)=='string'?year + eval("(" + type + ")"):type,selected.getMonth(),1 )
+            });
+            this.props.closeCallback &&(this.props.closeCallback() );
+        }else{
+            this.setState({
+                selectedDate:new Date(typeof(type)=='string'?year + eval("(" + type + ")"):type,selected.getMonth(),1 )
+            });
+            typeof(type)!='string' &&(this.switchWindow(1) );
+        }
     }
 
     switchMonth(type){
@@ -448,10 +469,23 @@ export default class Calendar extends Component{
             year = selected.getFullYear(),
             month = selected.getMonth();
 
-        this.setState({
-            selectedDate:new Date(year,typeof(type)=='string'?month + eval("(" + type + ")"):type,1 )
-        });
-        typeof(type)!='string' &&(this.switchWindow(0) );
+        if(this.props.calendarType=='month'){
+            let date=year+'/'+(type+1)+'/'+'1';
+            let d= date.split('/'),
+                {selectCallback} = this.props;
+            //console.dir(this.getDate(d[0],d[1],d[2]));
+            selectCallback && selectCallback(this.getDate(d[0],d[1],d[2]),d );
+            this.setState({
+                currentDate:new Date(date),
+                selectedDate:new Date(year,typeof(type)=='string'?month + eval("(" + type + ")"):type,1 )
+            });
+            this.props.closeCallback &&(this.props.closeCallback() );
+        }else{
+            this.setState({
+                selectedDate:new Date(year,typeof(type)=='string'?month + eval("(" + type + ")"):type,1 )
+            });
+            typeof(type)!='string' &&(this.switchWindow(0) );
+        }
     }
 
     getSelectedDateSplit(){
@@ -483,7 +517,8 @@ export default class Calendar extends Component{
                                 textAlign:'right'
                             }}>
                                 <span style={{
-                                    cursor:'pointer'
+                                    cursor:'pointer',
+                                    display:(this.props.calendarType=='date'?'inline-block':'none')
                                 }} onClick={::this.todayHandler}>今天</span>
                             </div>
                         </div>
@@ -493,3 +528,7 @@ export default class Calendar extends Component{
         );
     }
 }
+
+
+
+
