@@ -60,10 +60,10 @@ export default class Paging extends Component{
          * */
         showItemsNumber:PropTypes.bool,
         /**
-         * 自定义每页显示数量选项,需为非空数组。默认为null
+         * 自定义每页显示数量数组,需为非空数组。默认为[]
          * @property choosePageSize
-         * @type Obj
-         * @default null
+         * @type array
+         * @default []
          * */
         choosePageSize:PropTypes.array
     };
@@ -74,6 +74,10 @@ export default class Paging extends Component{
         classPrefix:'paging',
         componentTag:'div',
         chooseMaxPageSize:0,
+        /**
+         * 默认每页显示数量为［］
+         * */
+        choosePageSize:[],
         /**
          * 跟showItemsNumber一起使用 arguments{pageSize}
          * @property loadPageCallback
@@ -251,7 +255,7 @@ export default class Paging extends Component{
         /**
          * if 提供自定义数组 且非空。
          * */
-        if(!!choosePageSize && choosePageSize.length > 0){
+        if(choosePageSize instanceof Array && choosePageSize.length > 0){
             choosePageSize.forEach((i)=>{
                 opts.push(<option value={i}  key={i}>{i}</option>);
             })

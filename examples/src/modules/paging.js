@@ -19,7 +19,7 @@ function loadPageCallback(pageSize){
 }
 var pageSize = 20;
 let arrs = [10,15,23,35,40],
-    arr1 = [];
+    arr1 = '1';
 
 export default class PagingCls extends Component{
     render(){
