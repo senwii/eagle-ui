@@ -68,7 +68,7 @@ export default class CalendarPanel extends Component{
     constructor(props, context) {
         super(props, context);
         this.calendarContainer = this.uniqueId();
-
+        this.inputId = this.uniqueId();
         this.state = {
             isShow:false,
             value:this.props.defaultDate || '',
@@ -159,12 +159,16 @@ export default class CalendarPanel extends Component{
         let options = React.Children.map(this.props.children,(option)=>{
 
             return <Input {...option.props}
+                ref={this.inputId}
                 onBlur={::_this.inputBlurHandler}
                 onMouseUp={::_this.inputMouseUpHandler}
                 onFocus={::_this.inputFocusHandler}
                 value={_this.state.value}
                 onChange={::_this.inputChangeHandler}
                 icon={option.props.icon}
+                iconClickCallback={function(){
+                    ReactDom.findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
+                }.bind(this) }
                 />;
 
         },this);

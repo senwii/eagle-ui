@@ -35,9 +35,9 @@ export default class Calendar extends Component{
         return (
             <Grid>
             <Row>
-                <Col sm={12}>
+                <Col sm={3} >
                     <CalendarPanel  calendarType='month' defaultDate='12'>
-                        <Input placeholder="请选择日期" style={{width:'150px'}} />
+                        <Input placeholder="请选择日期"  icon="calendar" />
                     </CalendarPanel>
 
                 </Col>
