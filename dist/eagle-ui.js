@@ -10739,6 +10739,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });*/
 	            d.body.appendChild(dom);
 	            this.container = dom;
+	            this.container.addEventListener('click', (function () {
+	                this.close();
+	            }).bind(this), false);
 	        };
 
 	        BaseDialog.prototype.renderDialog = function renderDialog(Modal, props) {

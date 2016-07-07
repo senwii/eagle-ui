@@ -88,6 +88,9 @@ let BaseDialog = ((d)=>{
             });*/
             d.body.appendChild(dom);
             this.container = dom;
+            this.container.addEventListener('click',function(){
+                this.close();
+            }.bind(this),false);
         }
 
         renderDialog(Modal,props){
