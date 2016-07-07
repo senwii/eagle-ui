@@ -36956,8 +36956,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });*/
 	            d.body.appendChild(dom);
 	            this.container = dom;
-	            this.container.addEventListener('click', (function () {
-	                this.close();
+	            this.container.addEventListener('click', (function (event) {
+
+	                if (event.target.className.match('dialog-mask') != null) {
+	                    this.close();
+	                }
+	                //event.stopPropagation &&(event.stopPropagation() );
 	            }).bind(this), false);
 	        };
 
