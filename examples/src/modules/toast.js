@@ -39,7 +39,7 @@ let Demo= class Demo extends Component{
                     <Button data-value="success"  data-message="无遮罩加载成功">无遮罩toast</Button>
                 </ButtonGroup>
 
-                <Dialog id="toast" isClose={false} isMask={this.state.isMask}>
+                <Dialog id="toast" isClose={false} isMask={this.state.isMask} isMaskClose={false}>
                     <Toast type={this.state.type}>{this.state.message}</Toast>
                 </Dialog>
             </Grid>

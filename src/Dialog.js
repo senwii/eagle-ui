@@ -80,6 +80,12 @@ import Dialog from './dialog/Dialog';
  * @type String
  * @default empty
  * */
+/**
+ * 是否点击背景层也能关闭弹窗
+ * @property isMaskClose
+ * @type Boolean
+ * @default true
+ * */
 
 /**
  * 底部按钮组

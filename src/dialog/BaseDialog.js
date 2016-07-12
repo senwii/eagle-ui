@@ -21,9 +21,12 @@ let BaseDialog = ((d)=>{
             //是否显示蒙版层
             isMask:true,
             //内容不在content之内 mask属性
-            outside:false
+            outside:false,
+            //是否点击mask蒙版也能关闭弹窗
+            isMaskClose:true
 
         };
+
     @ClassNameMixin
     class BaseDialog{
 
@@ -41,6 +44,7 @@ let BaseDialog = ((d)=>{
             }
 
             options = extend(options,opts);
+            this.isMaskClose = options.isMaskClose;
         }
 
         close(){
@@ -74,6 +78,16 @@ let BaseDialog = ((d)=>{
             options = extend({},options,opts||{});
         }
 
+        maskClickFn(event){
+
+            if(this.isMaskClose){
+                if(event.target.className.match('dialog-mask')!=null ){
+                    this.close();
+                }
+            }
+
+        }
+
         //创建放置弹窗的容器
         createWrap(){
             this.props = {};
@@ -81,24 +95,16 @@ let BaseDialog = ((d)=>{
             dom.id = this.wrapName;
             dom.className=this.setPrefix(this.dialogClass,false)+' '+this.setPrefix('dialog-hide');
 
-            /*dom.addEventListener("transitionend", ()=>{
-                if(!_this.isShow){
-                    _this.removeClass(_this.container,'show');
-                }
-            });*/
             d.body.appendChild(dom);
             this.container = dom;
-            this.container.addEventListener('click',function(event){
 
-                if(event.target.className.match('dialog-mask')!=null ){
-                    this.close();
-                }
-                //event.stopPropagation &&(event.stopPropagation() );
-            }.bind(this),false);
+            this.container['addEventListener' ]('click',this.maskClickFn.bind(this),false);
         }
 
         renderDialog(Modal,props){
             let params = extend(true,{},options,props||{});
+
+            this.isMaskClose = params.isMaskClose;
 
             this[!params.isMask?'removeClass':'addClass'](this.container,this.setPrefix(this.dialogClass,false) );
 
