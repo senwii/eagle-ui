@@ -151,7 +151,12 @@ export default class CalendarPanel extends Component{
             this.input.blur()
         );
     }
-
+    dateChange(d){
+        this.refs[this.calendarContainer+'calendar'].dateChange(d);
+        this.setState({
+            value:d
+        });
+    }
     render(){
 
         let {componentTag:Component} = this.props,
@@ -181,6 +186,7 @@ export default class CalendarPanel extends Component{
                 <Calendar
                     format={this.getFormat()}
                     {...this.props}
+                    ref={this.calendarContainer+'calendar'}
                     show={this.state.isShow}
                     selectCallback={::this.selectCallback}
                     windowType={this.state.windowType}

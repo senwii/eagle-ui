@@ -112,7 +112,15 @@ export default class Calendar extends Component{
             windowType:this.windowType[!isNaN(this.props.windowType) ?this.props.windowType :0]
         };
     }
-
+    dateChange(defaultDate){
+        this.setState({
+            currentDate:defaultDate,
+            selectedDate:defaultDate,
+            show:false,
+            year:typeof(defaultDate)!='string'?defaultDate.getFullYear():new Date(defaultDate).getFullYear(),
+            windowType:this.windowType[!isNaN(this.props.windowType) ?this.props.windowType :0]
+        });
+    }
     getCurrentDate(){
         let {currentDate} = this.state;
         return typeof(currentDate)!='string' ? currentDate : new Date(currentDate);

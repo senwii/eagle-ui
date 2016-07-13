@@ -29,14 +29,17 @@ export default class Calendar extends Component{
             show:false
         });
     }
-
+    changeDate(){
+      this.refs.cp.dateChange('2015-03-02');
+    }
     render(){
 
         return (
             <Grid>
             <Row>
                 <Col sm={3} >
-                    <CalendarPanel  calendarType='month' defaultDate='12'>
+                    <button onClick={::this.changeDate}>changeDate</button>
+                    <CalendarPanel ref='cp' >
                         <Input placeholder="请选择日期"  icon="calendar" />
                     </CalendarPanel>
 
