@@ -25845,6 +25845,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 
+	    Calendar.prototype.changeDate = function changeDate() {
+	        this.refs.cp.dateChange('2015-03-02');
+	    };
+
 	    Calendar.prototype.render = function render() {
 
 	        return _react2['default'].createElement(
@@ -25857,8 +25861,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _srcColJs2['default'],
 	                    { sm: 3 },
 	                    _react2['default'].createElement(
+	                        'button',
+	                        { onClick: this.changeDate.bind(this) },
+	                        'changeDate'
+	                    ),
+	                    _react2['default'].createElement(
 	                        _srcCalendarPanelJs2['default'],
-	                        { calendarType: 'month', defaultDate: '12' },
+	                        { ref: 'cp' },
 	                        _react2['default'].createElement(_srcInputJs2['default'], { placeholder: '请选择日期', icon: 'calendar' })
 	                    )
 	                ),
@@ -35501,7 +35510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: {
 	            classPrefix: 'col',
 	            componentTag: 'div',
-	            egSize: 'md',
+	            egSize: 'xs',
 	            sm: 12
 	        },
 	        enumerable: true
@@ -35806,6 +35815,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.input && this.input.blur();
 	    };
 
+	    CalendarPanel.prototype.dateChange = function dateChange(d) {
+	        this.refs[this.calendarContainer + 'calendar'].dateChange(d);
+	        this.setState({
+	            value: d
+	        });
+	    };
+
 	    CalendarPanel.prototype.render = function render() {
 	        var _this2 = this;
 
@@ -35834,6 +35850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_CalendarJs2['default'], _extends({
 	                format: this.getFormat()
 	            }, this.props, {
+	                ref: this.calendarContainer + 'calendar',
 	                show: this.state.isShow,
 	                selectCallback: this.selectCallback.bind(this),
 	                windowType: this.state.windowType,
@@ -35998,6 +36015,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
 	        };
 	    }
+
+	    Calendar.prototype.dateChange = function dateChange(defaultDate) {
+	        this.setState({
+	            currentDate: defaultDate,
+	            selectedDate: defaultDate,
+	            show: false,
+	            year: typeof defaultDate != 'string' ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear(),
+	            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
+	        });
+	    };
 
 	    Calendar.prototype.getCurrentDate = function getCurrentDate() {
 	        var currentDate = this.state.currentDate;

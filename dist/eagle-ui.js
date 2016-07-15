@@ -1160,7 +1160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: {
 	            classPrefix: 'col',
 	            componentTag: 'div',
-	            egSize: 'md',
+	            egSize: 'xs',
 	            sm: 12
 	        },
 	        enumerable: true
@@ -14164,6 +14164,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    }
 
+	    Calendar.prototype.dateChange = function dateChange(defaultDate) {
+	        this.setState({
+	            currentDate: defaultDate,
+	            selectedDate: defaultDate,
+	            show: false,
+	            year: typeof defaultDate != 'string' ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear(),
+	            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
+	        });
+	    };
+
 	    Calendar.prototype.getCurrentDate = function getCurrentDate() {
 	        var currentDate = this.state.currentDate;
 
@@ -15770,6 +15780,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.input && this.input.blur();
 	    };
 
+	    CalendarPanel.prototype.dateChange = function dateChange(d) {
+	        this.refs[this.calendarContainer + 'calendar'].dateChange(d);
+	        this.setState({
+	            value: d
+	        });
+	    };
+
 	    CalendarPanel.prototype.render = function render() {
 	        var _this2 = this;
 
@@ -15798,6 +15815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_CalendarJs2['default'], _extends({
 	                format: this.getFormat()
 	            }, this.props, {
+	                ref: this.calendarContainer + 'calendar',
 	                show: this.state.isShow,
 	                selectCallback: this.selectCallback.bind(this),
 	                windowType: this.state.windowType,

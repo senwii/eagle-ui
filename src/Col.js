@@ -41,7 +41,7 @@ export default class Col extends Component{
     static defaultProps = {
         classPrefix:'col',
         componentTag:'div',
-        egSize:'md',
+        egSize:'xs',
         sm:12
     };
 
