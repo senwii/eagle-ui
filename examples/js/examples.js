@@ -25829,8 +25829,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _Component.call(this, props, context);
 
 	        this.state = {
-	            show: false
+	            show: false,
+	            defaultDate: '2016-12-1'
 	        };
+	        setTimeout((function () {
+	            this.setState({
+	                defaultDate: '2017-2-12'
+	            });
+	        }).bind(this), 2000);
 	    }
 
 	    Calendar.prototype.focus = function focus() {
@@ -25885,7 +25891,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 3 },
 	                    _react2['default'].createElement(
 	                        _srcCalendarPanelJs2['default'],
-	                        { startDate: '2015-11-11', endDate: '2015-12-1' },
+	                        { defaultDate: this.state.defaultDate, startDate: '2015-11-11', endDate: '2017-12-1' },
 	                        _react2['default'].createElement(_srcInputJs2['default'], { placeholder: '请选择日期', style: { width: '150px' } })
 	                    )
 	                )
@@ -26118,6 +26124,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Input.prototype.isRadio = function isRadio(type) {
 	        return (/radio/.test(type || this.props.type)
 	        );
+	    };
+
+	    Input.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.setState({
+	            _active: nextProps.checked
+	        });
 	    };
 
 	    Input.prototype.render = function render() {
@@ -35743,6 +35755,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    }
 
+	    CalendarPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.setState({
+	            value: nextProps.defaultDate
+	        });
+	    };
+
 	    CalendarPanel.prototype.doSetCapture = function doSetCapture(input) {
 	        if (input.setCapture) {
 	            this.doReleaseCapture();
@@ -36015,6 +36033,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
 	        };
 	    }
+
+	    Calendar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        var defaultDate = nextProps.defaultDate;
+
+	        if (defaultDate) {
+	            this.setState({
+	                currentDate: defaultDate,
+	                selectedDate: defaultDate,
+	                year: typeof defaultDate != 'string' ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear()
+	            });
+	        }
+	    };
 
 	    Calendar.prototype.dateChange = function dateChange(defaultDate) {
 	        this.setState({

@@ -10541,6 +10541,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        );
 	    };
 
+	    Input.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.setState({
+	            _active: nextProps.checked
+	        });
+	    };
+
 	    Input.prototype.render = function render() {
 	        var _classnames;
 
@@ -14164,6 +14170,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    }
 
+	    Calendar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        var defaultDate = nextProps.defaultDate;
+
+	        if (defaultDate) {
+	            this.setState({
+	                currentDate: defaultDate,
+	                selectedDate: defaultDate,
+	                year: typeof defaultDate != 'string' ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear()
+	            });
+	        }
+	    };
+
 	    Calendar.prototype.dateChange = function dateChange(defaultDate) {
 	        this.setState({
 	            currentDate: defaultDate,
@@ -15707,6 +15725,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            windowType: this.getWindowType()
 	        };
 	    }
+
+	    CalendarPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.setState({
+	            value: nextProps.defaultDate
+	        });
+	    };
 
 	    CalendarPanel.prototype.doSetCapture = function doSetCapture(input) {
 	        if (input.setCapture) {

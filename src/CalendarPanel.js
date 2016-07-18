@@ -76,6 +76,12 @@ export default class CalendarPanel extends Component{
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            value: nextProps.defaultDate
+        });
+    }
+
     doSetCapture(input){
         if(input.setCapture){
             this.doReleaseCapture();

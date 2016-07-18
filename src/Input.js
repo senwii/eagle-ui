@@ -183,6 +183,12 @@ export default class Input extends Component{
         return /radio/.test(type || this.props.type);
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            _active: nextProps.checked
+        });
+    }
+
     render(){
         const {disabled,type,label,icon} = this.props;
 

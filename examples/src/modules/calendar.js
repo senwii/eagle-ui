@@ -15,8 +15,14 @@ export default class Calendar extends Component{
         super(props, context);
 
         this.state = {
-            show:false
-        }
+            show:false,
+            defaultDate:'2016-12-1'
+        };
+        setTimeout(function(){
+            this.setState({
+                defaultDate:'2017-2-12'
+            });
+        }.bind(this),2000);
     };
 
     focus(){
@@ -50,7 +56,7 @@ export default class Calendar extends Component{
             </Row>
             <Row>
                 <Col sm={3}>
-                    <CalendarPanel startDate="2015-11-11" endDate="2015-12-1">
+                    <CalendarPanel defaultDate={this.state.defaultDate} startDate="2015-11-11" endDate="2017-12-1">
                         <Input placeholder="请选择日期" style={{width:'150px'}} />
                     </CalendarPanel>
                 </Col>
