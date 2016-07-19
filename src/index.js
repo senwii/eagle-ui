@@ -1,7 +1,7 @@
 //import Mask from './mask/mask';
 
 import style from './style';
-
+import catBrowser from './utils/cat-browser';
 export Grid from './Grid';
 export Col from './Col';
 export Row from './Row';
@@ -45,6 +45,12 @@ export Th from './tables/Th.js';
 export FormGroup from './FormGroup.js';
 
 export Icon from './utils/Icon';
+//接入cat－browser
+catBrowser({
+    moduleName:'eagle-ui',
+    isOnlyDp:false
+});
+
 
 window['Eagleui'] = {};
 
