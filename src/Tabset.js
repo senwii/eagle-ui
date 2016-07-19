@@ -40,7 +40,8 @@ export default class Tabset extends Component{
          * @param {Number} activeTabIndex 当前激活的是第几个tab，从0开始计数
          * @default undefined
          * */
-        tabCallback:PropTypes.func
+        tabCallback:PropTypes.func,
+        disableHoverAnimation:PropTypes.bool
     };
 
     constructor(props, context) {
@@ -95,6 +96,7 @@ export default class Tabset extends Component{
                 ...other
             } = option.props;
             return <Tab
+                disableHoverAnimation={(this.props.disableHoverAnimation?true:false)}
                 ref={'tabItem'+index}
                 index={index}
                 active={this.state.active === index}

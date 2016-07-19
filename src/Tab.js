@@ -31,11 +31,16 @@ export default class Tab extends Component{
         classPrefix:'tab',
         heading:'tab'
     };
-    handlerClick(){
+    handlerClick(e){
+        if(this.props.disableHoverAnimation){
+            this.props.mouseEnterCallback(e.target.offsetLeft,e.target.offsetWidth);
+        }
         this.props.clickCallback(this.props.index);
     };
     handleMouseEnter(e){
-        this.props.mouseEnterCallback(e.target.offsetLeft,e.target.offsetWidth);
+        if(!this.props.disableHoverAnimation){
+            this.props.mouseEnterCallback(e.target.offsetLeft,e.target.offsetWidth);
+        }
     };
     render(){
 

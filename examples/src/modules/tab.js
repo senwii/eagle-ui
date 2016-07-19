@@ -43,7 +43,7 @@ let Demo = class Demo extends Component{
 
     render(){
         return (
-            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>
+            <Tabset disableHoverAnimation activeTab={this.state.tabIndex} tabCallback={::this.callback}>
                 <Tab>
                     {::this.tab1()}
                 </Tab>
