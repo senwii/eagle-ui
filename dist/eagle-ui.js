@@ -17972,12 +17972,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }
 
-	        if (isSubmit && this.props.validateCallback(this.vals)) {
-	            this.props.submitCallback && this.props.submitCallback(this.vals);
-	            return true;
-	        }
 	        e.preventDefault();
 	        e.stopPropagation();
+	        if (isSubmit && this.props.validateCallback(this.vals)) {
+	            return this.props.submitCallback && this.props.submitCallback(this.vals, e);
+	        }
 	        return false;
 	    };
 
@@ -18014,7 +18013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            t = element.offsetTop,
 	            h = element.offsetHeight;
 
-	        while (element && (element.nodeType !== 1 || element.nodeName.toLowerCase() != tag)) {
+	        while (element && (element.nodeType !== 1 || !this.hasClass(element, this.getClassName('validate')))) {
 	            element = element.parentNode;
 	        }
 
@@ -18027,7 +18026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            t = element.offsetTop;
 	            node = element.offsetParent;
 
-	            while (node && node.nodeName.toLowerCase() != tag) {
+	            while (node && !this.hasClass(node, this.getClassName('validate'))) {
 	                t += node.offsetTop;
 	                w += node.offsetLeft;
 	                node = node.offsetParent;
