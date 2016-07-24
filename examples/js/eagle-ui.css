@@ -3457,6 +3457,7 @@ b.eg-slider-arrow-right {
   border-color: #d9534f !important;
 }
 .eg-validate .eg-validate-tips {
+  line-height: 19px;
   visibility: hidden;
   -webkit-transition: opacity ease-in-out .4s ;
   -moz-transition: opacity ease-in-out .4s ;
