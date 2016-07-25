@@ -65,5 +65,6 @@ Download dependent package installation bower, start the server, static access e
 `version 1.4.3` 新增textarea默认样式
 `version 1.4.4` 修复validatepanel控件在提交后刷新页面的bug
 `version 1.4.5` 修复表单验证无法更改为其他标签的bug
+`version 1.4.7` 日历、input回滚到1.3.7版本逻辑
 
 
