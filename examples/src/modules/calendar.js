@@ -38,6 +38,11 @@ export default class Calendar extends Component{
     changeDate(){
       this.refs.cp.dateChange('2015-03-02');
     }
+    getvalue(val){
+        this.setState({
+            defaultDate:val
+        });
+    }
     render(){
 
         return (
@@ -56,7 +61,7 @@ export default class Calendar extends Component{
             </Row>
             <Row>
                 <Col sm={3}>
-                    <CalendarPanel defaultDate={this.state.defaultDate} startDate="2015-11-11" endDate="2017-12-1">
+                    <CalendarPanel defaultDate={this.state.defaultDate} startDate="2015-11-11" endDate="2017-12-1" getValueCallback={::this.getvalue}>
                         <Input placeholder="请选择日期" style={{width:'150px'}} />
                     </CalendarPanel>
                 </Col>
