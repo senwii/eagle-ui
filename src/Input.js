@@ -184,9 +184,9 @@ export default class Input extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
+        /*this.setState({
             _active: nextProps.checked
-        });
+        });*/
     }
 
     render(){

@@ -113,7 +113,7 @@ export default class Calendar extends Component{
         };
     }
     componentWillReceiveProps(nextProps){
-        let defaultDate = nextProps.defaultDate;
+        /*let defaultDate = nextProps.defaultDate;
 
         if(defaultDate){
             this.setState({
@@ -121,7 +121,7 @@ export default class Calendar extends Component{
                 selectedDate:defaultDate,
                 year:typeof(defaultDate)!='string'?defaultDate.getFullYear():new Date(defaultDate).getFullYear()
             });
-        }
+        }*/
     }
     dateChange(defaultDate){
         this.setState({

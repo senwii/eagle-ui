@@ -25855,6 +25855,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.refs.cp.dateChange('2015-03-02');
 	    };
 
+	    Calendar.prototype.getvalue = function getvalue(val) {
+	        this.setState({
+	            defaultDate: val
+	        });
+	    };
+
 	    Calendar.prototype.render = function render() {
 
 	        return _react2['default'].createElement(
@@ -25891,7 +25897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    { sm: 3 },
 	                    _react2['default'].createElement(
 	                        _srcCalendarPanelJs2['default'],
-	                        { defaultDate: this.state.defaultDate, startDate: '2015-11-11', endDate: '2017-12-1' },
+	                        { defaultDate: this.state.defaultDate, startDate: '2015-11-11', endDate: '2017-12-1', getValueCallback: this.getvalue.bind(this) },
 	                        _react2['default'].createElement(_srcInputJs2['default'], { placeholder: '请选择日期', style: { width: '150px' } })
 	                    )
 	                )
@@ -26127,9 +26133,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Input.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        this.setState({
+	        /*this.setState({
 	            _active: nextProps.checked
-	        });
+	        });*/
 	    };
 
 	    Input.prototype.render = function render() {
@@ -35756,9 +35762,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    CalendarPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        this.setState({
+	        /*this.setState({
 	            value: nextProps.defaultDate
-	        });
+	        });*/
 	    };
 
 	    CalendarPanel.prototype.doSetCapture = function doSetCapture(input) {
@@ -36035,15 +36041,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    Calendar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        var defaultDate = nextProps.defaultDate;
-
-	        if (defaultDate) {
+	        /*let defaultDate = nextProps.defaultDate;
+	         if(defaultDate){
 	            this.setState({
-	                currentDate: defaultDate,
-	                selectedDate: defaultDate,
-	                year: typeof defaultDate != 'string' ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear()
+	                currentDate:defaultDate,
+	                selectedDate:defaultDate,
+	                year:typeof(defaultDate)!='string'?defaultDate.getFullYear():new Date(defaultDate).getFullYear()
 	            });
-	        }
+	        }*/
 	    };
 
 	    Calendar.prototype.dateChange = function dateChange(defaultDate) {
