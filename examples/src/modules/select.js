@@ -42,14 +42,20 @@ let Demo= class Demo extends Component{
 
         return [
 
-            <option value='bei' key="bei">北京</option>,
+            <option value='bei' key="bei">
+                <div>
+                    北京<strong>beijing</strong>
+                </div>
+            </option>,
             <option value='shang' key="上海">上海</option>,
             <option value='nan' key="南京">南京</option>,
             <option value='3' key="杭州">杭州</option>,
             <option value='4' key="杭州西">杭州西</option>,
             <option value='5' key="杭州北站">杭州北站</option>,
             <option value='6' key="广州">广州</option>,
-            <option value='7' key="深圳">深圳</option>,
+            <option value='7' key="深圳">
+                <span>深圳</span><br />shenzhen
+            </option>,
             <option value='8' key="澳门">澳门</option>,
             <option value='10' key="太原">太原</option>,
             <option value='11' key="台湾">台湾</option>,
@@ -58,7 +64,7 @@ let Demo= class Demo extends Component{
     }
 
     render(){
-        console.dir(this.state.defaultCity);
+        // console.dir(this.state.defaultCity);
         return (
             <Grid fluid>
                 <Row>

@@ -66,20 +66,16 @@ export default class Suggestion extends Component {
             if((!data ||data.length<=0 ) && key!=''){
 
                 //拿取query异步数据
-                data =await _this.execMethod('query',key);
+                data = await _this.execMethod('query',key);
                 //没拿到数据则从原始数据中查询
                 if(!data){
-                    //options
-                    let str = JSON.stringify(this.options);
-                    ///([^}]+"key":"[^"]*北京[^"]*".+?\})/gi
-                    //let reg = new RegExp('(\{[^}]+"key":"[^"]*'+key+'[^"]*".+?\})','gi');
-                    let reg = new RegExp('([^[},]*\{+"key":"[^"]*'+key+'[^"]*".+?\})','gi');
+                   let filterOptions = this.options.filter(function(item){
+                        return item.text.indexOf(key) != -1;
+                    });
 
-                    str = str.match(reg);
-
-                    data = str ?str :[];//this._cache[key];
+                    data = filterOptions ?filterOptions :[];//this._cache[key];
                 }
-                this.setCache(key,data );
+                this.setCache(key,data);
             }
 
             //重新绑定data渲染数据
@@ -93,6 +89,7 @@ export default class Suggestion extends Component {
                 ]:[]),
                 _selectedIndex:-1
             });
+
             if(newData.length > 0){
                 this.show();
             }
@@ -108,11 +105,15 @@ export default class Suggestion extends Component {
 
             let {value,children,subKey,...other}=item.props;
 
+            this.plainText = '';
+            this.getPlainText(children);
+            
             optionsList.push({
-                key:children,
+                text:this.plainText,
+                key:children,                              
                 value:value,
                 subKey:subKey||'',
-                index:i
+                index:i,
             });
         },this);
 
@@ -135,7 +136,7 @@ export default class Suggestion extends Component {
         let data = this.getData(_selectedIndex);
         this.setState({
             _selectedIndex:_selectedIndex,
-            _activeValue:data ? data.key: ''
+            _activeValue:data ? data.text: ''
         });
         //checkedCallback
         this.execMethod('checked',this.refs[this.suggestion],_selectedIndex);
@@ -237,13 +238,14 @@ export default class Suggestion extends Component {
 
         this.selectItem = item;
 
-        this.setValue(item.key);
+        // this.setValue(item.key);
+        this.setValue(item.text);
         this.setState({
             _activeValue:'',
             _selectedIndex:-1
         });
 
-        this.execMethod('getValue',item.value,item.key,type);
+        this.execMethod('getValue',item.value,item.text,type);
 
         this.hide();
     }
@@ -269,8 +271,8 @@ export default class Suggestion extends Component {
             list = [];
 
         for(let i=0,len=data.length,item;i<len;i++){
-            item =this.getData(i);
-            if(value == item.key){
+            item = this.getData(i);
+            if(value == item.text){
                 this.selectItem = item;
             }
 
@@ -296,9 +298,26 @@ export default class Suggestion extends Component {
     getValue(){
         return this.selectItem;
     }
+
     getTextValue(){
         let {value,_activeValue} = this.state;
-        return _activeValue ? _activeValue:value;
+
+        return _activeValue ? _activeValue : value;
+    }
+
+    getPlainText(element){
+        if(typeof element == 'string'){
+            return this.plainText += element;
+        }else if(typeof element.length == 'number'){ // 数组
+            for(let child of element){
+                this.getPlainText(child);
+            }
+        }else{ // 对象
+            if(element.props.children){
+                this.getPlainText(element.props.children);
+            }
+            return '';
+        }
     }
 
     removeActiveValue(){
