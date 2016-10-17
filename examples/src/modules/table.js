@@ -11,16 +11,37 @@ import Column from '../../../src/tables/Column.js';
 import Row from '../../../src/Row.js';
 import Col from '../../../src/Col.js';
 
-var tableData=[
-    {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:100},
-    {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:200},
-    {name: 'Estevan', email: 'Aimee7@hotmail.com',score:106},
-    {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:233},
-    {name: 'Tressa', email: 'Yadira1@hotmail.com',score:900},
-];
 
 export default class TableCls extends Component{
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            tableData:[
+                {name: 'Rylan', email: 'Angelita_Weimann42@gmail.com',score:2},
+                {name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com',score:3},
+                {name: 'Estevan', email: 'Aimee7@hotmail.com',score:4},
+                {name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com',score:5},
+                {name: 'Tressa', email: 'Yadira1@hotmail.com',score:6},
+            ]
+        };
+    }
+    componentDidMount(){
+        let _this=this;
+        setTimeout(()=>{
+            _this.setState({
+                tableData:[
+                    {name: 'Amelia2', email: 'Dexter.Trantow57@hotmail.com',score:200},
+                    {name: 'Rylan2', email: 'Angelita_Weimann42@gmail.com',score:100},
+                    {name: 'Estevan2', email: 'Aimee7@hotmail.com',score:106},
+                    {name: 'Florence2', email: 'Jarrod.Bernier13@yahoo.com',score:233},
+                    {name: 'Tressa2', email: 'Yadira1@hotmail.com',score:900},
+                ]
+            })
+        },5000);
+    }
     render(){
+        let tableData=this.state.tableData;
         return (
              <div>
                 <Row>

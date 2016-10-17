@@ -51,7 +51,16 @@ export default class Table extends Component{
             sortField:{}
         };
     }
-
+    componentWillReceiveProps(props){
+        if(props.data){
+            var tableData=[];
+            Object.assign(tableData, props.data);
+            this.setState({
+                tableData:tableData,
+                sortField:{}
+            });
+        }
+    }
     sort(field,method){
         if(method==='asc'){
             this.state.tableData.sort((pre,cur)=>{
