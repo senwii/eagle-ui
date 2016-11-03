@@ -11071,9 +11071,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Input.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        /*this.setState({
+	        this.setState({
 	            _active: nextProps.checked
-	        });*/
+	        });
 	    };
 
 	    Input.prototype.render = function render() {
@@ -18294,6 +18294,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            sortField: {}
 	        };
 	    }
+
+	    Table.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+	        if (props.data) {
+	            var tableData = [];
+	            Object.assign(tableData, props.data);
+	            this.setState({
+	                tableData: tableData,
+	                sortField: {}
+	            });
+	        }
+	    };
 
 	    Table.prototype.sort = function sort(field, method) {
 	        if (method === 'asc') {

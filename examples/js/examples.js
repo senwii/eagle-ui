@@ -26133,9 +26133,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Input.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        /*this.setState({
+	        this.setState({
 	            _active: nextProps.checked
-	        });*/
+	        });
 	    };
 
 	    Input.prototype.render = function render() {
@@ -45032,6 +45032,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    }
 
+	    Table.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+	        if (props.data) {
+	            var tableData = [];
+	            Object.assign(tableData, props.data);
+	            this.setState({
+	                tableData: tableData,
+	                sortField: {}
+	            });
+	        }
+	    };
+
 	    Table.prototype.sort = function sort(field, method) {
 	        if (method === 'asc') {
 	            this.state.tableData.sort(function (pre, cur) {
@@ -50304,18 +50315,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _srcColJs2 = _interopRequireDefault(_srcColJs);
 
-	var tableData = [{ name: 'Rylan', email: 'Angelita_Weimann42@gmail.com', score: 100 }, { name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com', score: 200 }, { name: 'Estevan', email: 'Aimee7@hotmail.com', score: 106 }, { name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com', score: 233 }, { name: 'Tressa', email: 'Yadira1@hotmail.com', score: 900 }];
-
 	var TableCls = (function (_Component) {
 	    _inherits(TableCls, _Component);
 
-	    function TableCls() {
+	    function TableCls(props, context) {
 	        _classCallCheck(this, TableCls);
 
-	        _Component.apply(this, arguments);
+	        _Component.call(this, props, context);
+
+	        this.state = {
+	            tableData: [{ name: 'Rylan', email: 'Angelita_Weimann42@gmail.com', score: 2 }, { name: 'Amelia', email: 'Dexter.Trantow57@hotmail.com', score: 3 }, { name: 'Estevan', email: 'Aimee7@hotmail.com', score: 4 }, { name: 'Florence', email: 'Jarrod.Bernier13@yahoo.com', score: 5 }, { name: 'Tressa', email: 'Yadira1@hotmail.com', score: 6 }]
+	        };
 	    }
 
+	    TableCls.prototype.componentDidMount = function componentDidMount() {
+	        var _this = this;
+	        setTimeout(function () {
+	            _this.setState({
+	                tableData: [{ name: 'Amelia2', email: 'Dexter.Trantow57@hotmail.com', score: 200 }, { name: 'Rylan2', email: 'Angelita_Weimann42@gmail.com', score: 100 }, { name: 'Estevan2', email: 'Aimee7@hotmail.com', score: 106 }, { name: 'Florence2', email: 'Jarrod.Bernier13@yahoo.com', score: 233 }, { name: 'Tressa2', email: 'Yadira1@hotmail.com', score: 900 }]
+	            });
+	        }, 5000);
+	    };
+
 	    TableCls.prototype.render = function render() {
+	        var tableData = this.state.tableData;
 	        return _react2['default'].createElement(
 	            'div',
 	            null,
