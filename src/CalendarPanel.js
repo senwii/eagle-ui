@@ -54,7 +54,7 @@ export default class CalendarPanel extends Component{
                 month:'MM',
                 year:'yyyy'
             };
-        return formatMap[this.props.calendarType]
+        return this.props.format ? this.props.format :formatMap[this.props.calendarType]
     }
     getWindowType(){
         let typeMap={
@@ -62,7 +62,7 @@ export default class CalendarPanel extends Component{
             month:1,
             year:2
         },
-        windowType=typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0
+        windowType= this.props.format ? 0 :typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0
         return windowType;
     }
     constructor(props, context) {
