@@ -14,7 +14,14 @@ let Demo = class Demo extends Component{
             tabIndex:2
         };
     }
-
+    componentDidMount(){
+        let _this=this;
+        setTimeout(()=>{
+            _this.setState({
+                tabIndex:3
+            })
+        },2000)
+    }
     callback(index){
         console.log('i',index);
         if(this.state.tabIndex!==index){

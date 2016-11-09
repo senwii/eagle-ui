@@ -57,9 +57,27 @@ export default class Tabset extends Component{
             this.props.tabCallback(props.activeTab);
         }
     }
-    componentDidMount(){
-        this.tabItemListMouseLeaveHandler();
+    highlightTab(){
+        let activeTab=ReactDom.findDOMNode(this.refs['tabItem'+this.state.active]);
+        let slider=ReactDom.findDOMNode(this.refs['slider']);
+
+        slider.style.width=activeTab.offsetWidth+'px';
+        slider.style.left=activeTab.offsetLeft+'px';
     }
+    componentDidMount(){
+        //this.tabItemListMouseLeaveHandler();
+        this.highlightTab();
+    }
+    componentDidUpdate(){
+        this.highlightTab();
+    }
+    componentWillReceiveProps (props) {
+        if (props.activeTab!=undefined) {
+            this.setState({
+                active: props.activeTab
+            });
+        }
+    };
     activeHandler(index) {
         if(this.state.active !== index){
             this.setState({
@@ -71,22 +89,22 @@ export default class Tabset extends Component{
         }
     }
     tabItemListMouseLeaveHandler(){
-        let activeTab=ReactDom.findDOMNode(this.refs['tabItem'+this.state.active]);
-        this.timeoutObj=setTimeout(function(){
-            this.tabItemMouseEnterHandler(activeTab.offsetLeft,activeTab.offsetWidth);
-        }.bind(this),400);
+        //let activeTab=ReactDom.findDOMNode(this.refs['tabItem'+this.state.active]);
+        //this.timeoutObj=setTimeout(function(){
+        //    this.tabItemMouseEnterHandler(activeTab.offsetLeft,activeTab.offsetWidth);
+        //}.bind(this),400);
     }
     tabItemMouseEnterHandler(left,width){
-        clearTimeout(this.timeoutObj);
-        clearTimeout(this.timeoutEnter);
-        this.timeoutEnter = setTimeout(function(){
-            this.setState({
-                tabSlider:{
-                    left,
-                    width
-                }
-            });
-        }.bind(this),200);
+        //clearTimeout(this.timeoutObj);
+        //clearTimeout(this.timeoutEnter);
+        //this.timeoutEnter = setTimeout(function(){
+        //    this.setState({
+        //        tabSlider:{
+        //            left,
+        //            width
+        //        }
+        //    });
+        //}.bind(this),200);
 
     }
     render(){
@@ -116,8 +134,7 @@ export default class Tabset extends Component{
                     onMouseLeave={::this.tabItemListMouseLeaveHandler}>
                 {headings}
                     <li className={classnames(this.getClassName('slider-container') ) }>
-                        <div className={classnames(this.getClassName('slider') ) }
-                            style={{width:this.state.tabSlider.width,left:this.state.tabSlider.left}}>
+                        <div ref='slider' className={classnames(this.getClassName('slider') ) }>
                         </div>
                     </li>
                 </ul>
