@@ -50,7 +50,7 @@ export default class Calendar extends Component{
             <Row>
                 <Col sm={3} >
                     <button onClick={::this.changeDate}>changeDate</button>
-                    <CalendarPanel ref='cp' calendarType="year">
+                    <CalendarPanel ref='cp' calendarType="yearMonth" yearMonthFormat="yyyy年MM月">
                         <Input placeholder="请选择日期"  icon="calendar" />
                     </CalendarPanel>
 
