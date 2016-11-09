@@ -11189,7 +11189,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SvgIcon = React.createClass({
 	    displayName: 'SvgIcon',
 
-
 	    getDefaultStyle: function getDefaultStyle(fill) {
 	        return {
 	            display: 'inline-block' /*,
@@ -15169,7 +15168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            year = selected.getFullYear(),
 	            month = selected.getMonth();
 
-	        if (this.props.calendarType == 'month') {
+	        if (this.props.calendarType == 'month' || this.props.calendarType == 'yearMonth') {
 	            var date = year + '/' + (type + 1) + '/' + '1';
 	            var d = date.split('/');
 	            var selectCallback = this.props.selectCallback;
@@ -15457,8 +15456,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 
+	    Tabset.prototype.highlightTab = function highlightTab() {
+	        var activeTab = _reactLibReactDOM2['default'].findDOMNode(this.refs['tabItem' + this.state.active]);
+	        var slider = _reactLibReactDOM2['default'].findDOMNode(this.refs['slider']);
+
+	        slider.style.width = activeTab.offsetWidth + 'px';
+	        slider.style.left = activeTab.offsetLeft + 'px';
+	    };
+
 	    Tabset.prototype.componentDidMount = function componentDidMount() {
-	        this.tabItemListMouseLeaveHandler();
+	        //this.tabItemListMouseLeaveHandler();
+	        this.highlightTab();
+	    };
+
+	    Tabset.prototype.componentDidUpdate = function componentDidUpdate() {
+	        this.highlightTab();
+	    };
+
+	    Tabset.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+	        if (props.activeTab != undefined) {
+	            this.setState({
+	                active: props.activeTab
+	            });
+	        }
 	    };
 
 	    Tabset.prototype.activeHandler = function activeHandler(index) {
@@ -15473,23 +15493,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Tabset.prototype.tabItemListMouseLeaveHandler = function tabItemListMouseLeaveHandler() {
-	        var activeTab = _reactLibReactDOM2['default'].findDOMNode(this.refs['tabItem' + this.state.active]);
-	        this.timeoutObj = setTimeout((function () {
-	            this.tabItemMouseEnterHandler(activeTab.offsetLeft, activeTab.offsetWidth);
-	        }).bind(this), 400);
+	        //let activeTab=ReactDom.findDOMNode(this.refs['tabItem'+this.state.active]);
+	        //this.timeoutObj=setTimeout(function(){
+	        //    this.tabItemMouseEnterHandler(activeTab.offsetLeft,activeTab.offsetWidth);
+	        //}.bind(this),400);
 	    };
 
 	    Tabset.prototype.tabItemMouseEnterHandler = function tabItemMouseEnterHandler(left, width) {
-	        clearTimeout(this.timeoutObj);
-	        clearTimeout(this.timeoutEnter);
-	        this.timeoutEnter = setTimeout((function () {
-	            this.setState({
-	                tabSlider: {
-	                    left: left,
-	                    width: width
-	                }
-	            });
-	        }).bind(this), 200);
+	        //clearTimeout(this.timeoutObj);
+	        //clearTimeout(this.timeoutEnter);
+	        //this.timeoutEnter = setTimeout(function(){
+	        //    this.setState({
+	        //        tabSlider:{
+	        //            left,
+	        //            width
+	        //        }
+	        //    });
+	        //}.bind(this),200);
+
 	    };
 
 	    Tabset.prototype.render = function render() {
@@ -15531,8 +15552,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                _react2['default'].createElement(
 	                    'li',
 	                    { className: _classnames2['default'](this.getClassName('slider-container')) },
-	                    _react2['default'].createElement('div', { className: _classnames2['default'](this.getClassName('slider')),
-	                        style: { width: this.state.tabSlider.width, left: this.state.tabSlider.left } })
+	                    _react2['default'].createElement('div', { ref: 'slider', className: _classnames2['default'](this.getClassName('slider')) })
 	                )
 	            ),
 	            _react2['default'].createElement(
@@ -16205,20 +16225,22 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    CalendarPanel.prototype.getFormat = function getFormat() {
 	        var formatMap = {
-	            date: 'yyyy-MM-dd',
-	            month: 'MM',
-	            year: 'yyyy'
+	            date: this.props.format || 'yyyy-MM-dd',
+	            month: this.props.monthFormat || 'MM',
+	            year: this.props.yearFormat || 'yyyy',
+	            yearMonth: this.props.yearMonthFormat || 'yyyy-MM'
 	        };
-	        return this.props.format ? this.props.format : formatMap[this.props.calendarType];
+	        return formatMap[this.props.calendarType];
 	    };
 
 	    CalendarPanel.prototype.getWindowType = function getWindowType() {
 	        var typeMap = {
 	            date: 0,
 	            month: 1,
-	            year: 2
+	            year: 2,
+	            yearMonth: 1
 	        },
-	            windowType = this.props.format ? 0 : typeMap[this.props.calendarType] ? typeMap[this.props.calendarType] : 0;
+	            windowType = typeMap[this.props.calendarType] ? typeMap[this.props.calendarType] : 0;
 	        return windowType;
 	    };
 
