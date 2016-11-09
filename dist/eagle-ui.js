@@ -16209,7 +16209,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            month: 'MM',
 	            year: 'yyyy'
 	        };
-	        return formatMap[this.props.calendarType];
+	        return this.props.format ? this.props.format : formatMap[this.props.calendarType];
 	    };
 
 	    CalendarPanel.prototype.getWindowType = function getWindowType() {
@@ -16218,7 +16218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            month: 1,
 	            year: 2
 	        },
-	            windowType = typeMap[this.props.calendarType] ? typeMap[this.props.calendarType] : 0;
+	            windowType = this.props.format ? 0 : typeMap[this.props.calendarType] ? typeMap[this.props.calendarType] : 0;
 	        return windowType;
 	    };
 

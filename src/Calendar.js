@@ -488,7 +488,7 @@ export default class Calendar extends Component{
             year = selected.getFullYear(),
             month = selected.getMonth();
 
-        if(this.props.calendarType=='month'){
+        if(this.props.calendarType=='month' || this.props.calendarType=='yearMonth'){
             let date=year+'/'+(type+1)+'/'+'1';
             let d= date.split('/'),
                 {selectCallback} = this.props;

@@ -50,9 +50,10 @@ export default class CalendarPanel extends Component{
     };
     getFormat(){
         let formatMap={
-                date:'yyyy-MM-dd',
-                month:'MM',
-                year:'yyyy'
+                date:this.props.format||'yyyy-MM-dd',
+                month:this.props.monthFormat || 'MM',
+                year:this.props.yearFormat || 'yyyy',
+                yearMonth:this.props.yearMonthFormat || 'yyyy-MM'
             };
         return formatMap[this.props.calendarType]
     }
@@ -60,9 +61,10 @@ export default class CalendarPanel extends Component{
         let typeMap={
             date:0,
             month:1,
-            year:2
+            year:2,
+            yearMonth:1
         },
-        windowType=typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0
+        windowType= typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0
         return windowType;
     }
     constructor(props, context) {
