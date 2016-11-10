@@ -11189,6 +11189,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SvgIcon = React.createClass({
 	    displayName: 'SvgIcon',
 
+
 	    getDefaultStyle: function getDefaultStyle(fill) {
 	        return {
 	            display: 'inline-block' /*,
