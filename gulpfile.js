@@ -54,7 +54,7 @@ gulp.task('demo-webpack', function(done) {
     },
     {
       test: /\.jsx?$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: ['babel'],
       exclude: /node_modules/
     },
     {

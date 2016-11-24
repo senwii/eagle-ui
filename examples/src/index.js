@@ -1,6 +1,6 @@
 import React, { Component ,PropTypes} from 'react';
-import ReactDom from 'react/lib/ReactDOM';
-import { Redirect, Router, Route } from 'react-router';
+import ReactDom from 'react-dom';
+import { Redirect, Router, Route,hashHistory } from 'react-router';
 import History from 'history/lib/createHashHistory';
 
 import Calendar from './modules/calendar.js';
@@ -26,8 +26,7 @@ import Suggestion from './modules/suggestion.js';
 import Icon from './modules/icons.js';
 //require('../less/public.less');
 import css from '../../src/less/eagle-ui.less';
-
-let Index = class Index extends Component{
+let Index = class Index extends Component {
     render() {
         return (
             <div>
@@ -38,22 +37,15 @@ let Index = class Index extends Component{
 };
 
 let AppRouter = class AppRouter extends Component {
-    constructor(props,context) {
-        super(props,context);
-        // Opt-out of persistent state, not recommended.
-        this.history = new History({
-            queryKey: false
-        });
-
+    constructor(props, context) {
+        super(props, context);
     }
 
-    static defaultProps={
-
-    };
+    static defaultProps = {};
 
     render() {
         return (
-            <Router history={this.history}>
+            <Router history={hashHistory}>
                 <Route path="/index" name="index" component={Index} />
                 <Route path="/Calendar" name="Calendar" component={Calendar} />
                 <Route path="/Button" name="Button" component={Button} />

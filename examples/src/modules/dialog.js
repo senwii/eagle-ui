@@ -2,6 +2,7 @@
  * Created by min.xiao
  */
 import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 
 import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from '../../../src/index';
 

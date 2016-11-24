@@ -18,15 +18,16 @@ let Demo= class Demo extends Component{
             options:[],
             defaultCity:''
         };
+        //=>不用bindthis
         setTimeout(()=>{
             this.setState({options:this.renderC()})
-        }.bind(this) );
+        });
 
-        setTimeout(function(){
+        setTimeout(()=>{
             this.setState({
                 defaultCity:'上海'
             });
-        }.bind(this),2000 );
+        },2000 );
     }
 
     getValue(value,key,type){
