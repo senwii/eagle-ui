@@ -2,7 +2,6 @@
  * Created by min.xiao
  */
 import React,{Component} from 'react';
-
 import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from '../../../src/index';
 
 let Demo= class Demo extends Component{
@@ -12,6 +11,9 @@ let Demo= class Demo extends Component{
 
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            inputVal: 123124
+        }
     }
 
     getScope(dialog){
@@ -35,7 +37,12 @@ let Demo= class Demo extends Component{
             isMask:false
         });
     }
-
+    inputChangeHandler(evt) {
+        const value = evt.target.value
+        this.setState({
+            inputVal: value
+        })
+    }
     showConfirm(){
         Dialog.confirm('确定你已经打开了么？').then(()=>{
             alert('确定');
@@ -98,7 +105,7 @@ let Demo= class Demo extends Component{
                                             <FormGroup>
                                                 <Row>
                                                     <Col sm={2}>姓名</Col>
-                                                    <Col sm={10}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                                                    <Col sm={10}><Input name="test1231" id="test" placeholder="请输入姓名" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>
                                                 </Row>
                                                 <Row>
                                                     <Col sm={2}>姓名</Col>
