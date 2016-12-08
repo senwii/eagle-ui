@@ -35,8 +35,8 @@ export default class Dialog extends Component{
     }
 
     shouldComponentUpdate(props,state){
-        this.update(props)
-        return false;
+        // this.update(props)
+        return true;
     }
 
     static alert(message,opts={}){

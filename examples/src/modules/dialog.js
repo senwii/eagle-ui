@@ -13,7 +13,8 @@ let Demo= class Demo extends Component{
         super(props, context);
         this.state = {
             inputVal: 123124,
-            dialogAlign: 'center'
+            dialogAlign: 'center',
+            alertContent: '哈哈，你好苍老师'
         }
     }
 
@@ -67,7 +68,7 @@ let Demo= class Demo extends Component{
                 <Button onClick={::this.showAlert} className="mg-right-15">点击我alert</Button>
                 <Button onClick={::this.nomask} className="mg-right-15">无遮罩显示</Button>
                 <Button onClick={::this.showConfirm}>点击我Confirm</Button>
-                <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好" buttons={[
+                <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
                     {
                         type: 'success',
                         name: '确认',
@@ -81,12 +82,17 @@ let Demo= class Demo extends Component{
                     },
                     {
                         egStyle:'warning',
-                        name:'自定义按钮',
-                        callback:()=>{alert('自定义按钮');}
+                        name:'改变文案',
+                        callback:()=>{
+                            {/*alert('自定义按钮');*/}
+                            this.setState({
+                                alertContent: '哈哈哈，改成波多。。。。'
+                            })
+                        }
                     }
                     ]}>
                     <div>
-                        哈哈，你好苍老师
+                        {this.state.alertContent}
                     </div>
                 </Dialog>
                 <Dialog id="demo2" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[

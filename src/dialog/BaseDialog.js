@@ -114,7 +114,7 @@ let BaseDialog = ((d)=>{
 
         renderDialog(Modal,props){
             let params = extend(true,{},options,props||{});
-            this.modal = Modal
+
             this.isMaskClose = params.isMaskClose;
 
             this[!params.isMask?'removeClass':'addClass'](this.container,this.setPrefix(this.dialogClass,false) );
@@ -122,10 +122,7 @@ let BaseDialog = ((d)=>{
             ReactDom.render(<Modal {...params} />,this.container);
         }
         reloadDialog(Modal,props){
-            let params = extend(true,{},options,props||{});
-            this.isMaskClose = params.isMaskClose;
-            this[!params.isMask?'removeClass':'addClass'](this.container,this.setPrefix(this.dialogClass,false) );
-            params.isShow && ReactDom.render(<Modal {...params}>{props.children}</Modal>,this.container);
+            props.isShow && this.renderDialog(Modal, props);
         }
     }
     return BaseDialog;

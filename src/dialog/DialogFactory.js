@@ -85,6 +85,7 @@ export default class DialogFactory{
     }
     reShow(dialogId, props) {
         const modal = this.getFactory(dialogId);
+        this.baseUtils.pushStack(dialogId, modal[0], extend(true,{},modal[1]||{}, props));
         this.baseUtils.reloadDialog(modal[0], extend(true,{}, modal[1]||{}, props));
     }
     hide(){
