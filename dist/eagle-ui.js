@@ -867,11 +867,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    /**
-	     * 获取当前环境hostname
+	     * 获取当前环境页面的url
 	     * */
 
 	    Browser.prototype.getHost = function getHost() {
-	        var url = location.hostname || '';
+	        var url = location.href || '';
 	        return url;
 	    };
 
@@ -946,18 +946,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	 * JavaScript Cookie v2.1.2
+	 * JavaScript Cookie v2.1.3
 	 * https://github.com/js-cookie/js-cookie
 	 *
 	 * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
 	 * Released under the MIT license
 	 */
 	;(function (factory) {
+		var registeredInModuleLoader = false;
 		if (true) {
 			!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else if (typeof exports === 'object') {
+			registeredInModuleLoader = true;
+		}
+		if (true) {
 			module.exports = factory();
-		} else {
+			registeredInModuleLoader = true;
+		}
+		if (!registeredInModuleLoader) {
 			var OldCookies = window.Cookies;
 			var api = window.Cookies = factory();
 			api.noConflict = function () {
@@ -1018,9 +1023,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					return (document.cookie = [
 						key, '=', value,
-						attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
-						attributes.path    && '; path=' + attributes.path,
-						attributes.domain  && '; domain=' + attributes.domain,
+						attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+						attributes.path ? '; path=' + attributes.path : '',
+						attributes.domain ? '; domain=' + attributes.domain : '',
 						attributes.secure ? '; secure' : ''
 					].join(''));
 				}
@@ -1074,7 +1079,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			api.set = api;
 			api.get = function (key) {
-				return api(key);
+				return api.call(api, key);
 			};
 			api.getJSON = function () {
 				return api.apply({
@@ -2248,14 +2253,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	__webpack_require__(357);
 
-	/* eslint max-len: 0 */
-
 	if (global._babelPolyfill) {
 	  throw new Error("only one instance of babel-polyfill is allowed");
 	}
 	global._babelPolyfill = true;
-
-	// Should be removed in the next major release:
 
 	var DEFINE_PROPERTY = "defineProperty";
 	function define(O, key, value) {
@@ -9514,8 +9515,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
 
 	  function wrap(innerFn, outerFn, self, tryLocsList) {
-	    // If outerFn provided, then outerFn.prototype instanceof Generator.
-	    var generator = Object.create((outerFn || Generator).prototype);
+	    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+	    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+	    var generator = Object.create(protoGenerator.prototype);
 	    var context = new Context(tryLocsList || []);
 
 	    // The ._invoke method unifies the implementations of the .next,
@@ -10153,7 +10155,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// shim for using process in browser
-
 	var process = module.exports = {};
 
 	// cached from whatever global is present so that test runners that stub it
@@ -10164,22 +10165,84 @@ return /******/ (function(modules) { // webpackBootstrap
 	var cachedSetTimeout;
 	var cachedClearTimeout;
 
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
 	(function () {
-	  try {
-	    cachedSetTimeout = setTimeout;
-	  } catch (e) {
-	    cachedSetTimeout = function () {
-	      throw new Error('setTimeout is not defined');
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
 	    }
-	  }
-	  try {
-	    cachedClearTimeout = clearTimeout;
-	  } catch (e) {
-	    cachedClearTimeout = function () {
-	      throw new Error('clearTimeout is not defined');
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
 	    }
-	  }
 	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
+	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -10204,7 +10267,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = cachedSetTimeout(cleanUpNextTick);
+	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -10221,7 +10284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    cachedClearTimeout(timeout);
+	    runClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -10233,7 +10296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        cachedSetTimeout(drainQueue, 0);
+	        runTimeout(drainQueue);
 	    }
 	};
 
@@ -13352,8 +13415,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Dialog.prototype.shouldComponentUpdate = function shouldComponentUpdate(props, state) {
-	        this.update(props);
-	        return false;
+	        // this.update(props)
+	        return true;
 	    };
 
 	    Dialog.alert = function alert(message) {
@@ -13569,6 +13632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    DialogFactory.prototype.reShow = function reShow(dialogId, props) {
 	        var modal = this.getFactory(dialogId);
+	        this.baseUtils.pushStack(dialogId, modal[0], _extend2['default'](true, {}, modal[1] || {}, props));
 	        this.baseUtils.reloadDialog(modal[0], _extend2['default'](true, {}, modal[1] || {}, props));
 	    };
 
@@ -14117,7 +14181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        BaseDialog.prototype.renderDialog = function renderDialog(Modal, props) {
 	            var params = _extend2['default'](true, {}, options, props || {});
-	            this.modal = Modal;
+
 	            this.isMaskClose = params.isMaskClose;
 
 	            this[!params.isMask ? 'removeClass' : 'addClass'](this.container, this.setPrefix(this.dialogClass, false));
@@ -14126,14 +14190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 
 	        BaseDialog.prototype.reloadDialog = function reloadDialog(Modal, props) {
-	            var params = _extend2['default'](true, {}, options, props || {});
-	            this.isMaskClose = params.isMaskClose;
-	            this[!params.isMask ? 'removeClass' : 'addClass'](this.container, this.setPrefix(this.dialogClass, false));
-	            params.isShow && _reactLibReactDOM2['default'].render(_react2['default'].createElement(
-	                Modal,
-	                params,
-	                props.children
-	            ), this.container);
+	            props.isShow && this.renderDialog(Modal, props);
 	        };
 
 	        var _BaseDialog = BaseDialog;
