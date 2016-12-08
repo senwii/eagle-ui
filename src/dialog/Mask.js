@@ -121,7 +121,7 @@ export default class Mask extends Component{
                     }}>{title}</div>
                 <div className="content" style={{
                     textAlign:contentAlign
-                }}>{masks[id]}</div>
+                }}>{this.props.children}</div>
                 {this.renderFooter() }
                 {this.renderClose()}
             </this.componentTag>

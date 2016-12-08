@@ -74,11 +74,18 @@ export default class DialogFactory{
         let _this = this;
         setTimeout(()=>{
             const modal = _this.getFactory(dialogId);
-
+            // 同步设置
+            _this.baseUtils.pushStack(dialogId, modal[0], extend(true,{},modal[1]||{},props, {
+                isShow: true
+            }));
             _this.baseUtils.renderDialog(modal[0],extend(true,{},modal[1]||{},props) );
             //打开
             _this.baseUtils.open();
         });
+    }
+    reShow(dialogId, props) {
+        const modal = this.getFactory(dialogId);
+        this.baseUtils.reloadDialog(modal[0], extend(true,{}, modal[1]||{}, props));
     }
     hide(){
         this.baseUtils.close();

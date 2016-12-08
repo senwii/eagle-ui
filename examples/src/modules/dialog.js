@@ -12,7 +12,8 @@ let Demo= class Demo extends Component{
     constructor(props, context) {
         super(props, context);
         this.state = {
-            inputVal: 123124
+            inputVal: 123124,
+            dialogAlign: 'center'
         }
     }
 
@@ -41,6 +42,12 @@ let Demo= class Demo extends Component{
         const value = evt.target.value
         this.setState({
             inputVal: value
+        })
+    }
+    dialogAlignChangeHandler(evt) {
+        const value = evt.target.value
+        this.setState({
+            dialogAlign: value
         })
     }
     showConfirm(){
@@ -82,7 +89,7 @@ let Demo= class Demo extends Component{
                         哈哈，你好苍老师
                     </div>
                 </Dialog>
-                <Dialog id="demo2" egSize="sm" title="表单验证" buttons={[
+                <Dialog id="demo2" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
                     {
                         type: 'success',
                         name: '提交',
@@ -110,6 +117,10 @@ let Demo= class Demo extends Component{
                                                 <Row>
                                                     <Col sm={2}>姓名</Col>
                                                     <Col sm={10}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col sm={2}>改变对齐方式</Col>
+                                                    <Col sm={10}><Input name="test222" id="test222" placeholder="left|right|center" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>
                                                 </Row>
                                                 <Row>
                                                     <Col sm={2}>性别</Col>

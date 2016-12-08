@@ -16,7 +16,8 @@ export default class Dialog extends Component{
         this.state={
             update:this.uniqueId()
         };
-        this.update(props);
+        this.dialog = new DialogFactory(props.keys||props.id || props.name,props.type || 'mask', props.children, props);
+        // this.update(props);
     }
 
     loadedCallback(){
@@ -25,16 +26,16 @@ export default class Dialog extends Component{
     /**
      * key 报warning，暂时改为keys
      * */
-    update(props=this.props){
-        new DialogFactory(props.keys||props.id || props.name,props.type || 'mask',props.children,props);
+    update(props){
+        this.dialog.reShow(props.keys||props.id || props.name, props);
     }
 
     componentWillReceiveProps(props){
-        this.update(props);
+        this.update(props)
     }
 
     shouldComponentUpdate(props,state){
-        this.update(props);
+        this.update(props)
         return false;
     }
 

@@ -49,6 +49,16 @@ let BaseDialog = ((d)=>{
 
         close(){
             //this.isShow = false;
+            for(let p in stack){
+                if(stack.hasOwnProperty(p)){
+                    let modal = stack[p]
+                    if(modal instanceof Array){
+                        let params = extend(true,{},modal[1]);
+                        params.isShow = false
+                        stack[p] = [modal[0], params]
+                    }
+                }
+            }
             this.removeClass(this.container,this.setPrefix('dialog-show') );
         }
 
@@ -111,8 +121,13 @@ let BaseDialog = ((d)=>{
 
             ReactDom.render(<Modal {...params} />,this.container);
         }
+        reloadDialog(Modal,props){
+            let params = extend(true,{},options,props||{});
+            this.isMaskClose = params.isMaskClose;
+            this[!params.isMask?'removeClass':'addClass'](this.container,this.setPrefix(this.dialogClass,false) );
+            params.isShow && ReactDom.render(<Modal {...params}>{props.children}</Modal>,this.container);
+        }
     }
-
     return BaseDialog;
 })(document);
 

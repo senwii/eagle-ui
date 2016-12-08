@@ -13333,7 +13333,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.state = {
 	            update: this.uniqueId()
 	        };
-	        this.update(props);
+	        this.dialog = new _DialogFactory2['default'](props.keys || props.id || props.name, props.type || 'mask', props.children, props);
+	        // this.update(props);
 	    }
 
 	    Dialog.prototype.loadedCallback = function loadedCallback() {};
@@ -13342,10 +13343,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * key 报warning，暂时改为keys
 	     * */
 
-	    Dialog.prototype.update = function update() {
-	        var props = arguments.length <= 0 || arguments[0] === undefined ? this.props : arguments[0];
-
-	        new _DialogFactory2['default'](props.keys || props.id || props.name, props.type || 'mask', props.children, props);
+	    Dialog.prototype.update = function update(props) {
+	        this.dialog.reShow(props.keys || props.id || props.name, props);
 	    };
 
 	    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
@@ -13558,11 +13557,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = this;
 	        setTimeout(function () {
 	            var modal = _this.getFactory(dialogId);
-
+	            // 同步设置
+	            _this.baseUtils.pushStack(dialogId, modal[0], _extend2['default'](true, {}, modal[1] || {}, props, {
+	                isShow: true
+	            }));
 	            _this.baseUtils.renderDialog(modal[0], _extend2['default'](true, {}, modal[1] || {}, props));
 	            //打开
 	            _this.baseUtils.open();
 	        });
+	    };
+
+	    DialogFactory.prototype.reShow = function reShow(dialogId, props) {
+	        var modal = this.getFactory(dialogId);
+	        this.baseUtils.reloadDialog(modal[0], _extend2['default'](true, {}, modal[1] || {}, props));
 	    };
 
 	    DialogFactory.prototype.hide = function hide() {
@@ -13732,7 +13739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                { className: 'content', style: {
 	                        textAlign: contentAlign
 	                    } },
-	                masks[id]
+	                this.props.children
 	            ),
 	            this.renderFooter(),
 	            this.renderClose()
@@ -14043,6 +14050,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        BaseDialog.prototype.close = function close() {
 	            //this.isShow = false;
+	            for (var p in stack) {
+	                if (stack.hasOwnProperty(p)) {
+	                    var modal = stack[p];
+	                    if (modal instanceof Array) {
+	                        var params = _extend2['default'](true, {}, modal[1]);
+	                        params.isShow = false;
+	                        stack[p] = [modal[0], params];
+	                    }
+	                }
+	            }
 	            this.removeClass(this.container, this.setPrefix('dialog-show'));
 	        };
 
@@ -14100,12 +14117,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        BaseDialog.prototype.renderDialog = function renderDialog(Modal, props) {
 	            var params = _extend2['default'](true, {}, options, props || {});
-
+	            this.modal = Modal;
 	            this.isMaskClose = params.isMaskClose;
 
 	            this[!params.isMask ? 'removeClass' : 'addClass'](this.container, this.setPrefix(this.dialogClass, false));
 
 	            _reactLibReactDOM2['default'].render(_react2['default'].createElement(Modal, params), this.container);
+	        };
+
+	        BaseDialog.prototype.reloadDialog = function reloadDialog(Modal, props) {
+	            var params = _extend2['default'](true, {}, options, props || {});
+	            this.isMaskClose = params.isMaskClose;
+	            this[!params.isMask ? 'removeClass' : 'addClass'](this.container, this.setPrefix(this.dialogClass, false));
+	            params.isShow && _reactLibReactDOM2['default'].render(_react2['default'].createElement(
+	                Modal,
+	                params,
+	                props.children
+	            ), this.container);
 	        };
 
 	        var _BaseDialog = BaseDialog;
