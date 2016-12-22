@@ -489,6 +489,13 @@
                     </li>
                 
                     <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_isMaskClose" data-tablink="isMaskClose">isMaskClose</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_outside" data-tablink="outside">outside</a>
 
                         
@@ -678,7 +685,6 @@ export default class StarDemo extends Component {
  * Created by min.xiao
  */
 import React,{Component} from &#39;react&#39;;
-
 import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;../../../src/index&#39;;
 
 let Demo= class Demo extends Component{
@@ -688,6 +694,11 @@ let Demo= class Demo extends Component{
 
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            inputVal: 123124,
+            dialogAlign: &#39;center&#39;,
+            alertContent: &#39;哈哈，你好苍老师&#39;
+        }
     }
 
     getScope(dialog){
@@ -711,7 +722,18 @@ let Demo= class Demo extends Component{
             isMask:false
         });
     }
-
+    inputChangeHandler(evt) {
+        const value = evt.target.value
+        this.setState({
+            inputVal: value
+        })
+    }
+    dialogAlignChangeHandler(evt) {
+        const value = evt.target.value
+        this.setState({
+            dialogAlign: value
+        })
+    }
     showConfirm(){
         Dialog.confirm(&#39;确定你已经打开了么？&#39;).then(()=&gt;{
             alert(&#39;确定&#39;);
@@ -729,7 +751,7 @@ let Demo= class Demo extends Component{
                 &lt;Button onClick={::this.showAlert} className="mg-right-15"&gt;点击我alert&lt;/Button&gt;
                 &lt;Button onClick={::this.nomask} className="mg-right-15"&gt;无遮罩显示&lt;/Button&gt;
                 &lt;Button onClick={::this.showConfirm}&gt;点击我Confirm&lt;/Button&gt;
-                &lt;Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好" buttons={[
+                &lt;Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
                     {
                         type: &#39;success&#39;,
                         name: &#39;确认&#39;,
@@ -743,15 +765,20 @@ let Demo= class Demo extends Component{
                     },
                     {
                         egStyle:&#39;warning&#39;,
-                        name:&#39;自定义按钮&#39;,
-                        callback:()=&gt;{alert(&#39;自定义按钮&#39;);}
+                        name:&#39;改变文案&#39;,
+                        callback:()=&gt;{
+                            {/*alert(&#39;自定义按钮&#39;);*/}
+                            this.setState({
+                                alertContent: &#39;哈哈哈，改成波多。。。。&#39;
+                            })
+                        }
                     }
                     ]}&gt;
                     &lt;div&gt;
-                        哈哈，你好苍老师
+                        {this.state.alertContent}
                     &lt;/div&gt;
                 &lt;/Dialog&gt;
-                &lt;Dialog id="demo2" egSize="sm" title="表单验证" buttons={[
+                &lt;Dialog id="demo2" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
                     {
                         type: &#39;success&#39;,
                         name: &#39;提交&#39;,
@@ -774,11 +801,15 @@ let Demo= class Demo extends Component{
                                             &lt;FormGroup&gt;
                                                 &lt;Row&gt;
                                                     &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                                    &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test1231" id="test" placeholder="请输入姓名" value={this.state.inputVal} onChange={::this.inputChangeHandler}/&gt;&lt;/Col&gt;
                                                 &lt;/Row&gt;
                                                 &lt;Row&gt;
                                                     &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
                                                     &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;改变对齐方式&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test222" id="test222" placeholder="left|right|center" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/&gt;&lt;/Col&gt;
                                                 &lt;/Row&gt;
                                                 &lt;Row&gt;
                                                     &lt;Col sm={2}&gt;性别&lt;/Col&gt;
@@ -1022,7 +1053,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l92"><code>lib&#x2F;Dialog.js:92</code></a>
+        <a href="../files/lib_Dialog.js.html#l98"><code>lib&#x2F;Dialog.js:98</code></a>
         
         </p>
 
@@ -1337,6 +1368,54 @@ export default class DialogCls extends Component{
 
     <div class="description">
         <div class="stdoc-code"><p>是否显示遮罩层</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> true</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_isMaskClose" class="property item">
+    <h3 class="name"><code>isMaskClose</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Dialog.js.html#l91"><code>lib&#x2F;Dialog.js:91</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>是否点击背景层也能关闭弹窗</p>
 </div>
     </div>
 

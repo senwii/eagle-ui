@@ -495,7 +495,8 @@ var Tabset = (function (_Component) {
              * @param {Number} activeTabIndex 当前激活的是第几个tab，从0开始计数
              * @default undefined
              * */
-            tabCallback: _react.PropTypes.func
+            tabCallback: _react.PropTypes.func,
+            disableHoverAnimation: _react.PropTypes.bool
         },
         enumerable: true
     }]);
@@ -516,8 +517,29 @@ var Tabset = (function (_Component) {
         }
     }
 
+    Tabset.prototype.highlightTab = function highlightTab() {
+        var activeTab = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[&#x27;tabItem&#x27; + this.state.active]);
+        var slider = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[&#x27;slider&#x27;]);
+
+        slider.style.width = activeTab.offsetWidth + &#x27;px&#x27;;
+        slider.style.left = activeTab.offsetLeft + &#x27;px&#x27;;
+    };
+
     Tabset.prototype.componentDidMount = function componentDidMount() {
-        this.tabItemListMouseLeaveHandler();
+        //this.tabItemListMouseLeaveHandler();
+        this.highlightTab();
+    };
+
+    Tabset.prototype.componentDidUpdate = function componentDidUpdate() {
+        this.highlightTab();
+    };
+
+    Tabset.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+        if (props.activeTab != undefined) {
+            this.setState({
+                active: props.activeTab
+            });
+        }
     };
 
     Tabset.prototype.activeHandler = function activeHandler(index) {
@@ -532,23 +554,24 @@ var Tabset = (function (_Component) {
     };
 
     Tabset.prototype.tabItemListMouseLeaveHandler = function tabItemListMouseLeaveHandler() {
-        var activeTab = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[&#x27;tabItem&#x27; + this.state.active]);
-        this.timeoutObj = setTimeout((function () {
-            this.tabItemMouseEnterHandler(activeTab.offsetLeft, activeTab.offsetWidth);
-        }).bind(this), 400);
+        //let activeTab=ReactDom.findDOMNode(this.refs[&#x27;tabItem&#x27;+this.state.active]);
+        //this.timeoutObj=setTimeout(function(){
+        //    this.tabItemMouseEnterHandler(activeTab.offsetLeft,activeTab.offsetWidth);
+        //}.bind(this),400);
     };
 
     Tabset.prototype.tabItemMouseEnterHandler = function tabItemMouseEnterHandler(left, width) {
-        clearTimeout(this.timeoutObj);
-        clearTimeout(this.timeoutEnter);
-        this.timeoutEnter = setTimeout((function () {
-            this.setState({
-                tabSlider: {
-                    left: left,
-                    width: width
-                }
-            });
-        }).bind(this), 200);
+        //clearTimeout(this.timeoutObj);
+        //clearTimeout(this.timeoutEnter);
+        //this.timeoutEnter = setTimeout(function(){
+        //    this.setState({
+        //        tabSlider:{
+        //            left,
+        //            width
+        //        }
+        //    });
+        //}.bind(this),200);
+
     };
 
     Tabset.prototype.render = function render() {
@@ -561,6 +584,7 @@ var Tabset = (function (_Component) {
             var other = _objectWithoutProperties(_option$props, [&#x27;tabCallback&#x27;]);
 
             return _react2[&#x27;default&#x27;].createElement(_TabJs2[&#x27;default&#x27;], _extends({
+                disableHoverAnimation: _this.props.disableHoverAnimation ? true : false,
                 ref: &#x27;tabItem&#x27; + index,
                 index: index,
                 active: _this.state.active === index,
@@ -589,8 +613,7 @@ var Tabset = (function (_Component) {
                 _react2[&#x27;default&#x27;].createElement(
                     &#x27;li&#x27;,
                     { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;slider-container&#x27;)) },
-                    _react2[&#x27;default&#x27;].createElement(&#x27;div&#x27;, { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;slider&#x27;)),
-                        style: { width: this.state.tabSlider.width, left: this.state.tabSlider.left } })
+                    _react2[&#x27;default&#x27;].createElement(&#x27;div&#x27;, { ref: &#x27;slider&#x27;, className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;slider&#x27;)) })
                 )
             ),
             _react2[&#x27;default&#x27;].createElement(

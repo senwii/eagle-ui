@@ -500,7 +500,14 @@ var Paging = (function (_Component) {
              * @property showItemsNumber
              * @type Boolean
              * */
-            showItemsNumber: _react.PropTypes.bool
+            showItemsNumber: _react.PropTypes.bool,
+            /**
+             * 自定义每页显示数量数组,需为非空数组。默认为[]
+             * @property choosePageSize
+             * @type array
+             * @default []
+             * */
+            choosePageSize: _react.PropTypes.array
         },
         enumerable: true
     }, {
@@ -512,6 +519,10 @@ var Paging = (function (_Component) {
             classPrefix: &#x27;paging&#x27;,
             componentTag: &#x27;div&#x27;,
             chooseMaxPageSize: 0,
+            /**
+             * 默认每页显示数量为［］
+             * */
+            choosePageSize: [],
             /**
              * 跟showItemsNumber一起使用 arguments{pageSize}
              * @property loadPageCallback
@@ -731,19 +742,32 @@ var Paging = (function (_Component) {
     Paging.prototype.accordingNumber = function accordingNumber() {
         var opts = [],
             num = 10,
+            choosePageSize = this.props.choosePageSize,
             chooseMaxPageSize = this.props.chooseMaxPageSize || 100;
-
-        for (var i = 1, n = undefined; i &lt; 11; i++) {
-            n = num * i;
-            if (n &lt;= chooseMaxPageSize) {
-
+        /**
+         * if 提供自定义数组 且非空。
+         * */
+        if (choosePageSize instanceof Array &amp;&amp; choosePageSize.length &gt; 0) {
+            choosePageSize.forEach(function (i) {
                 opts.push(_react2[&#x27;default&#x27;].createElement(
                     &#x27;option&#x27;,
-                    { value: n, key: n },
-                    n
+                    { value: i, key: i },
+                    i
                 ));
-            } else {
-                break;
+            });
+        } else {
+            for (var i = 1, n = undefined; i &lt; 11; i++) {
+                n = num * i;
+                if (n &lt;= chooseMaxPageSize) {
+
+                    opts.push(_react2[&#x27;default&#x27;].createElement(
+                        &#x27;option&#x27;,
+                        { value: n, key: n },
+                        n
+                    ));
+                } else {
+                    break;
+                }
             }
         }
 

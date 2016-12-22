@@ -493,6 +493,13 @@
                     </li>
                 
                     <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_choosePageSize" data-tablink="choosePageSize">choosePageSize</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_currentPage" data-tablink="currentPage">currentPage</a>
 
                         
@@ -721,10 +728,10 @@ function loadPageCallback(pageSize){
     window.location = location.href.replace(/\?.*/,&#39;&#39;)+&#39;?page=&#39;+page+&#39;&amp;pageSize=&#39;+pageSize;
 }
 var pageSize = 20;
-
+let arrs = [10,15,23,35,40],
+    arr1 = &#39;1&#39;;
 
 export default class PagingCls extends Component{
-
     render(){
         let query = this.props.location.query,
         page = query.page*1 ||0,
@@ -733,7 +740,7 @@ export default class PagingCls extends Component{
             &lt;Row&gt;
                 &lt;Col sm={12}&gt;
                     &lt;Paging showItemsNumber={true} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
-                            pageCallback={callback} total={5024} /&gt;
+                            pageCallback={callback} total={5024} choosePageSize={arr1}/&gt;
                 &lt;/Col&gt;
             &lt;/Row&gt;
         );
@@ -795,7 +802,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l215"><code>lib&#x2F;Paging.js:215</code></a>
+        <a href="../files/lib_Paging.js.html#l226"><code>lib&#x2F;Paging.js:226</code></a>
         
         </p>
 
@@ -868,7 +875,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l163"><code>lib&#x2F;Paging.js:163</code></a>
+        <a href="../files/lib_Paging.js.html#l174"><code>lib&#x2F;Paging.js:174</code></a>
         
         </p>
 
@@ -953,7 +960,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l173"><code>lib&#x2F;Paging.js:173</code></a>
+        <a href="../files/lib_Paging.js.html#l184"><code>lib&#x2F;Paging.js:184</code></a>
         
         </p>
 
@@ -1062,7 +1069,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l202"><code>lib&#x2F;Paging.js:202</code></a>
+        <a href="../files/lib_Paging.js.html#l213"><code>lib&#x2F;Paging.js:213</code></a>
         
         </p>
 
@@ -1157,7 +1164,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l145"><code>lib&#x2F;Paging.js:145</code></a>
+        <a href="../files/lib_Paging.js.html#l156"><code>lib&#x2F;Paging.js:156</code></a>
         
         </p>
 
@@ -1214,7 +1221,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l154"><code>lib&#x2F;Paging.js:154</code></a>
+        <a href="../files/lib_Paging.js.html#l165"><code>lib&#x2F;Paging.js:165</code></a>
         
         </p>
 
@@ -1275,7 +1282,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l346"><code>lib&#x2F;Paging.js:346</code></a>
+        <a href="../files/lib_Paging.js.html#l370"><code>lib&#x2F;Paging.js:370</code></a>
         
         </p>
 
@@ -1364,6 +1371,54 @@ export default class PagingCls extends Component{
 </div>
 
                 
+                    <div id="property_choosePageSize" class="property item">
+    <h3 class="name"><code>choosePageSize</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Paging.js.html#l85"><code>lib&#x2F;Paging.js:85</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>自定义每页显示数量数组,需为非空数组。默认为[]</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> []</code>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="property_currentPage" class="property item">
     <h3 class="name"><code>currentPage</code></h3>
     <span class="type">Integer</span>
@@ -1435,7 +1490,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l96"><code>lib&#x2F;Paging.js:96</code></a>
+        <a href="../files/lib_Paging.js.html#l107"><code>lib&#x2F;Paging.js:107</code></a>
         
         </p>
 

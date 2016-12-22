@@ -1,6 +1,5 @@
 import React, { Component ,PropTypes} from 'react';
 import {Button,Column,ImgSlider} from '../../../src/index.js';
-
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
@@ -84,6 +83,10 @@ export default class SliderDemo extends Component {
             }
         ];
         let pageNum=4;
+        let file ={
+            name:'a',
+            url:'http://i3.hoopchina.com.cn/blogfile/201612/19/BbsImg148212541679849_750x418.jpg@60Q.jpg'
+        };
         return (
             <div>
                 <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>
@@ -92,7 +95,9 @@ export default class SliderDemo extends Component {
                 <ImgSlider  show={show} showThumbnail={showThumbnail}
                             imgList={imgList}
                             profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
-                            pageNum={pageNum}/>
+                            pageNum={pageNum}
+                            cssModify={true}
+                    />
             </div>
 
         );

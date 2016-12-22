@@ -517,6 +517,13 @@ var Calendar = (function (_Component) {
              * */
             format: _react.PropTypes.string,
             /**
+             * 日期选择控件类型,date表示可以选择年月日，year只能选择年份，month只能选择月份
+             * @property calendarType
+             * @type string
+             * @default &#x27;date&#x27;
+             * */
+            calendarType: _react.PropTypes.string,
+            /**
              * 选择某个具体日期后执行的回调函数
              * @event  selectCallback
              * @param {string} date 日期
@@ -554,6 +561,27 @@ var Calendar = (function (_Component) {
             windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
         };
     }
+
+    Calendar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        /*let defaultDate = nextProps.defaultDate;
+         if(defaultDate){
+            this.setState({
+                currentDate:defaultDate,
+                selectedDate:defaultDate,
+                year:typeof(defaultDate)!=&#x27;string&#x27;?defaultDate.getFullYear():new Date(defaultDate).getFullYear()
+            });
+        }*/
+    };
+
+    Calendar.prototype.dateChange = function dateChange(defaultDate) {
+        this.setState({
+            currentDate: defaultDate,
+            selectedDate: defaultDate,
+            show: false,
+            year: typeof defaultDate != &#x27;string&#x27; ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear(),
+            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
+        });
+    };
 
     Calendar.prototype.getCurrentDate = function getCurrentDate() {
         var currentDate = this.state.currentDate;
@@ -839,7 +867,9 @@ var Calendar = (function (_Component) {
             { className: &#x27;calendar&#x27; },
             _react2[&#x27;default&#x27;].createElement(
                 &#x27;thead&#x27;,
-                { className: &#x27;eg-calendar-header&#x27; },
+                { style: {
+                        display: this.props.calendarType == &#x27;month&#x27; ? &#x27;none&#x27; : &#x27;table-header-group&#x27;
+                    }, className: &#x27;eg-calendar-header&#x27; },
                 _react2[&#x27;default&#x27;].createElement(
                     &#x27;tr&#x27;,
                     null,
@@ -977,10 +1007,23 @@ var Calendar = (function (_Component) {
         var selected = this.getSelectedDate(),
             year = selected.getFullYear();
 
-        this.setState({
-            selectedDate: new Date(typeof type == &#x27;string&#x27; ? year + eval(&quot;(&quot; + type + &quot;)&quot;) : type, selected.getMonth(), 1)
-        });
-        typeof type != &#x27;string&#x27; &amp;&amp; this.switchWindow(1);
+        if (this.props.calendarType == &#x27;year&#x27;) {
+            var date = type + &#x27;/&#x27; + (selected.getMonth() + 1) + &#x27;/&#x27; + &#x27;1&#x27;;
+            var d = date.split(&#x27;/&#x27;);
+            var selectCallback = this.props.selectCallback;
+
+            selectCallback &amp;&amp; selectCallback(this.getDate(d[0], d[1], d[2]), d);
+            this.setState({
+                currentDate: new Date(date),
+                selectedDate: new Date(typeof type == &#x27;string&#x27; ? year + eval(&quot;(&quot; + type + &quot;)&quot;) : type, selected.getMonth(), 1)
+            });
+            this.props.closeCallback &amp;&amp; this.props.closeCallback();
+        } else {
+            this.setState({
+                selectedDate: new Date(typeof type == &#x27;string&#x27; ? year + eval(&quot;(&quot; + type + &quot;)&quot;) : type, selected.getMonth(), 1)
+            });
+            typeof type != &#x27;string&#x27; &amp;&amp; this.switchWindow(1);
+        }
     };
 
     Calendar.prototype.switchMonth = function switchMonth(type) {
@@ -988,10 +1031,24 @@ var Calendar = (function (_Component) {
             year = selected.getFullYear(),
             month = selected.getMonth();
 
-        this.setState({
-            selectedDate: new Date(year, typeof type == &#x27;string&#x27; ? month + eval(&quot;(&quot; + type + &quot;)&quot;) : type, 1)
-        });
-        typeof type != &#x27;string&#x27; &amp;&amp; this.switchWindow(0);
+        if (this.props.calendarType == &#x27;month&#x27; || this.props.calendarType == &#x27;yearMonth&#x27;) {
+            var date = year + &#x27;/&#x27; + (type + 1) + &#x27;/&#x27; + &#x27;1&#x27;;
+            var d = date.split(&#x27;/&#x27;);
+            var selectCallback = this.props.selectCallback;
+
+            //console.dir(this.getDate(d[0],d[1],d[2]));
+            selectCallback &amp;&amp; selectCallback(this.getDate(d[0], d[1], d[2]), d);
+            this.setState({
+                currentDate: new Date(date),
+                selectedDate: new Date(year, typeof type == &#x27;string&#x27; ? month + eval(&quot;(&quot; + type + &quot;)&quot;) : type, 1)
+            });
+            this.props.closeCallback &amp;&amp; this.props.closeCallback();
+        } else {
+            this.setState({
+                selectedDate: new Date(year, typeof type == &#x27;string&#x27; ? month + eval(&quot;(&quot; + type + &quot;)&quot;) : type, 1)
+            });
+            typeof type != &#x27;string&#x27; &amp;&amp; this.switchWindow(0);
+        }
     };
 
     Calendar.prototype.getSelectedDateSplit = function getSelectedDateSplit() {
@@ -1030,7 +1087,8 @@ var Calendar = (function (_Component) {
                             _react2[&#x27;default&#x27;].createElement(
                                 &#x27;span&#x27;,
                                 { style: {
-                                        cursor: &#x27;pointer&#x27;
+                                        cursor: &#x27;pointer&#x27;,
+                                        display: this.props.calendarType == &#x27;date&#x27; ? &#x27;inline-block&#x27; : &#x27;none&#x27;
                                     }, onClick: this.todayHandler.bind(this) },
                                 &#x27;今天&#x27;
                             )

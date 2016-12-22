@@ -694,7 +694,7 @@ let Demo= class Demo extends Component{
                     &lt;/Col&gt;
                 &lt;/Row&gt;
                 &lt;Row&gt;
-                    &lt;Col sm={10} layer padding={"0"}&gt;
+                    &lt;Col sm={10} layer padding={0}&gt;
                         &lt;Suggestion
                             getValueCallback={::this.getValue}
                             queryCallback={::this.query}
@@ -702,7 +702,7 @@ let Demo= class Demo extends Component{
                             iconDirection="left"
                             placeholder="请输入key搜索" /&gt;
                     &lt;/Col&gt;
-                    &lt;Col sm={2} end padding={"0"}&gt;
+                    &lt;Col sm={2} end padding={0}&gt;
                         &lt;Button type="submit"&gt;查询&lt;/Button&gt;
                     &lt;/Col&gt;
                 &lt;/Row&gt;
@@ -750,7 +750,7 @@ let Demo= class Demo extends Component{
                             &lt;/Col&gt;
                         &lt;/Row&gt;
                     &lt;/Col&gt;
-                    &lt;Col sm="2"&gt;请输入测、测试、试进行搜索&lt;/Col&gt;
+                    &lt;Col sm={2}&gt;请输入测、测试、试进行搜索&lt;/Col&gt;
                 &lt;/Row&gt;
             &lt;/Grid&gt;
         );

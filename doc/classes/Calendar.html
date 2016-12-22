@@ -461,6 +461,13 @@
             <ul class="index-list properties extends">
                 
                     <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_calendarType" data-tablink="calendarType">calendarType</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_defaultDate" data-tablink="defaultDate">defaultDate</a>
 
                         
@@ -683,8 +690,14 @@ export default class Calendar extends Component{
         super(props, context);
 
         this.state = {
-            show:false
-        }
+            show:false,
+            defaultDate:&#39;2016-12-1&#39;
+        };
+        setTimeout(function(){
+            this.setState({
+                defaultDate:&#39;2017-2-12&#39;
+            });
+        }.bind(this),2000);
     };
 
     focus(){
@@ -697,15 +710,23 @@ export default class Calendar extends Component{
             show:false
         });
     }
-
+    changeDate(){
+      this.refs.cp.dateChange(&#39;2015-03-02&#39;);
+    }
+    getvalue(val){
+        this.setState({
+            defaultDate:val
+        });
+    }
     render(){
 
         return (
             &lt;Grid&gt;
             &lt;Row&gt;
-                &lt;Col sm={12}&gt;
-                    &lt;CalendarPanel startDate="2015-11-11"&gt;
-                        &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
+                &lt;Col sm={3} &gt;
+                    &lt;button onClick={::this.changeDate}&gt;changeDate&lt;/button&gt;
+                    &lt;CalendarPanel ref=&#39;cp&#39; calendarType="yearMonth" yearMonthFormat="yyyy年MM月"&gt;
+                        &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
                     &lt;/CalendarPanel&gt;
 
                 &lt;/Col&gt;
@@ -715,7 +736,7 @@ export default class Calendar extends Component{
             &lt;/Row&gt;
             &lt;Row&gt;
                 &lt;Col sm={3}&gt;
-                    &lt;CalendarPanel startDate="2015-11-11" endDate="2015-12-1"&gt;
+                    &lt;CalendarPanel defaultDate={this.state.defaultDate} startDate="2015-11-11" endDate="2017-12-1" getValueCallback={::this.getvalue}&gt;
                         &lt;Input placeholder="请选择日期" style={{width:&#39;150px&#39;}} /&gt;
                     &lt;/CalendarPanel&gt;
                 &lt;/Col&gt;
@@ -742,6 +763,54 @@ export default class Calendar extends Component{
         
             <div id="property" class="tab-pane">
                 <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_calendarType" class="property item">
+    <h3 class="name"><code>calendarType</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Calendar.js.html#l100"><code>lib&#x2F;Calendar.js:100</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>日期选择控件类型,date表示可以选择年月日，year只能选择年份，month只能选择月份</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> &#x27;date&#x27;</code>
+    
+
+    
+
+    
+</div>
 
                 
                     <div id="property_defaultDate" class="property item">
@@ -967,7 +1036,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_Calendar.js.html#l100"><code>lib&#x2F;Calendar.js:100</code></a>
+        <a href="../files/lib_Calendar.js.html#l107"><code>lib&#x2F;Calendar.js:107</code></a>
         
         </p>
 

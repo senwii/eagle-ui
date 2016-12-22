@@ -659,7 +659,6 @@ let Demo= class Demo extends Component{
             options:[],
             defaultCity:&#39;&#39;
         };
-
         setTimeout(()=&gt;{
             this.setState({options:this.renderC()})
         }.bind(this) );
@@ -671,7 +670,7 @@ let Demo= class Demo extends Component{
         }.bind(this),2000 );
     }
 
-        getValue(value,key,type){
+    getValue(value,key,type){
         let stype = {
             &#39;init&#39;:&#39;加载时调用&#39;,
             &#39;enter&#39;:&#39;回车时调用&#39;,

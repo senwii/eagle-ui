@@ -621,7 +621,14 @@ let Demo = class Demo extends Component{
             tabIndex:2
         };
     }
-
+    componentDidMount(){
+        let _this=this;
+        setTimeout(()=&gt;{
+            _this.setState({
+                tabIndex:3
+            })
+        },2000)
+    }
     callback(index){
         console.log(&#39;i&#39;,index);
         if(this.state.tabIndex!==index){
@@ -650,7 +657,7 @@ let Demo = class Demo extends Component{
 
     render(){
         return (
-            &lt;Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}&gt;
+            &lt;Tabset disableHoverAnimation activeTab={this.state.tabIndex} tabCallback={::this.callback}&gt;
                 &lt;Tab&gt;
                     {::this.tab1()}
                 &lt;/Tab&gt;
@@ -715,7 +722,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Tab.js.html#l74"><code>lib&#x2F;Tab.js:74</code></a>
+        <a href="../files/lib_Tab.js.html#l79"><code>lib&#x2F;Tab.js:79</code></a>
         
         </p>
 

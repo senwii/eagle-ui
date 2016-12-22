@@ -417,9 +417,6 @@
 
 <div class="file">
     <pre class="prettyprint linenums" id='src_code'>
-/**
- * Created by panqianjin on 15/11/17.
- */
 &#x27;use strict&#x27;;
 
 exports.__esModule = true;
@@ -617,7 +614,7 @@ var TooltipPanel = (function (_Component) {
     };
 
     /**
-     * 获取元素的client
+     * 获取元素的client宽高
      * */
 
     TooltipPanel.prototype.getClientWH = function getClientWH(obj) {
@@ -629,7 +626,8 @@ var TooltipPanel = (function (_Component) {
     };
 
     /**
-     * 获取offset
+     * 获取tips的offset
+     * 宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差
      * */
 
     TooltipPanel.prototype.getOffsetWH = function getOffsetWH(obj) {
@@ -644,15 +642,23 @@ var TooltipPanel = (function (_Component) {
         return wh;
     };
 
+    /**
+     * 获取处理之后的offset，top和left
+     * */
+
     TooltipPanel.prototype.getTrueLT = function getTrueLT(tipNode, isLeft, warpNode) {
         var tipNodeLT = this.getOffsetLT(tipNode, isLeft);
-        debugger;
         if (warpNode) {
             var warpLT = this.getOffsetLT(warpNode, isLeft);
             tipNodeLT = tipNodeLT - warpLT;
         }
         return tipNodeLT;
     };
+
+    /**
+     * 获取offset top、left。
+     * 两者获取方式相同，根据isleft区分left或top
+     * */
 
     TooltipPanel.prototype.getOffsetLT = function getOffsetLT(ele, isLeft) {
         var dir = isLeft ? &#x27;offsetLeft&#x27; : &#x27;offsetTop&#x27;;
@@ -680,25 +686,25 @@ var TooltipPanel = (function (_Component) {
         var arrowNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.container).children[0];
 
         var tips = this.getOffsetWH(tipNode);
-        var element = this.getOffsetWH(arrowNode);
+        var arrow = this.getOffsetWH(arrowNode);
         var warpperWH = this.getWarpperWH();
-        dir = this.isValidate(dir, tips, element, warpperWH);
+        dir = this.isValidate(dir, tips, arrow, warpperWH);
         switch (dir) {
             case &#x27;down&#x27;:
-                tipNode.style.top = element.height + &#x27;px&#x27;;
-                tipNode.style.left = (element.width - tips.width) / 2 + &#x27;px&#x27;;
+                tipNode.style.top = arrow.height + &#x27;px&#x27;;
+                tipNode.style.left = (arrow.width - tips.width) / 2 + &#x27;px&#x27;;
                 break;
             case &#x27;top&#x27;:
                 tipNode.style.top = &#x27;-&#x27; + (tips.height + 10) + &#x27;px&#x27;;
-                tipNode.style.left = (element.width - tips.width) / 2 + &#x27;px&#x27;;
+                tipNode.style.left = (arrow.width - tips.width) / 2 + &#x27;px&#x27;;
                 break;
             case &#x27;left&#x27;:
-                tipNode.style.right = element.width + 5 + &#x27;px&#x27;;
-                tipNode.style.top = (element.height - tips.height) / 2 - 5 + &#x27;px&#x27;;
+                tipNode.style.right = arrow.width + 5 + &#x27;px&#x27;;
+                tipNode.style.top = (arrow.height - tips.height) / 2 - 5 + &#x27;px&#x27;;
                 break;
             case &#x27;right&#x27;:
-                tipNode.style.left = element.width + 5 + &#x27;px&#x27;;
-                tipNode.style.top = (element.height - tips.height) / 2 - 5 + &#x27;px&#x27;;
+                tipNode.style.left = arrow.width + 5 + &#x27;px&#x27;;
+                tipNode.style.top = (arrow.height - tips.height) / 2 - 5 + &#x27;px&#x27;;
                 break;
             default:
                 break;
@@ -724,7 +730,7 @@ var TooltipPanel = (function (_Component) {
     };
 
     /**
-     * 如果方向改变，重新设置方向
+     * 如果方向改变，重新设置箭头方向
      * */
 
     TooltipPanel.prototype.getNewArrow = function getNewArrow(tipNode, dir) {
@@ -740,7 +746,7 @@ var TooltipPanel = (function (_Component) {
      * @param dir {String}
      * @param tips {Object}
      * @param ele {Object}
-     * @param maxBody {Object}
+     * @param maxBody {Object} 边界
      * @return flag {Boolean}
      * */
 

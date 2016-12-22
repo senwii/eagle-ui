@@ -634,6 +634,12 @@ var Input = (function (_Component) {
         );
     };
 
+    Input.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        this.setState({
+            _active: nextProps.checked
+        });
+    };
+
     Input.prototype.render = function render() {
         var _classnames;
 
@@ -656,7 +662,6 @@ var Input = (function (_Component) {
 
             iconDirection = this.getClassName(&#x27;icon-&#x27; + iconDirection);
         }
-
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
             { className: _classnames3[&#x27;default&#x27;](this.getProperty(), type, (_classnames = {

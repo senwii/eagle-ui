@@ -481,6 +481,27 @@ var _CalendarJs2 = _interopRequireDefault(_CalendarJs);
 var CalendarPanel = (function (_Component) {
     _inherits(CalendarPanel, _Component);
 
+    CalendarPanel.prototype.getFormat = function getFormat() {
+        var formatMap = {
+            date: this.props.format || &#x27;yyyy-MM-dd&#x27;,
+            month: this.props.monthFormat || &#x27;MM&#x27;,
+            year: this.props.yearFormat || &#x27;yyyy&#x27;,
+            yearMonth: this.props.yearMonthFormat || &#x27;yyyy-MM&#x27;
+        };
+        return formatMap[this.props.calendarType];
+    };
+
+    CalendarPanel.prototype.getWindowType = function getWindowType() {
+        var typeMap = {
+            date: 0,
+            month: 1,
+            year: 2,
+            yearMonth: 1
+        },
+            windowType = typeMap[this.props.calendarType] ? typeMap[this.props.calendarType] : 0;
+        return windowType;
+    };
+
     _createClass(CalendarPanel, null, [{
         key: &#x27;propTypes&#x27;,
         value: {
@@ -500,6 +521,7 @@ var CalendarPanel = (function (_Component) {
         value: {
             classPrefix: &#x27;calendar&#x27;,
             componentTag: &#x27;Input&#x27;,
+            calendarType: &#x27;date&#x27;,
             getValueCallback: function getValueCallback(date) {
                 console.warn(&#x27;通过向CalendarPanel传入回调函数&quot;getValueCallback&quot;可以获取到当前选取的日期值，当前选取的日期为：&#x27; + date);
             }
@@ -511,15 +533,20 @@ var CalendarPanel = (function (_Component) {
         _classCallCheck(this, _CalendarPanel);
 
         _Component.call(this, props, context);
-
         this.calendarContainer = this.uniqueId();
-
+        this.inputId = this.uniqueId();
         this.state = {
             isShow: false,
             value: this.props.defaultDate || &#x27;&#x27;,
-            windowType: 0
+            windowType: this.getWindowType()
         };
     }
+
+    CalendarPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        this.setState({
+            value: nextProps.defaultDate
+        });
+    };
 
     CalendarPanel.prototype.doSetCapture = function doSetCapture(input) {
         if (input.setCapture) {
@@ -561,7 +588,7 @@ var CalendarPanel = (function (_Component) {
         this.input = input;
         this.setState({
             isShow: true,
-            windowType: 0
+            windowType: this.getWindowType()
         });
     };
 
@@ -593,18 +620,31 @@ var CalendarPanel = (function (_Component) {
         this.input &amp;&amp; this.input.blur();
     };
 
+    CalendarPanel.prototype.dateChange = function dateChange(d) {
+        this.refs[this.calendarContainer + &#x27;calendar&#x27;].dateChange(d);
+        this.setState({
+            value: d
+        });
+    };
+
     CalendarPanel.prototype.render = function render() {
+        var _this2 = this;
+
         var Component = this.props.componentTag;
         var _this = this;
         var options = _react2[&#x27;default&#x27;].Children.map(this.props.children, function (option) {
 
             return _react2[&#x27;default&#x27;].createElement(_InputJs2[&#x27;default&#x27;], _extends({}, option.props, {
+                ref: _this2.inputId,
                 onBlur: _this.inputBlurHandler.bind(_this),
                 onMouseUp: _this.inputMouseUpHandler.bind(_this),
                 onFocus: _this.inputFocusHandler.bind(_this),
                 value: _this.state.value,
                 onChange: _this.inputChangeHandler.bind(_this),
-                icon: option.props.icon
+                icon: option.props.icon,
+                iconClickCallback: (function () {
+                    _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.inputId]).getElementsByTagName(&#x27;input&#x27;)[0].focus();
+                }).bind(_this2)
             }));
         }, this);
 
@@ -612,7 +652,10 @@ var CalendarPanel = (function (_Component) {
             &#x27;div&#x27;,
             { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;panel&#x27;)), ref: this.calendarContainer },
             options,
-            _react2[&#x27;default&#x27;].createElement(_CalendarJs2[&#x27;default&#x27;], _extends({}, this.props, {
+            _react2[&#x27;default&#x27;].createElement(_CalendarJs2[&#x27;default&#x27;], _extends({
+                format: this.getFormat()
+            }, this.props, {
+                ref: this.calendarContainer + &#x27;calendar&#x27;,
                 show: this.state.isShow,
                 selectCallback: this.selectCallback.bind(this),
                 windowType: this.state.windowType,

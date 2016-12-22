@@ -464,14 +464,19 @@
            <strong>默认</strong>为5
        </code>
    </li>
+   <li>imgModify:是否对图片进行放大缩小等操作
+       <code>
+           <strong>默认</strong>为false
+       </code>
+   </li>
  </ul>
  使用方式:
  <pre class="code prettyprint"><code>&#60;imgSlider show={true} showThumbnail={true}
-          imgList={imgList}
-          profileKey={&#39;profile&#39;}
-          urlKey={&#39;url&#39;}
-          titleKey={&#39;description&#39;}
-          thumbnailKey={thumbnailKey} /&#62;</code>
+ imgList={imgList}
+ profileKey={&#39;profile&#39;}
+ urlKey={&#39;url&#39;}
+ titleKey={&#39;description&#39;}
+ thumbnailKey={thumbnailKey} /&#62;</code>
  </pre></p>
 </div>
  </div>
@@ -491,6 +496,13 @@
                 
                     <li class="index-item property">
                         <a href="#" data-tabid="#property" data-anchor="#property_imgList" data-tablink="imgList">imgList</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item property">
+                        <a href="#" data-tabid="#property" data-anchor="#property_imgModify" data-tablink="imgModify">imgModify</a>
 
                         
                         
@@ -579,7 +591,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_ImgSlider.js.html#l31"><code>lib&#x2F;ImgSlider.js:31</code></a>
+                    Defined in: <a href="../files/lib_ImgSlider.js.html#l35"><code>lib&#x2F;ImgSlider.js:35</code></a>
                 </div>
             
 
@@ -630,7 +642,7 @@
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l31"><code>lib&#x2F;ImgSlider.js:31</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l35"><code>lib&#x2F;ImgSlider.js:35</code></a>
         
         </p>
 
@@ -712,7 +724,6 @@ export default class StarDemo extends Component {
 }</code></pre>
 </div><div class="stdoc-code"><pre class="code prettyprint"><code>import React, { Component ,PropTypes} from &#39;react&#39;;
 import {Button,Column,ImgSlider} from &#39;../../../src/index.js&#39;;
-
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
@@ -796,6 +807,10 @@ export default class SliderDemo extends Component {
             }
         ];
         let pageNum=4;
+        let file ={
+            name:&#39;a&#39;,
+            url:&#39;http://i3.hoopchina.com.cn/blogfile/201612/19/BbsImg148212541679849_750x418.jpg@60Q.jpg&#39;
+        };
         return (
             &lt;div&gt;
                 &lt;Button success onClick={(e)=&gt;this.handleSlider.call(this)} &gt;点击出现照片展示插件(缩略图默认)&lt;/Button&gt;
@@ -804,7 +819,9 @@ export default class SliderDemo extends Component {
                 &lt;ImgSlider  show={show} showThumbnail={showThumbnail}
                             imgList={imgList}
                             profileKey={&#39;profile&#39;} urlKey={&#39;url&#39;}  titleKey={&#39;description&#39;} thumbnailKey={thumbnailKey}
-                            pageNum={pageNum}/&gt;
+                            pageNum={pageNum}
+                            cssModify={true}
+                    /&gt;
             &lt;/div&gt;
 
         );
@@ -853,7 +870,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l337"><code>lib&#x2F;ImgSlider.js:337</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l435"><code>lib&#x2F;ImgSlider.js:435</code></a>
         
         </p>
 
@@ -870,6 +887,54 @@ export default class SliderDemo extends Component {
     
         <p><strong>Default:</strong></p>
          <code> 图片数组(包含大图地址、描述等信息)</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_imgModify" class="property item">
+    <h3 class="name"><code>imgModify</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ImgSlider.js.html#l491"><code>lib&#x2F;ImgSlider.js:491</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>是否对图片进行放大缩小等操作</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> false</code>
     
 
     
@@ -901,7 +966,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l386"><code>lib&#x2F;ImgSlider.js:386</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l484"><code>lib&#x2F;ImgSlider.js:484</code></a>
         
         </p>
 
@@ -949,7 +1014,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l358"><code>lib&#x2F;ImgSlider.js:358</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l456"><code>lib&#x2F;ImgSlider.js:456</code></a>
         
         </p>
 
@@ -997,7 +1062,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l344"><code>lib&#x2F;ImgSlider.js:344</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l442"><code>lib&#x2F;ImgSlider.js:442</code></a>
         
         </p>
 
@@ -1045,7 +1110,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l372"><code>lib&#x2F;ImgSlider.js:372</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l470"><code>lib&#x2F;ImgSlider.js:470</code></a>
         
         </p>
 
@@ -1093,7 +1158,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l379"><code>lib&#x2F;ImgSlider.js:379</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l477"><code>lib&#x2F;ImgSlider.js:477</code></a>
         
         </p>
 
@@ -1141,7 +1206,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l365"><code>lib&#x2F;ImgSlider.js:365</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l463"><code>lib&#x2F;ImgSlider.js:463</code></a>
         
         </p>
 
@@ -1189,7 +1254,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l351"><code>lib&#x2F;ImgSlider.js:351</code></a>
+        <a href="../files/lib_ImgSlider.js.html#l449"><code>lib&#x2F;ImgSlider.js:449</code></a>
         
         </p>
 

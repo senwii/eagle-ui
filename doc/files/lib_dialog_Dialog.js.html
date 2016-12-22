@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/Tab.js - eagle-ui</title>
+    <title>lib/dialog/Dialog.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -412,21 +412,14 @@
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>lib/Tab.js <small>File</small></h1>
+    <h1>lib/dialog/Dialog.js <small>File</small></h1>
 </div>
 
 <div class="file">
     <pre class="prettyprint linenums" id='src_code'>
-/**
- * Created by mac on 15/9/7.
- */
 &#x27;use strict&#x27;;
 
 exports.__esModule = true;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i &lt; arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (&#x27;value&#x27; in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
 
@@ -434,91 +427,140 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== &#x27;function&#x27; &amp;&amp; superClass !== null) { throw new TypeError(&#x27;Super expression must either be null or a function, not &#x27; + typeof superClass); } subClass.prototype = Object.create(superClass &amp;&amp; superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var _DialogFactory = require(&#x27;./DialogFactory&#x27;);
+
+var _DialogFactory2 = _interopRequireDefault(_DialogFactory);
+
 var _react = require(&#x27;react&#x27;);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _utilsClassNameMixin = require(&#x27;./utils/ClassNameMixin&#x27;);
-
-var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
 
 var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-/**
- * 导航标签组件，用户可以在不同的tab之间进行切换&lt;br/&gt;
- * 需要和Tabset组件配合使用,Tabset相当于是Tab的容器
- * @class Tab
- * @module ui
- * @extends Component
- * @constructor
- * @demo star.js {UI展示}
- * @demo tab.js {源码}
- * @show true
- * */
+var _utilsComponent = require(&#x27;./../utils/Component&#x27;);
 
-var Tab = (function (_Component) {
-    _inherits(Tab, _Component);
+var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
-    function Tab() {
-        _classCallCheck(this, _Tab);
+var _BaseDialog = require(&#x27;./BaseDialog&#x27;);
 
-        _Component.apply(this, arguments);
+var _BaseDialog2 = _interopRequireDefault(_BaseDialog);
+
+var _extend = require(&#x27;extend&#x27;);
+
+var _extend2 = _interopRequireDefault(_extend);
+
+var Dialog = (function (_Component) {
+    _inherits(Dialog, _Component);
+
+    function Dialog(props, context) {
+        _classCallCheck(this, Dialog);
+
+        _Component.call(this, props, context);
+
+        this.state = {
+            update: this.uniqueId()
+        };
+        this.dialog = new _DialogFactory2[&#x27;default&#x27;](props.keys || props.id || props.name, props.type || &#x27;mask&#x27;, props.children, props);
+        // this.update(props);
     }
 
-    Tab.prototype.handlerClick = function handlerClick(e) {
-        if (this.props.disableHoverAnimation) {
-            this.props.mouseEnterCallback(e.target.offsetLeft, e.target.offsetWidth);
-        }
-        this.props.clickCallback(this.props.index);
+    Dialog.prototype.loadedCallback = function loadedCallback() {};
+
+    /**
+     * key 报warning，暂时改为keys
+     * */
+
+    Dialog.prototype.update = function update(props) {
+        this.dialog.reShow(props.keys || props.id || props.name, props);
     };
 
-    Tab.prototype.handleMouseEnter = function handleMouseEnter(e) {
-        if (!this.props.disableHoverAnimation) {
-            this.props.mouseEnterCallback(e.target.offsetLeft, e.target.offsetWidth);
+    Dialog.prototype.componentWillReceiveProps = function componentWillReceiveProps(props) {
+        this.update(props);
+    };
+
+    Dialog.prototype.shouldComponentUpdate = function shouldComponentUpdate(props, state) {
+        // this.update(props)
+        return true;
+    };
+
+    Dialog.alert = function alert(message) {
+        var opts = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+        return new Promise(function (resolve, reject) {
+            new _DialogFactory2[&#x27;default&#x27;]().show(_BaseDialog2[&#x27;default&#x27;].ALERT, _extend2[&#x27;default&#x27;]({}, {
+                successCallback: function successCallback() {
+                    resolve();
+                    new _DialogFactory2[&#x27;default&#x27;]().hide();
+                },
+                message: message
+            }, opts));
+        })[&#x27;catch&#x27;](function (ex) {
+            console.dir(ex);
+        });
+    };
+
+    Dialog.confirm = function confirm(message) {
+        var opts = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+        try {
+            return new Promise(function (resolve, reject) {
+                new _DialogFactory2[&#x27;default&#x27;]().show(_BaseDialog2[&#x27;default&#x27;].CONFRIM, _extend2[&#x27;default&#x27;]({}, {
+                    successCallback: function successCallback() {
+                        resolve();
+                        new _DialogFactory2[&#x27;default&#x27;]().hide();
+                    },
+                    cancelCallback: function cancelCallback() {
+                        reject();
+                        new _DialogFactory2[&#x27;default&#x27;]().hide();
+                    },
+                    message: message
+                }, opts));
+            });
+        } catch (ex) {
+            console.dir(ex);
         }
     };
 
-    Tab.prototype.render = function render() {
+    Dialog.mask = function mask(dialogId) {
+        var opts = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
 
+        return new Promise(function (resolve, reject) {
+            new _DialogFactory2[&#x27;default&#x27;]().show(dialogId, _extend2[&#x27;default&#x27;]({}, {
+                successCallback: resolve,
+                id: dialogId,
+                contentAlign: &#x27;left&#x27;,
+                cancelCallback: function cancelCallback(type) {
+                    reject(type);
+                    new _DialogFactory2[&#x27;default&#x27;]().hide();
+                },
+                closeCallback: function closeCallback(type) {
+                    reject(type);
+                    new _DialogFactory2[&#x27;default&#x27;]().hide();
+                }
+            }, opts));
+        })[&#x27;catch&#x27;](function (ex) {
+            console.dir(ex);
+        });
+    };
+
+    Dialog.close = function close() {
+        new _DialogFactory2[&#x27;default&#x27;]().hide();
+    };
+
+    Dialog.prototype.render = function render() {
         return _react2[&#x27;default&#x27;].createElement(
-            &#x27;a&#x27;,
-            _extends({ className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;item&#x27;), this.getClassNames(this.props))
-            }, this.props, {
-                onClick: this.handlerClick.bind(this),
-                onMouseEnter: this.handleMouseEnter.bind(this) }),
-            this.props.heading
+            &#x27;div&#x27;,
+            { style: { display: &#x27;none&#x27; } },
+            this.state.update
         );
     };
 
-    _createClass(Tab, null, [{
-        key: &#x27;propTypes&#x27;,
-        value: {
-            /**
-             * tab导航标签的title
-             * @property heading
-             * @type String
-             * @default &#x27;tab&#x27;
-             * */
-            heading: _react.PropTypes.string
-        },
-        enumerable: true
-    }, {
-        key: &#x27;defaultProps&#x27;,
-        value: {
-            classPrefix: &#x27;tab&#x27;,
-            heading: &#x27;tab&#x27;
-        },
-        enumerable: true
-    }]);
+    return Dialog;
+})(_utilsComponent2[&#x27;default&#x27;]);
 
-    var _Tab = Tab;
-    Tab = _utilsClassNameMixin2[&#x27;default&#x27;](Tab) || Tab;
-    return Tab;
-})(_react.Component);
-
-exports[&#x27;default&#x27;] = Tab;
+exports[&#x27;default&#x27;] = Dialog;
 module.exports = exports[&#x27;default&#x27;];
     </pre>
 </div>
