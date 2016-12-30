@@ -180,7 +180,7 @@ class TooltipPanel extends Component {
         let dir = isLeft ? 'offsetLeft' : 'offsetTop';
         let actuDir = ele[dir],
             current = ele.offsetParent;
-        if (current != null) {
+        while (current != null) {
             actuDir = actuDir + current[dir];
             current = current.offsetParent;
         }

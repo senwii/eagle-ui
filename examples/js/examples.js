@@ -42322,7 +42322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var dir = isLeft ? 'offsetLeft' : 'offsetTop';
 	        var actuDir = ele[dir],
 	            current = ele.offsetParent;
-	        if (current != null) {
+	        while (current != null) {
 	            actuDir = actuDir + current[dir];
 	            current = current.offsetParent;
 	        }
@@ -49797,6 +49797,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'div',
 	            null,
 	            _react2['default'].createElement(
+	                'p',
+	                null,
+	                '背景色为白色的区域为a'
+	            ),
+	            _react2['default'].createElement(
 	                'div',
 	                { id: 'a', style: { width: '500px', height: '500px', border: '1px solid #f00', position: 'relative' } },
 	                _react2['default'].createElement(
@@ -49810,7 +49815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            } },
 	                        _react2['default'].createElement(
 	                            _srcTooltipPanelJs2['default'],
-	                            { direction: 'top', wapper: 'a' },
+	                            { direction: 'top', warp: 'a' },
 	                            _react2['default'].createElement(
 	                                _srcButtonJs2['default'],
 	                                { radius: true, egSize: 'sm', egStyle: 'warning' },
@@ -49828,6 +49833,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                _srcButtonJs2['default'],
 	                                { radius: true, egSize: 'sm', egStyle: 'warning' },
 	                                '应在左，边界为a'
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _srcTooltipPanelJs2['default'],
+	                            { direction: 'top', wrapper: 'a' },
+	                            _react2['default'].createElement(
+	                                _srcButtonJs2['default'],
+	                                { radius: true, egSize: 'sm', egStyle: 'warning' },
+	                                '应在上，边界为a'
 	                            )
 	                        ),
 	                        _react2['default'].createElement(

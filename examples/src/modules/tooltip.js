@@ -29,17 +29,21 @@ let Demo = class Demo extends Component {
     render() {
         return (
             <div>
+                <p>背景色为白色的区域为a</p>
                 <div id='a' style={{width:'500px',height:'500px',border:'1px solid #f00',position:'relative'}}>
                     <div style={{margin:'10px'}}>
                         <div style={{width:'300px',height:'300px',background:'#fff',position:'absolute',top:'20px'}}
                              onClick={()=>this.change()}>
-                            <TooltipPanel direction='top' wapper='a'>
+                            <TooltipPanel direction='top' warp='a'>
                                 <Button radius egSize="sm" egStyle="warning">应在上，边界为a</Button>
                             </TooltipPanel>
                         </div>
                         <div style={{marginTop:'300px'}}>
                             <TooltipPanel direction='left' wrapper='a'>
                                 <Button radius egSize="sm" egStyle="warning">应在左，边界为a</Button>
+                            </TooltipPanel>
+                            <TooltipPanel direction='top' wrapper='a'>
+                                <Button radius egSize="sm" egStyle="warning">应在上，边界为a</Button>
                             </TooltipPanel>
                             <TooltipPanel direction='right' style={{marginLeft:'250px'}}>
                                 <Button radius egSize="sm" egStyle="warning">应在右，边界为可视窗口</Button>

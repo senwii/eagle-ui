@@ -16984,7 +16984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var dir = isLeft ? 'offsetLeft' : 'offsetTop';
 	        var actuDir = ele[dir],
 	            current = ele.offsetParent;
-	        if (current != null) {
+	        while (current != null) {
 	            actuDir = actuDir + current[dir];
 	            current = current.offsetParent;
 	        }
