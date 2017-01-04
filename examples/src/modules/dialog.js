@@ -24,10 +24,10 @@ let Demo= class Demo extends Component{
 
     show(name){
         Dialog.mask(name).then(function(){
-            console.dir('...alert....');
+            console.log('success');
             Dialog.close();
         },function(type){
-            console.dir(type);
+            console.log('cancel');
         });
     }
 
@@ -71,14 +71,13 @@ let Demo= class Demo extends Component{
                 <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
                     {
                         type: 'success',
-                        name: '确认',
-                        callback:()=>{}
+                        name: '确认'
+
                     },
                     {
                         type:'cancel',
                         egStyle:'white',
-                        name:'取消',
-                        callback:()=>{}
+                        name:'取消'
                     },
                     {
                         egStyle:'warning',
