@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">示例</a>
+                    <li><a href="http://future-team.github.io/eagle-ui/examples/index.html">示例</a>
                     </li>
                     
                 </ul>
@@ -664,7 +664,7 @@ var TooltipPanel = (function (_Component) {
         var dir = isLeft ? &#x27;offsetLeft&#x27; : &#x27;offsetTop&#x27;;
         var actuDir = ele[dir],
             current = ele.offsetParent;
-        if (current != null) {
+        while (current != null) {
             actuDir = actuDir + current[dir];
             current = current.offsetParent;
         }

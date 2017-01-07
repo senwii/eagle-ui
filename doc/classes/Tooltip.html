@@ -32,7 +32,7 @@
                     <li><a href="">主页</a>
                     </li>
                     
-                    <li><a href="/documents/eagle-ui/examples/">示例</a>
+                    <li><a href="http://future-team.github.io/eagle-ui/examples/index.html">示例</a>
                     </li>
                     
                 </ul>
@@ -659,17 +659,21 @@ let Demo = class Demo extends Component {
     render() {
         return (
             &lt;div&gt;
+                &lt;p&gt;背景色为白色的区域为a&lt;/p&gt;
                 &lt;div id=&#39;a&#39; style={{width:&#39;500px&#39;,height:&#39;500px&#39;,border:&#39;1px solid #f00&#39;,position:&#39;relative&#39;}}&gt;
                     &lt;div style={{margin:&#39;10px&#39;}}&gt;
                         &lt;div style={{width:&#39;300px&#39;,height:&#39;300px&#39;,background:&#39;#fff&#39;,position:&#39;absolute&#39;,top:&#39;20px&#39;}}
                              onClick={()=&gt;this.change()}&gt;
-                            &lt;TooltipPanel direction=&#39;top&#39; wapper=&#39;a&#39;&gt;
+                            &lt;TooltipPanel direction=&#39;top&#39; warp=&#39;a&#39;&gt;
                                 &lt;Button radius egSize="sm" egStyle="warning"&gt;应在上，边界为a&lt;/Button&gt;
                             &lt;/TooltipPanel&gt;
                         &lt;/div&gt;
                         &lt;div style={{marginTop:&#39;300px&#39;}}&gt;
                             &lt;TooltipPanel direction=&#39;left&#39; wrapper=&#39;a&#39;&gt;
                                 &lt;Button radius egSize="sm" egStyle="warning"&gt;应在左，边界为a&lt;/Button&gt;
+                            &lt;/TooltipPanel&gt;
+                            &lt;TooltipPanel direction=&#39;top&#39; wrapper=&#39;a&#39;&gt;
+                                &lt;Button radius egSize="sm" egStyle="warning"&gt;应在上，边界为a&lt;/Button&gt;
                             &lt;/TooltipPanel&gt;
                             &lt;TooltipPanel direction=&#39;right&#39; style={{marginLeft:&#39;250px&#39;}}&gt;
                                 &lt;Button radius egSize="sm" egStyle="warning"&gt;应在右，边界为可视窗口&lt;/Button&gt;
