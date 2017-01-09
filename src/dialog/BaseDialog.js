@@ -98,7 +98,11 @@ let BaseDialog = ((d)=>{
                 if(_this.isMaskClose){
                     // 点击Icon button 时, 返回的className 是 SVGAnimatedString 对象
                     if(event.target.className.match && event.target.className.match('dialog-mask')!=null ){
-                        (props&&props.cancelCallback&&props.cancelCallback())||_this.close();
+                        if(props&&props.cancelCallback){
+                            props.cancelCallback()
+                        }else{
+                            _this.close()
+                        }
                     }
                 }
             }
