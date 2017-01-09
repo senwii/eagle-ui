@@ -88,17 +88,26 @@ let BaseDialog = ((d)=>{
             options = extend({},options,opts||{});
         }
 
-        maskClickFn(event){
 
-            if(this.isMaskClose){
-                // 点击Icon button 时, 返回的className 是 SVGAnimatedString 对象
-                if(event.target.className.match && event.target.className.match('dialog-mask')!=null ){
-                    this.close();
+        addMaskListener(props){
+            let _this=this;
+            if(this.maskListener){
+                this.container['removeEventListener' ]('click',this.maskListener,false);
+            }
+            this.maskListener=function(e){
+                if(_this.isMaskClose){
+                    // 点击Icon button 时, 返回的className 是 SVGAnimatedString 对象
+                    if(event.target.className.match && event.target.className.match('dialog-mask')!=null ){
+                        if(props&&props.cancelCallback){
+                            props.cancelCallback()
+                        }else{
+                            _this.close()
+                        }
+                    }
                 }
             }
-
+            this.container['addEventListener' ]('click',this.maskListener,false);
         }
-
         //创建放置弹窗的容器
         createWrap(){
             this.props = {};
@@ -109,10 +118,10 @@ let BaseDialog = ((d)=>{
             d.body.appendChild(dom);
             this.container = dom;
 
-            this.container['addEventListener' ]('click',this.maskClickFn.bind(this),false);
         }
 
         renderDialog(Modal,props){
+            props=props||{};
             let params = extend(true,{},options,props||{});
 
             this.isMaskClose = params.isMaskClose;
@@ -120,6 +129,7 @@ let BaseDialog = ((d)=>{
             this[!params.isMask?'removeClass':'addClass'](this.container,this.setPrefix(this.dialogClass,false) );
 
             ReactDom.render(<Modal {...params} />,this.container);
+            this.addMaskListener(props);
         }
         reloadDialog(Modal,props){
             props.isShow && this.renderDialog(Modal, props);

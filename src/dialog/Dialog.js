@@ -93,9 +93,7 @@ export default class Dialog extends Component{
                     new DialogFactory().hide();
                 }
             },opts) );
-        }).catch((ex)=>{
-                console.dir(ex);
-            });
+        })
     }
 
     static close(){
