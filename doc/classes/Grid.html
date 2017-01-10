@@ -5,12 +5,12 @@
     <title>Grid - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
-<body class="yui3-smart">
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body class="yui3-smart" _assetsPath="../assets">
+ <nav class="navbar navbar-inverse navbar-fixed-top custom-navbar" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -384,69 +384,46 @@
 </div>
    
     <div class="stdoc-content">
-        <!--     <form id="options-form" class="form-inline pull-right">
-        Show:
-        <label for="api-show-inherited" class="checkbox">
-            <input type="checkbox" id="api-show-inherited" checked>
-            Inherited
-        </label>
-
-        <label for="api-show-protected" class="checkbox">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private" class="checkbox">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated" class="checkbox">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </form>
-
- -->
         <div class="apidocs">
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>Grid <small>Class</small></h1>
+    <h1>Grid</h1>
 </div>
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><p>定义栅格容器,配合Col和Row使用</p>
 </div>
  </div>
 
-<div class="well well-small sign-left2 container-fluid" id="classesItems">
-    <div class="row">
-    
-        <div class="index-section methods col-sm-4">
-            <h3>Methods</h3>
-            
-        </div>
-    
-        <div class="index-section properties col-sm-4">
-            <h3>Properties</h3>
-            
-        </div>
-    
-        <div class="index-section events col-sm-4">
-            <h3>Events</h3>
-            
+    <div class="well well-small sign-left2 container-fluid" id="classesItems">
+        <div class="row">
+
+            <div class="index-section methods col-sm-4">
+                <h3>Methods</h3>
+                
+            </div>
+
+            <div class="index-section properties col-sm-4">
+                <h3>Properties</h3>
+                
+            </div>
+
+            <div class="index-section events col-sm-4">
+                <h3>Events</h3>
+                
+            </div>
         </div>
     </div>
-</div>
 
-<div>
-    <ul id="itemTab" class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
-        
-        
-        
-    </ul>
-
+<div class="">
+    
+        <ul id="itemTab" class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            
+            
+            
+        </ul>
+    
     <div class="tab-content">
         <div id="class" class="tab-pane active">
             <div class="well well-small classDetail sign-left1">
@@ -504,7 +481,7 @@
         
             
                 
-                <p>
+                <p class="foundat">
                 
                 Defined in
                 
@@ -866,7 +843,6 @@ export default class Test extends Component{
 }</code></pre>
 </div>
             </div>
-
              <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
             <button class="btn btn-info btn-editDemo" type="button">edit code</button>
         </div>
@@ -890,10 +866,9 @@ export default class Test extends Component{
         </div>
     </div>
 <a id="gotoTop" class='well well-small' href='#'>
-    Top
 </a>
-<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/jquery/jquery-1.8.2.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>

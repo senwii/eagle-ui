@@ -14,9 +14,8 @@
     "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min && node_modules/.bin/gulp style-webpack",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
-    "doc": "smartDoc ||node_modules/.bin/smartDoc",
-    "docBuild": "node_modules/.bin/gulp  && smartDoc ||node_modules/.bin/smartDoc && node docTheme/addFile.js",
-    "prepublish":"npm run build"
+    "doc": "node_modules/.bin/gulp  && gfsdoc ||node_modules/.bin/gfsdoc && node docTheme/addFile.js",
+    "prepublish": "npm run build"
   },
   "license": "MIT",
   "author": {
@@ -84,6 +83,7 @@
     "babel-loader": "^5.3.2",
     "babel-polyfill": "^6.3.14",
     "classnames": "^2.1.3",
+    "colors": "^1.1.2",
     "css-loader": "0.17.0",
     "extend": "^3.0.0",
     "extract-text-webpack-plugin": "^0.8.2",
@@ -105,8 +105,8 @@
     "karma-jasmine": "^0.3.6",
     "karma-webpack": "^1.7.0",
     "less-loader": "^2.2.0",
-    "react": "^15.1.0",
     "raw-loader": "^0.5.1",
+    "react": "^15.1.0",
     "react-hot-loader": "^1.3.0",
     "react-router": "^1.0.2",
     "style-loader": "^0.12.3",

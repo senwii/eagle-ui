@@ -13474,8 +13474,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    new _DialogFactory2['default']().hide();
 	                }
 	            }, opts));
-	        })['catch'](function (ex) {
-	            console.dir(ex);
 	        });
 	    };
 
@@ -14154,14 +14152,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	            options = _extend2['default']({}, options, opts || {});
 	        };
 
-	        BaseDialog.prototype.maskClickFn = function maskClickFn(event) {
-
-	            if (this.isMaskClose) {
-	                // 点击Icon button 时, 返回的className 是 SVGAnimatedString 对象
-	                if (event.target.className.match && event.target.className.match('dialog-mask') != null) {
-	                    this.close();
-	                }
+	        BaseDialog.prototype.addMaskListener = function addMaskListener(props) {
+	            var _this = this;
+	            if (this.maskListener) {
+	                this.container['removeEventListener']('click', this.maskListener, false);
 	            }
+	            this.maskListener = function (e) {
+	                if (_this.isMaskClose) {
+	                    // 点击Icon button 时, 返回的className 是 SVGAnimatedString 对象
+	                    if (event.target.className.match && event.target.className.match('dialog-mask') != null) {
+	                        if (props && props.cancelCallback) {
+	                            props.cancelCallback();
+	                        } else {
+	                            _this.close();
+	                        }
+	                    }
+	                }
+	            };
+	            this.container['addEventListener']('click', this.maskListener, false);
 	        };
 
 	        //创建放置弹窗的容器
@@ -14175,11 +14183,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            d.body.appendChild(dom);
 	            this.container = dom;
-
-	            this.container['addEventListener']('click', this.maskClickFn.bind(this), false);
 	        };
 
 	        BaseDialog.prototype.renderDialog = function renderDialog(Modal, props) {
+	            props = props || {};
 	            var params = _extend2['default'](true, {}, options, props || {});
 
 	            this.isMaskClose = params.isMaskClose;
@@ -14187,6 +14194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this[!params.isMask ? 'removeClass' : 'addClass'](this.container, this.setPrefix(this.dialogClass, false));
 
 	            _reactLibReactDOM2['default'].render(_react2['default'].createElement(Modal, params), this.container);
+	            this.addMaskListener(props);
 	        };
 
 	        BaseDialog.prototype.reloadDialog = function reloadDialog(Modal, props) {

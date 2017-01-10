@@ -1,12 +1,18 @@
 /* global $:true */
 $(function() {
     'use strict';
+    var _assetsPath = $(document.body).attr("_assetsPath");
 
     //nav init
     function navInit() {
         var sidebar = $('#sidebar_list');
         sidebar.find(' > dt > span').click(function() {
-            $(this).toggleClass('glyphicon-plus').parent().next().toggleClass('hide');
+            if($(this).hasClass('glyphicon-plus')){
+                $(this).addClass('glyphicon-minus').removeClass('glyphicon-plus');
+            }else{
+                $(this).addClass('glyphicon-plus').removeClass('glyphicon-minus');
+            }
+            $(this).parent().next().toggleClass('hide');
         })
 
         $('#txtSearch').keyup(function(e) {
@@ -16,9 +22,9 @@ $(function() {
         })
 
         var path = window.location.pathname,
-            name = path.substring(path.lastIndexOf('/')),
-            current = sidebar.find('a[href$="' + name + '"]:first').addClass('active').parent().parent().parent();
-
+            name = path.substring(path.lastIndexOf('/'));
+        if(decodeURI){name=decodeURI(name);}
+        var current = sidebar.find('a[href$="' + name + '"]:first').addClass('active').parent().parent().parent();
         if (current.hasClass('hide')) {
             current.removeClass('hide').prev().children('span').removeClass('glyphicon-plus');
         }
@@ -142,7 +148,7 @@ $(function() {
         if (code.parent().hasClass('showdemo')) {
             ifr = $(html_ifr).load(loadDemo);
             code.prepend(ifr);
-            ifr.attr('src', '/assets/show.html');
+            ifr.attr('src', _assetsPath + '/show.html');
         }
         code.addClass('demo-loaded');
     }
@@ -153,7 +159,7 @@ $(function() {
         if (code.parent().hasClass('showdemo')) {
             ifr = $(html_ifr).load(loadDemo);
             code.before(ifr);
-            ifr.attr('src', '/assets/show.html');
+            ifr.attr('src', _assetsPath + '/show.html');
         }
 
         (ifr || code).attr('id', no);
@@ -161,13 +167,13 @@ $(function() {
 
     function openDemo() {
         var code = $(this).prev().children('.active').text().trim();
-        window.open('../assets/show.html', code);
+        window.open(_assetsPath + '/show.html', code);
     }
 
     function editDemo() {
         var btn = $(this),
             code = btn.prev().prev().children('.active').text().trim();
-        window.open('../assets/code.html?n=' + btn.parent().parent().children(':first').text(), code);
+        window.open(_assetsPath + '/code.html?n=' + btn.parent().parent().children(':first').text(), code);
     }
 
     function loadDemo() {
@@ -304,3 +310,69 @@ $(function() {
     $(window).resize(autoHeight);
     autoHeight();
 });
+window["configStaticFile"]={
+  "js":["src/dianping-theme.js"]
+};
+/**
+ * Created by slashhuang on 16/2/23.
+ * 相关配置文件请写在configStaticFile变量
+ */
+var filePaths = function(configStaticFile){
+    var href = location.href;
+    //根据不同的页面加载正确的路径，兼容http网上地址
+    var regExp = /(module.*|classes.*)+/i;
+    if(href.match(regExp)){
+        href = href.replace(regExp,'');
+    };
+    var newPathObj={};
+    for(var key in configStaticFile){
+        newPathObj[key] = configStaticFile[key].reduce(function(pre,ele){
+            if(ele.indexOf('http')>-1){
+                return pre.concat(ele);
+            }else{
+                var splitArr = ele.split('/');
+                return pre.concat(href+'/docTheme/'+splitArr[splitArr.length-1]);
+            }
+        },[])
+    }
+    return newPathObj;
+};
+var addLink = function(paths){
+    var link=document.createElement('link');
+    link.rel="stylesheet";
+    link.href=paths;
+    document.head.appendChild(link);
+
+};
+var addScript = function(paths){
+    var script=document.createElement('script');
+    script.src=paths;
+    document.head.appendChild(script)
+};
+//根据configStaticFile对象，按照类型加载脚本或者css
+(function(){
+    var filePath = filePaths(configStaticFile);
+    for(var key in filePath ){
+       switch (key){
+           case 'js':
+               var scriptArr =filePath['js'];
+               for(var i=0;i<scriptArr.length;i++){
+                   addScript(scriptArr[i]);
+               }
+             break;
+           case 'css':
+               var cssArr =filePath['css'];
+               for(var i=0;i<cssArr.length;i++){
+                   addLink(cssArr[i]);
+               }
+               break;
+           case 'external':
+               var externalArr =filePath['external'];
+               for(var i=0;i<externalArr.length;i++){
+                   addScript(externalArr[i]);
+               }
+               break;
+           default:break;
+       }
+    }
+}());
