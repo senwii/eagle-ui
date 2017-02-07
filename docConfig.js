@@ -1,5 +1,5 @@
 fs=require("fs");
-var description=fs.readFileSync("dicIndex.html","utf8");
+var description=fs.readFileSync("docIndex.html","utf8");
 
 
 module.exports = {
