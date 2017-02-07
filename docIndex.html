@@ -1,0 +1,59 @@
+<div  style="margin:-15px -20px;">
+    <div style="padding: 30px 24px;box-sizing: border-box;background-color: #38b7ea;overflow: hidden;text-align:center; color:#fff;">
+        <div>
+            <h1>Eagle-UI</h1>
+            <p style="margin-top:25px">点评商家、销售系统常用的react组件库</p>
+        </div>
+    </div>
+    <div style="margin: 20px 0;padding: 0px 30px;">
+        <p class="lead">
+            eagle-ui是一款基于react开发的pc端UI组件库，目前主要用于apollo系统，它提供了常用的表单、布局、日历、弹窗等一系列符合apollo style的控件集合。
+        </p>
+        <h2>安装</h2>
+        <div class="well well-small sign-left2" style="display: inline-block;width: 45%;">
+            <div class="stdoc-code">
+                <p>
+                    $ bower install eagle-ui
+                </p>
+            </div>
+        </div>
+        <div class="well well-small sign-left2" style="display: inline-block;width: 45%;float: right">
+            <div class="stdoc-code">
+                <p>
+                    $ npm install eagle-ui --save
+                </p>
+            </div>
+        </div>
+        <h2>如何在项目中引用</h2>
+        <div class="well well-small sign-left3">
+            <div class="stdoc-code">
+                <p>
+                    import {CalendarPanel,Input} from 'eagle-ui';
+                </p>
+            </div>
+        </div>
+        <p>引入需要使用的组件之后在render函数中的调用方式如下：</p>
+        <pre class="code prettyprint">
+<code>
+    &lt;CalendarPanel defaultDate={this.state.defaultDate}
+            startDate="2015-11-11"
+            endDate="2017-12-1"
+            getValueCallback={::this.getvalue}&gt;
+            &lt;Input placeholder="请选择日期" style={{width:'150px'}} /&gt;
+    &lt;/CalendarPanel&gt;
+</code>
+        </pre>
+    </div>
+    <div style="padding: 72px 24px; box-sizing: border-box; background-color: rgb(238, 238, 238); text-align: center;">
+        <div style="max-width: 1200px; margin: 0px auto;">
+            <h3 style="margin: 0px; padding: 0px; font-weight: 300; font-size: 22px;">
+                Want to help make this project awesome? Check out our repo
+            </h3>
+            <a href="https://github.com/future-team/eagle-ui"  style="color:#fff;box-sizing: border-box; display: inline-block; cursor:pointer;text-decoration: none; margin-top: 30px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; position: relative; vertical-align: middle; height: 36px; line-height: 36px; width: 100px; border-radius: 2px; background-color: #38b7ea; text-align: center;">
+                <div style="height: 36px; border-radius: 2px; top: 0px;">
+                    GitHub
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
