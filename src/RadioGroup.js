@@ -22,7 +22,7 @@ import Component from './utils/Component';
  *         如：<code>defaultChecked="石榴"</code>
  *     </li>
  *     <li>getValueCallback:获取选中值的回调函数<br>
- *         如：<code>getValueCallback={a()};a为对应的方法</code>
+ *         如：<code>getValueCallback={function(val){alert(val)}}</code>
  *     </li>
  *
  * </ul>
@@ -30,9 +30,20 @@ import Component from './utils/Component';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo input.js {源码}
- * @show true
+ * @example
+ *      function getValueCallback(val){
+ *          alert(val);
+ *          console.dir(val);
+ *      }
+ *      <RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={getValueCallback}>
+ *          <Input  type="radio"  label="大白菜" value="大白菜" />
+ *          <Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  />
+ *          <Input  type="radio"  label="猪肉" value="猪肉" />
+ *          <Input  type="radio"  label="牛肉" value="牛肉" />
+ *          <Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} />
+ *      </RadioGroup>
+ *
+ * <a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a>
  * */
 export default class RadioGroup extends Component{
 

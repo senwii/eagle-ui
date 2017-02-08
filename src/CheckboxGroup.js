@@ -24,7 +24,7 @@ import Component from './utils/Component.js';
  *          <Input  type="checkbox" label="乒乓球"    />
  *      </CheckboxGroup>
  *
- * <a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo示例</a>
+ * <a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a>
  * */
 export default class CheckboxGroup extends Component{
     static propTypes = {
