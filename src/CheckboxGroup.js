@@ -15,9 +15,16 @@ import Component from './utils/Component.js';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo input.js {源码}
- * @show true
+ * @example
+ *
+ *      <CheckboxGroup>
+ *          <Input  type="checkbox" label="足球" checked   />
+ *          <Input  type="checkbox" label="篮球"    />
+ *          <Input  type="checkbox" label="羽毛球" checked   />
+ *          <Input  type="checkbox" label="乒乓球"    />
+ *      </CheckboxGroup>
+ *
+ * <a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo示例</a>
  * */
 export default class CheckboxGroup extends Component{
     static propTypes = {
