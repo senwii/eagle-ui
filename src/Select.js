@@ -27,13 +27,29 @@ import Search from './sug/Search';
  *     </li>
  *
  * </ul>
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/select">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Select.js">查看源码</a></div>
  * @class Select
  * @module form(表单)
  * @constructor
  * @extends Component
- * @demo star.js {UI展示}
- * @demo select.js {源码}
- * @show true
+ * @example
+ *      import {Select} from 'eagle-ui';
+ *      ...
+ *      function getValue(value,key,type){
+ *          let stype = {
+ *              'enter':'回车时调用',
+ *              'click':'点击每一项元素时调用'
+ *          };
+ *          console.log(value,key,stype[type]);
+ *      }
+ *      ...
+ *      <Select defaultChecked={"上海"} getValueCallback={getValue} placeholder="请选择" >
+ *          <option value='bei' key="bei">北京</option>
+ *          <option value='shang' key="上海">上海</option>
+ *          <option value='nan' key="南京">南京</option>
+ *          <option value='3' key="杭州">杭州</option>
+ *      </Select>
  * */
 export default class Select extends Search {
     static defaultProps = {
@@ -47,8 +63,8 @@ export default class Select extends Search {
          * */
         getValueCallback: null,
         /**
-         * 样式类名前缀
-         * @property classPrefix
+         * 没有选中任何item时的占位文案
+         * @property placeholder
          * @type string
          * */
         classPrefix: 'select',

@@ -11,11 +11,15 @@ import Component from './utils/Component.js';
 /**
  * CheckboxGroup需与Input组件配合使用<br/>
  * 它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/CheckboxGroup.js">查看源码</a></div>
  * @class CheckboxGroup
  * @module form(表单)
  * @extends Component
  * @constructor
  * @example
+ *      import {CheckboxGroup,Input} from 'eagle-ui';
+ *      ...
  *
  *      <CheckboxGroup>
  *          <Input  type="checkbox" label="足球" checked   />
@@ -23,8 +27,6 @@ import Component from './utils/Component.js';
  *          <Input  type="checkbox" label="羽毛球" checked   />
  *          <Input  type="checkbox" label="乒乓球"    />
  *      </CheckboxGroup>
- *
- * <a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a>
  * */
 export default class CheckboxGroup extends Component{
     static propTypes = {
