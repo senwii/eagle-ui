@@ -6,29 +6,34 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
- * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
- *  主要属性和接口：
- * <ul>
- *     <li>egType:是否自适应宽度或者垂直排列，可选'justify,tacked'默认''<br>
- *         如：<code>
- *           <ButtonGroup egType="justify">
- *         </code>
- *     </li>
- * </ul>
+ * ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>
+ * 设置justify属性时可以将按钮组水平排列<br/>
+ * 设置tacked属性时可以将按钮组竖直排列
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js">查看源码</a></div>
  * @class ButtonGroup
  * @module form(表单)
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo star.js {UI展示}
- * @demo button.js {源码}
- * @show true
+ * @example
+ *      import {ButtonGroup,Button} from 'eagle-ui';
+ *      ...
+ *      function onActive(target,html){
+ *          console.log(target,html);
+ *      }
+ *      ...
+ *      <ButtonGroup egType="justify" activeCallback={onActive}>
+ *          <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
+ *          <Button radius egSize="sm" egStyle="warning">水平按钮组2</Button>
+ *          <Button radius egSize="sm" egStyle="warning">水平按钮组3</Button>
+ *      </ButtonGroup>
  * */
 export default class ButtonGroup extends Component{
 
     static propTypes={
         /**
-         * 是否自适应宽度
+         * 是否自适应宽度并水平排列
          * @property justify
          * @type Boolean
          * @default false
@@ -41,12 +46,6 @@ export default class ButtonGroup extends Component{
          * @default false
          * */
         tacked:PropTypes.bool,
-        /**
-         * 是否有自适应宽度，垂直排列等属性
-         * @property egType
-         * @type String
-         * @default ''
-         * */
         egType:PropTypes.string
     };
 
@@ -66,7 +65,12 @@ export default class ButtonGroup extends Component{
             active:this.props.active
         };
     }
-
+    /**
+     * 点击按钮组中任意按钮时触发的回调事件
+     * @event  activeCallback
+     * @param {dom} target 触发事件的dom节点
+     * @param {innerHTML} html 触发事件dom节点的innerHTML
+     * */
     mouseDownHandler(e){
         let target = e.target;
         this.execMethod('active',target,target.innerHTML);

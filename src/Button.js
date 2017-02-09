@@ -6,8 +6,8 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
- *  - 按钮组件提供内置样式供选择<br/>
- *  - 也可以自定义行内样式和className名字定义UI展示<br/>
+ *  - 按钮组件提供内置样式<br/>
+ *  - 也可以自定义行内样式和className<br/>
  *  - 支持disabled, active等属性定义<br/>
  *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
  *  - 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'
@@ -20,10 +20,15 @@ import classnames from 'classnames';
  * @example
  *      import {Button} from 'eagle-ui';
  *      ...
- *      //设置颜色
+ *      //设置背景颜色
  *      <Button   egStyle="default">按钮2</Button>
  *      <Button   egStyle="link">按钮3</Button>
  *      <Button   egStyle="white">按钮4</Button>
+ *
+ *      //设置hollow属性将颜色应用于按钮边框，而不是背景色
+ *      <Button hollow  egStyle="warning">按钮2</Button>
+ *      <Button hollow  egStyle="danger">按钮3</Button>
+ *      <Button hollow  egStyle="success">按钮4</Button>
  *
  *      //设置大小
  *      <Button radius egSize="xs" egStyle="">小按钮</Button>
@@ -72,7 +77,7 @@ export default class Button extends Component{
          * 标签tagName
          * @property componentTag
          * @type String
-         * @default a
+         * @default 'button'
          * */
         componentTag:PropTypes.string,
         /**
@@ -83,6 +88,12 @@ export default class Button extends Component{
          * */
         block:PropTypes.bool,
         egHref:PropTypes.string
+        /**
+         * 是否只将主题颜色应用于边框，而不是应用于背景色
+         * @property hollow
+         * @type Boolean
+         * @default false
+         * */
     };
     static defaultProps = {
         egSize:'default',
