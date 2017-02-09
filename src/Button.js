@@ -6,64 +6,37 @@ import Component from './utils/Component';
 import classnames from 'classnames';
 
 /**
- *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
+ *  - 按钮组件提供内置样式供选择<br/>
  *  - 也可以自定义行内样式和className名字定义UI展示<br/>
- *  - 支持disabled, active, enable等属性定义<br/>
+ *  - 支持disabled, active等属性定义<br/>
  *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
- *  - 通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success
- *  主要属性和接口：
- * <ul>
- *     <li>egSize:按钮颜色<br>
- *         如：<code>
- *            Button radius egSize="sm" egStyle="warning"
- *         </code>
- *     </li>
- *     <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
- *         如：<code>
- *            Button radius egSize="sm" egStyle="warning"
- *         </code>
- *     </li>
- *     <li>disabled:按钮禁用状态，默认false<br>
- *         如：<code>
- *            Button radius disabled
- *         </code>
- *     </li>
- *     <li>enable:按钮的可用状态，默认true<br>
- *         如：<code>
- *            Button radius enable
- *         </code>
- *     </li>
- *     <li>active:按钮选中状态，默认false<br>
- *         如：<code>
- *            Button radius active
- *         </code>
- *     </li>
- *      <li>radius:按钮圆角状态<br>
- *         如：<code>
- *            Button radius
- *         </code>
- *     </li>
- *     <li>round:按钮椭圆角<br>
- *         如：<code>
- *            Button round
- *         </code>
- *     </li>
- *     <li>block:是否块级显示，默认false<br>
- *         如：<code>
- *            Button block
- *         </code>
- *     </li>
- * </ul>
+ *  - 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Button.js">查看源码</a></div>
  * @class Button
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo button.js {源码}
- * @show true
+ * @example
+ *      import {Button} from 'eagle-ui';
+ *      ...
+ *      //设置颜色
+ *      <Button   egStyle="default">按钮2</Button>
+ *      <Button   egStyle="link">按钮3</Button>
+ *      <Button   egStyle="white">按钮4</Button>
+ *
+ *      //设置大小
+ *      <Button radius egSize="xs" egStyle="">小按钮</Button>
+ *      <Button radius egSize="sm" egStyle="">中按钮</Button>
+ *      <Button radius egSize="lg" egStyle="">大按钮</Button>
+ *
+ *      //设置onClick事件
+ *      <Button onClick={function(){alert('clicked')}} >点击触发回调</Button>
+ *
+ *      //禁用按钮
+ *      <Button disabled>禁用按钮</Button>
  * */
 export default class Button extends Component{
-    //static mixins = [ClassNameMixin];
     static propTypes = {
         /**
          * 按钮尺寸,分别为xs、sm、lg
@@ -73,57 +46,27 @@ export default class Button extends Component{
          * */
         egSize:PropTypes.string,
         /**
-         * 禁用
+         * 是否禁用按钮
          * @property disabled
          * @type Boolean
          * @default false
          * */
         disabled:PropTypes.bool,
-        /**
-         * 启用
-         * @property enable
-         * @type Boolean
-         * @default true
-         * */
-        enable:PropTypes.bool,
         //success:PropTypes.bool,
         /**
-         * 选中
+         * 按钮是否处于选中状态
          * @property active
          * @type Boolean
          * @default false
          * */
         active:PropTypes.bool,
         /**
-         * 圆角
-         * @property radius
-         * @type Boolean
-         * @default false
-         * */
-        radius:PropTypes.bool,
-        /**
-         * 椭圆角
-         * @property round
-         * @type Boolean
-         * @default false
-         * */
-        round:PropTypes.bool,
-        //error:PropTypes.bool,
-        //warning:PropTypes.bool,
-        //danger:PropTypes.bool,
-        /**
-         * 颜色[error、warning、danger、link、gray、white、success、'']
+         * 按钮颜色样式，可以为['success','error','warning','danger','default','link','white']中任何一个
          * @property egStyle
          * @type Boolean
          * @default ''
          * */
         egStyle:PropTypes.string,
-        /**
-         * 样式前缀
-         * @property classPrefix
-         * @type String
-         * @default btn
-         * */
         classPrefix:PropTypes.string,
         /**
          * 标签tagName
@@ -133,7 +76,7 @@ export default class Button extends Component{
          * */
         componentTag:PropTypes.string,
         /**
-         * 块级显示
+         * 是否为块级显示
          * @property block
          * @type Boolean
          * @default false
