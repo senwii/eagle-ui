@@ -8,9 +8,10 @@ import ClassNameMixin from './utils/ClassNameMixin';
  * <h5>eagle-ui主要栅格化布局组件</h5>
  * <pre><code>
  *     &#60;Grid&#62;//定义栅格
- *         &#60;Col sm={6}&#62;//定义一列，总长度为12份
- *             &#60;Row&#62; &#60;/Row&#62;//定义一行
- *         &#60;/Col&#62;
+ *         &#60;Row&#62;//定义一行
+ *              &#60;Col sm={6}&#62;//定义一列，总长度为12份
+ *              &#60;/Col&#62;
+ *         &#60;/Row&#62;
  *     &#60;/Grid&#62;
  * </code></pre>
  *

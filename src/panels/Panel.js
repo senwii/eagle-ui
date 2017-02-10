@@ -15,10 +15,12 @@ import Component from '../utils/Component';
  */
 
 /**
- * Panel定义整个容器<br />
+ * Panel定义整个容器,其主要作用是提供基本的边框样式、为其中的内容添加padding<br>
  * 和PanelHeader,PanelContent,PanelFooter配合使用<br />
  * Panel是上面三个标签的父容器，<br />
  * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/panel">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/panels/Panel.js">查看源码</a></div>
  * @class Panel
  * @module panel(面板)
  * @extends Component
@@ -31,14 +33,17 @@ export default class Panel extends Component{
 
     static propTypes = {
         /**
-         * panel的样式风格，默认为default，还可以设置为normal
+         * panel的样式风格, 这个属性只会影响多层panel嵌套的场景<br>
+         * 可以设置为normal或者default<br>
+         * default为默认值，当出现嵌套的panel时，子panel不会有border<br>
+         * 当egType为normal时，每一层的子panel和父panel之间都会有border隔开
          * @property egType
          * @type String
          * @default 'default'
          * */
         egType:PropTypes.string,
         /**
-         * 标
+         * 可以通过heading设置panel的header，如果设置了heading属性，就没有必要在Panel下包含PanelHeader标签
          * @property heading
          * @type String
          * @default empty

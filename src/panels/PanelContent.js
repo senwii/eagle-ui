@@ -4,6 +4,8 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
 
 /**
  * PanelContent定义内容区域
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/panel">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelContent.js">查看源码</a></div>
  * @class PanelContent
  * @constructor
  * @module panel(面板)
@@ -17,7 +19,7 @@ export default class PanelContent extends Component{
 
     static propTypes = {
         /**
-         * 是否加padding
+         * 是否为panelContent添加padding，默认true
          * @property padding
          * @type bool
          * @default true
