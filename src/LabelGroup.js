@@ -8,7 +8,9 @@ import Label from './Label.js';
 import Component from './utils/Component';
 
 /**
- * 标签组
+ * 标签组<br />
+ * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/label">demo展示</a></div>
+ * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Label.js">查看源码</a></div>
  * @class LabelGroup
  * @module ui
  * @extends Component
@@ -20,13 +22,13 @@ import Component from './utils/Component';
 export default class LabelGroup extends Component{
     static propTypes = {
         /**
-         * 左侧总标题
+         * 标签组左侧标题
          * @property title
          * @type String
          * */
         title:PropTypes.string,
         /**
-         * 标签展现形式{form|simple|default}
+         * 标签组展现形式{form|simple|default}
          * @property egType
          * @type String
          * @default default
@@ -39,7 +41,7 @@ export default class LabelGroup extends Component{
          * */
         activeCallback:PropTypes.func,
         /**
-         * 默认选中的项
+         * 默认选中的项，取值为选中标签的文案
          * @property defaultChecked
          * @type String Integer
          * */
