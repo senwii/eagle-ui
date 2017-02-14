@@ -2,12 +2,7 @@
  * Created by panqianjin on 15/11/4.
  */
 import React,{Component,PropTypes}  from 'react';
-import Suggestion from '../../../src/Suggestion.js';
-import Button from '../../../src/Button.js';
-import Grid from '../../../src/Grid.js';
-import Row from '../../../src/Row.js';
-import Col from '../../../src/Col.js';
-import Item from '../../../src/Item.js';
+import {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';
 let Demo= class Demo extends Component{
 
     static defaultProps = {

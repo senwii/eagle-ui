@@ -6,7 +6,7 @@ import React,{Component} from 'react';
 import {Row,Col,Grid,
     Panel,PanelHeader,PanelFooter,PanelContent,
     Input,Label,LabelGroup,
-    FormGroup,RadioGroup,CheckboxGroup,Select} from '../../../src/index.js';
+    FormGroup,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
 
 
 let Demo = class Demo extends Component{

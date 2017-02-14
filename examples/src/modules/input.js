@@ -5,7 +5,7 @@ import React,{Component,PropTypes} from 'react';
 
 import querystring from 'querystring';
 
-import {Select,FormGroup,CalendarPanel,CheckboxGroup,RadioGroup,Grid,Row,Col,PanelContent,Panel,Input} from '../../../src/index.js';
+import {Select,FormGroup,CalendarPanel,CheckboxGroup,RadioGroup,Grid,Row,Col,PanelContent,Panel,Input} from 'eagle-ui';
 
 
 let Demo= class Demo extends Component{

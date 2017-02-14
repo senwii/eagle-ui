@@ -24,6 +24,8 @@ import StarDemo from './modules/star.js';
 import SliderDemo from './modules/imgSlider.js';
 import Suggestion from './modules/suggestion.js';
 import Icon from './modules/icons.js';
+import TreeMenu from './modules/treeMenu.js';
+import DropTree from './modules/dropTree.js';
 //require('../less/public.less');
 import css from '../../src/less/eagle-ui.less';
 
@@ -76,6 +78,8 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Star" name="Star" component={StarDemo} />
                 <Route path="/Suggestion" name="Suggestion" component={Suggestion} />
                 <Route path="/icon" name="Icon" component={Icon} />
+                <Route path="/TreeMenu" name="TreeMenu" component={TreeMenu} />
+                <Route path="/DropTree" name="DropTree" component={DropTree} />
                 <Redirect from="/" to="/index" />
             </Router>
         );

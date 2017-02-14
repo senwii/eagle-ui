@@ -2,8 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component} from 'react';
-import Tab from '../../../src/Tab.js';
-import Tabset from '../../../src/Tabset.js';
+import {Tab,Tabset} from 'eagle-ui';
 
 let Demo = class Demo extends Component{
 

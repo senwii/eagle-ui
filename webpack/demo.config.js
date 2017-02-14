@@ -63,6 +63,9 @@ module.exports =extend({}, {
             }
         ]
     },
+    resolve: {
+        alias: { "eagle-ui" : "../../../src/index.js" }
+    },
     plugins: [
         new ExtractTextPlugin(path.join('eagle-ui.css'))
     ]

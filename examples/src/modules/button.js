@@ -2,12 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React, { Component ,PropTypes} from 'react';
-import ButtonGroup from '../../../src/ButtonGroup.js';
-import Button from '../../../src/Button.js';
-import Row from '../../../src/Row.js';
-import Col from '../../../src/Col.js';
-import Grid from '../../../src/Grid.js';
-
+import {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';
 export default class ButtonCls extends Component{
     onActive(target,html){
         console.dir(html);

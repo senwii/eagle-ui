@@ -2,7 +2,7 @@
  * Created by panqianjin on 15/11/4.
  */
 import React,{Component} from 'react';
-import {ButtonGroup,Toast,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from '../../../src/index';
+import {ButtonGroup,Toast,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
 let Demo= class Demo extends Component{
 
     static defaultProps = {

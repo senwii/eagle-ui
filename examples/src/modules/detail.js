@@ -6,7 +6,7 @@ import querystring from 'querystring';
 
 import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging
     ,Tab,Tabset,Dialog,Item
-    ,Table,Th,Td,Tr,Star,Button,Column,ImgSlider} from '../../../src/index.js';
+    ,Table,Th,Td,Tr,Star,Button,Column,ImgSlider} from 'eagle-ui';
 //测试分页功能
 let page = 1;
 function callback(page){

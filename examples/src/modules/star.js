@@ -3,7 +3,7 @@
  */
 import React, { Component ,PropTypes} from 'react';
 import {findDOMNode} from 'react/lib/ReactDOM';
-import Star from '../../../src/Star.js';
+import {Star} from 'eagle-ui';
 export default class StarDemo extends Component {
     render(){
         return(

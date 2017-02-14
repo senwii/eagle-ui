@@ -2,7 +2,7 @@
  * Created by min.xiao
  */
 import React,{Component} from 'react';
-import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from '../../../src/index';
+import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
 
 let Demo= class Demo extends Component{
 

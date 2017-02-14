@@ -6,6 +6,7 @@ module.exports = {
     //扫描的文件路径
     paths: ['lib/'],
     demoDir: "examples/src/modules/",
+    demoUrl: "http://future-team.github.io/eagle-ui/examples/index.html",
     //文档页面输出路径
     outdir: 'doc/',
     //内置主题

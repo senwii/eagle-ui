@@ -2,9 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React, { Component ,PropTypes} from 'react';
-import Paging from '../../../src/Paging.js';
-import Row from '../../../src/Row.js';
-import Col from '../../../src/Col.js';
+import {Col,Row,Paging} from 'eagle-ui';
 import querystring from 'querystring';
 
 

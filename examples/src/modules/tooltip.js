@@ -2,9 +2,7 @@
  * Created by panqianjin on 15/11/17.
  */
 import React,{Component} from 'react';
-import Tooltip from '../../../src/Tooltip.js';
-import Button from '../../../src/Button.js';
-import TooltipPanel from '../../../src/TooltipPanel.js';
+import {TooltipPanel,Tooltip,Button} from 'eagle-ui';
 let Demo = class Demo extends Component {
     constructor() {
         "use strict";

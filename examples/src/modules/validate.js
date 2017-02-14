@@ -2,7 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component} from 'react';
-import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from '../../../src/index';
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
 
 
 

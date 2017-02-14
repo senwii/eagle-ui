@@ -1,9 +1,5 @@
 import React,{Component,PropTypes}  from 'react';
-import Select from '../../../src/Select.js';
-import Button from '../../../src/Button.js';
-import Grid from '../../../src/Grid.js';
-import Row from '../../../src/Row.js';
-import Col from '../../../src/Col.js';
+import {Col,Row,Grid,Button,Select} from 'eagle-ui';
 let Demo= class Demo extends Component{
 
     static defaultProps = {

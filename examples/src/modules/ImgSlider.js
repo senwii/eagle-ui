@@ -1,5 +1,5 @@
 import React, { Component ,PropTypes} from 'react';
-import {Button,Column,ImgSlider} from '../../../src/index.js';
+import {Button,Column,ImgSlider} from 'eagle-ui';
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);

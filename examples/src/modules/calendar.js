@@ -2,11 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component,PropTypes} from 'react';
-import Input from '../../../src/Input.js';
-import Row from '../../../src/Row.js';
-import Col from '../../../src/Col.js';
-import Grid from '../../../src/Grid.js';
-import CalendarPanel from '../../../src/CalendarPanel.js';
+import {Input,Row,Col,Grid,CalendarPanel} from 'eagle-ui';
 import querystring from 'querystring';
 
 

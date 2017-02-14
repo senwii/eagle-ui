@@ -2,7 +2,7 @@
  * Created by panqianjin on 15/11/4.
  */
 import React, { Component ,PropTypes} from 'react';
-import Crumb from '../../../src/Crumb.js';
+import {Crumb} from 'eagle-ui';
 
 export default class CrumbCls extends Component {
     render() {

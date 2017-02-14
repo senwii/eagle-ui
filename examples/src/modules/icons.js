@@ -3,7 +3,7 @@
  */
 import React,{Component} from 'react';
 
-import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,Input,Icon} from '../../../src/index';
+import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,Input,Icon} from 'eagle-ui';
 
 export default class Icons extends Component{
 
