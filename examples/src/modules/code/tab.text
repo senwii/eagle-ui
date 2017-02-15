@@ -3,8 +3,6 @@
  */
 import React,{Component} from 'react';
 import {Tab,Tabset} from 'eagle-ui';
-import Code from './Code.js';
-import {getFile} from './Code.js';
 
 let Demo = class Demo extends Component{
 
@@ -51,31 +49,24 @@ let Demo = class Demo extends Component{
 
     render(){
         return (
-            <div>
-                <Code code={getFile('tab')}>
-                </Code>
-                <Code code={getFile('paging')}>
-                </Code>
-                <Tabset disableHoverAnimation activeTab={this.state.tabIndex} tabCallback={::this.callback}>
-                    <Tab>
-                        {::this.tab1()}
-                    </Tab>
-                    <Tab heading='tab2'>
-                        {::this.tab2()}
-                    </Tab>
-                    <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
-                        {::this.tab3()}
-                    </Tab>
-                    <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
-                        nadkfnpasknfsaknf
-                    </Tab>
-                    <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
-                        nadkfnpasknfsaknf
-                    </Tab>
-                </Tabset>
-            </div>
+            <Tabset disableHoverAnimation activeTab={this.state.tabIndex} tabCallback={::this.callback}>
+                <Tab>
+                    {::this.tab1()}
+                </Tab>
+                <Tab heading='tab2'>
+                    {::this.tab2()}
+                </Tab>
+                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
+                    {::this.tab3()}
+                </Tab>
+                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
+                    nadkfnpasknfsaknf
+                </Tab>
+                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>
+                    nadkfnpasknfsaknf
+                </Tab>
+            </Tabset>
         );
     }
 }
 
-export default Demo;

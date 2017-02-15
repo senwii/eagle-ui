@@ -28,6 +28,7 @@ import TreeMenu from './modules/treeMenu.js';
 import DropTree from './modules/dropTree.js';
 //require('../less/public.less');
 import css from '../../src/less/eagle-ui.less';
+import prism from '../prism.less';
 
 let Index = class Index extends Component{
     render() {
