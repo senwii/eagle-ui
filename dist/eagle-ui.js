@@ -1197,7 +1197,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * 后端对应的url，默认dp，catjs报警接口
 	   * 不建议更改，因为字段需保持一致
 	   * */
-	  url: '//221.181.67.144/web-broker-service/api/js',
+	  url: '//catdot.dianping.com/web-broker-service/api/js',
 	  /**
 	   * 可设置cookie名称和value，以判断是否符合规则的登录
 	   * 建议设置不易重复的值或者使用默认值
@@ -1247,9 +1247,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <h5>eagle-ui主要栅格化布局组件</h5>
 	 * <pre><code>
 	 *     &#60;Grid&#62;//定义栅格
-	 *         &#60;Col sm={6}&#62;//定义一列，总长度为12份
-	 *             &#60;Row&#62; &#60;/Row&#62;//定义一行
-	 *         &#60;/Col&#62;
+	 *         &#60;Row&#62;//定义一行
+	 *              &#60;Col sm={6}&#62;//定义一列，总长度为12份
+	 *              &#60;/Col&#62;
+	 *         &#60;/Row&#62;
 	 *     &#60;/Grid&#62;
 	 * </code></pre>
 	 *
@@ -1265,13 +1266,42 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 定义栅格容器,配合Col和Row使用
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Grid.js">查看源码</a></div>
 	 * @class Grid
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo Demo1.js {源码}
-	 * @show true
+	 * @example
+	 *      //没有设置end属性，最后一个Col会向右对齐
+	 *      <Grid>
+	 *          <Row>
+	 *              <Col sm={4}>
+	 *                  浏览量：151195
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *          </Row>
+	 *      </Grid>
+	 *
+	 *      //设置end属性，最后一个Col会向左对齐
+	 *      <Grid>
+	 *          <Row>
+	 *              <Col sm={4}>
+	 *                  浏览量：151195
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *              <Col end sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *          </Row>
+	 *      </Grid>
 	 * */
 
 	var Grid = (function (_Component) {
@@ -1386,13 +1416,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    obj.prototype.getClassNamespace = function () {
 	        return consts.classNameNamespace;
 	    };
-	    /**
+	    /*
 	     * 给className添加前缀后返回className
 	     * @method getClassName
 	     * @param name {String} 从该字符串中去查找
 	     * @param pre {Boolean} 是否添加Component中定义的class前缀，默认添加
 	     * @return {String}
-	     * */
+	     */
 	    obj.prototype.getClassName = function (name) {
 	        var _this2 = this;
 
@@ -1416,13 +1446,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return '';
 	    };
-	    /**
+	    /*
 	     * 验证props中的样式是否符合规则
 	     * @method getClassNames
 	     * @param props {Object} 从该对象中去查找
 	     * @param pre {Boolean} 是否添加Component中定义的class前缀，默认添加
 	     * @return {String}
-	     * */
+	     */
 	    obj.prototype.getClassNames = function (props) {
 	        var pre = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
 
@@ -1434,12 +1464,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return clazz;
 	    };
-	    /**
+	    /*
 	     * 给多个className添加前缀后返回
 	     * @method getClassNamesForArguments
 	     * @param arguments {Arguments String} 多个class参数
 	     * @return {String}
-	     * */
+	     */
 	    obj.prototype.getClassNamesForArguments = function () {
 	        var arg = arguments;
 	        var arr = [];
@@ -1455,13 +1485,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return arr.join(' ');
 	    };
-	    /**
+	    /*
 	     * 设置css类名前缀
 	     * @method setPrefix
 	     * @param name{String} class名字
 	     * @param pre{Boolean} 是否添加前缀
 	     * @return {String}
-	     * */
+	     */
 	    obj.prototype.setPrefix = function (name) {
 	        var pre = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
 
@@ -1478,34 +1508,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return str;
 	    };
 
-	    /**
+	    /*
 	     * 检查元素是否存在样式名
 	     * @method hasClass
 	     * @param obj {Object} 元素
 	     * @param cls {String} 需要检查的样式名
 	     * @return {Boolean}
-	     * */
+	     */
 	    obj.prototype.hasClass = function () {
 	        return arguments[0].className.match(new RegExp('(\\s|^)' + arguments[1] + '(\\s|$)'));
 	    };
 
-	    /**
+	    /*
 	     * 给元素增加一个样式名
 	     * @method addClass
 	     * @param obj {Object} 元素
 	     * @param cls {String} 样式名
-	     * */
+	     */
 	    obj.prototype.addClass = function (obj, cls) {
 	        if (!this.hasClass(obj, cls)) {
 	            obj.className = (obj.className + " " + cls).replace(/\s{2,}/g, " ");
 	        }
 	    };
-	    /**
+	    /*
 	     * 给元素删除一个样式名
 	     * @method removeClass
 	     * @param obj {Object} 元素
 	     * @param cls {String} 样式名
-	     * */
+	     */
 	    obj.prototype.removeClass = function () {
 	        if (this.hasClass(arguments[0], arguments[1])) {
 	            var reg = new RegExp('(\\s|^)' + arguments[1] + '(\\s|$)');
@@ -1622,21 +1652,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 定义栅格中的一列，配合Col组件使用
+	 * 定义栅格中的一列，配合Row组件使用
 	 * <h5>主要的UI属性接口包括:</h5>
 	 * <ul>
-	 *     <li>sm:定义宽度占父元素(100%)的sm/12比例</li>
+	 *     <li>sm:一行Row的宽度为100%(12份)，sm的值表示当前Col的宽度占了12份中的几份</li>
 	 * </ul><br>
 	 * 使用方式:
 	 * <pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>
 	 * </pre>
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Col.js">查看源码</a></div>
 	 * @class Col
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo Demo1.js {源码}
-	 * @show true
+	 * @example
+	 *      //没有设置end属性，最后一个Col会向右对齐
+	 *      <Grid>
+	 *          <Row>
+	 *              <Col sm={4}>
+	 *                  浏览量：151195
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *          </Row>
+	 *      </Grid>
+	 *
+	 *      //设置end属性，最后一个Col会向左对齐
+	 *      <Grid>
+	 *          <Row>
+	 *              <Col sm={4}>
+	 *                  浏览量：151195
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *              <Col end sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *          </Row>
+	 *      </Grid>
 	 * */
 
 	var Col = (function (_Component) {
@@ -1674,14 +1733,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: {
 	            egSize: _react.PropTypes.string,
 	            /**
-	             * 是否是最后一列
+	             * 适用于每个Row下的最后一个Col
+	             * 当所有的col加起来不满12的情况下：如果不设置end属性，最后一个Col会向右对齐，如果设置end属性，最后一个Col就会向左对齐（float left）
 	             * @property end
 	             * @type Boolean
 	             * @default false
 	             * */
 	            end: _react.PropTypes.bool,
 	            /**
-	             * 总宽度为100%(12份)，egSize定义宽度占比父元素(100%)的egSize/12
+	             * Row总宽度为100%(12份)，sm的值表示当前Col宽度占比父元素12份中的几份
 	             * @property sm
 	             * @type Number
 	             * @default 12(一整行)
@@ -9491,7 +9551,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	!(function(global) {
 	  "use strict";
 
-	  var hasOwn = Object.prototype.hasOwnProperty;
+	  var Op = Object.prototype;
+	  var hasOwn = Op.hasOwnProperty;
 	  var undefined; // More compressible than void 0.
 	  var $Symbol = typeof Symbol === "function" ? Symbol : {};
 	  var iteratorSymbol = $Symbol.iterator || "@@iterator";
@@ -9563,10 +9624,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function GeneratorFunction() {}
 	  function GeneratorFunctionPrototype() {}
 
-	  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype;
+	  // This is a polyfill for %IteratorPrototype% for environments that
+	  // don't natively support it.
+	  var IteratorPrototype = {};
+	  IteratorPrototype[iteratorSymbol] = function () {
+	    return this;
+	  };
+
+	  var getProto = Object.getPrototypeOf;
+	  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+	  if (NativeIteratorPrototype &&
+	      NativeIteratorPrototype !== Op &&
+	      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+	    // This environment has a native %IteratorPrototype%; use it instead
+	    // of the polyfill.
+	    IteratorPrototype = NativeIteratorPrototype;
+	  }
+
+	  var Gp = GeneratorFunctionPrototype.prototype =
+	    Generator.prototype = Object.create(IteratorPrototype);
 	  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
 	  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-	  GeneratorFunctionPrototype[toStringTagSymbol] = GeneratorFunction.displayName = "GeneratorFunction";
+	  GeneratorFunctionPrototype[toStringTagSymbol] =
+	    GeneratorFunction.displayName = "GeneratorFunction";
 
 	  // Helper for defining the .next, .throw, and .return methods of the
 	  // Iterator interface in terms of a single ._invoke method.
@@ -9603,16 +9683,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  // Within the body of any async function, `await x` is transformed to
 	  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-	  // `value instanceof AwaitArgument` to determine if the yielded value is
-	  // meant to be awaited. Some may consider the name of this method too
-	  // cutesy, but they are curmudgeons.
+	  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+	  // meant to be awaited.
 	  runtime.awrap = function(arg) {
-	    return new AwaitArgument(arg);
+	    return { __await: arg };
 	  };
-
-	  function AwaitArgument(arg) {
-	    this.arg = arg;
-	  }
 
 	  function AsyncIterator(generator) {
 	    function invoke(method, arg, resolve, reject) {
@@ -9622,8 +9697,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        var result = record.arg;
 	        var value = result.value;
-	        if (value instanceof AwaitArgument) {
-	          return Promise.resolve(value.arg).then(function(value) {
+	        if (value &&
+	            typeof value === "object" &&
+	            hasOwn.call(value, "__await")) {
+	          return Promise.resolve(value.__await).then(function(value) {
 	            invoke("next", value, resolve, reject);
 	          }, function(err) {
 	            invoke("throw", err, resolve, reject);
@@ -9692,6 +9769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  defineIteratorMethods(AsyncIterator.prototype);
+	  runtime.AsyncIterator = AsyncIterator;
 
 	  // Note that simple async functions are implemented on top of
 	  // AsyncIterator objects; they just return a Promise for the value of
@@ -9851,10 +9929,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // Define Generator.prototype.{next,throw,return} in terms of the
 	  // unified ._invoke helper method.
 	  defineIteratorMethods(Gp);
-
-	  Gp[iteratorSymbol] = function() {
-	    return this;
-	  };
 
 	  Gp[toStringTagSymbol] = "Generator";
 
@@ -10399,17 +10473,42 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 定义栅格中的一行，配合Col组件使用
-	 * <h5>提供的UI接口:</h5>
-	 * <ul>
-	 *     <li>end:是否显示下边框</li>
-	 * </ul>
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Row.js">查看源码</a></div>
 	 * @class Row
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo Demo1.js {源码}
-	 * @show true
+	 * @example
+	 *      //没有设置end属性，最后一个Col会向右对齐
+	 *      <Grid>
+	 *          <Row>
+	 *              <Col sm={4}>
+	 *                  浏览量：151195
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *          </Row>
+	 *      </Grid>
+	 *
+	 *      //设置end属性，最后一个Col会向左对齐
+	 *      <Grid>
+	 *          <Row>
+	 *              <Col sm={4}>
+	 *                  浏览量：151195
+	 *              </Col>
+	 *              <Col sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *              <Col end sm={2}>
+	 *                  门店市场份额:100.00%
+	 *              </Col>
+	 *          </Row>
+	 *      </Grid>
 	 * */
 
 	var Row = (function (_Component) {
@@ -10433,19 +10532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Row, null, [{
 	        key: 'propTypes',
 	        value: {
-	            /**
-	             * 样式前缀
-	             * @property classPrefix
-	             * @type String
-	             * @default row
-	             * */
 	            classPrefix: _react.PropTypes.string,
-	            /**
-	             * 是否显示下划线
-	             * @property bottom
-	             * @type boolean
-	             * @default undefined
-	             * */
 	            bottom: _react.PropTypes.bool
 	        },
 	        enumerable: true
@@ -10497,61 +10584,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 *  - 按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/>
-	 *  - 也可以自定义行内样式和className名字定义UI展示<br/>
-	 *  - 支持disabled, active, enable等属性定义<br/>
+	 *  - 按钮组件提供内置样式<br/>
+	 *  - 也可以自定义行内样式和className<br/>
+	 *  - 支持disabled, active等属性定义<br/>
 	 *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
-	 *  - 通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success
-	 *  主要属性和接口：
-	 * <ul>
-	 *     <li>egSize:按钮颜色<br>
-	 *         如：<code>
-	 *            Button radius egSize="sm" egStyle="warning"
-	 *         </code>
-	 *     </li>
-	 *     <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
-	 *         如：<code>
-	 *            Button radius egSize="sm" egStyle="warning"
-	 *         </code>
-	 *     </li>
-	 *     <li>disabled:按钮禁用状态，默认false<br>
-	 *         如：<code>
-	 *            Button radius disabled
-	 *         </code>
-	 *     </li>
-	 *     <li>enable:按钮的可用状态，默认true<br>
-	 *         如：<code>
-	 *            Button radius enable
-	 *         </code>
-	 *     </li>
-	 *     <li>active:按钮选中状态，默认false<br>
-	 *         如：<code>
-	 *            Button radius active
-	 *         </code>
-	 *     </li>
-	 *      <li>radius:按钮圆角状态<br>
-	 *         如：<code>
-	 *            Button radius
-	 *         </code>
-	 *     </li>
-	 *     <li>round:按钮椭圆角<br>
-	 *         如：<code>
-	 *            Button round
-	 *         </code>
-	 *     </li>
-	 *     <li>block:是否块级显示，默认false<br>
-	 *         如：<code>
-	 *            Button block
-	 *         </code>
-	 *     </li>
-	 * </ul>
+	 *  - 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Button.js">查看源码</a></div>
 	 * @class Button
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo button.js {源码}
-	 * @show true
+	 * @example
+	 *      import {Button} from 'eagle-ui';
+	 *      ...
+	 *      //设置背景颜色
+	 *      <Button   egStyle="default">按钮2</Button>
+	 *      <Button   egStyle="link">按钮3</Button>
+	 *      <Button   egStyle="white">按钮4</Button>
+	 *
+	 *      //设置hollow属性将颜色应用于按钮边框，而不是背景色
+	 *      <Button hollow  egStyle="warning">按钮2</Button>
+	 *      <Button hollow  egStyle="danger">按钮3</Button>
+	 *      <Button hollow  egStyle="success">按钮4</Button>
+	 *
+	 *      //设置大小
+	 *      <Button radius egSize="xs" egStyle="">小按钮</Button>
+	 *      <Button radius egSize="sm" egStyle="">中按钮</Button>
+	 *      <Button radius egSize="lg" egStyle="">大按钮</Button>
+	 *
+	 *      //设置onClick事件
+	 *      <Button onClick={function(){alert('clicked')}} >点击触发回调</Button>
+	 *
+	 *      //禁用按钮
+	 *      <Button disabled>禁用按钮</Button>
 	 * */
 
 	var Button = (function (_Component) {
@@ -10559,8 +10625,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  _createClass(Button, null, [{
 	    key: 'propTypes',
-
-	    //static mixins = [ClassNameMixin];
 	    value: {
 	      /**
 	       * 按钮尺寸,分别为xs、sm、lg
@@ -10570,73 +10634,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	       * */
 	      egSize: _react.PropTypes.string,
 	      /**
-	       * 禁用
+	       * 是否禁用按钮
 	       * @property disabled
 	       * @type Boolean
 	       * @default false
 	       * */
 	      disabled: _react.PropTypes.bool,
-	      /**
-	       * 启用
-	       * @property enable
-	       * @type Boolean
-	       * @default true
-	       * */
-	      enable: _react.PropTypes.bool,
 	      //success:PropTypes.bool,
 	      /**
-	       * 选中
+	       * 按钮是否处于选中状态
 	       * @property active
 	       * @type Boolean
 	       * @default false
 	       * */
 	      active: _react.PropTypes.bool,
 	      /**
-	       * 圆角
-	       * @property radius
-	       * @type Boolean
-	       * @default false
-	       * */
-	      radius: _react.PropTypes.bool,
-	      /**
-	       * 椭圆角
-	       * @property round
-	       * @type Boolean
-	       * @default false
-	       * */
-	      round: _react.PropTypes.bool,
-	      //error:PropTypes.bool,
-	      //warning:PropTypes.bool,
-	      //danger:PropTypes.bool,
-	      /**
-	       * 颜色[error、warning、danger、link、gray、white、success、'']
+	       * 按钮颜色样式，可以为['success','error','warning','danger','default','link','white']中任何一个
 	       * @property egStyle
 	       * @type Boolean
 	       * @default ''
 	       * */
 	      egStyle: _react.PropTypes.string,
-	      /**
-	       * 样式前缀
-	       * @property classPrefix
-	       * @type String
-	       * @default btn
-	       * */
 	      classPrefix: _react.PropTypes.string,
 	      /**
 	       * 标签tagName
 	       * @property componentTag
 	       * @type String
-	       * @default a
+	       * @default 'button'
 	       * */
 	      componentTag: _react.PropTypes.string,
 	      /**
-	       * 块级显示
+	       * 是否为块级显示
 	       * @property block
 	       * @type Boolean
 	       * @default false
 	       * */
 	      block: _react.PropTypes.bool,
 	      egHref: _react.PropTypes.string
+	      /**
+	       * 是否只将主题颜色应用于边框，而不是应用于背景色
+	       * @property hollow
+	       * @type Boolean
+	       * @default false
+	       * */
 	    },
 	    enumerable: true
 	  }, {
@@ -10712,23 +10752,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _classnames2 = _interopRequireDefault(_classnames);
 
 	/**
-	 * 按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
-	 *  主要属性和接口：
-	 * <ul>
-	 *     <li>egType:是否自适应宽度或者垂直排列，可选'justify,tacked'默认''<br>
-	 *         如：<code>
-	 *           <ButtonGroup egType="justify">
-	 *         </code>
-	 *     </li>
-	 * </ul>
+	 * ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>
+	 * 设置justify属性时可以将按钮组水平排列<br/>
+	 * 设置tacked属性时可以将按钮组竖直排列
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js">查看源码</a></div>
 	 * @class ButtonGroup
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo star.js {UI展示}
-	 * @demo button.js {源码}
-	 * @show true
+	 * @example
+	 *      import {ButtonGroup,Button} from 'eagle-ui';
+	 *      ...
+	 *      function onActive(target,html){
+	 *          console.log(target,html);
+	 *      }
+	 *      ...
+	 *      <ButtonGroup egType="justify" activeCallback={onActive}>
+	 *          <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
+	 *          <Button radius egSize="sm" egStyle="warning">水平按钮组2</Button>
+	 *          <Button radius egSize="sm" egStyle="warning">水平按钮组3</Button>
+	 *      </ButtonGroup>
 	 * */
 
 	var ButtonGroup = (function (_Component) {
@@ -10738,7 +10783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 是否自适应宽度
+	             * 是否自适应宽度并水平排列
 	             * @property justify
 	             * @type Boolean
 	             * @default false
@@ -10751,12 +10796,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @default false
 	             * */
 	            tacked: _react.PropTypes.bool,
-	            /**
-	             * 是否有自适应宽度，垂直排列等属性
-	             * @property egType
-	             * @type String
-	             * @default ''
-	             * */
 	            egType: _react.PropTypes.string
 	        },
 	        enumerable: true
@@ -10784,6 +10823,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            active: this.props.active
 	        };
 	    }
+
+	    /**
+	     * 点击按钮组中任意按钮时触发的回调事件
+	     * @event  activeCallback
+	     * @param {dom} target 触发事件的dom节点
+	     * @param {innerHTML} html 触发事件dom节点的innerHTML
+	     * */
 
 	    ButtonGroup.prototype.mouseDownHandler = function mouseDownHandler(e) {
 	        var target = e.target;
@@ -10858,13 +10904,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * CheckboxGroup需与Input组件配合使用<br/>
 	 * 它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/CheckboxGroup.js">查看源码</a></div>
 	 * @class CheckboxGroup
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo input.js {源码}
-	 * @show true
+	 * @example
+	 *      import {CheckboxGroup,Input} from 'eagle-ui';
+	 *      ...
+	 *
+	 *      <CheckboxGroup>
+	 *          <Input  type="checkbox" label="足球" checked   />
+	 *          <Input  type="checkbox" label="篮球"    />
+	 *          <Input  type="checkbox" label="羽毛球" checked   />
+	 *          <Input  type="checkbox" label="乒乓球"    />
+	 *      </CheckboxGroup>
 	 * */
 
 	var CheckboxGroup = (function (_Component) {
@@ -11609,17 +11664,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *         如：<code>defaultChecked="石榴"</code>
 	 *     </li>
 	 *     <li>getValueCallback:获取选中值的回调函数<br>
-	 *         如：<code>getValueCallback={a()};a为对应的方法</code>
+	 *         如：<code>getValueCallback={function(val){alert(val)}}</code>
 	 *     </li>
 	 *
 	 * </ul>
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/RadioGroup.js">查看源码</a></div>
 	 * @class RadioGroup
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo input.js {源码}
-	 * @show true
+	 * @example
+	 *      import {RadioGroup,Input} from 'eagle-ui';
+	 *      ...
+	 *      function getValueCallback(val){
+	 *          alert(val);
+	 *          console.dir(val);
+	 *      }
+	 *      ...
+	 *      <RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={getValueCallback}>
+	 *          <Input  type="radio"  label="大白菜" value="大白菜" />
+	 *          <Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  />
+	 *          <Input  type="radio"  label="猪肉" value="猪肉" />
+	 *          <Input  type="radio"  label="牛肉" value="牛肉" />
+	 *          <Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} />
+	 *      </RadioGroup>
+	 *
 	 * */
 
 	var RadioGroup = (function (_Component) {
@@ -11755,7 +11825,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 标签
+	 * 标签组件<br />
+	 * 提供基本的标签样式，通常结合LabelGroup组件一起使用
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/label">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Label.js">查看源码</a></div>
 	 * @class Label
 	 * @module ui
 	 * @constructor
@@ -11770,8 +11843,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(Label, null, [{
 	        key: 'propTypes',
 	        value: {
+	            /**
+	             * label的链接地址（不设置的话默认不进行跳转）
+	             * @property url
+	             * @type String
+	             * @default 'javascript:void(0);'
+	             * */
 	            url: _react.PropTypes.string,
-	            activeCallback: _react.PropTypes.func
+	            activeCallback: _react.PropTypes.func,
+	            /**
+	             * 标签尺寸,分别为xs、sm、lg
+	             * @property egSize
+	             * @type String
+	             * @default sm
+	             * */
+	            egSize: _react.PropTypes.string,
+	            /**
+	             * 是否禁用Label
+	             * @property disabled
+	             * @type Boolean
+	             * @default false
+	             * */
+	            disabled: _react.PropTypes.bool,
+	            /**
+	             * 标签是否处于选中状态
+	             * @property active
+	             * @type Boolean
+	             * @default false
+	             * */
+	            active: _react.PropTypes.bool,
+	            /**
+	             * 标签颜色样式，可以为['success','error','warning','danger','']中任何一个
+	             * @property egStyle
+	             * @type Boolean
+	             * @default ''
+	             * */
+	            egStyle: _react.PropTypes.string
 	        },
 	        enumerable: true
 	    }, {
@@ -12761,13 +12868,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     </li>
 	 *
 	 * </ul>
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/select">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Select.js">查看源码</a></div>
 	 * @class Select
 	 * @module form(表单)
 	 * @constructor
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo select.js {源码}
-	 * @show true
+	 * @example
+	 *      import {Select} from 'eagle-ui';
+	 *      ...
+	 *      function getValue(value,key,type){
+	 *          let stype = {
+	 *              'enter':'回车时调用',
+	 *              'click':'点击每一项元素时调用'
+	 *          };
+	 *          console.log(value,key,stype[type]);
+	 *      }
+	 *      ...
+	 *      <Select defaultChecked={"上海"} getValueCallback={getValue} placeholder="请选择" >
+	 *          <option value='bei' key="bei">北京</option>
+	 *          <option value='shang' key="上海">上海</option>
+	 *          <option value='nan' key="南京">南京</option>
+	 *          <option value='3' key="杭州">杭州</option>
+	 *      </Select>
 	 * */
 
 	var Select = (function (_Search) {
@@ -12786,8 +12909,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            getValueCallback: null,
 	            /**
-	             * 样式类名前缀
-	             * @property classPrefix
+	             * 没有选中任何item时的占位文案
+	             * @property placeholder
 	             * @type string
 	             * */
 	            classPrefix: 'select',
@@ -12881,7 +13004,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 	/**
-	 * 标签组
+	 * 标签组<br />
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/label">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Label.js">查看源码</a></div>
 	 * @class LabelGroup
 	 * @module ui
 	 * @extends Component
@@ -12898,13 +13023,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 左侧总标题
+	             * 标签组左侧标题
 	             * @property title
 	             * @type String
 	             * */
 	            title: _react.PropTypes.string,
 	            /**
-	             * 标签展现形式{form|simple|default}
+	             * 标签组展现形式{form|simple|default}
 	             * @property egType
 	             * @type String
 	             * @default default
@@ -12917,7 +13042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            activeCallback: _react.PropTypes.func,
 	            /**
-	             * 默认选中的项
+	             * 默认选中的项，取值为选中标签的文案
 	             * @property defaultChecked
 	             * @type String Integer
 	             * */
@@ -13243,20 +13368,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * */
 
 	/**
-	 * 点击确认按钮后会执行此回调，默认调用Dialog.confirm会返回promise
-	 * @property successCallback
-	 * @type Function
-	 * @default
-	 * */
-
-	/**
-	 * 点击取消按钮或关闭后会执行此回调，默认调用Dialog.confirm会返回promise
-	 * @property cancelCallback
-	 * @type Function
-	 * @default
-	 * */
-
-	/**
 	 * 是否显示标题栏背景色
 	 * @property isHeaderBackground
 	 * @type Boolean
@@ -13319,19 +13430,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * */
 
 	/**
-	 * 底部按钮组
-	 * 例如：
-	         [
+	 * 底部按钮组<br />
+	 * 当不设置type的时候，按钮的回调直接用callback定义就好，<br />
+	 * 如果设置了type为'success'或者'cancel'，callback属性将不会起到作用，此时可以通过dialog提供的promise来注册点击成功或者取消按钮时的回调事件:<br/>
+	 * <pre class="code prettyprint">
+	 * <code>
+	    Dialog.confirm('确定你已经打开了么？').then(()=>{
+	            alert('确定');
+	        },()=>{
+	            alert('取消');
+	        });
+	 * </code>
+	 * </pre>
+	 <br>
+	 * 按钮组格式如下：
+	    <pre class="code prettyprint">
+	        <code>
+	        [
 	             {
 	                 type: 'success',
-	                 name: '确认',
-	                 callback:()=>{}
+	                 name: '确认'
 	             },
 	             {
 	                 type:'cancel',
 	                 egStyle:'white',
-	                 name:'取消',
-	                 callback:()=>{}
+	                 name:'取消'
 	             },
 	             {
 	                 egStyle:'warning',
@@ -13339,6 +13462,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                 callback:()=>{alert('自定义按钮');}
 	             }
 	         ]
+	        </code>
+	    </pre>
 	 * @property buttons
 	 * @type Array
 	 * @default empty
@@ -15873,7 +15998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  照片浏览组件<br />
 	 *  提供的UI展示属性接口如下<br/>
 	 * <ul>
-	 *     <li>imgList:定义数据源数组<br>
+	 *     <li>imgList:需要展示的图片数组，每个图片用一个对象来表示<br>
 	 *         例如
 	 *         <pre><code>
 	 *                  [{
@@ -15884,34 +16009,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	                     }]
 	 *         </code></pre>
 	 *     </li>
-	 *     <li>show:定义隐藏还是展示组件
+	 *     <li>show:是否显示照片浏览组件，默认隐藏，需要手动设置为true才可以显示照片浏览组件
 	 *         <code>
 	 *             <strong>默认</strong>false
 	 *         </code>
 	 *     </li>
-	 *     <li>urlKey:定义大图对应imgList数组中的key
-	 *         <code>
-	 *             在本例子中就是url
-	 *         </code>
+	 *     <li>
+	 *         urlKey:定义大图的‘图片路径’应该取自图像object的哪一个属性。<br/>
+	 *         在上述imgList中，图像object的url属性就是大图路径，所以urlKey='url'
 	 *     </li>
-	 *     <li>titleKey:定义大图下方文字对应imgList数组的key
-	 *         <code>
-	 *             在本例子中就是description
-	 *         </code>
+	 *     <li>
+	 *         titleKey:定义大图‘左下方文字描述’应该取自图像object的哪一个属性。<br/>
+	 *         在上述imgList中，图像object的description属性就是图片描述，所以titleKey='description'
 	 *     </li>
-	 *     <li>profileKey: 定义大图下方文字对应imgList数组的key
+	 *     <li>
+	 *         profileKey:定义大图‘正下方profile描述’应该取自图像object的哪一个属性。<br/>
+	 *         在上述imgList中，图像object的profile属性就是图片profile，所以profileKey='profile'
+	 *     </li>
+	 *     <li>thumbnailKey:定义缩略图对应imgList数组的key
 	 *         <code>
-	 *             在本例子中就是profile
+	 *             <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail
 	 *         </code>
 	 *     </li>
 	 *     <li>showThumbnail:定义是否展示缩略图
 	 *         <code>
 	 *             <strong>默认</strong>true
-	 *         </code>
-	 *     </li>
-	 *     <li>thumbnailKey:定义缩略图对应imgList数组的key
-	 *         <code>
-	 *             <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail
 	 *         </code>
 	 *     </li>
 	 *      <li>pageNum:定义每页缩略图的个数
@@ -15933,6 +16055,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 titleKey={'description'}
 	 thumbnailKey={thumbnailKey} /&#62;</code>
 	 * </pre>
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/slider">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ImgSlider.js">查看源码</a></div>
 	 * @class Slider
 	 * @module ui
 	 * @extends Component
@@ -16326,7 +16450,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            pageNum: _react.PropTypes.number,
 	            /**
-	             * 是否对图片进行放大缩小等操作
+	             * 控制缩放旋转控件的显示，默认隐藏
 	             * @property imgModify
 	             * @type boolean
 	             * @default false
@@ -17169,10 +17293,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	/**
-	 * Panel定义整个容器<br />
+	 * Panel定义整个容器,其主要作用是提供基本的边框样式、为其中的内容添加padding<br>
 	 * 和PanelHeader,PanelContent,PanelFooter配合使用<br />
 	 * Panel是上面三个标签的父容器，<br />
 	 * 可以依据不同情况决定是否添加PanelHeader和PanelFooter
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/panel">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/panels/Panel.js">查看源码</a></div>
 	 * @class Panel
 	 * @module panel(面板)
 	 * @extends Component
@@ -17222,14 +17348,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * panel的样式风格，默认为default，还可以设置为normal
+	             * panel的样式风格, 这个属性只会影响多层panel嵌套的场景<br>
+	             * 可以设置为normal或者default<br>
+	             * default为默认值，当出现嵌套的panel时，子panel不会有border<br>
+	             * 当egType为normal时，每一层的子panel和父panel之间都会有border隔开
 	             * @property egType
 	             * @type String
 	             * @default 'default'
 	             * */
 	            egType: _react.PropTypes.string,
 	            /**
-	             * 标
+	             * 可以通过heading设置panel的header，如果设置了heading属性，就没有必要在Panel下包含PanelHeader标签
 	             * @property heading
 	             * @type String
 	             * @default empty
@@ -17283,6 +17412,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * PanelHeader定义头部区域
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/panel">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelHeader.js">查看源码</a></div>
 	 * @class PanelHeader
 	 * @module panel(面板)
 	 * @constructor
@@ -17316,7 +17447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 是否要在标题左侧添加高亮flag
+	             * 设置leftFlag为true时，header的背景色会变为白色（默认灰色），并在header左边添加高亮flag
 	             * @property leftFlag
 	             * @type Boolean
 	             * @default false
@@ -17370,6 +17501,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * PanelContent定义内容区域
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/panel">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelContent.js">查看源码</a></div>
 	 * @class PanelContent
 	 * @constructor
 	 * @module panel(面板)
@@ -17400,7 +17533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 是否加padding
+	             * 是否为panelContent添加padding，默认true
 	             * @property padding
 	             * @type bool
 	             * @default true
@@ -17455,6 +17588,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * PanelFooter定义底部区域
+	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/panel">demo展示</a></div>
+	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelFooter.js">查看源码</a></div>
 	 * @class PanelFooter
 	 * @constructor
 	 * @module panel(面板)
@@ -17485,7 +17620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 是否加padding
+	             * 是否为panelFooter中的内容添加padding，默认true
 	             * @property padding
 	             * @type bool
 	             * @default true
