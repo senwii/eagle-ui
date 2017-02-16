@@ -52,35 +52,33 @@ let Demo = class Demo extends Component{
 
     render(){
         return (
-            <div>
-                <DemoLayout title="Tab">
-                    <DemoItem title="" desc={'activeTab属性从0开始计'}>
-                        <CodeShow>
-                            <Code code={getFile('tab')}>
-                            </Code>
-                        </CodeShow>
-                        <DemoShow>
-                            <Tabset  activeTab={this.state.tabIndex} tabCallback={::this.callback}>
-                                <Tab>
-                                    {::this.tab1()}
-                                </Tab>
-                                <Tab heading='tab2'>
-                                    {::this.tab2()}
-                                </Tab>
-                                <Tab heading='tab3'>
-                                    {::this.tab3()}
-                                </Tab>
-                                <Tab heading='tab4'>
-                                    tab4
-                                </Tab>
-                                <Tab heading='tab5'>
-                                    tab5
-                                </Tab>
-                            </Tabset>
-                        </DemoShow>
-                    </DemoItem>
-                </DemoLayout>
-            </div>
+            <DemoLayout title="Tab">
+                <DemoItem title="" desc={'activeTab属性从0开始计'}>
+                    <CodeShow>
+                        <Code code={getFile('tab')}>
+                        </Code>
+                    </CodeShow>
+                    <DemoShow>
+                        <Tabset  activeTab={this.state.tabIndex} tabCallback={::this.callback}>
+                            <Tab>
+                                {::this.tab1()}
+                            </Tab>
+                            <Tab heading='tab2'>
+                                {::this.tab2()}
+                            </Tab>
+                            <Tab heading='tab3'>
+                                {::this.tab3()}
+                            </Tab>
+                            <Tab heading='tab4'>
+                                tab4
+                            </Tab>
+                            <Tab heading='tab5'>
+                                tab5
+                            </Tab>
+                        </Tabset>
+                    </DemoShow>
+                </DemoItem>
+            </DemoLayout>
         );
     }
 }
