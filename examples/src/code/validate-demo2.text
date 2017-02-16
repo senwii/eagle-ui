@@ -1,0 +1,22 @@
+<ValidatorPanel rules={this.rules} submitElement="#submit2" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
+    <Row>
+        <Col>
+            <Input placeholder="请输入姓名"  name="userName" data-validate />
+        </Col>
+    </Row>
+    <Row>
+        <Col>
+            <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+        </Col>
+    </Row>
+    <Row>
+        <Col>
+            <Input placeholder="请输入您的email" name="email" data-validate />
+        </Col>
+    </Row>
+    <Row>
+        <Col>
+            <Button radius egSize="xs" id="submit2" >点我提交表单</Button>
+        </Col>
+    </Row>
+</ValidatorPanel>

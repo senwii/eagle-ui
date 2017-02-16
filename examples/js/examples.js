@@ -180,43 +180,43 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _modulesTab2 = _interopRequireDefault(_modulesTab);
 
-	var _modulesTable = __webpack_require__(637);
+	var _modulesTable = __webpack_require__(642);
 
 	var _modulesTable2 = _interopRequireDefault(_modulesTable);
 
-	var _modulesToast = __webpack_require__(638);
+	var _modulesToast = __webpack_require__(643);
 
 	var _modulesToast2 = _interopRequireDefault(_modulesToast);
 
-	var _modulesTooltip = __webpack_require__(639);
+	var _modulesTooltip = __webpack_require__(644);
 
 	var _modulesTooltip2 = _interopRequireDefault(_modulesTooltip);
 
-	var _modulesValidate = __webpack_require__(640);
+	var _modulesValidate = __webpack_require__(645);
 
 	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
 
-	var _modulesStarJs = __webpack_require__(641);
+	var _modulesStarJs = __webpack_require__(649);
 
 	var _modulesStarJs2 = _interopRequireDefault(_modulesStarJs);
 
-	var _modulesImgSliderJs = __webpack_require__(642);
+	var _modulesImgSliderJs = __webpack_require__(650);
 
 	var _modulesImgSliderJs2 = _interopRequireDefault(_modulesImgSliderJs);
 
-	var _modulesSuggestionJs = __webpack_require__(643);
+	var _modulesSuggestionJs = __webpack_require__(651);
 
 	var _modulesSuggestionJs2 = _interopRequireDefault(_modulesSuggestionJs);
 
-	var _modulesIconsJs = __webpack_require__(644);
+	var _modulesIconsJs = __webpack_require__(652);
 
 	var _modulesIconsJs2 = _interopRequireDefault(_modulesIconsJs);
 
-	var _modulesTreeMenuJs = __webpack_require__(645);
+	var _modulesTreeMenuJs = __webpack_require__(653);
 
 	var _modulesTreeMenuJs2 = _interopRequireDefault(_modulesTreeMenuJs);
 
-	var _modulesDropTreeJs = __webpack_require__(651);
+	var _modulesDropTreeJs = __webpack_require__(659);
 
 	var _modulesDropTreeJs2 = _interopRequireDefault(_modulesDropTreeJs);
 
@@ -225,6 +225,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _srcLessEagleUiLess = __webpack_require__(259);
 
 	var _srcLessEagleUiLess2 = _interopRequireDefault(_srcLessEagleUiLess);
+
+	var _prismLess = __webpack_require__(664);
+
+	var _prismLess2 = _interopRequireDefault(_prismLess);
 
 	var Index = (function (_Component) {
 	    _inherits(Index, _Component);
@@ -49634,6 +49638,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(257);
 
+	var _CodeJs = __webpack_require__(637);
+
+	var _CodeJs2 = _interopRequireDefault(_CodeJs);
+
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
 
@@ -49697,32 +49705,38 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Demo.prototype.render = function render() {
 	        return _react2['default'].createElement(
-	            _eagleUi.Tabset,
-	            { disableHoverAnimation: true, activeTab: this.state.tabIndex, tabCallback: this.callback.bind(this) },
+	            'div',
+	            null,
+	            _react2['default'].createElement(_CodeJs2['default'], { code: _CodeJs.getFile('tab') }),
+	            _react2['default'].createElement(_CodeJs2['default'], { code: _CodeJs.getFile('paging') }),
 	            _react2['default'].createElement(
-	                _eagleUi.Tab,
-	                null,
-	                this.tab1.call(this)
-	            ),
-	            _react2['default'].createElement(
-	                _eagleUi.Tab,
-	                { heading: 'tab2' },
-	                this.tab2.call(this)
-	            ),
-	            _react2['default'].createElement(
-	                _eagleUi.Tab,
-	                { heading: 'tabasjdfnl;adfnaf;adlkf3' },
-	                this.tab3.call(this)
-	            ),
-	            _react2['default'].createElement(
-	                _eagleUi.Tab,
-	                { heading: 'tabasjdfnl;adfnaf;adlkf3' },
-	                'nadkfnpasknfsaknf'
-	            ),
-	            _react2['default'].createElement(
-	                _eagleUi.Tab,
-	                { heading: 'tabasjdfnl;adfnaf;adlkf3' },
-	                'nadkfnpasknfsaknf'
+	                _eagleUi.Tabset,
+	                { disableHoverAnimation: true, activeTab: this.state.tabIndex, tabCallback: this.callback.bind(this) },
+	                _react2['default'].createElement(
+	                    _eagleUi.Tab,
+	                    null,
+	                    this.tab1.call(this)
+	                ),
+	                _react2['default'].createElement(
+	                    _eagleUi.Tab,
+	                    { heading: 'tab2' },
+	                    this.tab2.call(this)
+	                ),
+	                _react2['default'].createElement(
+	                    _eagleUi.Tab,
+	                    { heading: 'tabasjdfnl;adfnaf;adlkf3' },
+	                    this.tab3.call(this)
+	                ),
+	                _react2['default'].createElement(
+	                    _eagleUi.Tab,
+	                    { heading: 'tabasjdfnl;adfnaf;adlkf3' },
+	                    'nadkfnpasknfsaknf'
+	                ),
+	                _react2['default'].createElement(
+	                    _eagleUi.Tab,
+	                    { heading: 'tabasjdfnl;adfnaf;adlkf3' },
+	                    'nadkfnpasknfsaknf'
+	                )
 	            )
 	        );
 	    };
@@ -49735,6 +49749,898 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 637 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.getFile = getFile;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(43);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var Prism = __webpack_require__(638);
+
+	function getFile(fileName) {
+	    var fileContent = __webpack_require__(639)("./" + fileName + '.text');
+	    return fileContent;
+	}
+
+	var Code = (function (_Component) {
+	    _inherits(Code, _Component);
+
+	    function Code() {
+	        _classCallCheck(this, Code);
+
+	        _Component.apply(this, arguments);
+	    }
+
+	    Code.prototype.componentDidMount = function componentDidMount() {
+	        var code = this.props.code;
+	        if (code) {
+	            this.refs.code.innerHTML = Prism.highlight(code, Prism.languages.javascript);
+	        }
+	    };
+
+	    Code.prototype.render = function render() {
+	        var codeType = this.props.codeType || 'javascript';
+	        return _react2['default'].createElement(
+	            'pre',
+	            null,
+	            _react2['default'].createElement('code', { ref: 'code', className: 'language-' + codeType })
+	        );
+	    };
+
+	    return Code;
+	})(_react.Component);
+
+	exports['default'] = Code;
+
+/***/ },
+/* 638 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {
+	/* **********************************************
+	     Begin prism-core.js
+	********************************************** */
+
+	var _self = (typeof window !== 'undefined')
+		? window   // if in browser
+		: (
+			(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+			? self // if in worker
+			: {}   // if in node js
+		);
+
+	/**
+	 * Prism: Lightweight, robust, elegant syntax highlighting
+	 * MIT license http://www.opensource.org/licenses/mit-license.php/
+	 * @author Lea Verou http://lea.verou.me
+	 */
+
+	var Prism = (function(){
+
+	// Private helper vars
+	var lang = /\blang(?:uage)?-(\w+)\b/i;
+	var uniqueId = 0;
+
+	var _ = _self.Prism = {
+		util: {
+			encode: function (tokens) {
+				if (tokens instanceof Token) {
+					return new Token(tokens.type, _.util.encode(tokens.content), tokens.alias);
+				} else if (_.util.type(tokens) === 'Array') {
+					return tokens.map(_.util.encode);
+				} else {
+					return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+				}
+			},
+
+			type: function (o) {
+				return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
+			},
+
+			objId: function (obj) {
+				if (!obj['__id']) {
+					Object.defineProperty(obj, '__id', { value: ++uniqueId });
+				}
+				return obj['__id'];
+			},
+
+			// Deep clone a language definition (e.g. to extend it)
+			clone: function (o) {
+				var type = _.util.type(o);
+
+				switch (type) {
+					case 'Object':
+						var clone = {};
+
+						for (var key in o) {
+							if (o.hasOwnProperty(key)) {
+								clone[key] = _.util.clone(o[key]);
+							}
+						}
+
+						return clone;
+
+					case 'Array':
+						// Check for existence for IE8
+						return o.map && o.map(function(v) { return _.util.clone(v); });
+				}
+
+				return o;
+			}
+		},
+
+		languages: {
+			extend: function (id, redef) {
+				var lang = _.util.clone(_.languages[id]);
+
+				for (var key in redef) {
+					lang[key] = redef[key];
+				}
+
+				return lang;
+			},
+
+			/**
+			 * Insert a token before another token in a language literal
+			 * As this needs to recreate the object (we cannot actually insert before keys in object literals),
+			 * we cannot just provide an object, we need anobject and a key.
+			 * @param inside The key (or language id) of the parent
+			 * @param before The key to insert before. If not provided, the function appends instead.
+			 * @param insert Object with the key/value pairs to insert
+			 * @param root The object that contains `inside`. If equal to Prism.languages, it can be omitted.
+			 */
+			insertBefore: function (inside, before, insert, root) {
+				root = root || _.languages;
+				var grammar = root[inside];
+
+				if (arguments.length == 2) {
+					insert = arguments[1];
+
+					for (var newToken in insert) {
+						if (insert.hasOwnProperty(newToken)) {
+							grammar[newToken] = insert[newToken];
+						}
+					}
+
+					return grammar;
+				}
+
+				var ret = {};
+
+				for (var token in grammar) {
+
+					if (grammar.hasOwnProperty(token)) {
+
+						if (token == before) {
+
+							for (var newToken in insert) {
+
+								if (insert.hasOwnProperty(newToken)) {
+									ret[newToken] = insert[newToken];
+								}
+							}
+						}
+
+						ret[token] = grammar[token];
+					}
+				}
+
+				// Update references in other language definitions
+				_.languages.DFS(_.languages, function(key, value) {
+					if (value === root[inside] && key != inside) {
+						this[key] = ret;
+					}
+				});
+
+				return root[inside] = ret;
+			},
+
+			// Traverse a language definition with Depth First Search
+			DFS: function(o, callback, type, visited) {
+				visited = visited || {};
+				for (var i in o) {
+					if (o.hasOwnProperty(i)) {
+						callback.call(o, i, o[i], type || i);
+
+						if (_.util.type(o[i]) === 'Object' && !visited[_.util.objId(o[i])]) {
+							visited[_.util.objId(o[i])] = true;
+							_.languages.DFS(o[i], callback, null, visited);
+						}
+						else if (_.util.type(o[i]) === 'Array' && !visited[_.util.objId(o[i])]) {
+							visited[_.util.objId(o[i])] = true;
+							_.languages.DFS(o[i], callback, i, visited);
+						}
+					}
+				}
+			}
+		},
+		plugins: {},
+
+		highlightAll: function(async, callback) {
+			var env = {
+				callback: callback,
+				selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+			};
+
+			_.hooks.run("before-highlightall", env);
+
+			var elements = env.elements || document.querySelectorAll(env.selector);
+
+			for (var i=0, element; element = elements[i++];) {
+				_.highlightElement(element, async === true, env.callback);
+			}
+		},
+
+		highlightElement: function(element, async, callback) {
+			// Find language
+			var language, grammar, parent = element;
+
+			while (parent && !lang.test(parent.className)) {
+				parent = parent.parentNode;
+			}
+
+			if (parent) {
+				language = (parent.className.match(lang) || [,''])[1].toLowerCase();
+				grammar = _.languages[language];
+			}
+
+			// Set language on the element, if not present
+			element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+
+			// Set language on the parent, for styling
+			parent = element.parentNode;
+
+			if (/pre/i.test(parent.nodeName)) {
+				parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+			}
+
+			var code = element.textContent;
+
+			var env = {
+				element: element,
+				language: language,
+				grammar: grammar,
+				code: code
+			};
+
+			_.hooks.run('before-sanity-check', env);
+
+			if (!env.code || !env.grammar) {
+				if (env.code) {
+					env.element.textContent = env.code;
+				}
+				_.hooks.run('complete', env);
+				return;
+			}
+
+			_.hooks.run('before-highlight', env);
+
+			if (async && _self.Worker) {
+				var worker = new Worker(_.filename);
+
+				worker.onmessage = function(evt) {
+					env.highlightedCode = evt.data;
+
+					_.hooks.run('before-insert', env);
+
+					env.element.innerHTML = env.highlightedCode;
+
+					callback && callback.call(env.element);
+					_.hooks.run('after-highlight', env);
+					_.hooks.run('complete', env);
+				};
+
+				worker.postMessage(JSON.stringify({
+					language: env.language,
+					code: env.code,
+					immediateClose: true
+				}));
+			}
+			else {
+				env.highlightedCode = _.highlight(env.code, env.grammar, env.language);
+
+				_.hooks.run('before-insert', env);
+
+				env.element.innerHTML = env.highlightedCode;
+
+				callback && callback.call(element);
+
+				_.hooks.run('after-highlight', env);
+				_.hooks.run('complete', env);
+			}
+		},
+
+		highlight: function (text, grammar, language) {
+			var tokens = _.tokenize(text, grammar);
+			return Token.stringify(_.util.encode(tokens), language);
+		},
+
+		tokenize: function(text, grammar, language) {
+			var Token = _.Token;
+
+			var strarr = [text];
+
+			var rest = grammar.rest;
+
+			if (rest) {
+				for (var token in rest) {
+					grammar[token] = rest[token];
+				}
+
+				delete grammar.rest;
+			}
+
+			tokenloop: for (var token in grammar) {
+				if(!grammar.hasOwnProperty(token) || !grammar[token]) {
+					continue;
+				}
+
+				var patterns = grammar[token];
+				patterns = (_.util.type(patterns) === "Array") ? patterns : [patterns];
+
+				for (var j = 0; j < patterns.length; ++j) {
+					var pattern = patterns[j],
+						inside = pattern.inside,
+						lookbehind = !!pattern.lookbehind,
+						greedy = !!pattern.greedy,
+						lookbehindLength = 0,
+						alias = pattern.alias;
+
+					if (greedy && !pattern.pattern.global) {
+						// Without the global flag, lastIndex won't work
+						var flags = pattern.pattern.toString().match(/[imuy]*$/)[0];
+						pattern.pattern = RegExp(pattern.pattern.source, flags + "g");
+					}
+
+					pattern = pattern.pattern || pattern;
+
+					// Don’t cache length as it changes during the loop
+					for (var i=0, pos = 0; i<strarr.length; pos += strarr[i].length, ++i) {
+
+						var str = strarr[i];
+
+						if (strarr.length > text.length) {
+							// Something went terribly wrong, ABORT, ABORT!
+							break tokenloop;
+						}
+
+						if (str instanceof Token) {
+							continue;
+						}
+
+						pattern.lastIndex = 0;
+
+						var match = pattern.exec(str),
+						    delNum = 1;
+
+						// Greedy patterns can override/remove up to two previously matched tokens
+						if (!match && greedy && i != strarr.length - 1) {
+							pattern.lastIndex = pos;
+							match = pattern.exec(text);
+							if (!match) {
+								break;
+							}
+
+							var from = match.index + (lookbehind ? match[1].length : 0),
+							    to = match.index + match[0].length,
+							    k = i,
+							    p = pos;
+
+							for (var len = strarr.length; k < len && p < to; ++k) {
+								p += strarr[k].length;
+								// Move the index i to the element in strarr that is closest to from
+								if (from >= p) {
+									++i;
+									pos = p;
+								}
+							}
+
+							/*
+							 * If strarr[i] is a Token, then the match starts inside another Token, which is invalid
+							 * If strarr[k - 1] is greedy we are in conflict with another greedy pattern
+							 */
+							if (strarr[i] instanceof Token || strarr[k - 1].greedy) {
+								continue;
+							}
+
+							// Number of tokens to delete and replace with the new match
+							delNum = k - i;
+							str = text.slice(pos, p);
+							match.index -= pos;
+						}
+
+						if (!match) {
+							continue;
+						}
+
+						if(lookbehind) {
+							lookbehindLength = match[1].length;
+						}
+
+						var from = match.index + lookbehindLength,
+						    match = match[0].slice(lookbehindLength),
+						    to = from + match.length,
+						    before = str.slice(0, from),
+						    after = str.slice(to);
+
+						var args = [i, delNum];
+
+						if (before) {
+							args.push(before);
+						}
+
+						var wrapped = new Token(token, inside? _.tokenize(match, inside) : match, alias, match, greedy);
+
+						args.push(wrapped);
+
+						if (after) {
+							args.push(after);
+						}
+
+						Array.prototype.splice.apply(strarr, args);
+					}
+				}
+			}
+
+			return strarr;
+		},
+
+		hooks: {
+			all: {},
+
+			add: function (name, callback) {
+				var hooks = _.hooks.all;
+
+				hooks[name] = hooks[name] || [];
+
+				hooks[name].push(callback);
+			},
+
+			run: function (name, env) {
+				var callbacks = _.hooks.all[name];
+
+				if (!callbacks || !callbacks.length) {
+					return;
+				}
+
+				for (var i=0, callback; callback = callbacks[i++];) {
+					callback(env);
+				}
+			}
+		}
+	};
+
+	var Token = _.Token = function(type, content, alias, matchedStr, greedy) {
+		this.type = type;
+		this.content = content;
+		this.alias = alias;
+		// Copy of the full string this token was created from
+		this.length = (matchedStr || "").length|0;
+		this.greedy = !!greedy;
+	};
+
+	Token.stringify = function(o, language, parent) {
+		if (typeof o == 'string') {
+			return o;
+		}
+
+		if (_.util.type(o) === 'Array') {
+			return o.map(function(element) {
+				return Token.stringify(element, language, o);
+			}).join('');
+		}
+
+		var env = {
+			type: o.type,
+			content: Token.stringify(o.content, language, parent),
+			tag: 'span',
+			classes: ['token', o.type],
+			attributes: {},
+			language: language,
+			parent: parent
+		};
+
+		if (env.type == 'comment') {
+			env.attributes['spellcheck'] = 'true';
+		}
+
+		if (o.alias) {
+			var aliases = _.util.type(o.alias) === 'Array' ? o.alias : [o.alias];
+			Array.prototype.push.apply(env.classes, aliases);
+		}
+
+		_.hooks.run('wrap', env);
+
+		var attributes = Object.keys(env.attributes).map(function(name) {
+			return name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+		}).join(' ');
+
+		return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + (attributes ? ' ' + attributes : '') + '>' + env.content + '</' + env.tag + '>';
+
+	};
+
+	if (!_self.document) {
+		if (!_self.addEventListener) {
+			// in Node.js
+			return _self.Prism;
+		}
+	 	// In worker
+		_self.addEventListener('message', function(evt) {
+			var message = JSON.parse(evt.data),
+			    lang = message.language,
+			    code = message.code,
+			    immediateClose = message.immediateClose;
+
+			_self.postMessage(_.highlight(code, _.languages[lang], lang));
+			if (immediateClose) {
+				_self.close();
+			}
+		}, false);
+
+		return _self.Prism;
+	}
+
+	//Get current script and highlight
+	var script = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();
+
+	if (script) {
+		_.filename = script.src;
+
+		if (document.addEventListener && !script.hasAttribute('data-manual')) {
+			if(document.readyState !== "loading") {
+				if (window.requestAnimationFrame) {
+					window.requestAnimationFrame(_.highlightAll);
+				} else {
+					window.setTimeout(_.highlightAll, 16);
+				}
+			}
+			else {
+				document.addEventListener('DOMContentLoaded', _.highlightAll);
+			}
+		}
+	}
+
+	return _self.Prism;
+
+	})();
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = Prism;
+	}
+
+	// hack for components to work correctly in node.js
+	if (typeof global !== 'undefined') {
+		global.Prism = Prism;
+	}
+
+
+	/* **********************************************
+	     Begin prism-markup.js
+	********************************************** */
+
+	Prism.languages.markup = {
+		'comment': /<!--[\w\W]*?-->/,
+		'prolog': /<\?[\w\W]+?\?>/,
+		'doctype': /<!DOCTYPE[\w\W]+?>/i,
+		'cdata': /<!\[CDATA\[[\w\W]*?]]>/i,
+		'tag': {
+			pattern: /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+			inside: {
+				'tag': {
+					pattern: /^<\/?[^\s>\/]+/i,
+					inside: {
+						'punctuation': /^<\/?/,
+						'namespace': /^[^\s>\/:]+:/
+					}
+				},
+				'attr-value': {
+					pattern: /=(?:('|")[\w\W]*?(\1)|[^\s>]+)/i,
+					inside: {
+						'punctuation': /[=>"']/
+					}
+				},
+				'punctuation': /\/?>/,
+				'attr-name': {
+					pattern: /[^\s>\/]+/,
+					inside: {
+						'namespace': /^[^\s>\/:]+:/
+					}
+				}
+
+			}
+		},
+		'entity': /&#?[\da-z]{1,8};/i
+	};
+
+	// Plugin to make entity title show the real entity, idea by Roman Komarov
+	Prism.hooks.add('wrap', function(env) {
+
+		if (env.type === 'entity') {
+			env.attributes['title'] = env.content.replace(/&amp;/, '&');
+		}
+	});
+
+	Prism.languages.xml = Prism.languages.markup;
+	Prism.languages.html = Prism.languages.markup;
+	Prism.languages.mathml = Prism.languages.markup;
+	Prism.languages.svg = Prism.languages.markup;
+
+
+	/* **********************************************
+	     Begin prism-css.js
+	********************************************** */
+
+	Prism.languages.css = {
+		'comment': /\/\*[\w\W]*?\*\//,
+		'atrule': {
+			pattern: /@[\w-]+?.*?(;|(?=\s*\{))/i,
+			inside: {
+				'rule': /@[\w-]+/
+				// See rest below
+			}
+		},
+		'url': /url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+		'selector': /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
+		'string': {
+			pattern: /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
+			greedy: true
+		},
+		'property': /(\b|\B)[\w-]+(?=\s*:)/i,
+		'important': /\B!important\b/i,
+		'function': /[-a-z0-9]+(?=\()/i,
+		'punctuation': /[(){};:]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
+
+	if (Prism.languages.markup) {
+		Prism.languages.insertBefore('markup', 'tag', {
+			'style': {
+				pattern: /(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,
+				lookbehind: true,
+				inside: Prism.languages.css,
+				alias: 'language-css'
+			}
+		});
+		
+		Prism.languages.insertBefore('inside', 'attr-value', {
+			'style-attr': {
+				pattern: /\s*style=("|').*?\1/i,
+				inside: {
+					'attr-name': {
+						pattern: /^\s*style/i,
+						inside: Prism.languages.markup.tag.inside
+					},
+					'punctuation': /^\s*=\s*['"]|['"]\s*$/,
+					'attr-value': {
+						pattern: /.+/i,
+						inside: Prism.languages.css
+					}
+				},
+				alias: 'language-css'
+			}
+		}, Prism.languages.markup.tag);
+	}
+
+	/* **********************************************
+	     Begin prism-clike.js
+	********************************************** */
+
+	Prism.languages.clike = {
+		'comment': [
+			{
+				pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,
+				lookbehind: true
+			},
+			{
+				pattern: /(^|[^\\:])\/\/.*/,
+				lookbehind: true
+			}
+		],
+		'string': {
+			pattern: /(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+			greedy: true
+		},
+		'class-name': {
+			pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,
+			lookbehind: true,
+			inside: {
+				punctuation: /(\.|\\)/
+			}
+		},
+		'keyword': /\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+		'boolean': /\b(true|false)\b/,
+		'function': /[a-z0-9_]+(?=\()/i,
+		'number': /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
+		'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
+		'punctuation': /[{}[\];(),.:]/
+	};
+
+
+	/* **********************************************
+	     Begin prism-javascript.js
+	********************************************** */
+
+	Prism.languages.javascript = Prism.languages.extend('clike', {
+		'keyword': /\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
+		'number': /\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,
+		// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+		'function': /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i,
+		'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*\*?|\/|~|\^|%|\.{3}/
+	});
+
+	Prism.languages.insertBefore('javascript', 'keyword', {
+		'regex': {
+			pattern: /(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\\\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,
+			lookbehind: true,
+			greedy: true
+		}
+	});
+
+	Prism.languages.insertBefore('javascript', 'string', {
+		'template-string': {
+			pattern: /`(?:\\\\|\\?[^\\])*?`/,
+			greedy: true,
+			inside: {
+				'interpolation': {
+					pattern: /\$\{[^}]+\}/,
+					inside: {
+						'interpolation-punctuation': {
+							pattern: /^\$\{|\}$/,
+							alias: 'punctuation'
+						},
+						rest: Prism.languages.javascript
+					}
+				},
+				'string': /[\s\S]+/
+			}
+		}
+	});
+
+	if (Prism.languages.markup) {
+		Prism.languages.insertBefore('markup', 'tag', {
+			'script': {
+				pattern: /(<script[\w\W]*?>)[\w\W]*?(?=<\/script>)/i,
+				lookbehind: true,
+				inside: Prism.languages.javascript,
+				alias: 'language-javascript'
+			}
+		});
+	}
+
+	Prism.languages.js = Prism.languages.javascript;
+
+	/* **********************************************
+	     Begin prism-file-highlight.js
+	********************************************** */
+
+	(function () {
+		if (typeof self === 'undefined' || !self.Prism || !self.document || !document.querySelector) {
+			return;
+		}
+
+		self.Prism.fileHighlight = function() {
+
+			var Extensions = {
+				'js': 'javascript',
+				'py': 'python',
+				'rb': 'ruby',
+				'ps1': 'powershell',
+				'psm1': 'powershell',
+				'sh': 'bash',
+				'bat': 'batch',
+				'h': 'c',
+				'tex': 'latex'
+			};
+
+			if(Array.prototype.forEach) { // Check to prevent error in IE8
+				Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+					var src = pre.getAttribute('data-src');
+
+					var language, parent = pre;
+					var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
+					while (parent && !lang.test(parent.className)) {
+						parent = parent.parentNode;
+					}
+
+					if (parent) {
+						language = (pre.className.match(lang) || [, ''])[1];
+					}
+
+					if (!language) {
+						var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+						language = Extensions[extension] || extension;
+					}
+
+					var code = document.createElement('code');
+					code.className = 'language-' + language;
+
+					pre.textContent = '';
+
+					code.textContent = 'Loading…';
+
+					pre.appendChild(code);
+
+					var xhr = new XMLHttpRequest();
+
+					xhr.open('GET', src, true);
+
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState == 4) {
+
+							if (xhr.status < 400 && xhr.responseText) {
+								code.textContent = xhr.responseText;
+
+								Prism.highlightElement(code);
+							}
+							else if (xhr.status >= 400) {
+								code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+							}
+							else {
+								code.textContent = '✖ Error: File does not exist or is empty';
+							}
+						}
+					};
+
+					xhr.send(null);
+				});
+			}
+
+		};
+
+		document.addEventListener('DOMContentLoaded', self.Prism.fileHighlight);
+
+	})();
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 639 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var map = {
+		"./paging.text": 640,
+		"./tab.text": 641
+	};
+	function webpackContext(req) {
+		return __webpack_require__(webpackContextResolve(req));
+	};
+	function webpackContextResolve(req) {
+		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
+	};
+	webpackContext.keys = function webpackContextKeys() {
+		return Object.keys(map);
+	};
+	webpackContext.resolve = webpackContextResolve;
+	module.exports = webpackContext;
+	webpackContext.id = 639;
+
+
+/***/ },
+/* 640 */
+/***/ function(module, exports) {
+
+	module.exports = "/**\n * Created by mac on 15/11/4.\n */\nimport React, { Component ,PropTypes} from 'react';\nimport {Col,Row,Paging} from 'eagle-ui';\nimport querystring from 'querystring';\n\n\nlet page = 1;\nfunction callback(page){\n    page = page;\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\n\nfunction loadPageCallback(pageSize){\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nvar pageSize = 20;\nlet arrs = [10,15,23,35,40],\n    arr1 = '1';\n\nexport default class PagingCls extends Component{\n    render(){\n        let query = this.props.location.query,\n        page = query.page*1 ||0,\n        pageSize = query.pageSize*1 || 20;\n        return (\n            <Row>\n                <Col sm={12}>\n                    <Paging showItemsNumber={true} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n                            pageCallback={callback} total={5024} choosePageSize={arr1}/>\n                </Col>\n            </Row>\n        );\n    }\n}"
+
+/***/ },
+/* 641 */
+/***/ function(module, exports) {
+
+	module.exports = "/**\n * Created by mac on 15/11/4.\n */\nimport React,{Component} from 'react';\nimport {Tab,Tabset} from 'eagle-ui';\n\nlet Demo = class Demo extends Component{\n\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            tabIndex:2\n        };\n    }\n    componentDidMount(){\n        let _this=this;\n        setTimeout(()=>{\n            _this.setState({\n                tabIndex:3\n            })\n        },2000)\n    }\n    callback(index){\n        console.log('i',index);\n        if(this.state.tabIndex!==index){\n            this.setState({\n                tabIndex:index\n            });\n        }\n    }\n\n    tab3(){\n        if(this.state.tabIndex==2){\n            return (<div>tab3</div>);\n        }\n    }\n    tab2(){\n        if(this.state.tabIndex==1){\n            return (<div>tab2</div>);\n        }\n    }\n    tab1(){\n        if(this.state.tabIndex==0){\n            return (<div>tab1</div>);\n        }\n    }\n\n\n    render(){\n        return (\n            <Tabset disableHoverAnimation activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n                <Tab>\n                    {::this.tab1()}\n                </Tab>\n                <Tab heading='tab2'>\n                    {::this.tab2()}\n                </Tab>\n                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n                    {::this.tab3()}\n                </Tab>\n                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n                    nadkfnpasknfsaknf\n                </Tab>\n                <Tab heading='tabasjdfnl;adfnaf;adlkf3'>\n                    nadkfnpasknfsaknf\n                </Tab>\n            </Tabset>\n        );\n    }\n}\n\n"
+
+/***/ },
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50124,7 +51030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 638 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50227,7 +51133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 639 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50435,7 +51341,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 640 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50456,6 +51362,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _react2 = _interopRequireDefault(_react);
 
 	var _eagleUi = __webpack_require__(257);
+
+	var _libsLayout = __webpack_require__(646);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -50578,171 +51486,153 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Demo.prototype.render = function render() {
 	        return _react2['default'].createElement(
-	            'div',
-	            { className: 'doc-content' },
+	            _libsLayout.DemoLayout,
+	            { title: '验证控件' },
 	            _react2['default'].createElement(
-	                'h1',
-	                null,
-	                '验证控件'
-	            ),
-	            _react2['default'].createElement(
-	                'h3',
-	                null,
-	                '必填／非必填项'
-	            ),
-	            _react2['default'].createElement(
-	                'div',
-	                { className: 'doc-panel' },
+	                _libsLayout.DemoItem,
+	                { title: '非必填项' },
 	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'doc-code' },
-	                    _react2['default'].createElement('code', null)
-	                ),
-	                _react2['default'].createElement('div', { className: 'doc-demo' })
-	            ),
-	            _react2['default'].createElement(
-	                'div',
-	                { className: 'demo-show' },
-	                _react2['default'].createElement(
-	                    _eagleUi.Panel,
+	                    _libsLayout.CodeShow,
 	                    null,
 	                    _react2['default'].createElement(
-	                        _eagleUi.Grid,
+	                        'code',
 	                        null,
+	                        '我是一段正经的code'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _libsLayout.DemoShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _eagleUi.ValidatorPanel,
+	                        { rules: this.rules, submitElement: '#submit1', direction: 'right', id: 'testFrom', update: this.state.update, submitCallback: this.submit.bind(this) },
 	                        _react2['default'].createElement(
-	                            _eagleUi.Tabset,
+	                            _eagleUi.Row,
 	                            null,
 	                            _react2['default'].createElement(
-	                                _eagleUi.Tab,
-	                                { heading: 'demo1' },
+	                                _eagleUi.Col,
+	                                null,
 	                                _react2['default'].createElement(
-	                                    _eagleUi.Row,
+	                                    _eagleUi.CalendarPanel,
 	                                    null,
-	                                    _react2['default'].createElement(
-	                                        _eagleUi.Col,
-	                                        null,
-	                                        _react2['default'].createElement(
-	                                            _eagleUi.PanelContent,
-	                                            null,
-	                                            _react2['default'].createElement(
-	                                                _eagleUi.RadioGroup,
-	                                                { defaultChecked: this.state.showTab + '', name: 'radio-foot', getValueCallback: this.change.bind(this) },
-	                                                _react2['default'].createElement(_eagleUi.Input, { type: 'radio', label: '非必填项', value: '0' }),
-	                                                _react2['default'].createElement(_eagleUi.Input, { type: 'radio', label: '必填项', value: '1' })
-	                                            )
-	                                        )
-	                                    )
-	                                ),
-	                                _react2['default'].createElement(
-	                                    _eagleUi.Row,
-	                                    null,
-	                                    _react2['default'].createElement(
-	                                        _eagleUi.Col,
-	                                        { sm: 8, end: true },
-	                                        _react2['default'].createElement(
-	                                            _eagleUi.ValidatorPanel,
-	                                            { rules: this.rules, submitElement: '#submit', direction: 'right', id: 'testFrom', update: this.state.update, submitCallback: this.submit.bind(this) },
-	                                            _react2['default'].createElement(
-	                                                _eagleUi.Row,
-	                                                null,
-	                                                _react2['default'].createElement(
-	                                                    _eagleUi.Col,
-	                                                    null,
-	                                                    _react2['default'].createElement(
-	                                                        _eagleUi.PanelContent,
-	                                                        null,
-	                                                        _react2['default'].createElement(
-	                                                            _eagleUi.Row,
-	                                                            null,
-	                                                            _react2['default'].createElement(
-	                                                                _eagleUi.Col,
-	                                                                null,
-	                                                                _react2['default'].createElement(
-	                                                                    _eagleUi.CalendarPanel,
-	                                                                    null,
-	                                                                    _react2['default'].createElement(_eagleUi.Input, { placeholder: '请选择日期', icon: 'calendar', name: 'date', 'data-validate': true })
-	                                                                )
-	                                                            )
-	                                                        ),
-	                                                        this.checktab(),
-	                                                        _react2['default'].createElement(
-	                                                            _eagleUi.Row,
-	                                                            null,
-	                                                            _react2['default'].createElement(
-	                                                                _eagleUi.Col,
-	                                                                null,
-	                                                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请输入手机号码', name: 'number', 'data-validate': true })
-	                                                            )
-	                                                        ),
-	                                                        _react2['default'].createElement(
-	                                                            _eagleUi.Row,
-	                                                            null,
-	                                                            _react2['default'].createElement(
-	                                                                _eagleUi.Col,
-	                                                                null,
-	                                                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请再次确认手机号码', name: 'equalTo', 'data-validate': true })
-	                                                            )
-	                                                        ),
-	                                                        _react2['default'].createElement(
-	                                                            _eagleUi.Row,
-	                                                            null,
-	                                                            _react2['default'].createElement(
-	                                                                _eagleUi.Col,
-	                                                                null,
-	                                                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '最大最小字符10-15', name: 'minlength', 'data-validate': true })
-	                                                            )
-	                                                        ),
-	                                                        _react2['default'].createElement(
-	                                                            _eagleUi.Row,
-	                                                            null,
-	                                                            _react2['default'].createElement(
-	                                                                _eagleUi.Col,
-	                                                                null,
-	                                                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请输入您的email', name: 'email', 'data-validate': true })
-	                                                            )
-	                                                        ),
-	                                                        _react2['default'].createElement(
-	                                                            _eagleUi.Row,
-	                                                            null,
-	                                                            _react2['default'].createElement(
-	                                                                _eagleUi.Col,
-	                                                                null,
-	                                                                _react2['default'].createElement(
-	                                                                    _eagleUi.Button,
-	                                                                    { radius: true, egSize: 'xs', id: 'submit' },
-	                                                                    '点我提交表单'
-	                                                                )
-	                                                            )
-	                                                        )
-	                                                    )
-	                                                )
-	                                            )
-	                                        )
-	                                    )
+	                                    _react2['default'].createElement(_eagleUi.Input, { placeholder: '请选择日期', icon: 'calendar', name: 'date', 'data-validate': true })
 	                                )
-	                            ),
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
 	                            _react2['default'].createElement(
-	                                _eagleUi.Tab,
-	                                { heading: 'demo2' },
+	                                _eagleUi.Col,
+	                                null,
+	                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请输入手机号码', name: 'number', 'data-validate': true })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _eagleUi.Col,
+	                                null,
+	                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请再次确认手机号码', name: 'equalTo', 'data-validate': true })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _eagleUi.Col,
+	                                null,
 	                                _react2['default'].createElement(
-	                                    _eagleUi.PanelContent,
-	                                    null,
-	                                    _react2['default'].createElement(
-	                                        _eagleUi.Row,
-	                                        null,
-	                                        _react2['default'].createElement(
-	                                            _eagleUi.Col,
-	                                            null,
-	                                            _react2['default'].createElement(
-	                                                _eagleUi.Button,
-	                                                { onClick: this.showMask.bind(this) },
-	                                                '弹出验证表单'
-	                                            )
-	                                        )
-	                                    )
+	                                    _eagleUi.Button,
+	                                    { radius: true, egSize: 'xs', id: 'submit1' },
+	                                    '点我提交表单'
 	                                )
 	                            )
 	                        )
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _libsLayout.DemoItem,
+	                { title: '必填项' },
+	                _react2['default'].createElement(
+	                    _libsLayout.CodeShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        'code',
+	                        null,
+	                        '我是一段正经的code'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _libsLayout.DemoShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _eagleUi.ValidatorPanel,
+	                        { rules: this.rules, submitElement: '#submit2', direction: 'right', id: 'testFrom', update: this.state.update, submitCallback: this.submit.bind(this) },
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _eagleUi.Col,
+	                                null,
+	                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请输入姓名', name: 'userName', 'data-validate': true })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _eagleUi.Col,
+	                                null,
+	                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '最大最小字符10-15', name: 'minlength', 'data-validate': true })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _eagleUi.Col,
+	                                null,
+	                                _react2['default'].createElement(_eagleUi.Input, { placeholder: '请输入您的email', name: 'email', 'data-validate': true })
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Row,
+	                            null,
+	                            _react2['default'].createElement(
+	                                _eagleUi.Col,
+	                                null,
+	                                _react2['default'].createElement(
+	                                    _eagleUi.Button,
+	                                    { radius: true, egSize: 'xs', id: 'submit2' },
+	                                    '点我提交表单'
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                _libsLayout.DemoItem,
+	                { title: '弹出验证表单' },
+	                _react2['default'].createElement(
+	                    _libsLayout.CodeShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        'code',
+	                        null,
+	                        '我是一段正经的code'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _libsLayout.DemoShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _eagleUi.Button,
+	                        { onClick: this.showMask.bind(this) },
+	                        '弹出验证表单'
 	                    ),
 	                    _react2['default'].createElement(
 	                        _eagleUi.Dialog,
@@ -50824,8 +51714,266 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Demo;
 	module.exports = exports['default'];
 
+	/*<Panel>
+	 <Grid>
+	 <Tabset>
+	 <Tab heading="demo1">
+	 <Row>
+	 <Col>
+	 <PanelContent>
+	 <RadioGroup defaultChecked={this.state.showTab+''} name="radio-foot" getValueCallback={::this.change}>
+	 <Input  type="radio"  label="非必填项" value="0"  />
+	 <Input  type="radio"  label="必填项" value="1"   />
+	 </RadioGroup>
+	 </PanelContent>
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col sm={8} end>
+	 <ValidatorPanel rules={this.rules} submitElement="#submit" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
+	 <Row>
+	 <Col>
+	 <PanelContent>
+	 <Row>
+	 <Col>
+	 <CalendarPanel>
+	 <Input placeholder="请选择日期" icon="calendar" name="date" data-validate />
+	 </CalendarPanel>
+	  </Col>
+	 </Row>
+	 {this.checktab()}
+	 <Row>
+	 <Col>
+	 <Input placeholder="请输入手机号码" name="number" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="请再次确认手机号码" name="equalTo" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="请输入您的email" name="email" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Button radius egSize="xs" id="submit" >点我提交表单</Button>
+	 </Col>
+	 </Row>
+	 </PanelContent>
+	 </Col>
+	 </Row>
+	  </ValidatorPanel>
+	 </Col>
+	 </Row>
+	 </Tab>
+	 <Tab heading="demo2">
+	 <PanelContent>
+	 <Row>
+	 <Col>
+	 <Button onClick={::this.showMask}>弹出验证表单</Button>
+	 </Col>
+	 </Row>
+	 </PanelContent>
+	 </Tab>
+	 </Tabset>
+	 </Grid>
+	 <Dialog id="demo2" egSize="sm" title="表单验证">
+	 <Grid>
+	 <ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}>
+	 <Row>
+	 <Col>
+	 <Input placeholder="请输入姓名"  name="userName" data-validate />
+	  </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="请输入有效的号码" name="number" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="请输入有效的号码" name="equalTo" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Input placeholder="请输入您的email" name="email" data-validate />
+	 </Col>
+	 </Row>
+	 <Row>
+	 <Col>
+	 <Button radius egSize="xs" id="ssubmit" >点我提交表单</Button>
+	 </Col>
+	 </Row>
+	 </ValidatorPanel>
+	 </Grid>
+	 </Dialog>
+	 </Panel>*/
+
 /***/ },
-/* 641 */
+/* 646 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(43);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(647);
+
+	var DemoLayout = (function (_Component) {
+	    _inherits(DemoLayout, _Component);
+
+	    function DemoLayout(props) {
+	        _classCallCheck(this, DemoLayout);
+
+	        _Component.call(this, props);
+	    }
+
+	    DemoLayout.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'doc-content' },
+	            _react2['default'].createElement(
+	                'h1',
+	                null,
+	                this.props.title
+	            ),
+	            this.props.children
+	        );
+	    };
+
+	    return DemoLayout;
+	})(_react.Component);
+
+	exports.DemoLayout = DemoLayout;
+
+	var DemoItem = (function (_Component2) {
+	    _inherits(DemoItem, _Component2);
+
+	    function DemoItem(props) {
+	        _classCallCheck(this, DemoItem);
+
+	        _Component2.call(this, props);
+	    }
+
+	    DemoItem.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(
+	                'h2',
+	                null,
+	                this.props.title
+	            ),
+	            _react2['default'].createElement(
+	                'div',
+	                { className: 'doc-panel' },
+	                this.props.children
+	            )
+	        );
+	    };
+
+	    return DemoItem;
+	})(_react.Component);
+
+	exports.DemoItem = DemoItem;
+
+	var CodeShow = (function (_Component3) {
+	    _inherits(CodeShow, _Component3);
+
+	    function CodeShow(props) {
+	        _classCallCheck(this, CodeShow);
+
+	        _Component3.call(this, props);
+	        this.state = {
+	            collapse: true
+	        };
+	    }
+
+	    CodeShow.prototype.collapseClick = function collapseClick() {
+	        this.setState({
+	            collapse: !this.state.collapse
+	        });
+	    };
+
+	    CodeShow.prototype.codeClick = function codeClick() {
+	        this.state.collapse && this.setState({
+	            collapse: false
+	        });
+	    };
+
+	    CodeShow.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'doc-code' },
+	            _react2['default'].createElement(
+	                'div',
+	                { className: 'doc-code-content', onClick: this.codeClick.bind(this) },
+	                this.props.children
+	            )
+	        );
+	    };
+
+	    return CodeShow;
+	})(_react.Component);
+
+	exports.CodeShow = CodeShow;
+
+	var DemoShow = (function (_Component4) {
+	    _inherits(DemoShow, _Component4);
+
+	    function DemoShow(props) {
+	        _classCallCheck(this, DemoShow);
+
+	        _Component4.call(this, props);
+	    }
+
+	    DemoShow.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'doc-demo' },
+	            this.props.children
+	        );
+	    };
+
+	    return DemoShow;
+	})(_react.Component);
+
+	exports.DemoShow = DemoShow;
+	/*<a href="javascript:;" className={"doc-code-collapse " + (this.state.collapse ? 'active' : '')} onClick={this.collapseClick.bind(this)}/>*/
+
+/***/ },
+/* 647 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 648 */,
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50914,7 +52062,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 642 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51064,7 +52212,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 643 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51274,7 +52422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 644 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51694,39 +52842,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 645 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by mac on 15/11/4.
-	 */'use strict';exports.__esModule = true;function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _react=__webpack_require__(43);var _react2=_interopRequireDefault(_react);var _egTreeMenu=__webpack_require__(646);var _egTreeMenu2=_interopRequireDefault(_egTreeMenu); //联想功能组件
+	 */'use strict';exports.__esModule = true;function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _react=__webpack_require__(43);var _react2=_interopRequireDefault(_react);var _egTreeMenu=__webpack_require__(654);var _egTreeMenu2=_interopRequireDefault(_egTreeMenu); //联想功能组件
 	var Demo=(function(_Component){_inherits(Demo,_Component);function Demo(props,context){_classCallCheck(this,Demo);_Component.call(this,props,context);this.state = {selected:'',expandNodes:{3:true,4:true,5:true,6:true,7:true,8:true,9:true,10:true,11:true,16:true,10014:true},data:[{"typeId":2,"parentTypeId":0,"typeName":"测试","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000023,"parentTypeId":10005,"typeName":"线上测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000022,"parentTypeId":10005,"typeName":"线上测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000024,"parentTypeId":10005,"typeName":"ppe测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000025,"parentTypeId":10005,"typeName":"beta测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true}],"leaf":false},{"typeId":3,"parentTypeId":0,"typeName":"POI相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10014,"parentTypeId":3,"typeName":"评价评分","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000034,"parentTypeId":10014,"typeName":"美团侧评价","leadingAnswer":"","level":3,"firstOwnerId":37743,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000035,"parentTypeId":10014,"typeName":"点评侧评价","leadingAnswer":"点评评价的恶意差评、炒作的举报和申诉请到<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://trust.dianping.com\" target=\"_blank\">http://trust.dianping.com</a>提交反馈","level":3,"firstOwnerId":20779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000036,"parentTypeId":10014,"typeName":"美团侧星级评分","leadingAnswer":"","level":3,"firstOwnerId":25305,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000037,"parentTypeId":10014,"typeName":"点评侧评分","leadingAnswer":"","level":3,"firstOwnerId":34348,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":1000026,"parentTypeId":10006,"typeName":"门店基本信息/地图报错","leadingAnswer":"\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000027,"parentTypeId":10007,"typeName":"门店营业状态报错","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000028,"parentTypeId":10008,"typeName":"举报重复/拆分/美大关联","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000029,"parentTypeId":10009,"typeName":"门店品牌连锁","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000030,"parentTypeId":10010,"typeName":"举报虚假门店","leadingAnswer":"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000031,"parentTypeId":10011,"typeName":"门店首图展示","leadingAnswer":"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/img\" target=\"_blank\">http://mdc.sankuai.com/web/report/img</a>","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000032,"parentTypeId":10012,"typeName":"门店品类划分","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在MDC门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n以上报错都会在1个工作日内17:00前处理完毕","level":3,"firstOwnerId":37434,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000033,"parentTypeId":10013,"typeName":"门店罚款相关","leadingAnswer":"","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000038,"parentTypeId":10015,"typeName":"其他POI问题","leadingAnswer":"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://bd.hui.dper.com/hui/poi/shop_query\" target=\"_blank\">http://bd.hui.dper.com/hui/poi/shop_query</a>\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a>","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":4,"parentTypeId":0,"typeName":"公私海拜访/任务相关/仪表盘相关/MOMA异常","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000039,"parentTypeId":10016,"typeName":"公私海及拜访相关","leadingAnswer":"1.公海中的门店不能认领。\n公海中商家如不在BD的负责区域内，BD不可认领该门店（无认领按钮），商家是否在BD的负责区域是根据在MDC新建门店时的坐标判断。<br/>\n2.门店不能延期？\n门店进入冻结期后，方可操作延期，望知悉。","level":3,"firstOwnerId":25047,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000040,"parentTypeId":10017,"typeName":"仪表盘相关","leadingAnswer":"1.仪表盘的数据是依据提成计算的逻辑显示相关数据，如对数据有疑问，可登陆报表门户<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://report.mtdata.sankuai.com/\" target=\"_blank\">http://report.mtdata.sankuai.com/</a>查看「新美大-BD业绩汇总（含门店）」并在相应页面提交反馈。","level":3,"firstOwnerId":3163,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000041,"parentTypeId":10018,"typeName":"任务、通知及提醒","leadingAnswer":"1. 对任务/通知功能的业务问题，例如：对任务规则的疑问，希望增减工单，请直接联系任务创建人<br/>\n2. 对任务/通知列表的功能问题，例如：看不到工单，收不到通知等，请在下面提交问题","level":3,"firstOwnerId":4691,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000042,"parentTypeId":10019,"typeName":"MOMA系统异常","leadingAnswer":"此分类仅处理 MOMA 下载/安装/下载过程中遇到的问题<br/>\n使用 MOMA “我的项目” 遇到的问题，请提交至 “合同/上单” 分类下对应的子分类<br/>\nMOMA常见问题及帮助：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=345942954\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=345942954</a>","level":3,"firstOwnerId":4691,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000043,"parentTypeId":10020,"typeName":"CRM系统优化建议","leadingAnswer":"","level":3,"firstOwnerId":25047,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":5,"parentTypeId":0,"typeName":"合同/上单","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10021,"parentTypeId":5,"typeName":"上单相关","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000044,"parentTypeId":10021,"typeName":"上单规则","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000045,"parentTypeId":10021,"typeName":"上单审核问题","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000046,"parentTypeId":10021,"typeName":"上单规则特批","leadingAnswer":"","level":3,"firstOwnerId":29256,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000047,"parentTypeId":10021,"typeName":"确认页面反馈","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000048,"parentTypeId":10021,"typeName":"撰写进度咨询","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000049,"parentTypeId":10021,"typeName":"毛利咨询","leadingAnswer":"","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10022,"parentTypeId":5,"typeName":"上线后修改","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000050,"parentTypeId":10022,"typeName":"合同变更","leadingAnswer":"售后手册：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=71737727\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=71737727</a>","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000051,"parentTypeId":10022,"typeName":"页面修改","leadingAnswer":"上线后页面条款修改标准5.1版：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=73008462\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=73008462</a>","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000052,"parentTypeId":10022,"typeName":"上线后变更审核问题","leadingAnswer":"","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000053,"parentTypeId":10022,"typeName":"top商家页面修改特批","leadingAnswer":"","level":3,"firstOwnerId":2645,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10024,"parentTypeId":5,"typeName":"上单特殊申请","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000055,"parentTypeId":10024,"typeName":"盖章申请","leadingAnswer":"","level":3,"firstOwnerId":6621,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000056,"parentTypeId":10024,"typeName":"甲方合同/甲方文件审核","leadingAnswer":"","level":3,"firstOwnerId":6621,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000057,"parentTypeId":10024,"typeName":"涉黄相关","leadingAnswer":"","level":3,"firstOwnerId":17477,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10025,"parentTypeId":5,"typeName":"餐饮上单系统","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000058,"parentTypeId":10025,"typeName":"新建/修改合同/合作商","leadingAnswer":"新上单系统 <br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=374472408\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=374472408</a>","level":3,"firstOwnerId":37426,"secondOwnerId":17495,"children":[],"leaf":true},{"typeId":1000059,"parentTypeId":10025,"typeName":"新建/修改买单项目","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":33682,"children":[],"leaf":true},{"typeId":1000060,"parentTypeId":10025,"typeName":"新建/修改团购项目","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":7748,"children":[],"leaf":true},{"typeId":1000061,"parentTypeId":10025,"typeName":"财务结算","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":3072,"children":[],"leaf":true},{"typeId":1000062,"parentTypeId":10025,"typeName":"摄影师拍图","leadingAnswer":"项目无法创建拍摄任务，请查看编辑图片信息采写状态是否勾选为“否”。","level":3,"firstOwnerId":37426,"secondOwnerId":25028,"children":[],"leaf":true},{"typeId":1000063,"parentTypeId":10025,"typeName":"商家确认","leadingAnswer":"1、如果商家收不到美团域邮件，请先检查邮箱地址填写是否正确（QQ邮箱250505450@qq.com，写成250505450@qq.om，肯定是收不到的）<br/>\n2、如果是自建的邮箱系统建议合作伙伴或者商户把美团的邮件服务器IP地址添加为白名单。","level":3,"firstOwnerId":37426,"secondOwnerId":25028,"children":[],"leaf":true},{"typeId":1000064,"parentTypeId":10025,"typeName":"其他优化建议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":14549,"children":[],"leaf":true},{"typeId":1000219,"parentTypeId":10025,"typeName":"电子合同","leadingAnswer":"电子合同相关说明 <br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=526713985\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=526713985</a>","level":3,"firstOwnerId":7748,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10026,"parentTypeId":5,"typeName":"非餐上单系统","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000065,"parentTypeId":10026,"typeName":"阿波罗客户协议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":32936,"children":[],"leaf":true},{"typeId":1000066,"parentTypeId":10026,"typeName":"阿波罗验券&团购消费记录","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":28305,"children":[],"leaf":true},{"typeId":1000067,"parentTypeId":10026,"typeName":"阿波罗闪惠消费记录","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true},{"typeId":1000068,"parentTypeId":10026,"typeName":"C端团购展示","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":25865,"children":[],"leaf":true},{"typeId":1000069,"parentTypeId":10026,"typeName":"C端闪惠展示","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true},{"typeId":1000070,"parentTypeId":10026,"typeName":"非餐-阿波罗上单","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":16295,"children":[],"leaf":true}],"leaf":false},{"typeId":1000054,"parentTypeId":10023,"typeName":"纸质合同归档","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":6,"parentTypeId":0,"typeName":"预付/结款/发票","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10027,"parentTypeId":6,"typeName":"预付相关","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000071,"parentTypeId":10027,"typeName":"CBD餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":30093,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000072,"parentTypeId":10027,"typeName":"南中国餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":12234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000073,"parentTypeId":10027,"typeName":"北中国餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":29149,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000074,"parentTypeId":10027,"typeName":"品牌战略餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":8498,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000075,"parentTypeId":10027,"typeName":"坏账反馈追缴","leadingAnswer":"请参考链接<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=525246152\" target=\"_blank\">追款全攻略（点击有惊喜）</a>","level":3,"firstOwnerId":35288,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000076,"parentTypeId":10027,"typeName":"预付余额迁移","leadingAnswer":"请参考链接<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=521633893\" target=\"_blank\">阿波罗系统尾款处理方案</a>","level":3,"firstOwnerId":19782,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000077,"parentTypeId":10027,"typeName":"非餐饮预付问题","leadingAnswer":"如果原美团有预付尾款，请BD及时迁移尾款至阿波罗系统，并在阿波罗系统上单关联消耗，避免产生坏账。","level":3,"firstOwnerId":23366,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000078,"parentTypeId":10027,"typeName":"卖超打款","leadingAnswer":"此分类主要针对点评侧预付卖超打款问题，如果商家认为点评侧打款有疑问（没收到钱）、需要对账，或为美团侧打款问题请优先联系城市运营反馈。城市运营无法解决请将无法解决的问题点写明在提问描述中，选择分类【预付/结款/发票-财务结款】中对应事业部进行反馈","level":3,"firstOwnerId":19782,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10028,"parentTypeId":6,"typeName":"财务结款","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000079,"parentTypeId":10028,"typeName":"CBD打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；<br/>\n2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；<br/>\n3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。<br/>\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000080,"parentTypeId":10028,"typeName":"南中国打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；\n<br/>2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；\n<br/>3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000081,"parentTypeId":10028,"typeName":"北中国打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；\n<br/>2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；\n<br/>3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000082,"parentTypeId":10028,"typeName":"品牌战略打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；<br/>\n2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；<br/>\n3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。<br/>\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000083,"parentTypeId":10028,"typeName":"CBDT+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000084,"parentTypeId":10028,"typeName":"南中国T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000085,"parentTypeId":10028,"typeName":"北中国T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000086,"parentTypeId":10028,"typeName":"品牌战略T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000087,"parentTypeId":10028,"typeName":"CBD财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000088,"parentTypeId":10028,"typeName":"南中国财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000089,"parentTypeId":10028,"typeName":"北中国财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000090,"parentTypeId":10028,"typeName":"品牌战略财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10029,"parentTypeId":6,"typeName":"财务平台","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000091,"parentTypeId":10029,"typeName":"美团侧发票问题（有票）","leadingAnswer":"邮件申请发票模板（适用于申请专票或无法mis后台申请的）<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414</a>","level":3,"firstOwnerId":27657,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000092,"parentTypeId":10029,"typeName":"美团侧发票问题（无票）","leadingAnswer":"邮件申请发票模板（适用于申请专票或无法mis后台申请的）<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414</a>","level":3,"firstOwnerId":27657,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000093,"parentTypeId":10029,"typeName":"点评侧发票问题(特殊case)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000094,"parentTypeId":10029,"typeName":"点评侧发票问题(团购/闪惠/KTV预定佣金发票)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000095,"parentTypeId":10029,"typeName":"点评侧发票问题(上架费霸王餐发票)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000096,"parentTypeId":10029,"typeName":"付款凭证/退票凭证/银行流水等凭证","leadingAnswer":"","level":3,"firstOwnerId":18260,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":7,"parentTypeId":0,"typeName":"商家后台/商家代运营","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10031,"parentTypeId":7,"typeName":"商家维护（中台）","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000101,"parentTypeId":10031,"typeName":"延期相关","leadingAnswer":"","level":3,"firstOwnerId":25107,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000102,"parentTypeId":10031,"typeName":"投诉类问题","leadingAnswer":"","level":3,"firstOwnerId":30879,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000103,"parentTypeId":10031,"typeName":"餐饮品类代运营相关（中台）","leadingAnswer":"","level":3,"firstOwnerId":3684,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000104,"parentTypeId":10031,"typeName":"综合品类代运营相关（中台）","leadingAnswer":"","level":3,"firstOwnerId":5530,"secondOwnerId":35785,"children":[],"leaf":true}],"leaf":false},{"typeId":10032,"parentTypeId":7,"typeName":"商家后台/开店宝","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000105,"parentTypeId":10032,"typeName":"登陆异常","leadingAnswer":"1.检查网络是否正常：尝试重新连接WIFI，或重启路由器，或使用手机网络登录。<br/>\n2.若页面显示有问题，或按钮点击后无反应，可能为电脑IE浏览器版本过低导致，请尝试下载谷歌浏览器<br/>\n3.找回密码时，若发现手机号不正确，请联系业务人员（BD）在后台修改合同中的甲方联系人手机号，若有多个合同，请全部修改正确。<br/>\n4.密码频繁被他人修改，可能是因为商家开通了其他业务（如外卖），两个业务的商家负责人共用同一个账号（互相改密码），请商家核实确认，内部沟通。","level":3,"firstOwnerId":37426,"secondOwnerId":32411,"children":[],"leaf":true},{"typeId":1000106,"parentTypeId":10032,"typeName":"团购券验证问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20812,"children":[],"leaf":true},{"typeId":1000107,"parentTypeId":10032,"typeName":"买单订单问题","leadingAnswer":"优惠买单、闪惠问题BD<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://bd.hui.dper.com/hui/welcome\" target=\"_blank\">自助工具</a>（快速解决买单常见问题哦）","level":3,"firstOwnerId":37426,"secondOwnerId":28212,"children":[],"leaf":true},{"typeId":1000108,"parentTypeId":10032,"typeName":"经营数据问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":29351,"children":[],"leaf":true},{"typeId":1000109,"parentTypeId":10032,"typeName":"口碑管理问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":29351,"children":[],"leaf":true},{"typeId":1000110,"parentTypeId":10032,"typeName":"餐饮商户通问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20825,"children":[],"leaf":true},{"typeId":1000111,"parentTypeId":10032,"typeName":"其它非财务问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":7074,"children":[],"leaf":true},{"typeId":1000112,"parentTypeId":10032,"typeName":"CBD财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":2501,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000113,"parentTypeId":10032,"typeName":"北中国财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":28446,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000114,"parentTypeId":10032,"typeName":"南中国财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":18779,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000115,"parentTypeId":10032,"typeName":"品牌战略财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":2501,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000116,"parentTypeId":10032,"typeName":"银行账号管理","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":3072,"children":[],"leaf":true},{"typeId":1000117,"parentTypeId":10032,"typeName":"自助上单","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":31079,"children":[],"leaf":true},{"typeId":1000118,"parentTypeId":10032,"typeName":"自助修改（页面相关）","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":5577,"children":[],"leaf":true}],"leaf":false},{"typeId":1000221,"parentTypeId":10030,"typeName":"商服","leadingAnswer":"","level":3,"firstOwnerId":3100,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":8,"parentTypeId":0,"typeName":"页面展示/排序","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10033,"parentTypeId":8,"typeName":"闪惠买单展示","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000119,"parentTypeId":10033,"typeName":"页面相关（手机端）","leadingAnswer":"优惠买单自查方法<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://news.sankuai.com/pages/viewpage.action?pageId=42206876\" target=\"_blank\">http://news.sankuai.com/pages/viewpage.action?pageId=42206876</a>","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true}],"leaf":false},{"typeId":10034,"parentTypeId":8,"typeName":"手机端","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000120,"parentTypeId":10034,"typeName":"餐饮品类展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":2904,"children":[],"leaf":true},{"typeId":1000121,"parentTypeId":10034,"typeName":"综合品类展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":25865,"children":[],"leaf":true}],"leaf":false},{"typeId":10035,"parentTypeId":8,"typeName":"PC端","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000122,"parentTypeId":10035,"typeName":"美团侧展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":20901,"children":[],"leaf":true},{"typeId":1000123,"parentTypeId":10035,"typeName":"新增/修改品类相关（PC端+手机端）","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":46,"children":[],"leaf":true},{"typeId":1000124,"parentTypeId":10035,"typeName":"点评侧展示异常","leadingAnswer":"项目搜索不到自查方法<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":5256,"children":[],"leaf":true}],"leaf":false},{"typeId":10036,"parentTypeId":8,"typeName":"搜索排序","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000125,"parentTypeId":10036,"typeName":"美团侧搜索","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":17494,"children":[],"leaf":true},{"typeId":1000126,"parentTypeId":10036,"typeName":"美团侧排序","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":17494,"children":[],"leaf":true},{"typeId":1000127,"parentTypeId":10036,"typeName":"点评侧搜索-商户—搜不到商户","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000128,"parentTypeId":10036,"typeName":"点评侧搜索-商户—使已关商户搜索不到","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000129,"parentTypeId":10036,"typeName":"点评侧搜索-商户—商户排序靠后","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000130,"parentTypeId":10036,"typeName":"点评侧搜索-商户—搜索框下拉提示有误","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000131,"parentTypeId":10036,"typeName":"点评侧搜索-商户—添加关键词标签","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000132,"parentTypeId":10036,"typeName":"点评侧搜索-商户—列表页与商户页不一致","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000133,"parentTypeId":10036,"typeName":"点评侧搜索-商户—取消推广大拇指标识","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000134,"parentTypeId":10036,"typeName":"点评侧搜索-团购—搜不到团单","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000135,"parentTypeId":10036,"typeName":"点评侧搜索-团购—团单排序靠后","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":9,"parentTypeId":0,"typeName":"消费者购买/退款/投诉问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10045,"parentTypeId":9,"typeName":"购买支付","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000144,"parentTypeId":10045,"typeName":"团购订单/发码","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20812,"children":[],"leaf":true},{"typeId":1000145,"parentTypeId":10045,"typeName":"买单订单","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":18246,"children":[],"leaf":true},{"typeId":1000146,"parentTypeId":10045,"typeName":"支付收银台问题－支付方式不全","leadingAnswer":"支付方式展示不全： \n美团会根据各支付通道的质量、限额、用户的使用场景等具体情况，为用户提供较为稳定的支付方式。如果某支付方式未展示，可能是该支付方式在该场景下使用不顺畅，建议您选择其他支付方式进行支付。","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true},{"typeId":1000147,"parentTypeId":10045,"typeName":"支付收银台问题-重复支付","leadingAnswer":"重复支付：<br/>\n一般情况下，系统会自动处理并原路退回至支付所用的账户，请耐心等待。如长时间过去仍有异常情况，请继续提问","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true},{"typeId":1000148,"parentTypeId":10045,"typeName":"支付收银台问题－某支付方式无法支付","leadingAnswer":"某支付方式无法支付：<br/>\n请确认该支付方式是否为置灰不可点击，或者有红色文字提示：<br/>\n（1）若有，则该支付方式正在维护中，暂时不可使用，可以稍后再试，或者选择其他支付方式；<br/>\n（2）若无，则可能是超出了该用户在该支付方式的支付限额（分为单笔限额、单日限额和单月限额三种）。","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true}],"leaf":false},{"typeId":1000136,"parentTypeId":10037,"typeName":"退款异议闪惠买单","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000137,"parentTypeId":10038,"typeName":"退款异议餐饮团购","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000138,"parentTypeId":10039,"typeName":"退款异议活动综合","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000139,"parentTypeId":10040,"typeName":"个案客诉反馈沟通-闪惠买单","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000140,"parentTypeId":10041,"typeName":"个案客诉反馈沟通-餐饮团购","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000141,"parentTypeId":10042,"typeName":"个案客诉反馈沟通-综合活动","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000142,"parentTypeId":10043,"typeName":"被操作不可购买","leadingAnswer":"","level":3,"firstOwnerId":37429,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000143,"parentTypeId":10044,"typeName":"批量退款咨询","leadingAnswer":"","level":3,"firstOwnerId":37429,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10,"parentTypeId":0,"typeName":"用户活动/专题活动/物料资源","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10046,"parentTypeId":10,"typeName":"商户自促","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000149,"parentTypeId":10046,"typeName":"自促双平台展示问题","leadingAnswer":"1查看项目的售卖渠道是否为“允许在美团和点评双平台售卖”，若不是请自行修改<br/>\n2若是，请核实商家后台是否设置有效的促销活动（对应项目id的促销活动为“活动中”）","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000150,"parentTypeId":10046,"typeName":"自促名店问题","leadingAnswer":"1查看该品牌在“新美大-头腰商家品牌攻防报表\"\"内上月交易额是否满足该城市划线<br/>\n2查看该项目的在线时间、美团价及评分是否满足名店准入规则<br/>\n3查看该促销活动设置的促销份数（促销量-已促销量）、促销折扣、促销时间是否满足名店参与规则<br/>\n4查看商家后台-促销活动列表页内，有无名店标签及其状态<br/>\n5查看商家后台内“操作历史”，当日0-16点修改内容次日生效","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000151,"parentTypeId":10046,"typeName":"自促天天特价问题","leadingAnswer":"1查看该项目的品类信息、在线时间是否满足天天特价准入规则<br/>\n2查看该项目对应的促销活动设置的促销份数（促销量-已促销量）、促销折扣、促销时间是否满足天天特价规则<br/>\n3查看该城市天天特价展位是否开启（须有8个及以上满足以上规则的项目才可开通展位）<br/>\n4查看该城市天天特价专题内已展示项目数（最多展示50个项目）","level":3,"firstOwnerId":20358,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000152,"parentTypeId":10046,"typeName":"普通自促问题","leadingAnswer":"1自促活跃门店数异常，请在报表右侧报错<br/>\n2调价后，无法设置促销活动，请核实页面销量是否满足【闪电上单】-【发布信息】内阶梯销量要求<br/>\n3后台提示暂停中，请核实后台设置页内促销时间","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10047,"parentTypeId":10,"typeName":"新客活动——团购","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000153,"parentTypeId":10047,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000154,"parentTypeId":10047,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000155,"parentTypeId":10047,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10048,"parentTypeId":10,"typeName":"新客活动——闪惠买单","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000156,"parentTypeId":10048,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000157,"parentTypeId":10048,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000158,"parentTypeId":10048,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10049,"parentTypeId":10,"typeName":"老客活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000159,"parentTypeId":10049,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000160,"parentTypeId":10049,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000161,"parentTypeId":10049,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10050,"parentTypeId":10,"typeName":"固定专题活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000162,"parentTypeId":10050,"typeName":"CBD名店大牌","leadingAnswer":"","level":3,"firstOwnerId":27075,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000163,"parentTypeId":10050,"typeName":"南中国名店大牌","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000164,"parentTypeId":10050,"typeName":"北中国名店大牌","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000165,"parentTypeId":10050,"typeName":"CBD天天特价","leadingAnswer":"","level":3,"firstOwnerId":27075,"secondOwnerId":20358,"children":[],"leaf":true},{"typeId":1000166,"parentTypeId":10050,"typeName":"北中国天天特价","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":20358,"children":[],"leaf":true},{"typeId":1000167,"parentTypeId":10050,"typeName":"南中国天天特价","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":20358,"children":[],"leaf":true}],"leaf":false},{"typeId":10051,"parentTypeId":10,"typeName":"节假日活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000168,"parentTypeId":10051,"typeName":"CBD节假日活动","leadingAnswer":"","level":3,"firstOwnerId":0,"secondOwnerId":32753,"children":[],"leaf":true},{"typeId":1000169,"parentTypeId":10051,"typeName":"南中国节假日活动","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":32753,"children":[],"leaf":true},{"typeId":1000170,"parentTypeId":10051,"typeName":"北中国节假日活动","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":32753,"children":[],"leaf":true}],"leaf":false},{"typeId":10052,"parentTypeId":10,"typeName":"资源申请","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000171,"parentTypeId":10052,"typeName":"霸王餐相关咨询","leadingAnswer":"","level":3,"firstOwnerId":24068,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000172,"parentTypeId":10052,"typeName":"城市专题制作","leadingAnswer":"","level":3,"firstOwnerId":14115,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10053,"parentTypeId":10,"typeName":"城市物料","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000173,"parentTypeId":10053,"typeName":"城市物料设计需求/物料","leadingAnswer":"","level":3,"firstOwnerId":28107,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000174,"parentTypeId":10053,"typeName":"POS","leadingAnswer":"","level":3,"firstOwnerId":3805,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":11,"parentTypeId":0,"typeName":"罚款相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000175,"parentTypeId":10054,"typeName":"包销罚款与返款","leadingAnswer":"关于罚款返款：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=441096006\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=441096006</a>\n罚款返款规则：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918032\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918032</a>","level":3,"firstOwnerId":35288,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000176,"parentTypeId":10055,"typeName":"陪访拜访罚款","leadingAnswer":"1、怀孕、转岗等情况报备需邮件到sales.fakuan@meituan.com报备，邮件需向上两级领导确认后方可减免<br/>\n邮件格式：<br/>\n主题：【罚款报备申诉】<br/>\n报备人姓名：<br/>\n报备人工号：<br/>\n报备原因：<br/>\n具体减免情况：如需减免工作日需说明具体减免几天，如需减免陪访拜访标准需说明具体减免为多少个","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":12,"parentTypeId":0,"typeName":"销售数据报表","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000177,"parentTypeId":10056,"typeName":"报表数据有误","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000178,"parentTypeId":10057,"typeName":"报表界面展示优化建议","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000179,"parentTypeId":10058,"typeName":"新的报表需求","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":13,"parentTypeId":0,"typeName":"公关法务问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10059,"parentTypeId":13,"typeName":"法务问题","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000180,"parentTypeId":10059,"typeName":"知识产权/合同/劳动关系等民事争议或诉讼、包销款催收","leadingAnswer":"","level":3,"firstOwnerId":3045,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000181,"parentTypeId":10059,"typeName":"分公司用印","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000182,"parentTypeId":10059,"typeName":"分公司注册、变更、注销等","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000183,"parentTypeId":10059,"typeName":"法律文件/授权","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000184,"parentTypeId":10059,"typeName":"证明","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000185,"parentTypeId":10059,"typeName":"资质证照申请","leadingAnswer":"","level":3,"firstOwnerId":13722,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000186,"parentTypeId":10059,"typeName":"租房、装修、中介、物业合同审核","leadingAnswer":"自检<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=513194769\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=513194769</a>","level":3,"firstOwnerId":13985,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000187,"parentTypeId":10059,"typeName":"租房、装修、中介、物业等事项咨询","leadingAnswer":"","level":3,"firstOwnerId":13985,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000188,"parentTypeId":10059,"typeName":"费用支出类合同审核","leadingAnswer":"1、邮件预审→审核通过后提交OA→寄回总部盖章→OA合同付款。（若合同直接提交OA审核系统，如有不符合要求的地方需要驳回的话，会一直驳回到申请人，即前面各审批人需要不停的重复审批，所以需要城市先提交邮件预审合同内容，避免OA流程中反复驳回、申请，降低效率）\n<br/>2、请先在貔貅系统预算申请审核通过方案后，发送邮件至legal.ddcy@meituan.com，抄送zhangmin12.发送规则:<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=355194785\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=355194785</a>。\n<br/>3、 OA审核通过后，总部合同对接人会跟进合同后续的打印、盖章、邮寄等事宜；","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000189,"parentTypeId":10059,"typeName":"与商户间业务合同审核","leadingAnswer":"1、发邮件至baoxiao@meituan.com，由包销组审核包销方案，审批通过后，包销组会根据合同情况给各部门审核同学发送（主要指总部品控bs.shenhe@meituan.com、法务legal.ddcy@meituan.com、财务），待所需部门提出意见并修改审核通过后，包销商家合同审核流程方告完成；完成后，总控品控会跟进合同后续的打印、盖章、邮寄等事宜；\n<br/>2、发邮件至bs.shenhe@meituan.com（邮件发送规范：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=39161249\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=39161249</a>），总部品控审核通过后，会发送给给各部门审核同学发送（主要指：法务legal.ddcy@meituan.com、财务jiesuan@meituan.com），待所需部门提出意见并修改审核通过后，非包销商家合同审核流程方告完成；完成后，总控品控会跟进合同后续的打印、盖章、邮寄等事宜；\n<br/>3、甲方（即非标）合同、补充协议各类合同性质的特殊文件（不区分包销和非包销），请发送至：sys_ba@dianping.com；\n<br/>4、甲方（即非标）合同、补充协议各类合同性质的特殊文件，请发送至：sqt-service@dianping.com","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000190,"parentTypeId":10059,"typeName":"其它业务相关法律问题咨询","leadingAnswer":"","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10060,"parentTypeId":13,"typeName":"公共关系","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000191,"parentTypeId":10060,"typeName":"地方正面传播需求（商户合作、促销活动等）","leadingAnswer":"1、可申请包装为典型案例并在媒体进行传播的商户要求：<br/>\n对美团大众点评十分认可，销量较高，有一定的知名度，对互联网营销价值、口碑管理、闪惠、买单提升效率等有较深的认识，商家负责人表达能力强且愿意接受采访。<br/>\n2、申请商家案例传播需要的资料如下：<br/>\n商家基本情况及品牌介绍，何时与美团点评进行合作，目前的销量如何，BD层面了解到的商家对于互联网的认识及如何利用。<br/>\n3、申请商家案例传播的流程如下：<br/>\n城市经过上述评估后找到总部公关部对接人，经过评估确定可以采访，城市协助总部同事采访商家。<br/>\n4、商家采访后会在以下渠道进行宣传：<br/>\n互联网、经济等相关的媒体渠道，视具体产出的内容而定。商家案例可以作为对外传播的素材积累，提供给感兴趣的媒体。","level":3,"firstOwnerId":17245,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000192,"parentTypeId":10060,"typeName":"地方媒体采访需求（商户、用户相关危机负面）","leadingAnswer":"","level":3,"firstOwnerId":30892,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000193,"parentTypeId":10060,"typeName":"竞对攻防、高管专访","leadingAnswer":"","level":3,"firstOwnerId":15830,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000194,"parentTypeId":10060,"typeName":"微信订阅号新闻、活动推广等","leadingAnswer":"“美团网”订阅号，定位为新闻号。核心职能为，发布美团相关新闻，扩散美团正面信息。<br/><br/>\n\n1、固定三条模板推送，以转载为主：【头条】“聚焦”版块，为美团相关新闻，稿件需经公关部把关；<br/>\n2、【次条】“业内”版块，转载我司相关行业的业内新闻；<br/>\n3、【三条】“活动”或“前沿”版块，“前沿”为行业前沿信息，“活动”版块可以支持业务线活动；<br/>\n4、【订阅号的排期】根据头条美团相关新闻发布需求来定，如无特殊情况，时间固定在下午17：00-18:00。","level":3,"firstOwnerId":12871,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000195,"parentTypeId":10060,"typeName":"微博推广、投诉、举报等","leadingAnswer":"","level":3,"firstOwnerId":28655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000196,"parentTypeId":10060,"typeName":"微博品牌合作","leadingAnswer":"","level":3,"firstOwnerId":33748,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000197,"parentTypeId":10060,"typeName":"一元夺宝（抽奖单）","leadingAnswer":"","level":3,"firstOwnerId":26318,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":14,"parentTypeId":0,"typeName":"业务支持相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10061,"parentTypeId":14,"typeName":"风控/刷单","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000198,"parentTypeId":10061,"typeName":"大型活动风控","leadingAnswer":"","level":3,"firstOwnerId":12861,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000199,"parentTypeId":10061,"typeName":"商家购买信息存疑反馈/商家刷单","leadingAnswer":"","level":3,"firstOwnerId":29059,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10062,"parentTypeId":14,"typeName":"新开站/分区调整/联络点/殖民地","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000200,"parentTypeId":10062,"typeName":"页面点亮及相关咨询","leadingAnswer":"","level":3,"firstOwnerId":2250,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000201,"parentTypeId":10062,"typeName":"联络点申请审批及相关咨询","leadingAnswer":"1、联络点相关操作流程及申请方式可查看：<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=86366754\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=86366754</a><br/>\n2、联络点申请及各类调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000202,"parentTypeId":10062,"typeName":"殖民地申请审批及相关咨询","leadingAnswer":"1、殖民地相关操作流程及申请方式可查看：<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=100829611\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=100829611</a><br/>\n2、殖民地申请及各类调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000203,"parentTypeId":10062,"typeName":"城市/区域分区审批","leadingAnswer":"1、城市分区流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266474\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266474</a><br/>\n2、城市合并流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266150\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266150</a><br/>\n3、城市边界调整流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266009\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266009</a><br/>\n4、城市分区、合并、边界调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000204,"parentTypeId":10062,"typeName":"主站开站流程推进及相关咨询","leadingAnswer":"现不支持新开主站","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":1000205,"parentTypeId":10063,"typeName":"城市租房/换房/续租","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000206,"parentTypeId":10064,"typeName":"摄影师相关问题","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000207,"parentTypeId":10065,"typeName":"运营团队管理","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000208,"parentTypeId":10066,"typeName":"BD或城市支撑团队违规或失职投诉","leadingAnswer":"","level":3,"firstOwnerId":29212,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":15,"parentTypeId":0,"typeName":"优化建议/其他问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10067,"parentTypeId":15,"typeName":"优化建议","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000209,"parentTypeId":10067,"typeName":"公司制度意见建议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000210,"parentTypeId":10067,"typeName":"系统功能优化意见","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000211,"parentTypeId":10067,"typeName":"吐槽","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10068,"parentTypeId":15,"typeName":"城市选择错误分类","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000212,"parentTypeId":10068,"typeName":"重新分配","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10069,"parentTypeId":15,"typeName":"无流程/无对接问题","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000213,"parentTypeId":10069,"typeName":"问题反馈","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":16,"parentTypeId":0,"typeName":"推广业务","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000214,"parentTypeId":10070,"typeName":"财务收款/点金/开票","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000215,"parentTypeId":10071,"typeName":"推广方案录入审批","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000216,"parentTypeId":10072,"typeName":"账号密码","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000217,"parentTypeId":10073,"typeName":"推广通","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000218,"parentTypeId":10074,"typeName":"其他推广业务问题","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}]};}Demo.prototype.render = function render(){var self=this;return _react2['default'].createElement('div',null,_react2['default'].createElement('button',{onClick:function(){console.log(self.refs.tm.getExpandNodes());}},'check me'),_react2['default'].createElement(_egTreeMenu2['default'],{ref:'tm',clickCallback:function(nodeId,type){console.log(nodeId,type);self.setState({selected:nodeId});},selected:self.state.selected,data:this.state.data,expandNodes:this.state.expandNodes}));};return Demo;})(_react.Component);exports['default'] = Demo;module.exports = exports['default'];
 
 /***/ },
-/* 646 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	__webpack_require__(647);
+	__webpack_require__(655);
 
-	var _Tree = __webpack_require__(649);
+	var _Tree = __webpack_require__(657);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
 	module.exports = _Tree2['default'];
 
 /***/ },
-/* 647 */
+/* 655 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 648 */,
-/* 649 */
+/* 656 */,
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51745,7 +52893,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NodeJs = __webpack_require__(650);
+	var _NodeJs = __webpack_require__(658);
 
 	var _NodeJs2 = _interopRequireDefault(_NodeJs);
 
@@ -51856,7 +53004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 650 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51931,26 +53079,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 651 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule = true;function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _react=__webpack_require__(43);var _react2=_interopRequireDefault(_react);var _egDropTree=__webpack_require__(652);var _egDropTree2=_interopRequireDefault(_egDropTree);var Demo=(function(_Component){_inherits(Demo,_Component);function Demo(props,context){_classCallCheck(this,Demo);_Component.call(this,props,context);this.state = {mockMultiDropData:[],selected:'1000034'};}Demo.prototype.componentDidMount = function componentDidMount(){var self=this;setTimeout(function(){self.setState({mockMultiDropData:[{"typeId":2,"parentTypeId":0,"typeName":"测试","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000023,"parentTypeId":10005,"typeName":"线上测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000022,"parentTypeId":10005,"typeName":"线上测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000024,"parentTypeId":10005,"typeName":"ppe测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000025,"parentTypeId":10005,"typeName":"beta测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true}],"leaf":false},{"typeId":3,"parentTypeId":0,"typeName":"POI相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10014,"parentTypeId":3,"typeName":"评价评分","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000034,"parentTypeId":10014,"typeName":"美团侧评价","leadingAnswer":"","level":3,"firstOwnerId":37743,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000035,"parentTypeId":10014,"typeName":"点评侧评价","leadingAnswer":"点评评价的恶意差评、炒作的举报和申诉请到<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://trust.dianping.com\" target=\"_blank\">http://trust.dianping.com</a>提交反馈","level":3,"firstOwnerId":20779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000036,"parentTypeId":10014,"typeName":"美团侧星级评分","leadingAnswer":"","level":3,"firstOwnerId":25305,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000037,"parentTypeId":10014,"typeName":"点评侧评分","leadingAnswer":"","level":3,"firstOwnerId":34348,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":1000026,"parentTypeId":10006,"typeName":"门店基本信息/地图报错","leadingAnswer":"\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000027,"parentTypeId":10007,"typeName":"门店营业状态报错","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000028,"parentTypeId":10008,"typeName":"举报重复/拆分/美大关联","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000029,"parentTypeId":10009,"typeName":"门店品牌连锁","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000030,"parentTypeId":10010,"typeName":"举报虚假门店","leadingAnswer":"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000031,"parentTypeId":10011,"typeName":"门店首图展示","leadingAnswer":"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/img\" target=\"_blank\">http://mdc.sankuai.com/web/report/img</a>","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000032,"parentTypeId":10012,"typeName":"门店品类划分","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在MDC门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n以上报错都会在1个工作日内17:00前处理完毕","level":3,"firstOwnerId":37434,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000033,"parentTypeId":10013,"typeName":"门店罚款相关","leadingAnswer":"","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000038,"parentTypeId":10015,"typeName":"其他POI问题","leadingAnswer":"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://bd.hui.dper.com/hui/poi/shop_query\" target=\"_blank\">http://bd.hui.dper.com/hui/poi/shop_query</a>\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a>","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":4,"parentTypeId":0,"typeName":"公私海拜访/任务相关/仪表盘相关/MOMA异常","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000039,"parentTypeId":10016,"typeName":"公私海及拜访相关","leadingAnswer":"1.公海中的门店不能认领。\n公海中商家如不在BD的负责区域内，BD不可认领该门店（无认领按钮），商家是否在BD的负责区域是根据在MDC新建门店时的坐标判断。<br/>\n2.门店不能延期？\n门店进入冻结期后，方可操作延期，望知悉。","level":3,"firstOwnerId":25047,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000040,"parentTypeId":10017,"typeName":"仪表盘相关","leadingAnswer":"1.仪表盘的数据是依据提成计算的逻辑显示相关数据，如对数据有疑问，可登陆报表门户<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://report.mtdata.sankuai.com/\" target=\"_blank\">http://report.mtdata.sankuai.com/</a>查看「新美大-BD业绩汇总（含门店）」并在相应页面提交反馈。","level":3,"firstOwnerId":3163,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000041,"parentTypeId":10018,"typeName":"任务、通知及提醒","leadingAnswer":"1. 对任务/通知功能的业务问题，例如：对任务规则的疑问，希望增减工单，请直接联系任务创建人<br/>\n2. 对任务/通知列表的功能问题，例如：看不到工单，收不到通知等，请在下面提交问题","level":3,"firstOwnerId":4691,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000042,"parentTypeId":10019,"typeName":"MOMA系统异常","leadingAnswer":"此分类仅处理 MOMA 下载/安装/下载过程中遇到的问题<br/>\n使用 MOMA “我的项目” 遇到的问题，请提交至 “合同/上单” 分类下对应的子分类<br/>\nMOMA常见问题及帮助：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=345942954\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=345942954</a>","level":3,"firstOwnerId":4691,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000043,"parentTypeId":10020,"typeName":"CRM系统优化建议","leadingAnswer":"","level":3,"firstOwnerId":25047,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":5,"parentTypeId":0,"typeName":"合同/上单","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10021,"parentTypeId":5,"typeName":"上单相关","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000044,"parentTypeId":10021,"typeName":"上单规则","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000045,"parentTypeId":10021,"typeName":"上单审核问题","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000046,"parentTypeId":10021,"typeName":"上单规则特批","leadingAnswer":"","level":3,"firstOwnerId":29256,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000047,"parentTypeId":10021,"typeName":"确认页面反馈","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000048,"parentTypeId":10021,"typeName":"撰写进度咨询","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000049,"parentTypeId":10021,"typeName":"毛利咨询","leadingAnswer":"","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10022,"parentTypeId":5,"typeName":"上线后修改","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000050,"parentTypeId":10022,"typeName":"合同变更","leadingAnswer":"售后手册：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=71737727\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=71737727</a>","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000051,"parentTypeId":10022,"typeName":"页面修改","leadingAnswer":"上线后页面条款修改标准5.1版：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=73008462\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=73008462</a>","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000052,"parentTypeId":10022,"typeName":"上线后变更审核问题","leadingAnswer":"","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000053,"parentTypeId":10022,"typeName":"top商家页面修改特批","leadingAnswer":"","level":3,"firstOwnerId":2645,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10024,"parentTypeId":5,"typeName":"上单特殊申请","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000055,"parentTypeId":10024,"typeName":"盖章申请","leadingAnswer":"","level":3,"firstOwnerId":6621,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000056,"parentTypeId":10024,"typeName":"甲方合同/甲方文件审核","leadingAnswer":"","level":3,"firstOwnerId":6621,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000057,"parentTypeId":10024,"typeName":"涉黄相关","leadingAnswer":"","level":3,"firstOwnerId":17477,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10025,"parentTypeId":5,"typeName":"餐饮上单系统","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000058,"parentTypeId":10025,"typeName":"新建/修改合同/合作商","leadingAnswer":"新上单系统 <br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=374472408\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=374472408</a>","level":3,"firstOwnerId":37426,"secondOwnerId":17495,"children":[],"leaf":true},{"typeId":1000059,"parentTypeId":10025,"typeName":"新建/修改买单项目","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":33682,"children":[],"leaf":true},{"typeId":1000060,"parentTypeId":10025,"typeName":"新建/修改团购项目","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":7748,"children":[],"leaf":true},{"typeId":1000061,"parentTypeId":10025,"typeName":"财务结算","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":3072,"children":[],"leaf":true},{"typeId":1000062,"parentTypeId":10025,"typeName":"摄影师拍图","leadingAnswer":"项目无法创建拍摄任务，请查看编辑图片信息采写状态是否勾选为“否”。","level":3,"firstOwnerId":37426,"secondOwnerId":25028,"children":[],"leaf":true},{"typeId":1000063,"parentTypeId":10025,"typeName":"商家确认","leadingAnswer":"1、如果商家收不到美团域邮件，请先检查邮箱地址填写是否正确（QQ邮箱250505450@qq.com，写成250505450@qq.om，肯定是收不到的）<br/>\n2、如果是自建的邮箱系统建议合作伙伴或者商户把美团的邮件服务器IP地址添加为白名单。","level":3,"firstOwnerId":37426,"secondOwnerId":25028,"children":[],"leaf":true},{"typeId":1000064,"parentTypeId":10025,"typeName":"其他优化建议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":14549,"children":[],"leaf":true},{"typeId":1000219,"parentTypeId":10025,"typeName":"电子合同","leadingAnswer":"电子合同相关说明 <br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=526713985\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=526713985</a>","level":3,"firstOwnerId":7748,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10026,"parentTypeId":5,"typeName":"非餐上单系统","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000065,"parentTypeId":10026,"typeName":"阿波罗客户协议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":32936,"children":[],"leaf":true},{"typeId":1000066,"parentTypeId":10026,"typeName":"阿波罗验券&团购消费记录","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":28305,"children":[],"leaf":true},{"typeId":1000067,"parentTypeId":10026,"typeName":"阿波罗闪惠消费记录","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true},{"typeId":1000068,"parentTypeId":10026,"typeName":"C端团购展示","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":25865,"children":[],"leaf":true},{"typeId":1000069,"parentTypeId":10026,"typeName":"C端闪惠展示","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true},{"typeId":1000070,"parentTypeId":10026,"typeName":"非餐-阿波罗上单","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":16295,"children":[],"leaf":true}],"leaf":false},{"typeId":1000054,"parentTypeId":10023,"typeName":"纸质合同归档","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":6,"parentTypeId":0,"typeName":"预付/结款/发票","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10027,"parentTypeId":6,"typeName":"预付相关","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000071,"parentTypeId":10027,"typeName":"CBD餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":30093,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000072,"parentTypeId":10027,"typeName":"南中国餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":12234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000073,"parentTypeId":10027,"typeName":"北中国餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":29149,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000074,"parentTypeId":10027,"typeName":"品牌战略餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":8498,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000075,"parentTypeId":10027,"typeName":"坏账反馈追缴","leadingAnswer":"请参考链接<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=525246152\" target=\"_blank\">追款全攻略（点击有惊喜）</a>","level":3,"firstOwnerId":35288,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000076,"parentTypeId":10027,"typeName":"预付余额迁移","leadingAnswer":"请参考链接<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=521633893\" target=\"_blank\">阿波罗系统尾款处理方案</a>","level":3,"firstOwnerId":19782,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000077,"parentTypeId":10027,"typeName":"非餐饮预付问题","leadingAnswer":"如果原美团有预付尾款，请BD及时迁移尾款至阿波罗系统，并在阿波罗系统上单关联消耗，避免产生坏账。","level":3,"firstOwnerId":23366,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000078,"parentTypeId":10027,"typeName":"卖超打款","leadingAnswer":"此分类主要针对点评侧预付卖超打款问题，如果商家认为点评侧打款有疑问（没收到钱）、需要对账，或为美团侧打款问题请优先联系城市运营反馈。城市运营无法解决请将无法解决的问题点写明在提问描述中，选择分类【预付/结款/发票-财务结款】中对应事业部进行反馈","level":3,"firstOwnerId":19782,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10028,"parentTypeId":6,"typeName":"财务结款","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000079,"parentTypeId":10028,"typeName":"CBD打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；<br/>\n2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；<br/>\n3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。<br/>\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000080,"parentTypeId":10028,"typeName":"南中国打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；\n<br/>2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；\n<br/>3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000081,"parentTypeId":10028,"typeName":"北中国打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；\n<br/>2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；\n<br/>3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000082,"parentTypeId":10028,"typeName":"品牌战略打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；<br/>\n2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；<br/>\n3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。<br/>\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000083,"parentTypeId":10028,"typeName":"CBDT+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000084,"parentTypeId":10028,"typeName":"南中国T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000085,"parentTypeId":10028,"typeName":"北中国T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000086,"parentTypeId":10028,"typeName":"品牌战略T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000087,"parentTypeId":10028,"typeName":"CBD财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000088,"parentTypeId":10028,"typeName":"南中国财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000089,"parentTypeId":10028,"typeName":"北中国财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000090,"parentTypeId":10028,"typeName":"品牌战略财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10029,"parentTypeId":6,"typeName":"财务平台","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000091,"parentTypeId":10029,"typeName":"美团侧发票问题（有票）","leadingAnswer":"邮件申请发票模板（适用于申请专票或无法mis后台申请的）<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414</a>","level":3,"firstOwnerId":27657,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000092,"parentTypeId":10029,"typeName":"美团侧发票问题（无票）","leadingAnswer":"邮件申请发票模板（适用于申请专票或无法mis后台申请的）<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414</a>","level":3,"firstOwnerId":27657,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000093,"parentTypeId":10029,"typeName":"点评侧发票问题(特殊case)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000094,"parentTypeId":10029,"typeName":"点评侧发票问题(团购/闪惠/KTV预定佣金发票)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000095,"parentTypeId":10029,"typeName":"点评侧发票问题(上架费霸王餐发票)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000096,"parentTypeId":10029,"typeName":"付款凭证/退票凭证/银行流水等凭证","leadingAnswer":"","level":3,"firstOwnerId":18260,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":7,"parentTypeId":0,"typeName":"商家后台/商家代运营","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10031,"parentTypeId":7,"typeName":"商家维护（中台）","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000101,"parentTypeId":10031,"typeName":"延期相关","leadingAnswer":"","level":3,"firstOwnerId":25107,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000102,"parentTypeId":10031,"typeName":"投诉类问题","leadingAnswer":"","level":3,"firstOwnerId":30879,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000103,"parentTypeId":10031,"typeName":"餐饮品类代运营相关（中台）","leadingAnswer":"","level":3,"firstOwnerId":3684,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000104,"parentTypeId":10031,"typeName":"综合品类代运营相关（中台）","leadingAnswer":"","level":3,"firstOwnerId":5530,"secondOwnerId":35785,"children":[],"leaf":true}],"leaf":false},{"typeId":10032,"parentTypeId":7,"typeName":"商家后台/开店宝","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000105,"parentTypeId":10032,"typeName":"登陆异常","leadingAnswer":"1.检查网络是否正常：尝试重新连接WIFI，或重启路由器，或使用手机网络登录。<br/>\n2.若页面显示有问题，或按钮点击后无反应，可能为电脑IE浏览器版本过低导致，请尝试下载谷歌浏览器<br/>\n3.找回密码时，若发现手机号不正确，请联系业务人员（BD）在后台修改合同中的甲方联系人手机号，若有多个合同，请全部修改正确。<br/>\n4.密码频繁被他人修改，可能是因为商家开通了其他业务（如外卖），两个业务的商家负责人共用同一个账号（互相改密码），请商家核实确认，内部沟通。","level":3,"firstOwnerId":37426,"secondOwnerId":32411,"children":[],"leaf":true},{"typeId":1000106,"parentTypeId":10032,"typeName":"团购券验证问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20812,"children":[],"leaf":true},{"typeId":1000107,"parentTypeId":10032,"typeName":"买单订单问题","leadingAnswer":"优惠买单、闪惠问题BD<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://bd.hui.dper.com/hui/welcome\" target=\"_blank\">自助工具</a>（快速解决买单常见问题哦）","level":3,"firstOwnerId":37426,"secondOwnerId":28212,"children":[],"leaf":true},{"typeId":1000108,"parentTypeId":10032,"typeName":"经营数据问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":29351,"children":[],"leaf":true},{"typeId":1000109,"parentTypeId":10032,"typeName":"口碑管理问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":29351,"children":[],"leaf":true},{"typeId":1000110,"parentTypeId":10032,"typeName":"餐饮商户通问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20825,"children":[],"leaf":true},{"typeId":1000111,"parentTypeId":10032,"typeName":"其它非财务问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":7074,"children":[],"leaf":true},{"typeId":1000112,"parentTypeId":10032,"typeName":"CBD财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":2501,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000113,"parentTypeId":10032,"typeName":"北中国财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":28446,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000114,"parentTypeId":10032,"typeName":"南中国财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":18779,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000115,"parentTypeId":10032,"typeName":"品牌战略财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":2501,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000116,"parentTypeId":10032,"typeName":"银行账号管理","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":3072,"children":[],"leaf":true},{"typeId":1000117,"parentTypeId":10032,"typeName":"自助上单","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":31079,"children":[],"leaf":true},{"typeId":1000118,"parentTypeId":10032,"typeName":"自助修改（页面相关）","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":5577,"children":[],"leaf":true}],"leaf":false},{"typeId":1000221,"parentTypeId":10030,"typeName":"商服","leadingAnswer":"","level":3,"firstOwnerId":3100,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":8,"parentTypeId":0,"typeName":"页面展示/排序","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10033,"parentTypeId":8,"typeName":"闪惠买单展示","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000119,"parentTypeId":10033,"typeName":"页面相关（手机端）","leadingAnswer":"优惠买单自查方法<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://news.sankuai.com/pages/viewpage.action?pageId=42206876\" target=\"_blank\">http://news.sankuai.com/pages/viewpage.action?pageId=42206876</a>","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true}],"leaf":false},{"typeId":10034,"parentTypeId":8,"typeName":"手机端","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000120,"parentTypeId":10034,"typeName":"餐饮品类展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":2904,"children":[],"leaf":true},{"typeId":1000121,"parentTypeId":10034,"typeName":"综合品类展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":25865,"children":[],"leaf":true}],"leaf":false},{"typeId":10035,"parentTypeId":8,"typeName":"PC端","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000122,"parentTypeId":10035,"typeName":"美团侧展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":20901,"children":[],"leaf":true},{"typeId":1000123,"parentTypeId":10035,"typeName":"新增/修改品类相关（PC端+手机端）","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":46,"children":[],"leaf":true},{"typeId":1000124,"parentTypeId":10035,"typeName":"点评侧展示异常","leadingAnswer":"项目搜索不到自查方法<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":5256,"children":[],"leaf":true}],"leaf":false},{"typeId":10036,"parentTypeId":8,"typeName":"搜索排序","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000125,"parentTypeId":10036,"typeName":"美团侧搜索","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":17494,"children":[],"leaf":true},{"typeId":1000126,"parentTypeId":10036,"typeName":"美团侧排序","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":17494,"children":[],"leaf":true},{"typeId":1000127,"parentTypeId":10036,"typeName":"点评侧搜索-商户—搜不到商户","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000128,"parentTypeId":10036,"typeName":"点评侧搜索-商户—使已关商户搜索不到","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000129,"parentTypeId":10036,"typeName":"点评侧搜索-商户—商户排序靠后","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000130,"parentTypeId":10036,"typeName":"点评侧搜索-商户—搜索框下拉提示有误","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000131,"parentTypeId":10036,"typeName":"点评侧搜索-商户—添加关键词标签","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000132,"parentTypeId":10036,"typeName":"点评侧搜索-商户—列表页与商户页不一致","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000133,"parentTypeId":10036,"typeName":"点评侧搜索-商户—取消推广大拇指标识","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000134,"parentTypeId":10036,"typeName":"点评侧搜索-团购—搜不到团单","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000135,"parentTypeId":10036,"typeName":"点评侧搜索-团购—团单排序靠后","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":9,"parentTypeId":0,"typeName":"消费者购买/退款/投诉问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10045,"parentTypeId":9,"typeName":"购买支付","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000144,"parentTypeId":10045,"typeName":"团购订单/发码","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20812,"children":[],"leaf":true},{"typeId":1000145,"parentTypeId":10045,"typeName":"买单订单","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":18246,"children":[],"leaf":true},{"typeId":1000146,"parentTypeId":10045,"typeName":"支付收银台问题－支付方式不全","leadingAnswer":"支付方式展示不全： \n美团会根据各支付通道的质量、限额、用户的使用场景等具体情况，为用户提供较为稳定的支付方式。如果某支付方式未展示，可能是该支付方式在该场景下使用不顺畅，建议您选择其他支付方式进行支付。","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true},{"typeId":1000147,"parentTypeId":10045,"typeName":"支付收银台问题-重复支付","leadingAnswer":"重复支付：<br/>\n一般情况下，系统会自动处理并原路退回至支付所用的账户，请耐心等待。如长时间过去仍有异常情况，请继续提问","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true},{"typeId":1000148,"parentTypeId":10045,"typeName":"支付收银台问题－某支付方式无法支付","leadingAnswer":"某支付方式无法支付：<br/>\n请确认该支付方式是否为置灰不可点击，或者有红色文字提示：<br/>\n（1）若有，则该支付方式正在维护中，暂时不可使用，可以稍后再试，或者选择其他支付方式；<br/>\n（2）若无，则可能是超出了该用户在该支付方式的支付限额（分为单笔限额、单日限额和单月限额三种）。","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true}],"leaf":false},{"typeId":1000136,"parentTypeId":10037,"typeName":"退款异议闪惠买单","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000137,"parentTypeId":10038,"typeName":"退款异议餐饮团购","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000138,"parentTypeId":10039,"typeName":"退款异议活动综合","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000139,"parentTypeId":10040,"typeName":"个案客诉反馈沟通-闪惠买单","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000140,"parentTypeId":10041,"typeName":"个案客诉反馈沟通-餐饮团购","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000141,"parentTypeId":10042,"typeName":"个案客诉反馈沟通-综合活动","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000142,"parentTypeId":10043,"typeName":"被操作不可购买","leadingAnswer":"","level":3,"firstOwnerId":37429,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000143,"parentTypeId":10044,"typeName":"批量退款咨询","leadingAnswer":"","level":3,"firstOwnerId":37429,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10,"parentTypeId":0,"typeName":"用户活动/专题活动/物料资源","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10046,"parentTypeId":10,"typeName":"商户自促","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000149,"parentTypeId":10046,"typeName":"自促双平台展示问题","leadingAnswer":"1查看项目的售卖渠道是否为“允许在美团和点评双平台售卖”，若不是请自行修改<br/>\n2若是，请核实商家后台是否设置有效的促销活动（对应项目id的促销活动为“活动中”）","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000150,"parentTypeId":10046,"typeName":"自促名店问题","leadingAnswer":"1查看该品牌在“新美大-头腰商家品牌攻防报表\"\"内上月交易额是否满足该城市划线<br/>\n2查看该项目的在线时间、美团价及评分是否满足名店准入规则<br/>\n3查看该促销活动设置的促销份数（促销量-已促销量）、促销折扣、促销时间是否满足名店参与规则<br/>\n4查看商家后台-促销活动列表页内，有无名店标签及其状态<br/>\n5查看商家后台内“操作历史”，当日0-16点修改内容次日生效","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000151,"parentTypeId":10046,"typeName":"自促天天特价问题","leadingAnswer":"1查看该项目的品类信息、在线时间是否满足天天特价准入规则<br/>\n2查看该项目对应的促销活动设置的促销份数（促销量-已促销量）、促销折扣、促销时间是否满足天天特价规则<br/>\n3查看该城市天天特价展位是否开启（须有8个及以上满足以上规则的项目才可开通展位）<br/>\n4查看该城市天天特价专题内已展示项目数（最多展示50个项目）","level":3,"firstOwnerId":20358,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000152,"parentTypeId":10046,"typeName":"普通自促问题","leadingAnswer":"1自促活跃门店数异常，请在报表右侧报错<br/>\n2调价后，无法设置促销活动，请核实页面销量是否满足【闪电上单】-【发布信息】内阶梯销量要求<br/>\n3后台提示暂停中，请核实后台设置页内促销时间","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10047,"parentTypeId":10,"typeName":"新客活动——团购","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000153,"parentTypeId":10047,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000154,"parentTypeId":10047,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000155,"parentTypeId":10047,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10048,"parentTypeId":10,"typeName":"新客活动——闪惠买单","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000156,"parentTypeId":10048,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000157,"parentTypeId":10048,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000158,"parentTypeId":10048,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10049,"parentTypeId":10,"typeName":"老客活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000159,"parentTypeId":10049,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000160,"parentTypeId":10049,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000161,"parentTypeId":10049,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10050,"parentTypeId":10,"typeName":"固定专题活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000162,"parentTypeId":10050,"typeName":"CBD名店大牌","leadingAnswer":"","level":3,"firstOwnerId":27075,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000163,"parentTypeId":10050,"typeName":"南中国名店大牌","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000164,"parentTypeId":10050,"typeName":"北中国名店大牌","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000165,"parentTypeId":10050,"typeName":"CBD天天特价","leadingAnswer":"","level":3,"firstOwnerId":27075,"secondOwnerId":20358,"children":[],"leaf":true},{"typeId":1000166,"parentTypeId":10050,"typeName":"北中国天天特价","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":20358,"children":[],"leaf":true},{"typeId":1000167,"parentTypeId":10050,"typeName":"南中国天天特价","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":20358,"children":[],"leaf":true}],"leaf":false},{"typeId":10051,"parentTypeId":10,"typeName":"节假日活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000168,"parentTypeId":10051,"typeName":"CBD节假日活动","leadingAnswer":"","level":3,"firstOwnerId":0,"secondOwnerId":32753,"children":[],"leaf":true},{"typeId":1000169,"parentTypeId":10051,"typeName":"南中国节假日活动","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":32753,"children":[],"leaf":true},{"typeId":1000170,"parentTypeId":10051,"typeName":"北中国节假日活动","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":32753,"children":[],"leaf":true}],"leaf":false},{"typeId":10052,"parentTypeId":10,"typeName":"资源申请","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000171,"parentTypeId":10052,"typeName":"霸王餐相关咨询","leadingAnswer":"","level":3,"firstOwnerId":24068,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000172,"parentTypeId":10052,"typeName":"城市专题制作","leadingAnswer":"","level":3,"firstOwnerId":14115,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10053,"parentTypeId":10,"typeName":"城市物料","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000173,"parentTypeId":10053,"typeName":"城市物料设计需求/物料","leadingAnswer":"","level":3,"firstOwnerId":28107,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000174,"parentTypeId":10053,"typeName":"POS","leadingAnswer":"","level":3,"firstOwnerId":3805,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":11,"parentTypeId":0,"typeName":"罚款相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000175,"parentTypeId":10054,"typeName":"包销罚款与返款","leadingAnswer":"关于罚款返款：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=441096006\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=441096006</a>\n罚款返款规则：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918032\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918032</a>","level":3,"firstOwnerId":35288,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000176,"parentTypeId":10055,"typeName":"陪访拜访罚款","leadingAnswer":"1、怀孕、转岗等情况报备需邮件到sales.fakuan@meituan.com报备，邮件需向上两级领导确认后方可减免<br/>\n邮件格式：<br/>\n主题：【罚款报备申诉】<br/>\n报备人姓名：<br/>\n报备人工号：<br/>\n报备原因：<br/>\n具体减免情况：如需减免工作日需说明具体减免几天，如需减免陪访拜访标准需说明具体减免为多少个","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":12,"parentTypeId":0,"typeName":"销售数据报表","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000177,"parentTypeId":10056,"typeName":"报表数据有误","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000178,"parentTypeId":10057,"typeName":"报表界面展示优化建议","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000179,"parentTypeId":10058,"typeName":"新的报表需求","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":13,"parentTypeId":0,"typeName":"公关法务问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10059,"parentTypeId":13,"typeName":"法务问题","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000180,"parentTypeId":10059,"typeName":"知识产权/合同/劳动关系等民事争议或诉讼、包销款催收","leadingAnswer":"","level":3,"firstOwnerId":3045,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000181,"parentTypeId":10059,"typeName":"分公司用印","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000182,"parentTypeId":10059,"typeName":"分公司注册、变更、注销等","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000183,"parentTypeId":10059,"typeName":"法律文件/授权","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000184,"parentTypeId":10059,"typeName":"证明","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000185,"parentTypeId":10059,"typeName":"资质证照申请","leadingAnswer":"","level":3,"firstOwnerId":13722,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000186,"parentTypeId":10059,"typeName":"租房、装修、中介、物业合同审核","leadingAnswer":"自检<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=513194769\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=513194769</a>","level":3,"firstOwnerId":13985,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000187,"parentTypeId":10059,"typeName":"租房、装修、中介、物业等事项咨询","leadingAnswer":"","level":3,"firstOwnerId":13985,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000188,"parentTypeId":10059,"typeName":"费用支出类合同审核","leadingAnswer":"1、邮件预审→审核通过后提交OA→寄回总部盖章→OA合同付款。（若合同直接提交OA审核系统，如有不符合要求的地方需要驳回的话，会一直驳回到申请人，即前面各审批人需要不停的重复审批，所以需要城市先提交邮件预审合同内容，避免OA流程中反复驳回、申请，降低效率）\n<br/>2、请先在貔貅系统预算申请审核通过方案后，发送邮件至legal.ddcy@meituan.com，抄送zhangmin12.发送规则:<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=355194785\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=355194785</a>。\n<br/>3、 OA审核通过后，总部合同对接人会跟进合同后续的打印、盖章、邮寄等事宜；","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000189,"parentTypeId":10059,"typeName":"与商户间业务合同审核","leadingAnswer":"1、发邮件至baoxiao@meituan.com，由包销组审核包销方案，审批通过后，包销组会根据合同情况给各部门审核同学发送（主要指总部品控bs.shenhe@meituan.com、法务legal.ddcy@meituan.com、财务），待所需部门提出意见并修改审核通过后，包销商家合同审核流程方告完成；完成后，总控品控会跟进合同后续的打印、盖章、邮寄等事宜；\n<br/>2、发邮件至bs.shenhe@meituan.com（邮件发送规范：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=39161249\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=39161249</a>），总部品控审核通过后，会发送给给各部门审核同学发送（主要指：法务legal.ddcy@meituan.com、财务jiesuan@meituan.com），待所需部门提出意见并修改审核通过后，非包销商家合同审核流程方告完成；完成后，总控品控会跟进合同后续的打印、盖章、邮寄等事宜；\n<br/>3、甲方（即非标）合同、补充协议各类合同性质的特殊文件（不区分包销和非包销），请发送至：sys_ba@dianping.com；\n<br/>4、甲方（即非标）合同、补充协议各类合同性质的特殊文件，请发送至：sqt-service@dianping.com","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000190,"parentTypeId":10059,"typeName":"其它业务相关法律问题咨询","leadingAnswer":"","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10060,"parentTypeId":13,"typeName":"公共关系","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000191,"parentTypeId":10060,"typeName":"地方正面传播需求（商户合作、促销活动等）","leadingAnswer":"1、可申请包装为典型案例并在媒体进行传播的商户要求：<br/>\n对美团大众点评十分认可，销量较高，有一定的知名度，对互联网营销价值、口碑管理、闪惠、买单提升效率等有较深的认识，商家负责人表达能力强且愿意接受采访。<br/>\n2、申请商家案例传播需要的资料如下：<br/>\n商家基本情况及品牌介绍，何时与美团点评进行合作，目前的销量如何，BD层面了解到的商家对于互联网的认识及如何利用。<br/>\n3、申请商家案例传播的流程如下：<br/>\n城市经过上述评估后找到总部公关部对接人，经过评估确定可以采访，城市协助总部同事采访商家。<br/>\n4、商家采访后会在以下渠道进行宣传：<br/>\n互联网、经济等相关的媒体渠道，视具体产出的内容而定。商家案例可以作为对外传播的素材积累，提供给感兴趣的媒体。","level":3,"firstOwnerId":17245,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000192,"parentTypeId":10060,"typeName":"地方媒体采访需求（商户、用户相关危机负面）","leadingAnswer":"","level":3,"firstOwnerId":30892,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000193,"parentTypeId":10060,"typeName":"竞对攻防、高管专访","leadingAnswer":"","level":3,"firstOwnerId":15830,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000194,"parentTypeId":10060,"typeName":"微信订阅号新闻、活动推广等","leadingAnswer":"“美团网”订阅号，定位为新闻号。核心职能为，发布美团相关新闻，扩散美团正面信息。<br/><br/>\n\n1、固定三条模板推送，以转载为主：【头条】“聚焦”版块，为美团相关新闻，稿件需经公关部把关；<br/>\n2、【次条】“业内”版块，转载我司相关行业的业内新闻；<br/>\n3、【三条】“活动”或“前沿”版块，“前沿”为行业前沿信息，“活动”版块可以支持业务线活动；<br/>\n4、【订阅号的排期】根据头条美团相关新闻发布需求来定，如无特殊情况，时间固定在下午17：00-18:00。","level":3,"firstOwnerId":12871,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000195,"parentTypeId":10060,"typeName":"微博推广、投诉、举报等","leadingAnswer":"","level":3,"firstOwnerId":28655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000196,"parentTypeId":10060,"typeName":"微博品牌合作","leadingAnswer":"","level":3,"firstOwnerId":33748,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000197,"parentTypeId":10060,"typeName":"一元夺宝（抽奖单）","leadingAnswer":"","level":3,"firstOwnerId":26318,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":14,"parentTypeId":0,"typeName":"业务支持相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10061,"parentTypeId":14,"typeName":"风控/刷单","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000198,"parentTypeId":10061,"typeName":"大型活动风控","leadingAnswer":"","level":3,"firstOwnerId":12861,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000199,"parentTypeId":10061,"typeName":"商家购买信息存疑反馈/商家刷单","leadingAnswer":"","level":3,"firstOwnerId":29059,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10062,"parentTypeId":14,"typeName":"新开站/分区调整/联络点/殖民地","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000200,"parentTypeId":10062,"typeName":"页面点亮及相关咨询","leadingAnswer":"","level":3,"firstOwnerId":2250,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000201,"parentTypeId":10062,"typeName":"联络点申请审批及相关咨询","leadingAnswer":"1、联络点相关操作流程及申请方式可查看：<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=86366754\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=86366754</a><br/>\n2、联络点申请及各类调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000202,"parentTypeId":10062,"typeName":"殖民地申请审批及相关咨询","leadingAnswer":"1、殖民地相关操作流程及申请方式可查看：<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=100829611\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=100829611</a><br/>\n2、殖民地申请及各类调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000203,"parentTypeId":10062,"typeName":"城市/区域分区审批","leadingAnswer":"1、城市分区流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266474\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266474</a><br/>\n2、城市合并流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266150\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266150</a><br/>\n3、城市边界调整流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266009\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266009</a><br/>\n4、城市分区、合并、边界调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000204,"parentTypeId":10062,"typeName":"主站开站流程推进及相关咨询","leadingAnswer":"现不支持新开主站","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":1000205,"parentTypeId":10063,"typeName":"城市租房/换房/续租","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000206,"parentTypeId":10064,"typeName":"摄影师相关问题","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000207,"parentTypeId":10065,"typeName":"运营团队管理","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000208,"parentTypeId":10066,"typeName":"BD或城市支撑团队违规或失职投诉","leadingAnswer":"","level":3,"firstOwnerId":29212,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":15,"parentTypeId":0,"typeName":"优化建议/其他问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10067,"parentTypeId":15,"typeName":"优化建议","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000209,"parentTypeId":10067,"typeName":"公司制度意见建议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000210,"parentTypeId":10067,"typeName":"系统功能优化意见","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000211,"parentTypeId":10067,"typeName":"吐槽","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10068,"parentTypeId":15,"typeName":"城市选择错误分类","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000212,"parentTypeId":10068,"typeName":"重新分配","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10069,"parentTypeId":15,"typeName":"无流程/无对接问题","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000213,"parentTypeId":10069,"typeName":"问题反馈","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":16,"parentTypeId":0,"typeName":"推广业务","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000214,"parentTypeId":10070,"typeName":"财务收款/点金/开票","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000215,"parentTypeId":10071,"typeName":"推广方案录入审批","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000216,"parentTypeId":10072,"typeName":"账号密码","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000217,"parentTypeId":10073,"typeName":"推广通","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000218,"parentTypeId":10074,"typeName":"其他推广业务问题","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}]});},0);};Demo.prototype.render = function render(){var _this2=this;var _this=this;var bu=[{id:1,name:"交易后台"},{id:2,name:"结婚1"}];var menuData=[{data:'近一个周的问题',callback:function callback(){alert('clicked');}},{data:'近一个月的问题',callback:function callback(){alert('clicked');}},{data:'一个月之前的问题',callback:function callback(){alert('clicked');}}];return _react2['default'].createElement('div',{className:'paddingSpace'},_react2['default'].createElement('div',{style:{fontSize:'12px',display:'inline-block',width:'200px'}},_react2['default'].createElement(_egDropTree2['default'],{selected:this.state.selected,onChange:function(e){_this.setState({selected:e});},dropDownData:this.state.mockMultiDropData,keyName:'typeName',leafName:'leaf',title:'树状列表选择',ref:'MultiDropDown'})),_react2['default'].createElement('div',{className:'demo-button-container'},_react2['default'].createElement('div',{className:'demo-button',style:{background:'red'},onClick:function(){_this2.getDropDownData('MultiDropDown');}},'点击获取树状列表的选择结果')));};Demo.prototype.getDropDownData = function getDropDownData(type){console.log(this.refs[type].getParams());};return Demo;})(_react.Component);exports['default'] = Demo;module.exports = exports['default'];
+	'use strict';exports.__esModule = true;function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _react=__webpack_require__(43);var _react2=_interopRequireDefault(_react);var _egDropTree=__webpack_require__(660);var _egDropTree2=_interopRequireDefault(_egDropTree);var Demo=(function(_Component){_inherits(Demo,_Component);function Demo(props,context){_classCallCheck(this,Demo);_Component.call(this,props,context);this.state = {mockMultiDropData:[],selected:'1000034'};}Demo.prototype.componentDidMount = function componentDidMount(){var self=this;setTimeout(function(){self.setState({mockMultiDropData:[{"typeId":2,"parentTypeId":0,"typeName":"测试","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000023,"parentTypeId":10005,"typeName":"线上测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000022,"parentTypeId":10005,"typeName":"线上测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000024,"parentTypeId":10005,"typeName":"ppe测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true},{"typeId":1000025,"parentTypeId":10005,"typeName":"beta测试","leadingAnswer":"这是线上测试分类,你玩我吧!","level":3,"firstOwnerId":22315,"secondOwnerId":17896,"children":[],"leaf":true}],"leaf":false},{"typeId":3,"parentTypeId":0,"typeName":"POI相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10014,"parentTypeId":3,"typeName":"评价评分","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000034,"parentTypeId":10014,"typeName":"美团侧评价","leadingAnswer":"","level":3,"firstOwnerId":37743,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000035,"parentTypeId":10014,"typeName":"点评侧评价","leadingAnswer":"点评评价的恶意差评、炒作的举报和申诉请到<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://trust.dianping.com\" target=\"_blank\">http://trust.dianping.com</a>提交反馈","level":3,"firstOwnerId":20779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000036,"parentTypeId":10014,"typeName":"美团侧星级评分","leadingAnswer":"","level":3,"firstOwnerId":25305,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000037,"parentTypeId":10014,"typeName":"点评侧评分","leadingAnswer":"","level":3,"firstOwnerId":34348,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":1000026,"parentTypeId":10006,"typeName":"门店基本信息/地图报错","leadingAnswer":"\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000027,"parentTypeId":10007,"typeName":"门店营业状态报错","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000028,"parentTypeId":10008,"typeName":"举报重复/拆分/美大关联","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000029,"parentTypeId":10009,"typeName":"门店品牌连锁","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/relatingreport\" target=\"_blank\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\n  以上报错都会在1个工作日内17:00前处理完毕\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/\" target=\"_blank\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000030,"parentTypeId":10010,"typeName":"举报虚假门店","leadingAnswer":"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000031,"parentTypeId":10011,"typeName":"门店首图展示","leadingAnswer":"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/img\" target=\"_blank\">http://mdc.sankuai.com/web/report/img</a>","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000032,"parentTypeId":10012,"typeName":"门店品类划分","leadingAnswer":"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a><br/>\n【到餐销售】请在MDC门户报错，报错入口：<br/>\n  <a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://mdc.sankuai.com/web/report/poierror\" target=\"_blank\">http://mdc.sankuai.com/web/report/poierror</a><br/>\n以上报错都会在1个工作日内17:00前处理完毕","level":3,"firstOwnerId":37434,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000033,"parentTypeId":10013,"typeName":"门店罚款相关","leadingAnswer":"","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000038,"parentTypeId":10015,"typeName":"其他POI问题","leadingAnswer":"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://bd.hui.dper.com/hui/poi/shop_query\" target=\"_blank\">http://bd.hui.dper.com/hui/poi/shop_query</a>\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"https://a.dper.com/shops#!/shop/all\" target=\"_blank\">https://a.dper.com/shops#!/shop/all</a>","level":3,"firstOwnerId":37425,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":4,"parentTypeId":0,"typeName":"公私海拜访/任务相关/仪表盘相关/MOMA异常","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000039,"parentTypeId":10016,"typeName":"公私海及拜访相关","leadingAnswer":"1.公海中的门店不能认领。\n公海中商家如不在BD的负责区域内，BD不可认领该门店（无认领按钮），商家是否在BD的负责区域是根据在MDC新建门店时的坐标判断。<br/>\n2.门店不能延期？\n门店进入冻结期后，方可操作延期，望知悉。","level":3,"firstOwnerId":25047,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000040,"parentTypeId":10017,"typeName":"仪表盘相关","leadingAnswer":"1.仪表盘的数据是依据提成计算的逻辑显示相关数据，如对数据有疑问，可登陆报表门户<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://report.mtdata.sankuai.com/\" target=\"_blank\">http://report.mtdata.sankuai.com/</a>查看「新美大-BD业绩汇总（含门店）」并在相应页面提交反馈。","level":3,"firstOwnerId":3163,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000041,"parentTypeId":10018,"typeName":"任务、通知及提醒","leadingAnswer":"1. 对任务/通知功能的业务问题，例如：对任务规则的疑问，希望增减工单，请直接联系任务创建人<br/>\n2. 对任务/通知列表的功能问题，例如：看不到工单，收不到通知等，请在下面提交问题","level":3,"firstOwnerId":4691,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000042,"parentTypeId":10019,"typeName":"MOMA系统异常","leadingAnswer":"此分类仅处理 MOMA 下载/安装/下载过程中遇到的问题<br/>\n使用 MOMA “我的项目” 遇到的问题，请提交至 “合同/上单” 分类下对应的子分类<br/>\nMOMA常见问题及帮助：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=345942954\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=345942954</a>","level":3,"firstOwnerId":4691,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000043,"parentTypeId":10020,"typeName":"CRM系统优化建议","leadingAnswer":"","level":3,"firstOwnerId":25047,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":5,"parentTypeId":0,"typeName":"合同/上单","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10021,"parentTypeId":5,"typeName":"上单相关","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000044,"parentTypeId":10021,"typeName":"上单规则","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000045,"parentTypeId":10021,"typeName":"上单审核问题","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000046,"parentTypeId":10021,"typeName":"上单规则特批","leadingAnswer":"","level":3,"firstOwnerId":29256,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000047,"parentTypeId":10021,"typeName":"确认页面反馈","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000048,"parentTypeId":10021,"typeName":"撰写进度咨询","leadingAnswer":"","level":3,"firstOwnerId":32259,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000049,"parentTypeId":10021,"typeName":"毛利咨询","leadingAnswer":"","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10022,"parentTypeId":5,"typeName":"上线后修改","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000050,"parentTypeId":10022,"typeName":"合同变更","leadingAnswer":"售后手册：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=71737727\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=71737727</a>","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000051,"parentTypeId":10022,"typeName":"页面修改","leadingAnswer":"上线后页面条款修改标准5.1版：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=73008462\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=73008462</a>","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000052,"parentTypeId":10022,"typeName":"上线后变更审核问题","leadingAnswer":"","level":3,"firstOwnerId":5239,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000053,"parentTypeId":10022,"typeName":"top商家页面修改特批","leadingAnswer":"","level":3,"firstOwnerId":2645,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10024,"parentTypeId":5,"typeName":"上单特殊申请","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000055,"parentTypeId":10024,"typeName":"盖章申请","leadingAnswer":"","level":3,"firstOwnerId":6621,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000056,"parentTypeId":10024,"typeName":"甲方合同/甲方文件审核","leadingAnswer":"","level":3,"firstOwnerId":6621,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000057,"parentTypeId":10024,"typeName":"涉黄相关","leadingAnswer":"","level":3,"firstOwnerId":17477,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10025,"parentTypeId":5,"typeName":"餐饮上单系统","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000058,"parentTypeId":10025,"typeName":"新建/修改合同/合作商","leadingAnswer":"新上单系统 <br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=374472408\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=374472408</a>","level":3,"firstOwnerId":37426,"secondOwnerId":17495,"children":[],"leaf":true},{"typeId":1000059,"parentTypeId":10025,"typeName":"新建/修改买单项目","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":33682,"children":[],"leaf":true},{"typeId":1000060,"parentTypeId":10025,"typeName":"新建/修改团购项目","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":7748,"children":[],"leaf":true},{"typeId":1000061,"parentTypeId":10025,"typeName":"财务结算","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":3072,"children":[],"leaf":true},{"typeId":1000062,"parentTypeId":10025,"typeName":"摄影师拍图","leadingAnswer":"项目无法创建拍摄任务，请查看编辑图片信息采写状态是否勾选为“否”。","level":3,"firstOwnerId":37426,"secondOwnerId":25028,"children":[],"leaf":true},{"typeId":1000063,"parentTypeId":10025,"typeName":"商家确认","leadingAnswer":"1、如果商家收不到美团域邮件，请先检查邮箱地址填写是否正确（QQ邮箱250505450@qq.com，写成250505450@qq.om，肯定是收不到的）<br/>\n2、如果是自建的邮箱系统建议合作伙伴或者商户把美团的邮件服务器IP地址添加为白名单。","level":3,"firstOwnerId":37426,"secondOwnerId":25028,"children":[],"leaf":true},{"typeId":1000064,"parentTypeId":10025,"typeName":"其他优化建议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":14549,"children":[],"leaf":true},{"typeId":1000219,"parentTypeId":10025,"typeName":"电子合同","leadingAnswer":"电子合同相关说明 <br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=526713985\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=526713985</a>","level":3,"firstOwnerId":7748,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10026,"parentTypeId":5,"typeName":"非餐上单系统","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000065,"parentTypeId":10026,"typeName":"阿波罗客户协议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":32936,"children":[],"leaf":true},{"typeId":1000066,"parentTypeId":10026,"typeName":"阿波罗验券&团购消费记录","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":28305,"children":[],"leaf":true},{"typeId":1000067,"parentTypeId":10026,"typeName":"阿波罗闪惠消费记录","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true},{"typeId":1000068,"parentTypeId":10026,"typeName":"C端团购展示","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":25865,"children":[],"leaf":true},{"typeId":1000069,"parentTypeId":10026,"typeName":"C端闪惠展示","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true},{"typeId":1000070,"parentTypeId":10026,"typeName":"非餐-阿波罗上单","leadingAnswer":"BD门户top问题梳理<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=435884877</a>","level":3,"firstOwnerId":37426,"secondOwnerId":16295,"children":[],"leaf":true}],"leaf":false},{"typeId":1000054,"parentTypeId":10023,"typeName":"纸质合同归档","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":6,"parentTypeId":0,"typeName":"预付/结款/发票","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10027,"parentTypeId":6,"typeName":"预付相关","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000071,"parentTypeId":10027,"typeName":"CBD餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":30093,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000072,"parentTypeId":10027,"typeName":"南中国餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":12234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000073,"parentTypeId":10027,"typeName":"北中国餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":29149,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000074,"parentTypeId":10027,"typeName":"品牌战略餐饮预付规则及流程","leadingAnswer":"1、餐饮预付的规则<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918759</a><br/>\n2、预付工作台如何使用？<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=192943557</a><br/>\n3、合同的关联以及解除关联和重新关联<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=391651820</a><br/>\n4、需要发邮件给baoxiao@meituan.com的特殊流程<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=181778889</a><br/>\n5、综合业务取消预付<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410007821</a>","level":3,"firstOwnerId":8498,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000075,"parentTypeId":10027,"typeName":"坏账反馈追缴","leadingAnswer":"请参考链接<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=525246152\" target=\"_blank\">追款全攻略（点击有惊喜）</a>","level":3,"firstOwnerId":35288,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000076,"parentTypeId":10027,"typeName":"预付余额迁移","leadingAnswer":"请参考链接<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=521633893\" target=\"_blank\">阿波罗系统尾款处理方案</a>","level":3,"firstOwnerId":19782,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000077,"parentTypeId":10027,"typeName":"非餐饮预付问题","leadingAnswer":"如果原美团有预付尾款，请BD及时迁移尾款至阿波罗系统，并在阿波罗系统上单关联消耗，避免产生坏账。","level":3,"firstOwnerId":23366,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000078,"parentTypeId":10027,"typeName":"卖超打款","leadingAnswer":"此分类主要针对点评侧预付卖超打款问题，如果商家认为点评侧打款有疑问（没收到钱）、需要对账，或为美团侧打款问题请优先联系城市运营反馈。城市运营无法解决请将无法解决的问题点写明在提问描述中，选择分类【预付/结款/发票-财务结款】中对应事业部进行反馈","level":3,"firstOwnerId":19782,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10028,"parentTypeId":6,"typeName":"财务结款","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000079,"parentTypeId":10028,"typeName":"CBD打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；<br/>\n2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；<br/>\n3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。<br/>\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000080,"parentTypeId":10028,"typeName":"南中国打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；\n<br/>2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；\n<br/>3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000081,"parentTypeId":10028,"typeName":"北中国打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；\n<br/>2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；\n<br/>3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000082,"parentTypeId":10028,"typeName":"品牌战略打款问题","leadingAnswer":"1、若是后台显示打款成功，但商家没收到款，请在“财务平台—付款凭证”模块提交问题；<br/>\n2、若为点评侧款项问题，一直未付款，请先核对是否绑定了默认银行账号，设置默认银行账号后，系统第二天会自动触发打款；<br/>\n3、财务结算问题应由城市运营支持专员解读，如有问题可先咨询城市运营同事，若仍无法解答请提交。<br/>\n美团侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=420263897</a>\n<br/>4、点评侧结算常见问题参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=482512772</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000083,"parentTypeId":10028,"typeName":"CBDT+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000084,"parentTypeId":10028,"typeName":"南中国T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000085,"parentTypeId":10028,"typeName":"北中国T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000086,"parentTypeId":10028,"typeName":"品牌战略T+1问题","leadingAnswer":"T+1结算由城市BD发起申请，具体规则及操作流程可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=440278269</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000087,"parentTypeId":10028,"typeName":"CBD财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000088,"parentTypeId":10028,"typeName":"南中国财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":18779,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000089,"parentTypeId":10028,"typeName":"北中国财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":28446,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000090,"parentTypeId":10028,"typeName":"品牌战略财务对账","leadingAnswer":"财务对账问题应由城市运营支持专员先行处理，如有问题可先咨询城市运营同事，若仍无法解答请提交问题点。\n对账方法可参见wiki：<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=496901742</a>","level":3,"firstOwnerId":2501,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10029,"parentTypeId":6,"typeName":"财务平台","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000091,"parentTypeId":10029,"typeName":"美团侧发票问题（有票）","leadingAnswer":"邮件申请发票模板（适用于申请专票或无法mis后台申请的）<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414</a>","level":3,"firstOwnerId":27657,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000092,"parentTypeId":10029,"typeName":"美团侧发票问题（无票）","leadingAnswer":"邮件申请发票模板（适用于申请专票或无法mis后台申请的）<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=410005414</a>","level":3,"firstOwnerId":27657,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000093,"parentTypeId":10029,"typeName":"点评侧发票问题(特殊case)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000094,"parentTypeId":10029,"typeName":"点评侧发票问题(团购/闪惠/KTV预定佣金发票)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000095,"parentTypeId":10029,"typeName":"点评侧发票问题(上架费霸王餐发票)","leadingAnswer":"点评侧团购、闪惠、KTV预定佣金发票开具流程<br/><a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=502659151</a>","level":3,"firstOwnerId":10451,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000096,"parentTypeId":10029,"typeName":"付款凭证/退票凭证/银行流水等凭证","leadingAnswer":"","level":3,"firstOwnerId":18260,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":7,"parentTypeId":0,"typeName":"商家后台/商家代运营","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10031,"parentTypeId":7,"typeName":"商家维护（中台）","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000101,"parentTypeId":10031,"typeName":"延期相关","leadingAnswer":"","level":3,"firstOwnerId":25107,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000102,"parentTypeId":10031,"typeName":"投诉类问题","leadingAnswer":"","level":3,"firstOwnerId":30879,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000103,"parentTypeId":10031,"typeName":"餐饮品类代运营相关（中台）","leadingAnswer":"","level":3,"firstOwnerId":3684,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000104,"parentTypeId":10031,"typeName":"综合品类代运营相关（中台）","leadingAnswer":"","level":3,"firstOwnerId":5530,"secondOwnerId":35785,"children":[],"leaf":true}],"leaf":false},{"typeId":10032,"parentTypeId":7,"typeName":"商家后台/开店宝","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000105,"parentTypeId":10032,"typeName":"登陆异常","leadingAnswer":"1.检查网络是否正常：尝试重新连接WIFI，或重启路由器，或使用手机网络登录。<br/>\n2.若页面显示有问题，或按钮点击后无反应，可能为电脑IE浏览器版本过低导致，请尝试下载谷歌浏览器<br/>\n3.找回密码时，若发现手机号不正确，请联系业务人员（BD）在后台修改合同中的甲方联系人手机号，若有多个合同，请全部修改正确。<br/>\n4.密码频繁被他人修改，可能是因为商家开通了其他业务（如外卖），两个业务的商家负责人共用同一个账号（互相改密码），请商家核实确认，内部沟通。","level":3,"firstOwnerId":37426,"secondOwnerId":32411,"children":[],"leaf":true},{"typeId":1000106,"parentTypeId":10032,"typeName":"团购券验证问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20812,"children":[],"leaf":true},{"typeId":1000107,"parentTypeId":10032,"typeName":"买单订单问题","leadingAnswer":"优惠买单、闪惠问题BD<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://bd.hui.dper.com/hui/welcome\" target=\"_blank\">自助工具</a>（快速解决买单常见问题哦）","level":3,"firstOwnerId":37426,"secondOwnerId":28212,"children":[],"leaf":true},{"typeId":1000108,"parentTypeId":10032,"typeName":"经营数据问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":29351,"children":[],"leaf":true},{"typeId":1000109,"parentTypeId":10032,"typeName":"口碑管理问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":29351,"children":[],"leaf":true},{"typeId":1000110,"parentTypeId":10032,"typeName":"餐饮商户通问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20825,"children":[],"leaf":true},{"typeId":1000111,"parentTypeId":10032,"typeName":"其它非财务问题","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":7074,"children":[],"leaf":true},{"typeId":1000112,"parentTypeId":10032,"typeName":"CBD财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":2501,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000113,"parentTypeId":10032,"typeName":"北中国财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":28446,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000114,"parentTypeId":10032,"typeName":"南中国财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":18779,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000115,"parentTypeId":10032,"typeName":"品牌战略财务数据问题","leadingAnswer":"","level":3,"firstOwnerId":2501,"secondOwnerId":28961,"children":[],"leaf":true},{"typeId":1000116,"parentTypeId":10032,"typeName":"银行账号管理","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":3072,"children":[],"leaf":true},{"typeId":1000117,"parentTypeId":10032,"typeName":"自助上单","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":31079,"children":[],"leaf":true},{"typeId":1000118,"parentTypeId":10032,"typeName":"自助修改（页面相关）","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":5577,"children":[],"leaf":true}],"leaf":false},{"typeId":1000221,"parentTypeId":10030,"typeName":"商服","leadingAnswer":"","level":3,"firstOwnerId":3100,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":8,"parentTypeId":0,"typeName":"页面展示/排序","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10033,"parentTypeId":8,"typeName":"闪惠买单展示","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000119,"parentTypeId":10033,"typeName":"页面相关（手机端）","leadingAnswer":"优惠买单自查方法<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://news.sankuai.com/pages/viewpage.action?pageId=42206876\" target=\"_blank\">http://news.sankuai.com/pages/viewpage.action?pageId=42206876</a>","level":3,"firstOwnerId":37426,"secondOwnerId":18901,"children":[],"leaf":true}],"leaf":false},{"typeId":10034,"parentTypeId":8,"typeName":"手机端","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000120,"parentTypeId":10034,"typeName":"餐饮品类展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":2904,"children":[],"leaf":true},{"typeId":1000121,"parentTypeId":10034,"typeName":"综合品类展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":25865,"children":[],"leaf":true}],"leaf":false},{"typeId":10035,"parentTypeId":8,"typeName":"PC端","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000122,"parentTypeId":10035,"typeName":"美团侧展示异常","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":20901,"children":[],"leaf":true},{"typeId":1000123,"parentTypeId":10035,"typeName":"新增/修改品类相关（PC端+手机端）","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":46,"children":[],"leaf":true},{"typeId":1000124,"parentTypeId":10035,"typeName":"点评侧展示异常","leadingAnswer":"项目搜索不到自查方法<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":5256,"children":[],"leaf":true}],"leaf":false},{"typeId":10036,"parentTypeId":8,"typeName":"搜索排序","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000125,"parentTypeId":10036,"typeName":"美团侧搜索","leadingAnswer":"项目搜索不到自查方法\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=367305411</a>","level":3,"firstOwnerId":37426,"secondOwnerId":17494,"children":[],"leaf":true},{"typeId":1000126,"parentTypeId":10036,"typeName":"美团侧排序","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":17494,"children":[],"leaf":true},{"typeId":1000127,"parentTypeId":10036,"typeName":"点评侧搜索-商户—搜不到商户","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000128,"parentTypeId":10036,"typeName":"点评侧搜索-商户—使已关商户搜索不到","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000129,"parentTypeId":10036,"typeName":"点评侧搜索-商户—商户排序靠后","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000130,"parentTypeId":10036,"typeName":"点评侧搜索-商户—搜索框下拉提示有误","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000131,"parentTypeId":10036,"typeName":"点评侧搜索-商户—添加关键词标签","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000132,"parentTypeId":10036,"typeName":"点评侧搜索-商户—列表页与商户页不一致","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000133,"parentTypeId":10036,"typeName":"点评侧搜索-商户—取消推广大拇指标识","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000134,"parentTypeId":10036,"typeName":"点评侧搜索-团购—搜不到团单","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true},{"typeId":1000135,"parentTypeId":10036,"typeName":"点评侧搜索-团购—团单排序靠后","leadingAnswer":"在线提问系统问题模板&自查小技巧：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=511399971</a>","level":3,"firstOwnerId":37426,"secondOwnerId":37427,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":9,"parentTypeId":0,"typeName":"消费者购买/退款/投诉问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10045,"parentTypeId":9,"typeName":"购买支付","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000144,"parentTypeId":10045,"typeName":"团购订单/发码","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":20812,"children":[],"leaf":true},{"typeId":1000145,"parentTypeId":10045,"typeName":"买单订单","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":18246,"children":[],"leaf":true},{"typeId":1000146,"parentTypeId":10045,"typeName":"支付收银台问题－支付方式不全","leadingAnswer":"支付方式展示不全： \n美团会根据各支付通道的质量、限额、用户的使用场景等具体情况，为用户提供较为稳定的支付方式。如果某支付方式未展示，可能是该支付方式在该场景下使用不顺畅，建议您选择其他支付方式进行支付。","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true},{"typeId":1000147,"parentTypeId":10045,"typeName":"支付收银台问题-重复支付","leadingAnswer":"重复支付：<br/>\n一般情况下，系统会自动处理并原路退回至支付所用的账户，请耐心等待。如长时间过去仍有异常情况，请继续提问","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true},{"typeId":1000148,"parentTypeId":10045,"typeName":"支付收银台问题－某支付方式无法支付","leadingAnswer":"某支付方式无法支付：<br/>\n请确认该支付方式是否为置灰不可点击，或者有红色文字提示：<br/>\n（1）若有，则该支付方式正在维护中，暂时不可使用，可以稍后再试，或者选择其他支付方式；<br/>\n（2）若无，则可能是超出了该用户在该支付方式的支付限额（分为单笔限额、单日限额和单月限额三种）。","level":3,"firstOwnerId":37426,"secondOwnerId":32557,"children":[],"leaf":true}],"leaf":false},{"typeId":1000136,"parentTypeId":10037,"typeName":"退款异议闪惠买单","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000137,"parentTypeId":10038,"typeName":"退款异议餐饮团购","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000138,"parentTypeId":10039,"typeName":"退款异议活动综合","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000139,"parentTypeId":10040,"typeName":"个案客诉反馈沟通-闪惠买单","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000140,"parentTypeId":10041,"typeName":"个案客诉反馈沟通-餐饮团购","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000141,"parentTypeId":10042,"typeName":"个案客诉反馈沟通-综合活动","leadingAnswer":"","level":3,"firstOwnerId":37428,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000142,"parentTypeId":10043,"typeName":"被操作不可购买","leadingAnswer":"","level":3,"firstOwnerId":37429,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000143,"parentTypeId":10044,"typeName":"批量退款咨询","leadingAnswer":"","level":3,"firstOwnerId":37429,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10,"parentTypeId":0,"typeName":"用户活动/专题活动/物料资源","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10046,"parentTypeId":10,"typeName":"商户自促","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000149,"parentTypeId":10046,"typeName":"自促双平台展示问题","leadingAnswer":"1查看项目的售卖渠道是否为“允许在美团和点评双平台售卖”，若不是请自行修改<br/>\n2若是，请核实商家后台是否设置有效的促销活动（对应项目id的促销活动为“活动中”）","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000150,"parentTypeId":10046,"typeName":"自促名店问题","leadingAnswer":"1查看该品牌在“新美大-头腰商家品牌攻防报表\"\"内上月交易额是否满足该城市划线<br/>\n2查看该项目的在线时间、美团价及评分是否满足名店准入规则<br/>\n3查看该促销活动设置的促销份数（促销量-已促销量）、促销折扣、促销时间是否满足名店参与规则<br/>\n4查看商家后台-促销活动列表页内，有无名店标签及其状态<br/>\n5查看商家后台内“操作历史”，当日0-16点修改内容次日生效","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000151,"parentTypeId":10046,"typeName":"自促天天特价问题","leadingAnswer":"1查看该项目的品类信息、在线时间是否满足天天特价准入规则<br/>\n2查看该项目对应的促销活动设置的促销份数（促销量-已促销量）、促销折扣、促销时间是否满足天天特价规则<br/>\n3查看该城市天天特价展位是否开启（须有8个及以上满足以上规则的项目才可开通展位）<br/>\n4查看该城市天天特价专题内已展示项目数（最多展示50个项目）","level":3,"firstOwnerId":20358,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000152,"parentTypeId":10046,"typeName":"普通自促问题","leadingAnswer":"1自促活跃门店数异常，请在报表右侧报错<br/>\n2调价后，无法设置促销活动，请核实页面销量是否满足【闪电上单】-【发布信息】内阶梯销量要求<br/>\n3后台提示暂停中，请核实后台设置页内促销时间","level":3,"firstOwnerId":4071,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10047,"parentTypeId":10,"typeName":"新客活动——团购","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000153,"parentTypeId":10047,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000154,"parentTypeId":10047,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000155,"parentTypeId":10047,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":34872,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10048,"parentTypeId":10,"typeName":"新客活动——闪惠买单","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000156,"parentTypeId":10048,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000157,"parentTypeId":10048,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000158,"parentTypeId":10048,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":21424,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10049,"parentTypeId":10,"typeName":"老客活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000159,"parentTypeId":10049,"typeName":"常规活动配置立减、展位疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000160,"parentTypeId":10049,"typeName":"营销系统活动提报疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000161,"parentTypeId":10049,"typeName":"常规活动规则疑问","leadingAnswer":"","level":3,"firstOwnerId":21402,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10050,"parentTypeId":10,"typeName":"固定专题活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000162,"parentTypeId":10050,"typeName":"CBD名店大牌","leadingAnswer":"","level":3,"firstOwnerId":27075,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000163,"parentTypeId":10050,"typeName":"南中国名店大牌","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000164,"parentTypeId":10050,"typeName":"北中国名店大牌","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":13646,"children":[],"leaf":true},{"typeId":1000165,"parentTypeId":10050,"typeName":"CBD天天特价","leadingAnswer":"","level":3,"firstOwnerId":27075,"secondOwnerId":20358,"children":[],"leaf":true},{"typeId":1000166,"parentTypeId":10050,"typeName":"北中国天天特价","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":20358,"children":[],"leaf":true},{"typeId":1000167,"parentTypeId":10050,"typeName":"南中国天天特价","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":20358,"children":[],"leaf":true}],"leaf":false},{"typeId":10051,"parentTypeId":10,"typeName":"节假日活动","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000168,"parentTypeId":10051,"typeName":"CBD节假日活动","leadingAnswer":"","level":3,"firstOwnerId":0,"secondOwnerId":32753,"children":[],"leaf":true},{"typeId":1000169,"parentTypeId":10051,"typeName":"南中国节假日活动","leadingAnswer":"","level":3,"firstOwnerId":37430,"secondOwnerId":32753,"children":[],"leaf":true},{"typeId":1000170,"parentTypeId":10051,"typeName":"北中国节假日活动","leadingAnswer":"","level":3,"firstOwnerId":22670,"secondOwnerId":32753,"children":[],"leaf":true}],"leaf":false},{"typeId":10052,"parentTypeId":10,"typeName":"资源申请","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000171,"parentTypeId":10052,"typeName":"霸王餐相关咨询","leadingAnswer":"","level":3,"firstOwnerId":24068,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000172,"parentTypeId":10052,"typeName":"城市专题制作","leadingAnswer":"","level":3,"firstOwnerId":14115,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10053,"parentTypeId":10,"typeName":"城市物料","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000173,"parentTypeId":10053,"typeName":"城市物料设计需求/物料","leadingAnswer":"","level":3,"firstOwnerId":28107,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000174,"parentTypeId":10053,"typeName":"POS","leadingAnswer":"","level":3,"firstOwnerId":3805,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":11,"parentTypeId":0,"typeName":"罚款相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000175,"parentTypeId":10054,"typeName":"包销罚款与返款","leadingAnswer":"关于罚款返款：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=441096006\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=441096006</a>\n罚款返款规则：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=74918032\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=74918032</a>","level":3,"firstOwnerId":35288,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000176,"parentTypeId":10055,"typeName":"陪访拜访罚款","leadingAnswer":"1、怀孕、转岗等情况报备需邮件到sales.fakuan@meituan.com报备，邮件需向上两级领导确认后方可减免<br/>\n邮件格式：<br/>\n主题：【罚款报备申诉】<br/>\n报备人姓名：<br/>\n报备人工号：<br/>\n报备原因：<br/>\n具体减免情况：如需减免工作日需说明具体减免几天，如需减免陪访拜访标准需说明具体减免为多少个","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":12,"parentTypeId":0,"typeName":"销售数据报表","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000177,"parentTypeId":10056,"typeName":"报表数据有误","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000178,"parentTypeId":10057,"typeName":"报表界面展示优化建议","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000179,"parentTypeId":10058,"typeName":"新的报表需求","leadingAnswer":"","level":3,"firstOwnerId":12158,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":13,"parentTypeId":0,"typeName":"公关法务问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10059,"parentTypeId":13,"typeName":"法务问题","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000180,"parentTypeId":10059,"typeName":"知识产权/合同/劳动关系等民事争议或诉讼、包销款催收","leadingAnswer":"","level":3,"firstOwnerId":3045,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000181,"parentTypeId":10059,"typeName":"分公司用印","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000182,"parentTypeId":10059,"typeName":"分公司注册、变更、注销等","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000183,"parentTypeId":10059,"typeName":"法律文件/授权","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000184,"parentTypeId":10059,"typeName":"证明","leadingAnswer":"","level":3,"firstOwnerId":27395,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000185,"parentTypeId":10059,"typeName":"资质证照申请","leadingAnswer":"","level":3,"firstOwnerId":13722,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000186,"parentTypeId":10059,"typeName":"租房、装修、中介、物业合同审核","leadingAnswer":"自检<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=513194769\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=513194769</a>","level":3,"firstOwnerId":13985,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000187,"parentTypeId":10059,"typeName":"租房、装修、中介、物业等事项咨询","leadingAnswer":"","level":3,"firstOwnerId":13985,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000188,"parentTypeId":10059,"typeName":"费用支出类合同审核","leadingAnswer":"1、邮件预审→审核通过后提交OA→寄回总部盖章→OA合同付款。（若合同直接提交OA审核系统，如有不符合要求的地方需要驳回的话，会一直驳回到申请人，即前面各审批人需要不停的重复审批，所以需要城市先提交邮件预审合同内容，避免OA流程中反复驳回、申请，降低效率）\n<br/>2、请先在貔貅系统预算申请审核通过方案后，发送邮件至legal.ddcy@meituan.com，抄送zhangmin12.发送规则:<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=355194785\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=355194785</a>。\n<br/>3、 OA审核通过后，总部合同对接人会跟进合同后续的打印、盖章、邮寄等事宜；","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000189,"parentTypeId":10059,"typeName":"与商户间业务合同审核","leadingAnswer":"1、发邮件至baoxiao@meituan.com，由包销组审核包销方案，审批通过后，包销组会根据合同情况给各部门审核同学发送（主要指总部品控bs.shenhe@meituan.com、法务legal.ddcy@meituan.com、财务），待所需部门提出意见并修改审核通过后，包销商家合同审核流程方告完成；完成后，总控品控会跟进合同后续的打印、盖章、邮寄等事宜；\n<br/>2、发邮件至bs.shenhe@meituan.com（邮件发送规范：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=39161249\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=39161249</a>），总部品控审核通过后，会发送给给各部门审核同学发送（主要指：法务legal.ddcy@meituan.com、财务jiesuan@meituan.com），待所需部门提出意见并修改审核通过后，非包销商家合同审核流程方告完成；完成后，总控品控会跟进合同后续的打印、盖章、邮寄等事宜；\n<br/>3、甲方（即非标）合同、补充协议各类合同性质的特殊文件（不区分包销和非包销），请发送至：sys_ba@dianping.com；\n<br/>4、甲方（即非标）合同、补充协议各类合同性质的特殊文件，请发送至：sqt-service@dianping.com","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000190,"parentTypeId":10059,"typeName":"其它业务相关法律问题咨询","leadingAnswer":"","level":3,"firstOwnerId":13159,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10060,"parentTypeId":13,"typeName":"公共关系","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000191,"parentTypeId":10060,"typeName":"地方正面传播需求（商户合作、促销活动等）","leadingAnswer":"1、可申请包装为典型案例并在媒体进行传播的商户要求：<br/>\n对美团大众点评十分认可，销量较高，有一定的知名度，对互联网营销价值、口碑管理、闪惠、买单提升效率等有较深的认识，商家负责人表达能力强且愿意接受采访。<br/>\n2、申请商家案例传播需要的资料如下：<br/>\n商家基本情况及品牌介绍，何时与美团点评进行合作，目前的销量如何，BD层面了解到的商家对于互联网的认识及如何利用。<br/>\n3、申请商家案例传播的流程如下：<br/>\n城市经过上述评估后找到总部公关部对接人，经过评估确定可以采访，城市协助总部同事采访商家。<br/>\n4、商家采访后会在以下渠道进行宣传：<br/>\n互联网、经济等相关的媒体渠道，视具体产出的内容而定。商家案例可以作为对外传播的素材积累，提供给感兴趣的媒体。","level":3,"firstOwnerId":17245,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000192,"parentTypeId":10060,"typeName":"地方媒体采访需求（商户、用户相关危机负面）","leadingAnswer":"","level":3,"firstOwnerId":30892,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000193,"parentTypeId":10060,"typeName":"竞对攻防、高管专访","leadingAnswer":"","level":3,"firstOwnerId":15830,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000194,"parentTypeId":10060,"typeName":"微信订阅号新闻、活动推广等","leadingAnswer":"“美团网”订阅号，定位为新闻号。核心职能为，发布美团相关新闻，扩散美团正面信息。<br/><br/>\n\n1、固定三条模板推送，以转载为主：【头条】“聚焦”版块，为美团相关新闻，稿件需经公关部把关；<br/>\n2、【次条】“业内”版块，转载我司相关行业的业内新闻；<br/>\n3、【三条】“活动”或“前沿”版块，“前沿”为行业前沿信息，“活动”版块可以支持业务线活动；<br/>\n4、【订阅号的排期】根据头条美团相关新闻发布需求来定，如无特殊情况，时间固定在下午17：00-18:00。","level":3,"firstOwnerId":12871,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000195,"parentTypeId":10060,"typeName":"微博推广、投诉、举报等","leadingAnswer":"","level":3,"firstOwnerId":28655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000196,"parentTypeId":10060,"typeName":"微博品牌合作","leadingAnswer":"","level":3,"firstOwnerId":33748,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000197,"parentTypeId":10060,"typeName":"一元夺宝（抽奖单）","leadingAnswer":"","level":3,"firstOwnerId":26318,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":14,"parentTypeId":0,"typeName":"业务支持相关","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10061,"parentTypeId":14,"typeName":"风控/刷单","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000198,"parentTypeId":10061,"typeName":"大型活动风控","leadingAnswer":"","level":3,"firstOwnerId":12861,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000199,"parentTypeId":10061,"typeName":"商家购买信息存疑反馈/商家刷单","leadingAnswer":"","level":3,"firstOwnerId":29059,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10062,"parentTypeId":14,"typeName":"新开站/分区调整/联络点/殖民地","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000200,"parentTypeId":10062,"typeName":"页面点亮及相关咨询","leadingAnswer":"","level":3,"firstOwnerId":2250,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000201,"parentTypeId":10062,"typeName":"联络点申请审批及相关咨询","leadingAnswer":"1、联络点相关操作流程及申请方式可查看：<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=86366754\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=86366754</a><br/>\n2、联络点申请及各类调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000202,"parentTypeId":10062,"typeName":"殖民地申请审批及相关咨询","leadingAnswer":"1、殖民地相关操作流程及申请方式可查看：<br/>\n<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=100829611\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=100829611</a><br/>\n2、殖民地申请及各类调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000203,"parentTypeId":10062,"typeName":"城市/区域分区审批","leadingAnswer":"1、城市分区流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266474\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266474</a><br/>\n2、城市合并流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266150\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266150</a><br/>\n3、城市边界调整流程可查看：<a style=\"cursor: pointer; color: #2c87bd\" class=\"external-link\" href=\"http://wiki.sankuai.com/pages/viewpage.action?pageId=397266009\" target=\"_blank\">http://wiki.sankuai.com/pages/viewpage.action?pageId=397266009</a><br/>\n4、城市分区、合并、边界调整均在每月1-20日接受邮件申请并完成全部审批（逾期延期下月），审批完成后，次月1-7日的工作日期间统一进行系统调整（如遇国家法定节假日往后顺延）。","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000204,"parentTypeId":10062,"typeName":"主站开站流程推进及相关咨询","leadingAnswer":"现不支持新开主站","level":3,"firstOwnerId":28269,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":1000205,"parentTypeId":10063,"typeName":"城市租房/换房/续租","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000206,"parentTypeId":10064,"typeName":"摄影师相关问题","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000207,"parentTypeId":10065,"typeName":"运营团队管理","leadingAnswer":"","level":3,"firstOwnerId":27655,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000208,"parentTypeId":10066,"typeName":"BD或城市支撑团队违规或失职投诉","leadingAnswer":"","level":3,"firstOwnerId":29212,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":15,"parentTypeId":0,"typeName":"优化建议/其他问题","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":10067,"parentTypeId":15,"typeName":"优化建议","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000209,"parentTypeId":10067,"typeName":"公司制度意见建议","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000210,"parentTypeId":10067,"typeName":"系统功能优化意见","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000211,"parentTypeId":10067,"typeName":"吐槽","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10068,"parentTypeId":15,"typeName":"城市选择错误分类","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000212,"parentTypeId":10068,"typeName":"重新分配","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false},{"typeId":10069,"parentTypeId":15,"typeName":"无流程/无对接问题","leadingAnswer":"","level":2,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000213,"parentTypeId":10069,"typeName":"问题反馈","leadingAnswer":"","level":3,"firstOwnerId":37426,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}],"leaf":false},{"typeId":16,"parentTypeId":0,"typeName":"推广业务","leadingAnswer":"","level":1,"firstOwnerId":0,"secondOwnerId":0,"children":[{"typeId":1000214,"parentTypeId":10070,"typeName":"财务收款/点金/开票","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000215,"parentTypeId":10071,"typeName":"推广方案录入审批","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000216,"parentTypeId":10072,"typeName":"账号密码","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000217,"parentTypeId":10073,"typeName":"推广通","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true},{"typeId":1000218,"parentTypeId":10074,"typeName":"其他推广业务问题","leadingAnswer":"","level":3,"firstOwnerId":2234,"secondOwnerId":0,"children":[],"leaf":true}],"leaf":false}]});},0);};Demo.prototype.render = function render(){var _this2=this;var _this=this;var bu=[{id:1,name:"交易后台"},{id:2,name:"结婚1"}];var menuData=[{data:'近一个周的问题',callback:function callback(){alert('clicked');}},{data:'近一个月的问题',callback:function callback(){alert('clicked');}},{data:'一个月之前的问题',callback:function callback(){alert('clicked');}}];return _react2['default'].createElement('div',{className:'paddingSpace'},_react2['default'].createElement('div',{style:{fontSize:'12px',display:'inline-block',width:'200px'}},_react2['default'].createElement(_egDropTree2['default'],{selected:this.state.selected,onChange:function(e){_this.setState({selected:e});},dropDownData:this.state.mockMultiDropData,keyName:'typeName',leafName:'leaf',title:'树状列表选择',ref:'MultiDropDown'})),_react2['default'].createElement('div',{className:'demo-button-container'},_react2['default'].createElement('div',{className:'demo-button',style:{background:'red'},onClick:function(){_this2.getDropDownData('MultiDropDown');}},'点击获取树状列表的选择结果')));};Demo.prototype.getDropDownData = function getDropDownData(type){console.log(this.refs[type].getParams());};return Demo;})(_react.Component);exports['default'] = Demo;module.exports = exports['default'];
 
 /***/ },
-/* 652 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _componentsMultiDropDownMenuJs = __webpack_require__(653);
+	var _componentsMultiDropDownMenuJs = __webpack_require__(661);
 
 	var _componentsMultiDropDownMenuJs2 = _interopRequireDefault(_componentsMultiDropDownMenuJs);
 
 	//下拉层级菜单
 
-	__webpack_require__(654);
+	__webpack_require__(662);
 	if (window.Eagleui) {
 	    Eagleui.MultiDropDown = _componentsMultiDropDownMenuJs2['default'];
 	} else {
@@ -51959,7 +53107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _componentsMultiDropDownMenuJs2['default'];
 
 /***/ },
-/* 653 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52524,7 +53672,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 654 */
+/* 662 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 663 */,
+/* 664 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

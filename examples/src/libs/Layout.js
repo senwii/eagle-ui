@@ -8,6 +8,9 @@ export class DemoLayout extends Component {
         return (
             <div className="doc-content">
                 <h1>{this.props.title}</h1>
+                {
+                    this.props.desc && (<div className="desc"  dangerouslySetInnerHTML={{__html: this.props.desc}}></div>)
+                }
                 {this.props.children}
             </div>
         )
@@ -21,6 +24,9 @@ export class DemoItem extends Component {
         return (
             <div>
                 <h2>{this.props.title}</h2>
+                {
+                    this.props.desc && (<div className="desc"  dangerouslySetInnerHTML={{__html: this.props.desc}}></div>)
+                }
                 <div className="doc-panel">
                     {this.props.children}
                 </div>
