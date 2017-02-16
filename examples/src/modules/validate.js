@@ -108,14 +108,8 @@ let Demo = class Demo extends Component{
     }
     render(){
         return (
-            <DemoLayout title="验证控件" desc={`
-<ul>
-<li>1.2234234234</li>
-<li>1.2234234234</li>
-<li>1.2234234234</li>
-</ul>
-`}>
-                <DemoItem title="非必填项" desc={'1.这是一个震惊的描述'}>
+            <DemoLayout title="验证控件">
+                <DemoItem title="非必填项">
                     <CodeShow><Code code={getFile('validate-demo1')}/></CodeShow>
                     <DemoShow>
                         <ValidatorPanel rules={this.rules} submitElement="#submit1" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
@@ -146,7 +140,7 @@ let Demo = class Demo extends Component{
                 </DemoItem>
                 <DemoItem title="必填项">
                     <CodeShow>
-                        <code>我是一段正经的code</code>
+                        <Code code={getFile('validate-demo2')}/>
                     </CodeShow>
                     <DemoShow>
                         <ValidatorPanel rules={this.rules} submitElement="#submit2" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
@@ -175,7 +169,7 @@ let Demo = class Demo extends Component{
                 </DemoItem>
                 <DemoItem title="弹出验证表单">
                     <CodeShow>
-                        <code>我是一段正经的code</code>
+                        <Code code={getFile('validate-demo3')}/>
                     </CodeShow>
                     <DemoShow>
                         <Button onClick={::this.showMask}>弹出验证表单</Button>

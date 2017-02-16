@@ -5,27 +5,8 @@ export default class ValidateDemo3 extends Component{
         super(props,context);
         this.rules = {
             //key对应的是表单元素的name
-            calendar:{
-                //组件默认规则
-                required:true
-            },
             userName:{
                 required:true
-            },
-            checkbox:{
-                required:true,
-                //自定义规则
-                isValueToNumber:{
-                    text:'value值不是字符串',
-                    rule:function(value){
-                        console.dir(value);
-                        //return isNaN(value);
-                        return true;
-                    }
-                }
-            },
-            date:{
-                date:true
             },
             number:{
                 number:true,
