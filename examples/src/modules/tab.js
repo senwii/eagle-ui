@@ -54,7 +54,7 @@ let Demo = class Demo extends Component{
         return (
             <div>
                 <DemoLayout title="Tab">
-                    <DemoItem title="">
+                    <DemoItem title="" desc={'activeTab属性从0开始计'}>
                         <CodeShow>
                             <Code code={getFile('tab')}>
                             </Code>

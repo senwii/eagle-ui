@@ -1,8 +1,5 @@
 import React, { Component ,PropTypes} from 'react';
 import {Button,ImgSlider,Grid,Row,Col} from 'eagle-ui';
-import Code from '../libs/Code.js';
-import {getFile} from '../libs/Code.js';
-import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
 
 export default class SliderDemo extends Component {
     constructor(props,context) {
@@ -77,42 +74,32 @@ export default class SliderDemo extends Component {
             {showThumbnail,imgModify}=this.state;
         return (
             <div>
-                <DemoLayout title="照片浏览插件">
-                    <DemoItem title="">
-                        <CodeShow>
-                            <Code code={getFile('slider')}>
-                            </Code>
-                        </CodeShow>
-                        <DemoShow>
-                            <Grid>
-                                <Row>
-                                    <Col sm={6}>
-                                        <ImgSlider  show={true}
-                                                    showThumbnail={showThumbnail}
-                                                    imgList={imgList}
-                                                    profileKey={'profile'}
-                                                    urlKey={'url'}
-                                                    titleKey={'description'}
-                                                    thumbnailKey={'thumbnail'}
-                                                    pageNum={pageNum}
-                                                    imgModify={imgModify}
-                                            />
-                                    </Col>
-                                    <Col sm={6}>
-                                        <Button block success
-                                                onClick={::this.toggleThumbnail} >
-                                            {(showThumbnail?'隐藏':'显示')+'缩略图'}
-                                        </Button>
-                                        <Button block style={{marginTop:'10px'}} success
-                                                onClick={::this.toggleModifier} >
-                                            {(imgModify?'隐藏':'显示')+'缩放控件'}
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Grid>
-                        </DemoShow>
-                    </DemoItem>
-                </DemoLayout>
+                <Grid>
+                    <Row>
+                        <Col sm={6}>
+                            <ImgSlider  show={true}
+                                        showThumbnail={showThumbnail}
+                                        imgList={imgList}
+                                        profileKey={'profile'}
+                                        urlKey={'url'}
+                                        titleKey={'description'}
+                                        thumbnailKey={'thumbnail'}
+                                        pageNum={pageNum}
+                                        imgModify={imgModify}
+                                />
+                        </Col>
+                        <Col sm={6}>
+                            <Button block success
+                                    onClick={::this.toggleThumbnail} >
+                                {(showThumbnail?'隐藏':'显示')+'缩略图'}
+                            </Button>
+                            <Button block style={{marginTop:'10px'}} success
+                                    onClick={::this.toggleModifier} >
+                                {(imgModify?'隐藏':'显示')+'缩放控件'}
+                            </Button>
+                        </Col>
+                    </Row>
+                </Grid>
             </div>
 
         );
