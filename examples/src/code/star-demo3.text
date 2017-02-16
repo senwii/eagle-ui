@@ -1,0 +1,17 @@
+import React, { Component ,PropTypes} from 'react';
+import {Star, Button} from 'eagle-ui';
+export default class StarDemo3 extends Component {
+    getValue() {
+        alert('rate is'+this.refs['test'].Rate)
+    }
+    render(){
+        return(
+            <div>
+                <Star rate={50} size={23} disable={false} ref='test'/>
+                <br/>
+                <br/>
+                <Button onClick={this.getValue.bind(this)}>点击获取星星的红色比率数据</Button>
+            </div>
+        )
+    }
+}

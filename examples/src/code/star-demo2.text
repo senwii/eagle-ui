@@ -1,0 +1,19 @@
+import React, { Component ,PropTypes} from 'react';
+import {Star} from 'eagle-ui';
+export default class StarDemo2 extends Component {
+    render(){
+        return(
+            <div>
+                <Star rate={90} size={18}  disable={false}/>
+                <br/>
+                <Star rate={10} size={19}  disable={false}/>
+                <br/>
+                <Star rate={20} size={20} disable={false}/>
+                <br/>
+                <Star rate={30} size={21} disable={false}/>
+                <br/>
+                <Star rate={40} size={22} disable={false}/>
+            </div>
+        )
+    }
+}
