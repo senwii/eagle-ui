@@ -3,8 +3,8 @@
  */
 import React,{Component} from 'react';
 import {Tab,Tabset} from 'eagle-ui';
-import Code from './Code.js';
-import {getFile} from './Code.js';
+import Code from '../libs/Code.js';
+import {getFile} from '../libs/Code.js';
 
 let Demo = class Demo extends Component{
 
@@ -52,7 +52,7 @@ let Demo = class Demo extends Component{
     render(){
         return (
             <div>
-                <Code code={getFile('tab')}>
+                <Code code={getFile('tab-demo')}>
                 </Code>
                 <Code code={getFile('paging')}>
                 </Code>

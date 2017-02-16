@@ -1,8 +1,9 @@
 import React, { Component ,PropTypes} from 'react';
+import './Code.less'
 var Prism = require('prismjs');
 
 export function getFile(fileName){
-    let fileContent=require((`raw-loader!./code/${fileName}.text`));
+    let fileContent=require((`raw-loader!../code/${fileName}.text`));
     return fileContent;
 }
 export default class Code extends Component {
