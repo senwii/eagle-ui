@@ -1,0 +1,20 @@
+import React,{Component,PropTypes} from 'react';
+import {Input, CalendarPanel, Button} from 'eagle-ui';
+export default class CalendarDemo5 extends Component{
+    constructor(props, context) {
+        super(props, context);
+    };
+    changeDate(){
+        this.refs.cp.dateChange('2015-03-02');
+    }
+    render(){
+        return (
+            <div>
+                <Button onClick={::this.changeDate} >改变时间</Button>
+                <CalendarPanel ref='cp' format="yyyy年MM月dd日">
+                    <Input placeholder="请选择日期"  icon="calendar"/>
+                </CalendarPanel>
+            </div>
+        );
+    }
+}
