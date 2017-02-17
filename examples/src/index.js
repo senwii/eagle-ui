@@ -2,6 +2,7 @@ import React, { Component ,PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import { Redirect, Router, Route } from 'react-router';
 import History from 'history/lib/createHashHistory';
+import {Head,Footer} from 'gfs-head'
 
 import Calendar from './modules/calendar.js';
 import Button from './modules/button';
@@ -89,4 +90,13 @@ let AppRouter = class AppRouter extends Component {
 ReactDom.render(
     <AppRouter />,
     document.getElementById('root')
+);
+ReactDom.render(
+    <Head></Head>,
+    document.getElementById('head')
+);
+ReactDom.render(
+    <Footer >
+    </Footer>,
+    document.getElementById('footer')
 );
