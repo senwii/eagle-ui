@@ -3,12 +3,12 @@
  */
 import React,{Component} from 'react';
 import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';
+import Code, {getFile} from '../libs/Code';
 
-let Demo= class Demo extends Component{
-
+export default class DialogCls extends Component{
     static defaultProps = {
     };
-
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -17,11 +17,9 @@ let Demo= class Demo extends Component{
             alertContent: '哈哈，你好苍老师'
         }
     }
-
     getScope(dialog){
         this.dialog = dialog;
     }
-
     show(name){
         Dialog.mask(name).then(function(){
             console.log('success');
@@ -30,7 +28,6 @@ let Demo= class Demo extends Component{
             console.log('cancel');
         });
     }
-
     showAlert(){
         Dialog.alert('哈哈，我是alert');
     }
@@ -58,58 +55,76 @@ let Demo= class Demo extends Component{
             alert('取消');
         });
     }
-
     render(){
         return (
-            <div>
-                <Button onClick={::this.show.bind(this,'demo1')} className="mg-right-15">点击我mask</Button>
-                <Button onClick={::this.show.bind(this,'demo2')} className="mg-right-15">点击我mask2表单秀</Button>
-                <Button onClick={::this.show.bind(this,'demo3')} className="mg-right-15">点击我mask3 outside</Button>
-                <Button onClick={::this.showAlert} className="mg-right-15">点击我alert</Button>
-                <Button onClick={::this.nomask} className="mg-right-15">无遮罩显示</Button>
-                <Button onClick={::this.showConfirm}>点击我Confirm</Button>
-                <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
-                    {
-                        type: 'success',
-                        name: '确认'
+            <DemoLayout title="弹出框组件">
+                <DemoItem title="默认样式">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo1')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.show.bind(this,'demo1')} className="mg-right-15">点击我mask</Button>
+                        <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
+                            {
+                                type: 'success',
+                                name: '确认'
 
-                    },
-                    {
-                        type:'cancel',
-                        egStyle:'white',
-                        name:'取消'
-                    },
-                    {
-                        egStyle:'warning',
-                        name:'改变文案',
-                        callback:()=>{
-                            {/*alert('自定义按钮');*/}
-                            this.setState({
-                                alertContent: '哈哈哈，改成波多。。。。'
-                            })
-                        }
-                    }
-                    ]}>
-                    <div>
-                        {this.state.alertContent}
-                    </div>
-                </Dialog>
-                <Dialog id="demo2" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
-                    {
-                        type: 'success',
-                        name: '提交',
-                        callback:()=>{}
-                    },
-                    {
-                        type:'cancel',
-                        egStyle:'white',
-                        name:'取消',
-                        callback:()=>{}
-                    }
-                    ]}>
-                    <Grid>
-                    <Row>
-                        <Col>
+                            },
+                            {
+                                type:'cancel',
+                                egStyle:'white',
+                                name:'取消'
+                            }
+                        ]}>
+                            <div>
+                                {this.state.alertContent}
+                            </div>
+                        </Dialog>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="改变内部文本">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo2')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.show.bind(this,'demo2')} className="mg-right-15">点击我mask</Button>
+                        <Dialog id="demo2" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
+                            {
+                                egStyle:'warning',
+                                name:'改变文案',
+                                callback:()=>{
+                                    {/*alert('自定义按钮');*/}
+                                    this.setState({
+                                        alertContent: '哈哈哈，改成波多。。。。'
+                                    })
+                                }
+                            }
+                        ]}>
+                            <div>
+                                {this.state.alertContent}
+                            </div>
+                        </Dialog>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="内嵌表单">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo3')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.show.bind(this,'demo3')} className="mg-right-15">点击我mask2表单秀</Button>
+                        <Dialog id="demo3" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
+                            {
+                                type: 'success',
+                                name: '提交',
+                                callback:()=>{}
+                            },
+                            {
+                                type:'cancel',
+                                egStyle:'white',
+                                name:'取消',
+                                callback:()=>{}
+                            }
+                        ]}>
                             <Panel heading="我是标题">
                                 <PanelContent>
                                     <Row>
@@ -190,91 +205,86 @@ let Demo= class Demo extends Component{
                                                 </PanelContent>
                                             </Panel>
                                         </Col>
-
                                     </Row>
                                 </PanelContent>
                             </Panel>
-                        </Col>
-                    </Row>
-                    </Grid>
-                </Dialog>
-                <Dialog id="demo3" title="panel" outside egSize="lg">
-                    <Panel egType="normal" margin="0">
-                        <PanelHeader>另一种形式的嵌套</PanelHeader>
-                        <PanelContent>
-                            <Panel egType="normal">
-                                <PanelHeader>另一种形式的嵌套2</PanelHeader>
+                        </Dialog>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="内容不在content之内">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo4')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.show.bind(this,'demo4')} className="mg-right-15">点击我mask3 outside</Button>
+                        <Dialog id="demo4" title="panel" outside egSize="lg">
+                            <Panel egType="normal" margin="0">
+                                <PanelHeader>另一种形式的嵌套</PanelHeader>
                                 <PanelContent>
-                                    <Row>
-                                        <Col>
-                                            我是内容区
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Panel  margin={'0'}>
-                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>
-                                                <PanelContent>
-                                                    <Row>
-                                                        <Col>
-                                                            我是内容区
-                                                        </Col>
-                                                    </Row>
-                                                </PanelContent>
-                                            </Panel>
-                                        </Col>
-                                    </Row>
+                                    <Panel egType="normal">
+                                        <PanelHeader>另一种形式的嵌套2</PanelHeader>
+                                        <PanelContent>
+                                            <Row>
+                                                <Col>
+                                                    我是内容区
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    <Panel  margin={'0'}>
+                                                        <PanelHeader>另一种形式的嵌套3</PanelHeader>
+                                                        <PanelContent>
+                                                            <Row>
+                                                                <Col>
+                                                                    我是内容区
+                                                                </Col>
+                                                            </Row>
+                                                        </PanelContent>
+                                                    </Panel>
+                                                </Col>
+                                            </Row>
+                                        </PanelContent>
+                                    </Panel>
+                                    <Panel margin={'0'}>
+                                        <PanelHeader>另一种形式的嵌套2</PanelHeader>
+                                        <PanelContent>
+                                            <Row>
+                                                <Col>
+                                                    我是内容区
+                                                </Col>
+                                            </Row>
+                                        </PanelContent>
+                                    </Panel>
                                 </PanelContent>
                             </Panel>
-                            <Panel margin={'0'}>
-                                <PanelHeader>另一种形式的嵌套2</PanelHeader>
-                                <PanelContent>
-                                    <Row>
-                                        <Col>
-                                            我是内容区
-                                        </Col>
-                                    </Row>
-                                </PanelContent>
-                            </Panel>
-                        </PanelContent>
-                    </Panel>
-                </Dialog>
-            </div>
-        );
-        /*return (
-         <Grid>
-        <Row>
-            <Col sm={3}><Button block radius egSize="sm" onClick={::this.showDialog}>dialog</Button></Col>
-            <Col sm={3}><Button block radius egSize="sm" onClick={::this.showAlert}>alert</Button></Col>
-            <Col sm={3}><Button block radius egSize="sm" onClick={::this.showConfirm}>confirm</Button></Col>
-            <Col sm={3}><Button block radius egSize="sm" onClick={::this.showMsak}>mask</Button></Col>
-        </Row>
-            <Dialog type={this.state.type} show={this.state.show} title={this.state.title} ref={::this.getScope}>
-            ahflaskdjflajsflajsdlf;jkasdfk
-                adfkjasd;fkjas;dlf
-                asdfkn;askdfnas
-            </Dialog>
-           </Grid>
-        );*/
-    }
-    /*showDialog(){
-        this.dialog.open('dialog');
-    }
-    showAlert(){
-        this.dialog.open('alert');
-    }
-    showConfirm(){
-        this.dialog.open('confirm');
-    }
-    showMsak(){
-        this.dialog.open('mask');
-    }*/
-};
-
-export default class DialogCls extends Component{
-    render(){
-        return (
-            <Demo  />
+                        </Dialog>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="alert展示">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo5')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.showAlert} className="mg-right-15">点击我alert</Button>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="无遮罩展示">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo6')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.nomask} className="mg-right-15">无遮罩显示</Button>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="confirm展示">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo7')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.showConfirm}>点击我Confirm</Button>
+                    </DemoShow>
+                </DemoItem>
+            </DemoLayout>
         );
     }
 }

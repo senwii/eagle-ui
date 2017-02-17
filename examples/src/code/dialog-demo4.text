@@ -1,0 +1,64 @@
+import React,{Component} from 'react';
+import {Button,Dialog} from 'eagle-ui';
+
+export default class DialogDemo1 extends Component{
+    constructor(props, context) {
+        super(props, context);
+    }
+    show(name){
+        Dialog.mask(name).then(function(){
+            console.log('success');
+            Dialog.close();
+        },function(type){
+            console.log('cancel');
+        });
+    }
+    render() {
+        return (
+            <div>
+                <Button onClick={::this.show.bind(this,'demo4')} className="mg-right-15">点击我mask3 outside</Button>
+                <Dialog id="demo4" title="panel" outside egSize="lg">
+                    <Panel egType="normal" margin="0">
+                        <PanelHeader>另一种形式的嵌套</PanelHeader>
+                        <PanelContent>
+                            <Panel egType="normal">
+                                <PanelHeader>另一种形式的嵌套2</PanelHeader>
+                                <PanelContent>
+                                    <Row>
+                                        <Col>
+                                            我是内容区
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Panel  margin={'0'}>
+                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>
+                                                <PanelContent>
+                                                    <Row>
+                                                        <Col>
+                                                            我是内容区
+                                                        </Col>
+                                                    </Row>
+                                                </PanelContent>
+                                            </Panel>
+                                        </Col>
+                                    </Row>
+                                </PanelContent>
+                            </Panel>
+                            <Panel margin={'0'}>
+                                <PanelHeader>另一种形式的嵌套2</PanelHeader>
+                                <PanelContent>
+                                    <Row>
+                                        <Col>
+                                            我是内容区
+                                        </Col>
+                                    </Row>
+                                </PanelContent>
+                            </Panel>
+                        </PanelContent>
+                    </Panel>
+                </Dialog>
+            </div>
+        );
+    }
+};
