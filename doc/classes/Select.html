@@ -396,7 +396,7 @@
       <div class="stdoc-code"><p>下拉选择框组件<br>
     支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。
 主要属性接口：</p>
-<p><ul>
+<ul>
     <li>defaultChecked:默认显示的选项即选中的选项<br>
         如：<code>
             defaultChecked="上海"
@@ -407,10 +407,9 @@
     </li>
     <li>placeholder:提示框的内容<br>
         如：<code>placeholder="请选择"</code>
-    </li></p>
-<p></ul></p>
-<div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/select">demo展示</a></div>
-<div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Select.js">查看源码</a></div></div>
+    </li>
+
+</ul></div>
  </div>
 
     <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -562,24 +561,78 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/select"  _no='0'> <a>select</a></li>
+                
             </ul>
             <div class="example-content ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code> import {Select} from &#39;eagle-ui&#39;;
- ...
- function getValue(value,key,type){
-     let stype = {
-         &#39;enter&#39;:&#39;回车时调用&#39;,
-         &#39;click&#39;:&#39;点击每一项元素时调用&#39;
-     };
-     console.log(value,key,stype[type]);
- }
- ...
- &lt;Select defaultChecked={"上海"} getValueCallback={getValue} placeholder="请选择" &gt;
-     &lt;option value=&#39;bei&#39; key="bei"&gt;北京&lt;/option&gt;
-     &lt;option value=&#39;shang&#39; key="上海"&gt;上海&lt;/option&gt;
-     &lt;option value=&#39;nan&#39; key="南京"&gt;南京&lt;/option&gt;
-     &lt;option value=&#39;3&#39; key="杭州"&gt;杭州&lt;/option&gt;
- &lt;/Select&gt;</code></pre>
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component,PropTypes}  from &#39;react&#39;;
+import {Col,Row,Grid,Button,Select} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;
+
+export default class Demo extends Component{
+    static defaultProps = {
+        input: true,
+        keys:&#39;bei&#39;
+    }
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            input: this.props.input,
+            options:[],
+            defaultCity:&#39;&#39;
+        };
+        setTimeout(()=&gt;{
+            this.setState({options: this.getOptions()})
+        });
+        setTimeout(function(){
+            this.setState({
+                defaultCity:&#39;上海&#39;
+            });
+        }.bind(this),2000);
+    }
+    getValue(value,key,type){
+        let stype = {
+            &#39;init&#39;:&#39;加载时调用&#39;,
+            &#39;enter&#39;:&#39;回车时调用&#39;,
+            &#39;click&#39;:&#39;点击每一项元素时调用&#39;
+        };
+        document.getElementById(&#39;showtip&#39;).innerHTML = <code>&amp;lt;strong&amp;gt;${stype[type]}&amp;lt;&#x2F;strong&amp;gt;的值为：&amp;lt;b&amp;gt;&quot;key&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${key}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;,&amp;lt;b&amp;gt;&quot;value&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${value}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;</code>;
+    }
+    getOptions(){
+        return [
+            &lt;option value=&#39;bei&#39; key="bei"&gt;北京&lt;/option&gt;,
+            &lt;option value=&#39;shang&#39; key="上海"&gt;上海&lt;/option&gt;,
+            &lt;option value=&#39;nan&#39; key="南京"&gt;南京&lt;/option&gt;,
+            &lt;option value=&#39;3&#39; key="杭州"&gt;杭州&lt;/option&gt;,
+            &lt;option value=&#39;4&#39; key="杭州西"&gt;杭州西&lt;/option&gt;,
+            &lt;option value=&#39;5&#39; key="杭州北站"&gt;杭州北站&lt;/option&gt;,
+            &lt;option value=&#39;6&#39; key="广州"&gt;广州&lt;/option&gt;,
+            &lt;option value=&#39;7&#39; key="深圳"&gt;深圳&lt;/option&gt;,
+            &lt;option value=&#39;8&#39; key="澳门"&gt;澳门&lt;/option&gt;,
+            &lt;option value=&#39;10&#39; key="太原"&gt;太原&lt;/option&gt;,
+            &lt;option value=&#39;11&#39; key="台湾"&gt;台湾&lt;/option&gt;,
+            &lt;option value=&#39;12&#39; key="香港"&gt;香港&lt;/option&gt;
+        ];
+    }
+    render(){
+        return (
+            &lt;DemoLayout title="下拉框组件"&gt;
+                &lt;DemoItem title="默认使用"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;select-demo&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" &gt;
+                            {this.state.options}
+                        &lt;/Select&gt;
+                        &lt;div id="showtip" className="color-info"&gt;&lt;/div&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
 </div>
             </div>
             <div class="btn-method-box">
@@ -626,7 +679,7 @@
             
         
         
-        <a href="../files/lib_Select.js.html#l111"><code>lib&#x2F;Select.js:111</code></a>
+        <a href="../files/lib_Select.js.html#l93"><code>lib&#x2F;Select.js:93</code></a>
         
         </p>
 
@@ -674,7 +727,7 @@
             
         
         
-        <a href="../files/lib_Select.js.html#l103"><code>lib&#x2F;Select.js:103</code></a>
+        <a href="../files/lib_Select.js.html#l85"><code>lib&#x2F;Select.js:85</code></a>
         
         </p>
 
@@ -727,7 +780,7 @@
             
         
         
-        <a href="../files/lib_Select.js.html#l94"><code>lib&#x2F;Select.js:94</code></a>
+        <a href="../files/lib_Select.js.html#l76"><code>lib&#x2F;Select.js:76</code></a>
         
         </p>
 

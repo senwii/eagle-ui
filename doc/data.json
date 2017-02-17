@@ -743,11 +743,17 @@
             "namespace": "",
             "file": "lib/Button.js",
             "line": 30,
-            "description": "- 按钮组件提供内置样式<br/>\n- 也可以自定义行内样式和className<br/>\n- 支持disabled, active等属性定义<br/>\n- 可以通过egSize 设置大小，可选xs、sm、lg。<br/>\n- 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'\n <div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/button\">demo展示</a></div>\n <div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Button.js\">查看源码</a></div>",
+            "description": "- 按钮组件提供内置样式<br/>\n- 也可以自定义行内样式和className<br/>\n- 支持disabled, active等属性定义<br/>\n- 可以通过egSize 设置大小，可选xs、sm、lg。<br/>\n- 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\n    import {Button} from 'eagle-ui';\n    ...\n    //设置背景颜色\n    <Button   egStyle=\"default\">按钮2</Button>\n    <Button   egStyle=\"link\">按钮3</Button>\n    <Button   egStyle=\"white\">按钮4</Button>\n\n    //设置hollow属性将颜色应用于按钮边框，而不是背景色\n    <Button hollow  egStyle=\"warning\">按钮2</Button>\n    <Button hollow  egStyle=\"danger\">按钮3</Button>\n    <Button hollow  egStyle=\"success\">按钮4</Button>\n\n    //设置大小\n    <Button radius egSize=\"xs\" egStyle=\"\">小按钮</Button>\n    <Button radius egSize=\"sm\" egStyle=\"\">中按钮</Button>\n    <Button radius egSize=\"lg\" egStyle=\"\">大按钮</Button>\n\n    //设置onClick事件\n    <Button onClick={function(){alert('clicked')}} >点击触发回调</Button>\n\n    //禁用按钮\n    <Button disabled>禁用按钮</Button>"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class ButtonCls extends Component{\n\t    onActive(target,html){\n\t        console.dir(html);\n\t        alert('测试');\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"按钮组件\">\n\t                <DemoItem title=\"按钮样式\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo1')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button egStyle=\"warning\">警告</Button>&nbsp;\n\t                        <Button egStyle=\"success\">成功</Button>&nbsp;\n\t                        <Button egStyle=\"danger\">危险</Button>&nbsp;\n\t                        <Button egStyle=\"error\">错误</Button>&nbsp;\n\t                        <Button egStyle=\"info\">info</Button>&nbsp;\n\t                        <Button >默认</Button>&nbsp;\n\t                        <Button egStyle=\"white\">白色</Button>&nbsp;\n\t                        <Button egStyle=\"link\" >链接</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"按钮大小\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button egSize=\"xs\" >小号</Button>&nbsp;\n\t                        <Button>默认</Button>&nbsp;\n\t                        <Button egSize=\"lg\" >大号</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"按钮组排列\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ButtonGroup egType=\"justify\" activeCallback={this.onActive}>\n\t                            <Button egStyle=\"warning\">水平按钮组1</Button><Button egStyle=\"warning\">水平按钮组2</Button><Button egStyle=\"warning\">水平按钮组3</Button>\n\t                        </ButtonGroup>\n\t                        <br/>\n\t                        <ButtonGroup egType=\"tacked\">\n\t                            <Button>垂直按钮组1</Button><Button>垂直按钮组2</Button><Button>垂直按钮组3</Button>\n\t                        </ButtonGroup>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"空心按钮\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button egStyle=\"warning\" hollow>警告</Button>&nbsp;\n\t                        <Button egStyle=\"success\" hollow>成功</Button>&nbsp;\n\t                        <Button egStyle=\"danger\" hollow>危险</Button>&nbsp;\n\t                        <Button egStyle=\"error\" hollow>错误</Button>&nbsp;\n\t                        <Button egStyle=\"white\" hollow>white</Button>&nbsp;\n\t                        <Button egStyle=\"link\" hollow>link</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"默认／禁用\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo5')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button radius egSize=\"sm\">默认</Button>&nbsp;\n\t                        <Button radius egSize=\"sm\" disabled>默认不可点</Button>\n\t                        <br/><br/>\n\t                        <Button egStyle=\"white\">白色</Button>&nbsp;\n\t                        <Button egStyle=\"white\" disabled>白色不可点</Button>\n\t                        <br/><br/>\n\t                        <Button egStyle=\"success\">成功</Button>&nbsp;\n\t                        <Button egStyle=\"success\" disabled>成功不可点</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "button"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/button"
             ]
         },
         "ButtonGroup": {
@@ -762,12 +768,18 @@
             "namespace": "",
             "file": "lib/ButtonGroup.js",
             "line": 30,
-            "description": "ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>\n设置justify属性时可以将按钮组水平排列<br/>\n设置tacked属性时可以将按钮组竖直排列\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/button\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js\">查看源码</a></div>",
+            "description": "ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>\n设置justify属性时可以将按钮组水平排列<br/>\n设置tacked属性时可以将按钮组竖直排列",
             "extends": "Component",
             "is_constructor": 1,
             "since": "0.1.0",
             "example": [
-                "\n     import {ButtonGroup,Button} from 'eagle-ui';\n     ...\n     function onActive(target,html){\n         console.log(target,html);\n     }\n     ...\n     <ButtonGroup egType=\"justify\" activeCallback={onActive}>\n         <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组1</Button>\n         <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组2</Button>\n         <Button radius egSize=\"sm\" egStyle=\"warning\">水平按钮组3</Button>\n     </ButtonGroup>"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class ButtonCls extends Component{\n\t    onActive(target,html){\n\t        console.dir(html);\n\t        alert('测试');\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"按钮组件\">\n\t                <DemoItem title=\"按钮样式\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo1')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button egStyle=\"warning\">警告</Button>&nbsp;\n\t                        <Button egStyle=\"success\">成功</Button>&nbsp;\n\t                        <Button egStyle=\"danger\">危险</Button>&nbsp;\n\t                        <Button egStyle=\"error\">错误</Button>&nbsp;\n\t                        <Button egStyle=\"info\">info</Button>&nbsp;\n\t                        <Button >默认</Button>&nbsp;\n\t                        <Button egStyle=\"white\">白色</Button>&nbsp;\n\t                        <Button egStyle=\"link\" >链接</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"按钮大小\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button egSize=\"xs\" >小号</Button>&nbsp;\n\t                        <Button>默认</Button>&nbsp;\n\t                        <Button egSize=\"lg\" >大号</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"按钮组排列\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ButtonGroup egType=\"justify\" activeCallback={this.onActive}>\n\t                            <Button egStyle=\"warning\">水平按钮组1</Button><Button egStyle=\"warning\">水平按钮组2</Button><Button egStyle=\"warning\">水平按钮组3</Button>\n\t                        </ButtonGroup>\n\t                        <br/>\n\t                        <ButtonGroup egType=\"tacked\">\n\t                            <Button>垂直按钮组1</Button><Button>垂直按钮组2</Button><Button>垂直按钮组3</Button>\n\t                        </ButtonGroup>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"空心按钮\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button egStyle=\"warning\" hollow>警告</Button>&nbsp;\n\t                        <Button egStyle=\"success\" hollow>成功</Button>&nbsp;\n\t                        <Button egStyle=\"danger\" hollow>危险</Button>&nbsp;\n\t                        <Button egStyle=\"error\" hollow>错误</Button>&nbsp;\n\t                        <Button egStyle=\"white\" hollow>white</Button>&nbsp;\n\t                        <Button egStyle=\"link\" hollow>link</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"默认／禁用\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo5')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button radius egSize=\"sm\">默认</Button>&nbsp;\n\t                        <Button radius egSize=\"sm\" disabled>默认不可点</Button>\n\t                        <br/><br/>\n\t                        <Button egStyle=\"white\">白色</Button>&nbsp;\n\t                        <Button egStyle=\"white\" disabled>白色不可点</Button>\n\t                        <br/><br/>\n\t                        <Button egStyle=\"success\">成功</Button>&nbsp;\n\t                        <Button egStyle=\"success\" disabled>成功不可点</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "button"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/button"
             ]
         },
         "Calendar": {
@@ -834,11 +846,17 @@
             "namespace": "",
             "file": "lib/CheckboxGroup.js",
             "line": 32,
-            "description": "CheckboxGroup需与Input组件配合使用<br/>\n它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/input\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/CheckboxGroup.js\">查看源码</a></div>",
+            "description": "CheckboxGroup需与Input组件配合使用<br/>\n它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\n     import {CheckboxGroup,Input} from 'eagle-ui';\n     ...\n\n     <CheckboxGroup>\n         <Input  type=\"checkbox\" label=\"足球\" checked   />\n         <Input  type=\"checkbox\" label=\"篮球\"    />\n         <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n         <Input  type=\"checkbox\" label=\"乒乓球\"    />\n     </CheckboxGroup>"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\t\n\timport querystring from 'querystring';\n\t\n\timport {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\n\t\n\timport Code from '../libs/Code.js';\n\timport {getFile} from '../libs/Code.js';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\t\n\t\n\texport default class Demo extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t\n\t        this.state = {\n\t            show:false,\n\t            radioValue:'橘子',\n\t            checkBoxValue:false\n\t        }\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    radioCallback(val){\n\t        this.setState({\n\t            radioValue:val\n\t        })\n\t    }\n\t    checkboxCallback(){\n\t        this.setState({\n\t            checkBoxValue:!this.state.checkBoxValue\n\t        })\n\t    }\n\t    render(){\n\t        let {radioValue,checkBoxValue}=this.state;\n\t        return (\n\t            <DemoLayout title=\"输入控件\">\n\t                <DemoItem title=\"radio类型\" desc={'一般结合RadioGroup组件来用'}>\n\t                    <CodeShow>\n\t                        <Code code={getFile('input-radio')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Grid>\n\t                            <Row>\n\t                                <Col sm={6}>\n\t                                    <RadioGroup defaultChecked={radioValue}\n\t                                                name=\"radio-test\"\n\t                                                getValueCallback={::this.radioCallback}>\n\t                                        <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n\t                                        <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n\t                                        <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n\t                                    </RadioGroup>\n\t                                </Col>\n\t                                <Col sm={6}>\n\t                                    已选择了：{this.state.radioValue}\n\t                                </Col>\n\t                            </Row>\n\t                        </Grid>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"chechbox类型\" desc={'一般结合CheckboxGroup组件来用'}>\n\t                    <CodeShow>\n\t                        <Code code={getFile('input-checkbox')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Grid>\n\t                            <Row>\n\t                                <Col sm={12}>\n\t                                    <CheckboxGroup>\n\t                                        <Input label=\"石榴\" type=\"checkbox\" checked />\n\t                                        <Input label=\"橘子\" type=\"checkbox\" disabled={true}   />\n\t                                        <Input label=\"苹果\"  type=\"checkbox\" getValueCallback={function(val,dom){console.log(val,dom)}}  value=\"apple\"  />\n\t                                        <Input label=\"香蕉\"  type=\"checkbox\" onChange={::this.checkboxCallback} checked={checkBoxValue} value=\"banana\"  />\n\t                                    </CheckboxGroup>\n\t                                </Col>\n\t                            </Row>\n\t                        </Grid>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"表单组合示例\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('input-combine')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <FormGroup>\n\t                            <Row>\n\t                                <Col sm={2}>姓名</Col>\n\t                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>姓名</Col>\n\t                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>性别</Col>\n\t                                <Col sm={10}>\n\t                                    <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                        <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                        <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                    </RadioGroup>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>体育爱好</Col>\n\t                                <Col sm={10}>\n\t                                    <CheckboxGroup>\n\t                                        <Input  type=\"checkbox\" label=\"足球\" checked   />\n\t                                        <Input  type=\"checkbox\" label=\"篮球\"    />\n\t                                        <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n\t                                        <Input  type=\"checkbox\" label=\"乒乓球\"    />\n\t                                    </CheckboxGroup>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>姓名</Col>\n\t                                <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                <FormGroup>\n\t                                    <Col sm={13}>出生日期</Col>\n\t                                    <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n\t                                </FormGroup>\n\t                                <FormGroup>\n\t                                    <Col sm={13}>省份证</Col>\n\t                                    <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入省份证\"   /></Col>\n\t                                </FormGroup>\n\t                            </Row>\n\t                        </FormGroup>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t};\n\t"
+            ],
+            "exampleTitles": [
+                "input"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/input"
             ]
         },
         "Col": {
@@ -853,11 +871,17 @@
             "namespace": "",
             "file": "lib/Col.js",
             "line": 27,
-            "description": "定义栅格中的一列，配合Row组件使用\n<h5>主要的UI属性接口包括:</h5>\n<ul>\n    <li>sm:一行Row的宽度为100%(12份)，sm的值表示当前Col的宽度占了12份中的几份</li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>\n</pre>\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/Demo1\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Col.js\">查看源码</a></div>",
+            "description": "定义栅格中的一列，配合Row组件使用\n<h5>主要的UI属性接口包括:</h5>\n<ul>\n    <li>sm:一行Row的宽度为100%(12份)，sm的值表示当前Col的宽度占了12份中的几份</li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\n     //没有设置end属性，最后一个Col会向右对齐\n     <Grid>\n         <Row>\n             <Col sm={4}>\n                 浏览量：151195\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n         </Row>\n     </Grid>\n\n     //设置end属性，最后一个Col会向左对齐\n     <Grid>\n         <Row>\n             <Col sm={4}>\n                 浏览量：151195\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n             <Col end sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n         </Row>\n     </Grid>"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport class SearchSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={5}>\n\t                        <Select callback={function(val){alert(val)}}>\n\t                            <item>北京</item>\n\t                            <item>上海</item>\n\t                            <item>南京</item>\n\t                        </Select>\n\t                    </Col>\n\t                    <Col sm={5}>\n\t                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n\t                    </Col>\n\t                    <Col sm={2}/>\n\t                </Row>\n\t            </Grid>\n\t\n\t        )\n\t    }\n\t}\n\texport class FilterSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <div>\n\t                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n\t                    <Label>全部</Label>\n\t                    <Label>美</Label>\n\t                    <Label>休闲娱乐</Label>\n\t                    <Label>景点</Label>\n\t                    <Label>购物</Label>\n\t                    <Label>丽人</Label>\n\t                    <Label>结婚</Label>\n\t                    <Label>亲子</Label>\n\t                    <Label>教育培训</Label>\n\t                    <Label>运动健身</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>家装</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>爱车</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>医疗健康</Label>\n\t                </LabelGroup>\n\t                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n\t                    <Label>全部</Label>\n\t                    <Label>卢湾区</Label>\n\t                    <Label>徐汇区</Label>\n\t                    <Label>静安区</Label>\n\t                    <Label>长宁区</Label>\n\t                    <Label>闵行区</Label>\n\t                    <Label>浦东新区</Label>\n\t                    <Label>黄浦区</Label>\n\t                    <Label>普陀区</Label>\n\t                    <Label>闸北区</Label>\n\t                    <Label>虹口区</Label>\n\t                    <Label>杨浦区</Label>\n\t                    <Label>宝山区</Label>\n\t                </LabelGroup>\n\t            </div>\n\t        )\n\t    }\n\t};\n\texport class CardListPanel extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.state = {\n\t            page: 1\n\t        }\n\t    }\n\t    show(){\n\t        console.debug(1);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel>\n\t                <PanelHeader>\n\t                    <CheckboxGroup>\n\t                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n\t                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n\t                        <Input label=\"团购在线\" type=\"checkbox\"/>\n\t                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n\t                        <Input label=\"预订在线\" type=\"checkbox\"/>\n\t                    </CheckboxGroup>\n\t                </PanelHeader>\n\t                <PanelContent padding={false}>\n\t                    <List>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius>团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius> 团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                        <Col sm={6}></Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius>团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                        <Col sm={6}></Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                    </List>\n\t                </PanelContent>\n\t                <PanelFooter>\n\t                    <Paging currentPage={this.state.page} total={1024} />\n\t                </PanelFooter>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t\n\texport default class Layout extends Component{\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"布局样式\">\n\t                <DemoItem title=\"搜索\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-search')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <SearchSec />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"过滤\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-filter')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <FilterSec />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"卡片列表\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-card')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CardListPanel />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}\n\t\n\t\n\t"
+            ],
+            "exampleTitles": [
+                "layout"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
             ]
         },
         "Crumb": {
@@ -924,11 +948,17 @@
             "namespace": "",
             "file": "lib/Grid.js",
             "line": 48,
-            "description": "定义栅格容器,配合Col和Row使用\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/Demo1\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Grid.js\">查看源码</a></div>",
+            "description": "定义栅格容器,配合Col和Row使用",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\n     //没有设置end属性，最后一个Col会向右对齐\n     <Grid>\n         <Row>\n             <Col sm={4}>\n                 浏览量：151195\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n         </Row>\n     </Grid>\n\n     //设置end属性，最后一个Col会向左对齐\n     <Grid>\n         <Row>\n             <Col sm={4}>\n                 浏览量：151195\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n             <Col end sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n         </Row>\n     </Grid>"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport class SearchSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={5}>\n\t                        <Select callback={function(val){alert(val)}}>\n\t                            <item>北京</item>\n\t                            <item>上海</item>\n\t                            <item>南京</item>\n\t                        </Select>\n\t                    </Col>\n\t                    <Col sm={5}>\n\t                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n\t                    </Col>\n\t                    <Col sm={2}/>\n\t                </Row>\n\t            </Grid>\n\t\n\t        )\n\t    }\n\t}\n\texport class FilterSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <div>\n\t                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n\t                    <Label>全部</Label>\n\t                    <Label>美</Label>\n\t                    <Label>休闲娱乐</Label>\n\t                    <Label>景点</Label>\n\t                    <Label>购物</Label>\n\t                    <Label>丽人</Label>\n\t                    <Label>结婚</Label>\n\t                    <Label>亲子</Label>\n\t                    <Label>教育培训</Label>\n\t                    <Label>运动健身</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>家装</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>爱车</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>医疗健康</Label>\n\t                </LabelGroup>\n\t                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n\t                    <Label>全部</Label>\n\t                    <Label>卢湾区</Label>\n\t                    <Label>徐汇区</Label>\n\t                    <Label>静安区</Label>\n\t                    <Label>长宁区</Label>\n\t                    <Label>闵行区</Label>\n\t                    <Label>浦东新区</Label>\n\t                    <Label>黄浦区</Label>\n\t                    <Label>普陀区</Label>\n\t                    <Label>闸北区</Label>\n\t                    <Label>虹口区</Label>\n\t                    <Label>杨浦区</Label>\n\t                    <Label>宝山区</Label>\n\t                </LabelGroup>\n\t            </div>\n\t        )\n\t    }\n\t};\n\texport class CardListPanel extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.state = {\n\t            page: 1\n\t        }\n\t    }\n\t    show(){\n\t        console.debug(1);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel>\n\t                <PanelHeader>\n\t                    <CheckboxGroup>\n\t                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n\t                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n\t                        <Input label=\"团购在线\" type=\"checkbox\"/>\n\t                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n\t                        <Input label=\"预订在线\" type=\"checkbox\"/>\n\t                    </CheckboxGroup>\n\t                </PanelHeader>\n\t                <PanelContent padding={false}>\n\t                    <List>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius>团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius> 团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                        <Col sm={6}></Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius>团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                        <Col sm={6}></Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                    </List>\n\t                </PanelContent>\n\t                <PanelFooter>\n\t                    <Paging currentPage={this.state.page} total={1024} />\n\t                </PanelFooter>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t\n\texport default class Layout extends Component{\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"布局样式\">\n\t                <DemoItem title=\"搜索\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-search')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <SearchSec />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"过滤\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-filter')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <FilterSec />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"卡片列表\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-card')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CardListPanel />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}\n\t\n\t\n\t"
+            ],
+            "exampleTitles": [
+                "layout"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
             ]
         },
         "Slider": {
@@ -1076,11 +1106,17 @@
             "namespace": "",
             "file": "lib/RadioGroup.js",
             "line": 36,
-            "description": "RadioGroup需与Input组件配合使用<br/>\n它的作用是将type=radio的Input组件在UI上展示在一起\n主要属性接口：\n<ul>\n    <li>name:radio组的name值<br>\n        如：<code>\n            name='fruits'\n        </code>\n    </li>\n    <li>defaultChecked:默认选中值<br>\n        如：<code>defaultChecked=\"石榴\"</code>\n    </li>\n    <li>getValueCallback:获取选中值的回调函数<br>\n        如：<code>getValueCallback={function(val){alert(val)}}</code>\n    </li>\n\n</ul>\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/input\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/RadioGroup.js\">查看源码</a></div>",
+            "description": "RadioGroup需与Input组件配合使用<br/>\n它的作用是将type=radio的Input组件在UI上展示在一起\n主要属性接口：\n<ul>\n    <li>name:radio组的name值<br>\n        如：<code>\n            name='fruits'\n        </code>\n    </li>\n    <li>defaultChecked:默认选中值<br>\n        如：<code>defaultChecked=\"石榴\"</code>\n    </li>\n    <li>getValueCallback:获取选中值的回调函数<br>\n        如：<code>getValueCallback={function(val){alert(val)}}</code>\n    </li>\n\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\n     import {RadioGroup,Input} from 'eagle-ui';\n     ...\n     function getValueCallback(val){\n         alert(val);\n         console.dir(val);\n     }\n     ...\n     <RadioGroup defaultChecked=\"鸡蛋\" name=\"radio-foot\" getValueCallback={getValueCallback}>\n         <Input  type=\"radio\"  label=\"大白菜\" value=\"大白菜\" />\n         <Input  type=\"radio\"  label=\"鸡蛋\" value=\"鸡蛋\" disabled={true}  />\n         <Input  type=\"radio\"  label=\"猪肉\" value=\"猪肉\" />\n         <Input  type=\"radio\"  label=\"牛肉\" value=\"牛肉\" />\n         <Input  type=\"radio\"  label=\"鱼肉\" value=\"鱼肉\" disabled={true} />\n     </RadioGroup>\n"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\t\n\timport querystring from 'querystring';\n\t\n\timport {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\n\t\n\timport Code from '../libs/Code.js';\n\timport {getFile} from '../libs/Code.js';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\t\n\t\n\texport default class Demo extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t\n\t        this.state = {\n\t            show:false,\n\t            radioValue:'橘子',\n\t            checkBoxValue:false\n\t        }\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    radioCallback(val){\n\t        this.setState({\n\t            radioValue:val\n\t        })\n\t    }\n\t    checkboxCallback(){\n\t        this.setState({\n\t            checkBoxValue:!this.state.checkBoxValue\n\t        })\n\t    }\n\t    render(){\n\t        let {radioValue,checkBoxValue}=this.state;\n\t        return (\n\t            <DemoLayout title=\"输入控件\">\n\t                <DemoItem title=\"radio类型\" desc={'一般结合RadioGroup组件来用'}>\n\t                    <CodeShow>\n\t                        <Code code={getFile('input-radio')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Grid>\n\t                            <Row>\n\t                                <Col sm={6}>\n\t                                    <RadioGroup defaultChecked={radioValue}\n\t                                                name=\"radio-test\"\n\t                                                getValueCallback={::this.radioCallback}>\n\t                                        <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n\t                                        <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n\t                                        <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n\t                                    </RadioGroup>\n\t                                </Col>\n\t                                <Col sm={6}>\n\t                                    已选择了：{this.state.radioValue}\n\t                                </Col>\n\t                            </Row>\n\t                        </Grid>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"chechbox类型\" desc={'一般结合CheckboxGroup组件来用'}>\n\t                    <CodeShow>\n\t                        <Code code={getFile('input-checkbox')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Grid>\n\t                            <Row>\n\t                                <Col sm={12}>\n\t                                    <CheckboxGroup>\n\t                                        <Input label=\"石榴\" type=\"checkbox\" checked />\n\t                                        <Input label=\"橘子\" type=\"checkbox\" disabled={true}   />\n\t                                        <Input label=\"苹果\"  type=\"checkbox\" getValueCallback={function(val,dom){console.log(val,dom)}}  value=\"apple\"  />\n\t                                        <Input label=\"香蕉\"  type=\"checkbox\" onChange={::this.checkboxCallback} checked={checkBoxValue} value=\"banana\"  />\n\t                                    </CheckboxGroup>\n\t                                </Col>\n\t                            </Row>\n\t                        </Grid>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"表单组合示例\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('input-combine')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <FormGroup>\n\t                            <Row>\n\t                                <Col sm={2}>姓名</Col>\n\t                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>姓名</Col>\n\t                                <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>性别</Col>\n\t                                <Col sm={10}>\n\t                                    <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                        <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                        <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                    </RadioGroup>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>体育爱好</Col>\n\t                                <Col sm={10}>\n\t                                    <CheckboxGroup>\n\t                                        <Input  type=\"checkbox\" label=\"足球\" checked   />\n\t                                        <Input  type=\"checkbox\" label=\"篮球\"    />\n\t                                        <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n\t                                        <Input  type=\"checkbox\" label=\"乒乓球\"    />\n\t                                    </CheckboxGroup>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col sm={2}>姓名</Col>\n\t                                <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                <FormGroup>\n\t                                    <Col sm={13}>出生日期</Col>\n\t                                    <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n\t                                </FormGroup>\n\t                                <FormGroup>\n\t                                    <Col sm={13}>省份证</Col>\n\t                                    <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入省份证\"   /></Col>\n\t                                </FormGroup>\n\t                            </Row>\n\t                        </FormGroup>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t};\n\t"
+            ],
+            "exampleTitles": [
+                "input"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/input"
             ]
         },
         "Row": {
@@ -1095,11 +1131,17 @@
             "namespace": "",
             "file": "lib/Row.js",
             "line": 27,
-            "description": "定义栅格中的一行，配合Col组件使用\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/Demo1\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Row.js\">查看源码</a></div>",
+            "description": "定义栅格中的一行，配合Col组件使用",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\n     //没有设置end属性，最后一个Col会向右对齐\n     <Grid>\n         <Row>\n             <Col sm={4}>\n                 浏览量：151195\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n         </Row>\n     </Grid>\n\n     //设置end属性，最后一个Col会向左对齐\n     <Grid>\n         <Row>\n             <Col sm={4}>\n                 浏览量：151195\n             </Col>\n             <Col sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n             <Col end sm={2}>\n                 门店市场份额:100.00%\n             </Col>\n         </Row>\n     </Grid>"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport class SearchSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <Grid>\n\t                <Row>\n\t                    <Col sm={5}>\n\t                        <Select callback={function(val){alert(val)}}>\n\t                            <item>北京</item>\n\t                            <item>上海</item>\n\t                            <item>南京</item>\n\t                        </Select>\n\t                    </Col>\n\t                    <Col sm={5}>\n\t                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n\t                    </Col>\n\t                    <Col sm={2}/>\n\t                </Row>\n\t            </Grid>\n\t\n\t        )\n\t    }\n\t}\n\texport class FilterSec extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t    }\n\t    render(){\n\t        return (\n\t            <div>\n\t                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n\t                    <Label>全部</Label>\n\t                    <Label>美</Label>\n\t                    <Label>休闲娱乐</Label>\n\t                    <Label>景点</Label>\n\t                    <Label>购物</Label>\n\t                    <Label>丽人</Label>\n\t                    <Label>结婚</Label>\n\t                    <Label>亲子</Label>\n\t                    <Label>教育培训</Label>\n\t                    <Label>运动健身</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>家装</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>爱车</Label>\n\t                    <Label>酒店</Label>\n\t                    <Label>医疗健康</Label>\n\t                </LabelGroup>\n\t                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n\t                    <Label>全部</Label>\n\t                    <Label>卢湾区</Label>\n\t                    <Label>徐汇区</Label>\n\t                    <Label>静安区</Label>\n\t                    <Label>长宁区</Label>\n\t                    <Label>闵行区</Label>\n\t                    <Label>浦东新区</Label>\n\t                    <Label>黄浦区</Label>\n\t                    <Label>普陀区</Label>\n\t                    <Label>闸北区</Label>\n\t                    <Label>虹口区</Label>\n\t                    <Label>杨浦区</Label>\n\t                    <Label>宝山区</Label>\n\t                </LabelGroup>\n\t            </div>\n\t        )\n\t    }\n\t};\n\texport class CardListPanel extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.state = {\n\t            page: 1\n\t        }\n\t    }\n\t    show(){\n\t        console.debug(1);\n\t    }\n\t    render(){\n\t        return (\n\t            <Panel>\n\t                <PanelHeader>\n\t                    <CheckboxGroup>\n\t                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n\t                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n\t                        <Input label=\"团购在线\" type=\"checkbox\"/>\n\t                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n\t                        <Input label=\"预订在线\" type=\"checkbox\"/>\n\t                    </CheckboxGroup>\n\t                </PanelHeader>\n\t                <PanelContent padding={false}>\n\t                    <List>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius>团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius> 团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                        <Col sm={6}></Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                        <Item className=\"shop-info-item\">\n\t                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n\t                            <Label error radius>团</Label>\n\t                            <div className=\"shop-info-item-text\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n\t                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>浏览量：151195</Col>\n\t                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n\t                                        <Col sm={6}></Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                            <div className=\"shop-info-item-footer\">\n\t                                <Grid>\n\t                                    <Row>\n\t                                        <Col sm={10}>\n\t                                            <LabelGroup simple clickCallback={this.show} >\n\t                                                <Label>POI报错</Label>\n\t                                                <Label>查看所有分店</Label>\n\t                                            </LabelGroup>\n\t                                        </Col>\n\t                                        <Col sm={2}>\n\t                                            <Label>想要这家店？</Label>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </Grid>\n\t                            </div>\n\t                        </Item>\n\t                    </List>\n\t                </PanelContent>\n\t                <PanelFooter>\n\t                    <Paging currentPage={this.state.page} total={1024} />\n\t                </PanelFooter>\n\t            </Panel>\n\t        );\n\t    }\n\t};\n\t\n\texport default class Layout extends Component{\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"布局样式\">\n\t                <DemoItem title=\"搜索\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-search')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <SearchSec />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"过滤\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-filter')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <FilterSec />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"卡片列表\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('layout-card')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CardListPanel />\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}\n\t\n\t\n\t"
+            ],
+            "exampleTitles": [
+                "layout"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
             ]
         },
         "Search": {
@@ -1139,11 +1181,17 @@
             "namespace": "",
             "file": "lib/Select.js",
             "line": 45,
-            "description": "下拉选择框组件<br>\n    支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。\n主要属性接口：\n<ul>\n    <li>defaultChecked:默认显示的选项即选中的选项<br>\n        如：<code>\n            defaultChecked=\"上海\"\n        </code>\n    </li>\n    <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>\n        如：<code>getValueCallback={::this.getValue}</code>\n    </li>\n    <li>placeholder:提示框的内容<br>\n        如：<code>placeholder=\"请选择\"</code>\n    </li>\n\n</ul>\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/select\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Select.js\">查看源码</a></div>",
+            "description": "下拉选择框组件<br>\n    支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。\n主要属性接口：\n<ul>\n    <li>defaultChecked:默认显示的选项即选中的选项<br>\n        如：<code>\n            defaultChecked=\"上海\"\n        </code>\n    </li>\n    <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>\n        如：<code>getValueCallback={::this.getValue}</code>\n    </li>\n    <li>placeholder:提示框的内容<br>\n        如：<code>placeholder=\"请选择\"</code>\n    </li>\n\n</ul>",
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\n     import {Select} from 'eagle-ui';\n     ...\n     function getValue(value,key,type){\n         let stype = {\n             'enter':'回车时调用',\n             'click':'点击每一项元素时调用'\n         };\n         console.log(value,key,stype[type]);\n     }\n     ...\n     <Select defaultChecked={\"上海\"} getValueCallback={getValue} placeholder=\"请选择\" >\n         <option value='bei' key=\"bei\">北京</option>\n         <option value='shang' key=\"上海\">上海</option>\n         <option value='nan' key=\"南京\">南京</option>\n         <option value='3' key=\"杭州\">杭州</option>\n     </Select>"
+                "\timport React,{Component,PropTypes}  from 'react';\n\timport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code'\n\t\n\texport default class Demo extends Component{\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    }\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input,\n\t            options:[],\n\t            defaultCity:''\n\t        };\n\t        setTimeout(()=>{\n\t            this.setState({options: this.getOptions()})\n\t        });\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultCity:'上海'\n\t            });\n\t        }.bind(this),2000);\n\t    }\n\t    getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t    getOptions(){\n\t        return [\n\t            <option value='bei' key=\"bei\">北京</option>,\n\t            <option value='shang' key=\"上海\">上海</option>,\n\t            <option value='nan' key=\"南京\">南京</option>,\n\t            <option value='3' key=\"杭州\">杭州</option>,\n\t            <option value='4' key=\"杭州西\">杭州西</option>,\n\t            <option value='5' key=\"杭州北站\">杭州北站</option>,\n\t            <option value='6' key=\"广州\">广州</option>,\n\t            <option value='7' key=\"深圳\">深圳</option>,\n\t            <option value='8' key=\"澳门\">澳门</option>,\n\t            <option value='10' key=\"太原\">太原</option>,\n\t            <option value='11' key=\"台湾\">台湾</option>,\n\t            <option value='12' key=\"香港\">香港</option>\n\t        ];\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"下拉框组件\">\n\t                <DemoItem title=\"默认使用\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('select-demo')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n\t                            {this.state.options}\n\t                        </Select>\n\t                        <div id=\"showtip\" className=\"color-info\"></div>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "select"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/select"
             ]
         },
         "Star": {
@@ -1556,7 +1604,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 73,
+            "line": 49,
             "description": "按钮尺寸,分别为xs、sm、lg",
             "itemtype": "property",
             "name": "egSize",
@@ -1567,7 +1615,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 80,
+            "line": 56,
             "description": "是否禁用按钮",
             "itemtype": "property",
             "name": "disabled",
@@ -1578,7 +1626,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 88,
+            "line": 64,
             "description": "按钮是否处于选中状态",
             "itemtype": "property",
             "name": "active",
@@ -1589,7 +1637,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 95,
+            "line": 71,
             "description": "按钮颜色样式，可以为['success','error','warning','danger','default','link','white']中任何一个",
             "itemtype": "property",
             "name": "egStyle",
@@ -1600,7 +1648,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 103,
+            "line": 79,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -1611,7 +1659,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 110,
+            "line": 86,
             "description": "是否为块级显示",
             "itemtype": "property",
             "name": "block",
@@ -1622,7 +1670,7 @@
         },
         {
             "file": "lib/Button.js",
-            "line": 118,
+            "line": 94,
             "description": "是否只将主题颜色应用于边框，而不是应用于背景色",
             "itemtype": "property",
             "name": "hollow",
@@ -1640,7 +1688,7 @@
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 61,
+            "line": 48,
             "description": "是否自适应宽度并水平排列",
             "itemtype": "property",
             "name": "justify",
@@ -1651,7 +1699,7 @@
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 68,
+            "line": 55,
             "description": "是否垂直排列",
             "itemtype": "property",
             "name": "tacked",
@@ -1662,14 +1710,14 @@
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 85,
+            "line": 72,
             "description": "tacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
             "class": "ButtonGroup",
             "module": "form(表单)"
         },
         {
             "file": "lib/ButtonGroup.js",
-            "line": 103,
+            "line": 90,
             "description": "点击按钮组中任意按钮时触发的回调事件",
             "itemtype": "event",
             "name": "activeCallback",
@@ -1797,7 +1845,7 @@
         },
         {
             "file": "lib/Col.js",
-            "line": 108,
+            "line": 77,
             "description": "适用于每个Row下的最后一个Col\n当所有的col加起来不满12的情况下：如果不设置end属性，最后一个Col会向右对齐，如果设置end属性，最后一个Col就会向左对齐（float left）",
             "itemtype": "property",
             "name": "end",
@@ -1808,7 +1856,7 @@
         },
         {
             "file": "lib/Col.js",
-            "line": 116,
+            "line": 85,
             "description": "Row总宽度为100%(12份)，sm的值表示当前Col宽度占比父元素12份中的几份",
             "itemtype": "property",
             "name": "sm",
@@ -2534,7 +2582,7 @@
         },
         {
             "file": "lib/RadioGroup.js",
-            "line": 84,
+            "line": 67,
             "description": "radio name",
             "itemtype": "property",
             "name": "name",
@@ -2545,7 +2593,7 @@
         },
         {
             "file": "lib/RadioGroup.js",
-            "line": 91,
+            "line": 74,
             "description": "默认选中项",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2556,7 +2604,7 @@
         },
         {
             "file": "lib/RadioGroup.js",
-            "line": 98,
+            "line": 81,
             "description": "获取选中的值",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2572,7 +2620,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 94,
+            "line": 76,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2599,7 +2647,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 103,
+            "line": 85,
             "description": "没有选中任何item时的占位文案",
             "itemtype": "property",
             "name": "placeholder",
@@ -2609,7 +2657,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 111,
+            "line": 93,
             "description": "默认选中值，即初始显示内容",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2620,7 +2668,7 @@
         },
         {
             "file": "lib/Select.js",
-            "line": 119,
+            "line": 101,
             "description": "报svg的warning竟然在这里。。 真尴尬",
             "class": "Select",
             "module": "form(表单)"
@@ -3272,6 +3320,14 @@
         },
         {
             "message": "unknown tag: demo",
+            "line": " lib/Button.js:30"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/ButtonGroup.js:30"
+        },
+        {
+            "message": "unknown tag: demo",
             "line": " lib/Calendar.js:25"
         },
         {
@@ -3288,6 +3344,14 @@
         },
         {
             "message": "unknown tag: demo",
+            "line": " lib/CheckboxGroup.js:32"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Col.js:27"
+        },
+        {
+            "message": "unknown tag: demo",
             "line": " lib/Crumb.js:46"
         },
         {
@@ -3301,6 +3365,10 @@
         {
             "message": "unknown tag: show",
             "line": " lib/Dialog.js:11"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Grid.js:48"
         },
         {
             "message": "unknown tag: demo",
@@ -3344,11 +3412,23 @@
         },
         {
             "message": "unknown tag: demo",
+            "line": " lib/RadioGroup.js:36"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Row.js:27"
+        },
+        {
+            "message": "unknown tag: demo",
             "line": " lib/Search.js:23"
         },
         {
             "message": "unknown tag: show",
             "line": " lib/Search.js:23"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " lib/Select.js:45"
         },
         {
             "message": "unknown tag: demo",
@@ -3456,7 +3536,7 @@
         },
         {
             "message": "Missing item type\ntacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
-            "line": " lib/ButtonGroup.js:85"
+            "line": " lib/ButtonGroup.js:72"
         },
         {
             "message": "Missing item type",
@@ -3524,7 +3604,7 @@
         },
         {
             "message": "Missing item type\n报svg的warning竟然在这里。。 真尴尬",
-            "line": " lib/Select.js:119"
+            "line": " lib/Select.js:101"
         },
         {
             "message": "Missing item type\n用于不同的css写法导致的位置微调",

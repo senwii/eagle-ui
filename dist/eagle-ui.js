@@ -1266,42 +1266,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 定义栅格容器,配合Col和Row使用
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Grid.js">查看源码</a></div>
 	 * @class Grid
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @example
-	 *      //没有设置end属性，最后一个Col会向右对齐
-	 *      <Grid>
-	 *          <Row>
-	 *              <Col sm={4}>
-	 *                  浏览量：151195
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *          </Row>
-	 *      </Grid>
-	 *
-	 *      //设置end属性，最后一个Col会向左对齐
-	 *      <Grid>
-	 *          <Row>
-	 *              <Col sm={4}>
-	 *                  浏览量：151195
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *              <Col end sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *          </Row>
-	 *      </Grid>
+	 * @demo #/Layout|layout.js
 	 * */
 
 	var Grid = (function (_Component) {
@@ -1660,42 +1629,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 使用方式:
 	 * <pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>
 	 * </pre>
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Col.js">查看源码</a></div>
 	 * @class Col
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @example
-	 *      //没有设置end属性，最后一个Col会向右对齐
-	 *      <Grid>
-	 *          <Row>
-	 *              <Col sm={4}>
-	 *                  浏览量：151195
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *          </Row>
-	 *      </Grid>
-	 *
-	 *      //设置end属性，最后一个Col会向左对齐
-	 *      <Grid>
-	 *          <Row>
-	 *              <Col sm={4}>
-	 *                  浏览量：151195
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *              <Col end sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *          </Row>
-	 *      </Grid>
+	 * @demo #/Layout|layout.js
 	 * */
 
 	var Col = (function (_Component) {
@@ -10473,42 +10411,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * 定义栅格中的一行，配合Col组件使用
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Row.js">查看源码</a></div>
 	 * @class Row
 	 * @module grid(布局)
 	 * @extends Component
 	 * @constructor
-	 * @example
-	 *      //没有设置end属性，最后一个Col会向右对齐
-	 *      <Grid>
-	 *          <Row>
-	 *              <Col sm={4}>
-	 *                  浏览量：151195
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *          </Row>
-	 *      </Grid>
-	 *
-	 *      //设置end属性，最后一个Col会向左对齐
-	 *      <Grid>
-	 *          <Row>
-	 *              <Col sm={4}>
-	 *                  浏览量：151195
-	 *              </Col>
-	 *              <Col sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *              <Col end sm={2}>
-	 *                  门店市场份额:100.00%
-	 *              </Col>
-	 *          </Row>
-	 *      </Grid>
+	 * @demo #/Layout|layout.js
 	 * */
 
 	var Row = (function (_Component) {
@@ -10589,35 +10496,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  - 支持disabled, active等属性定义<br/>
 	 *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
 	 *  - 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Button.js">查看源码</a></div>
 	 * @class Button
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @example
-	 *      import {Button} from 'eagle-ui';
-	 *      ...
-	 *      //设置背景颜色
-	 *      <Button   egStyle="default">按钮2</Button>
-	 *      <Button   egStyle="link">按钮3</Button>
-	 *      <Button   egStyle="white">按钮4</Button>
-	 *
-	 *      //设置hollow属性将颜色应用于按钮边框，而不是背景色
-	 *      <Button hollow  egStyle="warning">按钮2</Button>
-	 *      <Button hollow  egStyle="danger">按钮3</Button>
-	 *      <Button hollow  egStyle="success">按钮4</Button>
-	 *
-	 *      //设置大小
-	 *      <Button radius egSize="xs" egStyle="">小按钮</Button>
-	 *      <Button radius egSize="sm" egStyle="">中按钮</Button>
-	 *      <Button radius egSize="lg" egStyle="">大按钮</Button>
-	 *
-	 *      //设置onClick事件
-	 *      <Button onClick={function(){alert('clicked')}} >点击触发回调</Button>
-	 *
-	 *      //禁用按钮
-	 *      <Button disabled>禁用按钮</Button>
+	 * @demo #/button|button.js
 	 * */
 
 	var Button = (function (_Component) {
@@ -10755,25 +10638,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>
 	 * 设置justify属性时可以将按钮组水平排列<br/>
 	 * 设置tacked属性时可以将按钮组竖直排列
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js">查看源码</a></div>
-	 * @class ButtonGroup
+	* @class ButtonGroup
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @example
-	 *      import {ButtonGroup,Button} from 'eagle-ui';
-	 *      ...
-	 *      function onActive(target,html){
-	 *          console.log(target,html);
-	 *      }
-	 *      ...
-	 *      <ButtonGroup egType="justify" activeCallback={onActive}>
-	 *          <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
-	 *          <Button radius egSize="sm" egStyle="warning">水平按钮组2</Button>
-	 *          <Button radius egSize="sm" egStyle="warning">水平按钮组3</Button>
-	 *      </ButtonGroup>
+	 * @demo #/button|button.js
 	 * */
 
 	var ButtonGroup = (function (_Component) {
@@ -10904,22 +10774,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * CheckboxGroup需与Input组件配合使用<br/>
 	 * 它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/CheckboxGroup.js">查看源码</a></div>
-	 * @class CheckboxGroup
+	  * @class CheckboxGroup
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @example
-	 *      import {CheckboxGroup,Input} from 'eagle-ui';
-	 *      ...
-	 *
-	 *      <CheckboxGroup>
-	 *          <Input  type="checkbox" label="足球" checked   />
-	 *          <Input  type="checkbox" label="篮球"    />
-	 *          <Input  type="checkbox" label="羽毛球" checked   />
-	 *          <Input  type="checkbox" label="乒乓球"    />
-	 *      </CheckboxGroup>
+	 * @demo #/input|input.js
 	 * */
 
 	var CheckboxGroup = (function (_Component) {
@@ -11667,28 +11526,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     </li>
 	 *
 	 * </ul>
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/RadioGroup.js">查看源码</a></div>
-	 * @class RadioGroup
+	  * @class RadioGroup
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @example
-	 *      import {RadioGroup,Input} from 'eagle-ui';
-	 *      ...
-	 *      function getValueCallback(val){
-	 *          alert(val);
-	 *          console.dir(val);
-	 *      }
-	 *      ...
-	 *      <RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={getValueCallback}>
-	 *          <Input  type="radio"  label="大白菜" value="大白菜" />
-	 *          <Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  />
-	 *          <Input  type="radio"  label="猪肉" value="猪肉" />
-	 *          <Input  type="radio"  label="牛肉" value="牛肉" />
-	 *          <Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} />
-	 *      </RadioGroup>
-	 *
+	 * @demo #/input|input.js
 	 * */
 
 	var RadioGroup = (function (_Component) {
@@ -12863,29 +12705,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     </li>
 	 *
 	 * </ul>
-	 * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/select">demo展示</a></div>
-	 * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Select.js">查看源码</a></div>
 	 * @class Select
 	 * @module form(表单)
 	 * @constructor
 	 * @extends Component
-	 * @example
-	 *      import {Select} from 'eagle-ui';
-	 *      ...
-	 *      function getValue(value,key,type){
-	 *          let stype = {
-	 *              'enter':'回车时调用',
-	 *              'click':'点击每一项元素时调用'
-	 *          };
-	 *          console.log(value,key,stype[type]);
-	 *      }
-	 *      ...
-	 *      <Select defaultChecked={"上海"} getValueCallback={getValue} placeholder="请选择" >
-	 *          <option value='bei' key="bei">北京</option>
-	 *          <option value='shang' key="上海">上海</option>
-	 *          <option value='nan' key="南京">南京</option>
-	 *          <option value='3' key="杭州">杭州</option>
-	 *      </Select>
+	 * @demo #/select|select.js
 	 * */
 
 	var Select = (function (_Search) {

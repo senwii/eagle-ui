@@ -9,25 +9,12 @@ import classnames from 'classnames';
  * ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>
  * 设置justify属性时可以将按钮组水平排列<br/>
  * 设置tacked属性时可以将按钮组竖直排列
- * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
- * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js">查看源码</a></div>
- * @class ButtonGroup
+* @class ButtonGroup
  * @module form(表单)
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @example
- *      import {ButtonGroup,Button} from 'eagle-ui';
- *      ...
- *      function onActive(target,html){
- *          console.log(target,html);
- *      }
- *      ...
- *      <ButtonGroup egType="justify" activeCallback={onActive}>
- *          <Button radius egSize="sm" egStyle="warning">水平按钮组1</Button>
- *          <Button radius egSize="sm" egStyle="warning">水平按钮组2</Button>
- *          <Button radius egSize="sm" egStyle="warning">水平按钮组3</Button>
- *      </ButtonGroup>
+ * @demo #/button|button.js
  * */
 export default class ButtonGroup extends Component{
 

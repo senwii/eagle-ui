@@ -396,8 +396,7 @@
       <div class="stdoc-code"><p>ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>
 设置justify属性时可以将按钮组水平排列<br/>
 设置tacked属性时可以将按钮组竖直排列</p>
-<div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
-<div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js">查看源码</a></div></div>
+</div>
  </div>
 
     <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -553,19 +552,97 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/button"  _no='0'> <a>button</a></li>
+                
             </ul>
             <div class="example-content ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code> import {ButtonGroup,Button} from &#39;eagle-ui&#39;;
- ...
- function onActive(target,html){
-     console.log(target,html);
- }
- ...
- &lt;ButtonGroup egType="justify" activeCallback={onActive}&gt;
-     &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组1&lt;/Button&gt;
-     &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组2&lt;/Button&gt;
-     &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组3&lt;/Button&gt;
- &lt;/ButtonGroup&gt;</code></pre>
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React, { Component ,PropTypes} from &#39;react&#39;;
+import {ButtonGroup,Button,Row,Col,Grid} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;;
+
+export default class ButtonCls extends Component{
+    onActive(target,html){
+        console.dir(html);
+        alert(&#39;测试&#39;);
+    }
+    render(){
+        return (
+            &lt;DemoLayout title="按钮组件"&gt;
+                &lt;DemoItem title="按钮样式"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo1&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button egStyle="warning"&gt;警告&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="success"&gt;成功&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="danger"&gt;危险&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="error"&gt;错误&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="info"&gt;info&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button &gt;默认&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="white"&gt;白色&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="link" &gt;链接&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="按钮大小"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo2&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button egSize="xs" &gt;小号&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button&gt;默认&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egSize="lg" &gt;大号&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="按钮组排列"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo3&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;ButtonGroup egType="justify" activeCallback={this.onActive}&gt;
+                            &lt;Button egStyle="warning"&gt;水平按钮组1&lt;/Button&gt;&lt;Button egStyle="warning"&gt;水平按钮组2&lt;/Button&gt;&lt;Button egStyle="warning"&gt;水平按钮组3&lt;/Button&gt;
+                        &lt;/ButtonGroup&gt;
+                        &lt;br/&gt;
+                        &lt;ButtonGroup egType="tacked"&gt;
+                            &lt;Button&gt;垂直按钮组1&lt;/Button&gt;&lt;Button&gt;垂直按钮组2&lt;/Button&gt;&lt;Button&gt;垂直按钮组3&lt;/Button&gt;
+                        &lt;/ButtonGroup&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="空心按钮"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo4&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button egStyle="warning" hollow&gt;警告&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="success" hollow&gt;成功&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="danger" hollow&gt;危险&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="error" hollow&gt;错误&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="white" hollow&gt;white&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="link" hollow&gt;link&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="默认／禁用"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo5&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button radius egSize="sm"&gt;默认&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button radius egSize="sm" disabled&gt;默认不可点&lt;/Button&gt;
+                        &lt;br/&gt;&lt;br/&gt;
+                        &lt;Button egStyle="white"&gt;白色&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="white" disabled&gt;白色不可点&lt;/Button&gt;
+                        &lt;br/&gt;&lt;br/&gt;
+                        &lt;Button egStyle="success"&gt;成功&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="success" disabled&gt;成功不可点&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
 </div>
             </div>
             <div class="btn-method-box">
@@ -612,7 +689,7 @@
             
         
         
-        <a href="../files/lib_ButtonGroup.js.html#l61"><code>lib&#x2F;ButtonGroup.js:61</code></a>
+        <a href="../files/lib_ButtonGroup.js.html#l48"><code>lib&#x2F;ButtonGroup.js:48</code></a>
         
         </p>
 
@@ -660,7 +737,7 @@
             
         
         
-        <a href="../files/lib_ButtonGroup.js.html#l68"><code>lib&#x2F;ButtonGroup.js:68</code></a>
+        <a href="../files/lib_ButtonGroup.js.html#l55"><code>lib&#x2F;ButtonGroup.js:55</code></a>
         
         </p>
 
@@ -716,7 +793,7 @@
             
         
         
-        <a href="../files/lib_ButtonGroup.js.html#l103"><code>lib&#x2F;ButtonGroup.js:103</code></a>
+        <a href="../files/lib_ButtonGroup.js.html#l90"><code>lib&#x2F;ButtonGroup.js:90</code></a>
         
         </p>
 

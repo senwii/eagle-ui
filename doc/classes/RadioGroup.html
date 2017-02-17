@@ -396,7 +396,7 @@
       <div class="stdoc-code"><p>RadioGroup需与Input组件配合使用<br/>
 它的作用是将type=radio的Input组件在UI上展示在一起
 主要属性接口：</p>
-<p><ul>
+<ul>
     <li>name:radio组的name值<br>
         如：<code>
             name=&#39;fruits&#39;
@@ -407,10 +407,9 @@
     </li>
     <li>getValueCallback:获取选中值的回调函数<br>
         如：<code>getValueCallback={function(val){alert(val)}}</code>
-    </li></p>
-<p></ul></p>
-<div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
-<div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/RadioGroup.js">查看源码</a></div></div>
+    </li>
+
+</ul></div>
  </div>
 
     <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -562,22 +561,157 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/input"  _no='0'> <a>input</a></li>
+                
             </ul>
             <div class="example-content ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code> import {RadioGroup,Input} from &#39;eagle-ui&#39;;
- ...
- function getValueCallback(val){
-     alert(val);
-     console.dir(val);
- }
- ...
- &lt;RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={getValueCallback}&gt;
-     &lt;Input  type="radio"  label="大白菜" value="大白菜" /&gt;
-     &lt;Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  /&gt;
-     &lt;Input  type="radio"  label="猪肉" value="猪肉" /&gt;
-     &lt;Input  type="radio"  label="牛肉" value="牛肉" /&gt;
-     &lt;Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} /&gt;
- &lt;/RadioGroup&gt;</code></pre>
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component,PropTypes} from &#39;react&#39;;
+
+import querystring from &#39;querystring&#39;;
+
+import {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from &#39;eagle-ui&#39;;
+
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+
+export default class Demo extends Component{
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            show:false,
+            radioValue:&#39;橘子&#39;,
+            checkBoxValue:false
+        }
+    };
+
+    focus(){
+        this.setState({
+            show:true
+        });
+    }
+    blur(){
+        this.setState({
+            show:false
+        });
+    }
+    radioCallback(val){
+        this.setState({
+            radioValue:val
+        })
+    }
+    checkboxCallback(){
+        this.setState({
+            checkBoxValue:!this.state.checkBoxValue
+        })
+    }
+    render(){
+        let {radioValue,checkBoxValue}=this.state;
+        return (
+            &lt;DemoLayout title="输入控件"&gt;
+                &lt;DemoItem title="radio类型" desc={&#39;一般结合RadioGroup组件来用&#39;}&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;input-radio&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Grid&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={6}&gt;
+                                    &lt;RadioGroup defaultChecked={radioValue}
+                                                name="radio-test"
+                                                getValueCallback={::this.radioCallback}&gt;
+                                        &lt;Input  type="radio"  label="石榴" value="石榴" /&gt;
+                                        &lt;Input  type="radio"  label="橘子" value="橘子"  /&gt;
+                                        &lt;Input  type="radio"  label="苹果" value="苹果" /&gt;
+                                    &lt;/RadioGroup&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={6}&gt;
+                                    已选择了：{this.state.radioValue}
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="chechbox类型" desc={&#39;一般结合CheckboxGroup组件来用&#39;}&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;input-checkbox&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Grid&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={12}&gt;
+                                    &lt;CheckboxGroup&gt;
+                                        &lt;Input label="石榴" type="checkbox" checked /&gt;
+                                        &lt;Input label="橘子" type="checkbox" disabled={true}   /&gt;
+                                        &lt;Input label="苹果"  type="checkbox" getValueCallback={function(val,dom){console.log(val,dom)}}  value="apple"  /&gt;
+                                        &lt;Input label="香蕉"  type="checkbox" onChange={::this.checkboxCallback} checked={checkBoxValue} value="banana"  /&gt;
+                                    &lt;/CheckboxGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="表单组合示例"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;input-combine&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;FormGroup&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                        &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                        &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                    &lt;/RadioGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;CheckboxGroup&gt;
+                                        &lt;Input  type="checkbox" label="足球" checked   /&gt;
+                                        &lt;Input  type="checkbox" label="篮球"    /&gt;
+                                        &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
+                                        &lt;Input  type="checkbox" label="乒乓球"    /&gt;
+                                    &lt;/CheckboxGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                &lt;FormGroup&gt;
+                                    &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
+                                    &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
+                                &lt;/FormGroup&gt;
+                                &lt;FormGroup&gt;
+                                    &lt;Col sm={13}&gt;省份证&lt;/Col&gt;
+                                    &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入省份证"   /&gt;&lt;/Col&gt;
+                                &lt;/FormGroup&gt;
+                            &lt;/Row&gt;
+                        &lt;/FormGroup&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+};</code></pre>
 </div>
             </div>
             <div class="btn-method-box">
@@ -624,7 +758,7 @@
             
         
         
-        <a href="../files/lib_RadioGroup.js.html#l91"><code>lib&#x2F;RadioGroup.js:91</code></a>
+        <a href="../files/lib_RadioGroup.js.html#l74"><code>lib&#x2F;RadioGroup.js:74</code></a>
         
         </p>
 
@@ -672,7 +806,7 @@
             
         
         
-        <a href="../files/lib_RadioGroup.js.html#l84"><code>lib&#x2F;RadioGroup.js:84</code></a>
+        <a href="../files/lib_RadioGroup.js.html#l67"><code>lib&#x2F;RadioGroup.js:67</code></a>
         
         </p>
 
@@ -728,7 +862,7 @@
             
         
         
-        <a href="../files/lib_RadioGroup.js.html#l98"><code>lib&#x2F;RadioGroup.js:98</code></a>
+        <a href="../files/lib_RadioGroup.js.html#l81"><code>lib&#x2F;RadioGroup.js:81</code></a>
         
         </p>
 

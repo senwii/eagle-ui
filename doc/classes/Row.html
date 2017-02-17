@@ -394,8 +394,7 @@
 </div>
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><p>定义栅格中的一行，配合Col组件使用</p>
-<div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/Demo1">demo展示</a></div>
-<div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Row.js">查看源码</a></div></div>
+</div>
  </div>
 
     <div class="well well-small sign-left2 container-fluid" id="classesItems">
@@ -514,37 +513,257 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/Layout"  _no='0'> <a>layout</a></li>
+                
             </ul>
             <div class="example-content ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code> //没有设置end属性，最后一个Col会向右对齐
- &lt;Grid&gt;
-     &lt;Row&gt;
-         &lt;Col sm={4}&gt;
-             浏览量：151195
-         &lt;/Col&gt;
-         &lt;Col sm={2}&gt;
-             门店市场份额:100.00%
-         &lt;/Col&gt;
-         &lt;Col sm={2}&gt;
-             门店市场份额:100.00%
-         &lt;/Col&gt;
-     &lt;/Row&gt;
- &lt;/Grid&gt;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component} from &#39;react&#39;;
+import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;;
 
- //设置end属性，最后一个Col会向左对齐
- &lt;Grid&gt;
-     &lt;Row&gt;
-         &lt;Col sm={4}&gt;
-             浏览量：151195
-         &lt;/Col&gt;
-         &lt;Col sm={2}&gt;
-             门店市场份额:100.00%
-         &lt;/Col&gt;
-         &lt;Col end sm={2}&gt;
-             门店市场份额:100.00%
-         &lt;/Col&gt;
-     &lt;/Row&gt;
- &lt;/Grid&gt;</code></pre>
+export class SearchSec extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            &lt;Grid&gt;
+                &lt;Row&gt;
+                    &lt;Col sm={5}&gt;
+                        &lt;Select callback={function(val){alert(val)}}&gt;
+                            &lt;item&gt;北京&lt;/item&gt;
+                            &lt;item&gt;上海&lt;/item&gt;
+                            &lt;item&gt;南京&lt;/item&gt;
+                        &lt;/Select&gt;
+                    &lt;/Col&gt;
+                    &lt;Col sm={5}&gt;
+                        &lt;Search placeholder=&#39;shopId/门店名称&#39; callBack={function(val){alert(val)}}/&gt;
+                    &lt;/Col&gt;
+                    &lt;Col sm={2}/&gt;
+                &lt;/Row&gt;
+            &lt;/Grid&gt;
+
+        )
+    }
+}
+export class FilterSec extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;LabelGroup title=&#39;频道&#39; defaultChecked=&#39;全部&#39; clickCallback={this.show} &gt;
+                    &lt;Label&gt;全部&lt;/Label&gt;
+                    &lt;Label&gt;美&lt;/Label&gt;
+                    &lt;Label&gt;休闲娱乐&lt;/Label&gt;
+                    &lt;Label&gt;景点&lt;/Label&gt;
+                    &lt;Label&gt;购物&lt;/Label&gt;
+                    &lt;Label&gt;丽人&lt;/Label&gt;
+                    &lt;Label&gt;结婚&lt;/Label&gt;
+                    &lt;Label&gt;亲子&lt;/Label&gt;
+                    &lt;Label&gt;教育培训&lt;/Label&gt;
+                    &lt;Label&gt;运动健身&lt;/Label&gt;
+                    &lt;Label&gt;酒店&lt;/Label&gt;
+                    &lt;Label&gt;家装&lt;/Label&gt;
+                    &lt;Label&gt;酒店&lt;/Label&gt;
+                    &lt;Label&gt;爱车&lt;/Label&gt;
+                    &lt;Label&gt;酒店&lt;/Label&gt;
+                    &lt;Label&gt;医疗健康&lt;/Label&gt;
+                &lt;/LabelGroup&gt;
+                &lt;LabelGroup title=&#39;行政区&#39; defaultChecked=&#39;全部&#39; clickCallback={this.show} &gt;
+                    &lt;Label&gt;全部&lt;/Label&gt;
+                    &lt;Label&gt;卢湾区&lt;/Label&gt;
+                    &lt;Label&gt;徐汇区&lt;/Label&gt;
+                    &lt;Label&gt;静安区&lt;/Label&gt;
+                    &lt;Label&gt;长宁区&lt;/Label&gt;
+                    &lt;Label&gt;闵行区&lt;/Label&gt;
+                    &lt;Label&gt;浦东新区&lt;/Label&gt;
+                    &lt;Label&gt;黄浦区&lt;/Label&gt;
+                    &lt;Label&gt;普陀区&lt;/Label&gt;
+                    &lt;Label&gt;闸北区&lt;/Label&gt;
+                    &lt;Label&gt;虹口区&lt;/Label&gt;
+                    &lt;Label&gt;杨浦区&lt;/Label&gt;
+                    &lt;Label&gt;宝山区&lt;/Label&gt;
+                &lt;/LabelGroup&gt;
+            &lt;/div&gt;
+        )
+    }
+};
+export class CardListPanel extends Component{
+    constructor(props,context){
+        super(props,context);
+        this.state = {
+            page: 1
+        }
+    }
+    show(){
+        console.debug(1);
+    }
+    render(){
+        return (
+            &lt;Panel&gt;
+                &lt;PanelHeader&gt;
+                    &lt;CheckboxGroup&gt;
+                        &lt;Input label="仅公海"  type="checkbox" checked /&gt;
+                        &lt;Input lebal="冻结中"  type="checkbox"/&gt;
+                        &lt;Input label="团购在线" type="checkbox"/&gt;
+                        &lt;Input label="闪惠在线" type="checkbox"/&gt;
+                        &lt;Input label="预订在线" type="checkbox"/&gt;
+                    &lt;/CheckboxGroup&gt;
+                &lt;/PanelHeader&gt;
+                &lt;PanelContent padding={false}&gt;
+                    &lt;List&gt;
+                        &lt;Item className="shop-info-item"&gt;
+                            &lt;h1 className=&#39;shop-card-title inline-block&#39;&gt;宴遇 (晶品店)&lt;/h1&gt;
+                            &lt;Label error radius&gt;团&lt;/Label&gt;
+                            &lt;div className="shop-info-item-text"&gt;
+                                &lt;Grid&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;shopid: 22936478 rotateid: 107126470&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;月佣金基数: 3000.00&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;浏览量：151195&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;门店市场份额:100.00%          战区市场份额: 94.63%&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col end sm={6}&gt;美食其他 | 静安区 愚园路68号晶品中心4楼&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/Grid&gt;
+                            &lt;/div&gt;
+                            &lt;div className="shop-info-item-footer"&gt;
+                                &lt;Grid&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={10}&gt;
+                                            &lt;LabelGroup simple clickCallback={this.show} &gt;
+                                                &lt;Label&gt;POI报错&lt;/Label&gt;
+                                                &lt;Label&gt;查看所有分店&lt;/Label&gt;
+                                            &lt;/LabelGroup&gt;
+                                        &lt;/Col&gt;
+                                        &lt;Col sm={2}&gt;
+                                            &lt;Label&gt;想要这家店？&lt;/Label&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/Grid&gt;
+                            &lt;/div&gt;
+                        &lt;/Item&gt;
+                        &lt;Item className="shop-info-item"&gt;
+                            &lt;h1 className=&#39;shop-card-title inline-block&#39;&gt;宴遇 (晶品店)&lt;/h1&gt;
+                            &lt;Label error radius&gt; 团&lt;/Label&gt;
+                            &lt;div className="shop-info-item-text"&gt;
+                                &lt;Grid&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;shopid: 22936478 rotateid: 107126470&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;月佣金基数: 3000.00&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;浏览量：151195&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;门店市场份额:100.00%          战区市场份额: 94.63%&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;美食其他 | 静安区 愚园路68号晶品中心4楼&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/Grid&gt;
+                            &lt;/div&gt;
+                            &lt;div className="shop-info-item-footer"&gt;
+                                &lt;Grid&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={10}&gt;
+                                            &lt;LabelGroup simple clickCallback={this.show} &gt;
+                                                &lt;Label&gt;POI报错&lt;/Label&gt;
+                                                &lt;Label&gt;查看所有分店&lt;/Label&gt;
+                                            &lt;/LabelGroup&gt;
+                                        &lt;/Col&gt;
+                                        &lt;Col sm={2}&gt;
+                                            &lt;Label&gt;想要这家店？&lt;/Label&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/Grid&gt;
+                            &lt;/div&gt;
+                        &lt;/Item&gt;
+                        &lt;Item className="shop-info-item"&gt;
+                            &lt;h1 className=&#39;shop-card-title inline-block&#39;&gt;宴遇 (晶品店)&lt;/h1&gt;
+                            &lt;Label error radius&gt;团&lt;/Label&gt;
+                            &lt;div className="shop-info-item-text"&gt;
+                                &lt;Grid&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;shopid: 22936478 rotateid: 107126470&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;月佣金基数: 3000.00&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;浏览量：151195&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;门店市场份额:100.00%          战区市场份额: 94.63%&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={6}&gt;美食其他 | 静安区 愚园路68号晶品中心4楼&lt;/Col&gt;
+                                        &lt;Col sm={6}&gt;&lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/Grid&gt;
+                            &lt;/div&gt;
+                            &lt;div className="shop-info-item-footer"&gt;
+                                &lt;Grid&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col sm={10}&gt;
+                                            &lt;LabelGroup simple clickCallback={this.show} &gt;
+                                                &lt;Label&gt;POI报错&lt;/Label&gt;
+                                                &lt;Label&gt;查看所有分店&lt;/Label&gt;
+                                            &lt;/LabelGroup&gt;
+                                        &lt;/Col&gt;
+                                        &lt;Col sm={2}&gt;
+                                            &lt;Label&gt;想要这家店？&lt;/Label&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/Grid&gt;
+                            &lt;/div&gt;
+                        &lt;/Item&gt;
+                    &lt;/List&gt;
+                &lt;/PanelContent&gt;
+                &lt;PanelFooter&gt;
+                    &lt;Paging currentPage={this.state.page} total={1024} /&gt;
+                &lt;/PanelFooter&gt;
+            &lt;/Panel&gt;
+        );
+    }
+};
+
+export default class Layout extends Component{
+    render(){
+        return (
+            &lt;DemoLayout title="布局样式"&gt;
+                &lt;DemoItem title="搜索"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;layout-search&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;SearchSec /&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="过滤"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;layout-filter&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;FilterSec /&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="卡片列表"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;layout-card&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;CardListPanel /&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
 </div>
             </div>
             <div class="btn-method-box">

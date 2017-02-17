@@ -11,35 +11,11 @@ import classnames from 'classnames';
  *  - 支持disabled, active等属性定义<br/>
  *  - 可以通过egSize 设置大小，可选xs、sm、lg。<br/>
  *  - 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'
- * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
- * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/Button.js">查看源码</a></div>
  * @class Button
  * @module form(表单)
  * @extends Component
  * @constructor
- * @example
- *      import {Button} from 'eagle-ui';
- *      ...
- *      //设置背景颜色
- *      <Button   egStyle="default">按钮2</Button>
- *      <Button   egStyle="link">按钮3</Button>
- *      <Button   egStyle="white">按钮4</Button>
- *
- *      //设置hollow属性将颜色应用于按钮边框，而不是背景色
- *      <Button hollow  egStyle="warning">按钮2</Button>
- *      <Button hollow  egStyle="danger">按钮3</Button>
- *      <Button hollow  egStyle="success">按钮4</Button>
- *
- *      //设置大小
- *      <Button radius egSize="xs" egStyle="">小按钮</Button>
- *      <Button radius egSize="sm" egStyle="">中按钮</Button>
- *      <Button radius egSize="lg" egStyle="">大按钮</Button>
- *
- *      //设置onClick事件
- *      <Button onClick={function(){alert('clicked')}} >点击触发回调</Button>
- *
- *      //禁用按钮
- *      <Button disabled>禁用按钮</Button>
+ * @demo #/button|button.js
  * */
 export default class Button extends Component{
     static propTypes = {
