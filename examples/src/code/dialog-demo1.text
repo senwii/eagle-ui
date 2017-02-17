@@ -1,0 +1,44 @@
+import React,{Component} from 'react';
+import {Button,Dialog} from 'eagle-ui';
+
+export default class DialogDemo1 extends Component{
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            inputVal: 123124,
+            dialogAlign: 'center',
+            alertContent: '哈哈，你好苍老师'
+        }
+    }
+    show(name){
+        Dialog.mask(name).then(function(){
+            console.log('success');
+            Dialog.close();
+        },function(type){
+            console.log('cancel');
+        });
+    }
+    render() {
+        return (
+            <div>
+                <Button onClick={::this.show.bind(this, 'demo1')} className="mg-right-15">点击我mask</Button>
+                <Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好" buttons={[
+                    {
+                        type: 'success',
+                        name: '确认'
+
+                    },
+                    {
+                        type: 'cancel',
+                        egStyle: 'white',
+                        name: '取消'
+                    }
+                ]}>
+                    <div>
+                        {this.state.alertContent}
+                    </div>
+                </Dialog>
+            </div>
+        );
+    }
+};

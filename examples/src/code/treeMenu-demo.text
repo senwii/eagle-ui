@@ -1,42 +1,37 @@
-/**
- * Created by mac on 15/11/4.
- */
-
 import React, { Component ,PropTypes} from 'react';
 import TreeMenu from "eg-tree-menu";//联想功能组件
 import {Button} from "eagle-ui";
-import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';
-import Code, {getFile} from '../libs/Code'
 
-export default class Demo extends Component{
+export default class TreeMenuDemo extends Component{
     constructor(props,context){
         super(props,context);
         this.state={
             selected:'',
             expandNodes:{3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true, 11: true, 16: true,10014:true},
-            data:[{
-                "typeId": 2,
-                "parentTypeId": 0,
-                "typeName": "测试",
-                "leadingAnswer": "",
-                "level": 1,
-                "firstOwnerId": 0,
-                "secondOwnerId": 0,
-                "children": [
-                    {
-                        "typeId": 1000023,
-                        "parentTypeId": 10005,
-                        "typeName": "线上测试",
-                        "leadingAnswer": "这是线上测试分类,你玩我吧!",
-                        "level": 3,
-                        "firstOwnerId": 22315,
-                        "secondOwnerId": 17896,
-                        "children": [],
-                        "leaf": true
-                    }
-                ],
-                "leaf": false
-            },
+            data:[
+                {
+                    "typeId": 2,
+                    "parentTypeId": 0,
+                    "typeName": "测试",
+                    "leadingAnswer": "",
+                    "level": 1,
+                    "firstOwnerId": 0,
+                    "secondOwnerId": 0,
+                    "children": [
+                        {
+                            "typeId": 1000023,
+                            "parentTypeId": 10005,
+                            "typeName": "线上测试",
+                            "leadingAnswer": "这是线上测试分类,你玩我吧!",
+                            "level": 3,
+                            "firstOwnerId": 22315,
+                            "secondOwnerId": 17896,
+                            "children": [],
+                            "leaf": true
+                        }
+                    ],
+                    "leaf": false
+                },
                 {
                     "typeId": 3,
                     "parentTypeId": 0,
@@ -89,25 +84,15 @@ export default class Demo extends Component{
     render(){
         let self=this;
         return(
-            <DemoLayout title="树状菜单">
-                <DemoItem title="获取展开节点的信息">
-                    <CodeShow>
-                        <Code code={getFile('treeMenu-demo')}/>
-                    </CodeShow>
-                    <DemoShow>
-                        <Button onClick={function(){
-                            console.log(self.refs.tm.getExpandNodes())
-                        }}>获取展开节点的信息</Button>
-                        <br/>
-                        <TreeMenu ref='tm' clickCallback={function(nodeId,type){
-                            console.log(nodeId,type);
-                            self.setState({
-                                selected: nodeId
-                            })
-                        }} selected={self.state.selected} data={this.state.data} expandNodes={this.state.expandNodes}/>
-                    </DemoShow>
-                </DemoItem>
-            </DemoLayout>
-        )
+            <div>
+                <Button onClick={function(){console.log(self.refs.tm.getExpandNodes())}}>获取展开节点的信息</Button>
+                <br/>
+                <TreeMenu ref='tm' clickCallback={function(nodeId,type){
+                    console.log(nodeId,type);
+                    self.setState({
+                        selected: nodeId
+                    })
+                }} selected={self.state.selected} data={this.state.data} expandNodes={this.state.expandNodes}/>
+        </div>)
     }
 };
