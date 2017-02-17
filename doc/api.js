@@ -76,7 +76,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "grid(布局)",
             "name": "grid(布局)",
-            "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<pre><code>\n    &#60;Grid&#62;//定义栅格\n        &#60;Col sm={6}&#62;//定义一列，总长度为12份\n            &#60;Row&#62; &#60;/Row&#62;//定义一行\n        &#60;/Col&#62;\n    &#60;/Grid&#62;\n</code></pre>\n\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
+            "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<pre><code>\n    &#60;Grid&#62;//定义栅格\n        &#60;Row&#62;//定义一行\n             &#60;Col sm={6}&#62;//定义一列，总长度为12份\n             &#60;/Col&#62;\n        &#60;/Row&#62;\n    &#60;/Grid&#62;\n</code></pre>\n\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
             "classes": [
                 {
                     "name": "Row"

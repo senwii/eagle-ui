@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>Paging - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -399,7 +401,7 @@
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 
                     <ul class="index-list methods extends">
                         
@@ -457,7 +459,7 @@
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
                     <ul class="index-list properties extends">
                         
@@ -522,7 +524,7 @@
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 
             </div>
         </div>
@@ -531,12 +533,12 @@
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
-                <li class=""><a data-toggle="tab" href="#method">Methods</a></li>
+                <li class=""><a data-toggle="tab" href="#method">方法</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
             
         </ul>
@@ -628,71 +630,15 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/paging"  _no='0'> <a>paging</a></li>
                 
             </ul>
-
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import Paging from &#39;../../../src/Paging.js&#39;;
-import Row from &#39;../../../src/Row.js&#39;;
-import Col from &#39;../../../src/Col.js&#39;;
-import querystring from &#39;querystring&#39;;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React, { Component ,PropTypes} from &#39;react&#39;;
+import {Col,Row,Paging,Button} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
 
 
 let page = 1;
@@ -709,24 +655,50 @@ let arrs = [10,15,23,35,40],
     arr1 = &#39;1&#39;;
 
 export default class PagingCls extends Component{
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            showItemsNumber:0
+        };
+    }
+    toggleItemNumber(){
+        this.setState({
+            showItemsNumber:!this.state.showItemsNumber
+        });
+    }
     render(){
         let query = this.props.location.query,
-        page = query.page*1 ||0,
-        pageSize = query.pageSize*1 || 20;
+            page = query.page*1 ||0,
+            pageSize = query.pageSize*1 || 20,
+            {showItemsNumber}=this.state;
         return (
-            &lt;Row&gt;
-                &lt;Col sm={12}&gt;
-                    &lt;Paging showItemsNumber={true} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
-                            pageCallback={callback} total={5024} choosePageSize={arr1}/&gt;
-                &lt;/Col&gt;
-            &lt;/Row&gt;
+            &lt;DemoLayout title="分页"&gt;
+                &lt;DemoItem title=""&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;paging&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.toggleItemNumber}&gt;
+                            {(showItemsNumber?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;条数设置工具&#39;}
+                        &lt;/Button&gt;
+                        &lt;Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                                pageCallback={callback} total={5024} choosePageSize={arr1}/&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
         );
     }
 }</code></pre>
 </div>
             </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
         </div>
     
 </div>
@@ -737,7 +709,7 @@ export default class PagingCls extends Component{
 
         
             <div id="method" class="tab-pane">
-                <h2 class="off-left">Methods</h2>
+                <h2 class="off-left">方法</h2>
 
                 
                     <div id="method_generate" class="method item">
@@ -778,7 +750,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l226"><code>lib&#x2F;Paging.js:226</code></a>
+        <a href="../files/lib_Paging.js.html#l225"><code>lib&#x2F;Paging.js:225</code></a>
         
         </p>
 
@@ -851,7 +823,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l174"><code>lib&#x2F;Paging.js:174</code></a>
+        <a href="../files/lib_Paging.js.html#l173"><code>lib&#x2F;Paging.js:173</code></a>
         
         </p>
 
@@ -936,7 +908,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l184"><code>lib&#x2F;Paging.js:184</code></a>
+        <a href="../files/lib_Paging.js.html#l183"><code>lib&#x2F;Paging.js:183</code></a>
         
         </p>
 
@@ -953,29 +925,48 @@ export default class PagingCls extends Component{
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">page</code>
+                            <span class="type">Integer</span>
+                        
 
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">page</code>
-                       <td> <span class="type">Integer</span>
-                       <td>
-                    
+                        
 
+                        <span class="param-description">
+                            <p>页码，从1开始</p>
+
+                        </span>
+                    </div>
                     
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+                
+                    <tr class="param">
+                        
+                            <td> <code class="param-name">page</code>
+                            <td> <span class="type">Integer</span>
+                        <td>
+                        
+
+                        
                     </td>
                     <td><div class="param-description">
                         <p>页码，从1开始</p>
 
                     </div>
 
-                    
-                </tr>
-            
+                        
+                    </tr>
+                
             </table>
+
         </div>
     
 
@@ -1045,7 +1036,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l213"><code>lib&#x2F;Paging.js:213</code></a>
+        <a href="../files/lib_Paging.js.html#l212"><code>lib&#x2F;Paging.js:212</code></a>
         
         </p>
 
@@ -1062,29 +1053,48 @@ export default class PagingCls extends Component{
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">index</code>
+                            <span class="type">Integer</span>
+                        
 
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">index</code>
-                       <td> <span class="type">Integer</span>
-                       <td>
-                    
+                        
 
+                        <span class="param-description">
+                            <p>页码，从1开始</p>
+
+                        </span>
+                    </div>
                     
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+                
+                    <tr class="param">
+                        
+                            <td> <code class="param-name">index</code>
+                            <td> <span class="type">Integer</span>
+                        <td>
+                        
+
+                        
                     </td>
                     <td><div class="param-description">
                         <p>页码，从1开始</p>
 
                     </div>
 
-                    
-                </tr>
-            
+                        
+                    </tr>
+                
             </table>
+
         </div>
     
 
@@ -1140,7 +1150,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l156"><code>lib&#x2F;Paging.js:156</code></a>
+        <a href="../files/lib_Paging.js.html#l155"><code>lib&#x2F;Paging.js:155</code></a>
         
         </p>
 
@@ -1197,7 +1207,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l165"><code>lib&#x2F;Paging.js:165</code></a>
+        <a href="../files/lib_Paging.js.html#l164"><code>lib&#x2F;Paging.js:164</code></a>
         
         </p>
 
@@ -1258,7 +1268,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l370"><code>lib&#x2F;Paging.js:370</code></a>
+        <a href="../files/lib_Paging.js.html#l369"><code>lib&#x2F;Paging.js:369</code></a>
         
         </p>
 
@@ -1297,7 +1307,7 @@ export default class PagingCls extends Component{
 
         
             <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">属性</h2>
 
                 
                     <div id="property_activeClass" class="property item">
@@ -1323,7 +1333,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l70"><code>lib&#x2F;Paging.js:70</code></a>
+        <a href="../files/lib_Paging.js.html#l69"><code>lib&#x2F;Paging.js:69</code></a>
         
         </p>
 
@@ -1370,7 +1380,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l85"><code>lib&#x2F;Paging.js:85</code></a>
+        <a href="../files/lib_Paging.js.html#l84"><code>lib&#x2F;Paging.js:84</code></a>
         
         </p>
 
@@ -1418,7 +1428,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l44"><code>lib&#x2F;Paging.js:44</code></a>
+        <a href="../files/lib_Paging.js.html#l43"><code>lib&#x2F;Paging.js:43</code></a>
         
         </p>
 
@@ -1466,7 +1476,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l107"><code>lib&#x2F;Paging.js:107</code></a>
+        <a href="../files/lib_Paging.js.html#l106"><code>lib&#x2F;Paging.js:106</code></a>
         
         </p>
 
@@ -1511,7 +1521,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l64"><code>lib&#x2F;Paging.js:64</code></a>
+        <a href="../files/lib_Paging.js.html#l63"><code>lib&#x2F;Paging.js:63</code></a>
         
         </p>
 
@@ -1556,7 +1566,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l51"><code>lib&#x2F;Paging.js:51</code></a>
+        <a href="../files/lib_Paging.js.html#l50"><code>lib&#x2F;Paging.js:50</code></a>
         
         </p>
 
@@ -1604,7 +1614,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l79"><code>lib&#x2F;Paging.js:79</code></a>
+        <a href="../files/lib_Paging.js.html#l78"><code>lib&#x2F;Paging.js:78</code></a>
         
         </p>
 
@@ -1649,7 +1659,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/lib_Paging.js.html#l58"><code>lib&#x2F;Paging.js:58</code></a>
+        <a href="../files/lib_Paging.js.html#l57"><code>lib&#x2F;Paging.js:57</code></a>
         
         </p>
 
@@ -1689,5 +1699,6 @@ export default class PagingCls extends Component{
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

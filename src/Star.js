@@ -16,8 +16,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo star.js {源码}
+ * @demo #/star|star.js
  * @show true
  * */
 export default class Star extends Component{

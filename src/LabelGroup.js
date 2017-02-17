@@ -15,8 +15,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo label.js {源码}
+ * @demo #/label|label.js
  * @show true
  * */
 export default class LabelGroup extends Component{

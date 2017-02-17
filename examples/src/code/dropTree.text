@@ -1,11 +1,7 @@
 
 import React, { Component ,PropTypes} from 'react';
-import MultiDropDown from "eg-drop-tree";
-import {Button} from 'eagle-ui';
-import Code from '../libs/Code.js';
-import {getFile} from '../libs/Code.js';
-import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
 
+import MultiDropDown from "eg-drop-tree";
 export default class Demo extends Component {
     constructor(props,context){
         super(props,context);
@@ -248,31 +244,26 @@ export default class Demo extends Component {
     render(){
         let _this=this;
         return (
-        <DemoLayout title="树状层级下拉菜单">
-            <DemoItem title="" desc={''}>
-                <DemoShow>
-                    <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
-                        <MultiDropDown selected={this.state.selected}
-                                       onChange={
+            <div className="paddingSpace">
+                <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
+                    <MultiDropDown selected={this.state.selected}
+                                   onChange={
                                         function(e){
                                             _this.setState({
                                             selected:e  })
                                         }
 
                                    }
-                                       dropDownData={this.state.mockMultiDropData}
-                                       keyName='typeName'
-                                       leafName='leaf'
-                                       title="树状列表选择"
-                                       ref="MultiDropDown"/>
-                    </div>
-                </DemoShow>
-                <CodeShow>
-                    <Code code={getFile('dropTree')}>
-                    </Code>
-                </CodeShow>
-            </DemoItem>
-        </DemoLayout>
+                                   dropDownData={this.state.mockMultiDropData}
+                                   keyName='typeName'
+                                   leafName='leaf'
+                                   title="树状列表选择"
+                                   ref="MultiDropDown"/>
+                </div>
+
+                <div className='demo-button-container'>
+                    <div className='demo-button' style={{background:'red'}} onClick={()=>{this.getDropDownData('MultiDropDown')}}>点击获取树状列表的选择结果</div></div>
+            </div>
         );
     }
     getDropDownData(type){

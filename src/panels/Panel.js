@@ -25,8 +25,7 @@ import Component from '../utils/Component';
  * @module panel(面板)
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo panel.js {源码}
+ * @demo #/panel|panel.js
  * @show true
  * */
 export default class Panel extends Component{

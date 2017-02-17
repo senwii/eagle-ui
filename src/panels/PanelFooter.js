@@ -10,8 +10,7 @@ import ClassNameMixin from '../utils/ClassNameMixin.js';
  * @constructor
  * @module panel(面板)
  * @extends Component
- * @demo star.js {UI展示}
- * @demo panel.js {源码}
+ * @demo #/panel|panel.js
  * @show true
  * */
 @ClassNameMixin

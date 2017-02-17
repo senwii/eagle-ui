@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>Dialog - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -399,12 +401,12 @@
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
                     <ul class="index-list properties extends">
                         
@@ -417,13 +419,6 @@
                         
                             <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_buttons" data-tablink="buttons">buttons</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_cancelCallback" data-tablink="cancelCallback">cancelCallback</a>
 
                                 
                                 
@@ -479,13 +474,6 @@
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_successCallback" data-tablink="successCallback">successCallback</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_title" data-tablink="title">title</a>
 
                                 
@@ -497,7 +485,7 @@
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 
             </div>
         </div>
@@ -506,10 +494,10 @@
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
             
         </ul>
@@ -601,74 +589,21 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/dialog"  _no='0'> <a>dialog</a></li>
                 
             </ul>
-
             <div class="example-content  showdemo ">
                 <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
  * Created by min.xiao
  */
 import React,{Component} from &#39;react&#39;;
-import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;../../../src/index&#39;;
+import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;;
 
-let Demo= class Demo extends Component{
-
+export default class DialogCls extends Component{
     static defaultProps = {
     };
-
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -677,11 +612,9 @@ let Demo= class Demo extends Component{
             alertContent: &#39;哈哈，你好苍老师&#39;
         }
     }
-
     getScope(dialog){
         this.dialog = dialog;
     }
-
     show(name){
         Dialog.mask(name).then(function(){
             console.log(&#39;success&#39;);
@@ -690,7 +623,6 @@ let Demo= class Demo extends Component{
             console.log(&#39;cancel&#39;);
         });
     }
-
     showAlert(){
         Dialog.alert(&#39;哈哈，我是alert&#39;);
     }
@@ -718,58 +650,76 @@ let Demo= class Demo extends Component{
             alert(&#39;取消&#39;);
         });
     }
-
     render(){
         return (
-            &lt;div&gt;
-                &lt;Button onClick={::this.show.bind(this,&#39;demo1&#39;)} className="mg-right-15"&gt;点击我mask&lt;/Button&gt;
-                &lt;Button onClick={::this.show.bind(this,&#39;demo2&#39;)} className="mg-right-15"&gt;点击我mask2表单秀&lt;/Button&gt;
-                &lt;Button onClick={::this.show.bind(this,&#39;demo3&#39;)} className="mg-right-15"&gt;点击我mask3 outside&lt;/Button&gt;
-                &lt;Button onClick={::this.showAlert} className="mg-right-15"&gt;点击我alert&lt;/Button&gt;
-                &lt;Button onClick={::this.nomask} className="mg-right-15"&gt;无遮罩显示&lt;/Button&gt;
-                &lt;Button onClick={::this.showConfirm}&gt;点击我Confirm&lt;/Button&gt;
-                &lt;Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
-                    {
-                        type: &#39;success&#39;,
-                        name: &#39;确认&#39;
+            &lt;DemoLayout title="弹出框组件"&gt;
+                &lt;DemoItem title="默认样式"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo1&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo1&#39;)} className="mg-right-15"&gt;点击我mask&lt;/Button&gt;
+                        &lt;Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
+                            {
+                                type: &#39;success&#39;,
+                                name: &#39;确认&#39;
 
-                    },
-                    {
-                        type:&#39;cancel&#39;,
-                        egStyle:&#39;white&#39;,
-                        name:&#39;取消&#39;
-                    },
-                    {
-                        egStyle:&#39;warning&#39;,
-                        name:&#39;改变文案&#39;,
-                        callback:()=&gt;{
-                            {/*alert(&#39;自定义按钮&#39;);*/}
-                            this.setState({
-                                alertContent: &#39;哈哈哈，改成波多。。。。&#39;
-                            })
-                        }
-                    }
-                    ]}&gt;
-                    &lt;div&gt;
-                        {this.state.alertContent}
-                    &lt;/div&gt;
-                &lt;/Dialog&gt;
-                &lt;Dialog id="demo2" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
-                    {
-                        type: &#39;success&#39;,
-                        name: &#39;提交&#39;,
-                        callback:()=&gt;{}
-                    },
-                    {
-                        type:&#39;cancel&#39;,
-                        egStyle:&#39;white&#39;,
-                        name:&#39;取消&#39;,
-                        callback:()=&gt;{}
-                    }
-                    ]}&gt;
-                    &lt;Grid&gt;
-                    &lt;Row&gt;
-                        &lt;Col&gt;
+                            },
+                            {
+                                type:&#39;cancel&#39;,
+                                egStyle:&#39;white&#39;,
+                                name:&#39;取消&#39;
+                            }
+                        ]}&gt;
+                            &lt;div&gt;
+                                {this.state.alertContent}
+                            &lt;/div&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="改变内部文本"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo2&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo2&#39;)} className="mg-right-15"&gt;点击我mask&lt;/Button&gt;
+                        &lt;Dialog id="demo2" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
+                            {
+                                egStyle:&#39;warning&#39;,
+                                name:&#39;改变文案&#39;,
+                                callback:()=&gt;{
+                                    {/*alert(&#39;自定义按钮&#39;);*/}
+                                    this.setState({
+                                        alertContent: &#39;哈哈哈，改成波多。。。。&#39;
+                                    })
+                                }
+                            }
+                        ]}&gt;
+                            &lt;div&gt;
+                                {this.state.alertContent}
+                            &lt;/div&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="内嵌表单"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo3&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo3&#39;)} className="mg-right-15"&gt;点击我mask2表单秀&lt;/Button&gt;
+                        &lt;Dialog id="demo3" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
+                            {
+                                type: &#39;success&#39;,
+                                name: &#39;提交&#39;,
+                                callback:()=&gt;{}
+                            },
+                            {
+                                type:&#39;cancel&#39;,
+                                egStyle:&#39;white&#39;,
+                                name:&#39;取消&#39;,
+                                callback:()=&gt;{}
+                            }
+                        ]}&gt;
                             &lt;Panel heading="我是标题"&gt;
                                 &lt;PanelContent&gt;
                                     &lt;Row&gt;
@@ -850,98 +800,97 @@ let Demo= class Demo extends Component{
                                                 &lt;/PanelContent&gt;
                                             &lt;/Panel&gt;
                                         &lt;/Col&gt;
-
                                     &lt;/Row&gt;
                                 &lt;/PanelContent&gt;
                             &lt;/Panel&gt;
-                        &lt;/Col&gt;
-                    &lt;/Row&gt;
-                    &lt;/Grid&gt;
-                &lt;/Dialog&gt;
-                &lt;Dialog id="demo3" title="panel" outside egSize="lg"&gt;
-                    &lt;Panel egType="normal" margin="0"&gt;
-                        &lt;PanelHeader&gt;另一种形式的嵌套&lt;/PanelHeader&gt;
-                        &lt;PanelContent&gt;
-                            &lt;Panel egType="normal"&gt;
-                                &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="内容不在content之内"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo4&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo4&#39;)} className="mg-right-15"&gt;点击我mask3 outside&lt;/Button&gt;
+                        &lt;Dialog id="demo4" title="panel" outside egSize="lg"&gt;
+                            &lt;Panel egType="normal" margin="0"&gt;
+                                &lt;PanelHeader&gt;另一种形式的嵌套&lt;/PanelHeader&gt;
                                 &lt;PanelContent&gt;
-                                    &lt;Row&gt;
-                                        &lt;Col&gt;
-                                            我是内容区
-                                        &lt;/Col&gt;
-                                    &lt;/Row&gt;
-                                    &lt;Row&gt;
-                                        &lt;Col&gt;
-                                            &lt;Panel  margin={&#39;0&#39;}&gt;
-                                                &lt;PanelHeader&gt;另一种形式的嵌套3&lt;/PanelHeader&gt;
-                                                &lt;PanelContent&gt;
-                                                    &lt;Row&gt;
-                                                        &lt;Col&gt;
-                                                            我是内容区
-                                                        &lt;/Col&gt;
-                                                    &lt;/Row&gt;
-                                                &lt;/PanelContent&gt;
-                                            &lt;/Panel&gt;
-                                        &lt;/Col&gt;
-                                    &lt;/Row&gt;
+                                    &lt;Panel egType="normal"&gt;
+                                        &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                        &lt;PanelContent&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col&gt;
+                                                    我是内容区
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col&gt;
+                                                    &lt;Panel  margin={&#39;0&#39;}&gt;
+                                                        &lt;PanelHeader&gt;另一种形式的嵌套3&lt;/PanelHeader&gt;
+                                                        &lt;PanelContent&gt;
+                                                            &lt;Row&gt;
+                                                                &lt;Col&gt;
+                                                                    我是内容区
+                                                                &lt;/Col&gt;
+                                                            &lt;/Row&gt;
+                                                        &lt;/PanelContent&gt;
+                                                    &lt;/Panel&gt;
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                        &lt;/PanelContent&gt;
+                                    &lt;/Panel&gt;
+                                    &lt;Panel margin={&#39;0&#39;}&gt;
+                                        &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                        &lt;PanelContent&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col&gt;
+                                                    我是内容区
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                        &lt;/PanelContent&gt;
+                                    &lt;/Panel&gt;
                                 &lt;/PanelContent&gt;
                             &lt;/Panel&gt;
-                            &lt;Panel margin={&#39;0&#39;}&gt;
-                                &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
-                                &lt;PanelContent&gt;
-                                    &lt;Row&gt;
-                                        &lt;Col&gt;
-                                            我是内容区
-                                        &lt;/Col&gt;
-                                    &lt;/Row&gt;
-                                &lt;/PanelContent&gt;
-                            &lt;/Panel&gt;
-                        &lt;/PanelContent&gt;
-                    &lt;/Panel&gt;
-                &lt;/Dialog&gt;
-            &lt;/div&gt;
-        );
-        /*return (
-         &lt;Grid&gt;
-        &lt;Row&gt;
-            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showDialog}&gt;dialog&lt;/Button&gt;&lt;/Col&gt;
-            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showAlert}&gt;alert&lt;/Button&gt;&lt;/Col&gt;
-            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showConfirm}&gt;confirm&lt;/Button&gt;&lt;/Col&gt;
-            &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" onClick={::this.showMsak}&gt;mask&lt;/Button&gt;&lt;/Col&gt;
-        &lt;/Row&gt;
-            &lt;Dialog type={this.state.type} show={this.state.show} title={this.state.title} ref={::this.getScope}&gt;
-            ahflaskdjflajsflajsdlf;jkasdfk
-                adfkjasd;fkjas;dlf
-                asdfkn;askdfnas
-            &lt;/Dialog&gt;
-           &lt;/Grid&gt;
-        );*/
-    }
-    /*showDialog(){
-        this.dialog.open(&#39;dialog&#39;);
-    }
-    showAlert(){
-        this.dialog.open(&#39;alert&#39;);
-    }
-    showConfirm(){
-        this.dialog.open(&#39;confirm&#39;);
-    }
-    showMsak(){
-        this.dialog.open(&#39;mask&#39;);
-    }*/
-};
-
-export default class DialogCls extends Component{
-    render(){
-        return (
-            &lt;Demo  /&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="alert展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo5&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showAlert} className="mg-right-15"&gt;点击我alert&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="无遮罩展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo6&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.nomask} className="mg-right-15"&gt;无遮罩显示&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="confirm展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo7&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showConfirm}&gt;点击我Confirm&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
         );
     }
 }</code></pre>
 </div>
             </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
         </div>
     
 </div>
@@ -954,7 +903,7 @@ export default class DialogCls extends Component{
 
         
             <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">属性</h2>
 
                 
                     <div id="property_buttonAlign" class="property item">
@@ -980,7 +929,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l43"><code>lib&#x2F;Dialog.js:43</code></a>
+        <a href="../files/lib_Dialog.js.html#l28"><code>lib&#x2F;Dialog.js:28</code></a>
         
         </p>
 
@@ -1028,7 +977,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l98"><code>lib&#x2F;Dialog.js:98</code></a>
+        <a href="../files/lib_Dialog.js.html#l83"><code>lib&#x2F;Dialog.js:83</code></a>
         
         </p>
 
@@ -1038,77 +987,45 @@ export default class DialogCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>底部按钮组
-例如：
-        [
+        <div class="stdoc-code"><p>底部按钮组<br />
+当不设置type的时候，按钮的回调直接用callback定义就好，<br />
+如果设置了type为&#39;success&#39;或者&#39;cancel&#39;，callback属性将不会起到作用，此时可以通过dialog提供的promise来注册点击成功或者取消按钮时的回调事件:<br/></p>
+<pre class="code prettyprint">
+<code>
+   Dialog.confirm('确定你已经打开了么？').then(()=>{
+           alert('确定');
+       },()=>{
+           alert('取消');
+       });
+</code>
+</pre>
+<br>
+按钮组格式如下：
+   <pre class="code prettyprint">
+       <code>
+       [
             {
-                type: &#39;success&#39;,
-                name: &#39;确认&#39;,
-                callback:()=&gt;{}
+                type: 'success',
+                name: '确认'
             },
             {
-                type:&#39;cancel&#39;,
-                egStyle:&#39;white&#39;,
-                name:&#39;取消&#39;,
-                callback:()=&gt;{}
+                type:'cancel',
+                egStyle:'white',
+                name:'取消'
             },
             {
-                egStyle:&#39;warning&#39;,
-                name:&#39;自定义按钮&#39;,
-                callback:()=&gt;{alert(&#39;自定义按钮&#39;);}
+                egStyle:'warning',
+                name:'自定义按钮',
+                callback:()=>{alert('自定义按钮');}
             }
-        ]</p>
-</div>
+        ]
+       </code>
+   </pre></div>
     </div>
 
     
         <p><strong>Default:</strong></p>
          <code> empty</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_cancelCallback" class="property item">
-    <h3 class="name"><code>cancelCallback</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Dialog.js.html#l29"><code>lib&#x2F;Dialog.js:29</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>点击取消按钮或关闭后会执行此回调，默认调用Dialog.confirm会返回promise</p>
-</div>
-    </div>
-
     
 
     
@@ -1140,7 +1057,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l57"><code>lib&#x2F;Dialog.js:57</code></a>
+        <a href="../files/lib_Dialog.js.html#l42"><code>lib&#x2F;Dialog.js:42</code></a>
         
         </p>
 
@@ -1188,7 +1105,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l78"><code>lib&#x2F;Dialog.js:78</code></a>
+        <a href="../files/lib_Dialog.js.html#l63"><code>lib&#x2F;Dialog.js:63</code></a>
         
         </p>
 
@@ -1236,7 +1153,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l50"><code>lib&#x2F;Dialog.js:50</code></a>
+        <a href="../files/lib_Dialog.js.html#l35"><code>lib&#x2F;Dialog.js:35</code></a>
         
         </p>
 
@@ -1284,7 +1201,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l36"><code>lib&#x2F;Dialog.js:36</code></a>
+        <a href="../files/lib_Dialog.js.html#l21"><code>lib&#x2F;Dialog.js:21</code></a>
         
         </p>
 
@@ -1332,7 +1249,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l64"><code>lib&#x2F;Dialog.js:64</code></a>
+        <a href="../files/lib_Dialog.js.html#l49"><code>lib&#x2F;Dialog.js:49</code></a>
         
         </p>
 
@@ -1380,7 +1297,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l91"><code>lib&#x2F;Dialog.js:91</code></a>
+        <a href="../files/lib_Dialog.js.html#l76"><code>lib&#x2F;Dialog.js:76</code></a>
         
         </p>
 
@@ -1428,7 +1345,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l71"><code>lib&#x2F;Dialog.js:71</code></a>
+        <a href="../files/lib_Dialog.js.html#l56"><code>lib&#x2F;Dialog.js:56</code></a>
         
         </p>
 
@@ -1445,51 +1362,6 @@ export default class DialogCls extends Component{
     
         <p><strong>Default:</strong></p>
          <code> false</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_successCallback" class="property item">
-    <h3 class="name"><code>successCallback</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Dialog.js.html#l22"><code>lib&#x2F;Dialog.js:22</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>点击确认按钮后会执行此回调，默认调用Dialog.confirm会返回promise</p>
-</div>
-    </div>
-
     
 
     
@@ -1521,7 +1393,7 @@ export default class DialogCls extends Component{
             
         
         
-        <a href="../files/lib_Dialog.js.html#l85"><code>lib&#x2F;Dialog.js:85</code></a>
+        <a href="../files/lib_Dialog.js.html#l70"><code>lib&#x2F;Dialog.js:70</code></a>
         
         </p>
 
@@ -1564,5 +1436,6 @@ export default class DialogCls extends Component{
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

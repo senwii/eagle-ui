@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/ImgSlider.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -431,7 +433,7 @@ var _utilsIconJs2 = _interopRequireDefault(_utilsIconJs);
  *  照片浏览组件&lt;br /&gt;
  *  提供的UI展示属性接口如下&lt;br/&gt;
  * &lt;ul&gt;
- *     &lt;li&gt;imgList:定义数据源数组&lt;br&gt;
+ *     &lt;li&gt;imgList:需要展示的图片数组，每个图片用一个对象来表示&lt;br&gt;
  *         例如
  *         &lt;pre&gt;&lt;code&gt;
  *                  [{
@@ -442,34 +444,31 @@ var _utilsIconJs2 = _interopRequireDefault(_utilsIconJs);
                      }]
  *         &lt;/code&gt;&lt;/pre&gt;
  *     &lt;/li&gt;
- *     &lt;li&gt;show:定义隐藏还是展示组件
+ *     &lt;li&gt;show:是否显示照片浏览组件，默认隐藏，需要手动设置为true才可以显示照片浏览组件
  *         &lt;code&gt;
  *             &lt;strong&gt;默认&lt;/strong&gt;false
  *         &lt;/code&gt;
  *     &lt;/li&gt;
- *     &lt;li&gt;urlKey:定义大图对应imgList数组中的key
- *         &lt;code&gt;
- *             在本例子中就是url
- *         &lt;/code&gt;
+ *     &lt;li&gt;
+ *         urlKey:定义大图的‘图片路径’应该取自图像object的哪一个属性。&lt;br/&gt;
+ *         在上述imgList中，图像object的url属性就是大图路径，所以urlKey=&#x27;url&#x27;
  *     &lt;/li&gt;
- *     &lt;li&gt;titleKey:定义大图下方文字对应imgList数组的key
- *         &lt;code&gt;
- *             在本例子中就是description
- *         &lt;/code&gt;
+ *     &lt;li&gt;
+ *         titleKey:定义大图‘左下方文字描述’应该取自图像object的哪一个属性。&lt;br/&gt;
+ *         在上述imgList中，图像object的description属性就是图片描述，所以titleKey=&#x27;description&#x27;
  *     &lt;/li&gt;
- *     &lt;li&gt;profileKey: 定义大图下方文字对应imgList数组的key
+ *     &lt;li&gt;
+ *         profileKey:定义大图‘正下方profile描述’应该取自图像object的哪一个属性。&lt;br/&gt;
+ *         在上述imgList中，图像object的profile属性就是图片profile，所以profileKey=&#x27;profile&#x27;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;thumbnailKey:定义缩略图对应imgList数组的key
  *         &lt;code&gt;
- *             在本例子中就是profile
+ *             &lt;strong&gt;默认&lt;/strong&gt;和urlKey保持一致,本例中就是thumbnail
  *         &lt;/code&gt;
  *     &lt;/li&gt;
  *     &lt;li&gt;showThumbnail:定义是否展示缩略图
  *         &lt;code&gt;
  *             &lt;strong&gt;默认&lt;/strong&gt;true
- *         &lt;/code&gt;
- *     &lt;/li&gt;
- *     &lt;li&gt;thumbnailKey:定义缩略图对应imgList数组的key
- *         &lt;code&gt;
- *             &lt;strong&gt;默认&lt;/strong&gt;和urlKey保持一致,本例中就是thumbnail
  *         &lt;/code&gt;
  *     &lt;/li&gt;
  *      &lt;li&gt;pageNum:定义每页缩略图的个数
@@ -491,12 +490,13 @@ var _utilsIconJs2 = _interopRequireDefault(_utilsIconJs);
  titleKey={&#x27;description&#x27;}
  thumbnailKey={thumbnailKey} /&amp;#62;&lt;/code&gt;
  * &lt;/pre&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://future-team.github.io/eagle-ui/examples/index.html#/slider&quot;&gt;demo展示&lt;/a&gt;&lt;/div&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/future-team/eagle-ui/blob/master/src/ImgSlider.js&quot;&gt;查看源码&lt;/a&gt;&lt;/div&gt;
  * @class Slider
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo imgSlider.js {源码}
+ * @demo #/slider|imgSlider.js
  * @show true
  * */
 
@@ -884,7 +884,7 @@ var ImgSlider = (function (_Component) {
              * */
             pageNum: _react.PropTypes.number,
             /**
-             * 是否对图片进行放大缩小等操作
+             * 控制缩放旋转控件的显示，默认隐藏
              * @property imgModify
              * @type boolean
              * @default false
@@ -916,5 +916,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/Label.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -423,12 +425,14 @@ var _utilsComponent = require(&#x27;./utils/Component&#x27;);
 var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 /**
- * 标签
+ * 标签组件&lt;br /&gt;
+ * 提供基本的标签样式，通常结合LabelGroup组件一起使用
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://future-team.github.io/eagle-ui/examples/index.html#/label&quot;&gt;demo展示&lt;/a&gt;&lt;/div&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/future-team/eagle-ui/blob/master/src/Label.js&quot;&gt;查看源码&lt;/a&gt;&lt;/div&gt;
  * @class Label
  * @module ui
  * @constructor
- * @demo star.js {UI展示}
- * @demo label.js {源码}
+ * @demo #/label|label.js
  * @show true
  * */
 
@@ -438,8 +442,42 @@ var Label = (function (_Component) {
     _createClass(Label, null, [{
         key: &#x27;propTypes&#x27;,
         value: {
+            /**
+             * label的链接地址（不设置的话默认不进行跳转）
+             * @property url
+             * @type String
+             * @default &#x27;javascript:void(0);&#x27;
+             * */
             url: _react.PropTypes.string,
-            activeCallback: _react.PropTypes.func
+            activeCallback: _react.PropTypes.func,
+            /**
+             * 标签尺寸,分别为xs、sm、lg
+             * @property egSize
+             * @type String
+             * @default sm
+             * */
+            egSize: _react.PropTypes.string,
+            /**
+             * 是否禁用Label
+             * @property disabled
+             * @type Boolean
+             * @default false
+             * */
+            disabled: _react.PropTypes.bool,
+            /**
+             * 标签是否处于选中状态
+             * @property active
+             * @type Boolean
+             * @default false
+             * */
+            active: _react.PropTypes.bool,
+            /**
+             * 标签颜色样式，可以为[&#x27;success&#x27;,&#x27;error&#x27;,&#x27;warning&#x27;,&#x27;danger&#x27;,&#x27;&#x27;]中任何一个
+             * @property egStyle
+             * @type Boolean
+             * @default &#x27;&#x27;
+             * */
+            egStyle: _react.PropTypes.string
         },
         enumerable: true
     }, {
@@ -499,5 +537,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

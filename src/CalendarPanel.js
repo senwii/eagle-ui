@@ -21,8 +21,7 @@ import Calendar from './Calendar.js';
  * @module ui
  * @extends Component
  * @constructor
- * @demo  star.js {UI展示}
- * @demo  calendar.js {源码}
+ * @demo #/calendar|calendar.js
  * @show true
  * */
 @ClassNameMixin

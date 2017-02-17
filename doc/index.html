@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>eagle-ui</title>
   
     <link rel="stylesheet" href="./assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,16 +382,76 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
         <div class="apidocs">
             <div id="docs-main">
                 <div class="content">
-                        <div class="apidocs">
+                        <div class="apidocs apidocs-index">
         <div id="docs-main" class="content">
             
-                <h3>欢迎使用eagle-ui，左侧的导航栏为相关react组件的名称和链接</h3><p>&nbsp;</p><h4>您可以点击顶部导航栏的<strong><a href="/documents/eagle-ui/examples/">示例</a></strong>，查看eagle-ui组件的UI效果及功能演示</h4><p>&nbsp;</p><h4>您可以通过如下方式查看组件的API</h4><ol><li><h4>在输入框中输入组件名字进行查询</h4></li><li><h4>点击左侧API导航栏</h4></li></ol><strong>说明:</strong>左侧导航栏中对应的链接名字即为组件名字<p>&nbsp;</p><h4>您可以采用如下形式在项目中应用eagle-ui</h4><pre>import {CheckboxGroup}(根据您的需要引入组件) from 'eagle-ui'使用相关组件</pre>或者<pre><div>&#60;script src="path to eagle-ui.js" &#62;&#60;/script&#62;的形式使用eagle-ui</div></pre>
+                <div  style="margin:-15px -20px;">
+    <div style="padding: 50px 24px 60px 24px;box-sizing: border-box;background-color: #38b7ea;overflow: hidden;text-align:center; color:#fff;">
+        <div>
+            <h1>Eagle-UI</h1>
+            <p style="margin-top:25px">点评商家、销售系统常用的react组件库</p>
+        </div>
+    </div>
+    <div style="margin: 20px 0;padding: 0px 30px;">
+        <p class="lead">
+            eagle-ui是一款基于react开发的pc端UI组件库，目前主要用于apollo系统，它提供了常用的表单、布局、日历、弹窗等一系列符合apollo style的控件集合。
+        </p>
+        <h2>安装</h2>
+        <div class="well well-small sign-left2" style="display: inline-block;width: 45%;">
+            <div class="stdoc-code">
+                <p>
+                    $ bower install eagle-ui
+                </p>
+            </div>
+        </div>
+        <div class="well well-small sign-left2" style="display: inline-block;width: 45%;float: right">
+            <div class="stdoc-code">
+                <p>
+                    $ npm install eagle-ui --save
+                </p>
+            </div>
+        </div>
+        <h2>如何在项目中引用</h2>
+        <div class="well well-small sign-left3">
+            <div class="stdoc-code">
+                <p>
+                    import {CalendarPanel,Input} from 'eagle-ui';
+                </p>
+            </div>
+        </div>
+        <p>引入需要使用的组件之后在render函数中的调用方式如下：</p>
+        <pre class="code prettyprint">
+<code>
+    &lt;CalendarPanel defaultDate={this.state.defaultDate}
+            startDate="2015-11-11"
+            endDate="2017-12-1"
+            getValueCallback={::this.getvalue}&gt;
+            &lt;Input placeholder="请选择日期" style={{width:'150px'}} /&gt;
+    &lt;/CalendarPanel&gt;
+</code>
+        </pre>
+    </div>
+    <div style="padding: 72px 24px; box-sizing: border-box; background-color: rgb(238, 238, 238); text-align: center;">
+        <div style="max-width: 1200px; margin: 0px auto;">
+            <h3 style="margin: 0px; padding: 0px; font-weight: 300; font-size: 22px;">
+                Want to help make this project awesome? Check out our repo
+            </h3>
+            <a href="https://github.com/future-team/eagle-ui"  style="color:#fff;box-sizing: border-box; display: inline-block; cursor:pointer;text-decoration: none; margin-top: 30px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; position: relative; vertical-align: middle; height: 36px; line-height: 36px; width: 100px; border-radius: 2px; background-color: #38b7ea; text-align: center;">
+                <div style="height: 36px; border-radius: 2px; top: 0px;">
+                    GitHub
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
             
         </div>
     </div>
@@ -408,5 +469,6 @@
 <script src="./assets/vendor/prettify/prettify-min.js"></script>
 <script src="./assets/js/config.js"></script>
 <script src="./assets/js/doc.js"></script>
+
 </body>
 </html>

@@ -11039,8 +11039,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo input.js {源码}
+	 * @demo #/input|input.js
 	 * @show true
 	 * */
 
@@ -11832,8 +11831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Label
 	 * @module ui
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo label.js {源码}
+	 * @demo #/label|label.js
 	 * @show true
 	 * */
 
@@ -11980,8 +11978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo crumb.js {源码}
+	 * @demo #/crumb|crumb.js
 	 * @show true
 	 * */
 
@@ -12091,8 +12088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Search
 	 * @module ui
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo suggestion.js {源码}
+	 * @demo #/suggestion|suggestion.js
 	 * @show true
 	 * */
 
@@ -12141,8 +12137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @Module ui
 	 * @constructor
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo suggestion.js {源码}
+	 * @demo #/suggestion|suggestion.js
 	 * @show true
 	 * */
 
@@ -13011,8 +13006,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo label.js {源码}
+	 * @demo #/label|label.js
 	 * @show true
 	 * */
 
@@ -13230,8 +13224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo toast.js {源码}
+	 * @demo #/toast|toast.js
 	 * @show true
 	 * */
 
@@ -13362,8 +13355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo dialog.js {源码}
+	 * @demo #/dialog|dialog.js
 	 * @show true
 	 * */
 
@@ -14381,8 +14373,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @requires React classnames
-	 * @demo star.js {UI展示}
-	 * @demo paging.js {源码}
+	 * @demo #/paging|paging.js
 	 * @show true
 	 * @author min.xiao@dianping.com
 	 * */
@@ -14823,8 +14814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo calendar.js {源码}
+	 * @demo #/calendar|calendar.js
 	 * @show true
 	 * */
 
@@ -15494,8 +15484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo tab.js {源码}
+	 * @demo #/tab|tab.js
 	 * @show true
 	 * */
 
@@ -15613,8 +15602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extends Component
 	 * @constructor
 	 * @since 0.1.0
-	 * @demo star.js {UI展示}
-	 * @demo tab.js {源码}
+	 * @demo #/tab|tab.js
 	 * @show true
 	 * */
 
@@ -15826,8 +15814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo star.js {源码}
+	 * @demo #/star|star.js
 	 * @show true
 	 * */
 
@@ -16061,8 +16048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo imgSlider.js {源码}
+	 * @demo #/slider|imgSlider.js
 	 * @show true
 	 * */
 
@@ -16529,8 +16515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module ui
 	 * @extends Component
 	 * @constructor
-	 * @demo  star.js {UI展示}
-	 * @demo  calendar.js {源码}
+	 * @demo #/calendar|calendar.js
 	 * @show true
 	 * */
 
@@ -16778,8 +16763,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Tooltip
 	 * @module ui
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo tooltip.js {源码}
+	 * @demo #/toolTip|tooltip.js
 	 * @show true
 	 * */
 
@@ -16945,8 +16929,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class TooltipPanel
 	 * @module ui
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo tooltip.js {源码}
+	 * @demo #/toolTip|tooltip.js
 	 * @show true
 	 * */
 
@@ -17303,8 +17286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module panel(面板)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo panel.js {源码}
+	 * @demo #/panel|panel.js
 	 * @show true
 	 * */
 
@@ -17418,8 +17400,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module panel(面板)
 	 * @constructor
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo panel.js {源码}
+	 * @demo #/panel|panel.js
 	 * @show true
 	 * */
 
@@ -17507,8 +17488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module panel(面板)
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo panel.js {源码}
+	 * @demo #/panel|panel.js
 	 * @show true
 	 * */
 
@@ -17594,8 +17574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module panel(面板)
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo panel.js {源码}
+	 * @demo #/panel|panel.js
 	 * @show true
 	 * */
 
@@ -17832,8 +17811,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @module form(表单)
 	 * @extends Component
 	 * @constructor
-	 * @demo star.js {UI展示}
-	 * @demo validate.js {源码}
+	 * @demo #/validate|validate.js
 	 * @show true
 	 * */
 
@@ -18601,8 +18579,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo table.js {源码}
+	 * @demo #/table|table.js
 	 * @show true
 	 * */
 
@@ -18781,8 +18758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo table.js {源码}
+	 * @demo #/table|table.js
 	 * @show true
 	 * */
 
@@ -18875,8 +18851,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo table.js {源码}
+	 * @demo #/table|table.js
 	 * @show true
 	 * */
 
@@ -18952,8 +18927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @constructor
 	 * @module table(表格)
 	 * @extends Component
-	 * @demo star.js {UI展示}
-	 * @demo table.js {源码}
+	 * @demo #/table|table.js
 	 * @show true
 	 * */
 

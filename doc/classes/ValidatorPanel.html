@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>ValidatorPanel - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -416,12 +418,12 @@ rules属性提供的规则有<br/></p>
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
                     <ul class="index-list properties extends">
                         
@@ -507,7 +509,7 @@ rules属性提供的规则有<br/></p>
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 
                     <ul class="index-list events extends">
                         
@@ -534,13 +536,13 @@ rules属性提供的规则有<br/></p>
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#event">Events</a></li>
+                <li class=""><a data-toggle="tab" href="#event">事件</a></li>
             
         </ul>
     
@@ -631,78 +633,20 @@ rules属性提供的规则有<br/></p>
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/validate"  _no='0'> <a>validate</a></li>
                 
             </ul>
-
             <div class="example-content  showdemo ">
                 <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
  * Created by mac on 15/11/4.
  */
 import React,{Component} from &#39;react&#39;;
-import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;../../../src/index&#39;;
-
-
-
-
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+import Code, {getFile} from &#39;../libs/Code&#39;;
 let Demo = class Demo extends Component{
-
     constructor(props,context){
         super(props,context);
-
-
         this.rules = {
             //key对应的是表单元素的name
             calendar:{
@@ -736,7 +680,6 @@ let Demo = class Demo extends Component{
                 equalTo:{
                     params:&#39;[name="number"]&#39;
                 }
-
             },
             minlength:{
                 minlength:{
@@ -750,23 +693,19 @@ let Demo = class Demo extends Component{
                 email:true
             }
         };
-
         this.state={
             showTab:0,
             update:&#39;uid&#39;,
             show:false
         };
-
     }
 
     show(value,text,target,active){
         console.dir(value);
     }
-
     getDialog(d){
         //this.dialog = d;
     }
-
     change(value){
        this.setState({
            showTab:value,
@@ -774,15 +713,12 @@ let Demo = class Demo extends Component{
        });
 
     }
-
     submit(vals){
         alert(&#39;验证成功&#39;+JSON.stringify(vals));
     }
-
     showMask(){
         Dialog.mask(&#39;demo2&#39;);
     }
-
     checktab(){
         if(this.state.showTab ==&#39;1&#39;){
             return (
@@ -809,130 +745,125 @@ let Demo = class Demo extends Component{
             return null;
         }
     }
-
     render(){
         return (
-            &lt;Panel&gt;
-
-                    &lt;Grid&gt;
-                        &lt;Tabset&gt;
-                            &lt;Tab heading="demo1"&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;PanelContent&gt;
-                                            &lt;RadioGroup defaultChecked={this.state.showTab+&#39;&#39;} name="radio-foot" getValueCallback={::this.change}&gt;
-                                                &lt;Input  type="radio"  label="非必填项" value="0"  /&gt;
-                                                &lt;Input  type="radio"  label="必填项" value="1"   /&gt;
-                                            &lt;/RadioGroup&gt;
-                                        &lt;/PanelContent&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={8} end&gt;
-                                        &lt;ValidatorPanel rules={this.rules} submitElement="#submit" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}&gt;
-                                            &lt;Row&gt;
-                                                &lt;Col&gt;
-                                                    &lt;PanelContent&gt;
-                                                        &lt;Row&gt;
-                                                            &lt;Col&gt;
-                                                                &lt;CalendarPanel&gt;
-                                                                    &lt;Input placeholder="请选择日期" icon="calendar" name="date" data-validate /&gt;
-                                                                &lt;/CalendarPanel&gt;
-
-                                                            &lt;/Col&gt;
-                                                        &lt;/Row&gt;
-                                                        {this.checktab()}
-                                                        &lt;Row&gt;
-                                                            &lt;Col&gt;
-                                                                &lt;Input placeholder="请输入手机号码" name="number" data-validate /&gt;
-                                                            &lt;/Col&gt;
-                                                        &lt;/Row&gt;
-                                                        &lt;Row&gt;
-                                                            &lt;Col&gt;
-                                                                &lt;Input placeholder="请再次确认手机号码" name="equalTo" data-validate /&gt;
-                                                            &lt;/Col&gt;
-                                                        &lt;/Row&gt;
-                                                        &lt;Row&gt;
-                                                            &lt;Col&gt;
-                                                                &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
-                                                            &lt;/Col&gt;
-                                                        &lt;/Row&gt;
-                                                        &lt;Row&gt;
-                                                            &lt;Col&gt;
-                                                                &lt;Input placeholder="请输入您的email" name="email" data-validate /&gt;
-                                                            &lt;/Col&gt;
-                                                        &lt;/Row&gt;
-                                                        &lt;Row&gt;
-                                                            &lt;Col&gt;
-                                                                &lt;Button radius egSize="xs" id="submit" &gt;点我提交表单&lt;/Button&gt;
-                                                            &lt;/Col&gt;
-                                                        &lt;/Row&gt;
-                                                    &lt;/PanelContent&gt;
-                                                &lt;/Col&gt;
-                                            &lt;/Row&gt;
-
-                                        &lt;/ValidatorPanel&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                            &lt;/Tab&gt;
-                            &lt;Tab heading="demo2"&gt;
-                                &lt;PanelContent&gt;
+            &lt;DemoLayout title="验证控件"&gt;
+                &lt;DemoItem title="非必填项"&gt;
+                    &lt;CodeShow&gt;&lt;Code code={getFile(&#39;validate-demo1&#39;)}/&gt;&lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;ValidatorPanel rules={this.rules} submitElement="#submit1" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;CalendarPanel&gt;
+                                        &lt;Input placeholder="请选择日期" icon="calendar" name="date" data-validate /&gt;
+                                    &lt;/CalendarPanel&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入手机号码" name="number" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请再次确认手机号码" name="equalTo" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Button radius egSize="xs" id="submit1" &gt;点我提交表单&lt;/Button&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/ValidatorPanel&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="必填项"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;validate-demo2&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;ValidatorPanel rules={this.rules} submitElement="#submit2" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入姓名"  name="userName" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Input placeholder="请输入您的email" name="email" data-validate /&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col&gt;
+                                    &lt;Button radius egSize="xs" id="submit2" &gt;点我提交表单&lt;/Button&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/ValidatorPanel&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="弹出验证表单"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;validate-demo3&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showMask}&gt;弹出验证表单&lt;/Button&gt;
+                        &lt;Dialog id="demo2" egSize="sm" title="表单验证"&gt;
+                            &lt;Grid&gt;
+                                &lt;ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}&gt;
                                     &lt;Row&gt;
                                         &lt;Col&gt;
-                                            &lt;Button onClick={::this.showMask}&gt;弹出验证表单&lt;/Button&gt;
+                                            &lt;Input placeholder="请输入姓名"  name="userName" data-validate /&gt;
+
                                         &lt;/Col&gt;
                                     &lt;/Row&gt;
-                                &lt;/PanelContent&gt;
-                            &lt;/Tab&gt;
-                        &lt;/Tabset&gt;
-                    &lt;/Grid&gt;
-                    &lt;Dialog id="demo2" egSize="sm" title="表单验证"&gt;
-                        &lt;Grid&gt;
-                            &lt;ValidatorPanel rules={this.rules} submitElement="#ssubmit" direction="top" id="testDialogFrom" submitCallback={::this.submit}&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;Input placeholder="请输入姓名"  name="userName" data-validate /&gt;
-
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;Input placeholder="请输入有效的号码" name="number" data-validate /&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;Input placeholder="请输入有效的号码" name="equalTo" data-validate /&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;Input placeholder="请输入您的email" name="email" data-validate /&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col&gt;
-                                        &lt;Button radius egSize="xs" id="ssubmit" &gt;点我提交表单&lt;/Button&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                            &lt;/ValidatorPanel&gt;
-                        &lt;/Grid&gt;
-                    &lt;/Dialog&gt;
-            &lt;/Panel&gt;
-
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;Input placeholder="请输入有效的号码" name="number" data-validate /&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;Input placeholder="请输入有效的号码" name="equalTo" data-validate /&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;Input placeholder="请输入您的email" name="email" data-validate /&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;Button radius egSize="xs" id="ssubmit" &gt;点我提交表单&lt;/Button&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/ValidatorPanel&gt;
+                            &lt;/Grid&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
         );
     }
 };
 export default Demo;</code></pre>
 </div>
             </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
         </div>
     
 </div>
@@ -945,7 +876,7 @@ export default Demo;</code></pre>
 
         
             <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">属性</h2>
 
                 
                     <div id="property_componentTag" class="property item">
@@ -971,7 +902,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l86"><code>lib&#x2F;ValidatorPanel.js:86</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l85"><code>lib&#x2F;ValidatorPanel.js:85</code></a>
         
         </p>
 
@@ -1019,7 +950,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l179"><code>lib&#x2F;ValidatorPanel.js:179</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l178"><code>lib&#x2F;ValidatorPanel.js:178</code></a>
         
         </p>
 
@@ -1067,7 +998,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l75"><code>lib&#x2F;ValidatorPanel.js:75</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l74"><code>lib&#x2F;ValidatorPanel.js:74</code></a>
         
         </p>
 
@@ -1112,7 +1043,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l100"><code>lib&#x2F;ValidatorPanel.js:100</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l99"><code>lib&#x2F;ValidatorPanel.js:99</code></a>
         
         </p>
 
@@ -1173,7 +1104,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l173"><code>lib&#x2F;ValidatorPanel.js:173</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l172"><code>lib&#x2F;ValidatorPanel.js:172</code></a>
         
         </p>
 
@@ -1218,7 +1149,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l166"><code>lib&#x2F;ValidatorPanel.js:166</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l165"><code>lib&#x2F;ValidatorPanel.js:165</code></a>
         
         </p>
 
@@ -1266,7 +1197,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l160"><code>lib&#x2F;ValidatorPanel.js:160</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l159"><code>lib&#x2F;ValidatorPanel.js:159</code></a>
         
         </p>
 
@@ -1311,7 +1242,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l153"><code>lib&#x2F;ValidatorPanel.js:153</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l152"><code>lib&#x2F;ValidatorPanel.js:152</code></a>
         
         </p>
 
@@ -1359,7 +1290,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l93"><code>lib&#x2F;ValidatorPanel.js:93</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l92"><code>lib&#x2F;ValidatorPanel.js:92</code></a>
         
         </p>
 
@@ -1407,7 +1338,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l186"><code>lib&#x2F;ValidatorPanel.js:186</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l185"><code>lib&#x2F;ValidatorPanel.js:185</code></a>
         
         </p>
 
@@ -1455,7 +1386,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l69"><code>lib&#x2F;ValidatorPanel.js:69</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l68"><code>lib&#x2F;ValidatorPanel.js:68</code></a>
         
         </p>
 
@@ -1482,7 +1413,7 @@ export default Demo;</code></pre>
 
         
             <div id="event" class="tab-pane">
-                <h2 class="off-left">Events</h2>
+                <h2 class="off-left">事件</h2>
 
                 
                     <div id="event_submitCallback" class="events item">
@@ -1508,7 +1439,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l137"><code>lib&#x2F;ValidatorPanel.js:137</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l136"><code>lib&#x2F;ValidatorPanel.js:136</code></a>
         
         </p>
 
@@ -1525,8 +1456,27 @@ export default Demo;</code></pre>
         <div class="params">
             <h4>Parameters:</h4>
 
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">opt</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>表单数据结构</p>
+
+                        </span>
+                    </div>
+                    
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
             
                 <tr class="param">
                     
@@ -1577,7 +1527,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_ValidatorPanel.js.html#l145"><code>lib&#x2F;ValidatorPanel.js:145</code></a>
+        <a href="../files/lib_ValidatorPanel.js.html#l144"><code>lib&#x2F;ValidatorPanel.js:144</code></a>
         
         </p>
 
@@ -1594,8 +1544,27 @@ export default Demo;</code></pre>
         <div class="params">
             <h4>Parameters:</h4>
 
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">opt</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>表单数据结构</p>
+
+                        </span>
+                    </div>
+                    
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
             
                 <tr class="param">
                     
@@ -1639,5 +1608,6 @@ export default Demo;</code></pre>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

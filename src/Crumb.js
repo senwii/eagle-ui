@@ -30,8 +30,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo crumb.js {源码}
+ * @demo #/crumb|crumb.js
  * @show true
  * */
 export default class Crumb extends Component {
