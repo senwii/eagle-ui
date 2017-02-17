@@ -1,9 +1,10 @@
-/**
- * Created by panqianjin on 15/11/4.
- */
 import React,{Component,PropTypes}  from 'react';
 import {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';
-let Demo= class Demo extends Component{
+import Code from '../libs/Code.js';
+import {getFile} from '../libs/Code.js';
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
+
+export default class Demo extends Component{
 
     static defaultProps = {
         input: true,
@@ -69,74 +70,81 @@ let Demo= class Demo extends Component{
 
     render(){
         return (
-            <Grid fluid>
-                <Row>
-                    <Col>
-                        <div id="showtip" className="color-info"></div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={10} layer padding={0}>
-                        <Suggestion
-                            getValueCallback={::this.getValue}
-                            queryCallback={::this.query}
-                            icon="search"
-                            iconDirection="left"
-                            placeholder="请输入key搜索" />
-                    </Col>
-                    <Col sm={2} end padding={0}>
-                        <Button type="submit">查询</Button>
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col sm={10} layer end>
+        <DemoLayout title="联想词">
+            <DemoItem title="" desc={'queryCallback的形式传入数据'}>
+                <CodeShow>
+                    <Code code={getFile('suggestion-demo1')}>
+                    </Code>
+                </CodeShow>
+                <DemoShow>
+                    <Grid fluid>
                         <Row>
-                            <Col sm={10} end>
+                            <Col>
+                                <div id="showtip" className="color-info"></div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm={10} layer padding={0}>
                                 <Suggestion
                                     getValueCallback={::this.getValue}
                                     queryCallback={::this.query}
                                     icon="search"
                                     iconDirection="left"
-                                    value="上海"
                                     placeholder="请输入key搜索" />
                             </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={10} layer>
-                        <Row>
-                            <Col sm={10} end>
-                                <Suggestion
-                                    getValueCallback={::this.getValue}
-                                    icon="search"
-                                    iconDirection="left"
-                                    placeholder="请输入测、测试、试进行搜索">
-                                    <Item value="测试测试" subKey="222222">
-                                        测试测试
-                                    </Item>
-                                    <Item value="测试" subKey="达到">
-                                        测试
-                                    </Item>
-                                    <Item value="试验" subKey="dsadsad">
-                                        试验
-                                    </Item>
-                                    <Item value="测验">
-                                        测验
-                                    </Item>
-                                    <Item value="检测" >
-                                        检测
-                                    </Item>
-                                </Suggestion>
+                            <Col sm={2} end padding={0}>
+                                <Button type="submit">查询</Button>
                             </Col>
                         </Row>
-                    </Col>
-                    <Col sm={2}>请输入测、测试、试进行搜索</Col>
-                </Row>
-            </Grid>
+                    </Grid>
+                </DemoShow>
+            </DemoItem>
+            <DemoItem title="子标签的形式传入数据" desc={''}>
+                <CodeShow>
+                    <Code code={getFile('suggestion-demo2')}>
+                    </Code>
+                </CodeShow>
+                <DemoShow>
+                    <Grid fluid>
+                        <Row>
+                            <Col>
+                                <div id="showtip" className="color-info"></div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm={10} layer>
+                                <Row>
+                                    <Col sm={10} end>
+                                        <Suggestion
+                                            icon="search"
+                                            iconDirection="left"
+                                            placeholder="请输入测、测试、试进行搜索">
+                                            <Item value="测试测试" subKey="222222">
+                                                测试测试
+                                            </Item>
+                                            <Item value="测试" subKey="达到">
+                                                测试
+                                            </Item>
+                                            <Item value="试验" subKey="dsadsad">
+                                                试验
+                                            </Item>
+                                            <Item value="测验">
+                                                测验
+                                            </Item>
+                                            <Item value="检测" >
+                                                检测
+                                            </Item>
+                                        </Suggestion>
+                                    </Col>
+                                </Row>
+                            </Col>
+                            <Col sm={2}>请输入测、测试、试进行搜索</Col>
+                        </Row>
+                    </Grid>
+                </DemoShow>
+            </DemoItem>
+
+        </DemoLayout>
         );
     }
 }
-
-export default Demo;
