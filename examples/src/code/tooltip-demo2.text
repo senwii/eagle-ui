@@ -1,0 +1,15 @@
+import React,{Component} from 'react';
+import {TooltipPanel,Button} from 'eagle-ui';
+let Demo = class Demo extends Component {
+    render() {
+        return (
+            <div id='a' style={{width:'500px',height:'200px',border:'1px solid #f00',position:'relative'}}>
+                <div style={{margin:'10px'}}>
+                    <TooltipPanel direction='top' wrapper='a'>
+                        <Button radius egSize="sm" egStyle="warning">红色边框为边界，设置的方向是top.实际展示为bottom</Button>
+                    </TooltipPanel>
+                </div>
+            </div>
+        )
+    }
+};
