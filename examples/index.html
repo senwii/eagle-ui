@@ -67,8 +67,8 @@
             width: 250px;
             position: fixed;
             left: 0;
-            top: 0;
-            bottom: 80px;
+            top: 55px;
+            bottom: 70px;
             background: #fff;
             border-right: 1px solid #e2e2e2;
             overflow-y: scroll;
@@ -81,7 +81,7 @@
             border-bottom: 1px solid #e2e2e2;
         }
         .content{
-            margin:10px 10px 10px 270px;
+            margin:55px 10px 55px 270px;
             height: 100%;
         }
         .menu .active{
@@ -99,6 +99,13 @@
     </style>
 </head>
 <body>
+<header id="head" style="
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+"></header>
 <div class="">
     <div class="menu" id="menu">
         <a class="sub ft-18" href="#/icon" >icon fonts</a>
@@ -109,7 +116,7 @@
             <a href="#/select" >下拉菜单(Select)</a>
             <a href="#/validate" >验证控件</a>
         </div>
-        <a class="sub ft-18" href="#/Layout">布局</a>
+        <a class="sub ft-18" href="#/Demo1">布局</a>
         <a class="sub ft-18" href="#/Demo2">面板demo</a>
         <a class="sub ft-18" href="#/Detail">商户详情页面demo</a>
         <a class="sub ft-18" href="#/table">表格</a>
@@ -138,6 +145,12 @@
         <div id="root"></div>
     </div>
 </div>
+<footer id="footer" style="
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
+"></footer>
 <script src="js/jquery.js"></script>
 <script src="js/examples.js"></script>
 <script>
