@@ -70,6 +70,10 @@ Download dependent package installation bower, start the server, static access e
 
 ## icon替换相关  
 
-eagle-ui中相关部分在input和imgslide中，等待eagle-ui主体部分完成之后再行合并。util下icons.js简单封装。更改的部分仅此而已：
+eagle-ui中相关部分在input和imgslide中，等待eagle-ui主体部分完成之后再行合并。util下icons.js简单封装。更改的部分仅此而已
+
+## common head  
+
+引入gfs-head，暂时通过data-uri转base64绕过了图片url的问题，需要进一步深究。demo页样式稍微调整
 
 
