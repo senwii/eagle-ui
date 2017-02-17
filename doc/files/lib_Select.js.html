@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/Select.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -455,13 +457,29 @@ var _sugSearch2 = _interopRequireDefault(_sugSearch);
  *     &lt;/li&gt;
  *
  * &lt;/ul&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://future-team.github.io/eagle-ui/examples/index.html#/select&quot;&gt;demo展示&lt;/a&gt;&lt;/div&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/future-team/eagle-ui/blob/master/src/Select.js&quot;&gt;查看源码&lt;/a&gt;&lt;/div&gt;
  * @class Select
  * @module form(表单)
  * @constructor
  * @extends Component
- * @demo star.js {UI展示}
- * @demo select.js {源码}
- * @show true
+ * @example
+ *      import {Select} from &#x27;eagle-ui&#x27;;
+ *      ...
+ *      function getValue(value,key,type){
+ *          let stype = {
+ *              &#x27;enter&#x27;:&#x27;回车时调用&#x27;,
+ *              &#x27;click&#x27;:&#x27;点击每一项元素时调用&#x27;
+ *          };
+ *          console.log(value,key,stype[type]);
+ *      }
+ *      ...
+ *      &lt;Select defaultChecked={&quot;上海&quot;} getValueCallback={getValue} placeholder=&quot;请选择&quot; &gt;
+ *          &lt;option value=&#x27;bei&#x27; key=&quot;bei&quot;&gt;北京&lt;/option&gt;
+ *          &lt;option value=&#x27;shang&#x27; key=&quot;上海&quot;&gt;上海&lt;/option&gt;
+ *          &lt;option value=&#x27;nan&#x27; key=&quot;南京&quot;&gt;南京&lt;/option&gt;
+ *          &lt;option value=&#x27;3&#x27; key=&quot;杭州&quot;&gt;杭州&lt;/option&gt;
+ *      &lt;/Select&gt;
  * */
 
 var Select = (function (_Search) {
@@ -480,8 +498,8 @@ var Select = (function (_Search) {
              * */
             getValueCallback: null,
             /**
-             * 样式类名前缀
-             * @property classPrefix
+             * 没有选中任何item时的占位文案
+             * @property placeholder
              * @type string
              * */
             classPrefix: &#x27;select&#x27;,
@@ -544,5 +562,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>ButtonGroup - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -391,36 +393,25 @@
     <h1>ButtonGroup</h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>按钮组组件配合Button组件,提供了横、竖两种排列方式<br/>
- 主要属性和接口：</p>
-<ul>
-    <li>egType:是否自适应宽度或者垂直排列，可选&#39;justify,tacked&#39;默认&#39;&#39;<br>
-        如：<code>
-          <ButtonGroup egType="justify">
-        </code>
-    </li>
-</ul></div>
+      <div class="stdoc-code"><p>ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>
+设置justify属性时可以将按钮组水平排列<br/>
+设置tacked属性时可以将按钮组竖直排列</p>
+<div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/button">demo展示</a></div>
+<div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js">查看源码</a></div></div>
  </div>
 
     <div class="well well-small sign-left2 container-fluid" id="classesItems">
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
                     <ul class="index-list properties extends">
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_egType" data-tablink="egType">egType</a>
-
-                                
-                                
-                            </li>
                         
                             <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_justify" data-tablink="justify">justify</a>
@@ -441,7 +432,18 @@
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
+                
+                    <ul class="index-list events extends">
+                        
+                            <li class="index-item event">
+                                <a href="#" data-tabid="#event" data-anchor="#event_activeCallback" data-tablink="activeCallback">activeCallback</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
                 
             </div>
         </div>
@@ -450,11 +452,13 @@
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
+            
+                <li class=""><a data-toggle="tab" href="#event">事件</a></li>
             
         </ul>
     
@@ -549,160 +553,27 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
-                
             </ul>
-
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import ButtonGroup from &#39;../../../src/ButtonGroup.js&#39;;
-import Button from &#39;../../../src/Button.js&#39;;
-import Row from &#39;../../../src/Row.js&#39;;
-import Col from &#39;../../../src/Col.js&#39;;
-import Grid from &#39;../../../src/Grid.js&#39;;
-
-export default class ButtonCls extends Component{
-    onActive(target,html){
-        console.dir(html);
-        alert(&#39;测试&#39;);
-    }
-    render(){
-        return (
-            &lt;Grid&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;ButtonGroup egType="justify" activeCallback={this.onActive}&gt;
-                            &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组1&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组2&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组3&lt;/Button&gt;
-                        &lt;/ButtonGroup&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={12}&gt;
-                        &lt;ButtonGroup egType="tacked"&gt;
-                            &lt;Button radius egSize="sm" egStyle=""&gt;垂直按钮组1&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle=""&gt;垂直按钮组2&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle=""&gt;垂直按钮组3&lt;/Button&gt;
-                        &lt;/ButtonGroup&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="warning"&gt;警告&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="success"&gt;成功&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="danger"&gt;危险&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="error"&gt;错误&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="info"&gt;info&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" &gt;默认&lt;/Button&gt;&lt;/Col&gt;
-                        &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="white"&gt;白色&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="white" disabled&gt;白色&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="gray"&gt;灰色&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" &gt;默认&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" disabled&gt;默认不可点&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="white" disabled&gt;白色不可点&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="success" disabled&gt;成功不可点&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" &gt;默认&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" disabled&gt;默认不可点&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="link" &gt;链接&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" egStyle="success" disabled&gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" &gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" disabled&gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" egStyle="link" &gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" egStyle="success" disabled&gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" &gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" disabled&gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" egStyle="link" &gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="warning" hollow&gt;警告&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="success" hollow&gt;成功&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="danger" hollow&gt;危险&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="error" hollow&gt;错误&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="primary" hollow&gt;primary&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="info" hollow&gt;infp&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="default" hollow&gt;default&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="warning" disabled hollow&gt;警告&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="success" disabled hollow&gt;成功&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="danger" disabled hollow&gt;危险&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="error" disabled hollow&gt;错误&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-            &lt;/Grid&gt;
-        );
-    }
-}</code></pre>
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> import {ButtonGroup,Button} from &#39;eagle-ui&#39;;
+ ...
+ function onActive(target,html){
+     console.log(target,html);
+ }
+ ...
+ &lt;ButtonGroup egType="justify" activeCallback={onActive}&gt;
+     &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组1&lt;/Button&gt;
+     &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组2&lt;/Button&gt;
+     &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组3&lt;/Button&gt;
+ &lt;/ButtonGroup&gt;</code></pre>
 </div>
             </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
         </div>
     
 </div>
@@ -715,55 +586,7 @@ export default class ButtonCls extends Component{
 
         
             <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_egType" class="property item">
-    <h3 class="name"><code>egType</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_ButtonGroup.js.html#l70"><code>lib&#x2F;ButtonGroup.js:70</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>是否有自适应宽度，垂直排列等属性</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> &#x27;&#x27;</code>
-    
-
-    
-
-    
-</div>
+                <h2 class="off-left">属性</h2>
 
                 
                     <div id="property_justify" class="property item">
@@ -789,7 +612,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_ButtonGroup.js.html#l56"><code>lib&#x2F;ButtonGroup.js:56</code></a>
+        <a href="../files/lib_ButtonGroup.js.html#l61"><code>lib&#x2F;ButtonGroup.js:61</code></a>
         
         </p>
 
@@ -799,7 +622,7 @@ export default class ButtonCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>是否自适应宽度</p>
+        <div class="stdoc-code"><p>是否自适应宽度并水平排列</p>
 </div>
     </div>
 
@@ -837,7 +660,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_ButtonGroup.js.html#l63"><code>lib&#x2F;ButtonGroup.js:63</code></a>
+        <a href="../files/lib_ButtonGroup.js.html#l68"><code>lib&#x2F;ButtonGroup.js:68</code></a>
         
         </p>
 
@@ -866,6 +689,132 @@ export default class ButtonCls extends Component{
         
 
         
+            <div id="event" class="tab-pane">
+                <h2 class="off-left">事件</h2>
+
+                
+                    <div id="event_activeCallback" class="events item">
+    <h3 class="name"><code>activeCallback</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_ButtonGroup.js.html#l103"><code>lib&#x2F;ButtonGroup.js:103</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+     <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>点击按钮组中任意按钮时触发的回调事件</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">target</code>
+                            <span class="type">Dom</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>触发事件的dom节点</p>
+
+                        </span>
+                    </div>
+                    
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">html</code>
+                            <span class="type">InnerHTML</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>触发事件dom节点的innerHTML</p>
+
+                        </span>
+                    </div>
+                    
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">target</code>
+                       <td> <span class="type">Dom</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>触发事件的dom节点</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">html</code>
+                       <td> <span class="type">InnerHTML</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>触发事件dom节点的innerHTML</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+
+    
+</div>
+
+                
+            </div>
+        
     </div>
 </div>
 
@@ -880,5 +829,6 @@ export default class ButtonCls extends Component{
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

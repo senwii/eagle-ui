@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/ButtonGroup.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -423,23 +425,28 @@ var _classnames = require(&#x27;classnames&#x27;);
 var _classnames2 = _interopRequireDefault(_classnames);
 
 /**
- * 按钮组组件配合Button组件,提供了横、竖两种排列方式&lt;br/&gt;
- *  主要属性和接口：
- * &lt;ul&gt;
- *     &lt;li&gt;egType:是否自适应宽度或者垂直排列，可选&#x27;justify,tacked&#x27;默认&#x27;&#x27;&lt;br&gt;
- *         如：&lt;code&gt;
- *           &lt;ButtonGroup egType=&quot;justify&quot;&gt;
- *         &lt;/code&gt;
- *     &lt;/li&gt;
- * &lt;/ul&gt;
+ * ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）&lt;br/&gt;
+ * 设置justify属性时可以将按钮组水平排列&lt;br/&gt;
+ * 设置tacked属性时可以将按钮组竖直排列
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://future-team.github.io/eagle-ui/examples/index.html#/button&quot;&gt;demo展示&lt;/a&gt;&lt;/div&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/future-team/eagle-ui/blob/master/src/ButtonGroup.js&quot;&gt;查看源码&lt;/a&gt;&lt;/div&gt;
  * @class ButtonGroup
  * @module form(表单)
  * @extends Component
  * @constructor
  * @since 0.1.0
- * @demo star.js {UI展示}
- * @demo button.js {源码}
- * @show true
+ * @example
+ *      import {ButtonGroup,Button} from &#x27;eagle-ui&#x27;;
+ *      ...
+ *      function onActive(target,html){
+ *          console.log(target,html);
+ *      }
+ *      ...
+ *      &lt;ButtonGroup egType=&quot;justify&quot; activeCallback={onActive}&gt;
+ *          &lt;Button radius egSize=&quot;sm&quot; egStyle=&quot;warning&quot;&gt;水平按钮组1&lt;/Button&gt;
+ *          &lt;Button radius egSize=&quot;sm&quot; egStyle=&quot;warning&quot;&gt;水平按钮组2&lt;/Button&gt;
+ *          &lt;Button radius egSize=&quot;sm&quot; egStyle=&quot;warning&quot;&gt;水平按钮组3&lt;/Button&gt;
+ *      &lt;/ButtonGroup&gt;
  * */
 
 var ButtonGroup = (function (_Component) {
@@ -449,7 +456,7 @@ var ButtonGroup = (function (_Component) {
         key: &#x27;propTypes&#x27;,
         value: {
             /**
-             * 是否自适应宽度
+             * 是否自适应宽度并水平排列
              * @property justify
              * @type Boolean
              * @default false
@@ -462,12 +469,6 @@ var ButtonGroup = (function (_Component) {
              * @default false
              * */
             tacked: _react.PropTypes.bool,
-            /**
-             * 是否有自适应宽度，垂直排列等属性
-             * @property egType
-             * @type String
-             * @default &#x27;&#x27;
-             * */
             egType: _react.PropTypes.string
         },
         enumerable: true
@@ -495,6 +496,13 @@ var ButtonGroup = (function (_Component) {
             active: this.props.active
         };
     }
+
+    /**
+     * 点击按钮组中任意按钮时触发的回调事件
+     * @event  activeCallback
+     * @param {dom} target 触发事件的dom节点
+     * @param {innerHTML} html 触发事件dom节点的innerHTML
+     * */
 
     ButtonGroup.prototype.mouseDownHandler = function mouseDownHandler(e) {
         var target = e.target;
@@ -544,5 +552,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

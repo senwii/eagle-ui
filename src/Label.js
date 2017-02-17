@@ -13,8 +13,7 @@ import Component from './utils/Component';
  * @class Label
  * @module ui
  * @constructor
- * @demo star.js {UI展示}
- * @demo label.js {源码}
+ * @demo #/label|label.js
  * @show true
  * */
 export default class Label extends Component{

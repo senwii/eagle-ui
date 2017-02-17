@@ -136,7 +136,7 @@ $(function() {
              loadShowDemo(demo);
         });
 
-        $('.btn-viewDemo').click(openDemo).next().click(editDemo);
+        $('.btn-viewDemo').on('click',openDemo).next().on('click',editDemo);
     }
     function loadShowDemo(code){
         if(code.hasClass('demo-loaded'))
@@ -146,9 +146,19 @@ $(function() {
             ifr;
 
         if (code.parent().hasClass('showdemo')) {
-            ifr = $(html_ifr).load(loadDemo);
+            var demoUrl =$('.example-list li').eq(code.index() ).attr('data-demo') ||'';
+            ifr = $(html_ifr);
+            ifr.load(loadDemo.bind(ifr,demoUrl));
             code.prepend(ifr);
-            ifr.attr('src', _assetsPath + '/show.html');
+            if(demoUrl && demoUrl!=''){
+                ifr.attr('src', demoUrl);
+                //隐藏查看示例和编辑代码按钮
+                $('.btn-viewDemo').hide().next().hide();
+            }else{
+                ifr.attr('src', _assetsPath + '/show.html');
+            }
+
+
         }
         code.addClass('demo-loaded');
     }
@@ -176,28 +186,41 @@ $(function() {
         window.open(_assetsPath + '/code.html?n=' + btn.parent().parent().children(':first').text(), code);
     }
 
-    function loadDemo() {
+    function loadDemo(demoUrl) {
         var ifr = $(this),
             code = ifr.next().text().trim(),
             html, js;
 
         ifr.addClass('demo-loaded');
 
+        demoUrl = demoUrl? demoUrl:'';
+
         var win = ifr[0].contentWindow;
-        if (win && win.__st_render) {
+        if (demoUrl==''&& win && win.__st_render) {
             html = getCode(code, 'html');
             js = getCode(code, 'script') || (html && code);
 
             win.__st_render(html, js);
+            //($('.app-example').size()<=0 || $(window).width()>768) &&(ifr.height(win.document.body.scrollHeight) );
+        }
+
+        if($('.app-example').size()>0){
+            if($(window).width()<=768){
+                ifr.height(win.document.body.scrollHeight);
+            }
+        }else{
             ifr.height(win.document.body.scrollHeight);
         }
+
+        //ifr.height(win.document.body.scrollHeight);
+        //ifr.css('height',ifr.eq(0).contents().find('html').height() + 'px');
     }
 
     function getCode(code, type) {
-        var index = code.indexOf('<' + type + '>');
+        var index = code.indexOf('<'+ type + '>');
 
         if (index > -1) {
-            return code.substring(index + type.length + 2, code.indexOf('</' + type + '>'));
+            return code.substring(index + type.length + 2, code.indexOf('</'+ type + '>'));
         }
     }
 
@@ -309,6 +332,47 @@ $(function() {
 
     $(window).resize(autoHeight);
     autoHeight();
+
+    $(function(){
+        var sidebar = $('#sidebar');
+        $('.icon-sidebar-btn').on('click',function(){
+            var $this = $(this);
+            if($this.hasClass('icon-sidebar-btn-open') ){
+                sidebar.animate({
+                    'margin-left':-260
+                },400,function(){
+                    $this.removeClass('icon-sidebar-btn-open').addClass('icon-sidebar-btn-close').html('<span class="glyphicon glyphicon-chevron-right"></span>展开');
+                    $this.animate({
+                        'right':-50
+                    },400,function(){
+
+                    }).end();
+                });
+                $('.stdoc-content').animate({'margin-left':0},400);
+
+            }else{
+                sidebar.animate({
+                    'margin-left':0
+                },400,function(){
+                    $this.removeClass('icon-sidebar-btn-close').addClass('icon-sidebar-btn-open').html('<span class="glyphicon glyphicon-chevron-left"></span>收起');
+                    $this.animate({
+                        'right':10
+                    },400,function(){
+
+                    }).end();
+                });
+                if(!navigator.userAgent.match(/mobile/i)) {
+                    $('.stdoc-content').animate({'margin-left': 260}, 400);
+                }
+            }
+        });
+
+        //如果是移动端隐藏sidebar
+        if(navigator.userAgent.match(/mobile/i)){
+            $('.icon-sidebar-btn').trigger('click');
+            $('body').css('font-size',12);
+        }
+    });
 });
 window["configStaticFile"]={
   "js":["src/dianping-theme.js"]

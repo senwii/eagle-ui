@@ -6,8 +6,7 @@ import Search from './sug/Search';
  * @Module ui
  * @constructor
  * @extends Component
- * @demo star.js {UI展示}
- * @demo suggestion.js {源码}
+ * @demo #/suggestion|suggestion.js
  * @show true
  * */
 export default class Suggestion extends Search {

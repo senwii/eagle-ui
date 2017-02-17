@@ -74,8 +74,7 @@ import Icon from './utils/Icon.js';
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo imgSlider.js {源码}
+ * @demo #/slider|imgSlider.js
  * @show true
  * */
 @ClassNameMixin
