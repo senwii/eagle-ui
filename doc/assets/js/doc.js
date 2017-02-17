@@ -146,19 +146,9 @@ $(function() {
             ifr;
 
         if (code.parent().hasClass('showdemo')) {
-            var demoUrl =$('.example-list li').eq(code.index() ).attr('data-demo') ||'';
-            ifr = $(html_ifr);
-            ifr.load(loadDemo.bind(ifr,demoUrl));
+            ifr = $(html_ifr).load(loadDemo);
             code.prepend(ifr);
-            if(demoUrl && demoUrl!=''){
-                ifr.attr('src', demoUrl);
-                //隐藏查看示例和编辑代码按钮
-                $('.btn-viewDemo').hide().next().hide();
-            }else{
-                ifr.attr('src', _assetsPath + '/show.html');
-            }
-
-
+            ifr.attr('src', _assetsPath + '/show.html');
         }
         code.addClass('demo-loaded');
     }
@@ -186,34 +176,21 @@ $(function() {
         window.open(_assetsPath + '/code.html?n=' + btn.parent().parent().children(':first').text(), code);
     }
 
-    function loadDemo(demoUrl) {
+    function loadDemo() {
         var ifr = $(this),
             code = ifr.next().text().trim(),
             html, js;
 
         ifr.addClass('demo-loaded');
 
-        demoUrl = demoUrl? demoUrl:'';
-
         var win = ifr[0].contentWindow;
-        if (demoUrl==''&& win && win.__st_render) {
+        if (win && win.__st_render) {
             html = getCode(code, 'html');
             js = getCode(code, 'script') || (html && code);
 
             win.__st_render(html, js);
-            //($('.app-example').size()<=0 || $(window).width()>768) &&(ifr.height(win.document.body.scrollHeight) );
-        }
-
-        if($('.app-example').size()>0){
-            if($(window).width()<=768){
-                ifr.height(win.document.body.scrollHeight);
-            }
-        }else{
             ifr.height(win.document.body.scrollHeight);
         }
-
-        //ifr.height(win.document.body.scrollHeight);
-        //ifr.css('height',ifr.eq(0).contents().find('html').height() + 'px');
     }
 
     function getCode(code, type) {
@@ -374,69 +351,3 @@ $(function() {
         }
     });
 });
-window["configStaticFile"]={
-  "js":["src/dianping-theme.js"]
-};
-/**
- * Created by slashhuang on 16/2/23.
- * 相关配置文件请写在configStaticFile变量
- */
-var filePaths = function(configStaticFile){
-    var href = location.href;
-    //根据不同的页面加载正确的路径，兼容http网上地址
-    var regExp = /(module.*|classes.*)+/i;
-    if(href.match(regExp)){
-        href = href.replace(regExp,'');
-    };
-    var newPathObj={};
-    for(var key in configStaticFile){
-        newPathObj[key] = configStaticFile[key].reduce(function(pre,ele){
-            if(ele.indexOf('http')>-1){
-                return pre.concat(ele);
-            }else{
-                var splitArr = ele.split('/');
-                return pre.concat(href+'/docTheme/'+splitArr[splitArr.length-1]);
-            }
-        },[])
-    }
-    return newPathObj;
-};
-var addLink = function(paths){
-    var link=document.createElement('link');
-    link.rel="stylesheet";
-    link.href=paths;
-    document.head.appendChild(link);
-
-};
-var addScript = function(paths){
-    var script=document.createElement('script');
-    script.src=paths;
-    document.head.appendChild(script)
-};
-//根据configStaticFile对象，按照类型加载脚本或者css
-(function(){
-    var filePath = filePaths(configStaticFile);
-    for(var key in filePath ){
-       switch (key){
-           case 'js':
-               var scriptArr =filePath['js'];
-               for(var i=0;i<scriptArr.length;i++){
-                   addScript(scriptArr[i]);
-               }
-             break;
-           case 'css':
-               var cssArr =filePath['css'];
-               for(var i=0;i<cssArr.length;i++){
-                   addLink(cssArr[i]);
-               }
-               break;
-           case 'external':
-               var externalArr =filePath['external'];
-               for(var i=0;i<externalArr.length;i++){
-                   addScript(externalArr[i]);
-               }
-               break;
-           default:break;
-       }
-    }
-}());
