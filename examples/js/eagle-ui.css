@@ -4080,7 +4080,7 @@ b.eg-slider-arrow-right {
 .doc-content .doc-panel .doc-code .doc-code-collapse.active + .doc-code-content:before {
   content: '\70B9\51FB\67E5\770B\8BE6\7EC6';
   display: block;
-  margin-top: -1rem;
+  margin-top: -1.4rem;
   font-size: 1rem;
   color: #ccc;
   text-align: center;
