@@ -1,0 +1,33 @@
+import React,{Component} from 'react';
+import {Label,Grid,Row,Col} from 'eagle-ui';
+export default class Demo extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            <Grid>
+                <Row>
+                    <Col sm={2}>
+                        <Label egStyle="error">error</Label>
+                    </Col>
+                    <Col sm={2}>
+                        <Label egStyle="success">success</Label>
+                    </Col>
+                    <Col sm={2}>
+                        <Label egStyle="warning">warning</Label>
+                    </Col>
+                    <Col sm={2}>
+                        <Label egStyle="danger">danger</Label>
+                    </Col>
+                    <Col sm={2}>
+                        <Label>default</Label>
+                    </Col>
+                    <Col sm={2}>
+                        <Label disabled>disabled</Label>
+                    </Col>
+                </Row>
+            </Grid>
+        );
+    }
+};
