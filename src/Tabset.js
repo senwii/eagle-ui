@@ -5,7 +5,7 @@ import React,{Component,PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';
 import Tab from './Tab.js';
-import ReactDom from 'react/lib/ReactDOM';
+import ReactDom from 'react-dom';
 /**
  * 导航标签组件，用户可以在不同的tab之间进行切换<br/>
  * 需要和Tab组件配合使用,Tabset相当于是Tab的容器

@@ -97,6 +97,7 @@ export default class SliderDemo extends Component {
                             profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
                             pageNum={pageNum}
                             cssModify={true}
+                            imgModify={true}
                     />
             </div>
 

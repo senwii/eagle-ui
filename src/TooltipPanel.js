@@ -6,7 +6,7 @@ import Button from './Button.js';
 import Row from './Row.js';
 import Col from './Col.js';
 import Grid from './Grid.js';
-import ReactDom from 'react/lib/ReactDOM';
+import ReactDom from 'react-dom';
 /**
  * tipsPanel组件
  * 方向可选：top,down,left,right.默认down

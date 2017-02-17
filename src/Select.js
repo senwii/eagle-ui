@@ -1,6 +1,6 @@
 
 import React, {PropTypes} from 'react';
-import ReactDom from 'react/lib/ReactDOM';
+import ReactDom from 'react-dom';
 import classnames from 'classnames';
 import Input from './Input.js';
 import Row from './Row.js';

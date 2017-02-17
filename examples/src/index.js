@@ -1,5 +1,5 @@
 import React, { Component ,PropTypes} from 'react';
-import ReactDom from 'react/lib/ReactDOM';
+import ReactDom from 'react-dom';
 import { Redirect, Router, Route } from 'react-router';
 import History from 'history/lib/createHashHistory';
 

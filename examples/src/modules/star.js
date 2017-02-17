@@ -2,7 +2,7 @@
  * Created by slashhuang on 15/12/21.
  */
 import React, { Component ,PropTypes} from 'react';
-import {findDOMNode} from 'react/lib/ReactDOM';
+import {findDOMNode} from 'react-dom';
 import {Star} from 'eagle-ui';
 export default class StarDemo extends Component {
     render(){

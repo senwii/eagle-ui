@@ -68,3 +68,8 @@ Download dependent package installation bower, start the server, static access e
 `version 1.4.7` 日历、input回滚到1.3.7版本逻辑
 `version 3.0.1` 修复dialog无法更新表单元素值bug
 
+## icon替换相关  
+
+eagle-ui中相关部分在input和imgslide中，等待eagle-ui主体部分完成之后再行合并。util下icons.js简单封装。更改的部分仅此而已：
+
+
