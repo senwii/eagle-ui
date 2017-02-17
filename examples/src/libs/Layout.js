@@ -7,7 +7,7 @@ export class DemoLayout extends Component {
     render (){
         return (
             <div className="doc-content">
-                <h1>{this.props.title}</h1>
+                <h1 className="title">{this.props.title}</h1>
                 {
                     this.props.desc && (<div className="desc"  dangerouslySetInnerHTML={{__html: this.props.desc}}></div>)
                 }
@@ -23,7 +23,9 @@ export class DemoItem extends Component {
     render (){
         return (
             <div>
-                <h2>{this.props.title}</h2>
+                {
+                    this.props.title && (<h2 className="title">{this.props.title}</h2>)
+                }
                 {
                     this.props.desc && (<div className="desc"  dangerouslySetInnerHTML={{__html: this.props.desc}}></div>)
                 }
@@ -55,7 +57,7 @@ export class CodeShow extends Component {
     render (){
         return (
             <div className="doc-code">
-                {/*<a href="javascript:;" className={"doc-code-collapse " + (this.state.collapse ? 'active' : '')} onClick={this.collapseClick.bind(this)}/>*/}
+                <a href="javascript:;" className={"doc-code-collapse " + (this.state.collapse ? 'active' : '')} onClick={this.collapseClick.bind(this)}/>
                 <div className="doc-code-content" onClick={this.codeClick.bind(this)}>
                     {this.props.children}
                 </div>
