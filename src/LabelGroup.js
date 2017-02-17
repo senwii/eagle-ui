@@ -3,7 +3,8 @@
  */
 import React,{PropTypes} from 'react';
 import classnames from 'classnames';
-import ReactDom from 'react-dom';
+//import ReactDom from 'react-dom';
+import ReactDom from 'react/lib/ReactDOM';
 import Label from './Label.js';
 import Component from './utils/Component';
 

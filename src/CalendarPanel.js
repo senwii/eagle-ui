@@ -1,5 +1,5 @@
 import React,{ PropTypes } from 'react';
-import ReactDom from 'react-dom';
+import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import ClassNameMixin from './utils/ClassNameMixin.js';
 import Component from './utils/Component';

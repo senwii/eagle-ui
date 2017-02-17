@@ -1,4 +1,4 @@
-import ReactDom from 'react-dom';
+import ReactDom from 'react/lib/ReactDOM';
 import React,{PropTypes} from 'react';
 
 import ClassNameMixin from './../utils/ClassNameMixin';

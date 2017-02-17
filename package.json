@@ -91,6 +91,7 @@
     "extend": "^3.0.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.5",
+    "gfs-head": "^0.0.4",
     "gfs-icons": "^0.1.5",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",

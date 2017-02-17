@@ -1,7 +1,8 @@
 import React, { Component ,PropTypes} from 'react';
-import ReactDom from 'react-dom';
+import ReactDom from 'react/lib/ReactDOM';
 import { Redirect, Router, Route } from 'react-router';
 import History from 'history/lib/createHashHistory';
+import {Head,Footer} from 'gfs-head'
 
 import Calendar from './modules/calendar.js';
 import Button from './modules/button';
@@ -28,6 +29,7 @@ import TreeMenu from './modules/treeMenu.js';
 import DropTree from './modules/dropTree.js';
 //require('../less/public.less');
 import css from '../../src/less/eagle-ui.less';
+
 
 let Index = class Index extends Component{
     render() {
@@ -89,4 +91,13 @@ let AppRouter = class AppRouter extends Component {
 ReactDom.render(
     <AppRouter />,
     document.getElementById('root')
+);
+ReactDom.render(
+    <Head></Head>,
+    document.getElementById('head')
+);
+ReactDom.render(
+    <Footer >
+    </Footer>,
+    document.getElementById('footer')
 );

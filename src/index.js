@@ -50,16 +50,3 @@ catBrowser({
     moduleName:'eagle-ui',
     isOnlyDp:false
 });
-
-
-window['Eagleui'] = {};
-
-[
-    'Grid','Col','Row',
-    'Button','ButtonGroup','CheckboxGroup','Input','RadioGroup','Label','ValidatorPanel',
-    'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip','TooltipPanel',
-    'Panel','PanelContent','PanelFooter','PanelHeader','List','Item',
-    'Table','Tr','Td','Th','ImgSlider','FormGroup','Suggestion','ImgSlider','CalendarPanel','Star','Icon'
-].forEach(function(clazzName){
-    Eagleui[clazzName] =exports[clazzName];
-});

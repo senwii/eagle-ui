@@ -1,7 +1,7 @@
 import React,{Component,PropTypes} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classnames from 'classnames';
-import ReactDom from 'react-dom';
+import ReactDom from 'react/lib/ReactDOM';
 
 /**
  * 表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />
