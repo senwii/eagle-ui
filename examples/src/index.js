@@ -6,7 +6,7 @@ import History from 'history/lib/createHashHistory';
 import Calendar from './modules/calendar.js';
 import Button from './modules/button';
 import Crumb from './modules/crumb';
-import Demo1 from './modules/demo1';
+import Layout from './modules/layout';
 import Demo2 from './modules/demo2';
 import Detail from './modules/detail.js';//增加商户详情页面demo
 import Dialog from './modules/dialog';
@@ -60,7 +60,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Calendar" name="Calendar" component={Calendar} />
                 <Route path="/Button" name="Button" component={Button} />
                 <Route path="/Crumb" name="Crumb" component={Crumb} />
-                <Route path="/Demo1" name="Demo1" component={Demo1} />
+                <Route path="/Layout" name="Layout" component={Layout} />
                 <Route path="/Demo2" name="Demo2" component={Demo2} />
                 <Route path="/Detail" name="Detail" component={Detail} />
                 <Route path="/Slider" name="Slider" component={SliderDemo} />
