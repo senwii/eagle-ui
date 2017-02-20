@@ -158,7 +158,10 @@
     if(window!==window.parent){
         //如果为iframe的形式，则移除iframe页面左侧的导航栏
         $('#menu').remove();
-        $('.content').css({'margin-left':'10px'})
+        //iframe引入 头尾不显示,修改样式
+        $('#head').remove();
+        $('#footer').remove();
+        $('.content').css({'margin':'0 10px 0px 10px'})
     }
     $('#menu a').click(function(){
         $(this).parents('.menu').find('.active').removeClass('active');
