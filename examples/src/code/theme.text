@@ -11,4 +11,4 @@
 // 自带
 
 // meituan主题
-import 'eagle-ui／less/meituan.less'
+import 'eagle-ui/dis/meituan.css'
