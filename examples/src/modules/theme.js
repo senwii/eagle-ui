@@ -61,7 +61,9 @@ export default class Theme extends Component{
     render(){
         return (
             <DemoLayout title="主题">
-                <DemoItem title="默认主题与「meituan」主题切换">
+                <DemoItem title="默认主题与「meituan」主题切换" desc={
+                    `<p>通过添加meituan.css文件，切换颜色主题。</p>`
+                }>
                     <CodeShow>
                         <Code code={getFile('theme')}/>
                     </CodeShow>
