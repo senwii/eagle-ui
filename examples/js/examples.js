@@ -44309,7 +44309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 665 */
 /***/ function(module, exports) {
 
-	module.exports = "// html 中\n<!-- 默认主题 -->\n<link rel=\"stylesheet\" href=\"css/eagle-ui.css\"/>\n\n<!-- meituan主题 -->\n<link rel=\"stylesheet\" href=\"css/eagle-ui.css\"/>\n<link rel=\"stylesheet\" href=\"css/meituan.css\"/>\n\n// javascript 中\n// 默认主题\n// 自带\n\n// meituan主题\nimport 'eagle-ui／less/meituan.less'"
+	module.exports = "// html 中使用meituan主题\n<link rel=\"stylesheet\" href=\"http://future-team.github.io/eagle-ui/dist/skin.css\"/>\n\n// javascript 中使用 meituan主题\nimport 'eagle-ui/dist/meituan.css'"
 
 /***/ },
 /* 666 */
@@ -53684,7 +53684,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            { title: '主题' },
 	            _react2['default'].createElement(
 	                _libsLayout.DemoItem,
-	                { title: '默认主题与「meituan」主题切换' },
+	                { title: '默认主题与「meituan」主题切换', desc: '<p>通过添加meituan.css文件，切换颜色主题。</p>' },
 	                _react2['default'].createElement(
 	                    _libsLayout.CodeShow,
 	                    null,
