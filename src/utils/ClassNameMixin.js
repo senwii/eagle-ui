@@ -80,7 +80,7 @@ export default obj=>{
         if(pre && classPrefix){
             str+='-'+classPrefix;
         }
-        if(name !=classPrefix){
+        if(name && name !=classPrefix){
             str += '-'+name;
         }
 

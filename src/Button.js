@@ -72,9 +72,10 @@ export default class Button extends Component{
          * */
     };
     static defaultProps = {
-        egSize:'default',
-        classPrefix:'btn',
-        componentTag:'button'
+        egSize: 'default',
+        classPrefix: 'btn',
+        egStyle: 'default',
+        componentTag: 'button'
     };
     //lg
     //sm

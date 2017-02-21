@@ -250,6 +250,10 @@ export default class Demo extends Component {
         return (
         <DemoLayout title="树状层级下拉菜单">
             <DemoItem title="" desc={''}>
+                <CodeShow>
+                    <Code code={getFile('dropTree')}>
+                    </Code>
+                </CodeShow>
                 <DemoShow>
                     <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
                         <MultiDropDown selected={this.state.selected}
@@ -267,10 +271,6 @@ export default class Demo extends Component {
                                        ref="MultiDropDown"/>
                     </div>
                 </DemoShow>
-                <CodeShow>
-                    <Code code={getFile('dropTree')}>
-                    </Code>
-                </CodeShow>
             </DemoItem>
         </DemoLayout>
         );

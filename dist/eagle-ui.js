@@ -1470,7 +1470,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (pre && classPrefix) {
 	            str += '-' + classPrefix;
 	        }
-	        if (name != classPrefix) {
+	        if (name && name != classPrefix) {
 	            str += '-' + name;
 	        }
 
@@ -10567,6 +10567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: {
 	      egSize: 'default',
 	      classPrefix: 'btn',
+	      egStyle: 'default',
 	      componentTag: 'button'
 	    },
 
