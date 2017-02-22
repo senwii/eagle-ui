@@ -934,22 +934,6 @@ body .eg-tips-error {
 body .eg-tips-loading {
   background: #c3c3c3;
 }
-body .eg-tooltip-container .eg-tooltip-wraper {
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-}
-body .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down {
-  border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent;
-}
-body .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top {
-  border-color: rgba(0, 0, 0, 0.6) transparent transparent transparent;
-}
-body .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left {
-  border-color: transparent transparent transparent rgba(0, 0, 0, 0.6);
-}
-body .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
-  border-color: transparent rgba(0, 0, 0, 0.6) transparent transparent;
-}
 body .eg-input.checkbox .input-icon,
 body .eg-input.radio .input-icon {
   fill: #919191;

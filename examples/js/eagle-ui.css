@@ -3525,9 +3525,6 @@ b.eg-slider-arrow-right {
   display: inline-block;
   position: relative;
 }
-.eg-tooltip-container:hover .eg-tooltip-wraper {
-  visibility: visible;
-}
 .eg-tooltip-container .eg-tooltip-wraper {
   visibility: hidden;
   position: absolute;
@@ -3536,6 +3533,8 @@ b.eg-slider-arrow-right {
   margin: 5px 0;
   font-size: 13px;
   text-align: left;
+  color: #fff;
+  border: 1px solid #ddd;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -3545,8 +3544,10 @@ b.eg-slider-arrow-right {
   text-align: center;
   padding: 5px;
   min-width: 90px;
+  opacity: 0.8;
+  fliter: alpha(opacity = 80);
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down,
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-bottom,
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top,
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left,
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
@@ -3555,27 +3556,28 @@ b.eg-slider-arrow-right {
   height: 0;
   width: 0;
   line-height: 0;
+  border-color: transparent;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down {
+.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-bottom {
   left: 50%;
   margin-left: -4px;
-  top: -5px;
+  top: -4px;
   border-width: 0 5px 5px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top {
   left: 50%;
   margin-left: -4px;
-  bottom: -5px;
+  bottom: -4px;
   border-width: 5px 5px 0;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left {
-  right: -5px;
+  right: -4px;
   top: 50%;
   margin-top: -4px;
   border-width: 5px 0 5px 5px;
 }
 .eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
-  left: -10px;
+  left: -9px;
   top: 50%;
   margin-top: -4px;
   border-width: 5px;
@@ -3583,21 +3585,45 @@ b.eg-slider-arrow-right {
 .eg-tooltip-container .eg-tooltip-show {
   visibility: visible;
 }
-.eg-tooltip-container .eg-tooltip-wraper {
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+.eg-tooltip-container .eg-tooltip-hide {
+  visibility: hidden;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-down {
-  border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent;
+.eg-tooltip-container .eg-tooltip-arrow-bottom .arrow-tip,
+.eg-tooltip-container .eg-tooltip-arrow-top .arrow-tip,
+.eg-tooltip-container .eg-tooltip-arrow-left .arrow-tip,
+.eg-tooltip-container .eg-tooltip-arrow-right .arrow-tip {
+  display: inline-block;
+  border-style: solid;
+  position: absolute;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  z-index: -10;
+  border-color: transparent;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-top {
-  border-color: rgba(0, 0, 0, 0.6) transparent transparent transparent;
+.eg-tooltip-container .eg-tooltip-arrow-top .arrow-tip {
+  left: -1px;
+  margin-left: -4px;
+  bottom: -1px;
+  border-width: 5px 5px 0;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-left {
-  border-color: transparent transparent transparent rgba(0, 0, 0, 0.6);
+.eg-tooltip-container .eg-tooltip-arrow-bottom .arrow-tip {
+  left: -1px;
+  margin-left: -4px;
+  top: -1px;
+  border-width: 0 5px 5px;
 }
-.eg-tooltip-container .eg-tooltip-wraper .eg-tooltip-arrow-right {
-  border-color: transparent rgba(0, 0, 0, 0.6) transparent transparent;
+.eg-tooltip-container .eg-tooltip-arrow-left .arrow-tip {
+  right: -1px;
+  top: -1px;
+  margin-top: -4px;
+  border-width: 5px 0 5px 5px;
+}
+.eg-tooltip-container .eg-tooltip-arrow-right .arrow-tip {
+  right: -4px;
+  top: -1px;
+  margin-top: -4px;
+  border-width: 5px;
 }
 /**按钮组*/
 .eg-validate {
