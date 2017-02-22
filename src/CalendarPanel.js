@@ -6,7 +6,7 @@ import Component from './utils/Component';
 
 import Input from './Input.js';
 import Calendar from './Calendar.js';
-
+import ieCheck from './utils/Ie8-check.js';
 /**
  * CalendarPanel组件<br>
  * 接受Calendar的所有属性接口，额外增加一个getValueCallback方法
@@ -178,6 +178,7 @@ export default class CalendarPanel extends Component{
                 value={_this.state.value}
                 onChange={::_this.inputChangeHandler}
                 icon={option.props.icon}
+                onClick={(ieCheck()==8?_this.inputFocusHandler.bind(_this):function(){})}
                 iconClickCallback={function(){
                     ReactDom.findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
                 }.bind(this) }
