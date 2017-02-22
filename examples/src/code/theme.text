@@ -1,0 +1,5 @@
+// html 中使用meituan主题
+<link rel="stylesheet" href="http://future-team.github.io/eagle-ui/dist/skin.css"/>
+
+// javascript 中使用 meituan主题
+import 'eagle-ui/dist/meituan.css'

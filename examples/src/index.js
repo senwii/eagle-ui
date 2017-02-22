@@ -27,8 +27,10 @@ import Suggestion from './modules/suggestion.js';
 import Icon from './modules/icons.js';
 import TreeMenu from './modules/treeMenu.js';
 import DropTree from './modules/dropTree.js';
-//require('../less/public.less');
-import css from '../../src/less/eagle-ui.less';
+import Theme from './modules/theme'
+
+// import '../../src/less/eagle-ui.less';
+// import '../../src/less/skin.less'
 
 let Index = class Index extends Component{
     render() {
@@ -81,6 +83,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/icon" name="Icon" component={Icon} />
                 <Route path="/TreeMenu" name="TreeMenu" component={TreeMenu} />
                 <Route path="/DropTree" name="DropTree" component={DropTree} />
+                <Route path="/Theme" name="Theme" component={Theme} />
                 <Redirect from="/" to="/index" />
             </Router>
         );
