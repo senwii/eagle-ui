@@ -14,7 +14,7 @@ import ReactDom from 'react/lib/ReactDOM';
  * 可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。
  * 主要属性和接口：
  * <ul>
- *     <li>direction:提示的方向，取值范围［top,down,left,right］默认down<br>
+ *     <li>direction:提示的方向，取值范围［top,bottom,left,right］默认down<br>
  *         如：<code>
  *           TooltipPanel direction='top' wapper='a'
  *         </code>
@@ -58,19 +58,36 @@ class TooltipPanel extends Component {
          * 提示方向
          * @property direction
          * @type String
-         * @default down
+         * @default bottom
          * */
         direction: PropTypes.string,
         classPrefix: PropTypes.string,
-        componentTag: PropTypes.string
+        componentTag: PropTypes.string,
+        /**
+         * 触发事件类型，可选‘click‘，’hover‘
+         * @property onTrigger
+         * @type:String
+         * @default hover
+         * */
+        trigger: PropTypes.string,
+        /**
+         * 可选 'black,white'
+         * */
+        bgColor: PropTypes.string,
+        skin:PropTypes.string,
+        /**
+         * 提示内容padding，默认5px
+         * */
+        padding:PropTypes.string
     };
     static defaultProps = {
         show: false,
-        msg: "这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示",
-        direction: 'down',
+        direction: 'bottom',
         classPrefix: 'tooltip',
         wrapper: '',
-        componentTag: 'div'
+        componentTag: 'div',
+        trigger:'hover',
+        bgColor:'#000'
     };
 
     constructor(props, context) {
@@ -83,13 +100,14 @@ class TooltipPanel extends Component {
             show: this.props.show
         };
         this.isOldDir = true;
+        this.idName='tolltip-id';
     }
 
     /**
      * 动态更新展示
      */
     componentDidUpdate() {
-        this.changeStyle(this.props.direction);
+        //this.changeStyle(this.props.direction);
     }
 
     /**
@@ -98,24 +116,48 @@ class TooltipPanel extends Component {
      * @return null
      * */
     componentDidMount() {
-        this.changeStyle(this.props.direction);
-    }
+        /**
+         * 如果事件是click，body加上事件，移除时隐藏
+         * */
+        this.changeStyle(this.tooltipTarget,this.props.direction);
+        if(this.props.trigger == 'click'){
+            let idName = this.idName;
+            let self = this;
+            document.addEventListener('click',((idName)=>{
+                let id = idName;
+                return (event)=>{
+                    !self.parents(id,event.target)&&(self.setState({
+                        show:false
+                    }));
+                }
+            })(idName))
+        }
 
-    /**
-     * @method render
-     * @return ReactElement
-     * */
-    render() {
-        let {componentTag} = this.props.children.props;
-        return (
-            <Grid  {...this.props} className={classnames(
-                this.getClassName('container'))} ref='container'>
-                {this.props.children}
-                <Tooltip {...this.props} ref={(obj)=>{this.tips=obj}}/>
-            </Grid>
-        );
     }
+    parents(id,dom){
+        let tempNode = dom.parentNode;
+        while (tempNode && tempNode !== document) {
+            if(tempNode.getAttribute('name') == id){
+                return true;
+            }else{
+                tempNode = tempNode.parentNode;
+            }
+        }
+        return false;
+    }
+    uniqueRef(){
+        return 'toolTip' + Math.floor(Math.random() * 100);
+    }
+    setToolTipObj(){
+        this.tooltipTarget = arguments[0];
+    }
+    handler(e){
+        this.changeStyle(this.tooltipTarget,this.props.direction);
+        this.setState({
+            show:!this.state.show
+        });
 
+    }
     /**
      * 获得限制区域的宽，若未指定则默认可视区域大小
      *
@@ -192,11 +234,11 @@ class TooltipPanel extends Component {
      * @param direction {String}
      * @return null
      * */
-    changeStyle(direction) {
+    changeStyle(obj,direction) {
         let dir = direction;
         let [tipNode,arrowNode] = [
-            ReactDom.findDOMNode(this.tips),
-            ReactDom.findDOMNode(this.refs.container).children[0]];
+            ReactDom.findDOMNode(obj),
+            ReactDom.findDOMNode(this.container)];
         let tips = this.getOffsetWH(tipNode);
         let arrow = this.getOffsetWH(arrowNode);
         let warpperWH = this.getWarpperWH();
@@ -298,6 +340,57 @@ class TooltipPanel extends Component {
                 return newDir;
                 break;
         }
+    }
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            show : nextProps.show
+        });
+    }
+    /**
+     * @method render
+     * @return ReactElement
+     * */
+    render() {
+        let {children,bgColor,direction,...other} = this.props;
+        let dir = direction == 'down' ? 'bottom': direction;
+        let c = null;
+        if(other.msg){
+            c = [
+                ...children,
+                <Tooltip {...other } show = {this.state.show} setToolTipObj={this.setToolTipObj.bind(this)} bgColor={bgColor} direction ={dir}/>
+            ];
+        }else{
+            c = React.Children.map(children,(option)=>{
+                return React.cloneElement(option,{
+                    show:this.state.show,
+                    setToolTipObj:this.setToolTipObj.bind(this),
+                    bgColor:bgColor,
+                    direction:dir
+                });
+
+            },this);
+        }
+        if(other.trigger == 'hover'){
+            other['onMouseOver'] = this.handler.bind(this);
+            other['onMouseOut'] = this.handler.bind(this);
+        }else{
+            other.trigger = other.trigger.substr(0,1).toUpperCase()+other.trigger.substr(1);
+            other[`on${other.trigger}`] = this.handler.bind(this);
+        }
+
+        return (
+            <Grid
+                {...this.props}
+                {...other}
+                name = {this.idName}
+                className={classnames(
+                    this.getClassName('container')
+                    )
+                }
+                ref={(ref)=>{this.container = ref}} >
+                {c}
+            </Grid>
+        );
     }
 
 }
