@@ -98,9 +98,7 @@ export default class CalendarPanel extends Component{
         }
     }
 
-    componentDidMount(){
-
-    }
+    componentDidMount(){}
 
     inputBlurHandler(){
         this.doReleaseCapture();
@@ -112,7 +110,6 @@ export default class CalendarPanel extends Component{
     }
 
     inputFocusHandler(e){
-
         let container = ReactDom.findDOMNode(this.refs[this.calendarContainer]),
             _this = this,
             calendar = container.querySelector(`.${this.getClassName('container')}`),
@@ -165,11 +162,9 @@ export default class CalendarPanel extends Component{
         });
     }
     render(){
-
         let {componentTag:Component} = this.props,
             _this = this;
         let options = React.Children.map(this.props.children,(option)=>{
-
             return <Input {...option.props}
                 ref={this.inputId}
                 onBlur={::_this.inputBlurHandler}
@@ -182,7 +177,6 @@ export default class CalendarPanel extends Component{
                     ReactDom.findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
                 }.bind(this) }
                 />;
-
         },this);
 
         return (
