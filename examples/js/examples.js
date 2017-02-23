@@ -37612,6 +37612,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 
+	    Dialog.prompt = function prompt(message, opts) {
+	        return new Promise(function (resolve, reject) {
+	            new _DialogFactory2['default']().show(_BaseDialog2['default'].PROMPT, _extend2['default']({}, {
+	                successCallback: function successCallback() {
+	                    resolve();
+	                    new _DialogFactory2['default']().hide();
+	                },
+	                cancelCallback: function cancelCallback() {
+	                    reject();
+	                    new _DialogFactory2['default']().hide();
+	                },
+	                message: message
+	            }, opts));
+	        })['catch'](function (ex) {
+	            console.dir(ex);
+	        });
+	    };
+
 	    Dialog.confirm = function confirm(message) {
 	        var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
@@ -37695,6 +37713,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _Confirm = __webpack_require__(597);
 
 	var _Confirm2 = _interopRequireDefault(_Confirm);
+
+	var _Propmpt = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Propmpt\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _Propmpt2 = _interopRequireDefault(_Propmpt);
 
 	var _BaseDialog = __webpack_require__(598);
 
@@ -38394,7 +38416,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    ALERT: 'alert',
 	    CONFRIM: 'confirm',
-	    MASK: 'mask'
+	    MASK: 'mask',
+	    PROMPT: 'prompt'
 	};
 	module.exports = exports['default'];
 
@@ -48206,6 +48229,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 
+	    DialogCls.prototype.showPrompt = function showPrompt() {
+	        _eagleUi.Dialog.prompt('这是个prompt');
+	    };
+
 	    DialogCls.prototype.inputChangeHandler = function inputChangeHandler(evt) {
 	        var value = evt.target.value;
 	        this.setState({
@@ -48267,6 +48294,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            null,
 	                            this.state.alertContent
 	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _libsLayout.DemoShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _eagleUi.Button,
+	                        { onClick: this.showPrompt.bind(this), className: 'mg-right-15' },
+	                        '点击我prompt'
 	                    )
 	                )
 	            ),

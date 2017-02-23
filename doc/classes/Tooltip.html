@@ -562,6 +562,7 @@ import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
 
 let Demo = class Demo extends Component {
     render() {
+        let test1 = &lt;div className=&#39;sds&#39; style={{&#39;color&#39;:&#39;red&#39;}}&gt;Holy guacamole!&lt;/div&gt;;
         return (
         &lt;DemoLayout title="Tooltip"&gt;
             &lt;DemoItem title="基本场景"&gt;
@@ -573,14 +574,16 @@ let Demo = class Demo extends Component {
                     &lt;Grid&gt;
                         &lt;Row&gt;
                             &lt;Col sm={3}&gt;
-                                &lt;TooltipPanel direction=&#39;top&#39;
-                                              msg=&#39;我是在上方的tooltip哦&#39;&gt;
+                                &lt;TooltipPanel direction=&#39;top&#39;&gt;
                                     &lt;Button radius egSize="sm" egStyle="warning"&gt;上边&lt;/Button&gt;
+                                    &lt;Tooltip padding={20}&gt;
+                                        &lt;div className=&#39;tooltip&#39; style={{width:&#39;150px&#39;,color:&#39;#f00&#39;}}&gt;tooltip的children&lt;/div&gt;
+                                    &lt;/Tooltip&gt;
                                 &lt;/TooltipPanel&gt;
                             &lt;/Col&gt;
                             &lt;Col sm={3}&gt;
                                 &lt;TooltipPanel direction=&#39;right&#39;
-                                              msg=&#39;我是在右方的tooltip哦&#39;&gt;
+                                              msg=&#39;我是在右方的tooltip哦&#39; padding={10} trigger=&#39;click&#39;&gt;
                                     &lt;Button radius egSize="sm" egStyle="warning"&gt;右边&lt;/Button&gt;
                                 &lt;/TooltipPanel&gt;
                             &lt;/Col&gt;
@@ -594,6 +597,7 @@ let Demo = class Demo extends Component {
                                 &lt;TooltipPanel direction=&#39;left&#39;
                                               msg=&#39;我是在左方的tooltip哦&#39;&gt;
                                     &lt;Button radius egSize="sm" egStyle="warning"&gt;左边&lt;/Button&gt;
+
                                 &lt;/TooltipPanel&gt;
                             &lt;/Col&gt;
                         &lt;/Row&gt;
@@ -609,7 +613,7 @@ let Demo = class Demo extends Component {
                 &lt;DemoShow&gt;
                     &lt;div id=&#39;a&#39; style={{width:&#39;500px&#39;,height:&#39;200px&#39;,border:&#39;1px solid #f00&#39;,position:&#39;relative&#39;}}&gt;
                         &lt;div style={{margin:&#39;10px&#39;}}&gt;
-                            &lt;TooltipPanel direction=&#39;top&#39; wrapper=&#39;a&#39;&gt;
+                            &lt;TooltipPanel direction=&#39;top&#39; wrapper=&#39;a&#39; msg={&#39;sddssdds&#39;}&gt;
                                 &lt;Button radius egSize="sm" egStyle="warning"&gt;红色边框为边界，设置的方向是top.实际展示为bottom&lt;/Button&gt;
                             &lt;/TooltipPanel&gt;
                         &lt;/div&gt;
@@ -680,7 +684,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/lib_Tooltip.js.html#l94"><code>lib&#x2F;Tooltip.js:94</code></a>
+        <a href="../files/lib_Tooltip.js.html#l97"><code>lib&#x2F;Tooltip.js:97</code></a>
         
         </p>
 

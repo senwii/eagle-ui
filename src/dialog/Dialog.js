@@ -53,7 +53,22 @@ export default class Dialog extends Component{
                 console.dir(ex);
             });
     }
+    static prompt(title,opts){
+        return new Promise((resolve, reject)=>{
+            new DialogFactory().show(BaseDialog.PROMPT,extend({},{
+                submitCallback:(value)=>{
+                    resolve(value);
+                    new DialogFactory().hide();
 
+                },
+                cancelCallback:()=>{
+                    reject();
+                    new DialogFactory().hide();
+                },
+                title:title
+            },opts) );
+        });
+    }
     static confirm(message,opts={}){
         try{
             return new Promise((resolve, reject)=>{

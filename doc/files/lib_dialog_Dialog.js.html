@@ -479,6 +479,24 @@ var Dialog = (function (_Component) {
         });
     };
 
+    Dialog.prompt = function prompt(message, opts) {
+        return new Promise(function (resolve, reject) {
+            new _DialogFactory2[&#x27;default&#x27;]().show(_BaseDialog2[&#x27;default&#x27;].PROMPT, _extend2[&#x27;default&#x27;]({}, {
+                successCallback: function successCallback() {
+                    resolve();
+                    new _DialogFactory2[&#x27;default&#x27;]().hide();
+                },
+                cancelCallback: function cancelCallback() {
+                    reject();
+                    new _DialogFactory2[&#x27;default&#x27;]().hide();
+                },
+                message: message
+            }, opts));
+        })[&#x27;catch&#x27;](function (ex) {
+            console.dir(ex);
+        });
+    };
+
     Dialog.confirm = function confirm(message) {
         var opts = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
 

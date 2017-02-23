@@ -495,7 +495,7 @@ exports[&#x27;default&#x27;] = function (obj) {
         if (pre &amp;&amp; classPrefix) {
             str += &#x27;-&#x27; + classPrefix;
         }
-        if (name != classPrefix) {
+        if (name &amp;&amp; name != classPrefix) {
             str += &#x27;-&#x27; + name;
         }
 

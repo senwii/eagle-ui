@@ -2,6 +2,7 @@
 import Mask from './Mask';
 import Alert from './Alert';
 import Confirm from './Confirm';
+import Prompt from './Prompt';
 
 import BaseDialog from './BaseDialog';
 import extend from 'extend';
@@ -35,6 +36,9 @@ export default class DialogFactory{
                     break;
                 case BaseDialog.CONFRIM:
                     this.add(BaseDialog.CONFRIM,Confirm);
+                    break;
+                case BaseDialog.PROMPT:
+                    this.add(BaseDialog.PROMPT,Prompt);
                     break;
                 default :
                     //将自定义dialog添加进主dialog

@@ -1,0 +1,24 @@
+import React,{Component} from 'react';
+import {Button,Dialog} from 'eagle-ui';
+
+export default class DialogDemo7 extends Component{
+    constructor(props, context) {
+        super(props, context);
+    }
+   showPrompt(){
+       Dialog.prompt('这是个prompt',{
+               inputWidth:'50%'
+           }).then((value)=>{
+               console.log(value)
+           },(value)=>{
+               console.log('取消回调')
+           })
+    }
+    render() {
+        return (
+            <div>
+               <Button onClick={::this.showPrompt} className="mg-right-15">点击我prompt</Button>
+            </div>
+        );
+    }
+};

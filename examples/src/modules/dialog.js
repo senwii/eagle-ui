@@ -36,6 +36,15 @@ export default class DialogCls extends Component{
             isMask:false
         });
     }
+    showPrompt(){
+        Dialog.prompt('这是个prompt',{
+            inputWidth:'50%'
+        }).then((value)=>{
+            console.log(value)
+        },()=>{
+            console.log('取消回调')
+        })
+    }
     inputChangeHandler(evt) {
         const value = evt.target.value
         this.setState({
@@ -268,6 +277,14 @@ export default class DialogCls extends Component{
                         <Button onClick={::this.showAlert} className="mg-right-15">点击我alert</Button>
                     </DemoShow>
                 </DemoItem>
+                <DemoItem title="prompt展示">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo8')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.showPrompt} className="mg-right-15">点击我prompt</Button>
+                    </DemoShow>
+                </DemoItem>
                 <DemoItem title="无遮罩展示">
                     <CodeShow>
                         <Code code={getFile('dialog-demo6')}/>
@@ -284,6 +301,7 @@ export default class DialogCls extends Component{
                         <Button onClick={::this.showConfirm}>点击我Confirm</Button>
                     </DemoShow>
                 </DemoItem>
+
             </DemoLayout>
         );
     }

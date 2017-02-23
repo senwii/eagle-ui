@@ -405,6 +405,8 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#x27;default&#x27;: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) &gt;= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(&#x27;Cannot call a class as a function&#x27;); } }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== &#x27;function&#x27; &amp;&amp; superClass !== null) { throw new TypeError(&#x27;Super expression must either be null or a function, not &#x27; + typeof superClass); } subClass.prototype = Object.create(superClass &amp;&amp; superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
@@ -452,7 +454,7 @@ var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
  * 可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。
  * 主要属性和接口：
  * &lt;ul&gt;
- *     &lt;li&gt;direction:提示的方向，取值范围［top,down,left,right］默认down&lt;br&gt;
+ *     &lt;li&gt;direction:提示的方向，取值范围［top,bottom,left,right］默认down&lt;br&gt;
  *         如：&lt;code&gt;
  *           TooltipPanel direction=&#x27;top&#x27; wapper=&#x27;a&#x27;
  *         &lt;/code&gt;
@@ -499,22 +501,39 @@ var TooltipPanel = (function (_Component) {
              * 提示方向
              * @property direction
              * @type String
-             * @default down
+             * @default bottom
              * */
             direction: _react.PropTypes.string,
             classPrefix: _react.PropTypes.string,
-            componentTag: _react.PropTypes.string
+            componentTag: _react.PropTypes.string,
+            /**
+             * 触发事件类型，可选‘click‘，’hover‘
+             * @property onTrigger
+             * @type:String
+             * @default hover
+             * */
+            trigger: _react.PropTypes.string,
+            /**
+             * 可选 &#x27;black,white&#x27;
+             * */
+            bgColor: _react.PropTypes.string,
+            skin: _react.PropTypes.string,
+            /**
+             * 提示内容padding，默认5px
+             * */
+            padding: _react.PropTypes.string
         },
         enumerable: true
     }, {
         key: &#x27;defaultProps&#x27;,
         value: {
             show: false,
-            msg: &quot;这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示&quot;,
-            direction: &#x27;down&#x27;,
+            direction: &#x27;bottom&#x27;,
             classPrefix: &#x27;tooltip&#x27;,
             wrapper: &#x27;&#x27;,
-            componentTag: &#x27;div&#x27;
+            componentTag: &#x27;div&#x27;,
+            trigger: &#x27;hover&#x27;,
+            bgColor: &#x27;#000&#x27;
         },
         enumerable: true
     }]);
@@ -531,44 +550,71 @@ var TooltipPanel = (function (_Component) {
             show: this.props.show
         };
         this.isOldDir = true;
+        this.idName = &#x27;tolltip-id&#x27;;
     }
 
     /**
      * 动态更新展示
      */
 
-    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {
-        this.changeStyle(this.props.direction);
-    };
+    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {}
+    //this.changeStyle(this.props.direction);
 
     /**
      * 渲染完成时进行方向和边界判断，调整tips的位置
      * @method componentDidMount
      * @return null
      * */
+    ;
 
     TooltipPanel.prototype.componentDidMount = function componentDidMount() {
-        this.changeStyle(this.props.direction);
-    };
-
-    /**
-     * @method render
-     * @return ReactElement
-     * */
-
-    TooltipPanel.prototype.render = function render() {
         var _this = this;
 
-        var componentTag = this.props.children.props.componentTag;
+        /**
+         * 如果事件是click，body加上事件，移除时隐藏
+         * */
+        this.changeStyle(this.tooltipTarget, this.props.direction);
+        if (this.props.trigger == &#x27;click&#x27;) {
+            (function () {
+                var idName = _this.idName;
+                var self = _this;
+                document.addEventListener(&#x27;click&#x27;, (function (idName) {
+                    var id = idName;
+                    return function (event) {
+                        !self.parents(id, event.target) &amp;&amp; self.setState({
+                            show: false
+                        });
+                    };
+                })(idName));
+            })();
+        }
+    };
 
-        return _react2[&#x27;default&#x27;].createElement(
-            _GridJs2[&#x27;default&#x27;],
-            _extends({}, this.props, { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;container&#x27;)), ref: &#x27;container&#x27; }),
-            this.props.children,
-            _react2[&#x27;default&#x27;].createElement(_TooltipJs2[&#x27;default&#x27;], _extends({}, this.props, { ref: function (obj) {
-                    _this.tips = obj;
-                } }))
-        );
+    TooltipPanel.prototype.parents = function parents(id, dom) {
+        var tempNode = dom.parentNode;
+        while (tempNode &amp;&amp; tempNode !== document) {
+            if (tempNode.getAttribute(&#x27;name&#x27;) == id) {
+                return true;
+            } else {
+                tempNode = tempNode.parentNode;
+            }
+        }
+        return false;
+    };
+
+    TooltipPanel.prototype.uniqueRef = function uniqueRef() {
+        return &#x27;toolTip&#x27; + Math.floor(Math.random() * 100);
+    };
+
+    TooltipPanel.prototype.setToolTipObj = function setToolTipObj() {
+        this.tooltipTarget = arguments[0];
+    };
+
+    TooltipPanel.prototype.handler = function handler(e) {
+        this.changeStyle(this.tooltipTarget, this.props.direction);
+        this.setState({
+            show: !this.state.show
+        });
     };
 
     /**
@@ -655,12 +701,12 @@ var TooltipPanel = (function (_Component) {
      * @return null
      * */
 
-    TooltipPanel.prototype.changeStyle = function changeStyle(direction) {
+    TooltipPanel.prototype.changeStyle = function changeStyle(obj, direction) {
         var dir = direction;
 
-        var tipNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.tips);
+        var tipNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(obj);
 
-        var arrowNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs.container).children[0];
+        var arrowNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.container);
 
         var tips = this.getOffsetWH(tipNode);
         var arrow = this.getOffsetWH(arrowNode);
@@ -762,6 +808,61 @@ var TooltipPanel = (function (_Component) {
                 return newDir;
                 break;
         }
+    };
+
+    TooltipPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        this.setState({
+            show: nextProps.show
+        });
+    };
+
+    /**
+     * @method render
+     * @return ReactElement
+     * */
+
+    TooltipPanel.prototype.render = function render() {
+        var _this2 = this;
+
+        var _props = this.props;
+        var children = _props.children;
+        var bgColor = _props.bgColor;
+        var direction = _props.direction;
+
+        var other = _objectWithoutProperties(_props, [&#x27;children&#x27;, &#x27;bgColor&#x27;, &#x27;direction&#x27;]);
+
+        var dir = direction == &#x27;down&#x27; ? &#x27;bottom&#x27; : direction;
+        var c = null;
+        if (other.msg) {
+            c = [].concat(children, [_react2[&#x27;default&#x27;].createElement(_TooltipJs2[&#x27;default&#x27;], _extends({}, other, { show: this.state.show, setToolTipObj: this.setToolTipObj.bind(this), bgColor: bgColor, direction: dir }))]);
+        } else {
+            c = _react2[&#x27;default&#x27;].Children.map(children, function (option) {
+                return _react2[&#x27;default&#x27;].cloneElement(option, {
+                    show: _this2.state.show,
+                    setToolTipObj: _this2.setToolTipObj.bind(_this2),
+                    bgColor: bgColor,
+                    direction: dir
+                });
+            }, this);
+        }
+        if (other.trigger == &#x27;hover&#x27;) {
+            other[&#x27;onMouseOver&#x27;] = this.handler.bind(this);
+            other[&#x27;onMouseOut&#x27;] = this.handler.bind(this);
+        } else {
+            other.trigger = other.trigger.substr(0, 1).toUpperCase() + other.trigger.substr(1);
+            other[&#x27;on&#x27; + other.trigger] = this.handler.bind(this);
+        }
+
+        return _react2[&#x27;default&#x27;].createElement(
+            _GridJs2[&#x27;default&#x27;],
+            _extends({}, this.props, other, {
+                name: this.idName,
+                className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;container&#x27;)),
+                ref: function (ref) {
+                    _this2.container = ref;
+                } }),
+            c
+        );
     };
 
     var _TooltipPanel = TooltipPanel;

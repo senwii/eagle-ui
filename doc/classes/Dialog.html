@@ -631,6 +631,9 @@ export default class DialogCls extends Component{
             isMask:false
         });
     }
+    showPrompt(){
+        Dialog.prompt(&#39;这是个prompt&#39;)
+    }
     inputChangeHandler(evt) {
         const value = evt.target.value
         this.setState({
@@ -675,6 +678,9 @@ export default class DialogCls extends Component{
                                 {this.state.alertContent}
                             &lt;/div&gt;
                         &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showPrompt} className="mg-right-15"&gt;点击我prompt&lt;/Button&gt;
                     &lt;/DemoShow&gt;
                 &lt;/DemoItem&gt;
                 &lt;DemoItem title="改变内部文本"&gt;
