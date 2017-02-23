@@ -639,6 +639,144 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/slider"  _no='0'> <a>imgSlider</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React, { Component ,PropTypes} from &#39;react&#39;;
+import {Button,ImgSlider,Grid,Row,Col} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+export default class SliderDemo extends Component {
+    constructor(props,context) {
+        super(props,context);
+        this.state={
+            showThumbnail:true,
+            imgModify:true
+        }
+    }
+    toggleThumbnail(){
+        this.setState({
+            showThumbnail:!this.state.showThumbnail
+        });
+    }
+    toggleModifier(){
+        this.setState({
+            imgModify:!this.state.imgModify
+        });
+    }
+    render() {
+        let imgList=[
+            {
+                profile:&#39;1叔2015上传&#39;,
+                url:&#39;http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&amp;fm=21&amp;gp=0.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;1哥2015上传&#39;,
+                url:&#39;http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&amp;fm=21&amp;gp=0.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;2哥2015上传&#39;,
+                url:&#39;http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;3哥2015上传&#39;,
+                url:&#39;http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;4哥2015上传&#39;,
+                url: &#39;http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;5哥2015上传&#39;,
+                url: &#39;http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;5哥2015上传&#39;,
+                url: &#39;http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&amp;fm=21&amp;gp=0.jpg&#39;,
+                description:&#39;闪惠商户培训资料&#39;,
+                thumbnail:&#39;http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&amp;fm=21&amp;gp=0.jpg&#39;
+            },
+            {
+                profile:&#39;5叔2015上传&#39;,
+                url:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;,
+                description:&#39;熊猫野外生存&#39;,
+                thumbnail:&#39;http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&amp;fm=21&amp;gp=0.jpg&#39;
+            }
+        ],
+            pageNum=5,
+            {showThumbnail,imgModify}=this.state;
+        return (
+            &lt;div&gt;
+                &lt;DemoLayout title="照片浏览插件"&gt;
+                    &lt;DemoItem title=""&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;slider&#39;)}&gt;
+                            &lt;/Code&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;Grid&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={6}&gt;
+                                        &lt;ImgSlider  show={true}
+                                                    showThumbnail={showThumbnail}
+                                                    imgList={imgList}
+                                                    profileKey={&#39;profile&#39;}
+                                                    urlKey={&#39;url&#39;}
+                                                    titleKey={&#39;description&#39;}
+                                                    thumbnailKey={&#39;thumbnail&#39;}
+                                                    pageNum={pageNum}
+                                                    imgModify={imgModify}
+                                            /&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={6}&gt;
+                                        &lt;Button block success
+                                                onClick={::this.toggleThumbnail} &gt;
+                                            {(showThumbnail?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;缩略图&#39;}
+                                        &lt;/Button&gt;
+                                        &lt;Button block style={{marginTop:&#39;10px&#39;}} success
+                                                onClick={::this.toggleModifier} &gt;
+                                            {(imgModify?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;缩放控件&#39;}
+                                        &lt;/Button&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                            &lt;/Grid&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                &lt;/DemoLayout&gt;
+            &lt;/div&gt;
+
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
+    
 </div>
 
                 </div>
