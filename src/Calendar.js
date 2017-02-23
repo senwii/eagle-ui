@@ -108,7 +108,8 @@ export default class Calendar extends Component{
             selectedDate:defaultDate,
             show:false,
             year:typeof(defaultDate)!='string'?defaultDate.getFullYear():new Date(defaultDate).getFullYear(),
-            windowType:this.windowType[!isNaN(this.props.windowType) ?this.props.windowType :0]
+            windowType:this.windowType[!isNaN(this.props.windowType) ?this.props.windowType :0],
+            posStyle: {}
         };
     }
     componentWillReceiveProps(nextProps){
@@ -516,19 +517,26 @@ export default class Calendar extends Component{
         return {year,month,date};
     }
 
+    // update direction
+    updateDirection(style={}){
+        this.setState({
+            posStyle: style
+        });
 
+        console.log('执行了', style);
+    }
     render(){
         let {windowType}= this.props;
 
         windowType = this.windowType[windowType];
         //!isNaN(windowType) &&this.state.windowType==this.windowType[0] ?this.windowType[windowType] :this.state.windowType;
+        console.log('posStyle', this.state.posStyle)
         return (
-            <div className={
+            <div style={this.state.posStyle} className={
                 classnames(this.getClassName('container'),this.getClassName(this.props.show?'show':'hide',false) )
             } >
                 <div className="eg-calendar-box">
                     <div className="box">
-
                         <div className="eg-calendar-body">
                             {this[windowType]()}
                             <div style={{

@@ -32,6 +32,13 @@ export default class CalendarPanel extends Component{
         hideCallback:PropTypes.func,
         componentTag:PropTypes.string,
         /**
+         * 日历位置
+         * @property direction
+         * @type String
+         * @default auto 自动根据当前位置切换 上/下，
+         * */
+        direction: PropTypes.string,
+        /**
          * 通过传入此函数获取日期值
          * @event  getValueCallback
          * @param {string} date 日期
@@ -43,6 +50,7 @@ export default class CalendarPanel extends Component{
         classPrefix:'calendar',
         componentTag:'Input',
         calendarType:'date',
+        direction: 'auto',
         getValueCallback:function(date){
             console.warn('通过向CalendarPanel传入回调函数"getValueCallback"可以获取到当前选取的日期值，当前选取的日期为：'+date);
         }
@@ -71,6 +79,7 @@ export default class CalendarPanel extends Component{
         this.calendarContainer = this.uniqueId();
         this.inputId = this.uniqueId();
         this.state = {
+            posStyle: {},
             isShow:false,
             value:this.props.defaultDate || '',
             windowType:this.getWindowType()
@@ -98,7 +107,12 @@ export default class CalendarPanel extends Component{
         }
     }
 
-    componentDidMount(){}
+    componentDidMount() {
+        this.updateDirection()
+    }
+    componentDidUpdate() {
+        this.updateDirection();
+    }
 
     inputBlurHandler(){
         this.doReleaseCapture();
@@ -161,6 +175,48 @@ export default class CalendarPanel extends Component{
             value:d
         });
     }
+    // update calendar direction
+    updateDirection() {
+        let dir = this.props.direction;
+        let [inputNode, panelNode] = [
+            ReactDom.findDOMNode(this.refs[this.inputId]),
+            ReactDom.findDOMNode(this.refs[this.calendarContainer + 'calendar']).children[0]];
+        //bottom height left right top width
+        const inputPos = inputNode.getBoundingClientRect();
+        const panelPos = panelNode.getBoundingClientRect();
+        const bodyPos = document.body.getBoundingClientRect();
+        // if dir auto then rename dir
+        // detach direction
+        // body - input VS panel
+        if (dir === 'auto') {
+            const isDown = bodyPos.height - inputNode.offsetTop + inputPos.height - panelPos.height > 10;
+            dir = isDown ? 'down' : 'top';
+        }
+        console.log('direction', dir)
+        const style = {}
+        switch (dir) {
+            case 'down':
+                style.top = inputPos.height + 'px';
+                style.left = 0;
+                break;
+            case 'top':
+                style.top = '-' + (panelPos.height + 10) + 'px';
+                style.left = 0;
+                break;
+            case 'left':
+                style.left = '-' + (panelPos.width + 5) + 'px';
+                style.top = 0;
+                break;
+            case 'right':
+                style.left = inputPos.width + 5 + 'px';
+                style.top = 0;
+                break;
+            default :
+                break;
+        }
+        this.refs[this.calendarContainer + 'calendar'].updateDirection(style);
+        return style;
+    }
     render(){
         let {componentTag:Component} = this.props,
             _this = this;
@@ -178,11 +234,10 @@ export default class CalendarPanel extends Component{
                 }.bind(this) }
                 />;
         },this);
-
         return (
             <div className={
                 classnames(this.getClassName('panel') )
-            } ref={this.calendarContainer}>
+            } ref={this.calendarContainer} style={{'position': 'relative'}}>
                 {options}
                 <Calendar
                     format={this.getFormat()}

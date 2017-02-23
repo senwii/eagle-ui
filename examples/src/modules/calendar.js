@@ -2,7 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component,PropTypes} from 'react';
-import {Input, CalendarPanel, Button} from 'eagle-ui';
+import {Input, CalendarPanel, Button, Grid, Row, Col} from 'eagle-ui';
 import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';
 import Code, {getFile} from '../libs/Code';
 
@@ -93,6 +93,46 @@ export default class Calendar extends Component{
                         <CalendarPanel ref='cp' format="yyyy年MM月dd日">
                             <Input placeholder="请选择日期"  icon="calendar"/>
                         </CalendarPanel>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="自定义定位">
+                    <CodeShow>
+                        <Code code={getFile('calendar-demo6')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Grid>
+                            <Row>
+                                <Col sm={3}>
+                                    <CalendarPanel ref='cp' format="yyyy年MM月dd日" direction='top'>
+                                        <Input placeholder="上部"  icon="calendar"/>
+                                    </CalendarPanel>
+                                </Col>
+                                <Col sm={3}>
+                                    <CalendarPanel ref='cp' format="yyyy年MM月dd日" direction='right'>
+                                        <Input placeholder="右边"  icon="calendar"/>
+                                    </CalendarPanel>
+                                </Col>
+                                <Col sm={3}>
+                                    <CalendarPanel ref='cp' format="yyyy年MM月dd日" direction='bottom'>
+                                        <Input placeholder="底部"  icon="calendar"/>
+                                    </CalendarPanel>
+                                </Col>
+                                <Col sm={3}>
+                                    <CalendarPanel ref='cp' format="yyyy年MM月dd日" direction='left'>
+                                        <Input placeholder="左边"  icon="calendar"/>
+                                    </CalendarPanel>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col sm={3}/>
+                                <Col sm={6}>
+                                    <CalendarPanel ref='cp' format="yyyy年MM月dd日">
+                                        <Input placeholder="自动定位上／下"  icon="calendar"/>
+                                    </CalendarPanel>
+                                </Col>
+                                <Col sm={3}/>
+                            </Row>
+                        </Grid>
                     </DemoShow>
                 </DemoItem>
             </DemoLayout>
