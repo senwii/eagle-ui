@@ -74,7 +74,8 @@
   ],
   "dependencies": {
     "ui-svg-icons": "^2.0.1",
-    "cat-browser": "^0.1.0"
+    "cat-browser": "^0.1.0",
+    "hope-s-basic": "^1.0.1"
   },
   "peerDependencies": {},
   "devDependencies": {

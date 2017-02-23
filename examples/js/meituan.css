@@ -86,9 +86,8 @@ body .eg-panel-header-flag:before {
 }
 body .eg-input input:not([type*="checkbox"]):not([type*="radio"]):focus {
   border-color: #e8faf8;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #43d3c5;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #43d3c5;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #43d3c5;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #43d3c5;
 }
 body .eg-input.checkbox.active .input-icon,
 body .eg-input.radio.active .input-icon {
