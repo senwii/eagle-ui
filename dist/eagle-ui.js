@@ -14596,10 +14596,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactLibReactDOM = __webpack_require__(54);
-
-	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
-
 	var _classnames4 = __webpack_require__(55);
 
 	var _classnames5 = _interopRequireDefault(_classnames4);
