@@ -1565,19 +1565,30 @@
         },
         {
             "file": "lib/Calendar.js",
-            "line": 229,
+            "line": 237,
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/Calendar.js",
-            "line": 238,
+            "line": 246,
             "class": "Calendar",
             "module": "ui"
         },
         {
             "file": "lib/CalendarPanel.js",
             "line": 91,
+            "description": "日历位置",
+            "itemtype": "property",
+            "name": "direction",
+            "type": "String",
+            "default": "auto 自动根据当前位置切换 上/下，",
+            "class": "CalendarPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/CalendarPanel.js",
+            "line": 98,
             "description": "通过传入此函数获取日期值",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -3295,11 +3306,11 @@
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:229"
+            "line": " lib/Calendar.js:237"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:238"
+            "line": " lib/Calendar.js:246"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
