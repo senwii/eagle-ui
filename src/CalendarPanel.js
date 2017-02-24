@@ -176,46 +176,89 @@ export default class CalendarPanel extends Component{
         });
     }
     // update calendar direction
+    getElementPos(el) {
+        // bottom height left right top width
+        // IE8 getBoundingClientRect doesn't support width & height
+        let rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return {
+            offsetTop: rect.top + scrollTop,
+            offsetLeft: rect.left + scrollLeft,
+            width: (rect.width == null? el.offsetWidth : rect.width) || 0,
+            height: (rect.height == null? el.offsetHeight : rect.height) || 0,
+            top: rect.top,
+            bottom: rect.bottom
+        };
+    }
     updateDirection() {
         let dir = this.props.direction;
         let [inputNode, panelNode] = [
             ReactDom.findDOMNode(this.refs[this.inputId]),
             ReactDom.findDOMNode(this.refs[this.calendarContainer + 'calendar']).children[0]];
-        //bottom height left right top width
-        const inputPos = inputNode.getBoundingClientRect();
-        const panelPos = panelNode.getBoundingClientRect();
-        const bodyPos = document.body.getBoundingClientRect();
+        let [isUp, isAlignLeft] = [false, false];
+
+        const inputPos = this.getElementPos(inputNode);
+        const panelPos = this.getElementPos(panelNode);
+        const containerPos = {
+            height: window.innerHeight,
+            width: window.innerWidth
+        };
+        // detach up or down
+        const diffHeight = containerPos.height - inputPos.top - inputPos.height
+        if(diffHeight > panelPos.height) {
+            isUp = false;
+        }else{
+            isUp = inputPos.top > panelPos.height;
+        }
+        // detach align right or left
+        if(inputPos.width > panelPos.width){
+            isAlignLeft = true;
+        } else {
+            isAlignLeft = containerPos.width - inputPos.offsetLeft > panelPos.width;
+        }
         // if dir auto then rename dir
         // detach direction
         // body - input VS panel
-        if (dir === 'auto') {
-            const isDown = bodyPos.height - inputNode.offsetTop + inputPos.height - panelPos.height > 10;
-            dir = isDown ? 'down' : 'top';
+        if (['auto', 'down', 'top'].indexOf(dir) !== -1) {
+            dir = isUp ? 'top' : 'down';
         }
-        console.log('direction', dir)
+        if(['left', 'right'].indexOf(dir) !== -1){
+            const diffLeft = inputPos.offsetLeft - panelPos.width;
+            const diffRight = containerPos.width - inputPos.offsetLeft - inputPos.width - panelPos.width;
+            if(dir == 'left' && diffLeft < 0 && diffRight){
+               dir = 'right';
+            }
+            if(dir == 'right' && diffRight < 0 && diffLeft){
+                dir = 'left';
+            }
+        }
         const style = {}
         switch (dir) {
             case 'down':
-                style.top = inputPos.height + 'px';
-                style.left = 0;
+                style.top = inputPos.height + 5 + 'px';
+                isAlignLeft ? (style.left = 0) : ( style.right = 0);
                 break;
             case 'top':
-                style.top = '-' + (panelPos.height + 10) + 'px';
-                style.left = 0;
+                style.top = '-' + (panelPos.height + 5) + 'px';
+                isAlignLeft ? (style.left = 0) : ( style.right = 0);
                 break;
             case 'left':
                 style.left = '-' + (panelPos.width + 5) + 'px';
-                style.top = 0;
+                isUp ? (style.top = '-' + (panelPos.height - inputPos.height) + 'px') : (style.top = 0)
                 break;
             case 'right':
                 style.left = inputPos.width + 5 + 'px';
-                style.top = 0;
+                isUp ? (style.top = '-' + (panelPos.height - inputPos.height) + 'px') : (style.top = 0)
                 break;
             default :
                 break;
         }
-        this.refs[this.calendarContainer + 'calendar'].updateDirection(style);
-        return style;
+        this.refs[this.calendarContainer + 'calendar'].updateDirection(style, {
+            isUp: isUp,
+            dir: dir,
+            inputHeight: inputPos.height
+        });
     }
     render(){
         let {componentTag:Component} = this.props,

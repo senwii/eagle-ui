@@ -33,11 +33,49 @@ export default class CalendarDemo5 extends Component{
                    <Row>
                        <Col sm={3}/>
                        <Col sm={6}>
-                           <CalendarPanel ref='cp' format="yyyy年MM月dd日">
-                               <Input placeholder="自动定位上／下"  icon="calendar"/>
+                           <CalendarPanel ref='cp-auto-1' format="yyyy年MM月dd日">
+                               <Input placeholder="自动定位"  icon="calendar"/>
                            </CalendarPanel>
                        </Col>
                        <Col sm={3}/>
+                   </Row>
+                   <Row>
+                       <Col sm={4}>
+                           <CalendarPanel ref='cp-left-1' format="yyyy年MM月dd日" direction='left'>
+                               <Input placeholder="定位到左边，但是左边位置不足"  icon="calendar"/>
+                           </CalendarPanel>
+                       </Col>
+                       <Col sm={4}/>
+                       <Col sm={4}>
+                           <CalendarPanel ref='cp-right-1' format="yyyy年MM月dd日" direction='right'>
+                               <Input placeholder="定位到右边，但是右边位置不足"  icon="calendar"/>
+                           </CalendarPanel>
+                       </Col>
+                   </Row>
+                   <Row>
+                       <Col sm={3}>
+                           <CalendarPanel ref='cp-auto-2' format="yyyy年MM月dd日">
+                               <Input placeholder="自动定位，区别左右"  icon="calendar"/>
+                           </CalendarPanel>
+                       </Col>
+                       <Col sm={6}/>
+                       <Col sm={3}>
+                           <CalendarPanel ref='cp-auto-3' format="yyyy年MM月dd日">
+                               <Input placeholder="自动定位，区别左右"  icon="calendar"/>
+                           </CalendarPanel>
+                       </Col>
+                   </Row>
+                   <Row>
+                       <Col sm={6}>
+                           <CalendarPanel ref='cp-auto-4' format="yyyy年MM月dd日">
+                               <Input placeholder="自动定位，区别左右"  icon="calendar"/>
+                           </CalendarPanel>
+                       </Col>
+                       <Col sm={6}>
+                           <CalendarPanel ref='cp-auto-5' format="yyyy年MM月dd日">
+                               <Input placeholder="自动定位，区别左右"  icon="calendar"/>
+                           </CalendarPanel>
+                       </Col>
                    </Row>
                </Grid>
             </div>

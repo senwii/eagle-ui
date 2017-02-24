@@ -14596,6 +14596,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactLibReactDOM = __webpack_require__(54);
+
+	var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
+
 	var _classnames4 = __webpack_require__(55);
 
 	var _classnames5 = _interopRequireDefault(_classnames4);
@@ -14715,14 +14719,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.windowType = ['getCalendar', 'getMonths', 'getYears'];
 
 	        var defaultDate = this.props.defaultDate || new Date();
+	        this.calendarId = this.uniqueId();
 	        this.state = {
 	            currentDate: defaultDate,
 	            selectedDate: defaultDate,
 	            show: false,
 	            year: typeof defaultDate != 'string' ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear(),
-	            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
+	            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0],
+	            posStyle: {},
+	            // extra params form parent component
+	            parentExtra: {}
 	        };
 	    }
+
+	    Calendar.prototype.uniqueId = function uniqueId() {
+	        return (this.classPrefix || 'unique') + '_' + (new Date().getTime() + (Math.random() * 1e10).toFixed(0));
+	    };
 
 	    Calendar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        /*let defaultDate = nextProps.defaultDate;
@@ -14882,7 +14894,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.getDates(arr, selectedDate, defaultDate)
 	            ));
 	        }
-
 	        return dom;
 	    };
 
@@ -15189,6 +15200,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Calendar.prototype.switchMonth = function switchMonth(type) {
+	        var _this3 = this;
+
 	        var selected = this.getSelectedDate(),
 	            year = selected.getFullYear(),
 	            month = selected.getMonth();
@@ -15211,6 +15224,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	            typeof type != 'string' && this.switchWindow(0);
 	        }
+	        setTimeout(function () {
+	            _this3.updateDirectionTop();
+	        }, 0);
 	    };
 
 	    Calendar.prototype.getSelectedDateSplit = function getSelectedDateSplit() {
@@ -15223,6 +15239,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return { year: year, month: month, date: date };
 	    };
 
+	    // update direction
+
+	    Calendar.prototype.updateDirection = function updateDirection() {
+	        var style = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	        var extra = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+	        this.setState({
+	            parentExtra: extra,
+	            posStyle: style
+	        });
+	    };
+
+	    Calendar.prototype.updateDirectionTop = function updateDirectionTop() {
+	        var posStyle = this.state.posStyle;
+	        var _state$parentExtra = this.state.parentExtra;
+	        var _state$parentExtra$isUp = _state$parentExtra.isUp;
+	        var isUp = _state$parentExtra$isUp === undefined ? false : _state$parentExtra$isUp;
+	        var dir = _state$parentExtra.dir;
+	        var inputHeight = _state$parentExtra.inputHeight;
+
+	        console.log('updateDirectionTop run');
+	        if (isUp) {
+	            var panelHeight = this.refs[this.calendarId].clientHeight;
+	            if (['left', 'right'].indexOf(dir) !== -1) {
+	                posStyle.top = '-' + (panelHeight - inputHeight) + 'px';
+	            } else {
+	                posStyle.top = '-' + (panelHeight + 5) + 'px';
+	            }
+	            this.setState({
+	                posStyle: posStyle
+	            });
+	        }
+	    };
+
 	    Calendar.prototype.render = function render() {
 	        var windowType = this.props.windowType;
 
@@ -15230,7 +15280,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //!isNaN(windowType) &&this.state.windowType==this.windowType[0] ?this.windowType[windowType] :this.state.windowType;
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames5['default'](this.getClassName('container'), this.getClassName(this.props.show ? 'show' : 'hide', false)) },
+	            { style: this.state.posStyle,
+	                ref: this.calendarId,
+	                className: _classnames5['default'](this.getClassName('container'), this.getClassName(this.props.show ? 'show' : 'hide', false)) },
 	            _react2['default'].createElement(
 	                'div',
 	                { className: 'eg-calendar-box' },
@@ -16375,6 +16427,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            hideCallback: _react.PropTypes.func,
 	            componentTag: _react.PropTypes.string,
 	            /**
+	             * 日历位置
+	             * @property direction
+	             * @type String
+	             * @default auto 自动根据当前位置切换 上/下，
+	             * */
+	            direction: _react.PropTypes.string,
+	            /**
 	             * 通过传入此函数获取日期值
 	             * @event  getValueCallback
 	             * @param {string} date 日期
@@ -16388,6 +16447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            classPrefix: 'calendar',
 	            componentTag: 'Input',
 	            calendarType: 'date',
+	            direction: 'auto',
 	            getValueCallback: function getValueCallback(date) {
 	                console.warn('通过向CalendarPanel传入回调函数"getValueCallback"可以获取到当前选取的日期值，当前选取的日期为：' + date);
 	            }
@@ -16402,6 +16462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.calendarContainer = this.uniqueId();
 	        this.inputId = this.uniqueId();
 	        this.state = {
+	            posStyle: {},
 	            isShow: false,
 	            value: this.props.defaultDate || '',
 	            windowType: this.getWindowType()
@@ -16429,7 +16490,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 
-	    CalendarPanel.prototype.componentDidMount = function componentDidMount() {};
+	    CalendarPanel.prototype.componentDidMount = function componentDidMount() {
+	        this.updateDirection();
+	    };
+
+	    CalendarPanel.prototype.componentDidUpdate = function componentDidUpdate() {
+	        this.updateDirection();
+	    };
 
 	    CalendarPanel.prototype.inputBlurHandler = function inputBlurHandler() {
 	        this.doReleaseCapture();
@@ -16441,7 +16508,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    CalendarPanel.prototype.inputFocusHandler = function inputFocusHandler(e) {
-
 	        var container = _reactLibReactDOM2['default'].findDOMNode(this.refs[this.calendarContainer]),
 	            _this = this,
 	            calendar = container.querySelector('.' + this.getClassName('container')),
@@ -16493,13 +16559,103 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 
+	    // update calendar direction
+
+	    CalendarPanel.prototype.getElementPos = function getElementPos(el) {
+	        // bottom height left right top width
+	        // IE8 getBoundingClientRect doesn't support width & height
+	        var rect = el.getBoundingClientRect(),
+	            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+	            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	        return {
+	            offsetTop: rect.top + scrollTop,
+	            offsetLeft: rect.left + scrollLeft,
+	            width: (rect.width == null ? el.offsetWidth : rect.width) || 0,
+	            height: (rect.height == null ? el.offsetHeight : rect.height) || 0,
+	            top: rect.top,
+	            bottom: rect.bottom
+	        };
+	    };
+
+	    CalendarPanel.prototype.updateDirection = function updateDirection() {
+	        var dir = this.props.direction;
+
+	        var inputNode = _reactLibReactDOM2['default'].findDOMNode(this.refs[this.inputId]);
+
+	        var panelNode = _reactLibReactDOM2['default'].findDOMNode(this.refs[this.calendarContainer + 'calendar']).children[0];
+
+	        var isUp = false;
+	        var isAlignLeft = false;
+
+	        var inputPos = this.getElementPos(inputNode);
+	        var panelPos = this.getElementPos(panelNode);
+	        var containerPos = {
+	            height: window.innerHeight,
+	            width: window.innerWidth
+	        };
+	        // detach up or down
+	        var diffHeight = containerPos.height - inputPos.top - inputPos.height;
+	        if (diffHeight > panelPos.height) {
+	            isUp = false;
+	        } else {
+	            isUp = inputPos.top > panelPos.height;
+	        }
+	        // detach align right or left
+	        if (inputPos.width > panelPos.width) {
+	            isAlignLeft = true;
+	        } else {
+	            isAlignLeft = containerPos.width - inputPos.offsetLeft > panelPos.width;
+	        }
+	        // if dir auto then rename dir
+	        // detach direction
+	        // body - input VS panel
+	        if (['auto', 'down', 'top'].indexOf(dir) !== -1) {
+	            dir = isUp ? 'top' : 'down';
+	        }
+	        if (['left', 'right'].indexOf(dir) !== -1) {
+	            var diffLeft = inputPos.offsetLeft - panelPos.width;
+	            var diffRight = containerPos.width - inputPos.offsetLeft - inputPos.width - panelPos.width;
+	            if (dir == 'left' && diffLeft < 0 && diffRight) {
+	                dir = 'right';
+	            }
+	            if (dir == 'right' && diffRight < 0 && diffLeft) {
+	                dir = 'left';
+	            }
+	        }
+	        var style = {};
+	        switch (dir) {
+	            case 'down':
+	                style.top = inputPos.height + 5 + 'px';
+	                isAlignLeft ? style.left = 0 : style.right = 0;
+	                break;
+	            case 'top':
+	                style.top = '-' + (panelPos.height + 5) + 'px';
+	                isAlignLeft ? style.left = 0 : style.right = 0;
+	                break;
+	            case 'left':
+	                style.left = '-' + (panelPos.width + 5) + 'px';
+	                isUp ? style.top = '-' + (panelPos.height - inputPos.height) + 'px' : style.top = 0;
+	                break;
+	            case 'right':
+	                style.left = inputPos.width + 5 + 'px';
+	                isUp ? style.top = '-' + (panelPos.height - inputPos.height) + 'px' : style.top = 0;
+	                break;
+	            default:
+	                break;
+	        }
+	        this.refs[this.calendarContainer + 'calendar'].updateDirection(style, {
+	            isUp: isUp,
+	            dir: dir,
+	            inputHeight: inputPos.height
+	        });
+	    };
+
 	    CalendarPanel.prototype.render = function render() {
 	        var _this2 = this;
 
 	        var Component = this.props.componentTag;
 	        var _this = this;
 	        var options = _react2['default'].Children.map(this.props.children, function (option) {
-
 	            return _react2['default'].createElement(_InputJs2['default'], _extends({}, option.props, {
 	                ref: _this2.inputId,
 	                onBlur: _this.inputBlurHandler.bind(_this),
@@ -16513,10 +16669,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }).bind(_this2)
 	            }));
 	        }, this);
-
 	        return _react2['default'].createElement(
 	            'div',
-	            { className: _classnames2['default'](this.getClassName('panel')), ref: this.calendarContainer },
+	            { className: _classnames2['default'](this.getClassName('panel')), ref: this.calendarContainer, style: { 'position': 'relative' } },
 	            options,
 	            _react2['default'].createElement(_CalendarJs2['default'], _extends({
 	                format: this.getFormat()
