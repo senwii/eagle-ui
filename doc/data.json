@@ -475,7 +475,7 @@
             "namespaces": {},
             "tag": "main",
             "file": "lib/TooltipPanel.js",
-            "line": 51,
+            "line": 53,
             "description": "<h5>eagle-ui部分UI组件</h5>\n<strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>\n<strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>\n<strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>\n<strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>\n<strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>\n<strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>\n<strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>\n<strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>\n<strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>\n<strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>\n<strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>\n<strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>",
             "itemtype": "main"
         },
@@ -1130,8 +1130,8 @@
             "module": "ui",
             "namespace": "",
             "file": "lib/TooltipPanel.js",
-            "line": 51,
-            "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认\n可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。\n主要属性和接口：\n<ul>\n    <li>direction:提示的方向，取值范围［top,down,left,right］默认down<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n    <li>msg:提示文字，必须要写，不然默认的没什么用吧<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a' msg='this is msg'\n        </code>\n    </li>\n    <li>wrapper:指定边界元素，默认为可视窗口，如下则id为a的div为边界元素<br>\n        如：<code>\n           TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n</ul>",
+            "line": 53,
+            "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认\n可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。\n主要属性和接口：\n<ul>\n    <li>direction:提示的方向，取值范围［top,bottom,left,right］默认down<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n    <li>msg:提示文字，必须要写，不然默认的没什么用吧<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a' msg='this is msg'\n        </code>\n    </li>\n    <li>wrapper:指定边界元素，默认为可视窗口，如下则id为a的div为边界元素<br>\n        如：<code>\n           TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n</ul>",
             "is_constructor": 1,
             "example": [],
             "exampleTitles": [],
@@ -2655,7 +2655,7 @@
         },
         {
             "file": "lib/Tooltip.js",
-            "line": 94,
+            "line": 97,
             "description": "接收到新props时执行,state.show变为nextProps.show\n接收到新props时执行,state.show变为nextProps.show\n实现隐藏与显示",
             "itemtype": "method",
             "name": "componentWillReceiveProps",
@@ -2666,8 +2666,15 @@
             "module": "ui"
         },
         {
+            "file": "lib/Tooltip.js",
+            "line": 148,
+            "description": "判断是否有子元素，有的话取children，否则取msg\n两者均有以children优先",
+            "class": "Tooltip",
+            "module": "ui"
+        },
+        {
             "file": "lib/TooltipPanel.js",
-            "line": 87,
+            "line": 89,
             "description": "提示内容",
             "itemtype": "property",
             "name": "msg",
@@ -2678,7 +2685,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 94,
+            "line": 96,
             "description": "是否指定tips的边界，如果指定超出该边界则改变方向，否则默认以可是窗口边界来判断",
             "itemtype": "property",
             "name": "wrapper",
@@ -2689,18 +2696,43 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 101,
+            "line": 103,
             "description": "提示方向",
             "itemtype": "property",
             "name": "direction",
             "type": "String",
-            "default": "down",
+            "default": "bottom",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 130,
+            "line": 112,
+            "description": "触发事件类型，可选‘click‘，’hover‘",
+            "itemtype": "property",
+            "name": "onTrigger",
+            "type": ":String",
+            "default": "hover",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 119,
+            "description": "可选 'black,white'",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 124,
+            "description": "提示内容padding，默认5px",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 149,
             "description": "显示与否由父组件控制",
             "type": "Boolean",
             "class": "TooltipPanel",
@@ -2708,14 +2740,14 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 139,
+            "line": 159,
             "description": "动态更新展示",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 147,
+            "line": 166,
             "description": "渲染完成时进行方向和边界判断，调整tips的位置",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -2727,53 +2759,49 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 157,
-            "itemtype": "method",
-            "name": "render",
-            "return": {
-                "description": "ReactElement"
-            },
+            "line": 176,
+            "description": "如果事件是click，body加上事件，移除时隐藏",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 177,
+            "line": 223,
             "description": "获得限制区域的宽，若未指定则默认可视区域大小",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 196,
+            "line": 242,
             "description": "获取元素的client宽高",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 208,
+            "line": 254,
             "description": "获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 225,
+            "line": 271,
             "description": "获取处理之后的offset，top和left",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 238,
+            "line": 284,
             "description": "获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 254,
+            "line": 300,
             "description": "tips方向和边界判断，调整tips的位置",
             "itemtype": "method",
             "name": "changeStyle",
@@ -2792,7 +2820,7 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 295,
+            "line": 341,
             "description": "获得浏览器的边界大小",
             "itemtype": "method",
             "name": "getMaxBody",
@@ -2817,14 +2845,14 @@
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 312,
+            "line": 358,
             "description": "如果方向改变，重新设置箭头方向",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "lib/TooltipPanel.js",
-            "line": 322,
+            "line": 368,
             "description": "判断是否满足边界条件,返回满足的方向\n不满足的话应该说直接取相反方向",
             "itemtype": "method",
             "name": "isValidate",
@@ -2853,6 +2881,17 @@
             "return": {
                 "description": "flag",
                 "type": "Boolean"
+            },
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "lib/TooltipPanel.js",
+            "line": 422,
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": "ReactElement"
             },
             "class": "TooltipPanel",
             "module": "ui"
@@ -3246,11 +3285,11 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/TooltipPanel.js:51"
+            "line": " lib/TooltipPanel.js:53"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/TooltipPanel.js:51"
+            "line": " lib/TooltipPanel.js:53"
         },
         {
             "message": "unknown tag: demo",
@@ -3385,36 +3424,52 @@
             "line": " lib/Tabset.js:1"
         },
         {
+            "message": "Missing item type\n判断是否有子元素，有的话取children，否则取msg\n两者均有以children优先",
+            "line": " lib/Tooltip.js:148"
+        },
+        {
+            "message": "Missing item type\n可选 'black,white'",
+            "line": " lib/TooltipPanel.js:119"
+        },
+        {
+            "message": "Missing item type\n提示内容padding，默认5px",
+            "line": " lib/TooltipPanel.js:124"
+        },
+        {
             "message": "Missing item type\n显示与否由父组件控制",
-            "line": " lib/TooltipPanel.js:130"
+            "line": " lib/TooltipPanel.js:149"
         },
         {
             "message": "Missing item type\n动态更新展示",
-            "line": " lib/TooltipPanel.js:139"
+            "line": " lib/TooltipPanel.js:159"
+        },
+        {
+            "message": "Missing item type\n如果事件是click，body加上事件，移除时隐藏",
+            "line": " lib/TooltipPanel.js:176"
         },
         {
             "message": "Missing item type\n获得限制区域的宽，若未指定则默认可视区域大小",
-            "line": " lib/TooltipPanel.js:177"
+            "line": " lib/TooltipPanel.js:223"
         },
         {
             "message": "Missing item type\n获取元素的client宽高",
-            "line": " lib/TooltipPanel.js:196"
+            "line": " lib/TooltipPanel.js:242"
         },
         {
             "message": "Missing item type\n获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
-            "line": " lib/TooltipPanel.js:208"
+            "line": " lib/TooltipPanel.js:254"
         },
         {
             "message": "Missing item type\n获取处理之后的offset，top和left",
-            "line": " lib/TooltipPanel.js:225"
+            "line": " lib/TooltipPanel.js:271"
         },
         {
             "message": "Missing item type\n获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
-            "line": " lib/TooltipPanel.js:238"
+            "line": " lib/TooltipPanel.js:284"
         },
         {
             "message": "Missing item type\n如果方向改变，重新设置箭头方向",
-            "line": " lib/TooltipPanel.js:312"
+            "line": " lib/TooltipPanel.js:358"
         }
     ]
 }

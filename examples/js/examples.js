@@ -41041,16 +41041,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	            componentTag: _react.PropTypes.string
 	        },
 	        enumerable: true
+	    }, {
+	        key: 'defaultProps',
+	        value: {
+	            classPrefix: 'tooltip',
+	            padding: 5
+	        },
+	        enumerable: true
 	    }]);
 
 	    function Tooltip(props, context) {
 	        _classCallCheck(this, _Tooltip);
 
 	        _Component.call(this, props, context);
-	        this.state = {
-	            show: this.props.show,
-	            direction: this.props.direction
-	        };
 	    }
 
 	    /**
@@ -41060,26 +41063,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @method componentWillReceiveProps
 	     * @return null
 	     * */
-
-	    Tooltip.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    /*componentWillReceiveProps(nextProps){
 	        this.setState({
-	            show: nextProps.show
+	            show : nextProps.show
 	        });
+	    }*/
+
+	    Tooltip.prototype.componentDidMount = function componentDidMount() {
+	        /* setTimeout(()=>{
+	             this.props.onChangeStyle(this.target,this.props.direction);
+	         });*/
+	        this.props.setToolTipObj(this.target);
 	    };
 
 	    Tooltip.prototype.render = function render() {
-	        var _classnames;
+	        var _classnames,
+	            _this = this;
 
 	        return _react2['default'].createElement(
 	            _GridJs2['default'],
-	            { ref: 'tips', className: _classnames3['default'](this.getClassName('wraper'), (_classnames = {}, _classnames[this.getClassName('show')] = this.state.show, _classnames)) },
-	            _react2['default'].createElement('div', { className: _classnames3['default'](this.getClassName('arrow-' + this.props.direction)) }),
+	            { ref: function (ref) {
+	                    _this.target = ref;
+	                }, componentName: 'tooltip', className: _classnames3['default'](this.getClassName('wraper'), this.getClassName('tooltip'), (_classnames = {}, _classnames[this.getClassName('show')] = this.props.show, _classnames)) },
 	            _react2['default'].createElement(
 	                'div',
-	                { className: _classnames3['default'](this.getClassName('content')) },
-	                this.props.msg
+	                { className: _classnames3['default'](this.getClassName('arrow-' + this.props.direction)), style: this.getStyle(this.props.bgColor) },
+	                _react2['default'].createElement('div', { className: 'arrow-tip', style: this.getStyle('#ddd') })
+	            ),
+	            _react2['default'].createElement(
+	                'div',
+	                { className: _classnames3['default'](this.getClassName('content')), style: { 'backgroundColor': this.props.bgColor, 'padding': parseInt(this.props.padding, 10) + 'px' } },
+	                this.getContent()
 	            )
 	        );
+	    };
+
+	    Tooltip.prototype.getStyle = function getStyle(color) {
+	        var styles = {};
+	        var direction = this.props.direction;
+
+	        var str = direction.substr(0, 1).toUpperCase() + direction.substr(1);
+	        styles['border' + str + 'Color'] = color;
+	        return styles;
+	    };
+
+	    /**
+	     * 判断是否有子元素，有的话取children，否则取msg
+	     * 两者均有以children优先
+	     * */
+
+	    Tooltip.prototype.getContent = function getContent() {
+	        var _props = this.props;
+	        var children = _props.children;
+	        var msg = _props.msg;
+
+	        return children ? children : msg;
 	    };
 
 	    var _Tooltip = Tooltip;
@@ -41089,8 +41127,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports['default'] = Tooltip;
 	module.exports = exports['default'];
-
-	//[this.getClassName('show')]: true
 
 /***/ },
 /* 605 */
@@ -41105,6 +41141,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -41153,7 +41191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。
 	 * 主要属性和接口：
 	 * <ul>
-	 *     <li>direction:提示的方向，取值范围［top,down,left,right］默认down<br>
+	 *     <li>direction:提示的方向，取值范围［top,bottom,left,right］默认down<br>
 	 *         如：<code>
 	 *           TooltipPanel direction='top' wapper='a'
 	 *         </code>
@@ -41200,22 +41238,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 提示方向
 	             * @property direction
 	             * @type String
-	             * @default down
+	             * @default bottom
 	             * */
 	            direction: _react.PropTypes.string,
 	            classPrefix: _react.PropTypes.string,
-	            componentTag: _react.PropTypes.string
+	            componentTag: _react.PropTypes.string,
+	            /**
+	             * 触发事件类型，可选‘click‘，’hover‘
+	             * @property onTrigger
+	             * @type:String
+	             * @default hover
+	             * */
+	            trigger: _react.PropTypes.string,
+	            /**
+	             * 可选 'black,white'
+	             * */
+	            bgColor: _react.PropTypes.string,
+	            skin: _react.PropTypes.string,
+	            /**
+	             * 提示内容padding，默认5px
+	             * */
+	            padding: _react.PropTypes.string
 	        },
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
 	        value: {
 	            show: false,
-	            msg: "这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示这是个提示",
-	            direction: 'down',
+	            direction: 'bottom',
 	            classPrefix: 'tooltip',
 	            wrapper: '',
-	            componentTag: 'div'
+	            componentTag: 'div',
+	            trigger: 'hover',
+	            bgColor: '#000'
 	        },
 	        enumerable: true
 	    }]);
@@ -41232,44 +41287,71 @@ return /******/ (function(modules) { // webpackBootstrap
 	            show: this.props.show
 	        };
 	        this.isOldDir = true;
+	        this.idName = 'tolltip-id';
 	    }
 
 	    /**
 	     * 动态更新展示
 	     */
 
-	    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {
-	        this.changeStyle(this.props.direction);
-	    };
+	    TooltipPanel.prototype.componentDidUpdate = function componentDidUpdate() {}
+	    //this.changeStyle(this.props.direction);
 
 	    /**
 	     * 渲染完成时进行方向和边界判断，调整tips的位置
 	     * @method componentDidMount
 	     * @return null
 	     * */
+	    ;
 
 	    TooltipPanel.prototype.componentDidMount = function componentDidMount() {
-	        this.changeStyle(this.props.direction);
-	    };
-
-	    /**
-	     * @method render
-	     * @return ReactElement
-	     * */
-
-	    TooltipPanel.prototype.render = function render() {
 	        var _this = this;
 
-	        var componentTag = this.props.children.props.componentTag;
+	        /**
+	         * 如果事件是click，body加上事件，移除时隐藏
+	         * */
+	        this.changeStyle(this.tooltipTarget, this.props.direction);
+	        if (this.props.trigger == 'click') {
+	            (function () {
+	                var idName = _this.idName;
+	                var self = _this;
+	                document.addEventListener('click', (function (idName) {
+	                    var id = idName;
+	                    return function (event) {
+	                        !self.parents(id, event.target) && self.setState({
+	                            show: false
+	                        });
+	                    };
+	                })(idName));
+	            })();
+	        }
+	    };
 
-	        return _react2['default'].createElement(
-	            _GridJs2['default'],
-	            _extends({}, this.props, { className: _classnames2['default'](this.getClassName('container')), ref: 'container' }),
-	            this.props.children,
-	            _react2['default'].createElement(_TooltipJs2['default'], _extends({}, this.props, { ref: function (obj) {
-	                    _this.tips = obj;
-	                } }))
-	        );
+	    TooltipPanel.prototype.parents = function parents(id, dom) {
+	        var tempNode = dom.parentNode;
+	        while (tempNode && tempNode !== document) {
+	            if (tempNode.getAttribute('name') == id) {
+	                return true;
+	            } else {
+	                tempNode = tempNode.parentNode;
+	            }
+	        }
+	        return false;
+	    };
+
+	    TooltipPanel.prototype.uniqueRef = function uniqueRef() {
+	        return 'toolTip' + Math.floor(Math.random() * 100);
+	    };
+
+	    TooltipPanel.prototype.setToolTipObj = function setToolTipObj() {
+	        this.tooltipTarget = arguments[0];
+	    };
+
+	    TooltipPanel.prototype.handler = function handler(e) {
+	        this.changeStyle(this.tooltipTarget, this.props.direction);
+	        this.setState({
+	            show: !this.state.show
+	        });
 	    };
 
 	    /**
@@ -41356,12 +41438,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @return null
 	     * */
 
-	    TooltipPanel.prototype.changeStyle = function changeStyle(direction) {
+	    TooltipPanel.prototype.changeStyle = function changeStyle(obj, direction) {
 	        var dir = direction;
 
-	        var tipNode = _reactLibReactDOM2['default'].findDOMNode(this.tips);
+	        var tipNode = _reactLibReactDOM2['default'].findDOMNode(obj);
 
-	        var arrowNode = _reactLibReactDOM2['default'].findDOMNode(this.refs.container).children[0];
+	        var arrowNode = _reactLibReactDOM2['default'].findDOMNode(this.container);
 
 	        var tips = this.getOffsetWH(tipNode);
 	        var arrow = this.getOffsetWH(arrowNode);
@@ -41463,6 +41545,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	                return newDir;
 	                break;
 	        }
+	    };
+
+	    TooltipPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.setState({
+	            show: nextProps.show
+	        });
+	    };
+
+	    /**
+	     * @method render
+	     * @return ReactElement
+	     * */
+
+	    TooltipPanel.prototype.render = function render() {
+	        var _this2 = this;
+
+	        var _props = this.props;
+	        var children = _props.children;
+	        var bgColor = _props.bgColor;
+	        var direction = _props.direction;
+
+	        var other = _objectWithoutProperties(_props, ['children', 'bgColor', 'direction']);
+
+	        var dir = direction == 'down' ? 'bottom' : direction;
+	        var c = null;
+	        if (other.msg) {
+	            c = [].concat(children, [_react2['default'].createElement(_TooltipJs2['default'], _extends({}, other, { show: this.state.show, setToolTipObj: this.setToolTipObj.bind(this), bgColor: bgColor, direction: dir }))]);
+	        } else {
+	            c = _react2['default'].Children.map(children, function (option) {
+	                return _react2['default'].cloneElement(option, {
+	                    show: _this2.state.show,
+	                    setToolTipObj: _this2.setToolTipObj.bind(_this2),
+	                    bgColor: bgColor,
+	                    direction: dir
+	                });
+	            }, this);
+	        }
+	        if (other.trigger == 'hover') {
+	            other['onMouseOver'] = this.handler.bind(this);
+	            other['onMouseOut'] = this.handler.bind(this);
+	        } else {
+	            other.trigger = other.trigger.substr(0, 1).toUpperCase() + other.trigger.substr(1);
+	            other['on' + other.trigger] = this.handler.bind(this);
+	        }
+
+	        return _react2['default'].createElement(
+	            _GridJs2['default'],
+	            _extends({}, this.props, other, {
+	                name: this.idName,
+	                className: _classnames2['default'](this.getClassName('container')),
+	                ref: function (ref) {
+	                    _this2.container = ref;
+	                } }),
+	            c
+	        );
 	    };
 
 	    var _TooltipPanel = TooltipPanel;
@@ -51194,6 +51331,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    Demo.prototype.render = function render() {
+	        var test1 = _react2['default'].createElement(
+	            'div',
+	            { className: 'sds', style: { 'color': 'red' } },
+	            'Holy guacamole!'
+	        );
 	        return _react2['default'].createElement(
 	            _libsLayout.DemoLayout,
 	            { title: 'Tooltip' },
@@ -51219,12 +51361,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                { sm: 3 },
 	                                _react2['default'].createElement(
 	                                    _eagleUi.TooltipPanel,
-	                                    { direction: 'top',
-	                                        msg: '我是在上方的tooltip哦' },
+	                                    { direction: 'top' },
 	                                    _react2['default'].createElement(
 	                                        _eagleUi.Button,
 	                                        { radius: true, egSize: 'sm', egStyle: 'warning' },
 	                                        '上边'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        _eagleUi.Tooltip,
+	                                        { padding: 20 },
+	                                        _react2['default'].createElement(
+	                                            'div',
+	                                            { className: 'tooltip', style: { width: '150px', color: '#f00' } },
+	                                            'tooltip的children'
+	                                        )
 	                                    )
 	                                )
 	                            ),
@@ -51234,7 +51384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                _react2['default'].createElement(
 	                                    _eagleUi.TooltipPanel,
 	                                    { direction: 'right',
-	                                        msg: '我是在右方的tooltip哦' },
+	                                        msg: '我是在右方的tooltip哦', padding: 10, trigger: 'click' },
 	                                    _react2['default'].createElement(
 	                                        _eagleUi.Button,
 	                                        { radius: true, egSize: 'sm', egStyle: 'warning' },
@@ -51293,7 +51443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            { style: { margin: '10px' } },
 	                            _react2['default'].createElement(
 	                                _eagleUi.TooltipPanel,
-	                                { direction: 'top', wrapper: 'a' },
+	                                { direction: 'top', wrapper: 'a', msg: 'sddssdds' },
 	                                _react2['default'].createElement(
 	                                    _eagleUi.Button,
 	                                    { radius: true, egSize: 'sm', egStyle: 'warning' },
