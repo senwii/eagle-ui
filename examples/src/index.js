@@ -1,3 +1,7 @@
+require('es5-shim');
+require('es5-shim/es5-sham');
+require('console-polyfill');
+require('core-js/es6/object');
 import React, { Component ,PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import { Redirect, Router, Route } from 'react-router';
