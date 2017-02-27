@@ -109,7 +109,14 @@ export default class LabelGroup extends Component{
             ReactDom.findDOMNode(this.refs[this.itemObj] ).style.cssText = cssStr;
         }
     }
-
+    componentWillReceiveProps(nextProps) {
+        let checkedText=nextProps.defaultChecked;
+        if(this.state.checked!==checkedText){
+            this.setState({
+                checked:checkedText
+            });
+        }
+    }
     render(){
         let _this = this;
         /**
