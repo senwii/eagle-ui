@@ -74,6 +74,7 @@
   ],
   "dependencies": {
     "cat-browser": "^0.1.0",
+    "hope-s-basic": "^1.1.0",
     "eagle-styles": "^0.1.0",
     "ui-svg-icons": "^2.0.1"
   },

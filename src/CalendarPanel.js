@@ -32,6 +32,13 @@ export default class CalendarPanel extends Component{
         hideCallback:PropTypes.func,
         componentTag:PropTypes.string,
         /**
+         * 日历位置
+         * @param {string} direction 可选值有 top | left | down | right
+         * @type String
+         * @default auto 自动根据当前位置切换 上/下，
+         * */
+        direction: PropTypes.string,
+        /**
          * 通过传入此函数获取日期值
          * @event  getValueCallback
          * @param {string} date 日期
@@ -43,6 +50,7 @@ export default class CalendarPanel extends Component{
         classPrefix:'calendar',
         componentTag:'Input',
         calendarType:'date',
+        direction: 'auto',
         getValueCallback:function(date){
             console.warn('通过向CalendarPanel传入回调函数"getValueCallback"可以获取到当前选取的日期值，当前选取的日期为：'+date);
         }
@@ -71,6 +79,7 @@ export default class CalendarPanel extends Component{
         this.calendarContainer = this.uniqueId();
         this.inputId = this.uniqueId();
         this.state = {
+            posStyle: {},
             isShow:false,
             value:this.props.defaultDate || '',
             windowType:this.getWindowType()
@@ -98,8 +107,11 @@ export default class CalendarPanel extends Component{
         }
     }
 
-    componentDidMount(){
-
+    componentDidMount() {
+        this.updateDirection()
+    }
+    componentDidUpdate() {
+        this.updateDirection();
     }
 
     inputBlurHandler(){
@@ -112,7 +124,6 @@ export default class CalendarPanel extends Component{
     }
 
     inputFocusHandler(e){
-
         let container = ReactDom.findDOMNode(this.refs[this.calendarContainer]),
             _this = this,
             calendar = container.querySelector(`.${this.getClassName('container')}`),
@@ -164,12 +175,95 @@ export default class CalendarPanel extends Component{
             value:d
         });
     }
-    render(){
+    // update calendar direction
+    getElementPos(el) {
+        // bottom height left right top width
+        // IE8 getBoundingClientRect doesn't support width & height
+        let rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return {
+            offsetTop: rect.top + scrollTop,
+            offsetLeft: rect.left + scrollLeft,
+            width: (rect.width == null? el.offsetWidth : rect.width) || 0,
+            height: (rect.height == null? el.offsetHeight : rect.height) || 0,
+            top: rect.top,
+            bottom: rect.bottom
+        };
+    }
+    updateDirection() {
+        let dir = this.props.direction;
+        let [inputNode, panelNode] = [
+            ReactDom.findDOMNode(this.refs[this.inputId]),
+            ReactDom.findDOMNode(this.refs[this.calendarContainer + 'calendar']).children[0]];
+        let [isUp, isAlignLeft] = [false, false];
 
+        const inputPos = this.getElementPos(inputNode);
+        const panelPos = this.getElementPos(panelNode);
+        const containerPos = {
+            height: window.innerHeight,
+            width: window.innerWidth
+        };
+        // detach up or down
+        const diffHeight = containerPos.height - inputPos.top - inputPos.height
+        if(diffHeight > panelPos.height) {
+            isUp = false;
+        }else{
+            isUp = inputPos.top > panelPos.height;
+        }
+        // detach align right or left
+        if(inputPos.width > panelPos.width){
+            isAlignLeft = true;
+        } else {
+            isAlignLeft = containerPos.width - inputPos.offsetLeft > panelPos.width;
+        }
+        // if dir auto then rename dir
+        // detach direction
+        // body - input VS panel
+        if (['auto', 'down', 'top'].indexOf(dir) !== -1) {
+            dir = isUp ? 'top' : 'down';
+        }
+        if(['left', 'right'].indexOf(dir) !== -1){
+            const diffLeft = inputPos.offsetLeft - panelPos.width;
+            const diffRight = containerPos.width - inputPos.offsetLeft - inputPos.width - panelPos.width;
+            if(dir == 'left' && diffLeft < 0 && diffRight){
+               dir = 'right';
+            }
+            if(dir == 'right' && diffRight < 0 && diffLeft){
+                dir = 'left';
+            }
+        }
+        const style = {}
+        switch (dir) {
+            case 'down':
+                style.top = inputPos.height + 5 + 'px';
+                isAlignLeft ? (style.left = 0) : ( style.right = 0);
+                break;
+            case 'top':
+                style.top = '-' + (panelPos.height + 5) + 'px';
+                isAlignLeft ? (style.left = 0) : ( style.right = 0);
+                break;
+            case 'left':
+                style.left = '-' + (panelPos.width + 5) + 'px';
+                isUp ? (style.top = '-' + (panelPos.height - inputPos.height) + 'px') : (style.top = 0)
+                break;
+            case 'right':
+                style.left = inputPos.width + 5 + 'px';
+                isUp ? (style.top = '-' + (panelPos.height - inputPos.height) + 'px') : (style.top = 0)
+                break;
+            default :
+                break;
+        }
+        this.refs[this.calendarContainer + 'calendar'].updateDirection(style, {
+            isUp: isUp,
+            dir: dir,
+            inputHeight: inputPos.height
+        });
+    }
+    render(){
         let {componentTag:Component} = this.props,
             _this = this;
         let options = React.Children.map(this.props.children,(option)=>{
-
             return <Input {...option.props}
                 ref={this.inputId}
                 onBlur={::_this.inputBlurHandler}
@@ -183,13 +277,11 @@ export default class CalendarPanel extends Component{
                     ReactDom.findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
                 }.bind(this) }
                 />;
-
         },this);
-
         return (
             <div className={
                 classnames(this.getClassName('panel') )
-            } ref={this.calendarContainer}>
+            } ref={this.calendarContainer} style={{'position': 'relative'}}>
                 {options}
                 <Calendar
                     format={this.getFormat()}
