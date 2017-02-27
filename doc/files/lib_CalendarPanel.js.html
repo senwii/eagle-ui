@@ -486,6 +486,13 @@ var CalendarPanel = (function (_Component) {
             hideCallback: _react.PropTypes.func,
             componentTag: _react.PropTypes.string,
             /**
+             * 日历位置
+             * @property direction
+             * @type String
+             * @default auto 自动根据当前位置切换 上/下，
+             * */
+            direction: _react.PropTypes.string,
+            /**
              * 通过传入此函数获取日期值
              * @event  getValueCallback
              * @param {string} date 日期
@@ -499,6 +506,7 @@ var CalendarPanel = (function (_Component) {
             classPrefix: &#x27;calendar&#x27;,
             componentTag: &#x27;Input&#x27;,
             calendarType: &#x27;date&#x27;,
+            direction: &#x27;auto&#x27;,
             getValueCallback: function getValueCallback(date) {
                 console.warn(&#x27;通过向CalendarPanel传入回调函数&quot;getValueCallback&quot;可以获取到当前选取的日期值，当前选取的日期为：&#x27; + date);
             }
@@ -513,6 +521,7 @@ var CalendarPanel = (function (_Component) {
         this.calendarContainer = this.uniqueId();
         this.inputId = this.uniqueId();
         this.state = {
+            posStyle: {},
             isShow: false,
             value: this.props.defaultDate || &#x27;&#x27;,
             windowType: this.getWindowType()
@@ -540,7 +549,13 @@ var CalendarPanel = (function (_Component) {
         }
     };
 
-    CalendarPanel.prototype.componentDidMount = function componentDidMount() {};
+    CalendarPanel.prototype.componentDidMount = function componentDidMount() {
+        this.updateDirection();
+    };
+
+    CalendarPanel.prototype.componentDidUpdate = function componentDidUpdate() {
+        this.updateDirection();
+    };
 
     CalendarPanel.prototype.inputBlurHandler = function inputBlurHandler() {
         this.doReleaseCapture();
@@ -552,7 +567,6 @@ var CalendarPanel = (function (_Component) {
     };
 
     CalendarPanel.prototype.inputFocusHandler = function inputFocusHandler(e) {
-
         var container = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.calendarContainer]),
             _this = this,
             calendar = container.querySelector(&#x27;.&#x27; + this.getClassName(&#x27;container&#x27;)),
@@ -604,13 +618,103 @@ var CalendarPanel = (function (_Component) {
         });
     };
 
+    // update calendar direction
+
+    CalendarPanel.prototype.getElementPos = function getElementPos(el) {
+        // bottom height left right top width
+        // IE8 getBoundingClientRect doesn&#x27;t support width &amp; height
+        var rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return {
+            offsetTop: rect.top + scrollTop,
+            offsetLeft: rect.left + scrollLeft,
+            width: (rect.width == null ? el.offsetWidth : rect.width) || 0,
+            height: (rect.height == null ? el.offsetHeight : rect.height) || 0,
+            top: rect.top,
+            bottom: rect.bottom
+        };
+    };
+
+    CalendarPanel.prototype.updateDirection = function updateDirection() {
+        var dir = this.props.direction;
+
+        var inputNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.inputId]);
+
+        var panelNode = _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.calendarContainer + &#x27;calendar&#x27;]).children[0];
+
+        var isUp = false;
+        var isAlignLeft = false;
+
+        var inputPos = this.getElementPos(inputNode);
+        var panelPos = this.getElementPos(panelNode);
+        var containerPos = {
+            height: window.innerHeight,
+            width: window.innerWidth
+        };
+        // detach up or down
+        var diffHeight = containerPos.height - inputPos.top - inputPos.height;
+        if (diffHeight &gt; panelPos.height) {
+            isUp = false;
+        } else {
+            isUp = inputPos.top &gt; panelPos.height;
+        }
+        // detach align right or left
+        if (inputPos.width &gt; panelPos.width) {
+            isAlignLeft = true;
+        } else {
+            isAlignLeft = containerPos.width - inputPos.offsetLeft &gt; panelPos.width;
+        }
+        // if dir auto then rename dir
+        // detach direction
+        // body - input VS panel
+        if ([&#x27;auto&#x27;, &#x27;down&#x27;, &#x27;top&#x27;].indexOf(dir) !== -1) {
+            dir = isUp ? &#x27;top&#x27; : &#x27;down&#x27;;
+        }
+        if ([&#x27;left&#x27;, &#x27;right&#x27;].indexOf(dir) !== -1) {
+            var diffLeft = inputPos.offsetLeft - panelPos.width;
+            var diffRight = containerPos.width - inputPos.offsetLeft - inputPos.width - panelPos.width;
+            if (dir == &#x27;left&#x27; &amp;&amp; diffLeft &lt; 0 &amp;&amp; diffRight) {
+                dir = &#x27;right&#x27;;
+            }
+            if (dir == &#x27;right&#x27; &amp;&amp; diffRight &lt; 0 &amp;&amp; diffLeft) {
+                dir = &#x27;left&#x27;;
+            }
+        }
+        var style = {};
+        switch (dir) {
+            case &#x27;down&#x27;:
+                style.top = inputPos.height + 5 + &#x27;px&#x27;;
+                isAlignLeft ? style.left = 0 : style.right = 0;
+                break;
+            case &#x27;top&#x27;:
+                style.top = &#x27;-&#x27; + (panelPos.height + 5) + &#x27;px&#x27;;
+                isAlignLeft ? style.left = 0 : style.right = 0;
+                break;
+            case &#x27;left&#x27;:
+                style.left = &#x27;-&#x27; + (panelPos.width + 5) + &#x27;px&#x27;;
+                isUp ? style.top = &#x27;-&#x27; + (panelPos.height - inputPos.height) + &#x27;px&#x27; : style.top = 0;
+                break;
+            case &#x27;right&#x27;:
+                style.left = inputPos.width + 5 + &#x27;px&#x27;;
+                isUp ? style.top = &#x27;-&#x27; + (panelPos.height - inputPos.height) + &#x27;px&#x27; : style.top = 0;
+                break;
+            default:
+                break;
+        }
+        this.refs[this.calendarContainer + &#x27;calendar&#x27;].updateDirection(style, {
+            isUp: isUp,
+            dir: dir,
+            inputHeight: inputPos.height
+        });
+    };
+
     CalendarPanel.prototype.render = function render() {
         var _this2 = this;
 
         var Component = this.props.componentTag;
         var _this = this;
         var options = _react2[&#x27;default&#x27;].Children.map(this.props.children, function (option) {
-
             return _react2[&#x27;default&#x27;].createElement(_InputJs2[&#x27;default&#x27;], _extends({}, option.props, {
                 ref: _this2.inputId,
                 onBlur: _this.inputBlurHandler.bind(_this),
@@ -624,10 +728,9 @@ var CalendarPanel = (function (_Component) {
                 }).bind(_this2)
             }));
         }, this);
-
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;panel&#x27;)), ref: this.calendarContainer },
+            { className: _classnames2[&#x27;default&#x27;](this.getClassName(&#x27;panel&#x27;)), ref: this.calendarContainer, style: { &#x27;position&#x27;: &#x27;relative&#x27; } },
             options,
             _react2[&#x27;default&#x27;].createElement(_CalendarJs2[&#x27;default&#x27;], _extends({
                 format: this.getFormat()
