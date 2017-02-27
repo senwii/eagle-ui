@@ -3,110 +3,125 @@
  */
 import React,{Component} from 'react';
 import {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from 'eagle-ui';
-
-let Demo = class Demo extends Component{
+import Code from '../libs/Code.js';
+import {getFile} from '../libs/Code.js';
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
+export default class Demo extends Component{
 
     constructor(props,context){
         super(props,context);
-
     }
-
-    show(value,text,target,active){
-        console.dir(value);
-    }
-
     render(){
         return (
-            <Panel style={{
-                margin:'20px'
-            }}>
-                <PanelContent >
-                    <Grid>
-                        <Row>
-                            <Col>
-                                <h3>标签组</h3>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <LabelGroup spacing={94} title='行政区' defaultChecked='全部' activeCallback={this.show} end>
-                                    <Label value="0" className="all">全部</Label>
-                                    <Label value="1">卢湾区</Label>
-                                    <Label value="10">徐汇区</Label>
-                                    <Label>静安区</Label>
-                                    <Label>长宁区</Label>
-                                    <Label>闵行区</Label>
-                                    <Label>浦东新区</Label>
-                                    <Label>黄浦区</Label>
-                                    <Label>普陀区</Label>
-                                    <Label>闸北区</Label>
-                                    <Label>虹口区</Label>
-                                    <Label>杨浦区</Label>
-                                    <Label>宝山区</Label>
-                                </LabelGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <LabelGroup title='商品类型' defaultChecked='全部' activeCallback={this.show} end>
-                                    <Label value="0" className="all">全部</Label>
-                                    <Label value="1">卢湾区</Label>
-                                    <Label value="10">徐汇区</Label>
-                                    <Label>静安区</Label>
-                                    <Label>长宁区</Label>
-                                    <Label>闵行区</Label>
-                                    <Label>浦东新区</Label>
-                                    <Label>黄浦区</Label>
-                                    <Label>普陀区</Label>
-                                    <Label>闸北区</Label>
-                                    <Label>虹口区</Label>
-                                    <Label>杨浦区</Label>
-                                    <Label>宝山区</Label>
-                                </LabelGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <LabelGroup defaultChecked='卢湾区' activeCallback={this.show} end>
-                                    <Label value="0">全部</Label>
-                                    <Label value="1">卢湾区</Label>
-                                    <Label value="10">徐汇区</Label>
-                                    <Label>静安区</Label>
-                                    <Label>长宁区</Label>
-                                    <Label>闵行区</Label>
-                                    <Label>浦东新区</Label>
-                                    <Label>黄浦区</Label>
-                                    <Label>普陀区</Label>
-                                    <Label>闸北区</Label>
-                                    <Label>虹口区</Label>
-                                    <Label>杨浦区</Label>
-                                    <Label>宝山区</Label>
-                                </LabelGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <h3>普通标签组</h3>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <LabelGroup egType="simple" activeCallback={this.show}>
-                                    <Label value="0">全部</Label>
-                                    <Label value="1">卢湾区</Label>
-                                    <Label value="10">徐汇区</Label>
-                                    <Label>静安区</Label>
-                                    <Label>长宁区</Label>
-                                    <Label>闵行区</Label>
-                                    <Label url="http://baidu.com">点击跳转至百度</Label>
-                                </LabelGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <h3>form标签组</h3>
-                            </Col>
-                        </Row>
+            <DemoLayout title="标签">
+                <DemoItem title="标签样式">
+                    <CodeShow>
+                        <Code code={getFile('label-demo1')}>
+                        </Code>
+                    </CodeShow>
+                    <DemoShow>
+                        <Grid>
+                            <Row>
+                                <Col sm={2}>
+                                    <Label egStyle="error">error</Label>
+                                </Col>
+                                <Col sm={2}>
+                                    <Label egStyle="success">success</Label>
+                                </Col>
+                                <Col sm={2}>
+                                    <Label egStyle="warning">warning</Label>
+                                </Col>
+                                <Col sm={2}>
+                                    <Label egStyle="danger">danger</Label>
+                                </Col>
+                                <Col sm={2}>
+                                    <Label>default</Label>
+                                </Col>
+                                <Col sm={2}>
+                                    <Label disabled>disabled</Label>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="标签尺寸">
+                    <CodeShow>
+                        <Code code={getFile('label-demo2')}>
+                        </Code>
+                    </CodeShow>
+                    <DemoShow>
+                        <Grid>
+                            <Row>
+                                <Col sm={4}>
+                                    <Label egStyle="success" egSize="xs">small</Label>
+                                </Col>
+                                <Col sm={4}>
+                                    <Label egStyle="success" egSize="sm">middle</Label>
+                                </Col>
+                                <Col sm={4}>
+                                    <Label egStyle="success" egSize="lg">large</Label>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="egType设置为simple的标签组">
+                    <CodeShow>
+                        <Code code={getFile('label-demo3')}>
+                        </Code>
+                    </CodeShow>
+                    <DemoShow>
+                        <LabelGroup egType="simple"
+                                    activeCallback={
+                                            function(value,text,target,active){
+                                                console.log(value,text,target,active);
+                                            }}>
+                            <Label value="all">全部</Label>
+                            <Label value="luwan">卢湾区</Label>
+                            <Label value="xuhui">徐汇区</Label>
+                            <Label value="jinan">静安区</Label>
+                            <Label value="changning">长宁区</Label>
+                            <Label value="minhang">闵行区</Label>
+                        </LabelGroup>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="egType设置为default的标签组">
+                    <CodeShow>
+                        <Code code={getFile('label-demo4')}>
+                        </Code>
+                    </CodeShow>
+                    <DemoShow>
+                        <LabelGroup spacing={94}
+                                    title='行政区'
+                                    egType='default'
+                                    defaultChecked='卢湾区'
+                                    activeCallback={
+                                            function(value,text,target,active){
+                                                console.log(value,text,target,active);
+                                            }}
+                            >
+                            <Label value="0" className="all">全部</Label>
+                            <Label value="1">卢湾区</Label>
+                            <Label value="10">徐汇区</Label>
+                            <Label>静安区</Label>
+                            <Label>长宁区</Label>
+                            <Label>闵行区</Label>
+                            <Label>浦东新区</Label>
+                            <Label>黄浦区</Label>
+                            <Label>普陀区</Label>
+                            <Label>闸北区</Label>
+                            <Label>虹口区</Label>
+                            <Label>杨浦区</Label>
+                            <Label>宝山区</Label>
+                        </LabelGroup>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="egType设置为form的标签组">
+                    <CodeShow>
+                        <Code code={getFile('label-demo5')}>
+                        </Code>
+                    </CodeShow>
+                    <DemoShow>
                         <Row>
                             <Col sm={6}>
                                 <LabelGroup egType="form" >
@@ -135,42 +150,11 @@ let Demo = class Demo extends Component{
                                 </LabelGroup>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col>
-                                <h3>单个标签</h3>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col sm={2}>
-                                <Label active egSize="xs">选中</Label>
-                            </Col>
-                            <Col sm={2}>
-                                <Label  egStyle="success">成功</Label>
-                            </Col>
-                            <Col sm={2}>
-                                <Label  egStyle="error">错误</Label>
-                            </Col>
-                            <Col sm={2}>
-                                <Label disabled>禁用</Label>
-                            </Col>
-                            <Col sm={2}>
-                                <Label egStyle="warning" egSize="lg" >warning</Label>
-                            </Col>
-                            <Col sm={2}>
-                                <Label >默认</Label>
-                            </Col>
-                        </Row>
-                    </Grid>
-                </PanelContent>
-            </Panel>
+                    </DemoShow>
+                </DemoItem>
+
+            </DemoLayout>
+
         );
     }
 };
-
-export default class LabelCls extends Component{
-    render(){
-        return (
-            <Demo />
-        );
-    }
-}

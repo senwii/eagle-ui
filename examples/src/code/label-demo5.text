@@ -1,0 +1,41 @@
+import React,{Component} from 'react';
+import {Label,LabelGroup,Grid,Row,Col} from 'eagle-ui';
+export default class Demo extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            <Grid>
+                <Row>
+                    <Col sm={6}>
+                        <LabelGroup egType="form" >
+                            <Label value="0">当前日佣金基数</Label>
+                            <Label value="1"><h1 className="color-error">9112</h1></Label>
+                        </LabelGroup>
+                    </Col>
+                    <Col sm={6}>
+                        <LabelGroup egType="form" >
+                            <Label value="0">当前日佣金基数</Label>
+                            <Label value="1"><h1 className="color-error">9112</h1></Label>
+                        </LabelGroup>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={6}>
+                        <LabelGroup egType="form" >
+                            <Label value="0">当前日佣金基数</Label>
+                            <Label value="1">121212121</Label>
+                        </LabelGroup>
+                    </Col>
+                    <Col sm={6}>
+                        <LabelGroup egType="form" >
+                            <Label value="0">当前日佣金基数</Label>
+                            <Label value="1"><h1 className="color-error">9112</h1></Label>
+                        </LabelGroup>
+                    </Col>
+                </Row>
+            </Grid>
+        );
+    }
+};

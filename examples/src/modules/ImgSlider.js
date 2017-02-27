@@ -1,37 +1,28 @@
 import React, { Component ,PropTypes} from 'react';
-import {Button,Column,ImgSlider} from 'eagle-ui';
+import {Button,ImgSlider,Grid,Row,Col} from 'eagle-ui';
+import Code from '../libs/Code.js';
+import {getFile} from '../libs/Code.js';
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
+
 export default class SliderDemo extends Component {
     constructor(props,context) {
         super(props,context);
         this.state={
-            show:true,
-            showThumbnail:true
+            showThumbnail:true,
+            imgModify:true
         }
     }
-    handleSlider(){
-        switch(arguments[0]){
-            case 'showDefinedThumbnail':
-                this.setState({
-                    show:true,
-                    showThumbnail:true,
-                    thumbnailKey:'thumbnail'
-                });break;
-            case 'noShowThumbnail':
-                this.setState({
-                    show:true,
-                    showThumbnail:false,
-                    thumbnailKey:undefined
-                });break;
-            default :
-                this.setState({
-                    show:true,
-                    showThumbnail:true,
-                    thumbnailKey:undefined
-                });break;
-        }
+    toggleThumbnail(){
+        this.setState({
+            showThumbnail:!this.state.showThumbnail
+        });
+    }
+    toggleModifier(){
+        this.setState({
+            imgModify:!this.state.imgModify
+        });
     }
     render() {
-        let {show,showThumbnail,thumbnailKey} = this.state;
         let imgList=[
             {
                 profile:'1叔2015上传',
@@ -81,24 +72,47 @@ export default class SliderDemo extends Component {
                 description:'熊猫野外生存',
                 thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'
             }
-        ];
-        let pageNum=4;
-        let file ={
-            name:'a',
-            url:'http://i3.hoopchina.com.cn/blogfile/201612/19/BbsImg148212541679849_750x418.jpg@60Q.jpg'
-        };
+        ],
+            pageNum=5,
+            {showThumbnail,imgModify}=this.state;
         return (
             <div>
-                <Button success onClick={(e)=>this.handleSlider.call(this)} >点击出现照片展示插件(缩略图默认)</Button>
-                <Button success className='mg-left-10' onClick={(e)=>this.handleSlider.call(this,'showDefinedThumbnail')}>点击出现照片展示插件(缩略图自定义)</Button>
-                <Button className='mg-left-10' success onClick={(e)=>this.handleSlider.call(this,'noShowThumbnail')}>点击出现照片展示插件(无缩略图)</Button>
-                <ImgSlider  show={show} showThumbnail={showThumbnail}
-                            imgList={imgList}
-                            profileKey={'profile'} urlKey={'url'}  titleKey={'description'} thumbnailKey={thumbnailKey}
-                            pageNum={pageNum}
-                            cssModify={true}
-                            imgModify={true}
-                    />
+                <DemoLayout title="照片浏览插件">
+                    <DemoItem title="">
+                        <CodeShow>
+                            <Code code={getFile('slider')}>
+                            </Code>
+                        </CodeShow>
+                        <DemoShow>
+                            <Grid>
+                                <Row>
+                                    <Col sm={6}>
+                                        <ImgSlider  show={true}
+                                                    showThumbnail={showThumbnail}
+                                                    imgList={imgList}
+                                                    profileKey={'profile'}
+                                                    urlKey={'url'}
+                                                    titleKey={'description'}
+                                                    thumbnailKey={'thumbnail'}
+                                                    pageNum={pageNum}
+                                                    imgModify={imgModify}
+                                            />
+                                    </Col>
+                                    <Col sm={6}>
+                                        <Button block success
+                                                onClick={::this.toggleThumbnail} >
+                                            {(showThumbnail?'隐藏':'显示')+'缩略图'}
+                                        </Button>
+                                        <Button block style={{marginTop:'10px'}} success
+                                                onClick={::this.toggleModifier} >
+                                            {(imgModify?'隐藏':'显示')+'缩放控件'}
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Grid>
+                        </DemoShow>
+                    </DemoItem>
+                </DemoLayout>
             </div>
 
         );

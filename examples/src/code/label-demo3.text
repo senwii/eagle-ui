@@ -1,0 +1,23 @@
+import React,{Component} from 'react';
+import {Label,LabelGroup} from 'eagle-ui';
+export default class Demo extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            <LabelGroup egType="simple"
+                        activeCallback={
+                            function(value,text,target,active){
+                                console.log(value,text,target,active);
+                            }}>
+                <Label value="all">全部</Label>
+                <Label value="luwan">卢湾区</Label>
+                <Label value="xuhui">徐汇区</Label>
+                <Label value="jinan">静安区</Label>
+                <Label value="changning">长宁区</Label>
+                <Label value="minhang">闵行区</Label>
+            </LabelGroup>
+        );
+    }
+};

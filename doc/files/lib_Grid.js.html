@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/Grid.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -423,9 +425,10 @@ var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
  * &lt;h5&gt;eagle-ui主要栅格化布局组件&lt;/h5&gt;
  * &lt;pre&gt;&lt;code&gt;
  *     &amp;#60;Grid&amp;#62;//定义栅格
- *         &amp;#60;Col sm={6}&amp;#62;//定义一列，总长度为12份
- *             &amp;#60;Row&amp;#62; &amp;#60;/Row&amp;#62;//定义一行
- *         &amp;#60;/Col&amp;#62;
+ *         &amp;#60;Row&amp;#62;//定义一行
+ *              &amp;#60;Col sm={6}&amp;#62;//定义一列，总长度为12份
+ *              &amp;#60;/Col&amp;#62;
+ *         &amp;#60;/Row&amp;#62;
  *     &amp;#60;/Grid&amp;#62;
  * &lt;/code&gt;&lt;/pre&gt;
  *
@@ -445,9 +448,7 @@ var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
  * @module grid(布局)
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo Demo1.js {源码}
- * @show true
+ * @demo #/Layout|layout.js
  * */
 
 var Grid = (function (_Component) {
@@ -496,5 +497,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

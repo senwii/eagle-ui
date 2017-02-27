@@ -49,8 +49,7 @@ import Icon from './utils/Icons';
  * @module form(表单)
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo input.js {源码}
+ * @demo #/input|input.js
  * @show true
  * */
 export default class Input extends Component{

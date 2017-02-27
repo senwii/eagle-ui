@@ -8,6 +8,7 @@ var WebpackDevServer = require("webpack-dev-server");
 var open = require('gulp-open');
 var less=require('gulp-less');
 var babel = require('gulp-babel');
+require('shelljs/global');
 
 var error = function(e){
   console.error(e);
@@ -81,6 +82,8 @@ gulp.task('demo-webpack', function(done) {
   }).
   listen(devPort, "127.0.0.1", function (err) {
     if (err) throw new gutil.PluginError("webpack-dev-server", err);
+    // cp meituan.css to examples/js
+    cp('-u', 'dist/meituan.css', 'examples/js/');
     gutil.log("[webpack-dev-server]", "http://127.0.0.1:" + devPort + "/webpack-dev-server/index.html");
   });
 });
@@ -156,7 +159,7 @@ gulp.task('watch', function () {
   gulp.watch(['./lib/**/*.*'], ['demo']);
 });
 gulp.task('skin', function () {
-  gulp.src(['src/less/skin.less']) //多个文件以数组形式传入
+  gulp.src(['src/less/skin.less', 'src/less/meituan.less']) //多个文件以数组形式传入
       .pipe(less())
       .pipe(gulp.dest('dist'));
 });

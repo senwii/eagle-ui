@@ -2,10 +2,11 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component} from 'react';
-
 import {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';
+import Code, {getFile} from '../libs/Code';
 
-let SearchSec= class SearchSec extends Component{
+export class SearchSec extends Component{
     constructor(props,context){
         super(props,context);
     }
@@ -14,26 +15,23 @@ let SearchSec= class SearchSec extends Component{
             <Grid>
                 <Row>
                     <Col sm={5}>
-                        <Select  callback={function(val){alert(val)}}>
-                            <item> 北京</item>
-                            <item> 上海</item>
-                            <item> 南京</item>
+                        <Select callback={function(val){alert(val)}}>
+                            <item>北京</item>
+                            <item>上海</item>
+                            <item>南京</item>
                         </Select>
                     </Col>
                     <Col sm={5}>
-                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}>
-                        </Search>
+                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>
                     </Col>
-                    <Col sm={2}>
-                    </Col>
+                    <Col sm={2}/>
                 </Row>
             </Grid>
 
         )
     }
 }
-let FilterSec= class FilterSec extends Component{
-
+export class FilterSec extends Component{
     constructor(props,context){
         super(props,context);
     }
@@ -73,16 +71,16 @@ let FilterSec= class FilterSec extends Component{
                     <Label>杨浦区</Label>
                     <Label>宝山区</Label>
                 </LabelGroup>
-
             </div>
         )
     }
 };
-var page=1;
-let CardListPanel = class CardListPanel extends Component{
-
+export class CardListPanel extends Component{
     constructor(props,context){
         super(props,context);
+        this.state = {
+            page: 1
+        }
     }
     show(){
         console.debug(1);
@@ -93,44 +91,31 @@ let CardListPanel = class CardListPanel extends Component{
                 <PanelHeader>
                     <CheckboxGroup>
                         <Input label="仅公海"  type="checkbox" checked />
-                        <Input lebal="冻结中"  type="checkbox" />
-                        <Input label="团购在线" type="checkbox"  />
-                        <Input label="闪惠在线" type="checkbox"  />
-                        <Input label="预订在线" type="checkbox"  />
+                        <Input lebal="冻结中"  type="checkbox"/>
+                        <Input label="团购在线" type="checkbox"/>
+                        <Input label="闪惠在线" type="checkbox"/>
+                        <Input label="预订在线" type="checkbox"/>
                     </CheckboxGroup>
                 </PanelHeader>
                 <PanelContent padding={false}>
                     <List>
                         <Item className="shop-info-item">
-                            <h1 className='shop-card-title inline-block'>
-                                宴遇 (晶品店)
-                            </h1>
-                            <Label error radius> 团</Label>
+                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>
+                            <Label error radius>团</Label>
                             <div className="shop-info-item-text">
                                 <Grid>
                                     <Row>
-                                        <Col sm={6}>
-                                            shopid: 22936478 rotateid: 107126470
-                                        </Col>
-                                        <Col sm={6}>
-                                            月佣金基数: 3000.00
-                                        </Col>
+                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>
+                                        <Col sm={6}>月佣金基数: 3000.00</Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={6}>
-                                            浏览量：151195
-                                        </Col>
-                                        <Col sm={6}>
-                                            门店市场份额:100.00%          战区市场份额: 94.63%
-                                        </Col>
+                                        <Col sm={6}>浏览量：151195</Col>
+                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>
                                     </Row>
                                     <Row>
-                                        <Col end sm={6}>
-                                            美食其他 | 静安区 愚园路68号晶品中心4楼
-                                        </Col>
+                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>
                                     </Row>
                                 </Grid>
-
                             </div>
                             <div className="shop-info-item-footer">
                                 <Grid>
@@ -149,37 +134,23 @@ let CardListPanel = class CardListPanel extends Component{
                             </div>
                         </Item>
                         <Item className="shop-info-item">
-                            <h1 className='shop-card-title inline-block'>
-                                宴遇 (晶品店)
-                            </h1>
+                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>
                             <Label error radius> 团</Label>
                             <div className="shop-info-item-text">
                                 <Grid>
                                     <Row>
-                                        <Col sm={6}>
-                                            shopid: 22936478 rotateid: 107126470
-                                        </Col>
-                                        <Col sm={6}>
-                                            月佣金基数: 3000.00
-                                        </Col>
+                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>
+                                        <Col sm={6}>月佣金基数: 3000.00</Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={6}>
-                                            浏览量：151195
-                                        </Col>
-                                        <Col sm={6}>
-                                            门店市场份额:100.00%          战区市场份额: 94.63%
-                                        </Col>
+                                        <Col sm={6}>浏览量：151195</Col>
+                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={6}>
-                                            美食其他 | 静安区 愚园路68号晶品中心4楼
-                                        </Col>
-                                        <Col sm={6}>
-                                        </Col>
+                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>
+                                        <Col sm={6}></Col>
                                     </Row>
                                 </Grid>
-
                             </div>
                             <div className="shop-info-item-footer">
                                 <Grid>
@@ -198,37 +169,23 @@ let CardListPanel = class CardListPanel extends Component{
                             </div>
                         </Item>
                         <Item className="shop-info-item">
-                            <h1 className='shop-card-title inline-block'>
-                                宴遇 (晶品店)
-                            </h1>
-                            <Label error radius> 团</Label>
+                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>
+                            <Label error radius>团</Label>
                             <div className="shop-info-item-text">
                                 <Grid>
                                     <Row>
-                                        <Col sm={6}>
-                                            shopid: 22936478 rotateid: 107126470
-                                        </Col>
-                                        <Col sm={6}>
-                                            月佣金基数: 3000.00
-                                        </Col>
+                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>
+                                        <Col sm={6}>月佣金基数: 3000.00</Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={6}>
-                                            浏览量：151195
-                                        </Col>
-                                        <Col sm={6}>
-                                            门店市场份额:100.00%          战区市场份额: 94.63%
-                                        </Col>
+                                        <Col sm={6}>浏览量：151195</Col>
+                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={6}>
-                                            美食其他 | 静安区 愚园路68号晶品中心4楼
-                                        </Col>
-                                        <Col sm={6}>
-                                        </Col>
+                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>
+                                        <Col sm={6}></Col>
                                     </Row>
                                 </Grid>
-
                             </div>
                             <div className="shop-info-item-footer">
                                 <Grid>
@@ -246,28 +203,45 @@ let CardListPanel = class CardListPanel extends Component{
                                 </Grid>
                             </div>
                         </Item>
-
                     </List>
                 </PanelContent>
                 <PanelFooter>
-                    <Paging currentPage={page} total={1024} />
+                    <Paging currentPage={this.state.page} total={1024} />
                 </PanelFooter>
             </Panel>
-
         );
     }
 };
 
-export default class Test extends Component{
+export default class Layout extends Component{
     render(){
         return (
-            <Panel className='page-Panel'>
-                <PanelContent>
-                    <SearchSec />
-                    <FilterSec />
-                    <CardListPanel />
-                </PanelContent>
-            </Panel>
+            <DemoLayout title="布局样式">
+                <DemoItem title="搜索">
+                    <CodeShow>
+                        <Code code={getFile('layout-search')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <SearchSec />
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="过滤">
+                    <CodeShow>
+                        <Code code={getFile('layout-filter')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <FilterSec />
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="卡片列表">
+                    <CodeShow>
+                        <Code code={getFile('layout-card')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <CardListPanel />
+                    </DemoShow>
+                </DemoItem>
+            </DemoLayout>
         );
     }
 }

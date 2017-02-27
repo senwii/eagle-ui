@@ -1,3 +1,7 @@
+require('es5-shim');
+require('es5-shim/es5-sham');
+require('console-polyfill');
+require('core-js/es6/object');
 import React, { Component ,PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import { Redirect, Router, Route } from 'react-router';
@@ -7,7 +11,7 @@ import {Head,Footer} from 'gfs-head'
 import Calendar from './modules/calendar.js';
 import Button from './modules/button';
 import Crumb from './modules/crumb';
-import Demo1 from './modules/demo1';
+import Layout from './modules/layout';
 import Demo2 from './modules/demo2';
 import Detail from './modules/detail.js';//增加商户详情页面demo
 import Dialog from './modules/dialog';
@@ -27,8 +31,10 @@ import Suggestion from './modules/suggestion.js';
 import Icon from './modules/icons.js';
 import TreeMenu from './modules/treeMenu.js';
 import DropTree from './modules/dropTree.js';
-//require('../less/public.less');
-import css from '../../src/less/eagle-ui.less';
+import Theme from './modules/theme'
+
+// import '../../src/less/eagle-ui.less';
+// import '../../src/less/skin.less'
 
 
 let Index = class Index extends Component{
@@ -62,7 +68,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Calendar" name="Calendar" component={Calendar} />
                 <Route path="/Button" name="Button" component={Button} />
                 <Route path="/Crumb" name="Crumb" component={Crumb} />
-                <Route path="/Demo1" name="Demo1" component={Demo1} />
+                <Route path="/Layout" name="Layout" component={Layout} />
                 <Route path="/Demo2" name="Demo2" component={Demo2} />
                 <Route path="/Detail" name="Detail" component={Detail} />
                 <Route path="/Slider" name="Slider" component={SliderDemo} />
@@ -82,6 +88,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/icon" name="Icon" component={Icon} />
                 <Route path="/TreeMenu" name="TreeMenu" component={TreeMenu} />
                 <Route path="/DropTree" name="DropTree" component={DropTree} />
+                <Route path="/Theme" name="Theme" component={Theme} />
                 <Redirect from="/" to="/index" />
             </Router>
         );

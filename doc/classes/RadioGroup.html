@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>RadioGroup - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -404,7 +406,7 @@
         如：<code>defaultChecked="石榴"</code>
     </li>
     <li>getValueCallback:获取选中值的回调函数<br>
-        如：<code>getValueCallback={a()};a为对应的方法</code>
+        如：<code>getValueCallback={function(val){alert(val)}}</code>
     </li>
 
 </ul></div>
@@ -414,12 +416,12 @@
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
                     <ul class="index-list properties extends">
                         
@@ -442,7 +444,7 @@
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 
                     <ul class="index-list events extends">
                         
@@ -462,13 +464,13 @@
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#event">Events</a></li>
+                <li class=""><a data-toggle="tab" href="#event">事件</a></li>
             
         </ul>
     
@@ -555,225 +557,6 @@
     
 
     
-        <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
-                
-            </ul>
-
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
- */
-import React,{Component,PropTypes} from &#39;react&#39;;
-
-import querystring from &#39;querystring&#39;;
-
-import {Select,FormGroup,CalendarPanel,CheckboxGroup,RadioGroup,Grid,Row,Col,PanelContent,Panel,Input} from &#39;../../../src/index.js&#39;;
-
-
-let Demo= class Demo extends Component{
-    constructor(props, context) {
-        super(props, context);
-
-        this.state = {
-            show:false
-        }
-    };
-
-    focus(){
-        this.setState({
-            show:true
-        });
-    }
-    blur(){
-        this.setState({
-            show:false
-        });
-    }
-    getValueCallback(val){
-        alert(val);
-        console.dir(val);
-    }
-
-    getValue(val){
-        alert(val);
-    }
-
-    change(e){
-        alert(e.target.value);
-        console.dir(e.target.value);
-    }
-
-    render(){
-
-        return (
-            &lt;Panel&gt;
-                &lt;PanelContent&gt;
-                &lt;Grid&gt;
-                    &lt;Row&gt;
-                        &lt;Col sm={12}&gt;&lt;Input name="test" id="test" placeholder="请输入" icon="calendar"  /&gt;&lt;/Col&gt;
-                        &lt;Col sm={12}&gt;
-                            &lt;CheckboxGroup&gt;
-                                &lt;Input  type="checkbox" checked  disabled={true}  /&gt;
-                                &lt;Input  type="checkbox"  disabled={true}   /&gt;
-                                &lt;Input  type="checkbox" getValueCallback={::this.getValue}  value="ccc"  /&gt;
-                                &lt;Input  type="checkbox" checked onChange={::this.change} value="bbb"  /&gt;
-                            &lt;/CheckboxGroup&gt;
-                        &lt;/Col&gt;
-                        &lt;Col sm={12}&gt;
-                            &lt;Col sm={6}&gt;
-                                &lt;RadioGroup defaultChecked="石榴" name="radio-test"&gt;
-                                    &lt;Input  type="radio"  label="石榴" value="石榴" /&gt;
-                                    &lt;Input  type="radio"  label="橘子" value="橘子"  /&gt;
-                                    &lt;Input  type="radio"  label="苹果" value="苹果" /&gt;
-                                &lt;/RadioGroup&gt;
-                            &lt;/Col&gt;
-                            &lt;Col sm={6}&gt;
-                                &lt;RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={this.getValueCallback}&gt;
-                                    &lt;Input  type="radio"  label="大白菜" value="大白菜" /&gt;
-                                    &lt;Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  /&gt;
-                                    &lt;Input  type="radio"  label="猪肉" value="猪肉" /&gt;
-                                    &lt;Input  type="radio"  label="牛肉" value="牛肉" /&gt;
-                                    &lt;Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} /&gt;
-                                &lt;/RadioGroup&gt;
-                            &lt;/Col&gt;
-                        &lt;/Col&gt;
-                    &lt;/Row&gt;
-                    &lt;Row&gt;
-                        &lt;Col&gt;&lt;h4&gt;表单&lt;/h4&gt;&lt;/Col&gt;
-                    &lt;/Row&gt;
-                    &lt;Row&gt;
-                        &lt;Col&gt;
-                            &lt;FormGroup&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                    &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                    &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={2}&gt;性别&lt;/Col&gt;
-                                    &lt;Col sm={10}&gt;
-                                        &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
-                                            &lt;Input  type="radio"  label="男" value="男" /&gt;
-                                            &lt;Input  type="radio"  label="女" value="女"  /&gt;
-                                        &lt;/RadioGroup&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
-                                    &lt;Col sm={10}&gt;
-                                        &lt;CheckboxGroup&gt;
-                                            &lt;Input  type="checkbox" label="足球" checked   /&gt;
-                                            &lt;Input  type="checkbox" label="篮球"    /&gt;
-                                            &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
-                                            &lt;Input  type="checkbox" label="乒乓球"    /&gt;
-                                        &lt;/CheckboxGroup&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
-                                    &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
-                                    &lt;FormGroup&gt;
-                                        &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
-                                        &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
-                                    &lt;/FormGroup&gt;
-                                    &lt;FormGroup&gt;
-                                        &lt;Col sm={13}&gt;省份证&lt;/Col&gt;
-                                        &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入省份证"   /&gt;&lt;/Col&gt;
-                                    &lt;/FormGroup&gt;
-                                &lt;/Row&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
-                                    &lt;Col sm={10}&gt;
-                                        &lt;Select placeholder="请选择城市" &gt;
-                                            &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
-                                            &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
-                                            &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
-                                        &lt;/Select&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                            &lt;/FormGroup&gt;
-                        &lt;/Col&gt;
-                    &lt;/Row&gt;
-                &lt;/Grid&gt;
-                &lt;/PanelContent&gt;
-            &lt;/Panel&gt;
-        );
-    }
-};
-
-
-export default class InputCls extends Component{
-    render(){
-        return (
-            &lt;Demo /&gt;
-        );
-    }
-}</code></pre>
-</div>
-            </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
-        </div>
-    
 </div>
 
                 </div>
@@ -784,7 +567,7 @@ export default class InputCls extends Component{
 
         
             <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">属性</h2>
 
                 
                     <div id="property_defaultChecked" class="property item">
@@ -810,7 +593,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_RadioGroup.js.html#l76"><code>lib&#x2F;RadioGroup.js:76</code></a>
+        <a href="../files/lib_RadioGroup.js.html#l74"><code>lib&#x2F;RadioGroup.js:74</code></a>
         
         </p>
 
@@ -858,7 +641,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_RadioGroup.js.html#l69"><code>lib&#x2F;RadioGroup.js:69</code></a>
+        <a href="../files/lib_RadioGroup.js.html#l67"><code>lib&#x2F;RadioGroup.js:67</code></a>
         
         </p>
 
@@ -888,7 +671,7 @@ export default class InputCls extends Component{
 
         
             <div id="event" class="tab-pane">
-                <h2 class="off-left">Events</h2>
+                <h2 class="off-left">事件</h2>
 
                 
                     <div id="event_getValueCallback" class="events item">
@@ -914,7 +697,7 @@ export default class InputCls extends Component{
             
         
         
-        <a href="../files/lib_RadioGroup.js.html#l83"><code>lib&#x2F;RadioGroup.js:83</code></a>
+        <a href="../files/lib_RadioGroup.js.html#l81"><code>lib&#x2F;RadioGroup.js:81</code></a>
         
         </p>
 
@@ -931,8 +714,26 @@ export default class InputCls extends Component{
         <div class="params">
             <h4>Parameters:</h4>
 
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">null</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+                    </div>
+                    
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
             
                 <tr class="param">
                     
@@ -975,5 +776,6 @@ export default class InputCls extends Component{
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

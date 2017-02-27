@@ -1,0 +1,17 @@
+import React, { Component ,PropTypes} from 'react';
+import {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';
+export default class ButtonDemo4 extends Component{
+    render(){
+        return (
+            <div>
+                <Button egStyle="warning" hollow>警告</Button>
+                <Button egStyle="success" hollow>成功</Button>
+                <Button egStyle="danger" hollow>危险</Button>
+                <Button egStyle="error" hollow>错误</Button>
+                <Button egStyle="primary" hollow>primary</Button>
+                <Button egStyle="info" hollow>info</Button>
+                <Button egStyle="default" hollow>default</Button>
+            </div>
+        );
+    }
+}

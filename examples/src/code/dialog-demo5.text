@@ -1,0 +1,18 @@
+import React,{Component} from 'react';
+import {Button,Dialog} from 'eagle-ui';
+
+export default class DialogDemo1 extends Component{
+    constructor(props, context) {
+        super(props, context);
+    }
+    showAlert(){
+        Dialog.alert('哈哈，我是alert');
+    }
+    render() {
+        return (
+            <div>
+                <Button onClick={::this.showAlert} className="mg-right-15">点击我alert</Button>
+            </div>
+        );
+    }
+};

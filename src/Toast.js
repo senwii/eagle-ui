@@ -16,8 +16,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo toast.js {源码}
+ * @demo #/toast|toast.js
  * @show true
  * */
 export default

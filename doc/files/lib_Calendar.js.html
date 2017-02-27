@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/Calendar.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -452,8 +454,7 @@ var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo calendar.js {源码}
+ * @demo #/calendar|calendar.js
  * @show true
  * */
 
@@ -529,14 +530,22 @@ var Calendar = (function (_Component) {
         this.windowType = [&#x27;getCalendar&#x27;, &#x27;getMonths&#x27;, &#x27;getYears&#x27;];
 
         var defaultDate = this.props.defaultDate || new Date();
+        this.calendarId = this.uniqueId();
         this.state = {
             currentDate: defaultDate,
             selectedDate: defaultDate,
             show: false,
             year: typeof defaultDate != &#x27;string&#x27; ? defaultDate.getFullYear() : new Date(defaultDate).getFullYear(),
-            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0]
+            windowType: this.windowType[!isNaN(this.props.windowType) ? this.props.windowType : 0],
+            posStyle: {},
+            // extra params form parent component
+            parentExtra: {}
         };
     }
+
+    Calendar.prototype.uniqueId = function uniqueId() {
+        return (this.classPrefix || &#x27;unique&#x27;) + &#x27;_&#x27; + (new Date().getTime() + (Math.random() * 1e10).toFixed(0));
+    };
 
     Calendar.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
         /*let defaultDate = nextProps.defaultDate;
@@ -696,7 +705,6 @@ var Calendar = (function (_Component) {
                 this.getDates(arr, selectedDate, defaultDate)
             ));
         }
-
         return dom;
     };
 
@@ -1003,6 +1011,8 @@ var Calendar = (function (_Component) {
     };
 
     Calendar.prototype.switchMonth = function switchMonth(type) {
+        var _this3 = this;
+
         var selected = this.getSelectedDate(),
             year = selected.getFullYear(),
             month = selected.getMonth();
@@ -1025,6 +1035,9 @@ var Calendar = (function (_Component) {
             });
             typeof type != &#x27;string&#x27; &amp;&amp; this.switchWindow(0);
         }
+        setTimeout(function () {
+            _this3.updateDirectionTop();
+        }, 0);
     };
 
     Calendar.prototype.getSelectedDateSplit = function getSelectedDateSplit() {
@@ -1037,6 +1050,40 @@ var Calendar = (function (_Component) {
         return { year: year, month: month, date: date };
     };
 
+    // update direction
+
+    Calendar.prototype.updateDirection = function updateDirection() {
+        var style = arguments.length &lt;= 0 || arguments[0] === undefined ? {} : arguments[0];
+        var extra = arguments.length &lt;= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+        this.setState({
+            parentExtra: extra,
+            posStyle: style
+        });
+    };
+
+    Calendar.prototype.updateDirectionTop = function updateDirectionTop() {
+        var posStyle = this.state.posStyle;
+        var _state$parentExtra = this.state.parentExtra;
+        var _state$parentExtra$isUp = _state$parentExtra.isUp;
+        var isUp = _state$parentExtra$isUp === undefined ? false : _state$parentExtra$isUp;
+        var dir = _state$parentExtra.dir;
+        var inputHeight = _state$parentExtra.inputHeight;
+
+        console.log(&#x27;updateDirectionTop run&#x27;);
+        if (isUp) {
+            var panelHeight = this.refs[this.calendarId].clientHeight;
+            if ([&#x27;left&#x27;, &#x27;right&#x27;].indexOf(dir) !== -1) {
+                posStyle.top = &#x27;-&#x27; + (panelHeight - inputHeight) + &#x27;px&#x27;;
+            } else {
+                posStyle.top = &#x27;-&#x27; + (panelHeight + 5) + &#x27;px&#x27;;
+            }
+            this.setState({
+                posStyle: posStyle
+            });
+        }
+    };
+
     Calendar.prototype.render = function render() {
         var windowType = this.props.windowType;
 
@@ -1044,7 +1091,9 @@ var Calendar = (function (_Component) {
         //!isNaN(windowType) &amp;&amp;this.state.windowType==this.windowType[0] ?this.windowType[windowType] :this.state.windowType;
         return _react2[&#x27;default&#x27;].createElement(
             &#x27;div&#x27;,
-            { className: _classnames5[&#x27;default&#x27;](this.getClassName(&#x27;container&#x27;), this.getClassName(this.props.show ? &#x27;show&#x27; : &#x27;hide&#x27;, false)) },
+            { style: this.state.posStyle,
+                ref: this.calendarId,
+                className: _classnames5[&#x27;default&#x27;](this.getClassName(&#x27;container&#x27;), this.getClassName(this.props.show ? &#x27;show&#x27; : &#x27;hide&#x27;, false)) },
             _react2[&#x27;default&#x27;].createElement(
                 &#x27;div&#x27;,
                 { className: &#x27;eg-calendar-box&#x27; },
@@ -1096,5 +1145,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

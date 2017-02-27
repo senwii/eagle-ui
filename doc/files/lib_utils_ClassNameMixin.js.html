@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/utils/ClassNameMixin.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -408,13 +410,13 @@ exports[&#x27;default&#x27;] = function (obj) {
     obj.prototype.getClassNamespace = function () {
         return consts.classNameNamespace;
     };
-    /**
+    /*
      * 给className添加前缀后返回className
      * @method getClassName
      * @param name {String} 从该字符串中去查找
      * @param pre {Boolean} 是否添加Component中定义的class前缀，默认添加
      * @return {String}
-     * */
+     */
     obj.prototype.getClassName = function (name) {
         var _this2 = this;
 
@@ -438,13 +440,13 @@ exports[&#x27;default&#x27;] = function (obj) {
         }
         return &#x27;&#x27;;
     };
-    /**
+    /*
      * 验证props中的样式是否符合规则
      * @method getClassNames
      * @param props {Object} 从该对象中去查找
      * @param pre {Boolean} 是否添加Component中定义的class前缀，默认添加
      * @return {String}
-     * */
+     */
     obj.prototype.getClassNames = function (props) {
         var pre = arguments.length &lt;= 1 || arguments[1] === undefined ? true : arguments[1];
 
@@ -456,12 +458,12 @@ exports[&#x27;default&#x27;] = function (obj) {
         }
         return clazz;
     };
-    /**
+    /*
      * 给多个className添加前缀后返回
      * @method getClassNamesForArguments
      * @param arguments {Arguments String} 多个class参数
      * @return {String}
-     * */
+     */
     obj.prototype.getClassNamesForArguments = function () {
         var arg = arguments;
         var arr = [];
@@ -477,13 +479,13 @@ exports[&#x27;default&#x27;] = function (obj) {
 
         return arr.join(&#x27; &#x27;);
     };
-    /**
+    /*
      * 设置css类名前缀
      * @method setPrefix
      * @param name{String} class名字
      * @param pre{Boolean} 是否添加前缀
      * @return {String}
-     * */
+     */
     obj.prototype.setPrefix = function (name) {
         var pre = arguments.length &lt;= 1 || arguments[1] === undefined ? true : arguments[1];
 
@@ -493,41 +495,41 @@ exports[&#x27;default&#x27;] = function (obj) {
         if (pre &amp;&amp; classPrefix) {
             str += &#x27;-&#x27; + classPrefix;
         }
-        if (name != classPrefix) {
+        if (name &amp;&amp; name != classPrefix) {
             str += &#x27;-&#x27; + name;
         }
 
         return str;
     };
 
-    /**
+    /*
      * 检查元素是否存在样式名
      * @method hasClass
      * @param obj {Object} 元素
      * @param cls {String} 需要检查的样式名
      * @return {Boolean}
-     * */
+     */
     obj.prototype.hasClass = function () {
         return arguments[0].className.match(new RegExp(&#x27;(\\s|^)&#x27; + arguments[1] + &#x27;(\\s|$)&#x27;));
     };
 
-    /**
+    /*
      * 给元素增加一个样式名
      * @method addClass
      * @param obj {Object} 元素
      * @param cls {String} 样式名
-     * */
+     */
     obj.prototype.addClass = function (obj, cls) {
         if (!this.hasClass(obj, cls)) {
             obj.className = (obj.className + &quot; &quot; + cls).replace(/\s{2,}/g, &quot; &quot;);
         }
     };
-    /**
+    /*
      * 给元素删除一个样式名
      * @method removeClass
      * @param obj {Object} 元素
      * @param cls {String} 样式名
-     * */
+     */
     obj.prototype.removeClass = function () {
         if (this.hasClass(arguments[0], arguments[1])) {
             var reg = new RegExp(&#x27;(\\s|^)&#x27; + arguments[1] + &#x27;(\\s|$)&#x27;);
@@ -551,5 +553,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

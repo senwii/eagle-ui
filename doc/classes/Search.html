@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>Search - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -400,17 +402,17 @@
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 
             </div>
         </div>
@@ -419,7 +421,7 @@
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
             
@@ -504,220 +506,6 @@
     
 
     
-        <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
-                
-            </ul>
-
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by panqianjin on 15/11/4.
- */
-import React,{Component,PropTypes}  from &#39;react&#39;;
-import Suggestion from &#39;../../../src/Suggestion.js&#39;;
-import Button from &#39;../../../src/Button.js&#39;;
-import Grid from &#39;../../../src/Grid.js&#39;;
-import Row from &#39;../../../src/Row.js&#39;;
-import Col from &#39;../../../src/Col.js&#39;;
-import Item from &#39;../../../src/Item.js&#39;;
-let Demo= class Demo extends Component{
-
-    static defaultProps = {
-        input: true,
-        keys:&#39;bei&#39;
-    }
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            input: this.props.input
-        }
-    }
-
-    query(){
-        //可以返回ajax
-        return [
-            {
-                key:&#39;上海&#39;,
-                value:&#39;shanghai&#39;,
-                subKey:&#39;10个区&#39;
-            },
-            {
-                key:&#39;北京&#39;,
-                value:&#39;beijing&#39;,
-                subKey:&#39;10个区&#39;
-            },
-            {
-                key:&#39;哈尔滨&#39;,
-                value:&#39;haerbin&#39;,
-                subKey:&#39;5010个区&#39;
-            },
-            {
-                key:&#39;南京&#39;,
-                value:&#39;nanjing&#39;,
-                subKey:&#39;10个区&#39;
-            },
-            {
-                key:&#39;南宁&#39;,
-                value:&#39;nanning&#39;,
-                subKey:&#39;120个区&#39;
-            },
-            {
-                key:&#39;天津&#39;,
-                value:&#39;tianjing&#39;,
-                subKey:&#39;312310个区&#39;
-            },
-            {
-                key:&#39;深圳&#39;,
-                value:&#39;shenzhen&#39;,
-                subKey:&#39;101个区&#39;
-            }
-        ];
-    }
-
-    getValue(value,key,type){
-        let stype = {
-            &#39;init&#39;:&#39;加载时调用&#39;,
-            &#39;enter&#39;:&#39;回车时调用&#39;,
-            &#39;click&#39;:&#39;点击每一项元素时调用&#39;
-        };
-        document.getElementById(&#39;showtip&#39;).innerHTML = <code>&amp;lt;strong&amp;gt;${stype[type]}&amp;lt;&#x2F;strong&amp;gt;的值为：&amp;lt;b&amp;gt;&quot;key&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${key}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;,&amp;lt;b&amp;gt;&quot;value&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${value}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;</code>;
-    }
-
-    render(){
-        return (
-            &lt;Grid fluid&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;div id="showtip" className="color-info"&gt;&lt;/div&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={10} layer padding={0}&gt;
-                        &lt;Suggestion
-                            getValueCallback={::this.getValue}
-                            queryCallback={::this.query}
-                            icon="search"
-                            iconDirection="left"
-                            placeholder="请输入key搜索" /&gt;
-                    &lt;/Col&gt;
-                    &lt;Col sm={2} end padding={0}&gt;
-                        &lt;Button type="submit"&gt;查询&lt;/Button&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-
-                &lt;Row&gt;
-                    &lt;Col sm={10} layer end&gt;
-                        &lt;Row&gt;
-                            &lt;Col sm={10} end&gt;
-                                &lt;Suggestion
-                                    getValueCallback={::this.getValue}
-                                    queryCallback={::this.query}
-                                    icon="search"
-                                    iconDirection="left"
-                                    value="上海"
-                                    placeholder="请输入key搜索" /&gt;
-                            &lt;/Col&gt;
-                        &lt;/Row&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={10} layer&gt;
-                        &lt;Row&gt;
-                            &lt;Col sm={10} end&gt;
-                                &lt;Suggestion
-                                    getValueCallback={::this.getValue}
-                                    icon="search"
-                                    iconDirection="left"
-                                    placeholder="请输入测、测试、试进行搜索"&gt;
-                                    &lt;Item value="测试测试" subKey="222222"&gt;
-                                        测试测试
-                                    &lt;/Item&gt;
-                                    &lt;Item value="测试" subKey="达到"&gt;
-                                        测试
-                                    &lt;/Item&gt;
-                                    &lt;Item value="试验" subKey="dsadsad"&gt;
-                                        试验
-                                    &lt;/Item&gt;
-                                    &lt;Item value="测验"&gt;
-                                        测验
-                                    &lt;/Item&gt;
-                                    &lt;Item value="检测" &gt;
-                                        检测
-                                    &lt;/Item&gt;
-                                &lt;/Suggestion&gt;
-                            &lt;/Col&gt;
-                        &lt;/Row&gt;
-                    &lt;/Col&gt;
-                    &lt;Col sm={2}&gt;请输入测、测试、试进行搜索&lt;/Col&gt;
-                &lt;/Row&gt;
-            &lt;/Grid&gt;
-        );
-    }
-}
-
-export default Demo;</code></pre>
-</div>
-            </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
-        </div>
-    
 </div>
 
                 </div>
@@ -743,5 +531,6 @@ export default Demo;</code></pre>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

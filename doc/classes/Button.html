@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>Button - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -392,53 +394,11 @@
 </div>
  <div class="well well-small sign-left3">
       <div class="stdoc-code"><ul>
-<li>按钮组件提供所有properties中内置的颜色及字体大小样式供选择<br/></li>
-<li>也可以自定义行内样式和className名字定义UI展示<br/></li>
-<li>支持disabled, active, enable等属性定义<br/></li>
+<li>按钮组件提供内置样式<br/></li>
+<li>也可以自定义行内样式和className<br/></li>
+<li>支持disabled, active等属性定义<br/></li>
 <li>可以通过egSize 设置大小，可选xs、sm、lg。<br/></li>
-<li>通过egStyle选择按钮颜色，可选error、warning、danger、link、gray、white、success
-主要属性和接口：<ul>
- <li>egSize:按钮颜色<br>
-     如：<code>
-        Button radius egSize="sm" egStyle="warning"
-     </code>
- </li>
- <li>egStyle:按钮的大小。分别为xs、sm、lg，默认sm<br>
-     如：<code>
-        Button radius egSize="sm" egStyle="warning"
-     </code>
- </li>
- <li>disabled:按钮禁用状态，默认false<br>
-     如：<code>
-        Button radius disabled
-     </code>
- </li>
- <li>enable:按钮的可用状态，默认true<br>
-     如：<code>
-        Button radius enable
-     </code>
- </li>
- <li>active:按钮选中状态，默认false<br>
-     如：<code>
-        Button radius active
-     </code>
- </li>
-  <li>radius:按钮圆角状态<br>
-     如：<code>
-        Button radius
-     </code>
- </li>
- <li>round:按钮椭圆角<br>
-     如：<code>
-        Button round
-     </code>
- </li>
- <li>block:是否块级显示，默认false<br>
-     如：<code>
-        Button block
-     </code>
- </li>
-</ul></li>
+<li>通过egStyle选择按钮颜色，可选&#39;success&#39;,&#39;error&#39;,&#39;warning&#39;,&#39;danger&#39;,&#39;default&#39;,&#39;link&#39;,&#39;white&#39;</li>
 </ul>
 </div>
  </div>
@@ -447,65 +407,12 @@
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
-                
-                    <ul class="index-list methods extends">
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_addClass" data-tablink="addClass">addClass</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_getClassName" data-tablink="getClassName">getClassName</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_getClassNames" data-tablink="getClassNames">getClassNames</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_getClassNamesForArguments" data-tablink="getClassNamesForArguments">getClassNamesForArguments</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_hasClass" data-tablink="hasClass">hasClass</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_removeClass" data-tablink="removeClass">removeClass</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_setPrefix" data-tablink="setPrefix">setPrefix</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
+                <h3>方法</h3>
                 
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 
                     <ul class="index-list properties extends">
                         
@@ -518,13 +425,6 @@
                         
                             <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_block" data-tablink="block">block</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_classPrefix" data-tablink="classPrefix">classPrefix</a>
 
                                 
                                 
@@ -559,21 +459,7 @@
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_enable" data-tablink="enable">enable</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_radius" data-tablink="radius">radius</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_round" data-tablink="round">round</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_hollow" data-tablink="hollow">hollow</a>
 
                                 
                                 
@@ -584,7 +470,7 @@
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 
             </div>
         </div>
@@ -593,12 +479,10 @@
 <div class="">
     
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
-            
-                <li class=""><a data-toggle="tab" href="#method">Methods</a></li>
+            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
-                <li class=""><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
             
         </ul>
@@ -686,166 +570,6 @@
     
 
     
-        <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                
-                <li role="presentation"  class="active"  _no='0'> <a>UI展示</a></li>
-                
-                <li role="presentation"   _no='1'> <a>源码</a></li>
-                
-            </ul>
-
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by slashhuang on 15/12/21.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {findDOMNode} from &#39;react/lib/ReactDOM&#39;;
-import Star from &#39;../../../src/Star.js&#39;;
-export default class StarDemo extends Component {
-    render(){
-        return(
-            &lt;div&gt;
-                不可修改数据
-                &lt;br/&gt;
-                &lt;Star/&gt;&lt;br/&gt;
-                &lt;Star rate={50} size={15}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={60} size={16} /&gt;
-                &lt;br/&gt;
-                &lt;Star rate={70} size={17}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={80} size={18} /&gt;
-                &lt;br/&gt;
-                可鼠标浮动修改数据
-                &lt;br/&gt;
-                &lt;Star rate={90} size={18}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={10} size={19}  disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={20} size={20} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={30} size={21} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={40} size={22} disable={false}/&gt;
-                &lt;br/&gt;
-                &lt;Star rate={50} size={23} disable={false} ref=&#39;test&#39;/&gt;
-                &lt;br/&gt;
-                &lt;div
-                    style={{
-                    background:&#39;orangered&#39;,
-                    display:&#39;inline-block&#39;,
-                    color:&#39;#fff&#39;,
-                    cursor:&#39;pointer&#39;,
-                    padding:&#39;3px&#39;}}
-                    onClick={()=&gt;{
-                    alert(&#39;rate is&#39;+this.refs[&#39;test&#39;].Rate)
-                }}&gt;点击获取最后一组星星的红色比率数据&lt;/div&gt;
-
-            &lt;/div&gt;
-        )
-    }
-}</code></pre>
-</div><div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import ButtonGroup from &#39;../../../src/ButtonGroup.js&#39;;
-import Button from &#39;../../../src/Button.js&#39;;
-import Row from &#39;../../../src/Row.js&#39;;
-import Col from &#39;../../../src/Col.js&#39;;
-import Grid from &#39;../../../src/Grid.js&#39;;
-
-export default class ButtonCls extends Component{
-    onActive(target,html){
-        console.dir(html);
-        alert(&#39;测试&#39;);
-    }
-    render(){
-        return (
-            &lt;Grid&gt;
-                &lt;Row&gt;
-                    &lt;Col&gt;
-                        &lt;ButtonGroup egType="justify" activeCallback={this.onActive}&gt;
-                            &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组1&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组2&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle="warning"&gt;水平按钮组3&lt;/Button&gt;
-                        &lt;/ButtonGroup&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={12}&gt;
-                        &lt;ButtonGroup egType="tacked"&gt;
-                            &lt;Button radius egSize="sm" egStyle=""&gt;垂直按钮组1&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle=""&gt;垂直按钮组2&lt;/Button&gt;
-                            &lt;Button radius egSize="sm" egStyle=""&gt;垂直按钮组3&lt;/Button&gt;
-                        &lt;/ButtonGroup&gt;
-                    &lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="warning"&gt;警告&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="success"&gt;成功&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="danger"&gt;危险&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="error"&gt;错误&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="info"&gt;info&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" &gt;默认&lt;/Button&gt;&lt;/Col&gt;
-                        &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="white"&gt;白色&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button radius egSize="sm" egStyle="white" disabled&gt;白色&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="gray"&gt;灰色&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" &gt;默认&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" disabled&gt;默认不可点&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="white" disabled&gt;白色不可点&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="success" disabled&gt;成功不可点&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" &gt;默认&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" disabled&gt;默认不可点&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="sm" egStyle="link" &gt;链接&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" egStyle="success" disabled&gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" &gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" disabled&gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="xs" egStyle="link" &gt;大号&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" egStyle="success" disabled&gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" &gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" disabled&gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block radius egSize="lg" egStyle="link" &gt;小号&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="warning" hollow&gt;警告&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="success" hollow&gt;成功&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="danger" hollow&gt;危险&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="error" hollow&gt;错误&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="primary" hollow&gt;primary&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="info" hollow&gt;infp&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="default" hollow&gt;default&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-                &lt;Row&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="warning" disabled hollow&gt;警告&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="success" disabled hollow&gt;成功&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="danger" disabled hollow&gt;危险&lt;/Button&gt;&lt;/Col&gt;
-                    &lt;Col sm={3}&gt;&lt;Button block egSize="sm" egStyle="error" disabled hollow&gt;错误&lt;/Button&gt;&lt;/Col&gt;
-                &lt;/Row&gt;
-            &lt;/Grid&gt;
-        );
-    }
-}</code></pre>
-</div>
-            </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
-        </div>
-    
 </div>
 
                 </div>
@@ -853,899 +577,10 @@ export default class ButtonCls extends Component{
         </div>
 
         
-            <div id="method" class="tab-pane">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_addClass" class="method item">
-    <h3 class="name">addClass</h3>
-    <code>
-    addClass
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        obj
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        cls
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l119"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:119</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>给元素增加一个样式名</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">obj</code>
-                       <td> <span class="type">Object</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>元素</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">cls</code>
-                       <td> <span class="type">String</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>样式名</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_getClassName" class="method item">
-    <h3 class="name">getClassName</h3>
-    <code>
-    getClassName
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        name
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        pre
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l16"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:16</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>给className添加前缀后返回className</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">name</code>
-                       <td> <span class="type">String</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>从该字符串中去查找</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">pre</code>
-                       <td> <span class="type">Boolean</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>是否添加Component中定义的class前缀，默认添加</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getClassNames" class="method item">
-    <h3 class="name">getClassNames</h3>
-    <code>
-    getClassNames
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        props
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        pre
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l46"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:46</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>验证props中的样式是否符合规则</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">props</code>
-                       <td> <span class="type">Object</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>从该对象中去查找</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">pre</code>
-                       <td> <span class="type">Boolean</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>是否添加Component中定义的class前缀，默认添加</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getClassNamesForArguments" class="method item">
-    <h3 class="name">getClassNamesForArguments</h3>
-    <code>
-    getClassNamesForArguments
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        arguments
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l64"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:64</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>给多个className添加前缀后返回</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">arguments</code>
-                       <td> <span class="type">Arguments String</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>多个class参数</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_hasClass" class="method item">
-    <h3 class="name">hasClass</h3>
-    <code>
-    hasClass
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        obj
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        cls
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l108"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:108</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>检查元素是否存在样式名</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">obj</code>
-                       <td> <span class="type">Object</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>元素</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">cls</code>
-                       <td> <span class="type">String</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>需要检查的样式名</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_removeClass" class="method item">
-    <h3 class="name">removeClass</h3>
-    <code>
-    removeClass
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        obj
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        cls
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l130"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:130</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>给元素删除一个样式名</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">obj</code>
-                       <td> <span class="type">Object</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>元素</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">cls</code>
-                       <td> <span class="type">String</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>样式名</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_setPrefix" class="method item">
-    <h3 class="name">setPrefix</h3>
-    <code>
-    setPrefix
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        name
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        pre
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/table(表格).html">table(表格)</a> module.</p>
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_utils_ClassNameMixin.js.html#l85"><code>lib&#x2F;utils&#x2F;ClassNameMixin.js:85</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>设置css类名前缀</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">name</code>
-                       <td> <span class="type">String</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>class名字</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">pre</code>
-                       <td> <span class="type">Boolean</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>是否添加前缀</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-            </div>
-        
 
         
             <div id="property" class="tab-pane">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">属性</h2>
 
                 
                     <div id="property_active" class="property item">
@@ -1771,7 +606,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l118"><code>lib&#x2F;Button.js:118</code></a>
+        <a href="../files/lib_Button.js.html#l64"><code>lib&#x2F;Button.js:64</code></a>
         
         </p>
 
@@ -1781,7 +616,7 @@ export default class ButtonCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>选中</p>
+        <div class="stdoc-code"><p>按钮是否处于选中状态</p>
 </div>
     </div>
 
@@ -1819,7 +654,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l163"><code>lib&#x2F;Button.js:163</code></a>
+        <a href="../files/lib_Button.js.html#l86"><code>lib&#x2F;Button.js:86</code></a>
         
         </p>
 
@@ -1829,61 +664,13 @@ export default class ButtonCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>块级显示</p>
+        <div class="stdoc-code"><p>是否为块级显示</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
          <code> false</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_classPrefix" class="property item">
-    <h3 class="name"><code>classPrefix</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Button.js.html#l149"><code>lib&#x2F;Button.js:149</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>样式前缀</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> btn</code>
     
 
     
@@ -1915,7 +702,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l156"><code>lib&#x2F;Button.js:156</code></a>
+        <a href="../files/lib_Button.js.html#l79"><code>lib&#x2F;Button.js:79</code></a>
         
         </p>
 
@@ -1931,7 +718,7 @@ export default class ButtonCls extends Component{
 
     
         <p><strong>Default:</strong></p>
-         <code> a</code>
+         <code> &#x27;button&#x27;</code>
     
 
     
@@ -1963,7 +750,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l103"><code>lib&#x2F;Button.js:103</code></a>
+        <a href="../files/lib_Button.js.html#l56"><code>lib&#x2F;Button.js:56</code></a>
         
         </p>
 
@@ -1973,7 +760,7 @@ export default class ButtonCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>禁用</p>
+        <div class="stdoc-code"><p>是否禁用按钮</p>
 </div>
     </div>
 
@@ -2011,7 +798,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l96"><code>lib&#x2F;Button.js:96</code></a>
+        <a href="../files/lib_Button.js.html#l49"><code>lib&#x2F;Button.js:49</code></a>
         
         </p>
 
@@ -2059,7 +846,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l142"><code>lib&#x2F;Button.js:142</code></a>
+        <a href="../files/lib_Button.js.html#l71"><code>lib&#x2F;Button.js:71</code></a>
         
         </p>
 
@@ -2069,7 +856,7 @@ export default class ButtonCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>颜色[error、warning、danger、link、gray、white、success、&#39;&#39;]</p>
+        <div class="stdoc-code"><p>按钮颜色样式，可以为[&#39;success&#39;,&#39;error&#39;,&#39;warning&#39;,&#39;danger&#39;,&#39;default&#39;,&#39;link&#39;,&#39;white&#39;]中任何一个</p>
 </div>
     </div>
 
@@ -2084,8 +871,8 @@ export default class ButtonCls extends Component{
 </div>
 
                 
-                    <div id="property_enable" class="property item">
-    <h3 class="name"><code>enable</code></h3>
+                    <div id="property_hollow" class="property item">
+    <h3 class="name"><code>hollow</code></h3>
     <span class="type">Boolean</span>
 
     
@@ -2107,7 +894,7 @@ export default class ButtonCls extends Component{
             
         
         
-        <a href="../files/lib_Button.js.html#l110"><code>lib&#x2F;Button.js:110</code></a>
+        <a href="../files/lib_Button.js.html#l94"><code>lib&#x2F;Button.js:94</code></a>
         
         </p>
 
@@ -2117,103 +904,7 @@ export default class ButtonCls extends Component{
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>启用</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> true</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_radius" class="property item">
-    <h3 class="name"><code>radius</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Button.js.html#l125"><code>lib&#x2F;Button.js:125</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>圆角</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> false</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_round" class="property item">
-    <h3 class="name"><code>round</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_Button.js.html#l132"><code>lib&#x2F;Button.js:132</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>椭圆角</p>
+        <div class="stdoc-code"><p>是否只将主题颜色应用于边框，而不是应用于背景色</p>
 </div>
     </div>
 
@@ -2246,5 +937,6 @@ export default class ButtonCls extends Component{
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

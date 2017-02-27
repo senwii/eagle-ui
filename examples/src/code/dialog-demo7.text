@@ -1,0 +1,22 @@
+import React,{Component} from 'react';
+import {Button,Dialog} from 'eagle-ui';
+
+export default class DialogDemo7 extends Component{
+    constructor(props, context) {
+        super(props, context);
+    }
+    showConfirm(){
+        Dialog.confirm('确定你已经打开了么？').then(()=>{
+            alert('确定');
+        },()=>{
+            alert('取消');
+        });
+    }
+    render() {
+        return (
+            <div>
+                <Button onClick={::this.showConfirm}>点击我Confirm</Button>
+            </div>
+        );
+    }
+};

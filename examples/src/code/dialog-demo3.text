@@ -1,0 +1,125 @@
+import React,{Component} from 'react';
+import {Button,Dialog} from 'eagle-ui';
+
+export default class DialogDemo1 extends Component{
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            inputVal: 123124,
+            dialogAlign: 'center',
+            alertContent: '哈哈，你好苍老师'
+        }
+    }
+    show(name){
+        Dialog.mask(name).then(function(){
+            console.log('success');
+            Dialog.close();
+        },function(type){
+            console.log('cancel');
+        });
+    }
+    render() {
+        return (
+            <div>
+                <Button onClick={::this.show.bind(this,'demo3')} className="mg-right-15">点击我mask2表单秀</Button>
+                <Dialog id="demo3" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
+                    {
+                        type: 'success',
+                        name: '提交',
+                        callback:()=>{}
+                    },
+                    {
+                        type:'cancel',
+                        egStyle:'white',
+                        name:'取消',
+                        callback:()=>{}
+                    }
+                ]}>
+                    <Panel heading="我是标题">
+                        <PanelContent>
+                            <Row>
+                                <Col>
+                                    <FormGroup>
+                                        <Row>
+                                            <Col sm={2}>姓名</Col>
+                                            <Col sm={10}><Input name="test1231" id="test" placeholder="请输入姓名" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm={2}>姓名</Col>
+                                            <Col sm={10}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm={2}>改变对齐方式</Col>
+                                            <Col sm={10}><Input name="test222" id="test222" placeholder="left|right|center" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm={2}>性别</Col>
+                                            <Col sm={10}>
+                                                <RadioGroup defaultChecked="男" name="radio-sex">
+                                                    <Input  type="radio"  label="男" value="男" />
+                                                    <Input  type="radio"  label="女" value="女"  />
+                                                </RadioGroup>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm={2}>体育爱好</Col>
+                                            <Col sm={10}>
+                                                <CheckboxGroup>
+                                                    <Input  type="checkbox" label="足球" checked   />
+                                                    <Input  type="checkbox" label="篮球"    />
+                                                    <Input  type="checkbox" label="羽毛球" checked   />
+                                                    <Input  type="checkbox" label="乒乓球"    />
+                                                </CheckboxGroup>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col sm={2}>姓名</Col>
+                                            <Col sm={13}><Input name="test" id="test" placeholder="请输入姓名"   /></Col>
+                                            <FormGroup>
+                                                <Col sm={13}>出生日期</Col>
+                                                <Col sm={13} end><Input name="test" id="test" placeholder="请输入出生日期"   /></Col>
+                                            </FormGroup>
+                                        </Row>
+                                        <Row>
+                                            <Col sm={2}>所在城市</Col>
+                                            <Col sm={10} layer>
+                                                <Row style={{margin:0}}>
+                                                    <Col sm={4} end>
+                                                        <Select placeholder="请选择城市" >
+                                                            <item value='bei'>北京</item>
+                                                            <item value='shang'>上海</item>
+                                                            <item value='nan'>南京</item>
+                                                        </Select>
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                        </Row>
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col padding={'0'}>
+                                    <Panel heading="我是标题二">
+                                        <PanelContent padding={true}>
+                                            我是下一个内容区
+                                        </PanelContent>
+                                    </Panel>
+                                </Col>
+
+                            </Row>
+                            <Row>
+                                <Col padding={'0'}>
+                                    <Panel heading="我是标题三" >
+                                        <PanelContent padding={true}>
+                                            我是下一个内容区
+                                        </PanelContent>
+                                    </Panel>
+                                </Col>
+                            </Row>
+                        </PanelContent>
+                    </Panel>
+                </Dialog>
+            </div>
+        );
+    }
+};

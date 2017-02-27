@@ -1,0 +1,24 @@
+import React,{Component,PropTypes} from 'react';
+import {Input, CalendarPanel} from 'eagle-ui';
+export default class CalendarDemo3 extends Component{
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            defaultDate: '2016-12-1'
+        };
+    };
+    getvalue(val){
+        this.setState({
+            defaultDate: val
+        });
+    }
+    render(){
+        return (
+            <div>
+                <CalendarPanel defaultDate={this.state.defaultDate} startDate="2017-02-05" endDate="2017-10-01" getValueCallback={::this.getvalue}>
+                    <Input placeholder="请选择日期"/>
+                </CalendarPanel>
+            </div>
+        );
+    }
+}

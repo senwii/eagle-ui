@@ -1,6 +1,7 @@
 //import Mask from './mask/mask';
 
-import style from './style';
+//import style from './style';
+import 'eagle-styles/less/eagle-styles.less';
 import catBrowser from './utils/cat-browser';
 export Grid from './Grid';
 export Col from './Col';

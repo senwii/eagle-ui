@@ -1,0 +1,27 @@
+import React,{Component} from 'react';
+import {TooltipPanel,Button} from 'eagle-ui';
+
+let Demo = class Demo extends Component {
+    render() {
+        return (
+            <div>
+                <TooltipPanel direction='top'
+                              msg='我是在上方的tooltip哦'>
+                    <Button radius egSize="sm" egStyle="warning">上边</Button>
+                </TooltipPanel>
+                <TooltipPanel direction='right'
+                              msg='我是在右方的tooltip哦'>
+                    <Button radius egSize="sm" egStyle="warning">右边</Button>
+                </TooltipPanel>
+                <TooltipPanel direction='bottom'
+                              msg='我是在下方的tooltip哦'>
+                    <Button radius egSize="sm" egStyle="warning">下边</Button>
+                </TooltipPanel>
+                <TooltipPanel direction='left'
+                              msg='我是在左方的tooltip哦'>
+                    <Button radius egSize="sm" egStyle="warning">左边</Button>
+                </TooltipPanel>
+            </div>
+        )
+    }
+};

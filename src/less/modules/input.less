@@ -46,6 +46,9 @@ textarea,.eg-textarea{
         z-index: 2;
         left: 0;
 
+        position: relative\9;
+        width: auto\9;
+        margin-left: 8px\9;
     }
 
     &.show-icon{
@@ -135,4 +138,14 @@ textarea,.eg-textarea{
 }
 .eg-input-icon-left{
     .icon-direction(left);
+}
+:root{
+    .eg-input{
+        input[type="checkbox"],input[type="radio"]{
+            width: 100%;
+            position: absolute;
+            margin-left: 0;
+        }
+
+    }
 }

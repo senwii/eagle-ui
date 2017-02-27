@@ -26,28 +26,11 @@ import Component from './utils/Component';
  *     </li>
  *
  * </ul>
- * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/input">demo展示</a></div>
- * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/RadioGroup.js">查看源码</a></div>
- * @class RadioGroup
+  * @class RadioGroup
  * @module form(表单)
  * @extends Component
  * @constructor
- * @example
- *      import {RadioGroup,Input} from 'eagle-ui';
- *      ...
- *      function getValueCallback(val){
- *          alert(val);
- *          console.dir(val);
- *      }
- *      ...
- *      <RadioGroup defaultChecked="鸡蛋" name="radio-foot" getValueCallback={getValueCallback}>
- *          <Input  type="radio"  label="大白菜" value="大白菜" />
- *          <Input  type="radio"  label="鸡蛋" value="鸡蛋" disabled={true}  />
- *          <Input  type="radio"  label="猪肉" value="猪肉" />
- *          <Input  type="radio"  label="牛肉" value="牛肉" />
- *          <Input  type="radio"  label="鱼肉" value="鱼肉" disabled={true} />
- *      </RadioGroup>
- *
+ * @demo #/input|input.js
  * */
 export default class RadioGroup extends Component{
 

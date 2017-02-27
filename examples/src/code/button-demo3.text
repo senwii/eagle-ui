@@ -1,0 +1,21 @@
+import React, { Component ,PropTypes} from 'react';
+import {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';
+export default class ButtonDemo3 extends Component{
+    onActive(target,html){
+        console.dir(html);
+        alert('测试');
+    }
+    render(){
+        return (
+            <div>
+                <ButtonGroup egType="justify" activeCallback={this.onActive}>
+                    <Button egStyle="warning">水平按钮组1</Button><Button egStyle="warning">水平按钮组2</Button><Button egStyle="warning">水平按钮组3</Button>
+                </ButtonGroup>
+                <br/>
+                <ButtonGroup egType="tacked">
+                    <Button>垂直按钮组1</Button><Button>垂直按钮组2</Button><Button>垂直按钮组3</Button>
+                </ButtonGroup>
+            </div>
+        );
+    }
+}

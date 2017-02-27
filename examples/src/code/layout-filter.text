@@ -1,0 +1,47 @@
+import React,{Component} from 'react';
+import {LabelGroup, Label} from 'eagle-ui';
+
+export class FilterSec extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            <div>
+                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >
+                    <Label>全部</Label>
+                    <Label>美</Label>
+                    <Label>休闲娱乐</Label>
+                    <Label>景点</Label>
+                    <Label>购物</Label>
+                    <Label>丽人</Label>
+                    <Label>结婚</Label>
+                    <Label>亲子</Label>
+                    <Label>教育培训</Label>
+                    <Label>运动健身</Label>
+                    <Label>酒店</Label>
+                    <Label>家装</Label>
+                    <Label>酒店</Label>
+                    <Label>爱车</Label>
+                    <Label>酒店</Label>
+                    <Label>医疗健康</Label>
+                </LabelGroup>
+                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >
+                    <Label>全部</Label>
+                    <Label>卢湾区</Label>
+                    <Label>徐汇区</Label>
+                    <Label>静安区</Label>
+                    <Label>长宁区</Label>
+                    <Label>闵行区</Label>
+                    <Label>浦东新区</Label>
+                    <Label>黄浦区</Label>
+                    <Label>普陀区</Label>
+                    <Label>闸北区</Label>
+                    <Label>虹口区</Label>
+                    <Label>杨浦区</Label>
+                    <Label>宝山区</Label>
+                </LabelGroup>
+            </div>
+        )
+    }
+}

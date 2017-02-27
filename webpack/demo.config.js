@@ -24,6 +24,7 @@ var getEntry =function() {
 
 module.exports =extend({}, {
     entry:[
+        "babel-polyfill",
         './examples/src/index.js'
     ],
     output:{
@@ -49,7 +50,7 @@ module.exports =extend({}, {
         loaders:[
             {
                 test: /\.js$/,
-                loaders: ['babel'],
+                loader: 'es3ify-loader!babel',
                 exclude: /node_modules/
             },
             {

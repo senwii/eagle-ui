@@ -1,12 +1,13 @@
 import React,{Component,PropTypes}  from 'react';
 import {Col,Row,Grid,Button,Select} from 'eagle-ui';
-let Demo= class Demo extends Component{
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';
+import Code, {getFile} from '../libs/Code'
 
+export default class Demo extends Component{
     static defaultProps = {
         input: true,
         keys:'bei'
     }
-
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -15,16 +16,14 @@ let Demo= class Demo extends Component{
             defaultCity:''
         };
         setTimeout(()=>{
-            this.setState({options:this.renderC()})
-        }.bind(this) );
-
+            this.setState({options: this.getOptions()})
+        });
         setTimeout(function(){
             this.setState({
                 defaultCity:'上海'
             });
-        }.bind(this),2000 );
+        }.bind(this),2000);
     }
-
     getValue(value,key,type){
         let stype = {
             'init':'加载时调用',
@@ -33,11 +32,8 @@ let Demo= class Demo extends Component{
         };
         document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>"key":<span class="color-error">${key}</span></b>,<b>"value":<span class="color-error">${value}</span></b>`;
     }
-
-    renderC(){
-
+    getOptions(){
         return [
-
             <option value='bei' key="bei">北京</option>,
             <option value='shang' key="上海">上海</option>,
             <option value='nan' key="南京">南京</option>,
@@ -52,30 +48,21 @@ let Demo= class Demo extends Component{
             <option value='12' key="香港">香港</option>
         ];
     }
-
     render(){
-        console.dir(this.state.defaultCity);
         return (
-            <Grid fluid>
-                <Row>
-                    <Col sm={9} layer end>
-                        <Row>
-                            <Col sm={4} end>
-                                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" >
-                                    {this.state.options}
-                                </Select>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
+            <DemoLayout title="下拉框组件">
+                <DemoItem title="默认使用">
+                    <CodeShow>
+                        <Code code={getFile('select-demo')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" >
+                            {this.state.options}
+                        </Select>
                         <div id="showtip" className="color-info"></div>
-                    </Col>
-                </Row>
-            </Grid>
+                    </DemoShow>
+                </DemoItem>
+            </DemoLayout>
         );
     }
 }
-
-export default Demo;

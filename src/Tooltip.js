@@ -11,8 +11,7 @@ import Grid from './Grid.js';
  * @class Tooltip
  * @module ui
  * @constructor
- * @demo star.js {UI展示}
- * @demo tooltip.js {源码}
+ * @demo #/toolTip|tooltip.js
  * @show true
  * */
 @ClassNameMixin
@@ -41,13 +40,13 @@ export default class Tooltip extends Component {
         direction: PropTypes.string,
         classPrefix: PropTypes.string,
         componentTag:PropTypes.string
+    };
+    static defaultProps = {
+        classPrefix: 'tooltip',
+        padding:5
     }
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            show: this.props.show,
-            direction: this.props.direction
-        }
     }
     /**
      * 接收到新props时执行,state.show变为nextProps.show
@@ -56,30 +55,56 @@ export default class Tooltip extends Component {
      * @method componentWillReceiveProps
      * @return null
      * */
-    componentWillReceiveProps(nextProps){
+    /*componentWillReceiveProps(nextProps){
         this.setState({
             show : nextProps.show
         });
+    }*/
+    componentDidMount(){
+       /* setTimeout(()=>{
+            this.props.onChangeStyle(this.target,this.props.direction);
+        });*/
+        this.props.setToolTipObj(this.target);
     }
     render() {
         return (
-            <Grid ref= "tips" className={classnames(
+            <Grid ref= {(ref)=>{
+            this.target = ref
+            }} componentName="tooltip" className={classnames(
                 this.getClassName('wraper'),
+                this.getClassName('tooltip'),
                 {
 
-                      [this.getClassName('show')]: this.state.show
-                      //[this.getClassName('show')]: true
+                      [this.getClassName('show')]: this.props.show
                 }
             )} >
                     <div className={classnames(
                     this.getClassName('arrow-'+this.props.direction)
-                )}></div>
+                )} style={this.getStyle(this.props.bgColor)}>
+                     <div className='arrow-tip' style={this.getStyle('#ddd')}></div>
+                    </div>
                     <div className={classnames(
                     this.getClassName('content')
-                )}>{this.props.msg}
+                )} style={{'backgroundColor':this.props.bgColor,'padding':parseInt(this.props.padding,10)+'px'}}>
+                        {this.getContent()}
                     </div>
 
             </Grid>
         );
+    }
+    getStyle(color){
+        let styles = {};
+        let {direction} = this.props;
+        let str = direction.substr(0,1).toUpperCase()+direction.substr(1);
+        styles[`border${str}Color`]=color;
+        return  styles;
+    }
+    /**
+     * 判断是否有子元素，有的话取children，否则取msg
+     * 两者均有以children优先
+     * */
+    getContent(){
+        let {children,msg}=this.props;
+        return children ? children : msg;
     }
 }

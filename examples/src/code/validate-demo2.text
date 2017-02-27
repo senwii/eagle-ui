@@ -1,0 +1,62 @@
+import React,{Component} from 'react';
+import {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';
+
+export default class ValidateDemo2 extends Component{
+    constructor(props,context){
+        super(props,context);
+        this.rules = {
+            //key对应的是表单元素的name
+            userName:{
+                required:true
+            },
+            minlength:{
+                minlength:{
+                    params:10
+                },
+                maxlength:{
+                    params:15
+                }
+            },
+            email:{
+                email:true
+            }
+        };
+        this.state={
+            update:'uid'
+        };
+    }
+    show(value){
+        console.dir(value);
+    }
+    submit(vals){
+        alert('验证成功'+JSON.stringify(vals));
+    }
+    render(){
+        return (
+            <div>
+                <ValidatorPanel rules={this.rules} submitElement="#submit2" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
+                    <Row>
+                        <Col>
+                            <Input placeholder="请输入姓名"  name="userName" data-validate />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Input placeholder="请输入您的email" name="email" data-validate />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Button radius egSize="xs" id="submit2" >点我提交表单</Button>
+                        </Col>
+                    </Row>
+                </ValidatorPanel>
+            </div>
+        );
+    }
+};

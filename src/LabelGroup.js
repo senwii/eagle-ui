@@ -16,8 +16,7 @@ import Component from './utils/Component';
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo label.js {源码}
+ * @demo #/label|label.js
  * @show true
  * */
 export default class LabelGroup extends Component{
@@ -111,7 +110,14 @@ export default class LabelGroup extends Component{
             ReactDom.findDOMNode(this.refs[this.itemObj] ).style.cssText = cssStr;
         }
     }
-
+    componentWillReceiveProps(nextProps) {
+        let checkedText=nextProps.defaultChecked;
+        if(this.state.checked!==checkedText){
+            this.setState({
+                checked:checkedText
+            });
+        }
+    }
     render(){
         let _this = this;
         /**

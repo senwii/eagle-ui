@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
     <title>lib/LabelGroup.js - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
@@ -44,7 +45,7 @@
         </div>
     </nav>
     <div id="sidebar">
-    <h3>Modules/Classes</h3>
+    <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -381,6 +382,7 @@
                 </dd>
              
         </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
     <div class="stdoc-content">
@@ -433,13 +435,14 @@ var _utilsComponent = require(&#x27;./utils/Component&#x27;);
 var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 
 /**
- * 标签组
+ * 标签组&lt;br /&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://future-team.github.io/eagle-ui/examples/index.html#/label&quot;&gt;demo展示&lt;/a&gt;&lt;/div&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/future-team/eagle-ui/blob/master/src/Label.js&quot;&gt;查看源码&lt;/a&gt;&lt;/div&gt;
  * @class LabelGroup
  * @module ui
  * @extends Component
  * @constructor
- * @demo star.js {UI展示}
- * @demo label.js {源码}
+ * @demo #/label|label.js
  * @show true
  * */
 
@@ -450,13 +453,13 @@ var LabelGroup = (function (_Component) {
         key: &#x27;propTypes&#x27;,
         value: {
             /**
-             * 左侧总标题
+             * 标签组左侧标题
              * @property title
              * @type String
              * */
             title: _react.PropTypes.string,
             /**
-             * 标签展现形式{form|simple|default}
+             * 标签组展现形式{form|simple|default}
              * @property egType
              * @type String
              * @default default
@@ -469,7 +472,7 @@ var LabelGroup = (function (_Component) {
              * */
             activeCallback: _react.PropTypes.func,
             /**
-             * 默认选中的项
+             * 默认选中的项，取值为选中标签的文案
              * @property defaultChecked
              * @type String Integer
              * */
@@ -610,5 +613,6 @@ module.exports = exports[&#x27;default&#x27;];
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/doc.js"></script>
+
 </body>
 </html>

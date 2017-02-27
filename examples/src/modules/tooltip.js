@@ -1,82 +1,71 @@
-/**
- * Created by panqianjin on 15/11/17.
- */
 import React,{Component} from 'react';
-import {TooltipPanel,Tooltip,Button} from 'eagle-ui';
+import {TooltipPanel,Tooltip,Button,Grid,Col,Row} from 'eagle-ui';
+import Code from '../libs/Code.js';
+import {getFile} from '../libs/Code.js';
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
+
 let Demo = class Demo extends Component {
-    constructor() {
-        "use strict";
-        super();
-        this.state = {
-            test: '_'
-        };
-
-        setTimeout(function () {
-            this.setState({
-                test: 'testaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaatestaaaa'
-            });
-        }.bind(this), 2000);
-    }
-
-    change() {
-        setTimeout(()=>this.setState({
-            test: 'hello world hello worldhello worldhello worldhello worldhello world'
-        }));
-    }
-
     render() {
+        let test1 = <div className='sds' style={{'color':'red'}}>Holy guacamole!</div>;
         return (
-            <div>
-                <p>背景色为白色的区域为a</p>
-                <div id='a' style={{width:'500px',height:'500px',border:'1px solid #f00',position:'relative'}}>
-                    <div style={{margin:'10px'}}>
-                        <div style={{width:'300px',height:'300px',background:'#fff',position:'absolute',top:'20px'}}
-                             onClick={()=>this.change()}>
-                            <TooltipPanel direction='top' warp='a'>
-                                <Button radius egSize="sm" egStyle="warning">应在上，边界为a</Button>
-                            </TooltipPanel>
-                        </div>
-                        <div style={{marginTop:'300px'}}>
-                            <TooltipPanel direction='left' wrapper='a'>
-                                <Button radius egSize="sm" egStyle="warning">应在左，边界为a</Button>
-                            </TooltipPanel>
-                            <TooltipPanel direction='top' wrapper='a'>
-                                <Button radius egSize="sm" egStyle="warning">应在上，边界为a</Button>
-                            </TooltipPanel>
-                            <TooltipPanel direction='right' style={{marginLeft:'250px'}}>
-                                <Button radius egSize="sm" egStyle="warning">应在右，边界为可视窗口</Button>
+        <DemoLayout title="Tooltip">
+            <DemoItem title="基本场景">
+                <CodeShow>
+                    <Code code={getFile('tooltip-demo1')}>
+                    </Code>
+                </CodeShow>
+                <DemoShow>
+                    <Grid>
+                        <Row>
+                            <Col sm={3}>
+                                <TooltipPanel direction='top'>
+                                    <Button radius egSize="sm" egStyle="warning">上边</Button>
+                                    <Tooltip padding={20}>
+                                        <div className='tooltip' style={{width:'150px',color:'#f00'}}>tooltip的children</div>
+                                    </Tooltip>
+                                </TooltipPanel>
+                            </Col>
+                            <Col sm={3}>
+                                <TooltipPanel direction='right'
+                                              msg='我是在右方的tooltip哦' padding={10} trigger='click'>
+                                    <Button radius egSize="sm" egStyle="warning">右边</Button>
+                                </TooltipPanel>
+                            </Col>
+                            <Col sm={3}>
+                                <TooltipPanel direction='bottom'
+                                              msg='我是在下方的tooltip哦'>
+                                    <Button radius egSize="sm" egStyle="warning">下边</Button>
+                                </TooltipPanel>
+                            </Col>
+                            <Col sm={3}>
+                                <TooltipPanel direction='left'
+                                              msg='我是在左方的tooltip哦'>
+                                    <Button radius egSize="sm" egStyle="warning">左边</Button>
+
+                                </TooltipPanel>
+                            </Col>
+                        </Row>
+                    </Grid>
+                </DemoShow>
+            </DemoItem>
+
+            <DemoItem title="通过设置wrapper属性来限定边界" desc={'wrapper为边界容器的的id值，当tooltip设置的方向超出容器的边界时，会被自动改变方向'}>
+                <CodeShow>
+                    <Code code={getFile('tooltip-demo2')}>
+                    </Code>
+                </CodeShow>
+                <DemoShow>
+                    <div id='a' style={{width:'500px',height:'200px',border:'1px solid #f00',position:'relative'}}>
+                        <div style={{margin:'10px'}}>
+                            <TooltipPanel direction='top' wrapper='a' msg={'sddssdds'}>
+                                <Button radius egSize="sm" egStyle="warning">红色边框为边界，设置的方向是top.实际展示为bottom</Button>
                             </TooltipPanel>
                         </div>
                     </div>
-                </div>
-                <div style={{width:'300px',display: 'inline-block'}}>sadasda</div>
-                <TooltipPanel direction='left' style={{marginLeft:'100px'}}>
-                    <Button radius egSize="sm" egStyle="warning">应在左边</Button>
-                </TooltipPanel>
-                <TooltipPanel direction='right' style={{marginLeft:'100px'}}>
-                    <Button radius egSize="sm" egStyle="warning">应在右边</Button>
-                </TooltipPanel>
-                <TooltipPanel direction='down' style={{marginLeft:'100px'}} msg={<div>hello world,hello world</div>}>
-                    <Button radius egSize="sm" egStyle="warning">应在下边</Button>
-                </TooltipPanel>
-
-                <div>
-                    <TooltipPanel direction='left' msg={<div>hello world,hello world</div>}>
-                        <Button radius egSize="sm" egStyle="warning">应在左边2</Button>
-                    </TooltipPanel>
-
-                    <div style={{marginTop:'30px'}}>
-                        <TooltipPanel direction='right' msg={<div>hello world,hello world</div>}>
-                            <Button radius egSize="sm" egStyle="warning">应在右边2</Button>
-                        </TooltipPanel>
-                    </div>
-                    <TooltipPanel direction='top'
-                                  style={{float:'left',marginLeft:'300px'}}
-                                  msg={this.state.test}>
-                        <Button radius egSize="sm" egStyle="warning">上边应在上边</Button>
-                    </TooltipPanel>
-                </div>
-            </div>)
+                </DemoShow>
+            </DemoItem>
+        </DemoLayout>
+        )
     }
 };
 export default Demo;
