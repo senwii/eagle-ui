@@ -11,7 +11,7 @@ export default class Prompt extends Component{
         classPrefix: 'dialog',
         cancelTxt:'取消',
         submitTxt:'确定',
-        inputWidth:'',
+        inputWidth:'100%',
         componentTag: 'div'
     };
 

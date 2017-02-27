@@ -94,7 +94,7 @@ let BaseDialog = ((d)=>{
             if(this.maskListener){
                 this.container['removeEventListener' ]('click',this.maskListener,false);
             }
-            this.maskListener=function(e){
+            this.maskListener=function(event){
                 if(_this.isMaskClose){
                     // 点击Icon button 时, 返回的className 是 SVGAnimatedString 对象
                     if(event.target.className.match && event.target.className.match('dialog-mask')!=null ){

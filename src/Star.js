@@ -59,18 +59,25 @@ export default class Star extends Component{
         disable:true,
         adjust:0
     };
+    componentWillReceiveProps(nextProps) {
+        let newRate=nextProps.rate;
+        if(this.state.rate!==newRate){
+            this.setState({
+                rate:newRate
+            });
+            this.Rate = newRate;
+        }
+    }
     constructor(props,context){
         super(props,context);
         this.state={
             rate:props.rate,
             size:props.size,
-            disable:props.disable,
             adjust:props.adjust
         };
         this.Rate = props.rate;
     }
     renderCustomize(e) {
-        let {disable}= this.state;
         let newPositionX = e.clientX;
 
         let newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth*5+1) * 20;
@@ -89,7 +96,7 @@ export default class Star extends Component{
             width:size*5+'px',
             height:size-1+'px',
             backgroundSize:size*5+'px auto',
-            cursor:!this.state.disable?'pointer':'hand'
+            cursor:!this.props.disable?'pointer':'hand'
         }:{};
         let shadowPosition=size?{
             backgroundPosition:"0  -"+size+"px"
@@ -98,7 +105,7 @@ export default class Star extends Component{
             <div className={this.getProperty()}
                  style={customizeStyle}
                  onMouseMove={(e)=>{
-                    !this.state.disable&&this.renderCustomize(e)
+                    !this.props.disable&&this.renderCustomize(e)
                     }}
                  ref={(targetNode)=>{
                  let self=this;

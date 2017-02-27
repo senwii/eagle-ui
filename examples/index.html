@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>demo演示</title>
-    <link rel="stylesheet" href="js/eagle-ui.css">
+    <!--[if IE 8]><script
+        src="./ie8.js"
+        ></script><![endif]-->
+    <link rel="stylesheet" href="js/eagle-ui.css"/>
     <style type="text/css">
         .detail-hollow-star{
             background: url("../examples/imgs/empty-star.png") center;
@@ -64,7 +67,7 @@
         }
 
         .menu{
-            width: 250px;
+            width: 230px;
             position: fixed;
             left: 0;
             top: 55px;
@@ -77,11 +80,11 @@
             display: block;
             padding: 10px;
             width: 100%;
-            padding-left: 100px;
+            padding-left: 50px;
             border-bottom: 1px solid #e2e2e2;
         }
         .content{
-            margin:10px 10px 10px 270px;
+            margin:10px 10px 10px 250px;
             height: 100%;
         }
         .menu .active{
@@ -90,11 +93,14 @@
         }
         .menu a.sub{
             text-align: left;
-            padding-left: 50px;
+            padding-left: 30px;
         }
         .menu a:not(.sub):hover{
             background: #d94000;
             color: #fff;
+        }
+        #root {
+            /*padding-bottom: 100px;*/
         }
     </style>
 </head>
@@ -109,7 +115,7 @@
 <div class="">
     <div class="menu" id="menu">
         <a class="sub ft-18" href="#/theme" >切换皮肤</a>
-        <a class="sub ft-18" href="#/icon" >icon fonts</a>
+        <a class="sub ft-18" target="_blank" href="http://future-team.github.io/gfs-icons/index.html" >icon fonts</a>
         <a class="sub ft-18" href="javascript:void(0);">表单</a>
         <div class="menu-panel">
             <a href="#/input" >Input</a>

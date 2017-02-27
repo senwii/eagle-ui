@@ -5,6 +5,10 @@
     .border-radius(30px);
     display: inline-block;
     position: relative;
+    background-image: data-uri('../img/check.png');
+    background-size: 13px 9px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 /**出错提示*/
 .eg-tips-error{
@@ -58,7 +62,7 @@
     }
 }
 .eg-tips-success,.eg-icon-tick{
-    &:before{
+    /*&:before{
         height: 8px;
         width: 2px;
         background: #fff;
@@ -73,6 +77,6 @@
         left: 17px;
         top: 8px;
         .transform(rotate(45deg));
-    }
+    }*/
 }
 .toast-skin();
