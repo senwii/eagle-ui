@@ -33,7 +33,7 @@ export default class CalendarPanel extends Component{
         componentTag:PropTypes.string,
         /**
          * 日历位置
-         * @property direction
+         * @param {string} direction 可选值有 top | left | down | right
          * @type String
          * @default auto 自动根据当前位置切换 上/下，
          * */
