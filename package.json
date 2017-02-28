@@ -89,6 +89,7 @@
     "console-polyfill": "^0.2.3",
     "core-js": "^2.4.1",
     "css-loader": "0.17.0",
+    "gfs-icons": "^0.1.5",
     "eg-drop-tree": "^1.0.3",
     "eg-tree-menu": "^0.1.1",
     "es3ify-loader": "^0.2.0",

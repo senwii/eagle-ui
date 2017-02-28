@@ -4,7 +4,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var extend = require('extend');
-
+var projectName = require("../package.json").name;
 module.exports ={
     entry:[path.join(process.cwd(),'src/index.js')],
     devtoll:'source-map',
@@ -16,9 +16,10 @@ module.exports ={
         ]
     },
     output:{
+        library:'Eagleui',
         libraryTarget: 'umd',
         path:path.join(process.cwd(),'dist'),
-        filename:'eagle-ui.js'
+        filename:projectName+'.js'
     },
     externals:[{
         'react': {

@@ -60,6 +60,7 @@ $ npm run test
 
 ## Repair
 
+
 `version 1.1.1` 新增dialog.mask支持style和class属性    
 `version 1.4.3` 新增textarea默认样式    
 `version 1.4.4` 修复validatepanel控件在提交后刷新页面的bug     

@@ -76,9 +76,12 @@ class TooltipPanel extends Component {
         bgColor: PropTypes.string,
         skin:PropTypes.string,
         /**
-         * 提示内容padding，默认5px
+         * 提示内容padding，默认5
+         * @property padding
+         * @type:Number
+         * @default hover
          * */
-        padding:PropTypes.string
+        padding:PropTypes.number
     };
     static defaultProps = {
         show: false,
@@ -341,6 +344,19 @@ class TooltipPanel extends Component {
                 break;
         }
     }
+    getChild(option,trigger){
+        let {children,...other} = option;
+        if(trigger == 'hover'){
+            other['onMouseOver'] = this.handler.bind(this);
+            other['onMouseOut'] = this.handler.bind(this);
+        }else{
+            other.trigger = trigger.substr(0,1).toUpperCase()+trigger.substr(1);
+            other[`on${other.trigger}`] = this.handler.bind(this);
+        }
+        return React.cloneElement(option,{
+            ...other
+        });
+    }
     componentWillReceiveProps(nextProps){
         this.setState({
             show : nextProps.show
@@ -355,13 +371,14 @@ class TooltipPanel extends Component {
         let dir = direction == 'down' ? 'bottom': direction;
         let c = null;
         if(other.msg){
+            let child = this.getChild(children,other.trigger);
             c = [
-                ...children,
+                ...child,
                 <Tooltip {...other } show = {this.state.show} setToolTipObj={this.setToolTipObj.bind(this)} bgColor={bgColor} direction ={dir}/>
             ];
         }else{
-            c = React.Children.map(children,(option)=>{
-                return React.cloneElement(option,{
+            c = React.Children.map(children,(option,index)=>{
+                return index==0?this.getChild(option,other.trigger):React.cloneElement(option,{
                     show:this.state.show,
                     setToolTipObj:this.setToolTipObj.bind(this),
                     bgColor:bgColor,
@@ -370,18 +387,10 @@ class TooltipPanel extends Component {
 
             },this);
         }
-        if(other.trigger == 'hover'){
-            other['onMouseOver'] = this.handler.bind(this);
-            other['onMouseOut'] = this.handler.bind(this);
-        }else{
-            other.trigger = other.trigger.substr(0,1).toUpperCase()+other.trigger.substr(1);
-            other[`on${other.trigger}`] = this.handler.bind(this);
-        }
 
         return (
             <Grid
                 {...this.props}
-                {...other}
                 name = {this.idName}
                 className={classnames(
                     this.getClassName('container')

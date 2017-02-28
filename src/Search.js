@@ -1,4 +1,5 @@
-import React,{Component, PropTypes, ReactDOM} from 'react';
+import React,{Component, PropTypes} from 'react';
+import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 
 import Suggestion from './Suggestion';
