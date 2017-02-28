@@ -4097,7 +4097,6 @@ b.eg-slider-arrow-right {
   padding: 10px 15px;
   border-bottom: 1px solid #ddd;
 }
-<<<<<<< HEAD
 @font-face {
   font-family: "iconfont";
   src: url(a9a5a63115118d0ed99a2ad33d26a9c2.eot);
@@ -4262,7 +4261,7 @@ b.eg-slider-arrow-right {
 }
 .icon-folder-open:before {
   content: "\E639";
-=======
+}
 .doc-content {
   counter-reset: header2;
 }
@@ -4495,7 +4494,6 @@ pre[class*="language-"] {
 }
 .token.entity {
   cursor: help;
->>>>>>> b0364582b141c95076c57547438ef2e71906c6b4
 }
 .node-container {
   padding-left: 15px;
