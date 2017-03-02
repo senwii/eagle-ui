@@ -55,7 +55,7 @@ class TooltipPanel extends Component {
          * */
         wrapper: PropTypes.string,
         /**
-         * 提示方向
+         * 提示方向。方向可选：top,down,left,right.默认down
          * @property direction
          * @type String
          * @default bottom
@@ -113,11 +113,7 @@ class TooltipPanel extends Component {
         //this.changeStyle(this.props.direction);
     }
 
-    /**
-     * 渲染完成时进行方向和边界判断，调整tips的位置
-     * @method componentDidMount
-     * @return null
-     * */
+    //渲染完成时进行方向和边界判断，调整tips的位置
     componentDidMount() {
         /**
          * 如果事件是click，body加上事件，移除时隐藏
@@ -233,9 +229,6 @@ class TooltipPanel extends Component {
 
     /**
      * tips方向和边界判断，调整tips的位置
-     * @method changeStyle
-     * @param direction {String}
-     * @return null
      * */
     changeStyle(obj,direction) {
         let dir = direction;
@@ -271,10 +264,6 @@ class TooltipPanel extends Component {
 
     /**
      * 获得浏览器的边界大小
-     * @method getMaxBody
-     * @param body {Object}
-     * @param doc {Object}
-     * @return maxBody {Object}
      * */
     getMaxBody(body, doc) {
         let maxBody = {
@@ -301,12 +290,6 @@ class TooltipPanel extends Component {
     /**
      * 判断是否满足边界条件,返回满足的方向
      * 不满足的话应该说直接取相反方向
-     * @method isValidate
-     * @param dir {String}
-     * @param tips {Object}
-     * @param ele {Object}
-     * @param maxBody {Object} 边界
-     * @return flag {Boolean}
      * */
     isValidate(dir, tips, ele, maxBody) {
         let newDir = dir;
@@ -362,10 +345,6 @@ class TooltipPanel extends Component {
             show : nextProps.show
         });
     }
-    /**
-     * @method render
-     * @return ReactElement
-     * */
     render() {
         let {children,bgColor,direction,...other} = this.props;
         let dir = direction == 'down' ? 'bottom': direction;
