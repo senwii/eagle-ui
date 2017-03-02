@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -459,8 +451,9 @@ var Paging = (function (_Component) {
             total: _react.PropTypes.number.isRequired,
             /**
              * 点击分页回调
-             * @property pageCallback
-             * @type Function
+             * @event  pageCallback
+             * @param {Integer} pageNum 用户点击的页码
+             * @default function(){}
              * */
             pageCallback: _react.PropTypes.func,
             /**
@@ -549,19 +542,9 @@ var Paging = (function (_Component) {
         };
     }
 
-    /**
-     * 上一页
-     * @method prev
-     * */
-
     Paging.prototype.prev = function prev() {
         this.gotoPage(this.props.currentPage - 1);
     };
-
-    /**
-     * 下一页
-     * @method prev
-     * */
 
     Paging.prototype.next = function next() {
         this.gotoPage(this.props.currentPage + 1);
@@ -569,8 +552,6 @@ var Paging = (function (_Component) {
 
     /**
      * 获取页大小
-     * @method getPages
-     * @return {Integer}
      * */
 
     Paging.prototype.getPages = function getPages() {
@@ -608,9 +589,6 @@ var Paging = (function (_Component) {
 
     /**
      * 跳转至N页
-     * @method gotoPage
-     * @param index {Integer} 页码，从1开始
-     * @return {Array}
      * */
 
     Paging.prototype.gotoPage = function gotoPage(index) {
@@ -621,8 +599,6 @@ var Paging = (function (_Component) {
 
     /**
      * 生成页码
-     * @method generate
-     * @return {Array}
      * */
 
     Paging.prototype.generate = function generate() {
@@ -762,11 +738,6 @@ var Paging = (function (_Component) {
             &#x27;  条&#x27;
         );
     };
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
 
     Paging.prototype.render = function render() {
         var _props2 = this.props;

@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -411,14 +403,35 @@
                     <ul class="index-list properties extends">
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_callback" data-tablink="callback">callback</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_icon" data-tablink="icon">icon</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_classPrefix" data-tablink="classPrefix">classPrefix</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_iconDirection" data-tablink="iconDirection">iconDirection</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_iconStyle" data-tablink="iconStyle">iconStyle</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_noResultTips" data-tablink="noResultTips">noResultTips</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_placeholder" data-tablink="placeholder">placeholder</a>
 
                                 
                                 
@@ -430,6 +443,17 @@
 
             <div class="index-section events col-sm-4">
                 <h3>事件</h3>
+                
+                    <ul class="index-list events extends">
+                        
+                            <li class="index-item event">
+                                <a href="#" data-tabid="#event" data-anchor="#event_getValueCallback" data-tablink="getValueCallback">getValueCallback</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
                 
             </div>
         </div>
@@ -443,6 +467,8 @@
             
                 <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
+            
+                <li class=""><a data-toggle="tab" href="#event">事件</a></li>
             
         </ul>
     
@@ -529,6 +555,180 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/suggestion"  _no='0'> <a>suggestion</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component,PropTypes}  from &#39;react&#39;;
+import {Col,Item,Row,Grid,Button,Suggestion} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+export default class Demo extends Component{
+
+    static defaultProps = {
+        input: true,
+        keys:&#39;bei&#39;
+    }
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            input: this.props.input
+        }
+    }
+
+    query(){
+        //可以返回ajax
+        return [
+            {
+                key:&#39;上海&#39;,
+                value:&#39;shanghai&#39;,
+                subKey:&#39;10个区&#39;
+            },
+            {
+                key:&#39;北京&#39;,
+                value:&#39;beijing&#39;,
+                subKey:&#39;10个区&#39;
+            },
+            {
+                key:&#39;哈尔滨&#39;,
+                value:&#39;haerbin&#39;,
+                subKey:&#39;5010个区&#39;
+            },
+            {
+                key:&#39;南京&#39;,
+                value:&#39;nanjing&#39;,
+                subKey:&#39;10个区&#39;
+            },
+            {
+                key:&#39;南宁&#39;,
+                value:&#39;nanning&#39;,
+                subKey:&#39;120个区&#39;
+            },
+            {
+                key:&#39;天津&#39;,
+                value:&#39;tianjing&#39;,
+                subKey:&#39;312310个区&#39;
+            },
+            {
+                key:&#39;深圳&#39;,
+                value:&#39;shenzhen&#39;,
+                subKey:&#39;101个区&#39;
+            }
+        ];
+    }
+
+    getValue(value,key,type){
+        let stype = {
+            &#39;init&#39;:&#39;加载时调用&#39;,
+            &#39;enter&#39;:&#39;回车时调用&#39;,
+            &#39;click&#39;:&#39;点击每一项元素时调用&#39;
+        };
+        document.getElementById(&#39;showtip&#39;).innerHTML = <code>&amp;lt;strong&amp;gt;${stype[type]}&amp;lt;&#x2F;strong&amp;gt;的值为：&amp;lt;b&amp;gt;&quot;key&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${key}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;,&amp;lt;b&amp;gt;&quot;value&quot;:&amp;lt;span class=&quot;color-error&quot;&amp;gt;${value}&amp;lt;&#x2F;span&amp;gt;&amp;lt;&#x2F;b&amp;gt;</code>;
+    }
+
+    render(){
+        return (
+        &lt;DemoLayout title="联想词"&gt;
+            &lt;DemoItem title="" desc={&#39;queryCallback的形式传入数据&#39;}&gt;
+                &lt;CodeShow&gt;
+                    &lt;Code code={getFile(&#39;suggestion-demo1&#39;)}&gt;
+                    &lt;/Code&gt;
+                &lt;/CodeShow&gt;
+                &lt;DemoShow&gt;
+                    &lt;Grid fluid&gt;
+                        &lt;Row&gt;
+                            &lt;Col&gt;
+                                &lt;div id="showtip" className="color-info"&gt;&lt;/div&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                        &lt;Row&gt;
+                            &lt;Col sm={10} layer padding={0}&gt;
+                                &lt;Suggestion
+                                    getValueCallback={::this.getValue}
+                                    queryCallback={::this.query}
+                                    icon="search"
+                                    iconDirection="left"
+                                    placeholder="请输入key搜索" /&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={2} end padding={0}&gt;
+                                &lt;Button type="submit"&gt;查询&lt;/Button&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                    &lt;/Grid&gt;
+                &lt;/DemoShow&gt;
+            &lt;/DemoItem&gt;
+            &lt;DemoItem title="子标签的形式传入数据" desc={&#39;&#39;}&gt;
+                &lt;CodeShow&gt;
+                    &lt;Code code={getFile(&#39;suggestion-demo2&#39;)}&gt;
+                    &lt;/Code&gt;
+                &lt;/CodeShow&gt;
+                &lt;DemoShow&gt;
+                    &lt;Grid fluid&gt;
+                        &lt;Row&gt;
+                            &lt;Col&gt;
+                                &lt;div id="showtip" className="color-info"&gt;&lt;/div&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                        &lt;Row&gt;
+                            &lt;Col sm={10} layer&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={10} end&gt;
+                                        &lt;Suggestion
+                                            icon="delete"
+                                            defaultValue=&#39;试验&#39;
+                                            iconDirection="right"
+                                            iconStyle={{color:&#39;red&#39;}}
+                                            noResultTips=&#39;nima&#39;
+                                            getValueCallback={function(key,value){
+                                            console.log(key,value)
+                                            }}
+                                           &gt;
+                                            &lt;Item value="测试测试" subKey="222222"&gt;
+                                                测试测试
+                                            &lt;/Item&gt;
+                                            &lt;Item value="测试" subKey="达到"&gt;
+                                                测试
+                                            &lt;/Item&gt;
+                                            &lt;Item value="试验" subKey="dsadsad"&gt;
+                                                试验
+                                            &lt;/Item&gt;
+                                            &lt;Item value="测验"&gt;
+                                                测验
+                                            &lt;/Item&gt;
+                                            &lt;Item value="检测" &gt;
+                                                检测1
+                                            &lt;/Item&gt;
+                                        &lt;/Suggestion&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={2}&gt;请输入测、测试、试进行搜索&lt;/Col&gt;
+                        &lt;/Row&gt;
+                    &lt;/Grid&gt;
+                &lt;/DemoShow&gt;
+            &lt;/DemoItem&gt;
+
+        &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
+    
 </div>
 
                 </div>
@@ -542,9 +742,9 @@
                 <h2 class="off-left">属性</h2>
 
                 
-                    <div id="property_callback" class="property item">
-    <h3 class="name"><code>callback</code></h3>
-    <span class="type">Func</span>
+                    <div id="property_icon" class="property item">
+    <h3 class="name"><code>icon</code></h3>
+    <span class="type">String</span>
 
     
 
@@ -565,7 +765,7 @@
             
         
         
-        <a href="../files/lib_Suggestion.js.html#l64"><code>lib&#x2F;Suggestion.js:64</code></a>
+        <a href="../files/lib_Suggestion.js.html#l82"><code>lib&#x2F;Suggestion.js:82</code></a>
         
         </p>
 
@@ -575,13 +775,13 @@
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>回调方法，主要作用将value传给父级元素。默认为null</p>
+        <div class="stdoc-code"><p>input框左侧或者右侧出现的提示图标.默认不加icon.如果想显示放大镜图标可以将icon设置为"search".其他图标可以参考icon fonts</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> null</code>
+         <code> &#x27;&#x27;</code>
     
 
     
@@ -590,9 +790,209 @@
 </div>
 
                 
-                    <div id="property_classPrefix" class="property item">
-    <h3 class="name"><code>classPrefix</code></h3>
+                    <div id="property_iconDirection" class="property item">
+    <h3 class="name"><code>iconDirection</code></h3>
     <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Suggestion.js.html#l89"><code>lib&#x2F;Suggestion.js:89</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>图标出现的位置，可以设置为left或者right</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> &#x27;right&#x27;</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_iconStyle" class="property item">
+    <h3 class="name"><code>iconStyle</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Suggestion.js.html#l96"><code>lib&#x2F;Suggestion.js:96</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>icon的样式，比如可以通过设置{color:&#39;red&#39;}来将icon设置为红色</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> {}</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_noResultTips" class="property item">
+    <h3 class="name"><code>noResultTips</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Suggestion.js.html#l103"><code>lib&#x2F;Suggestion.js:103</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>没有匹配结果时下拉框中的匹配文案</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> &#x27;没有匹配结果&#x27;</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_placeholder" class="property item">
+    <h3 class="name"><code>placeholder</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_Suggestion.js.html#l40"><code>lib&#x2F;Suggestion.js:40</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>input框中没有输入值时的提示文案</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> &#x27;&#x27;</code>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+            <div id="event" class="tab-pane">
+                <h2 class="off-left">事件</h2>
+
+                
+                    <div id="event_getValueCallback" class="events item">
+    <h3 class="name"><code>getValueCallback</code></h3>
+    <span class="type"></span>
 
     
 
@@ -621,23 +1021,96 @@
 
         
     </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>样式类名前缀</p>
+     <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>当用户选中sug中的某一提示项时触发的回调函数</p>
 </div>
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
+            <div class="clearfix params-wap-table">
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">key</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>每一个sug Item的value属性</p>
+
+                        </span>
+                    </div>
+                    
+                
+                    <div class="params-box">
+                        
+                            <code class="param-name">value</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>每一个sug Item的展示值</p>
+
+                        </span>
+                    </div>
+                    
+                
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">key</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>每一个sug Item的value属性</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">value</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>每一个sug Item的展示值</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
     
+
 
     
 </div>
 
                 
             </div>
-        
-
         
     </div>
 </div>

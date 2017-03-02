@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -422,6 +414,8 @@ var _classnames = require(&#x27;classnames&#x27;);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+//import ReactDom from &#x27;react-dom&#x27;;
+
 var _reactLibReactDOM = require(&#x27;react/lib/ReactDOM&#x27;);
 
 var _reactLibReactDOM2 = _interopRequireDefault(_reactLibReactDOM);
@@ -546,6 +540,15 @@ var LabelGroup = (function (_Component) {
         if (offsetV &amp;&amp; !this.props.spacing) {
             var cssStr = &#x27;margin-left:&#x27; + (offsetV.offsetWidth + 30) + &#x27;px;&#x27;;
             _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.itemObj]).style.cssText = cssStr;
+        }
+    };
+
+    LabelGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        var checkedText = nextProps.defaultChecked;
+        if (this.state.checked !== checkedText) {
+            this.setState({
+                checked: checkedText
+            });
         }
     };
 

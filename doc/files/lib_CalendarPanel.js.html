@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -437,6 +429,10 @@ var _CalendarJs = require(&#x27;./Calendar.js&#x27;);
 
 var _CalendarJs2 = _interopRequireDefault(_CalendarJs);
 
+var _utilsIe8CheckJs = require(&#x27;./utils/Ie8-check.js&#x27;);
+
+var _utilsIe8CheckJs2 = _interopRequireDefault(_utilsIe8CheckJs);
+
 /**
  * CalendarPanel组件&lt;br&gt;
  * 接受Calendar的所有属性接口，额外增加一个getValueCallback方法
@@ -487,7 +483,7 @@ var CalendarPanel = (function (_Component) {
             componentTag: _react.PropTypes.string,
             /**
              * 日历位置
-             * @property direction
+             * @param {string} direction 可选值有 top | left | down | right
              * @type String
              * @default auto 自动根据当前位置切换 上/下，
              * */
@@ -723,6 +719,7 @@ var CalendarPanel = (function (_Component) {
                 value: _this.state.value,
                 onChange: _this.inputChangeHandler.bind(_this),
                 icon: option.props.icon,
+                onClick: _utilsIe8CheckJs2[&#x27;default&#x27;]() == 8 ? _this.inputFocusHandler.bind(_this) : function () {},
                 iconClickCallback: (function () {
                     _reactLibReactDOM2[&#x27;default&#x27;].findDOMNode(this.refs[this.inputId]).getElementsByTagName(&#x27;input&#x27;)[0].focus();
                 }).bind(_this2)

@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -443,6 +435,16 @@ var _utilsComponent2 = _interopRequireDefault(_utilsComponent);
 var Star = (function (_Component) {
     _inherits(Star, _Component);
 
+    Star.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        var newRate = nextProps.rate;
+        if (this.state.rate !== newRate) {
+            this.setState({
+                rate: newRate
+            });
+            this.Rate = newRate;
+        }
+    };
+
     _createClass(Star, null, [{
         key: &#x27;propTypes&#x27;,
         value: {
@@ -494,15 +496,12 @@ var Star = (function (_Component) {
         this.state = {
             rate: props.rate,
             size: props.size,
-            disable: props.disable,
             adjust: props.adjust
         };
         this.Rate = props.rate;
     }
 
     Star.prototype.renderCustomize = function renderCustomize(e) {
-        var disable = this.state.disable;
-
         var newPositionX = e.clientX;
 
         var newRate = Math.floor((newPositionX - this.positionX) / this.offsetWidth * 5 + 1) * 20;
@@ -526,7 +525,7 @@ var Star = (function (_Component) {
             width: size * 5 + &#x27;px&#x27;,
             height: size - 1 + &#x27;px&#x27;,
             backgroundSize: size * 5 + &#x27;px auto&#x27;,
-            cursor: !this.state.disable ? &#x27;pointer&#x27; : &#x27;hand&#x27;
+            cursor: !this.props.disable ? &#x27;pointer&#x27; : &#x27;hand&#x27;
         } : {};
         var shadowPosition = size ? {
             backgroundPosition: &quot;0  -&quot; + size + &quot;px&quot;
@@ -536,7 +535,7 @@ var Star = (function (_Component) {
             { className: this.getProperty(),
                 style: customizeStyle,
                 onMouseMove: function (e) {
-                    !_this.state.disable &amp;&amp; _this.renderCustomize(e);
+                    !_this.props.disable &amp;&amp; _this.renderCustomize(e);
                 },
                 ref: function (targetNode) {
                     var self = _this;

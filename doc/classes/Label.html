@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -547,6 +539,184 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/label"  _no='0'> <a>label</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component} from &#39;react&#39;;
+import {Label,LabelGroup,Panel,Grid,Row,Col,PanelContent} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+export default class Demo extends Component{
+
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            &lt;DemoLayout title="标签"&gt;
+                &lt;DemoItem title="标签样式"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;label-demo1&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Grid&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;
+                                    &lt;Label egStyle="error"&gt;error&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={2}&gt;
+                                    &lt;Label egStyle="success"&gt;success&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={2}&gt;
+                                    &lt;Label egStyle="warning"&gt;warning&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={2}&gt;
+                                    &lt;Label egStyle="danger"&gt;danger&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={2}&gt;
+                                    &lt;Label&gt;default&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={2}&gt;
+                                    &lt;Label disabled&gt;disabled&lt;/Label&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="标签尺寸"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;label-demo2&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Grid&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={4}&gt;
+                                    &lt;Label egStyle="success" egSize="xs"&gt;small&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={4}&gt;
+                                    &lt;Label egStyle="success" egSize="sm"&gt;middle&lt;/Label&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={4}&gt;
+                                    &lt;Label egStyle="success" egSize="lg"&gt;large&lt;/Label&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="egType设置为simple的标签组"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;label-demo3&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;LabelGroup egType="simple"
+                                    activeCallback={
+                                            function(value,text,target,active){
+                                                console.log(value,text,target,active);
+                                            }}&gt;
+                            &lt;Label value="all"&gt;全部&lt;/Label&gt;
+                            &lt;Label value="luwan"&gt;卢湾区&lt;/Label&gt;
+                            &lt;Label value="xuhui"&gt;徐汇区&lt;/Label&gt;
+                            &lt;Label value="jinan"&gt;静安区&lt;/Label&gt;
+                            &lt;Label value="changning"&gt;长宁区&lt;/Label&gt;
+                            &lt;Label value="minhang"&gt;闵行区&lt;/Label&gt;
+                        &lt;/LabelGroup&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="egType设置为default的标签组"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;label-demo4&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;LabelGroup spacing={94}
+                                    title=&#39;行政区&#39;
+                                    egType=&#39;default&#39;
+                                    defaultChecked=&#39;卢湾区&#39;
+                                    activeCallback={
+                                            function(value,text,target,active){
+                                                console.log(value,text,target,active);
+                                            }}
+                            &gt;
+                            &lt;Label value="0" className="all"&gt;全部&lt;/Label&gt;
+                            &lt;Label value="1"&gt;卢湾区&lt;/Label&gt;
+                            &lt;Label value="10"&gt;徐汇区&lt;/Label&gt;
+                            &lt;Label&gt;静安区&lt;/Label&gt;
+                            &lt;Label&gt;长宁区&lt;/Label&gt;
+                            &lt;Label&gt;闵行区&lt;/Label&gt;
+                            &lt;Label&gt;浦东新区&lt;/Label&gt;
+                            &lt;Label&gt;黄浦区&lt;/Label&gt;
+                            &lt;Label&gt;普陀区&lt;/Label&gt;
+                            &lt;Label&gt;闸北区&lt;/Label&gt;
+                            &lt;Label&gt;虹口区&lt;/Label&gt;
+                            &lt;Label&gt;杨浦区&lt;/Label&gt;
+                            &lt;Label&gt;宝山区&lt;/Label&gt;
+                        &lt;/LabelGroup&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="egType设置为form的标签组"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;label-demo5&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Row&gt;
+                            &lt;Col sm={6}&gt;
+                                &lt;LabelGroup egType="form" &gt;
+                                    &lt;Label value="0"&gt;当前日佣金基数&lt;/Label&gt;
+                                    &lt;Label value="1"&gt;&lt;h1 className="color-error"&gt;9112&lt;/h1&gt;&lt;/Label&gt;
+                                &lt;/LabelGroup&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={6}&gt;
+                                &lt;LabelGroup egType="form" &gt;
+                                    &lt;Label value="0"&gt;当前日佣金基数&lt;/Label&gt;
+                                    &lt;Label value="1"&gt;&lt;h1 className="color-error"&gt;9112&lt;/h1&gt;&lt;/Label&gt;
+                                &lt;/LabelGroup&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                        &lt;Row&gt;
+                            &lt;Col sm={6}&gt;
+                                &lt;LabelGroup egType="form" &gt;
+                                    &lt;Label value="0"&gt;当前日佣金基数&lt;/Label&gt;
+                                    &lt;Label value="1"&gt;121212121&lt;/Label&gt;
+                                &lt;/LabelGroup&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={6}&gt;
+                                &lt;LabelGroup egType="form" &gt;
+                                    &lt;Label value="0"&gt;当前日佣金基数&lt;/Label&gt;
+                                    &lt;Label value="1"&gt;&lt;h1 className="color-error"&gt;9112&lt;/h1&gt;&lt;/Label&gt;
+                                &lt;/LabelGroup&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+
+            &lt;/DemoLayout&gt;
+
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 

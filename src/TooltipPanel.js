@@ -65,7 +65,7 @@ class TooltipPanel extends Component {
         componentTag: PropTypes.string,
         /**
          * 触发事件类型，可选‘click‘，’hover‘
-         * @property onTrigger
+         * @property trigger
          * @type:String
          * @default hover
          * */

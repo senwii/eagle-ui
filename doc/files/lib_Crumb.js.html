@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -456,19 +448,7 @@ var Crumb = (function (_Component) {
     _createClass(Crumb, null, [{
         key: &#x27;propTypes&#x27;,
         value: {
-            /**
-             * 类名样式前缀
-             * @property classPrefix
-             * @type sting
-             * @default crumb
-             * */
             classPrefix: _react.PropTypes.string,
-            /**
-             * 标签tagName
-             * @property componentTag
-             * @type String
-             * @default div
-             * */
             componentTag: _react.PropTypes.string
         },
         enumerable: true
@@ -486,11 +466,6 @@ var Crumb = (function (_Component) {
 
         _Component.call(this, props, context);
     }
-
-    /**
-     * @method render
-     * @return {ReactElement}
-     */
 
     Crumb.prototype.render = function render() {
         var length = this.props.children.length;

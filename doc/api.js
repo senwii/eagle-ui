@@ -21,7 +21,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "PanelHeader",
         "RadioGroup",
         "Row",
-        "Search",
         "Select",
         "Slider",
         "Star",
@@ -140,9 +139,6 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Label"
-                },
-                {
-                    "name": "Search"
                 },
                 {
                     "name": "Star"

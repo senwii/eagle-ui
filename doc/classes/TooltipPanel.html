@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -423,45 +415,6 @@
             <div class="index-section methods col-sm-4">
                 <h3>方法</h3>
                 
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_changeStyle" data-tablink="changeStyle">changeStyle</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_componentDidMount" data-tablink="componentDidMount">componentDidMount</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_getMaxBody" data-tablink="getMaxBody">getMaxBody</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_isValidate" data-tablink="isValidate">isValidate</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#" data-tabid="#method" data-anchor="#method_render" data-tablink="render">render</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                
             </div>
 
             <div class="index-section properties col-sm-4">
@@ -484,7 +437,14 @@
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_onTrigger" data-tablink="onTrigger">onTrigger</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_padding" data-tablink="padding">padding</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_trigger" data-tablink="trigger">trigger</a>
 
                                 
                                 
@@ -512,8 +472,6 @@
     
         <ul id="itemTab" class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
-            
-                <li class=""><a data-toggle="tab" href="#method">方法</a></li>
             
             
                 <li class=""><a data-toggle="tab" href="#property">属性</a></li>
@@ -600,692 +558,102 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/toolTip"  _no='0'> <a>tooltip</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {TooltipPanel,Tooltip,Button,Grid,Col,Row} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+let Demo = class Demo extends Component {
+    render() {
+        let test1 = &lt;div className=&#39;sds&#39; style={{&#39;color&#39;:&#39;red&#39;}}&gt;Holy guacamole!&lt;/div&gt;;
+        return (
+        &lt;DemoLayout title="Tooltip"&gt;
+            &lt;DemoItem title="基本场景"&gt;
+                &lt;CodeShow&gt;
+                    &lt;Code code={getFile(&#39;tooltip-demo1&#39;)}&gt;
+                    &lt;/Code&gt;
+                &lt;/CodeShow&gt;
+                &lt;DemoShow&gt;
+                    &lt;Grid&gt;
+                        &lt;Row&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;top&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;上边&lt;/Button&gt;
+                                    &lt;Tooltip padding={20}&gt;
+                                        &lt;div className=&#39;tooltip&#39; style={{width:&#39;150px&#39;,color:&#39;#f00&#39;}}&gt;tooltip的children&lt;/div&gt;
+                                    &lt;/Tooltip&gt;
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;right&#39;
+                                              msg=&#39;我是在右方的tooltip哦&#39; padding={10} trigger=&#39;click&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;右边&lt;/Button&gt;
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;bottom&#39;
+                                              trigger=&#39;click&#39;
+                                              msg=&#39;我是在下方的tooltip哦&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;下边&lt;/Button&gt;
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;left&#39;
+                                              msg=&#39;我是在左方的tooltip哦&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;左边&lt;/Button&gt;
+
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                    &lt;/Grid&gt;
+                &lt;/DemoShow&gt;
+            &lt;/DemoItem&gt;
+
+            &lt;DemoItem title="通过设置wrapper属性来限定边界" desc={&#39;wrapper为边界容器的的id值，当tooltip设置的方向超出容器的边界时，会被自动改变方向&#39;}&gt;
+                &lt;CodeShow&gt;
+                    &lt;Code code={getFile(&#39;tooltip-demo2&#39;)}&gt;
+                    &lt;/Code&gt;
+                &lt;/CodeShow&gt;
+                &lt;DemoShow&gt;
+                    &lt;div id=&#39;a&#39; style={{width:&#39;500px&#39;,height:&#39;200px&#39;,border:&#39;1px solid #f00&#39;,position:&#39;relative&#39;}}&gt;
+                        &lt;div style={{margin:&#39;10px&#39;}}&gt;
+                            &lt;TooltipPanel direction=&#39;top&#39; wrapper=&#39;a&#39; msg={&#39;sddssdds&#39;}&gt;
+                                &lt;Button radius egSize="sm" egStyle="warning"&gt;红色边框为边界，设置的方向是top.实际展示为bottom&lt;/Button&gt;
+                            &lt;/TooltipPanel&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/DemoShow&gt;
+            &lt;/DemoItem&gt;
+        &lt;/DemoLayout&gt;
+        )
+    }
+};
+export default Demo;</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
+    
 </div>
 
                 </div>
             
         </div>
 
-        
-            <div id="method" class="tab-pane">
-                <h2 class="off-left">方法</h2>
-
-                
-                    <div id="method_changeStyle" class="method item">
-    <h3 class="name">changeStyle</h3>
-    <code>
-    changeStyle
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        direction
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_TooltipPanel.js.html#l300"><code>lib&#x2F;TooltipPanel.js:300</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>tips方向和边界判断，调整tips的位置</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-            <div class="clearfix params-wap-table">
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">direction</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-                    </div>
-                    
-                
-            </div>
-
-            <table class="table table-bordered params-pc-table">
-                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">direction</code>
-                            <td> <span class="type">String</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                         
-                    </div>
-
-                        
-                    </tr>
-                
-            </table>
-
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                    <p>null</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_componentDidMount" class="method item">
-    <h3 class="name">componentDidMount</h3>
-    <code>
-    componentDidMount
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_TooltipPanel.js.html#l166"><code>lib&#x2F;TooltipPanel.js:166</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>渲染完成时进行方向和边界判断，调整tips的位置</p>
-</div>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                    <p>null</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getMaxBody" class="method item">
-    <h3 class="name">getMaxBody</h3>
-    <code>
-    getMaxBody
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        body
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        doc
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_TooltipPanel.js.html#l341"><code>lib&#x2F;TooltipPanel.js:341</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>获得浏览器的边界大小</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-            <div class="clearfix params-wap-table">
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">body</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-                    </div>
-                    
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">doc</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-                    </div>
-                    
-                
-            </div>
-
-            <table class="table table-bordered params-pc-table">
-                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">body</code>
-                            <td> <span class="type">Object</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                         
-                    </div>
-
-                        
-                    </tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">doc</code>
-                            <td> <span class="type">Object</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                         
-                    </div>
-
-                        
-                    </tr>
-                
-            </table>
-
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        [<span class="type">Object</span>]
-                    
-                    <p>maxBody</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_isValidate" class="method item">
-    <h3 class="name">isValidate</h3>
-    <code>
-    isValidate
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        dir
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        tips
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        ele
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        maxBody
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_TooltipPanel.js.html#l368"><code>lib&#x2F;TooltipPanel.js:368</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>判断是否满足边界条件,返回满足的方向
-不满足的话应该说直接取相反方向</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-            <div class="clearfix params-wap-table">
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">dir</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-                    </div>
-                    
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">tips</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-                    </div>
-                    
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">ele</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-                    </div>
-                    
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">maxBody</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                            <p>边界</p>
-
-                        </span>
-                    </div>
-                    
-                
-            </div>
-
-            <table class="table table-bordered params-pc-table">
-                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">dir</code>
-                            <td> <span class="type">String</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                         
-                    </div>
-
-                        
-                    </tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">tips</code>
-                            <td> <span class="type">Object</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                         
-                    </div>
-
-                        
-                    </tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">ele</code>
-                            <td> <span class="type">Object</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                         
-                    </div>
-
-                        
-                    </tr>
-                
-                    <tr class="param">
-                        
-                            <td> <code class="param-name">maxBody</code>
-                            <td> <span class="type">Object</span>
-                        <td>
-                        
-
-                        
-                    </td>
-                    <td><div class="param-description">
-                        <p>边界</p>
-
-                    </div>
-
-                        
-                    </tr>
-                
-            </table>
-
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        [<span class="type">Boolean</span>]
-                    
-                    <p>flag</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_render" class="method item">
-    <h3 class="name">render</h3>
-    <code>
-    render
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_TooltipPanel.js.html#l422"><code>lib&#x2F;TooltipPanel.js:422</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description well well-small sign-left3">
-        <div class="stdoc-code"></div>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                    <p>ReactElement</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         
@@ -1326,7 +694,7 @@
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>提示方向</p>
+        <div class="stdoc-code"><p>提示方向。方向可选：top,down,left,right.默认down</p>
 </div>
     </div>
 
@@ -1389,8 +757,56 @@
 </div>
 
                 
-                    <div id="property_onTrigger" class="property item">
-    <h3 class="name"><code>onTrigger</code></h3>
+                    <div id="property_padding" class="property item">
+    <h3 class="name"><code>padding</code></h3>
+    <span class="type">:Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_TooltipPanel.js.html#l124"><code>lib&#x2F;TooltipPanel.js:124</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>提示内容padding，默认5</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> hover</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_trigger" class="property item">
+    <h3 class="name"><code>trigger</code></h3>
     <span class="type">:String</span>
 
     

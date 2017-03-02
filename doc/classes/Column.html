@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -546,6 +538,170 @@
     
 
     
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/table"  _no='0'> <a>table</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component} from &#39;react&#39;;
+import {Col,Row,Column,Th,Table,Tr,Td} from &#39;eagle-ui&#39;;
+
+
+export default class TableCls extends Component{
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            tableData:[
+                {name: &#39;Rylan&#39;, email: &#39;Angelita_Weimann42@gmail.com&#39;,score:2},
+                {name: &#39;Amelia&#39;, email: &#39;Dexter.Trantow57@hotmail.com&#39;,score:3},
+                {name: &#39;Estevan&#39;, email: &#39;Aimee7@hotmail.com&#39;,score:4},
+                {name: &#39;Florence&#39;, email: &#39;Jarrod.Bernier13@yahoo.com&#39;,score:5},
+                {name: &#39;Tressa&#39;, email: &#39;Yadira1@hotmail.com&#39;,score:6},
+            ]
+        };
+    }
+    componentDidMount(){
+        let _this=this;
+        setTimeout(()=&gt;{
+            _this.setState({
+                tableData:[
+                    {name: &#39;Amelia2&#39;, email: &#39;Dexter.Trantow57@hotmail.com&#39;,score:200},
+                    {name: &#39;Rylan2&#39;, email: &#39;Angelita_Weimann42@gmail.com&#39;,score:100},
+                    {name: &#39;Estevan2&#39;, email: &#39;Aimee7@hotmail.com&#39;,score:106},
+                    {name: &#39;Florence2&#39;, email: &#39;Jarrod.Bernier13@yahoo.com&#39;,score:233},
+                    {name: &#39;Tressa2&#39;, email: &#39;Yadira1@hotmail.com&#39;,score:900},
+                ]
+            })
+        },5000);
+    }
+    render(){
+        let tableData=this.state.tableData;
+        return (
+             &lt;div&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;Table data={tableData}&gt;
+                            &lt;Column
+                                header="Name"
+                                field=&#39;name&#39;
+                                cell={
+                                    &lt;Td data={tableData}&gt;&lt;/Td&gt;
+                                }
+                                /&gt;
+                            &lt;Column
+                                header={&lt;span style={{color:"red"}}&gt;Email&lt;/span&gt;}
+                                field=&#39;email&#39;
+                                cell={
+                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
+                                }
+                                /&gt;
+                            &lt;Column
+                                header={&lt;span style={{color:"green"}}&gt;Score&lt;/span&gt;}
+                                field=&#39;score&#39;
+                                cell={
+                                    &lt;Td data={tableData} &gt;&lt;/Td&gt;
+                                }
+                                /&gt;
+                        &lt;/Table&gt;
+                     &lt;/Col&gt;
+                 &lt;/Row&gt;
+                &lt;Row&gt;
+                    &lt;Col&gt;
+                        &lt;Table&gt;
+                            &lt;thead&gt;
+                            &lt;Tr&gt;
+                                &lt;Th&gt;数据类型&lt;/Th&gt;
+                                &lt;Th&gt;数据项&lt;/Th&gt;
+                                &lt;Th&gt;昨日&lt;/Th&gt;
+                                &lt;Th&gt;本月&lt;/Th&gt;
+                                &lt;Th&gt;上月&lt;/Th&gt;
+                                &lt;Th&gt;本月城市排名&lt;/Th&gt;
+                            &lt;/Tr&gt;
+                            &lt;/thead&gt;
+                            &lt;tbody&gt;
+                            &lt;Tr&gt;
+                                &lt;Td rowSpan="4"&gt;过程指标&lt;/Td&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td arrow-up&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr split&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td arrow-down&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td rowSpan="4"&gt;业绩&lt;/Td&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;Tr&gt;
+                                &lt;Td&gt;消费交易额&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;1876500&lt;/Td&gt;
+                                &lt;Td&gt;200&lt;/Td&gt;
+                            &lt;/Tr&gt;
+                            &lt;/tbody&gt;
+                        &lt;/Table&gt;
+                    &lt;/Col&gt;
+                &lt;/Row&gt;
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
+    
 </div>
 
                 </div>
@@ -584,7 +740,7 @@
             
         
         
-        <a href="../files/lib_sug_Search.js.html#l43"><code>lib&#x2F;sug&#x2F;Search.js:43</code></a>
+        <a href="../files/lib_sug_Search.js.html#l47"><code>lib&#x2F;sug&#x2F;Search.js:47</code></a>
         
         </p>
 
@@ -680,7 +836,7 @@
             
         
         
-        <a href="../files/lib_sug_Search.js.html#l50"><code>lib&#x2F;sug&#x2F;Search.js:50</code></a>
+        <a href="../files/lib_sug_Search.js.html#l54"><code>lib&#x2F;sug&#x2F;Search.js:54</code></a>
         
         </p>
 

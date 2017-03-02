@@ -39,8 +39,9 @@ export default class Paging extends Component{
         total: PropTypes.number.isRequired,
         /**
          * 点击分页回调
-         * @property pageCallback
-         * @type Function
+         * @event  pageCallback
+         * @param {Integer} pageNum 用户点击的页码
+         * @default function(){}
          * */
         pageCallback: PropTypes.func,
         /**
@@ -122,38 +123,20 @@ export default class Paging extends Component{
         };
     }
 
-    /**
-     * 上一页
-     * @method prev
-     * */
     prev(){
         this.gotoPage(this.props.currentPage-1 );
     }
 
-    /**
-     * 下一页
-     * @method prev
-     * */
     next(){
         this.gotoPage(this.props.currentPage+1);
     }
 
-    /**
-     * 获取页大小
-     * @method getPages
-     * @return {Integer}
-     * */
+
     getPages(){
         return Math.ceil(this.props.total/this.props.pageSize);
     }
 
-    /**
-     * 跳转至N页
-     * @method goto
-     * @param page {Integer} 页码，从1开始
-     * @private
-     * @return {Array}
-     * */
+
     goto(page = this.state.currentPage){
 
         this.pages=this.getPages();
@@ -176,9 +159,6 @@ export default class Paging extends Component{
 
     /**
      * 跳转至N页
-     * @method gotoPage
-     * @param index {Integer} 页码，从1开始
-     * @return {Array}
      * */
     gotoPage(index){
         this.init=true;
@@ -187,8 +167,6 @@ export default class Paging extends Component{
     }
     /**
      * 生成页码
-     * @method generate
-     * @return {Array}
      * */
     generate(){
         const {currentPage,activeClass} = this.props;
@@ -286,10 +264,6 @@ export default class Paging extends Component{
         );
     }
 
-    /**
-     * @method render
-     * @return {ReactElement}
-     * */
     render(){
 
         const {componentTag:Component,activeClass,showItemsNumber} = this.props;

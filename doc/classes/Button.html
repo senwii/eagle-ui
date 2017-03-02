@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -569,6 +561,111 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/button"  _no='0'> <a>button</a></li>
+                
+            </ul>
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React, { Component ,PropTypes} from &#39;react&#39;;
+import {ButtonGroup,Button,Row,Col,Grid} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;;
+
+export default class ButtonCls extends Component{
+    onActive(target,html){
+        console.dir(html);
+        alert(&#39;测试&#39;);
+    }
+    render(){
+        return (
+            &lt;DemoLayout title="按钮组件"&gt;
+                &lt;DemoItem title="按钮样式"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo1&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button egStyle="warning"&gt;警告&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="success"&gt;成功&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="danger"&gt;危险&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="error"&gt;错误&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="info"&gt;info&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button &gt;默认&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="white"&gt;白色&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="link" &gt;链接&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="按钮大小"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo2&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button egSize="xs" &gt;小号&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button&gt;默认&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egSize="lg" &gt;大号&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="按钮组排列"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo3&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;ButtonGroup egType="justify" activeCallback={this.onActive}&gt;
+                            &lt;Button egStyle="warning"&gt;水平按钮组1&lt;/Button&gt;&lt;Button egStyle="warning"&gt;水平按钮组2&lt;/Button&gt;&lt;Button egStyle="warning"&gt;水平按钮组3&lt;/Button&gt;
+                        &lt;/ButtonGroup&gt;
+                        &lt;br/&gt;
+                        &lt;ButtonGroup egType="tacked"&gt;
+                            &lt;Button&gt;垂直按钮组1&lt;/Button&gt;&lt;Button&gt;垂直按钮组2&lt;/Button&gt;&lt;Button&gt;垂直按钮组3&lt;/Button&gt;
+                        &lt;/ButtonGroup&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="空心按钮"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo4&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button egStyle="warning" hollow&gt;警告&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="success" hollow&gt;成功&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="danger" hollow&gt;危险&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="error" hollow&gt;错误&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="white" hollow&gt;white&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="link" hollow&gt;link&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="默认／禁用"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;button-demo5&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button radius egSize="sm"&gt;默认&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button radius egSize="sm" disabled&gt;默认不可点&lt;/Button&gt;
+                        &lt;br/&gt;&lt;br/&gt;
+                        &lt;Button egStyle="white"&gt;白色&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="white" disabled&gt;白色不可点&lt;/Button&gt;
+                        &lt;br/&gt;&lt;br/&gt;
+                        &lt;Button egStyle="success"&gt;成功&lt;/Button&gt;&amp;nbsp;
+                        &lt;Button egStyle="success" disabled&gt;成功不可点&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 

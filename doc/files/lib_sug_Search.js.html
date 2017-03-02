@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -431,6 +423,10 @@ var _Suggestion2 = require(&#x27;./Suggestion&#x27;);
 
 var _Suggestion3 = _interopRequireDefault(_Suggestion2);
 
+var _utilsIe8CheckJs = require(&#x27;../utils/Ie8-check.js&#x27;);
+
+var _utilsIe8CheckJs2 = _interopRequireDefault(_utilsIe8CheckJs);
+
 var Search = (function (_Suggestion) {
     _inherits(Search, _Suggestion);
 
@@ -507,6 +503,7 @@ var Search = (function (_Suggestion) {
             onKeyUp: this.handler.bind(this, &#x27;onKeyUp&#x27;),
             onChange: this.handler.bind(this, &#x27;onChange&#x27;),
             onKeyDown: this.handler.bind(this, &#x27;onKeyDown&#x27;),
+            onClick: _utilsIe8CheckJs2[&#x27;default&#x27;]() == 8 ? this.focusHandler.bind(this) : function () {},
             onFocus: this.focusHandler.bind(this),
             onBlur: this.inputBlurHandler.bind(this),
             iconClickCallback: (function () {

@@ -268,14 +268,6 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
                            <a href="../classes/Star.html">Star</a>
                            <ul>
                                 
@@ -421,9 +413,9 @@ var _classnames2 = require(&#x27;classnames&#x27;);
 
 var _classnames3 = _interopRequireDefault(_classnames2);
 
-var _utilsIcon = require(&#x27;./utils/Icon&#x27;);
+var _utilsIcons = require(&#x27;./utils/Icons&#x27;);
 
-var _utilsIcon2 = _interopRequireDefault(_utilsIcon);
+var _utilsIcons2 = _interopRequireDefault(_utilsIcons);
 
 /**
  * &lt;h5&gt;form表单模块集成了常见的表单元素形式:&lt;/h5&gt;
@@ -554,12 +546,12 @@ var Input = (function (_Component) {
     Input.prototype.getIcon = function getIcon(type, checked, icon) {
         var classMap = {
             radio: {
-                active: &#x27;adjust_checked&#x27;,
-                &#x27;default&#x27;: &#x27;adjust_unchecked&#x27;
+                active: &#x27;radio-checked&#x27;,
+                &#x27;default&#x27;: &#x27;radio-unchecked&#x27;
             },
             checkbox: {
-                active: &#x27;checkbox_checked&#x27;,
-                &#x27;default&#x27;: &#x27;checkbox_unchecked&#x27;
+                active: &#x27;checkbox-checked-fill&#x27;,
+                &#x27;default&#x27;: &#x27;checkbox-unchecked&#x27;
             }
         };
 
@@ -576,7 +568,7 @@ var Input = (function (_Component) {
         }
 
         if (name) {
-            return _react2[&#x27;default&#x27;].createElement(_utilsIcon2[&#x27;default&#x27;], { onClick: this.props.iconClickCallback, className: _classnames3[&#x27;default&#x27;](&quot;input-icon&quot;), name: name, style: iconStyle });
+            return _react2[&#x27;default&#x27;].createElement(_utilsIcons2[&#x27;default&#x27;], { onClick: this.props.iconClickCallback, className: _classnames3[&#x27;default&#x27;](&quot;input-icon&quot;), name: name, style: iconStyle });
         }
 
         return html;
