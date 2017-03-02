@@ -35,19 +35,7 @@ import Component from './utils/Component';
  * */
 export default class Crumb extends Component {
     static propTypes = {
-        /**
-         * 类名样式前缀
-         * @property classPrefix
-         * @type sting
-         * @default crumb
-         * */
         classPrefix: PropTypes.string,
-        /**
-         * 标签tagName
-         * @property componentTag
-         * @type String
-         * @default div
-         * */
         componentTag: PropTypes.string
     }
     static defaultProps = {
@@ -57,10 +45,6 @@ export default class Crumb extends Component {
     constructor(props, context) {
         super(props, context);
     }
-    /**
-     * @method render
-     * @return {ReactElement}
-     */
     render() {
         let length = this.props.children.length;
         let li = this.props.children.map((item,index)=>{
