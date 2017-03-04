@@ -33,9 +33,9 @@ export default class CalendarPanel extends Component{
         componentTag:PropTypes.string,
         /**
          * 日历位置
-         * @param {string} direction 可选值有 top | left | down | right
-         * @type String
-         * @default auto 自动根据当前位置切换 上/下，
+         * @property direction
+         * @type string direction 可选值有 top | left | down | right
+         * @default auto 自动根据当前位置切换 上/下
          * */
         direction: PropTypes.string,
         /**
@@ -58,9 +58,9 @@ export default class CalendarPanel extends Component{
     getFormat(){
         let formatMap={
                 date:this.props.format||'yyyy-MM-dd',
-                month:this.props.monthFormat || 'MM',
-                year:this.props.yearFormat || 'yyyy',
-                yearMonth:this.props.yearMonthFormat || 'yyyy-MM'
+                month:this.props.format || 'MM',
+                year:this.props.format || 'yyyy',
+                yearMonth:this.props.format || 'yyyy-MM'
             };
         return formatMap[this.props.calendarType]
     }
@@ -71,7 +71,7 @@ export default class CalendarPanel extends Component{
             year:2,
             yearMonth:1
         },
-        windowType= typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0
+        windowType= typeMap[this.props.calendarType]?typeMap[this.props.calendarType]:0;
         return windowType;
     }
     constructor(props, context) {
@@ -81,7 +81,7 @@ export default class CalendarPanel extends Component{
         this.state = {
             posStyle: {},
             isShow:false,
-            value:this.props.defaultDate || '',
+            value:this.props.defaultDate ||this.props.defaultValue|| '',
             windowType:this.getWindowType()
         };
     }
@@ -90,6 +90,7 @@ export default class CalendarPanel extends Component{
         this.setState({
             value: nextProps.defaultDate
         });
+        //this.updateDirection();
     }
 
     doSetCapture(input){
@@ -108,10 +109,10 @@ export default class CalendarPanel extends Component{
     }
 
     componentDidMount() {
-        this.updateDirection()
+        //this.updateDirection()
     }
     componentDidUpdate() {
-        this.updateDirection();
+
     }
 
     inputBlurHandler(){
@@ -126,7 +127,7 @@ export default class CalendarPanel extends Component{
     inputFocusHandler(e){
         let container = ReactDom.findDOMNode(this.refs[this.calendarContainer]),
             _this = this,
-            calendar = container.querySelector(`.${this.getClassName('container')}`),
+            calendar = this.getChildObject(),//container.querySelector(`.${this.getClassName('container')}`),
             input = e.target;
 
         calendar.onmousedown = function (e) {
@@ -137,6 +138,10 @@ export default class CalendarPanel extends Component{
         this.setState({
             isShow:true,
             windowType:this.getWindowType()
+        });
+        //更新位置
+        setTimeout(()=>{
+            this.updateDirection();
         });
     }
 
@@ -191,11 +196,14 @@ export default class CalendarPanel extends Component{
             bottom: rect.bottom
         };
     }
+    getChildObject(){
+        return ReactDom.findDOMNode(this.refs[this.calendarContainer + 'calendar']);
+    }
     updateDirection() {
         let dir = this.props.direction;
         let [inputNode, panelNode] = [
             ReactDom.findDOMNode(this.refs[this.inputId]),
-            ReactDom.findDOMNode(this.refs[this.calendarContainer + 'calendar']).children[0]];
+            this.getChildObject().children[0] ];
         let [isUp, isAlignLeft] = [false, false];
 
         const inputPos = this.getElementPos(inputNode);
@@ -254,45 +262,57 @@ export default class CalendarPanel extends Component{
             default :
                 break;
         }
-        this.refs[this.calendarContainer + 'calendar'].updateDirection(style, {
+        this.updateDirectionForChild(style,{
             isUp: isUp,
             dir: dir,
             inputHeight: inputPos.height
         });
     }
-    render(){
+    updateDirectionForChild(style,obj){
+        this.refs[this.calendarContainer + 'calendar'].updateDirection(style, obj);
+    }
+    renderCalendar(body=null){
+        return <Calendar
+                format={this.getFormat()}
+                {...this.props}
+                ref={this.calendarContainer+'calendar'}
+                show={this.state.isShow}
+                selectCallback={::this.selectCallback}
+                windowType={this.state.windowType}
+                closeCallback={::this.close}
+                setWindowType={::this.setWindowType}>{body}</Calendar>
+    }
+    renderHtml(body){
         let {componentTag:Component} = this.props,
             _this = this;
         let options = React.Children.map(this.props.children,(option)=>{
-            return <Input {...option.props}
-                ref={this.inputId}
-                onBlur={::_this.inputBlurHandler}
-                onMouseUp={::_this.inputMouseUpHandler}
-                onFocus={::_this.inputFocusHandler}
-                value={_this.state.value}
-                onChange={::_this.inputChangeHandler}
-                icon={option.props.icon}
-                onClick={(ieCheck()==8?_this.inputFocusHandler.bind(_this):function(){})}
-                iconClickCallback={function(){
+            return React.cloneElement(option,{
+                ...option.props,
+                ref:_this.inputId,
+                onBlur:_this.inputBlurHandler.bind(_this),
+                onMouseUp:_this.inputMouseUpHandler.bind(_this),
+                onFocus:_this.inputFocusHandler.bind(_this),
+                value:_this.state.value,
+                onChange:_this.inputChangeHandler.bind(_this),
+                icon:option.props.icon,
+                onClick:(ieCheck()==8?_this.inputFocusHandler.bind(_this):function(){}),
+                iconClickCallback:function(){
                     ReactDom.findDOMNode(this.refs[this.inputId]).getElementsByTagName('input')[0].focus();
-                }.bind(this) }
-                />;
+                }.bind(this)
+            });
+
         },this);
+
         return (
             <div className={
                 classnames(this.getClassName('panel') )
             } ref={this.calendarContainer} style={{'position': 'relative'}}>
                 {options}
-                <Calendar
-                    format={this.getFormat()}
-                    {...this.props}
-                    ref={this.calendarContainer+'calendar'}
-                    show={this.state.isShow}
-                    selectCallback={::this.selectCallback}
-                    windowType={this.state.windowType}
-                    closeCallback={::this.close}
-                    setWindowType={::this.setWindowType} />
+                {body}
             </div>
         );
+    }
+    render(){
+        return this.renderHtml(this.renderCalendar() );
     }
 }

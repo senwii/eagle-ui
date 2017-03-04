@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
+    <title>src/Label.js - eagle-ui</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart" _assetsPath="../assets">
+ <nav class="navbar navbar-inverse navbar-fixed-top custom-navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="">
+             
+            <img alt="eagle-ui" src="../assets/css/logo.png" title="eagle-ui">
+            
+                eagle-ui
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="">主页</a>
+                    </li>
+                    
+                    <li><a href="http://future-team.github.io/eagle-ui/examples/index.html">示例</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>模块/类</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/form(表单).html">form(表单)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/RadioGroup.html">RadioGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Select.html">Select</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/ValidatorPanel.html">ValidatorPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Button.html">Button</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/ButtonGroup.html">ButtonGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Input.html">Input</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Row.html">Row</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Col.html">Col</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Panel.html">Panel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelContent.html">PanelContent</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelFooter.html">PanelFooter</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelHeader.html">PanelHeader</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/table(表格).html">table(表格)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Column.html">Column</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Table.html">Table</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tr.html">Tr</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/ui.html">ui</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/imgSlider.html">imgSlider</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Label.html">Label</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Calendar.html">Calendar</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/CalendarPanel.html">CalendarPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Crumb.html">Crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Dialog.html">Dialog</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/LabelGroup.html">LabelGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Paging.html">Paging</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
+</div>
+   
+    <div class="stdoc-content">
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>src/Label.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+/**
+ * Created by mac on 15/9/7.
+ */
+import React,{PropTypes} from &#x27;react&#x27;;
+import classnames from &#x27;classnames&#x27;;
+
+import Component from &#x27;./utils/Component&#x27;;
+/**
+ * 标签组件&lt;br /&gt;
+ * 提供基本的标签样式，通常结合LabelGroup组件一起使用
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://future-team.github.io/eagle-ui/examples/index.html#/label&quot;&gt;demo展示&lt;/a&gt;&lt;/div&gt;
+ * &lt;div&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/future-team/eagle-ui/blob/master/src/Label.js&quot;&gt;查看源码&lt;/a&gt;&lt;/div&gt;
+ * @class Label
+ * @module ui
+ * @constructor
+ * @demo #/label|label.js
+ * @show true
+ * */
+export default class Label extends Component{
+    static propTypes = {
+        /**
+         * label的链接地址（不设置的话默认不进行跳转）
+         * @property url
+         * @type String
+         * @default &#x27;javascript:void(0);&#x27;
+         * */
+        url:PropTypes.string,
+        activeCallback:PropTypes.func,
+        /**
+         * 标签尺寸,分别为xs、sm、lg
+         * @property egSize
+         * @type String
+         * @default sm
+         * */
+        egSize:PropTypes.string,
+        /**
+         * 是否禁用Label
+         * @property disabled
+         * @type Boolean
+         * @default false
+         * */
+        disabled:PropTypes.bool,
+        /**
+         * 标签是否处于选中状态
+         * @property active
+         * @type Boolean
+         * @default false
+         * */
+        active:PropTypes.bool,
+        /**
+         * 标签颜色样式，可以为[&#x27;success&#x27;,&#x27;error&#x27;,&#x27;warning&#x27;,&#x27;danger&#x27;,&#x27;&#x27;]中任何一个
+         * @property egStyle
+         * @type Boolean
+         * @default &#x27;&#x27;
+         * */
+        egStyle:PropTypes.string
+    };
+    static defaultProps = {
+        classPrefix:&#x27;label&#x27;,
+        url:&#x27;javascript:void(0);&#x27;,
+        componentTag:&#x27;a&#x27;
+    };
+    constructor(props, context) {
+        super(props, context);
+    }
+
+    /**
+     * 点击回调函数
+     * */
+    mouseDownHandler(e){
+        let target = e.target;
+
+        this.execMethod(&#x27;active&#x27;,target.getAttribute(&#x27;value&#x27;),target.innerHTML,target,!this.props.active);
+    }
+
+    render(){
+        const {url} = this.props;
+        return (
+            &lt;this.componentTag href={url} {...this.props} className={
+                    classnames(
+                        this.getProperty(),
+                        this.props.className
+                    )
+                }
+                onMouseDown={::this.mouseDownHandler}
+                &gt;
+                {this.props.children}
+            &lt;/this.componentTag&gt;
+        );
+    }
+}
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+
+</body>
+</html>

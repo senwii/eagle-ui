@@ -1,0 +1,6 @@
+import React,{Component,PropTypes} from 'react';
+import {Input, DateTimePicker} from 'eagle-ui';
+
+<DateTimePicker format="hh:mm">
+    <Input placeholder="请选择日期时间"  icon="calendar" />
+</DateTimePicker>

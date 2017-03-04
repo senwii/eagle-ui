@@ -70,11 +70,11 @@ import Icon from './utils/Icons.js';
  * </pre>
  * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/slider">demo展示</a></div>
  * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ImgSlider.js">查看源码</a></div>
- * @class Slider
+ * @class imgSlider
  * @module ui
  * @extends Component
  * @constructor
- * @demo #/slider|imgSlider.js
+ * @demo #/imgslider|imgSlider.js
  * @show true
  * */
 @ClassNameMixin

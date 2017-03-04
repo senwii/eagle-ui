@@ -57,7 +57,7 @@ export default class Calendar extends Component{
                             <Code code={getFile('calendar-demo2')}/>
                         </CodeShow>
                         <DemoShow>
-                            <CalendarPanel calendarType="yearMonth">
+                            <CalendarPanel calendarType="yearMonth" format="yyyy年MM月">
                                 <Input placeholder="请选择日期"  icon="calendar" />
                             </CalendarPanel>
                         </DemoShow>
