@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
+    <title>src/TooltipPanel.js - eagle-ui</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart" _assetsPath="../assets">
+ <nav class="navbar navbar-inverse navbar-fixed-top custom-navbar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="">
+             
+            <img alt="eagle-ui" src="../assets/css/logo.png" title="eagle-ui">
+            
+                eagle-ui
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="">主页</a>
+                    </li>
+                    
+                    <li><a href="http://future-team.github.io/eagle-ui/examples/index.html">示例</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>模块/类</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/form(表单).html">form(表单)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/CheckboxGroup.html">CheckboxGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/RadioGroup.html">RadioGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Select.html">Select</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/ValidatorPanel.html">ValidatorPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Button.html">Button</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/ButtonGroup.html">ButtonGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Input.html">Input</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/grid(布局).html">grid(布局)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Row.html">Row</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Col.html">Col</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Grid.html">Grid</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/panel(面板).html">panel(面板)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Panel.html">Panel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelContent.html">PanelContent</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelFooter.html">PanelFooter</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/PanelHeader.html">PanelHeader</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/table(表格).html">table(表格)</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Column.html">Column</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Table.html">Table</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Td.html">Td</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Th.html">Th</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tr.html">Tr</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/ui.html">ui</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/imgSlider.html">imgSlider</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Label.html">Label</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Search.html">Search</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Slider.html">Slider</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Calendar.html">Calendar</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/CalendarPanel.html">CalendarPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Crumb.html">Crumb</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Dialog.html">Dialog</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/LabelGroup.html">LabelGroup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Paging.html">Paging</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Suggestion.html">Suggestion</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tab.html">Tab</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Toast.html">Toast</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/Tooltip.html">Tooltip</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TooltipPanel.html">TooltipPanel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
+</div>
+   
+    <div class="stdoc-content">
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>src/TooltipPanel.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+import React,{Component,PropTypes} from &#x27;react&#x27;;
+import ClassNameMixin from &#x27;./utils/ClassNameMixin&#x27;;
+import classnames from &#x27;classnames&#x27;;
+import Tooltip from &#x27;./Tooltip.js&#x27;;
+import Button from &#x27;./Button.js&#x27;;
+import Row from &#x27;./Row.js&#x27;;
+import Col from &#x27;./Col.js&#x27;;
+import Grid from &#x27;./Grid.js&#x27;;
+import ReactDom from &#x27;react/lib/ReactDOM&#x27;;
+/**
+ * tipsPanel组件
+ * 方向可选：top,down,left,right.默认down
+ * 存在边界判断，若指定方向容纳不了提示，会转为默认
+ * 可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。
+ * 主要属性和接口：
+ * &lt;ul&gt;
+ *     &lt;li&gt;direction:提示的方向，取值范围［top,bottom,left,right］默认down&lt;br&gt;
+ *         如：&lt;code&gt;
+ *           TooltipPanel direction=&#x27;top&#x27; wapper=&#x27;a&#x27;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;msg:提示文字，必须要写，不然默认的没什么用吧&lt;br&gt;
+ *         如：&lt;code&gt;
+ *           TooltipPanel direction=&#x27;top&#x27; wapper=&#x27;a&#x27; msg=&#x27;this is msg&#x27;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ *     &lt;li&gt;wrapper:指定边界元素，默认为可视窗口，如下则id为a的div为边界元素&lt;br&gt;
+ *         如：&lt;code&gt;
+ *            TooltipPanel direction=&#x27;top&#x27; wapper=&#x27;a&#x27;
+ *         &lt;/code&gt;
+ *     &lt;/li&gt;
+ * &lt;/ul&gt;
+ * @class TooltipPanel
+ * @module ui
+ * @constructor
+ * @demo #/toolTip|tooltip.js
+ * @show true
+ * */
+@ClassNameMixin
+export default
+class TooltipPanel extends Component {
+    static propType = {
+        /**
+         * 提示内容
+         * @property msg
+         * @type String
+         * @default 这是个提示
+         * */
+        msg: PropTypes.string,
+        /**
+         * 是否指定tips的边界，如果指定超出该边界则改变方向，否则默认以可是窗口边界来判断
+         * @property wrapper
+         * @type string
+         * @default &#x27;&#x27;
+         * */
+        wrapper: PropTypes.string,
+        /**
+         * 提示方向
+         * @property direction
+         * @type String
+         * @default bottom
+         * */
+        direction: PropTypes.string,
+        classPrefix: PropTypes.string,
+        componentTag: PropTypes.string,
+        /**
+         * 触发事件类型，可选‘click‘，’hover‘
+         * @property onTrigger
+         * @type:String
+         * @default hover
+         * */
+        trigger: PropTypes.string,
+        /**
+         * 可选 &#x27;black,white&#x27;
+         * */
+        bgColor: PropTypes.string,
+        skin:PropTypes.string,
+        /**
+         * 提示内容padding，默认5
+         * @property padding
+         * @type:Number
+         * @default hover
+         * */
+        padding:PropTypes.number
+    };
+    static defaultProps = {
+        show: false,
+        direction: &#x27;bottom&#x27;,
+        classPrefix: &#x27;tooltip&#x27;,
+        wrapper: &#x27;&#x27;,
+        componentTag: &#x27;div&#x27;,
+        trigger:&#x27;hover&#x27;,
+        bgColor:&#x27;#000&#x27;
+    };
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            /**
+             * 显示与否由父组件控制
+             * @type Boolean
+             * */
+            show: this.props.show
+        };
+        this.isOldDir = true;
+        this.idName=&#x27;tolltip-id&#x27;;
+    }
+
+    /**
+     * 动态更新展示
+     */
+    componentDidUpdate() {
+        //this.changeStyle(this.props.direction);
+    }
+
+    /**
+     * 渲染完成时进行方向和边界判断，调整tips的位置
+     * @method componentDidMount
+     * @return null
+     * */
+    componentDidMount() {
+        /**
+         * 如果事件是click，body加上事件，移除时隐藏
+         * */
+        this.changeStyle(this.tooltipTarget,this.props.direction);
+        if(this.props.trigger == &#x27;click&#x27;){
+            let idName = this.idName;
+            let self = this;
+            document.addEventListener(&#x27;click&#x27;,((idName)=&gt;{
+                let id = idName;
+                return (event)=&gt;{
+                    !self.parents(id,event.target)&amp;&amp;(self.setState({
+                        show:false
+                    }));
+                }
+            })(idName))
+        }
+
+    }
+    parents(id,dom){
+        let tempNode = dom.parentNode;
+        while (tempNode &amp;&amp; tempNode !== document) {
+            if(tempNode.getAttribute(&#x27;name&#x27;) == id){
+                return true;
+            }else{
+                tempNode = tempNode.parentNode;
+            }
+        }
+        return false;
+    }
+    uniqueRef(){
+        return &#x27;toolTip&#x27; + Math.floor(Math.random() * 100);
+    }
+    setToolTipObj(){
+        this.tooltipTarget = arguments[0];
+    }
+    handler(e){
+        this.changeStyle(this.tooltipTarget,this.props.direction);
+        this.setState({
+            show:!this.state.show
+        });
+
+    }
+    /**
+     * 获得限制区域的宽，若未指定则默认可视区域大小
+     *
+     * */
+    getWarpperWH() {
+        let warp = this.props.wrapper;
+        let warpWH;
+        if (warp) {
+            let warpNode = document.querySelector(&#x27;#&#x27; + this.props.wrapper);
+            warpWH = this.getClientWH(warpNode);
+        } else {
+            let bodys = this.getClientWH(document.body);
+            let docs = this.getClientWH(document.documentElement);
+            warpWH = this.getMaxBody(bodys, docs);
+        }
+        return warpWH;
+    }
+
+    /**
+     * 获取元素的client宽高
+     * */
+    getClientWH(obj) {
+        let wh = {
+            width: obj.clientWidth,
+            height: obj.clientHeight
+        };
+        return wh
+    }
+
+    /**
+     * 获取tips的offset
+     * 宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差
+     * */
+    getOffsetWH(obj) {
+        let wh = {
+            height: obj.offsetHeight,
+            width: obj.offsetWidth
+        };
+        let warp = this.props.wrapper;
+        let warpNode = warp?document.querySelector(&#x27;#&#x27;+warp) : null;
+        wh.left = this.getTrueLT(obj, true, warpNode);
+        wh.top = this.getTrueLT(obj, false, warpNode);
+        return wh
+    }
+    /**
+     * 获取处理之后的offset，top和left
+     * */
+    getTrueLT(tipNode, isLeft, warpNode) {
+        let tipNodeLT = this.getOffsetLT(tipNode,isLeft);
+        if (warpNode) {
+            let warpLT = this.getOffsetLT(warpNode,isLeft);
+            tipNodeLT = tipNodeLT - warpLT;
+        }
+        return tipNodeLT;
+    }
+    /**
+     * 获取offset top、left。
+     * 两者获取方式相同，根据isleft区分left或top
+     * */
+    getOffsetLT(ele, isLeft) {
+        let dir = isLeft ? &#x27;offsetLeft&#x27; : &#x27;offsetTop&#x27;;
+        let actuDir = ele[dir],
+            current = ele.offsetParent;
+        while (current != null) {
+            actuDir = actuDir + current[dir];
+            current = current.offsetParent;
+        }
+        return actuDir;
+    }
+
+    /**
+     * tips方向和边界判断，调整tips的位置
+     * @method changeStyle
+     * @param direction {String}
+     * @return null
+     * */
+    changeStyle(obj,direction) {
+        let dir = direction;
+        let [tipNode,arrowNode] = [
+            ReactDom.findDOMNode(obj),
+            ReactDom.findDOMNode(this.container)];
+        let tips = this.getOffsetWH(tipNode);
+        let arrow = this.getOffsetWH(arrowNode);
+        let warpperWH = this.getWarpperWH();
+        dir = this.isValidate(dir, tips, arrow, warpperWH);
+        switch (dir) {
+            case &#x27;down&#x27;:
+                tipNode.style.top = arrow.height + &#x27;px&#x27;;
+                tipNode.style.left = (arrow.width - tips.width) / 2 + &#x27;px&#x27;;
+                break;
+            case &#x27;top&#x27;:
+                tipNode.style.top = &#x27;-&#x27; + (tips.height + 10) + &#x27;px&#x27;;
+                tipNode.style.left = (arrow.width - tips.width) / 2 + &#x27;px&#x27;;
+                break;
+            case &#x27;left&#x27;:
+                tipNode.style.right = arrow.width + 5 + &#x27;px&#x27;;
+                tipNode.style.top = ((arrow.height - tips.height) / 2 - 5) + &#x27;px&#x27;;
+                break;
+            case &#x27;right&#x27;:
+                tipNode.style.left = arrow.width + 5 + &#x27;px&#x27;;
+                tipNode.style.top = ((arrow.height - tips.height) / 2 - 5) + &#x27;px&#x27;;
+                break;
+            default :
+                break;
+        }
+        !this.isOldDir &amp;&amp; this.getNewArrow(tipNode, dir);
+    }
+
+    /**
+     * 获得浏览器的边界大小
+     * @method getMaxBody
+     * @param body {Object}
+     * @param doc {Object}
+     * @return maxBody {Object}
+     * */
+    getMaxBody(body, doc) {
+        let maxBody = {
+            height: body.height &gt; doc.height ? body.height : doc.height,
+            width: body.width &gt; doc.width ? body.width : doc.width
+
+        };
+        return maxBody;
+    }
+
+    /**
+     * 如果方向改变，重新设置箭头方向
+     * */
+    getNewArrow(tipNode, dir) {
+        let arrow = tipNode.children[0];
+        this.removeClass(arrow, classnames(
+            this.getClassName(&#x27;arrow-&#x27; + this.props.direction)
+        ));
+        this.addClass(arrow, classnames(
+            this.getClassName(&#x27;arrow-&#x27; + dir)
+        ));
+    }
+
+    /**
+     * 判断是否满足边界条件,返回满足的方向
+     * 不满足的话应该说直接取相反方向
+     * @method isValidate
+     * @param dir {String}
+     * @param tips {Object}
+     * @param ele {Object}
+     * @param maxBody {Object} 边界
+     * @return flag {Boolean}
+     * */
+    isValidate(dir, tips, ele, maxBody) {
+        let newDir = dir;
+        switch (dir) {
+            case &#x27;down&#x27;:
+                if ((maxBody.height - ele.top) &lt; (ele.height + tips.height)) {
+                    newDir = &#x27;top&#x27;;
+                    this.isOldDir = false;
+                }
+                return newDir;
+                break;
+            case &#x27;top&#x27;:
+                if (ele.top &lt; tips.height) {
+                    newDir = &#x27;down&#x27;;
+                    this.isOldDir = false;
+                }
+                return newDir;
+                break;
+            case &#x27;left&#x27;:
+                if (ele.left &lt; tips.width) {
+                    newDir = &#x27;right&#x27;;
+                    this.isOldDir = false;
+                }
+                return newDir;
+                break;
+            case &#x27;right&#x27;:
+                if ((maxBody.width - ele.left) &lt; (ele.width + tips.width)) {
+                    newDir = &#x27;left&#x27;;
+                    this.isOldDir = false;
+                }
+                return newDir;
+                break;
+            default :
+                return newDir;
+                break;
+        }
+    }
+    getChild(option,trigger){
+        let {children,...other} = option;
+        if(trigger == &#x27;hover&#x27;){
+            other[&#x27;onMouseOver&#x27;] = this.handler.bind(this);
+            other[&#x27;onMouseOut&#x27;] = this.handler.bind(this);
+        }else{
+            other.trigger = trigger.substr(0,1).toUpperCase()+trigger.substr(1);
+            other[&#x60;on${other.trigger}&#x60;] = this.handler.bind(this);
+        }
+        return React.cloneElement(option,{
+            ...other
+        });
+    }
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            show : nextProps.show
+        });
+    }
+    /**
+     * @method render
+     * @return ReactElement
+     * */
+    render() {
+        let {children,bgColor,direction,...other} = this.props;
+        let dir = direction == &#x27;down&#x27; ? &#x27;bottom&#x27;: direction;
+        let c = null;
+        if(other.msg){
+            let child = this.getChild(children,other.trigger);
+            c = [
+                ...child,
+                &lt;Tooltip {...other } show = {this.state.show} setToolTipObj={this.setToolTipObj.bind(this)} bgColor={bgColor} direction ={dir}/&gt;
+            ];
+        }else{
+            c = React.Children.map(children,(option,index)=&gt;{
+                return index==0?this.getChild(option,other.trigger):React.cloneElement(option,{
+                    show:this.state.show,
+                    setToolTipObj:this.setToolTipObj.bind(this),
+                    bgColor:bgColor,
+                    direction:dir
+                });
+
+            },this);
+        }
+
+        return (
+            &lt;Grid
+                {...this.props}
+                name = {this.idName}
+                className={classnames(
+                    this.getClassName(&#x27;container&#x27;)
+                    )
+                }
+                ref={(ref)=&gt;{this.container = ref}} &gt;
+                {c}
+            &lt;/Grid&gt;
+        );
+    }
+
+}
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+
+</body>
+</html>

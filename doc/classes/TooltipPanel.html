@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -276,7 +276,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +308,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +340,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +365,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -491,6 +515,13 @@
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_padding" data-tablink="padding">padding</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_wrapper" data-tablink="wrapper">wrapper</a>
 
                                 
@@ -530,7 +561,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_TooltipPanel.js.html#l53"><code>lib&#x2F;TooltipPanel.js:53</code></a>
+                    Defined in: <a href="../files/src_TooltipPanel.js.html#l10"><code>src&#x2F;TooltipPanel.js:10</code></a>
                 </div>
             
 
@@ -581,7 +612,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l53"><code>lib&#x2F;TooltipPanel.js:53</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l10"><code>src&#x2F;TooltipPanel.js:10</code></a>
         
         </p>
 
@@ -599,6 +630,95 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/toolTip"  _no='0'> <a>tooltip</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React,{Component} from &#39;react&#39;;
+import {TooltipPanel,Tooltip,Button,Grid,Col,Row} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+let Demo = class Demo extends Component {
+    render() {
+        let test1 = &lt;div className=&#39;sds&#39; style={{&#39;color&#39;:&#39;red&#39;}}&gt;Holy guacamole!&lt;/div&gt;;
+        return (
+        &lt;DemoLayout title="Tooltip"&gt;
+            &lt;DemoItem title="基本场景"&gt;
+                &lt;CodeShow&gt;
+                    &lt;Code code={getFile(&#39;tooltip-demo1&#39;)}&gt;
+                    &lt;/Code&gt;
+                &lt;/CodeShow&gt;
+                &lt;DemoShow&gt;
+                    &lt;Grid&gt;
+                        &lt;Row&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;top&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;上边&lt;/Button&gt;
+                                    &lt;Tooltip padding={20}&gt;
+                                        &lt;div className=&#39;tooltip&#39; style={{width:&#39;150px&#39;,color:&#39;#f00&#39;}}&gt;tooltip的children&lt;/div&gt;
+                                    &lt;/Tooltip&gt;
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;right&#39;
+                                              msg=&#39;我是在右方的tooltip哦&#39; padding={10} trigger=&#39;click&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;右边&lt;/Button&gt;
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;bottom&#39;
+                                              msg=&#39;我是在下方的tooltip哦&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;下边&lt;/Button&gt;
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                            &lt;Col sm={3}&gt;
+                                &lt;TooltipPanel direction=&#39;left&#39;
+                                              msg=&#39;我是在左方的tooltip哦&#39;&gt;
+                                    &lt;Button radius egSize="sm" egStyle="warning"&gt;左边&lt;/Button&gt;
+
+                                &lt;/TooltipPanel&gt;
+                            &lt;/Col&gt;
+                        &lt;/Row&gt;
+                    &lt;/Grid&gt;
+                &lt;/DemoShow&gt;
+            &lt;/DemoItem&gt;
+
+            &lt;DemoItem title="通过设置wrapper属性来限定边界" desc={&#39;wrapper为边界容器的的id值，当tooltip设置的方向超出容器的边界时，会被自动改变方向&#39;}&gt;
+                &lt;CodeShow&gt;
+                    &lt;Code code={getFile(&#39;tooltip-demo2&#39;)}&gt;
+                    &lt;/Code&gt;
+                &lt;/CodeShow&gt;
+                &lt;DemoShow&gt;
+                    &lt;div id=&#39;a&#39; style={{width:&#39;500px&#39;,height:&#39;200px&#39;,border:&#39;1px solid #f00&#39;,position:&#39;relative&#39;}}&gt;
+                        &lt;div style={{margin:&#39;10px&#39;}}&gt;
+                            &lt;TooltipPanel direction=&#39;top&#39; wrapper=&#39;a&#39; msg={&#39;sddssdds&#39;}&gt;
+                                &lt;Button radius egSize="sm" egStyle="warning"&gt;红色边框为边界，设置的方向是top.实际展示为bottom&lt;/Button&gt;
+                            &lt;/TooltipPanel&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/DemoShow&gt;
+            &lt;/DemoItem&gt;
+        &lt;/DemoLayout&gt;
+        )
+    }
+};
+export default Demo;</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 
@@ -659,7 +779,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l300"><code>lib&#x2F;TooltipPanel.js:300</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l234"><code>src&#x2F;TooltipPanel.js:234</code></a>
         
         </p>
 
@@ -775,7 +895,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l166"><code>lib&#x2F;TooltipPanel.js:166</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l116"><code>src&#x2F;TooltipPanel.js:116</code></a>
         
         </p>
 
@@ -864,7 +984,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l341"><code>lib&#x2F;TooltipPanel.js:341</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l272"><code>src&#x2F;TooltipPanel.js:272</code></a>
         
         </p>
 
@@ -1040,7 +1160,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l368"><code>lib&#x2F;TooltipPanel.js:368</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l301"><code>src&#x2F;TooltipPanel.js:301</code></a>
         
         </p>
 
@@ -1251,7 +1371,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l422"><code>lib&#x2F;TooltipPanel.js:422</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l365"><code>src&#x2F;TooltipPanel.js:365</code></a>
         
         </p>
 
@@ -1316,7 +1436,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l103"><code>lib&#x2F;TooltipPanel.js:103</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l57"><code>src&#x2F;TooltipPanel.js:57</code></a>
         
         </p>
 
@@ -1364,7 +1484,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l89"><code>lib&#x2F;TooltipPanel.js:89</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l43"><code>src&#x2F;TooltipPanel.js:43</code></a>
         
         </p>
 
@@ -1412,7 +1532,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l112"><code>lib&#x2F;TooltipPanel.js:112</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l66"><code>src&#x2F;TooltipPanel.js:66</code></a>
         
         </p>
 
@@ -1423,6 +1543,54 @@
 
     <div class="description">
         <div class="stdoc-code"><p>触发事件类型，可选‘click‘，’hover‘</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> hover</code>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_padding" class="property item">
+    <h3 class="name"><code>padding</code></h3>
+    <span class="type">:Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_TooltipPanel.js.html#l78"><code>src&#x2F;TooltipPanel.js:78</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>提示内容padding，默认5</p>
 </div>
     </div>
 
@@ -1460,7 +1628,7 @@
             
         
         
-        <a href="../files/lib_TooltipPanel.js.html#l96"><code>lib&#x2F;TooltipPanel.js:96</code></a>
+        <a href="../files/src_TooltipPanel.js.html#l50"><code>src&#x2F;TooltipPanel.js:50</code></a>
         
         </p>
 

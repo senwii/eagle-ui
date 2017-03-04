@@ -1,6 +1,7 @@
 import React,{ PropTypes, Component } from 'react';
 import classnames from 'classnames';
 import ClassNameMixin from './utils/ClassNameMixin.js';
+import Slider from './Slider.js';
 
 /**
  * 日历组件<br />
@@ -471,7 +472,7 @@ export default class Calendar extends Component{
             let date=type+'/'+(selected.getMonth()+1)+'/'+'1';
             let d= date.split('/'),
                 {selectCallback} = this.props;
-            selectCallback && selectCallback(this.getDate(d[0],d[1],d[2]),d );
+            selectCallback && selectCallback(this.getDate(d[0],d[1],d[2]),d);
             this.setState({
                 currentDate:new Date(date),
                 selectedDate:new Date(typeof(type)=='string'?year + eval("(" + type + ")"):type,selected.getMonth(),1 )
@@ -532,7 +533,6 @@ export default class Calendar extends Component{
     updateDirectionTop(){
         const posStyle = this.state.posStyle;
         const {isUp = false, dir, inputHeight} = this.state.parentExtra;
-        console.log('updateDirectionTop run');
         if(isUp){
             const panelHeight = this.refs[this.calendarId].clientHeight;
             if(['left', 'right'].indexOf(dir) !== -1){
@@ -567,6 +567,7 @@ export default class Calendar extends Component{
                                     display:(this.props.calendarType=='date'?'inline-block':'none')
                                 }} onClick={::this.todayHandler}>今天</span>
                             </div>
+                            {this.props.children}
                         </div>
                     </div>
                 </div>

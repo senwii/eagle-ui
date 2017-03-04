@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -276,7 +276,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +308,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +340,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +365,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -466,7 +490,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_Tabset.js.html#l40"><code>lib&#x2F;Tabset.js:40</code></a>
+                    Defined in: <a href="../files/src_Tabset.js.html#l9"><code>src&#x2F;Tabset.js:9</code></a>
                 </div>
             
 
@@ -519,7 +543,7 @@
             
         
         
-        <a href="../files/lib_Tabset.js.html#l40"><code>lib&#x2F;Tabset.js:40</code></a>
+        <a href="../files/src_Tabset.js.html#l9"><code>src&#x2F;Tabset.js:9</code></a>
         
         </p>
 
@@ -539,6 +563,110 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/tab"  _no='0'> <a>tab</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component} from &#39;react&#39;;
+import {Tab,Tabset} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+let Demo = class Demo extends Component{
+
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            tabIndex:0
+        };
+    }
+    componentDidMount(){
+        let _this=this;
+        setTimeout(()=&gt;{
+            _this.setState({
+                tabIndex:3
+            })
+        },2000)
+    }
+    callback(index){
+        console.log(&#39;i&#39;,index);
+        if(this.state.tabIndex!==index){
+            this.setState({
+                tabIndex:index
+            });
+        }
+    }
+
+    tab3(){
+        if(this.state.tabIndex==2){
+            return (&lt;div&gt;tab3&lt;/div&gt;);
+        }
+    }
+    tab2(){
+        if(this.state.tabIndex==1){
+            return (&lt;div&gt;tab2&lt;/div&gt;);
+        }
+    }
+    tab1(){
+        if(this.state.tabIndex==0){
+            return (&lt;div&gt;tab1&lt;/div&gt;);
+        }
+    }
+
+
+    render(){
+        return (
+            &lt;DemoLayout title="Tab"&gt;
+                &lt;DemoItem title="" desc={&#39;activeTab属性从0开始计&#39;}&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;tab&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Tabset  activeTab={this.state.tabIndex} tabCallback={::this.callback}&gt;
+                            &lt;Tab&gt;
+                                {::this.tab1()}
+                            &lt;/Tab&gt;
+                            &lt;Tab heading=&#39;tab2&#39;&gt;
+                                {::this.tab2()}
+                            &lt;/Tab&gt;
+                            &lt;Tab heading=&#39;tab3&#39;&gt;
+                                {::this.tab3()}
+                            &lt;/Tab&gt;
+                            &lt;Tab heading=&#39;tab4&#39;&gt;
+                                tab4
+                            &lt;/Tab&gt;
+                            &lt;Tab heading=&#39;tab5&#39;&gt;
+                                tab5
+                            &lt;/Tab&gt;
+                        &lt;/Tabset&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}
+
+export default Demo;</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 
@@ -576,7 +704,7 @@
             
         
         
-        <a href="../files/lib_Tabset.js.html#l65"><code>lib&#x2F;Tabset.js:65</code></a>
+        <a href="../files/src_Tabset.js.html#l29"><code>src&#x2F;Tabset.js:29</code></a>
         
         </p>
 
@@ -632,7 +760,7 @@
             
         
         
-        <a href="../files/lib_Tabset.js.html#l72"><code>lib&#x2F;Tabset.js:72</code></a>
+        <a href="../files/src_Tabset.js.html#l36"><code>src&#x2F;Tabset.js:36</code></a>
         
         </p>
 

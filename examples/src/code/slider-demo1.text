@@ -1,0 +1,7 @@
+import {Slider} from 'eagle-ui';
+
+getValueCallback(val){
+    console.dir(val);
+}
+
+<Slider getValueCallback={::this.getValueCallback} initCallback={(val)=>{console.dir(val);}} />

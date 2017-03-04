@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -276,7 +276,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +308,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +340,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +365,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -525,7 +549,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_Input.js.html#l46"><code>lib&#x2F;Input.js:46</code></a>
+                    Defined in: <a href="../files/src_Input.js.html#l20"><code>src&#x2F;Input.js:20</code></a>
                 </div>
             
 
@@ -576,7 +600,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l46"><code>lib&#x2F;Input.js:46</code></a>
+        <a href="../files/src_Input.js.html#l20"><code>src&#x2F;Input.js:20</code></a>
         
         </p>
 
@@ -594,6 +618,171 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/input"  _no='0'> <a>input</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React,{Component,PropTypes} from &#39;react&#39;;
+
+import querystring from &#39;querystring&#39;;
+
+import {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from &#39;eagle-ui&#39;;
+
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+
+export default class Demo extends Component{
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            show:false,
+            radioValue:&#39;橘子&#39;,
+            checkBoxValue:false
+        }
+    };
+
+    focus(){
+        this.setState({
+            show:true
+        });
+    }
+    blur(){
+        this.setState({
+            show:false
+        });
+    }
+    radioCallback(val){
+        this.setState({
+            radioValue:val
+        })
+    }
+    checkboxCallback(){
+        this.setState({
+            checkBoxValue:!this.state.checkBoxValue
+        })
+    }
+    render(){
+        let {radioValue,checkBoxValue}=this.state;
+        return (
+            &lt;DemoLayout title="输入控件"&gt;
+                &lt;DemoItem title="radio类型" desc={&#39;一般结合RadioGroup组件来用&#39;}&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;input-radio&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Grid&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={6}&gt;
+                                    &lt;RadioGroup defaultChecked={radioValue}
+                                                name="radio-test"
+                                                getValueCallback={::this.radioCallback}&gt;
+                                        &lt;Input  type="radio"  label="石榴" value="石榴" /&gt;
+                                        &lt;Input  type="radio"  label="橘子" value="橘子"  /&gt;
+                                        &lt;Input  type="radio"  label="苹果" value="苹果" /&gt;
+                                    &lt;/RadioGroup&gt;
+                                &lt;/Col&gt;
+                                &lt;Col sm={6}&gt;
+                                    已选择了：{this.state.radioValue}
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="chechbox类型" desc={&#39;一般结合CheckboxGroup组件来用&#39;}&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;input-checkbox&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Grid&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={12}&gt;
+                                    &lt;CheckboxGroup&gt;
+                                        &lt;Input label="石榴" type="checkbox" checked /&gt;
+                                        &lt;Input label="橘子" type="checkbox" disabled={true}   /&gt;
+                                        &lt;Input label="苹果"  type="checkbox" getValueCallback={function(val,dom){console.log(val,dom)}}  value="apple"  /&gt;
+                                        &lt;Input label="香蕉"  type="checkbox" onChange={::this.checkboxCallback} checked={checkBoxValue} value="banana"  /&gt;
+                                    &lt;/CheckboxGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                        &lt;/Grid&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="表单组合示例"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;input-combine&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;FormGroup&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                        &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                        &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                    &lt;/RadioGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
+                                &lt;Col sm={10}&gt;
+                                    &lt;CheckboxGroup&gt;
+                                        &lt;Input  type="checkbox" label="足球" checked   /&gt;
+                                        &lt;Input  type="checkbox" label="篮球"    /&gt;
+                                        &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
+                                        &lt;Input  type="checkbox" label="乒乓球"    /&gt;
+                                    &lt;/CheckboxGroup&gt;
+                                &lt;/Col&gt;
+                            &lt;/Row&gt;
+                            &lt;Row&gt;
+                                &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                &lt;FormGroup&gt;
+                                    &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
+                                    &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
+                                &lt;/FormGroup&gt;
+                                &lt;FormGroup&gt;
+                                    &lt;Col sm={13}&gt;省份证&lt;/Col&gt;
+                                    &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入省份证"   /&gt;&lt;/Col&gt;
+                                &lt;/FormGroup&gt;
+                            &lt;/Row&gt;
+                        &lt;/FormGroup&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+};</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 
@@ -631,7 +820,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l100"><code>lib&#x2F;Input.js:100</code></a>
+        <a href="../files/src_Input.js.html#l68"><code>src&#x2F;Input.js:68</code></a>
         
         </p>
 
@@ -676,7 +865,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l112"><code>lib&#x2F;Input.js:112</code></a>
+        <a href="../files/src_Input.js.html#l80"><code>src&#x2F;Input.js:80</code></a>
         
         </p>
 
@@ -721,7 +910,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l123"><code>lib&#x2F;Input.js:123</code></a>
+        <a href="../files/src_Input.js.html#l91"><code>src&#x2F;Input.js:91</code></a>
         
         </p>
 
@@ -766,7 +955,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l135"><code>lib&#x2F;Input.js:135</code></a>
+        <a href="../files/src_Input.js.html#l103"><code>src&#x2F;Input.js:103</code></a>
         
         </p>
 
@@ -811,7 +1000,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l129"><code>lib&#x2F;Input.js:129</code></a>
+        <a href="../files/src_Input.js.html#l97"><code>src&#x2F;Input.js:97</code></a>
         
         </p>
 
@@ -856,7 +1045,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l117"><code>lib&#x2F;Input.js:117</code></a>
+        <a href="../files/src_Input.js.html#l85"><code>src&#x2F;Input.js:85</code></a>
         
         </p>
 
@@ -901,7 +1090,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l106"><code>lib&#x2F;Input.js:106</code></a>
+        <a href="../files/src_Input.js.html#l74"><code>src&#x2F;Input.js:74</code></a>
         
         </p>
 
@@ -946,7 +1135,7 @@
             
         
         
-        <a href="../files/lib_Input.js.html#l94"><code>lib&#x2F;Input.js:94</code></a>
+        <a href="../files/src_Input.js.html#l62"><code>src&#x2F;Input.js:62</code></a>
         
         </p>
 

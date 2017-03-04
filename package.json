@@ -14,8 +14,9 @@
     "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min && node_modules/.bin/gulp style-webpack",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
-    "doc": "node_modules/.bin/gulp  && gfsdoc ||node_modules/.bin/gfsdoc",
-    "prepublish": "npm run build"
+    "doc": "gfsdoc ||node_modules/.bin/gfsdoc",
+    "prepublish": "npm run build",
+    "start":"npm run demo"
   },
   "license": "MIT",
   "author": {
@@ -76,7 +77,7 @@
     "cat-browser": "^0.1.0",
     "hope-s-basic": "^1.1.0",
     "eagle-styles": "^0.1.0",
-    "ui-svg-icons": "^2.0.1"
+    "extend": "^3.0.0"
   },
   "peerDependencies": {},
   "devDependencies": {
@@ -94,7 +95,6 @@
     "eg-tree-menu": "^0.1.1",
     "es3ify-loader": "^0.2.0",
     "es5-shim": "^4.5.9",
-    "extend": "^3.0.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.5",
     "gfs-head": "^0.0.5",

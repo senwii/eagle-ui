@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -276,7 +276,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +308,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +340,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +365,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -556,7 +580,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_Paging.js.html#l25"><code>lib&#x2F;Paging.js:25</code></a>
+                    Defined in: <a href="../files/src_Paging.js.html#l5"><code>src&#x2F;Paging.js:5</code></a>
                 </div>
             
 
@@ -607,7 +631,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l25"><code>lib&#x2F;Paging.js:25</code></a>
+        <a href="../files/src_Paging.js.html#l5"><code>src&#x2F;Paging.js:5</code></a>
         
         </p>
 
@@ -625,6 +649,81 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/paging"  _no='0'> <a>paging</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>import React, { Component ,PropTypes} from &#39;react&#39;;
+import {Col,Row,Paging,Button} from &#39;eagle-ui&#39;;
+import Code from &#39;../libs/Code.js&#39;;
+import {getFile} from &#39;../libs/Code.js&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+
+
+let page = 1;
+function callback(page){
+    page = page;
+    window.location = location.href.replace(/\?.*/,&#39;&#39;)+&#39;?page=&#39;+page+&#39;&amp;pageSize=&#39;+pageSize;
+}
+
+function loadPageCallback(pageSize){
+    window.location = location.href.replace(/\?.*/,&#39;&#39;)+&#39;?page=&#39;+page+&#39;&amp;pageSize=&#39;+pageSize;
+}
+var pageSize = 20;
+let arrs = [10,15,23,35,40],
+    arr1 = &#39;1&#39;;
+
+export default class PagingCls extends Component{
+    constructor(props,context){
+        super(props,context);
+
+        this.state={
+            showItemsNumber:0
+        };
+    }
+    toggleItemNumber(){
+        this.setState({
+            showItemsNumber:!this.state.showItemsNumber
+        });
+    }
+    render(){
+        let query = this.props.location.query,
+            page = query.page*1 ||0,
+            pageSize = query.pageSize*1 || 20,
+            {showItemsNumber}=this.state;
+        return (
+            &lt;DemoLayout title="分页"&gt;
+                &lt;DemoItem title=""&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;paging&#39;)}&gt;
+                        &lt;/Code&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.toggleItemNumber}&gt;
+                            {(showItemsNumber?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;条数设置工具&#39;}
+                        &lt;/Button&gt;
+                        &lt;Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                                pageCallback={callback} total={5024} choosePageSize={arr1}/&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 
@@ -675,7 +774,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l225"><code>lib&#x2F;Paging.js:225</code></a>
+        <a href="../files/src_Paging.js.html#l188"><code>src&#x2F;Paging.js:188</code></a>
         
         </p>
 
@@ -748,7 +847,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l173"><code>lib&#x2F;Paging.js:173</code></a>
+        <a href="../files/src_Paging.js.html#l141"><code>src&#x2F;Paging.js:141</code></a>
         
         </p>
 
@@ -833,7 +932,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l183"><code>lib&#x2F;Paging.js:183</code></a>
+        <a href="../files/src_Paging.js.html#l150"><code>src&#x2F;Paging.js:150</code></a>
         
         </p>
 
@@ -961,7 +1060,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l212"><code>lib&#x2F;Paging.js:212</code></a>
+        <a href="../files/src_Paging.js.html#l177"><code>src&#x2F;Paging.js:177</code></a>
         
         </p>
 
@@ -1075,7 +1174,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l155"><code>lib&#x2F;Paging.js:155</code></a>
+        <a href="../files/src_Paging.js.html#l125"><code>src&#x2F;Paging.js:125</code></a>
         
         </p>
 
@@ -1132,7 +1231,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l164"><code>lib&#x2F;Paging.js:164</code></a>
+        <a href="../files/src_Paging.js.html#l133"><code>src&#x2F;Paging.js:133</code></a>
         
         </p>
 
@@ -1193,7 +1292,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l369"><code>lib&#x2F;Paging.js:369</code></a>
+        <a href="../files/src_Paging.js.html#l289"><code>src&#x2F;Paging.js:289</code></a>
         
         </p>
 
@@ -1258,7 +1357,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l69"><code>lib&#x2F;Paging.js:69</code></a>
+        <a href="../files/src_Paging.js.html#l46"><code>src&#x2F;Paging.js:46</code></a>
         
         </p>
 
@@ -1305,7 +1404,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l84"><code>lib&#x2F;Paging.js:84</code></a>
+        <a href="../files/src_Paging.js.html#l61"><code>src&#x2F;Paging.js:61</code></a>
         
         </p>
 
@@ -1353,7 +1452,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l43"><code>lib&#x2F;Paging.js:43</code></a>
+        <a href="../files/src_Paging.js.html#l20"><code>src&#x2F;Paging.js:20</code></a>
         
         </p>
 
@@ -1401,7 +1500,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l106"><code>lib&#x2F;Paging.js:106</code></a>
+        <a href="../files/src_Paging.js.html#l80"><code>src&#x2F;Paging.js:80</code></a>
         
         </p>
 
@@ -1446,7 +1545,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l63"><code>lib&#x2F;Paging.js:63</code></a>
+        <a href="../files/src_Paging.js.html#l40"><code>src&#x2F;Paging.js:40</code></a>
         
         </p>
 
@@ -1491,7 +1590,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l50"><code>lib&#x2F;Paging.js:50</code></a>
+        <a href="../files/src_Paging.js.html#l27"><code>src&#x2F;Paging.js:27</code></a>
         
         </p>
 
@@ -1539,7 +1638,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l78"><code>lib&#x2F;Paging.js:78</code></a>
+        <a href="../files/src_Paging.js.html#l55"><code>src&#x2F;Paging.js:55</code></a>
         
         </p>
 
@@ -1584,7 +1683,7 @@
             
         
         
-        <a href="../files/lib_Paging.js.html#l57"><code>lib&#x2F;Paging.js:57</code></a>
+        <a href="../files/src_Paging.js.html#l34"><code>src&#x2F;Paging.js:34</code></a>
         
         </p>
 

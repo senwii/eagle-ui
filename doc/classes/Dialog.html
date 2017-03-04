@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -276,7 +276,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +308,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +340,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +365,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -515,7 +539,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_Dialog.js.html#l11"><code>lib&#x2F;Dialog.js:11</code></a>
+                    Defined in: <a href="../files/src_Dialog.js.html#l3"><code>src&#x2F;Dialog.js:3</code></a>
                 </div>
             
 
@@ -566,7 +590,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l11"><code>lib&#x2F;Dialog.js:11</code></a>
+        <a href="../files/src_Dialog.js.html#l3"><code>src&#x2F;Dialog.js:3</code></a>
         
         </p>
 
@@ -584,6 +608,314 @@
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/dialog"  _no='0'> <a>dialog</a></li>
+                
+            </ul>
+            <div class="example-content  showdemo ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by min.xiao
+ */
+import React,{Component} from &#39;react&#39;;
+import {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;;
+
+export default class DialogCls extends Component{
+    static defaultProps = {
+    };
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            inputVal: 123124,
+            dialogAlign: &#39;center&#39;,
+            alertContent: &#39;哈哈，你好苍老师&#39;
+        }
+    }
+    getScope(dialog){
+        this.dialog = dialog;
+    }
+    show(name){
+        Dialog.mask(name).then(function(){
+            console.log(&#39;success&#39;);
+            Dialog.close();
+        },function(type){
+            console.log(&#39;cancel&#39;);
+        });
+    }
+    showAlert(){
+        Dialog.alert(&#39;哈哈，我是alert&#39;);
+    }
+    nomask(){
+        Dialog.alert(&#39;哈哈，我是alert&#39;,{
+            isMask:false
+        });
+    }
+    inputChangeHandler(evt) {
+        const value = evt.target.value
+        this.setState({
+            inputVal: value
+        })
+    }
+    dialogAlignChangeHandler(evt) {
+        const value = evt.target.value
+        this.setState({
+            dialogAlign: value
+        })
+    }
+    showConfirm(){
+        Dialog.confirm(&#39;确定你已经打开了么？&#39;).then(()=&gt;{
+            alert(&#39;确定&#39;);
+        },()=&gt;{
+            alert(&#39;取消&#39;);
+        });
+    }
+    render(){
+        return (
+            &lt;DemoLayout title="弹出框组件"&gt;
+                &lt;DemoItem title="默认样式"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo1&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo1&#39;)} className="mg-right-15"&gt;点击我mask&lt;/Button&gt;
+                        &lt;Dialog id="demo1" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
+                            {
+                                type: &#39;success&#39;,
+                                name: &#39;确认&#39;
+
+                            },
+                            {
+                                type:&#39;cancel&#39;,
+                                egStyle:&#39;white&#39;,
+                                name:&#39;取消&#39;
+                            }
+                        ]}&gt;
+                            &lt;div&gt;
+                                {this.state.alertContent}
+                            &lt;/div&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="改变内部文本"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo2&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo2&#39;)} className="mg-right-15"&gt;点击我mask&lt;/Button&gt;
+                        &lt;Dialog id="demo2" egSize="xs" className="xxx" buttonAlign="right" title="苍老师你好"  buttons={[
+                            {
+                                egStyle:&#39;warning&#39;,
+                                name:&#39;改变文案&#39;,
+                                callback:()=&gt;{
+                                    {/*alert(&#39;自定义按钮&#39;);*/}
+                                    this.setState({
+                                        alertContent: &#39;哈哈哈，改成波多。。。。&#39;
+                                    })
+                                }
+                            }
+                        ]}&gt;
+                            &lt;div&gt;
+                                {this.state.alertContent}
+                            &lt;/div&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="内嵌表单"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo3&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo3&#39;)} className="mg-right-15"&gt;点击我mask2表单秀&lt;/Button&gt;
+                        &lt;Dialog id="demo3" egSize="sm" title="表单验证" contentAlign={this.state.dialogAlign} buttons={[
+                            {
+                                type: &#39;success&#39;,
+                                name: &#39;提交&#39;,
+                                callback:()=&gt;{}
+                            },
+                            {
+                                type:&#39;cancel&#39;,
+                                egStyle:&#39;white&#39;,
+                                name:&#39;取消&#39;,
+                                callback:()=&gt;{}
+                            }
+                        ]}&gt;
+                            &lt;Panel heading="我是标题"&gt;
+                                &lt;PanelContent&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col&gt;
+                                            &lt;FormGroup&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test1231" id="test" placeholder="请输入姓名" value={this.state.inputVal} onChange={::this.inputChangeHandler}/&gt;&lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;改变对齐方式&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;&lt;Input name="test222" id="test222" placeholder="left|right|center" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/&gt;&lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;性别&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;
+                                                        &lt;RadioGroup defaultChecked="男" name="radio-sex"&gt;
+                                                            &lt;Input  type="radio"  label="男" value="男" /&gt;
+                                                            &lt;Input  type="radio"  label="女" value="女"  /&gt;
+                                                        &lt;/RadioGroup&gt;
+                                                    &lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;体育爱好&lt;/Col&gt;
+                                                    &lt;Col sm={10}&gt;
+                                                        &lt;CheckboxGroup&gt;
+                                                            &lt;Input  type="checkbox" label="足球" checked   /&gt;
+                                                            &lt;Input  type="checkbox" label="篮球"    /&gt;
+                                                            &lt;Input  type="checkbox" label="羽毛球" checked   /&gt;
+                                                            &lt;Input  type="checkbox" label="乒乓球"    /&gt;
+                                                        &lt;/CheckboxGroup&gt;
+                                                    &lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;姓名&lt;/Col&gt;
+                                                    &lt;Col sm={13}&gt;&lt;Input name="test" id="test" placeholder="请输入姓名"   /&gt;&lt;/Col&gt;
+                                                    &lt;FormGroup&gt;
+                                                        &lt;Col sm={13}&gt;出生日期&lt;/Col&gt;
+                                                        &lt;Col sm={13} end&gt;&lt;Input name="test" id="test" placeholder="请输入出生日期"   /&gt;&lt;/Col&gt;
+                                                    &lt;/FormGroup&gt;
+                                                &lt;/Row&gt;
+                                                &lt;Row&gt;
+                                                    &lt;Col sm={2}&gt;所在城市&lt;/Col&gt;
+                                                    &lt;Col sm={10} layer&gt;
+                                                        &lt;Row style={{margin:0}}&gt;
+                                                            &lt;Col sm={4} end&gt;
+                                                                &lt;Select placeholder="请选择城市" &gt;
+                                                                    &lt;item value=&#39;bei&#39;&gt;北京&lt;/item&gt;
+                                                                    &lt;item value=&#39;shang&#39;&gt;上海&lt;/item&gt;
+                                                                    &lt;item value=&#39;nan&#39;&gt;南京&lt;/item&gt;
+                                                                &lt;/Select&gt;
+                                                            &lt;/Col&gt;
+                                                        &lt;/Row&gt;
+                                                    &lt;/Col&gt;
+                                                &lt;/Row&gt;
+                                            &lt;/FormGroup&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col padding={&#39;0&#39;}&gt;
+                                            &lt;Panel heading="我是标题二"&gt;
+                                                &lt;PanelContent padding={true}&gt;
+                                                    我是下一个内容区
+                                                &lt;/PanelContent&gt;
+                                            &lt;/Panel&gt;
+                                        &lt;/Col&gt;
+
+                                    &lt;/Row&gt;
+                                    &lt;Row&gt;
+                                        &lt;Col padding={&#39;0&#39;}&gt;
+                                            &lt;Panel heading="我是标题三" &gt;
+                                                &lt;PanelContent padding={true}&gt;
+                                                    我是下一个内容区
+                                                &lt;/PanelContent&gt;
+                                            &lt;/Panel&gt;
+                                        &lt;/Col&gt;
+                                    &lt;/Row&gt;
+                                &lt;/PanelContent&gt;
+                            &lt;/Panel&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="内容不在content之内"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo4&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.show.bind(this,&#39;demo4&#39;)} className="mg-right-15"&gt;点击我mask3 outside&lt;/Button&gt;
+                        &lt;Dialog id="demo4" title="panel" outside egSize="lg"&gt;
+                            &lt;Panel egType="normal" margin="0"&gt;
+                                &lt;PanelHeader&gt;另一种形式的嵌套&lt;/PanelHeader&gt;
+                                &lt;PanelContent&gt;
+                                    &lt;Panel egType="normal"&gt;
+                                        &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                        &lt;PanelContent&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col&gt;
+                                                    我是内容区
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col&gt;
+                                                    &lt;Panel  margin={&#39;0&#39;}&gt;
+                                                        &lt;PanelHeader&gt;另一种形式的嵌套3&lt;/PanelHeader&gt;
+                                                        &lt;PanelContent&gt;
+                                                            &lt;Row&gt;
+                                                                &lt;Col&gt;
+                                                                    我是内容区
+                                                                &lt;/Col&gt;
+                                                            &lt;/Row&gt;
+                                                        &lt;/PanelContent&gt;
+                                                    &lt;/Panel&gt;
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                        &lt;/PanelContent&gt;
+                                    &lt;/Panel&gt;
+                                    &lt;Panel margin={&#39;0&#39;}&gt;
+                                        &lt;PanelHeader&gt;另一种形式的嵌套2&lt;/PanelHeader&gt;
+                                        &lt;PanelContent&gt;
+                                            &lt;Row&gt;
+                                                &lt;Col&gt;
+                                                    我是内容区
+                                                &lt;/Col&gt;
+                                            &lt;/Row&gt;
+                                        &lt;/PanelContent&gt;
+                                    &lt;/Panel&gt;
+                                &lt;/PanelContent&gt;
+                            &lt;/Panel&gt;
+                        &lt;/Dialog&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="alert展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo5&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showAlert} className="mg-right-15"&gt;点击我alert&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="无遮罩展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo6&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.nomask} className="mg-right-15"&gt;无遮罩显示&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="confirm展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo7&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showConfirm}&gt;点击我Confirm&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+            &lt;/DemoLayout&gt;
+        );
+    }
+}</code></pre>
+</div>
+            </div>
+            <div class="btn-method-box">
+                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
+            </div>
+
+            <div class="device"></div>
+        </div>
     
 </div>
 
@@ -621,7 +953,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l28"><code>lib&#x2F;Dialog.js:28</code></a>
+        <a href="../files/src_Dialog.js.html#l20"><code>src&#x2F;Dialog.js:20</code></a>
         
         </p>
 
@@ -669,7 +1001,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l83"><code>lib&#x2F;Dialog.js:83</code></a>
+        <a href="../files/src_Dialog.js.html#l75"><code>src&#x2F;Dialog.js:75</code></a>
         
         </p>
 
@@ -749,7 +1081,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l42"><code>lib&#x2F;Dialog.js:42</code></a>
+        <a href="../files/src_Dialog.js.html#l34"><code>src&#x2F;Dialog.js:34</code></a>
         
         </p>
 
@@ -797,7 +1129,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l63"><code>lib&#x2F;Dialog.js:63</code></a>
+        <a href="../files/src_Dialog.js.html#l55"><code>src&#x2F;Dialog.js:55</code></a>
         
         </p>
 
@@ -845,7 +1177,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l35"><code>lib&#x2F;Dialog.js:35</code></a>
+        <a href="../files/src_Dialog.js.html#l27"><code>src&#x2F;Dialog.js:27</code></a>
         
         </p>
 
@@ -893,7 +1225,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l21"><code>lib&#x2F;Dialog.js:21</code></a>
+        <a href="../files/src_Dialog.js.html#l13"><code>src&#x2F;Dialog.js:13</code></a>
         
         </p>
 
@@ -941,7 +1273,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l49"><code>lib&#x2F;Dialog.js:49</code></a>
+        <a href="../files/src_Dialog.js.html#l41"><code>src&#x2F;Dialog.js:41</code></a>
         
         </p>
 
@@ -989,7 +1321,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l76"><code>lib&#x2F;Dialog.js:76</code></a>
+        <a href="../files/src_Dialog.js.html#l68"><code>src&#x2F;Dialog.js:68</code></a>
         
         </p>
 
@@ -1037,7 +1369,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l56"><code>lib&#x2F;Dialog.js:56</code></a>
+        <a href="../files/src_Dialog.js.html#l48"><code>src&#x2F;Dialog.js:48</code></a>
         
         </p>
 
@@ -1085,7 +1417,7 @@
             
         
         
-        <a href="../files/lib_Dialog.js.html#l70"><code>lib&#x2F;Dialog.js:70</code></a>
+        <a href="../files/src_Dialog.js.html#l62"><code>src&#x2F;Dialog.js:62</code></a>
         
         </p>
 
