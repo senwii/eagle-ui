@@ -44,7 +44,7 @@ export Td from './tables/Td.js';
 export Th from './tables/Th.js';
 export FormGroup from './FormGroup.js';
 
-export Icon from './utils/Icon';
+export Icon from './utils/Icons';
 export Slider from './Slider';
 export TimePicker from './TimePicker';
 export DateTimePicker from './DateTimePicker';
