@@ -94,7 +94,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/iconfont" name="Slider" component={Iconfont} />
                 <Route path="/datetimepicker" name="datetimepicker" component={Datetimepicker} />
                 <Route path="/timepicker" name="timepicker" component={Timepicker} />
-                <Redirect from="/" to="/index" />
+                <Redirect from="/" to="/Theme" />
             </Router>
         );
     }

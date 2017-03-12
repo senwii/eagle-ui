@@ -158,12 +158,12 @@ gulp.task('style-webpack', function(done) {
 gulp.task('watch', function () {
   gulp.watch(['./lib/**/*.*'], ['demo']);
 });
-gulp.task('skin', function () {
+/*gulp.task('skin', function () {
   gulp.src(['src/less/skin.less', 'src/less/meituan.less']) //多个文件以数组形式传入
       .pipe(less())
       .pipe(gulp.dest('dist'));
-});
-gulp.task('default', ['babel','require-webpack','example-webpack','skin'/*, 'html', 'asset'*/]);
+});*/
+gulp.task('default', ['babel','require-webpack','example-webpack'/*,'skin', 'html', 'asset'*/]);
 gulp.task('test',['karma']);
 gulp.task('demo', ['demo-webpack','open']);
 gulp.task('min',['min-webpack']);
