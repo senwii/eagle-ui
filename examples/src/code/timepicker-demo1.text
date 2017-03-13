@@ -1,0 +1,10 @@
+import React,{Component,PropTypes} from 'react';
+import {Input, TimePicker} from 'eagle-ui';
+
+this.state = {
+    time:''
+};
+
+<TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format="HH:mm">
+    <Input placeholder="请选择时间"  icon="calendar" />
+</TimePicker>

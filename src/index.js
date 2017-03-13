@@ -44,22 +44,12 @@ export Td from './tables/Td.js';
 export Th from './tables/Th.js';
 export FormGroup from './FormGroup.js';
 
-export Icon from './utils/Icon';
+export Icon from './utils/Icons';
+export Slider from './Slider';
+export TimePicker from './TimePicker';
+export DateTimePicker from './DateTimePicker';
 //接入cat－browser
 catBrowser({
     moduleName:'eagle-ui',
     isOnlyDp:false
-});
-
-
-window['Eagleui'] = {};
-
-[
-    'Grid','Col','Row',
-    'Button','ButtonGroup','CheckboxGroup','Input','RadioGroup','Label','ValidatorPanel',
-    'Crumb','Search','Select','LabelGroup','Toast','Paging','Calendar','Tab','Tabset','Dialog','Tooltip','TooltipPanel',
-    'Panel','PanelContent','PanelFooter','PanelHeader','List','Item',
-    'Table','Tr','Td','Th','ImgSlider','FormGroup','Suggestion','ImgSlider','CalendarPanel','Star','Icon'
-].forEach(function(clazzName){
-    Eagleui[clazzName] =exports[clazzName];
 });

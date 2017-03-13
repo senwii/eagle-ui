@@ -3,6 +3,8 @@ import ReactDom from 'react/lib/ReactDOM';
 import classnames from 'classnames';
 import Input from '.././Input.js';
 import Suggestion from './Suggestion';
+import ieCheck from '../utils/Ie8-check.js';
+
 export default class Search extends Suggestion {
     static defaultProps = {
         /**
@@ -59,6 +61,7 @@ export default class Search extends Suggestion {
                 onKeyUp={this.handler.bind(this,'onKeyUp')}
                 onChange={this.handler.bind(this,'onChange')}
                 onKeyDown={this.handler.bind(this,'onKeyDown')}
+                onClick={(ieCheck()==8?this.focusHandler.bind(this):function(){})}
                 onFocus={::this.focusHandler}
                 onBlur={::this.inputBlurHandler}
                 iconClickCallback={function(){

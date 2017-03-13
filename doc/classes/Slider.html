@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -268,15 +268,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +300,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +332,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +357,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -393,68 +409,8 @@
     <h1>Slider</h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>照片浏览组件<br />
-提供的UI展示属性接口如下<br/>
- <ul>
-   <li>imgList:需要展示的图片数组，每个图片用一个对象来表示<br>
-       例如
-       <pre class="code prettyprint"><code>
-                [{
-                      profile:&#39;1叔2015上传&#39;,
-                      url:&#39;<a href="http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&amp;fm=21&amp;gp=0.jpg">http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&amp;fm=21&amp;gp=0.jpg</a>&#39;,
-                      description:&#39;闪惠商户培训资料&#39;,
-                      thumbnail:&#39;<a href="http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg">http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg</a>&#39;
-                   }]
-       </code></pre>
-   </li>
-   <li>show:是否显示照片浏览组件，默认隐藏，需要手动设置为true才可以显示照片浏览组件
-       <code>
-           <strong>默认</strong>false
-       </code>
-   </li>
-   <li>
-       urlKey:定义大图的‘图片路径’应该取自图像object的哪一个属性。<br/>
-       在上述imgList中，图像object的url属性就是大图路径，所以urlKey=&#39;url&#39;
-   </li>
-   <li>
-       titleKey:定义大图‘左下方文字描述’应该取自图像object的哪一个属性。<br/>
-       在上述imgList中，图像object的description属性就是图片描述，所以titleKey=&#39;description&#39;
-   </li>
-   <li>
-       profileKey:定义大图‘正下方profile描述’应该取自图像object的哪一个属性。<br/>
-       在上述imgList中，图像object的profile属性就是图片profile，所以profileKey=&#39;profile&#39;
-   </li>
-   <li>thumbnailKey:定义缩略图对应imgList数组的key
-       <code>
-           <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail
-       </code>
-   </li>
-   <li>showThumbnail:定义是否展示缩略图
-       <code>
-           <strong>默认</strong>true
-       </code>
-   </li>
-    <li>pageNum:定义每页缩略图的个数
-       <code>
-           <strong>默认</strong>为5
-       </code>
-   </li>
-   <li>imgModify:是否对图片进行放大缩小等操作
-       <code>
-           <strong>默认</strong>为false
-       </code>
-   </li>
- </ul>
- 使用方式:
- <pre class="code prettyprint"><code>&#60;imgSlider show={true} showThumbnail={true}
- imgList={imgList}
- profileKey={&#39;profile&#39;}
- urlKey={&#39;url&#39;}
- titleKey={&#39;description&#39;}
- thumbnailKey={thumbnailKey} /&#62;</code>
- </pre>
- <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/slider">demo展示</a></div>
- <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ImgSlider.js">查看源码</a></div></p>
+      <div class="stdoc-code"><p>滑块组件<br>
+目前支持水平滑动</p>
 </div>
  </div>
 
@@ -472,63 +428,35 @@
                     <ul class="index-list properties extends">
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_imgList" data-tablink="imgList">imgList</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_defaultValue" data-tablink="defaultValue">defaultValue</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_imgModify" data-tablink="imgModify">imgModify</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_getValueCallback" data-tablink="getValueCallback">getValueCallback</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_pageNum" data-tablink="pageNum">pageNum</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_initCallback" data-tablink="initCallback">initCallback</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_profileKey" data-tablink="profileKey">profileKey</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_max" data-tablink="max">max</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_show" data-tablink="show">show</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_showThumbnail" data-tablink="showThumbnail">showThumbnail</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_thumbnailKey" data-tablink="thumbnailKey">thumbnailKey</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_titleKey" data-tablink="titleKey">titleKey</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_urlKey" data-tablink="urlKey">urlKey</a>
+                                <a href="#" data-tabid="#property" data-anchor="#property_min" data-tablink="min">min</a>
 
                                 
                                 
@@ -569,7 +497,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_ImgSlider.js.html#l35"><code>lib&#x2F;ImgSlider.js:35</code></a>
+                    Defined in: <a href="../files/src_Slider.js.html#l7"><code>src&#x2F;Slider.js:7</code></a>
                 </div>
             
 
@@ -620,7 +548,7 @@
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l35"><code>lib&#x2F;ImgSlider.js:35</code></a>
+        <a href="../files/src_Slider.js.html#l7"><code>src&#x2F;Slider.js:7</code></a>
         
         </p>
 
@@ -643,130 +571,49 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 
-                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/slider"  _no='0'> <a>imgSlider</a></li>
+                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/slider"  _no='0'> <a>slider</a></li>
                 
             </ul>
             <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>import React, { Component ,PropTypes} from &#39;react&#39;;
-import {Button,ImgSlider,Grid,Row,Col} from &#39;eagle-ui&#39;;
-import Code from &#39;../libs/Code.js&#39;;
-import {getFile} from &#39;../libs/Code.js&#39;;
-import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
+                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
+ * Created by mac on 15/11/4.
+ */
+import React, { Component ,PropTypes} from &#39;react&#39;;
+import {Slider} from &#39;eagle-ui&#39;;
+import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
+import Code, {getFile} from &#39;../libs/Code&#39;;
 
-export default class SliderDemo extends Component {
-    constructor(props,context) {
-        super(props,context);
-        this.state={
-            showThumbnail:true,
-            imgModify:true
-        }
+export default class SliderDemo extends Component{
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            val:&#39;&#39;
+        };
+
     }
-    toggleThumbnail(){
+    getValueCallback(val){
         this.setState({
-            showThumbnail:!this.state.showThumbnail
+            val:val
         });
     }
-    toggleModifier(){
-        this.setState({
-            imgModify:!this.state.imgModify
-        });
-    }
-    render() {
-        let imgList=[
-            {
-                profile:&#39;1叔2015上传&#39;,
-                url:&#39;http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&amp;fm=21&amp;gp=0.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;1哥2015上传&#39;,
-                url:&#39;http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&amp;fm=21&amp;gp=0.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;2哥2015上传&#39;,
-                url:&#39;http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;3哥2015上传&#39;,
-                url:&#39;http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;4哥2015上传&#39;,
-                url: &#39;http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;5哥2015上传&#39;,
-                url: &#39;http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;5哥2015上传&#39;,
-                url: &#39;http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&amp;fm=21&amp;gp=0.jpg&#39;,
-                description:&#39;闪惠商户培训资料&#39;,
-                thumbnail:&#39;http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&amp;fm=21&amp;gp=0.jpg&#39;
-            },
-            {
-                profile:&#39;5叔2015上传&#39;,
-                url:&#39;http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&amp;fm=21&amp;gp=0.jpg&#39;,
-                description:&#39;熊猫野外生存&#39;,
-                thumbnail:&#39;http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&amp;fm=21&amp;gp=0.jpg&#39;
-            }
-        ],
-            pageNum=5,
-            {showThumbnail,imgModify}=this.state;
+    render(){
         return (
-            &lt;div&gt;
-                &lt;DemoLayout title="照片浏览插件"&gt;
-                    &lt;DemoItem title=""&gt;
-                        &lt;CodeShow&gt;
-                            &lt;Code code={getFile(&#39;slider&#39;)}&gt;
-                            &lt;/Code&gt;
-                        &lt;/CodeShow&gt;
-                        &lt;DemoShow&gt;
-                            &lt;Grid&gt;
-                                &lt;Row&gt;
-                                    &lt;Col sm={6}&gt;
-                                        &lt;ImgSlider  show={true}
-                                                    showThumbnail={showThumbnail}
-                                                    imgList={imgList}
-                                                    profileKey={&#39;profile&#39;}
-                                                    urlKey={&#39;url&#39;}
-                                                    titleKey={&#39;description&#39;}
-                                                    thumbnailKey={&#39;thumbnail&#39;}
-                                                    pageNum={pageNum}
-                                                    imgModify={imgModify}
-                                            /&gt;
-                                    &lt;/Col&gt;
-                                    &lt;Col sm={6}&gt;
-                                        &lt;Button block success
-                                                onClick={::this.toggleThumbnail} &gt;
-                                            {(showThumbnail?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;缩略图&#39;}
-                                        &lt;/Button&gt;
-                                        &lt;Button block style={{marginTop:&#39;10px&#39;}} success
-                                                onClick={::this.toggleModifier} &gt;
-                                            {(imgModify?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;缩放控件&#39;}
-                                        &lt;/Button&gt;
-                                    &lt;/Col&gt;
-                                &lt;/Row&gt;
-                            &lt;/Grid&gt;
-                        &lt;/DemoShow&gt;
-                    &lt;/DemoItem&gt;
-                &lt;/DemoLayout&gt;
-            &lt;/div&gt;
+            &lt;DemoLayout title="滑块"&gt;
+                &lt;DemoItem title="基本使用"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;slider-demo1&#39;)} /&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Slider getValueCallback={::this.getValueCallback} initCallback={(val)=&gt;{console.dir(val);}} /&gt;
+                        &lt;div&gt;滑动输出的值：&lt;strong style={{color:&#39;red&#39;}}&gt;{this.state.val}&lt;/strong&gt;&lt;/div&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
 
+            &lt;/DemoLayout&gt;
         );
     }
-};</code></pre>
+}</code></pre>
 </div>
             </div>
             <div class="btn-method-box">
@@ -790,104 +637,8 @@ export default class SliderDemo extends Component {
                 <h2 class="off-left">属性</h2>
 
                 
-                    <div id="property_imgList" class="property item">
-    <h3 class="name"><code>imgList</code></h3>
-    <span class="type">Array</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_ImgSlider.js.html#l433"><code>lib&#x2F;ImgSlider.js:433</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>slider的图片数组</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> 图片数组(包含大图地址、描述等信息)</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_imgModify" class="property item">
-    <h3 class="name"><code>imgModify</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_ImgSlider.js.html#l489"><code>lib&#x2F;ImgSlider.js:489</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>控制缩放旋转控件的显示，默认隐藏</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> false</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_pageNum" class="property item">
-    <h3 class="name"><code>pageNum</code></h3>
+                    <div id="property_defaultValue" class="property item">
+    <h3 class="name"><code>defaultValue</code></h3>
     <span class="type">Number</span>
 
     
@@ -909,7 +660,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l482"><code>lib&#x2F;ImgSlider.js:482</code></a>
+        <a href="../files/src_Slider.js.html#l41"><code>src&#x2F;Slider.js:41</code></a>
         
         </p>
 
@@ -919,13 +670,13 @@ export default class SliderDemo extends Component {
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>缩略图展示数目</p>
+        <div class="stdoc-code"><p>默认滑块值，设置后会默认移动到对应的值上</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> 5</code>
+         <code> 0</code>
     
 
     
@@ -934,9 +685,9 @@ export default class SliderDemo extends Component {
 </div>
 
                 
-                    <div id="property_profileKey" class="property item">
-    <h3 class="name"><code>profileKey</code></h3>
-    <span class="type">String</span>
+                    <div id="property_getValueCallback" class="property item">
+    <h3 class="name"><code>getValueCallback</code></h3>
+    <span class="type">Function</span>
 
     
 
@@ -957,7 +708,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l454"><code>lib&#x2F;ImgSlider.js:454</code></a>
+        <a href="../files/src_Slider.js.html#l48"><code>src&#x2F;Slider.js:48</code></a>
         
         </p>
 
@@ -967,13 +718,13 @@ export default class SliderDemo extends Component {
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>图片信息(对应图片信息数组对象中图片描述信息的key)</p>
+        <div class="stdoc-code"><p>获取移动后的滑块值，getValueCallback(value)</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> profile</code>
+         <code> null</code>
     
 
     
@@ -982,9 +733,9 @@ export default class SliderDemo extends Component {
 </div>
 
                 
-                    <div id="property_show" class="property item">
-    <h3 class="name"><code>show</code></h3>
-    <span class="type">Boolean</span>
+                    <div id="property_initCallback" class="property item">
+    <h3 class="name"><code>initCallback</code></h3>
+    <span class="type">Function</span>
 
     
 
@@ -1005,7 +756,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l440"><code>lib&#x2F;ImgSlider.js:440</code></a>
+        <a href="../files/src_Slider.js.html#l55"><code>src&#x2F;Slider.js:55</code></a>
         
         </p>
 
@@ -1015,13 +766,13 @@ export default class SliderDemo extends Component {
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>是否展示slider</p>
+        <div class="stdoc-code"><p>第一次实例化slider时被调用，initCallback(value)</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> false(默认不展示)</code>
+         <code> null</code>
     
 
     
@@ -1030,9 +781,9 @@ export default class SliderDemo extends Component {
 </div>
 
                 
-                    <div id="property_showThumbnail" class="property item">
-    <h3 class="name"><code>showThumbnail</code></h3>
-    <span class="type">Boolean</span>
+                    <div id="property_max" class="property item">
+    <h3 class="name"><code>max</code></h3>
+    <span class="type">Number</span>
 
     
 
@@ -1053,7 +804,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l468"><code>lib&#x2F;ImgSlider.js:468</code></a>
+        <a href="../files/src_Slider.js.html#l34"><code>src&#x2F;Slider.js:34</code></a>
         
         </p>
 
@@ -1063,13 +814,13 @@ export default class SliderDemo extends Component {
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>是否显示slider的图片缩略图部分</p>
+        <div class="stdoc-code"><p>滑块最大值</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> true</code>
+         <code> 100</code>
     
 
     
@@ -1078,9 +829,9 @@ export default class SliderDemo extends Component {
 </div>
 
                 
-                    <div id="property_thumbnailKey" class="property item">
-    <h3 class="name"><code>thumbnailKey</code></h3>
-    <span class="type">Array</span>
+                    <div id="property_min" class="property item">
+    <h3 class="name"><code>min</code></h3>
+    <span class="type">Number</span>
 
     
 
@@ -1101,7 +852,7 @@ export default class SliderDemo extends Component {
             
         
         
-        <a href="../files/lib_ImgSlider.js.html#l475"><code>lib&#x2F;ImgSlider.js:475</code></a>
+        <a href="../files/src_Slider.js.html#l27"><code>src&#x2F;Slider.js:27</code></a>
         
         </p>
 
@@ -1111,109 +862,13 @@ export default class SliderDemo extends Component {
     </div>
 
     <div class="description">
-        <div class="stdoc-code"><p>缩略图的key</p>
+        <div class="stdoc-code"><p>滑块初始值</p>
 </div>
     </div>
 
     
         <p><strong>Default:</strong></p>
-         <code> 默认和urlKey保持一致</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_titleKey" class="property item">
-    <h3 class="name"><code>titleKey</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_ImgSlider.js.html#l461"><code>lib&#x2F;ImgSlider.js:461</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>图片描述信息(对应imgList中大图标题信息的key)</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> description</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_urlKey" class="property item">
-    <h3 class="name"><code>urlKey</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/lib_ImgSlider.js.html#l447"><code>lib&#x2F;ImgSlider.js:447</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>图片信息(对应imgList中大图标题信息的key))</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> url</code>
+         <code> 0</code>
     
 
     

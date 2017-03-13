@@ -6,7 +6,7 @@
 import React, { Component ,PropTypes,findDOMNode} from 'react';
 import ClassNameMixin from './utils/ClassNameMixin';
 import classNames from 'classnames';
-import Icon from './utils/Icon.js';
+import Icon from './utils/Icons.js';
 /**
  *  照片浏览组件<br />
  *  提供的UI展示属性接口如下<br/>
@@ -70,11 +70,11 @@ import Icon from './utils/Icon.js';
  * </pre>
  * <div><a target="_blank" href="http://future-team.github.io/eagle-ui/examples/index.html#/slider">demo展示</a></div>
  * <div><a target="_blank" href="https://github.com/future-team/eagle-ui/blob/master/src/ImgSlider.js">查看源码</a></div>
- * @class Slider
+ * @class imgSlider
  * @module ui
  * @extends Component
  * @constructor
- * @demo #/slider|imgSlider.js
+ * @demo #/imgslider|imgSlider.js
  * @show true
  * */
 @ClassNameMixin
@@ -357,10 +357,10 @@ class ImgSlider extends Component {
                     </div>
                     <div className="icon-box">
                         <Icon onClick={::this.cssEnhance.bind(this,'rotate')} className="upload-icon"
-                              name="radio_unchecked" alt="旋转"></Icon>
+                              name="radio-unchecked" alt="旋转"></Icon>
                         <Icon onClick={::this.cssEnhance.bind(this,'max')} className="upload-icon" name="add"
                               alt="放大"></Icon>
-                        <Icon onClick={::this.cssEnhance.bind(this,'min')} className="upload-icon" name="remove"
+                        <Icon onClick={::this.cssEnhance.bind(this,'min')} className="upload-icon" name="minnus"
                               alt="缩小"></Icon>
                     </div>
                 </div>

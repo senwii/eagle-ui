@@ -3,6 +3,7 @@
  */
 import React,{PropTypes} from 'react';
 import classnames from 'classnames';
+//import ReactDom from 'react-dom';
 import ReactDom from 'react/lib/ReactDOM';
 import Label from './Label.js';
 import Component from './utils/Component';
@@ -109,7 +110,14 @@ export default class LabelGroup extends Component{
             ReactDom.findDOMNode(this.refs[this.itemObj] ).style.cssText = cssStr;
         }
     }
-
+    componentWillReceiveProps(nextProps) {
+        let checkedText=nextProps.defaultChecked;
+        if(this.state.checked!==checkedText){
+            this.setState({
+                checked:checkedText
+            });
+        }
+    }
     render(){
         let _this = this;
         /**

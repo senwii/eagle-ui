@@ -1,6 +1,7 @@
 import React,{ PropTypes, Component } from 'react';
 import classnames from 'classnames';
 import ClassNameMixin from './utils/ClassNameMixin.js';
+import Slider from './Slider.js';
 
 /**
  * 日历组件<br />
@@ -103,13 +104,20 @@ export default class Calendar extends Component{
         this.windowType = ['getCalendar','getMonths','getYears'];
 
         let defaultDate = this.props.defaultDate || new Date();
+        this.calendarId = this.uniqueId();
         this.state = {
             currentDate:defaultDate,
             selectedDate:defaultDate,
             show:false,
             year:typeof(defaultDate)!='string'?defaultDate.getFullYear():new Date(defaultDate).getFullYear(),
-            windowType:this.windowType[!isNaN(this.props.windowType) ?this.props.windowType :0]
+            windowType:this.windowType[!isNaN(this.props.windowType) ?this.props.windowType :0],
+            posStyle: {},
+            // extra params form parent component
+            parentExtra: {}
         };
+    }
+    uniqueId(){
+        return (this.classPrefix||'unique')+'_'+(new Date().getTime()+(Math.random()*1e10).toFixed(0) );
     }
     componentWillReceiveProps(nextProps){
         /*let defaultDate = nextProps.defaultDate;
@@ -247,10 +255,7 @@ export default class Calendar extends Component{
                     this.getDates(arr,selectedDate,defaultDate )
                 }
             </tr>);
-
-
         }
-
         return dom;
     }
 
@@ -429,7 +434,6 @@ export default class Calendar extends Component{
                         })
                     }
                 </tr>
-
                 {this.draw()}
                 </tbody>
             </table>
@@ -468,7 +472,7 @@ export default class Calendar extends Component{
             let date=type+'/'+(selected.getMonth()+1)+'/'+'1';
             let d= date.split('/'),
                 {selectCallback} = this.props;
-            selectCallback && selectCallback(this.getDate(d[0],d[1],d[2]),d );
+            selectCallback && selectCallback(this.getDate(d[0],d[1],d[2]),d);
             this.setState({
                 currentDate:new Date(date),
                 selectedDate:new Date(typeof(type)=='string'?year + eval("(" + type + ")"):type,selected.getMonth(),1 )
@@ -504,6 +508,9 @@ export default class Calendar extends Component{
             });
             typeof(type)!='string' &&(this.switchWindow(0) );
         }
+        setTimeout(()=>{
+            this.updateDirectionTop();
+        }, 0)
     }
 
     getSelectedDateSplit(){
@@ -516,19 +523,40 @@ export default class Calendar extends Component{
         return {year,month,date};
     }
 
-
+    // update direction
+    updateDirection(style={}, extra = {}){
+        this.setState({
+            parentExtra: extra,
+            posStyle: style
+        });
+    }
+    updateDirectionTop(){
+        const posStyle = this.state.posStyle;
+        const {isUp = false, dir, inputHeight} = this.state.parentExtra;
+        if(isUp){
+            const panelHeight = this.refs[this.calendarId].clientHeight;
+            if(['left', 'right'].indexOf(dir) !== -1){
+                posStyle.top = '-' + (panelHeight - inputHeight) + 'px';
+            }else{
+                posStyle.top = '-' + (panelHeight + 5) + 'px';
+            }
+            this.setState({
+                posStyle: posStyle
+            })
+        }
+    }
     render(){
         let {windowType}= this.props;
-
         windowType = this.windowType[windowType];
         //!isNaN(windowType) &&this.state.windowType==this.windowType[0] ?this.windowType[windowType] :this.state.windowType;
         return (
-            <div className={
-                classnames(this.getClassName('container'),this.getClassName(this.props.show?'show':'hide',false) )
-            } >
+            <div style={this.state.posStyle}
+                 ref={this.calendarId}
+                 className={
+                     classnames(this.getClassName('container'),this.getClassName(this.props.show?'show':'hide',false) )
+                 } >
                 <div className="eg-calendar-box">
                     <div className="box">
-
                         <div className="eg-calendar-body">
                             {this[windowType]()}
                             <div style={{
@@ -539,6 +567,7 @@ export default class Calendar extends Component{
                                     display:(this.props.calendarType=='date'?'inline-block':'none')
                                 }} onClick={::this.todayHandler}>今天</span>
                             </div>
+                            {this.props.children}
                         </div>
                     </div>
                 </div>

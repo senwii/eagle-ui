@@ -4,7 +4,7 @@ var description=fs.readFileSync("docIndex.html","utf8");
 
 module.exports = {
     //扫描的文件路径
-    paths: ['lib/'],
+    paths: ['src/'],
     demoDir: "examples/src/modules/",
     demoUrl: "http://future-team.github.io/eagle-ui/examples/index.html",
     //文档页面输出路径

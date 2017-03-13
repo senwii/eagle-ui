@@ -252,7 +252,7 @@
                    
                        <li>
                             
-                           <a href="../classes/Slider.html">Slider</a>
+                           <a href="../classes/imgSlider.html">imgSlider</a>
                            <ul>
                                 
                            </ul>
@@ -268,15 +268,7 @@
                     
                        <li>
                             
-                           <a href="../classes/Search.html">Search</a>
-                           <ul>
-                                
-                           </ul>
-                       </li>
-                    
-                       <li>
-                            
-                           <a href="../classes/Star.html">Star</a>
+                           <a href="../classes/Slider.html">Slider</a>
                            <ul>
                                 
                            </ul>
@@ -308,6 +300,14 @@
                     
                        <li>
                             
+                           <a href="../classes/DateTimePicker.html">DateTimePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Dialog.html">Dialog</a>
                            <ul>
                                 
@@ -332,6 +332,14 @@
                     
                        <li>
                             
+                           <a href="../classes/Star.html">Star</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
                            <a href="../classes/Suggestion.html">Suggestion</a>
                            <ul>
                                 
@@ -349,6 +357,14 @@
                        <li>
                             
                            <a href="../classes/Tabset.html">Tabset</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/TimePicker.html">TimePicker</a>
                            <ul>
                                 
                            </ul>
@@ -413,6 +429,17 @@
             <div class="index-section properties col-sm-4">
                 <h3>属性</h3>
                 
+                    <ul class="index-list properties extends">
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_direction" data-tablink="direction">direction</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                
             </div>
 
             <div class="index-section events col-sm-4">
@@ -439,6 +466,8 @@
             <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
             
             
+                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
+            
             
                 <li class=""><a data-toggle="tab" href="#event">事件</a></li>
             
@@ -457,7 +486,7 @@
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/lib_CalendarPanel.js.html#l43"><code>lib&#x2F;CalendarPanel.js:43</code></a>
+                    Defined in: <a href="../files/src_CalendarPanel.js.html#l10"><code>src&#x2F;CalendarPanel.js:10</code></a>
                 </div>
             
 
@@ -508,7 +537,7 @@
             
         
         
-        <a href="../files/lib_CalendarPanel.js.html#l43"><code>lib&#x2F;CalendarPanel.js:43</code></a>
+        <a href="../files/src_CalendarPanel.js.html#l10"><code>src&#x2F;CalendarPanel.js:10</code></a>
         
         </p>
 
@@ -539,7 +568,7 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component,PropTypes} from &#39;react&#39;;
-import {Input, CalendarPanel, Button} from &#39;eagle-ui&#39;;
+import {Input, CalendarPanel, Button, Grid, Row, Col} from &#39;eagle-ui&#39;;
 import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
 import Code, {getFile} from &#39;../libs/Code&#39;;
 
@@ -576,63 +605,142 @@ export default class Calendar extends Component{
         });
     }
     render(){
-
         return (
-            &lt;DemoLayout title="日历组件"&gt;
-                &lt;DemoItem title="默认样式"&gt;
-                    &lt;CodeShow&gt;
-                        &lt;Code code={getFile(&#39;calendar-demo1&#39;)}/&gt;
-                    &lt;/CodeShow&gt;
-                    &lt;DemoShow&gt;
-                        &lt;CalendarPanel&gt;
-                            &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/DemoShow&gt;
-                &lt;/DemoItem&gt;
-                &lt;DemoItem title="选择年月"&gt;
-                    &lt;CodeShow&gt;
-                        &lt;Code code={getFile(&#39;calendar-demo2&#39;)}/&gt;
-                    &lt;/CodeShow&gt;
-                    &lt;DemoShow&gt;
-                        &lt;CalendarPanel calendarType="yearMonth"&gt;
-                            &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/DemoShow&gt;
-                &lt;/DemoItem&gt;
-                &lt;DemoItem title="起止日期限制"&gt;
-                    &lt;CodeShow&gt;
-                        &lt;Code code={getFile(&#39;button-demo3&#39;)}/&gt;
-                    &lt;/CodeShow&gt;
-                    &lt;DemoShow&gt;
-                        &lt;CalendarPanel defaultDate={this.state.defaultDate} startDate="2017-02-05" endDate="2017-10-01" getValueCallback={::this.getvalue}&gt;
-                            &lt;Input placeholder="请选择日期"/&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/DemoShow&gt;
-                &lt;/DemoItem&gt;
-                &lt;DemoItem title="日期格式化"&gt;
-                    &lt;CodeShow&gt;
-                        &lt;Code code={getFile(&#39;calendar-demo4&#39;)}/&gt;
-                    &lt;/CodeShow&gt;
-                    &lt;DemoShow&gt;
-                        &lt;CalendarPanel format="yyyy年MM月dd日"&gt;
-                            &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/DemoShow&gt;
-                &lt;/DemoItem&gt;
-                &lt;DemoItem title="改变时间"&gt;
-                    &lt;CodeShow&gt;
-                        &lt;Code code={getFile(&#39;calendar-demo5&#39;)}/&gt;
-                    &lt;/CodeShow&gt;
-                    &lt;DemoShow&gt;
-                        &lt;Button onClick={::this.changeDate} &gt;改变时间&lt;/Button&gt;
-                        &lt;br/&gt;
-                        &lt;br/&gt;
-                        &lt;CalendarPanel ref=&#39;cp&#39; format="yyyy年MM月dd日"&gt;
-                            &lt;Input placeholder="请选择日期"  icon="calendar"/&gt;
-                        &lt;/CalendarPanel&gt;
-                    &lt;/DemoShow&gt;
-                &lt;/DemoItem&gt;
-            &lt;/DemoLayout&gt;
+            &lt;div style={{paddingBottom: &#39;250px&#39;}}&gt;
+                &lt;DemoLayout title="日历组件"&gt;
+                    &lt;DemoItem title="默认样式"&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;calendar-demo1&#39;)}/&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;CalendarPanel&gt;
+                                &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
+                            &lt;/CalendarPanel&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                    &lt;DemoItem title="选择年月"&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;calendar-demo2&#39;)}/&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;CalendarPanel calendarType="yearMonth" format="yyyy年MM月"&gt;
+                                &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
+                            &lt;/CalendarPanel&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                    &lt;DemoItem title="起止日期限制"&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;button-demo3&#39;)}/&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;CalendarPanel defaultDate={this.state.defaultDate} startDate="2017-02-05" endDate="2017-10-01" getValueCallback={::this.getvalue}&gt;
+                                &lt;Input placeholder="请选择日期"/&gt;
+                            &lt;/CalendarPanel&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                    &lt;DemoItem title="日期格式化"&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;calendar-demo4&#39;)}/&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;CalendarPanel format="yyyy年MM月dd日"&gt;
+                                &lt;Input placeholder="请选择日期"  icon="calendar" /&gt;
+                            &lt;/CalendarPanel&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                    &lt;DemoItem title="改变时间"&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;calendar-demo5&#39;)}/&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;Button onClick={::this.changeDate} &gt;改变时间&lt;/Button&gt;
+                            &lt;br/&gt;
+                            &lt;br/&gt;
+                            &lt;CalendarPanel ref=&#39;cp&#39; format="yyyy年MM月dd日"&gt;
+                                &lt;Input placeholder="请选择日期"  icon="calendar"/&gt;
+                            &lt;/CalendarPanel&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                    &lt;DemoItem title="自定义定位"&gt;
+                        &lt;CodeShow&gt;
+                            &lt;Code code={getFile(&#39;calendar-demo6&#39;)}/&gt;
+                        &lt;/CodeShow&gt;
+                        &lt;DemoShow&gt;
+                            &lt;Grid&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={3}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-top&#39; format="yyyy年MM月dd日" direction=&#39;top&#39;&gt;
+                                            &lt;Input placeholder="上部"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={3}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-right&#39; format="yyyy年MM月dd日" direction=&#39;right&#39;&gt;
+                                            &lt;Input placeholder="右边"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={3}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-down&#39; format="yyyy年MM月dd日" direction=&#39;down&#39;&gt;
+                                            &lt;Input placeholder="底部"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={3}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-left&#39; format="yyyy年MM月dd日" direction=&#39;left&#39;&gt;
+                                            &lt;Input placeholder="左边"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={3}/&gt;
+                                    &lt;Col sm={6}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-auto-1&#39; format="yyyy年MM月dd日"&gt;
+                                            &lt;Input placeholder="自动定位"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={3}/&gt;
+                                &lt;/Row&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={4}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-left-1&#39; format="yyyy年MM月dd日" direction=&#39;left&#39;&gt;
+                                            &lt;Input placeholder="定位到左边，但是左边位置不足"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={4}/&gt;
+                                    &lt;Col sm={4}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-right-1&#39; format="yyyy年MM月dd日" direction=&#39;right&#39;&gt;
+                                            &lt;Input placeholder="定位到右边，但是右边位置不足"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={3}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-auto-2&#39; format="yyyy年MM月dd日"&gt;
+                                            &lt;Input placeholder="自动定位，区别左右"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={6}/&gt;
+                                    &lt;Col sm={3}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-auto-3&#39; format="yyyy年MM月dd日"&gt;
+                                            &lt;Input placeholder="自动定位，区别左右"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                                &lt;Row&gt;
+                                    &lt;Col sm={6}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-auto-4&#39; format="yyyy年MM月dd日"&gt;
+                                            &lt;Input placeholder="自动定位，区别左右"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                    &lt;Col sm={6}&gt;
+                                        &lt;CalendarPanel ref=&#39;cp-auto-5&#39; format="yyyy年MM月dd日"&gt;
+                                            &lt;Input placeholder="自动定位，区别左右"  icon="calendar"/&gt;
+                                        &lt;/CalendarPanel&gt;
+                                    &lt;/Col&gt;
+                                &lt;/Row&gt;
+                            &lt;/Grid&gt;
+                        &lt;/DemoShow&gt;
+                    &lt;/DemoItem&gt;
+                &lt;/DemoLayout&gt;
+            &lt;/div&gt;
         );
     }
 }</code></pre>
@@ -654,6 +762,60 @@ export default class Calendar extends Component{
 
         
 
+        
+            <div id="property" class="tab-pane">
+                <h2 class="off-left">属性</h2>
+
+                
+                    <div id="property_direction" class="property item">
+    <h3 class="name"><code>direction</code></h3>
+    <span class="type">String direction 可选值有 top | left | down | right</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_CalendarPanel.js.html#l34"><code>src&#x2F;CalendarPanel.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>日历位置</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> auto 自动根据当前位置切换 上/下</code>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         
@@ -684,7 +846,7 @@ export default class Calendar extends Component{
             
         
         
-        <a href="../files/lib_CalendarPanel.js.html#l91"><code>lib&#x2F;CalendarPanel.js:91</code></a>
+        <a href="../files/src_CalendarPanel.js.html#l41"><code>src&#x2F;CalendarPanel.js:41</code></a>
         
         </p>
 

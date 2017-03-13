@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import Component from '../utils/Component';
 import Button from '../Button';
-import Icon from '../utils/Icon';
+import Icon from '../utils/Icons';
 
 
 let masks = {};

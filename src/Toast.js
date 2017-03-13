@@ -45,9 +45,6 @@ class Toast extends Component {
         seconds: PropTypes.number,
         /**
          * 类名样式前缀
-         * @property classPrefix
-         * @type sting
-         * @default crumb
          * */
         classPrefix: PropTypes.string,
         /**
@@ -72,8 +69,6 @@ class Toast extends Component {
     }
     /**
      * 改变state.show 隐藏tips,并调用回调方法
-     * @method close
-     * @return null
      * */
     close() {
         let seconds = this.props.seconds * 1000,_this = this;

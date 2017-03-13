@@ -9,6 +9,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Col",
         "Column",
         "Crumb",
+        "DateTimePicker",
         "Dialog",
         "Grid",
         "Input",
@@ -21,7 +22,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "PanelHeader",
         "RadioGroup",
         "Row",
-        "Search",
         "Select",
         "Slider",
         "Star",
@@ -31,11 +31,13 @@ YUI.add("yuidoc-meta", function(Y) {
         "Tabset",
         "Td",
         "Th",
+        "TimePicker",
         "Toast",
         "Tooltip",
         "TooltipPanel",
         "Tr",
-        "ValidatorPanel"
+        "ValidatorPanel",
+        "imgSlider"
     ],
     "modules": [
         "form(表单)",
@@ -136,16 +138,13 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "<h5>eagle-ui部分UI组件</h5>\n<strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>\n<strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>\n<strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>\n<strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>\n<strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>\n<strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>\n<strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>\n<strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>\n<strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>\n<strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>\n<strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>\n<strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>",
             "classes": [
                 {
-                    "name": "Slider"
+                    "name": "imgSlider"
                 },
                 {
                     "name": "Label"
                 },
                 {
-                    "name": "Search"
-                },
-                {
-                    "name": "Star"
+                    "name": "Slider"
                 },
                 {
                     "name": "Calendar"
@@ -157,6 +156,9 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "Crumb"
                 },
                 {
+                    "name": "DateTimePicker"
+                },
+                {
                     "name": "Dialog"
                 },
                 {
@@ -166,6 +168,9 @@ YUI.add("yuidoc-meta", function(Y) {
                     "name": "Paging"
                 },
                 {
+                    "name": "Star"
+                },
+                {
                     "name": "Suggestion"
                 },
                 {
@@ -173,6 +178,9 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Tabset"
+                },
+                {
+                    "name": "TimePicker"
                 },
                 {
                     "name": "Toast"

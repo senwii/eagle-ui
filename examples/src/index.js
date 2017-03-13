@@ -1,3 +1,7 @@
+require('es5-shim');
+require('es5-shim/es5-sham');
+require('console-polyfill');
+require('core-js/es6/object');
 import React, { Component ,PropTypes} from 'react';
 import ReactDom from 'react/lib/ReactDOM';
 import { Redirect, Router, Route } from 'react-router';
@@ -27,10 +31,14 @@ import Suggestion from './modules/suggestion.js';
 import Icon from './modules/icons.js';
 import TreeMenu from './modules/treeMenu.js';
 import DropTree from './modules/dropTree.js';
-import Theme from './modules/theme'
-
+import Theme from './modules/theme';
+import Slider from './modules/slider';
+import Datetimepicker from './modules/datetimepicker.js';
+import Timepicker from './modules/timepicker.js';
+import Iconfont from './modules/iconfont'
 // import '../../src/less/eagle-ui.less';
 // import '../../src/less/skin.less'
+
 
 let Index = class Index extends Component{
     render() {
@@ -64,9 +72,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/Button" name="Button" component={Button} />
                 <Route path="/Crumb" name="Crumb" component={Crumb} />
                 <Route path="/Layout" name="Layout" component={Layout} />
-                <Route path="/Demo2" name="Demo2" component={Demo2} />
-                <Route path="/Detail" name="Detail" component={Detail} />
-                <Route path="/Slider" name="Slider" component={SliderDemo} />
+                <Route path="/imgslider" name="ImgSlider" component={SliderDemo} />
                 <Route path="/Dialog" name="Dialog" component={Dialog} />
                 <Route path="/Input" name="Input" component={Input} />
                 <Route path="/Label" name="Label" component={Label} />
@@ -84,7 +90,11 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/TreeMenu" name="TreeMenu" component={TreeMenu} />
                 <Route path="/DropTree" name="DropTree" component={DropTree} />
                 <Route path="/Theme" name="Theme" component={Theme} />
-                <Redirect from="/" to="/index" />
+                <Route path="/Slider" name="Slider" component={Slider} />
+                <Route path="/iconfont" name="Slider" component={Iconfont} />
+                <Route path="/datetimepicker" name="datetimepicker" component={Datetimepicker} />
+                <Route path="/timepicker" name="timepicker" component={Timepicker} />
+                <Redirect from="/" to="/Theme" />
             </Router>
         );
     }

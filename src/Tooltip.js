@@ -52,8 +52,6 @@ export default class Tooltip extends Component {
      * 接收到新props时执行,state.show变为nextProps.show
      * 接收到新props时执行,state.show变为nextProps.show
      * 实现隐藏与显示
-     * @method componentWillReceiveProps
-     * @return null
      * */
     /*componentWillReceiveProps(nextProps){
         this.setState({

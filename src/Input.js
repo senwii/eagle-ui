@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import Component from './utils/Component';
 import classnames from 'classnames';
-import Icon from './utils/Icon';
+import Icon from './utils/Icons';
 /**
  * <h5>form表单模块集成了常见的表单元素形式:</h5>
  * <strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>
@@ -121,12 +121,12 @@ export default class Input extends Component{
     getIcon(type,checked,icon){
         const classMap = {
             radio:{
-                active:'adjust_checked',
-                default:'adjust_unchecked'
+                active:'radio-checked',
+                default:'radio-unchecked'
             },
             checkbox:{
-                active:'checkbox_checked',
-                default:'checkbox_unchecked'
+                active:'checkbox-checked-fill',
+                default:'checkbox-unchecked'
             }
         };
 

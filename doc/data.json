@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "eagle-ui",
-        "description": "<div  style=\"margin:-15px -20px;\">\n    <div style=\"padding: 50px 24px 60px 24px;box-sizing: border-box;background-color: #38b7ea;overflow: hidden;text-align:center; color:#fff;\">\n        <div>\n            <h1>Eagle-UI</h1>\n            <p style=\"margin-top:25px\">点评商家、销售系统常用的react组件库</p>\n        </div>\n    </div>\n    <div style=\"margin: 20px 0;padding: 0px 30px;\">\n        <p class=\"lead\">\n            eagle-ui是一款基于react开发的pc端UI组件库，目前主要用于apollo系统，它提供了常用的表单、布局、日历、弹窗等一系列符合apollo style的控件集合。\n        </p>\n        <h2>安装</h2>\n        <div class=\"well well-small sign-left2\" style=\"display: inline-block;width: 45%;\">\n            <div class=\"stdoc-code\">\n                <p>\n                    $ bower install eagle-ui\n                </p>\n            </div>\n        </div>\n        <div class=\"well well-small sign-left2\" style=\"display: inline-block;width: 45%;float: right\">\n            <div class=\"stdoc-code\">\n                <p>\n                    $ npm install eagle-ui --save\n                </p>\n            </div>\n        </div>\n        <h2>如何在项目中引用</h2>\n        <div class=\"well well-small sign-left3\">\n            <div class=\"stdoc-code\">\n                <p>\n                    import {CalendarPanel,Input} from 'eagle-ui';\n                </p>\n            </div>\n        </div>\n        <p>引入需要使用的组件之后在render函数中的调用方式如下：</p>\n        <pre class=\"code prettyprint\">\n<code>\n    &lt;CalendarPanel defaultDate={this.state.defaultDate}\n            startDate=\"2015-11-11\"\n            endDate=\"2017-12-1\"\n            getValueCallback={::this.getvalue}&gt;\n            &lt;Input placeholder=\"请选择日期\" style={{width:'150px'}} /&gt;\n    &lt;/CalendarPanel&gt;\n</code>\n        </pre>\n    </div>\n    <div style=\"padding: 72px 24px; box-sizing: border-box; background-color: rgb(238, 238, 238); text-align: center;\">\n        <div style=\"max-width: 1200px; margin: 0px auto;\">\n            <h3 style=\"margin: 0px; padding: 0px; font-weight: 300; font-size: 22px;\">\n                Want to help make this project awesome? Check out our repo\n            </h3>\n            <a href=\"https://github.com/future-team/eagle-ui\"  style=\"color:#fff;box-sizing: border-box; display: inline-block; cursor:pointer;text-decoration: none; margin-top: 30px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; position: relative; vertical-align: middle; height: 36px; line-height: 36px; width: 100px; border-radius: 2px; background-color: #38b7ea; text-align: center;\">\n                <div style=\"height: 36px; border-radius: 2px; top: 0px;\">\n                    GitHub\n                </div>\n            </a>\n        </div>\n    </div>\n</div>\n",
+        "description": "<div  style=\"margin:-15px -20px;\">\n    <div style=\"padding: 50px 24px 60px 24px;box-sizing: border-box;background-color: #38b7ea;overflow: hidden;text-align:center; color:#fff;\">\n        <div>\n            <h1>Eagle-UI</h1>\n            <p style=\"margin-top:25px\">点评商家、销售系统常用的react组件库</p>\n        </div>\n    </div>\n    <div style=\"margin: 20px 0;padding: 0px 30px;\">\n        <p class=\"lead\">\n            eagle-ui是一款基于react开发的pc端UI组件库，目前主要用于apollo系统，它提供了常用的表单、布局、日历、弹窗等一系列符合apollo style的控件集合。\n        </p>\n        <h2>安装</h2>\n        <div class=\"well well-small sign-left2\" style=\"display: inline-block;width: 45%;\">\n            <div class=\"stdoc-code\">\n                <p>\n                    $ bower install eagle-ui\n                </p>\n            </div>\n        </div>\n        <div class=\"well well-small sign-left2\" style=\"display: inline-block;width: 45%;float: right\">\n            <div class=\"stdoc-code\">\n                <p>\n                    $ npm install eagle-ui --save\n                </p>\n            </div>\n        </div>\n        <h2>如何在项目中引用</h2>\n        <div class=\"well well-small sign-left3\">\n            <div class=\"stdoc-code\">\n                <p>\n                    import {CalendarPanel,Input} from 'eagle-ui';\n                </p>\n            </div>\n        </div>\n        <p>引入需要使用的组件之后在render函数中的调用方式如下：</p>\n        <pre class=\"code prettyprint\">\n<code>\n    &lt;CalendarPanel defaultDate={this.state.defaultDate}\n            startDate=\"2015-11-11\"\n            endDate=\"2017-12-1\"\n            getValueCallback={::this.getvalue}&gt;\n            &lt;Input placeholder=\"请选择日期\" style={{width:'150px'}} /&gt;\n    &lt;/CalendarPanel&gt;\n</code>\n        </pre>\n        <h2>其他</h2>\n        <h3>推荐移动端React UI组件库 - Phoenix-ui</h3>\n        <p>Github: <a href=\"https://github.com/future-team/phoenix-ui\">https://github.com/future-team/phoenix-ui</a></p>\n        <p>Document: <a href=\"http://future-team.github.io/phoenix-ui/doc/index.html\">http://future-team.github.io/phoenix-ui/doc/index.html</a></p>\n    </div>\n    <div style=\"padding: 72px 24px; box-sizing: border-box; background-color: rgb(238, 238, 238); text-align: center;\">\n        <div style=\"max-width: 1200px; margin: 0px auto;\">\n            <h3 style=\"margin: 0px; padding: 0px; font-weight: 300; font-size: 22px;\">\n                Want to help make this project awesome? Check out our repo\n            </h3>\n            <a href=\"https://github.com/future-team/eagle-ui\"  style=\"color:#fff;box-sizing: border-box; display: inline-block; cursor:pointer;text-decoration: none; margin-top: 30px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; position: relative; vertical-align: middle; height: 36px; line-height: 36px; width: 100px; border-radius: 2px; background-color: #38b7ea; text-align: center;\">\n                <div style=\"height: 36px; border-radius: 2px; top: 0px;\">\n                    GitHub\n                </div>\n            </a>\n        </div>\n    </div>\n</div>\n",
         "version": "0.1.0",
         "url": "",
         "navs": [
@@ -16,15 +16,15 @@
         ]
     },
     "files": {
-        "lib/dialog/Dialog.js": {
-            "name": "lib/dialog/Dialog.js",
+        "src/dialog/Dialog.js": {
+            "name": "src/dialog/Dialog.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/panels/Panel.js": {
-            "name": "lib/panels/Panel.js",
+        "src/panels/Panel.js": {
+            "name": "src/panels/Panel.js",
             "modules": {
                 "panel(面板)": 1
             },
@@ -34,8 +34,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/panels/PanelContent.js": {
-            "name": "lib/panels/PanelContent.js",
+        "src/panels/PanelContent.js": {
+            "name": "src/panels/PanelContent.js",
             "modules": {},
             "classes": {
                 "PanelContent": 1
@@ -43,8 +43,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/panels/PanelFooter.js": {
-            "name": "lib/panels/PanelFooter.js",
+        "src/panels/PanelFooter.js": {
+            "name": "src/panels/PanelFooter.js",
             "modules": {},
             "classes": {
                 "PanelFooter": 1
@@ -52,8 +52,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/panels/PanelHeader.js": {
-            "name": "lib/panels/PanelHeader.js",
+        "src/panels/PanelHeader.js": {
+            "name": "src/panels/PanelHeader.js",
             "modules": {},
             "classes": {
                 "PanelHeader": 1
@@ -61,15 +61,15 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/sug/Search.js": {
-            "name": "lib/sug/Search.js",
+        "src/sug/Search.js": {
+            "name": "src/sug/Search.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/tables/Column.js": {
-            "name": "lib/tables/Column.js",
+        "src/tables/Column.js": {
+            "name": "src/tables/Column.js",
             "modules": {},
             "classes": {
                 "Column": 1
@@ -77,8 +77,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/tables/Table.js": {
-            "name": "lib/tables/Table.js",
+        "src/tables/Table.js": {
+            "name": "src/tables/Table.js",
             "modules": {
                 "table(表格)": 1
             },
@@ -88,8 +88,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/tables/Td.js": {
-            "name": "lib/tables/Td.js",
+        "src/tables/Td.js": {
+            "name": "src/tables/Td.js",
             "modules": {},
             "classes": {
                 "Td": 1
@@ -97,8 +97,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/tables/Th.js": {
-            "name": "lib/tables/Th.js",
+        "src/tables/Th.js": {
+            "name": "src/tables/Th.js",
             "modules": {},
             "classes": {
                 "Th": 1
@@ -106,8 +106,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/tables/Tr.js": {
-            "name": "lib/tables/Tr.js",
+        "src/tables/Tr.js": {
+            "name": "src/tables/Tr.js",
             "modules": {},
             "classes": {
                 "Tr": 1
@@ -115,43 +115,43 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/utils/ClassNameMixin.js": {
-            "name": "lib/utils/ClassNameMixin.js",
+        "src/utils/ClassNameMixin.js": {
+            "name": "src/utils/ClassNameMixin.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/utils/MethodMixin.js": {
-            "name": "lib/utils/MethodMixin.js",
+        "src/utils/MethodMixin.js": {
+            "name": "src/utils/MethodMixin.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/utils/PropertyMixin.js": {
-            "name": "lib/utils/PropertyMixin.js",
+        "src/utils/PropertyMixin.js": {
+            "name": "src/utils/PropertyMixin.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/utils/constants.js": {
-            "name": "lib/utils/constants.js",
+        "src/utils/constants.js": {
+            "name": "src/utils/constants.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/utils/extend.js": {
-            "name": "lib/utils/extend.js",
+        "src/utils/extend.js": {
+            "name": "src/utils/extend.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "lib/Button.js": {
-            "name": "lib/Button.js",
+        "src/Button.js": {
+            "name": "src/Button.js",
             "modules": {},
             "classes": {
                 "Button": 1
@@ -159,8 +159,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/ButtonGroup.js": {
-            "name": "lib/ButtonGroup.js",
+        "src/ButtonGroup.js": {
+            "name": "src/ButtonGroup.js",
             "modules": {},
             "classes": {
                 "ButtonGroup": 1
@@ -168,8 +168,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Calendar.js": {
-            "name": "lib/Calendar.js",
+        "src/Calendar.js": {
+            "name": "src/Calendar.js",
             "modules": {},
             "classes": {
                 "Calendar": 1
@@ -177,8 +177,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/CalendarPanel.js": {
-            "name": "lib/CalendarPanel.js",
+        "src/CalendarPanel.js": {
+            "name": "src/CalendarPanel.js",
             "modules": {},
             "classes": {
                 "CalendarPanel": 1
@@ -186,8 +186,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/CheckboxGroup.js": {
-            "name": "lib/CheckboxGroup.js",
+        "src/CheckboxGroup.js": {
+            "name": "src/CheckboxGroup.js",
             "modules": {},
             "classes": {
                 "CheckboxGroup": 1
@@ -195,8 +195,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Col.js": {
-            "name": "lib/Col.js",
+        "src/Col.js": {
+            "name": "src/Col.js",
             "modules": {},
             "classes": {
                 "Col": 1
@@ -204,8 +204,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Crumb.js": {
-            "name": "lib/Crumb.js",
+        "src/Crumb.js": {
+            "name": "src/Crumb.js",
             "modules": {
                 "ui": 1
             },
@@ -215,8 +215,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Dialog.js": {
-            "name": "lib/Dialog.js",
+        "src/DateTimePicker.js": {
+            "name": "src/DateTimePicker.js",
+            "modules": {},
+            "classes": {
+                "DateTimePicker": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Dialog.js": {
+            "name": "src/Dialog.js",
             "modules": {},
             "classes": {
                 "Dialog": 1
@@ -224,8 +233,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Grid.js": {
-            "name": "lib/Grid.js",
+        "src/Grid.js": {
+            "name": "src/Grid.js",
             "modules": {
                 "grid(布局)": 1
             },
@@ -235,17 +244,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/ImgSlider.js": {
-            "name": "lib/ImgSlider.js",
+        "src/ImgSlider.js": {
+            "name": "src/ImgSlider.js",
             "modules": {},
             "classes": {
-                "Slider": 1
+                "imgSlider": 1
             },
             "fors": {},
             "namespaces": {}
         },
-        "lib/Input.js": {
-            "name": "lib/Input.js",
+        "src/Input.js": {
+            "name": "src/Input.js",
             "modules": {
                 "form(表单)": 1
             },
@@ -255,8 +264,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Label.js": {
-            "name": "lib/Label.js",
+        "src/Label.js": {
+            "name": "src/Label.js",
             "modules": {},
             "classes": {
                 "Label": 1
@@ -264,8 +273,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/LabelGroup.js": {
-            "name": "lib/LabelGroup.js",
+        "src/LabelGroup.js": {
+            "name": "src/LabelGroup.js",
             "modules": {},
             "classes": {
                 "LabelGroup": 1
@@ -273,8 +282,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Paging.js": {
-            "name": "lib/Paging.js",
+        "src/Paging.js": {
+            "name": "src/Paging.js",
             "modules": {},
             "classes": {
                 "Paging": 1
@@ -282,8 +291,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/RadioGroup.js": {
-            "name": "lib/RadioGroup.js",
+        "src/RadioGroup.js": {
+            "name": "src/RadioGroup.js",
             "modules": {},
             "classes": {
                 "RadioGroup": 1
@@ -291,8 +300,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Row.js": {
-            "name": "lib/Row.js",
+        "src/Row.js": {
+            "name": "src/Row.js",
             "modules": {},
             "classes": {
                 "Row": 1
@@ -300,17 +309,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Search.js": {
-            "name": "lib/Search.js",
-            "modules": {},
-            "classes": {
-                "Search": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "lib/Select.js": {
-            "name": "lib/Select.js",
+        "src/Select.js": {
+            "name": "src/Select.js",
             "modules": {},
             "classes": {
                 "Select": 1
@@ -318,8 +318,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Star.js": {
-            "name": "lib/Star.js",
+        "src/Slider.js": {
+            "name": "src/Slider.js",
+            "modules": {},
+            "classes": {
+                "Slider": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Star.js": {
+            "name": "src/Star.js",
             "modules": {},
             "classes": {
                 "Star": 1
@@ -327,8 +336,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Suggestion.js": {
-            "name": "lib/Suggestion.js",
+        "src/Suggestion.js": {
+            "name": "src/Suggestion.js",
             "modules": {},
             "classes": {
                 "Suggestion": 1
@@ -336,8 +345,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Tab.js": {
-            "name": "lib/Tab.js",
+        "src/Tab.js": {
+            "name": "src/Tab.js",
             "modules": {},
             "classes": {
                 "Tab": 1
@@ -345,8 +354,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Tabset.js": {
-            "name": "lib/Tabset.js",
+        "src/Tabset.js": {
+            "name": "src/Tabset.js",
             "modules": {},
             "classes": {
                 "Tabset": 1
@@ -354,8 +363,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Toast.js": {
-            "name": "lib/Toast.js",
+        "src/TimePicker.js": {
+            "name": "src/TimePicker.js",
+            "modules": {},
+            "classes": {
+                "TimePicker": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Toast.js": {
+            "name": "src/Toast.js",
             "modules": {},
             "classes": {
                 "Toast": 1
@@ -363,8 +381,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/Tooltip.js": {
-            "name": "lib/Tooltip.js",
+        "src/Tooltip.js": {
+            "name": "src/Tooltip.js",
             "modules": {},
             "classes": {
                 "Tooltip": 1
@@ -372,8 +390,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/TooltipPanel.js": {
-            "name": "lib/TooltipPanel.js",
+        "src/TooltipPanel.js": {
+            "name": "src/TooltipPanel.js",
             "modules": {},
             "classes": {
                 "TooltipPanel": 1
@@ -381,8 +399,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/ValidatorPanel.js": {
-            "name": "lib/ValidatorPanel.js",
+        "src/ValidatorPanel.js": {
+            "name": "src/ValidatorPanel.js",
             "modules": {},
             "classes": {
                 "ValidatorPanel": 1
@@ -404,8 +422,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "lib/panels/PanelHeader.js",
-            "line": 25,
+            "file": "src/panels/PanelHeader.js",
+            "line": 5,
             "description": "<h5>eagle-ui主要面板布局组件</h5>\n<strong><a href='../classes/Panel.html'>Panel定义整个容器</a></strong><br>\n<strong><a href='../classes/PanelContent.html'>PanelContent定义内容区域</a></strong><br>\n<strong><a href='../classes/PanelFooter.html'>PanelFooter定义底部区域</a></strong><br>\n<strong><a href='../classes/PanelHeader.html'>PanelHeader定义头部区域</a></strong><br>",
             "itemtype": "main"
         },
@@ -422,8 +440,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/tables/Tr.js",
-            "line": 27,
+            "file": "src/tables/Tr.js",
+            "line": 5,
             "description": "表格组件",
             "itemtype": "main",
             "static": 1
@@ -445,8 +463,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "lib/ValidatorPanel.js",
-            "line": 31,
+            "file": "src/ValidatorPanel.js",
+            "line": 6,
             "description": "<h5>form表单模块集成了常见的表单元素形式:</h5>\n<strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>\n<strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>\n<strong><a href='../classes/Input.html'>input输入框</a></strong><br>\n<strong><a href='../classes/Select.html'>select下拉框</a></strong><br>\n<strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>\n<h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>",
             "itemtype": "main"
         },
@@ -454,19 +472,21 @@
             "name": "ui",
             "submodules": {},
             "classes": {
-                "Slider": 1,
+                "imgSlider": 1,
                 "Label": 1,
-                "Search": 1,
-                "Star": 1,
+                "Slider": 1,
                 "Calendar": 1,
                 "CalendarPanel": 1,
                 "Crumb": 1,
+                "DateTimePicker": 1,
                 "Dialog": 1,
                 "LabelGroup": 1,
                 "Paging": 1,
+                "Star": 1,
                 "Suggestion": 1,
                 "Tab": 1,
                 "Tabset": 1,
+                "TimePicker": 1,
                 "Toast": 1,
                 "Tooltip": 1,
                 "TooltipPanel": 1
@@ -474,8 +494,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "lib/TooltipPanel.js",
-            "line": 53,
+            "file": "src/TooltipPanel.js",
+            "line": 10,
             "description": "<h5>eagle-ui部分UI组件</h5>\n<strong><a href='../classes/Crumb.html'>Crumb封装层级链接(面包屑)</a></strong><br>\n<strong><a href='../classes/Slider.html'>Slider组件展示幻灯片形式的照片展示</a></strong><br>\n<strong><a href='../classes/Label.html'>Label定义标签展示的形式</a></strong><br>\n<strong><a href='../classes/Search.html'>Search定义不同的搜索框</a></strong><br>\n<strong><a href='../classes/Star.html'>Star以星星的形式定义不同的星级展示</a></strong><br>\n<strong><a href='../classes/Calendar.html'>Calendar为日期选择组件</a></strong><br>\n<strong><a href='../classes/Dialog.html'>Dialog模拟了浏览器弹出的alert、confirm等交互形式</a></strong><br>\n<strong><a href='../classes/Paging.html'>Paging展示了常见的分页形式标签，封装了点击功能</a></strong><br>\n<strong><a href='../classes/Suggestion.html'>Suggestion在Search的基础上，动态联想匹配项</a></strong><br>\n<strong><a href='../classes/Tab.html'>Tab模拟了常见的导航条样式</a></strong><br>\n<strong><a href='../classes/Toast.html'>Toast可以模拟Ajax请求成功或者失败后，通知用户的UI界面展示</a></strong><br>\n<strong><a href='../classes/Tooltip.html'>Tooltip在Label的基础上，增加了鼠标hover或者点击的提示功能</a></strong>",
             "itemtype": "main"
         },
@@ -490,8 +510,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "lib/Row.js",
-            "line": 27,
+            "file": "src/Row.js",
+            "line": 6,
             "description": "<h5>eagle-ui主要栅格化布局组件</h5>\n<pre><code>\n    &#60;Grid&#62;//定义栅格\n        &#60;Row&#62;//定义一行\n             &#60;Col sm={6}&#62;//定义一列，总长度为12份\n             &#60;/Col&#62;\n        &#60;/Row&#62;\n    &#60;/Grid&#62;\n</code></pre>\n\n<strong><a href='../classes/Grid.html'>Grid定义外框</a></strong><br>\n<strong><a href='../classes/Row.html'>Row定义行排列</a></strong><br>\n<strong><a href='../classes/Col.html'>Col定义竖排列</a></strong><br>\n<h6>点击以上链接进行相关查看</h6>",
             "itemtype": "main"
         }
@@ -507,8 +527,8 @@
             "extension_for": [],
             "module": "panel(面板)",
             "namespace": "",
-            "file": "lib/panels/Panel.js",
-            "line": 42,
+            "file": "src/panels/Panel.js",
+            "line": 17,
             "description": "Panel定义整个容器,其主要作用是提供基本的边框样式、为其中的内容添加padding<br>\n和PanelHeader,PanelContent,PanelFooter配合使用<br />\nPanel是上面三个标签的父容器，<br />\n可以依据不同情况决定是否添加PanelHeader和PanelFooter\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/panel\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/panels/Panel.js\">查看源码</a></div>",
             "extends": "Component",
             "is_constructor": 1,
@@ -533,8 +553,8 @@
             "extension_for": [],
             "module": "panel(面板)",
             "namespace": "",
-            "file": "lib/panels/PanelContent.js",
-            "line": 25,
+            "file": "src/panels/PanelContent.js",
+            "line": 5,
             "description": "PanelContent定义内容区域\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/panel\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelContent.js\">查看源码</a></div>",
             "is_constructor": 1,
             "extends": "Component",
@@ -559,8 +579,8 @@
             "extension_for": [],
             "module": "panel(面板)",
             "namespace": "",
-            "file": "lib/panels/PanelFooter.js",
-            "line": 25,
+            "file": "src/panels/PanelFooter.js",
+            "line": 5,
             "description": "PanelFooter定义底部区域\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/panel\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelFooter.js\">查看源码</a></div>",
             "is_constructor": 1,
             "extends": "Component",
@@ -585,8 +605,8 @@
             "extension_for": [],
             "module": "panel(面板)",
             "namespace": "",
-            "file": "lib/panels/PanelHeader.js",
-            "line": 25,
+            "file": "src/panels/PanelHeader.js",
+            "line": 5,
             "description": "PanelHeader定义头部区域\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/panel\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/panels/PanelHeader.js\">查看源码</a></div>",
             "is_constructor": 1,
             "extends": "Component",
@@ -611,8 +631,8 @@
             "extension_for": [],
             "module": "table(表格)",
             "namespace": "",
-            "file": "lib/tables/Column.js",
-            "line": 25,
+            "file": "src/tables/Column.js",
+            "line": 5,
             "description": "封装Tr,Td组件，直接配合设置data属性的Table使用",
             "is_constructor": 1,
             "content": "{string} type 内容",
@@ -637,8 +657,8 @@
             "extension_for": [],
             "module": "table(表格)",
             "namespace": "",
-            "file": "lib/tables/Table.js",
-            "line": 49,
+            "file": "src/tables/Table.js",
+            "line": 17,
             "description": "表格组件",
             "is_constructor": 1,
             "extends": "Component",
@@ -663,8 +683,8 @@
             "extension_for": [],
             "module": "table(表格)",
             "namespace": "",
-            "file": "lib/tables/Td.js",
-            "line": 25,
+            "file": "src/tables/Td.js",
+            "line": 5,
             "description": "表格单元格组件",
             "is_constructor": 1,
             "extends": "Component",
@@ -689,8 +709,8 @@
             "extension_for": [],
             "module": "table(表格)",
             "namespace": "",
-            "file": "lib/tables/Th.js",
-            "line": 27,
+            "file": "src/tables/Th.js",
+            "line": 5,
             "description": "表头单元格组件",
             "is_constructor": 1,
             "extends": "Component",
@@ -715,8 +735,8 @@
             "extension_for": [],
             "module": "table(表格)",
             "namespace": "",
-            "file": "lib/tables/Tr.js",
-            "line": 27,
+            "file": "src/tables/Tr.js",
+            "line": 5,
             "description": "表格行组件",
             "is_constructor": 1,
             "extends": "Component",
@@ -741,8 +761,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/Button.js",
-            "line": 30,
+            "file": "src/Button.js",
+            "line": 8,
             "description": "- 按钮组件提供内置样式<br/>\n- 也可以自定义行内样式和className<br/>\n- 支持disabled, active等属性定义<br/>\n- 可以通过egSize 设置大小，可选xs、sm、lg。<br/>\n- 通过egStyle选择按钮颜色，可选'success','error','warning','danger','default','link','white'",
             "extends": "Component",
             "is_constructor": 1,
@@ -766,8 +786,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/ButtonGroup.js",
-            "line": 30,
+            "file": "src/ButtonGroup.js",
+            "line": 8,
             "description": "ButtonGroup组件配合Button组件,提供横、竖两种排列方式（它的作用是将Button成组展示）<br/>\n设置justify属性时可以将按钮组水平排列<br/>\n设置tacked属性时可以将按钮组竖直排列",
             "extends": "Component",
             "is_constructor": 1,
@@ -792,13 +812,13 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Calendar.js",
-            "line": 25,
+            "file": "src/Calendar.js",
+            "line": 6,
             "description": "日历组件<br />\n需要和CalendarPanel组合使用<br/>\n主要UI属性接口:\n<ul>\n    <li>startDate:定义起始日期<br>\n        例如<code>\n                startDate=\"2015-11-11\"\n        </code>\n    </li>\n    <li>endDate:定义结束日期<br>\n        例如<code>\n           endDate=\"2015-12-1\"\n        </code>\n    </li>\n    <li>defaultDate:默认今天<br>\n        默认<code>\n           defaultDate=new Date()\n        </code>\n    </li>\n     <li>format:日期格式<br>\n        默认<code>\n         format='yyyy-MM-dd'\n        </code>\n    </li>\n     <li>selectCallback:选择某个具体日期后执行的回调函数<strong style='color:blue'>&nbsp;&nbsp;&nbsp;配合CalendarPanel使用时,不需要定义</strong><br>\n        例如<code>\n        selectCallback(dateString);参数为经过format处理后的日期\n        </code>\n    </li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\timport {Input, CalendarPanel, Button} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false,\n\t            defaultDate:'2016-12-1'\n\t        };\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultDate:'2017-2-12'\n\t            });\n\t        }.bind(this),2000);\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    changeDate(){\n\t      this.refs.cp.dateChange('2015-03-02');\n\t    }\n\t    getvalue(val){\n\t        this.setState({\n\t            defaultDate: val\n\t        });\n\t    }\n\t    render(){\n\t\n\t        return (\n\t            <DemoLayout title=\"日历组件\">\n\t                <DemoItem title=\"默认样式\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo1')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel>\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"选择年月\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel calendarType=\"yearMonth\">\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"起止日期限制\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel defaultDate={this.state.defaultDate} startDate=\"2017-02-05\" endDate=\"2017-10-01\" getValueCallback={::this.getvalue}>\n\t                            <Input placeholder=\"请选择日期\"/>\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"日期格式化\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel format=\"yyyy年MM月dd日\">\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"改变时间\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo5')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.changeDate} >改变时间</Button>\n\t                        <br/>\n\t                        <br/>\n\t                        <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\">\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\"/>\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\timport {Input, CalendarPanel, Button, Grid, Row, Col} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false,\n\t            defaultDate:'2016-12-1'\n\t        };\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultDate:'2017-2-12'\n\t            });\n\t        }.bind(this),2000);\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    changeDate(){\n\t      this.refs.cp.dateChange('2015-03-02');\n\t    }\n\t    getvalue(val){\n\t        this.setState({\n\t            defaultDate: val\n\t        });\n\t    }\n\t    render(){\n\t        return (\n\t            <div style={{paddingBottom: '250px'}}>\n\t                <DemoLayout title=\"日历组件\">\n\t                    <DemoItem title=\"默认样式\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo1')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel>\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"选择年月\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo2')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel calendarType=\"yearMonth\" format=\"yyyy年MM月\">\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"起止日期限制\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('button-demo3')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel defaultDate={this.state.defaultDate} startDate=\"2017-02-05\" endDate=\"2017-10-01\" getValueCallback={::this.getvalue}>\n\t                                <Input placeholder=\"请选择日期\"/>\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"日期格式化\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo4')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel format=\"yyyy年MM月dd日\">\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"改变时间\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo5')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <Button onClick={::this.changeDate} >改变时间</Button>\n\t                            <br/>\n\t                            <br/>\n\t                            <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\">\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\"/>\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"自定义定位\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo6')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <Grid>\n\t                                <Row>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-top' format=\"yyyy年MM月dd日\" direction='top'>\n\t                                            <Input placeholder=\"上部\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-right' format=\"yyyy年MM月dd日\" direction='right'>\n\t                                            <Input placeholder=\"右边\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-down' format=\"yyyy年MM月dd日\" direction='down'>\n\t                                            <Input placeholder=\"底部\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-left' format=\"yyyy年MM月dd日\" direction='left'>\n\t                                            <Input placeholder=\"左边\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={3}/>\n\t                                    <Col sm={6}>\n\t                                        <CalendarPanel ref='cp-auto-1' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}/>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={4}>\n\t                                        <CalendarPanel ref='cp-left-1' format=\"yyyy年MM月dd日\" direction='left'>\n\t                                            <Input placeholder=\"定位到左边，但是左边位置不足\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={4}/>\n\t                                    <Col sm={4}>\n\t                                        <CalendarPanel ref='cp-right-1' format=\"yyyy年MM月dd日\" direction='right'>\n\t                                            <Input placeholder=\"定位到右边，但是右边位置不足\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-auto-2' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={6}/>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-auto-3' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={6}>\n\t                                        <CalendarPanel ref='cp-auto-4' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={6}>\n\t                                        <CalendarPanel ref='cp-auto-5' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                            </Grid>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                </DemoLayout>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "calendar"
@@ -818,13 +838,13 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/CalendarPanel.js",
-            "line": 43,
+            "file": "src/CalendarPanel.js",
+            "line": 10,
             "description": "CalendarPanel组件<br>\n接受Calendar的所有属性接口，额外增加一个getValueCallback方法\n\n主要属性接口:\n<ul>\n    <li>getValueCallback参数为<code>格式化后的string</code></li>\n    <li style='color:red'><a href='./Calendar.html'>其他属性定义请参照Calendar组件</a></li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\timport {Input, CalendarPanel, Button} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false,\n\t            defaultDate:'2016-12-1'\n\t        };\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultDate:'2017-2-12'\n\t            });\n\t        }.bind(this),2000);\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    changeDate(){\n\t      this.refs.cp.dateChange('2015-03-02');\n\t    }\n\t    getvalue(val){\n\t        this.setState({\n\t            defaultDate: val\n\t        });\n\t    }\n\t    render(){\n\t\n\t        return (\n\t            <DemoLayout title=\"日历组件\">\n\t                <DemoItem title=\"默认样式\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo1')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel>\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"选择年月\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel calendarType=\"yearMonth\">\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"起止日期限制\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('button-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel defaultDate={this.state.defaultDate} startDate=\"2017-02-05\" endDate=\"2017-10-01\" getValueCallback={::this.getvalue}>\n\t                            <Input placeholder=\"请选择日期\"/>\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"日期格式化\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <CalendarPanel format=\"yyyy年MM月dd日\">\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"改变时间\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('calendar-demo5')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.changeDate} >改变时间</Button>\n\t                        <br/>\n\t                        <br/>\n\t                        <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\">\n\t                            <Input placeholder=\"请选择日期\"  icon=\"calendar\"/>\n\t                        </CalendarPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\timport {Input, CalendarPanel, Button, Grid, Row, Col} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            show:false,\n\t            defaultDate:'2016-12-1'\n\t        };\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultDate:'2017-2-12'\n\t            });\n\t        }.bind(this),2000);\n\t    };\n\t\n\t    focus(){\n\t        this.setState({\n\t            show:true\n\t        });\n\t    }\n\t    blur(){\n\t        this.setState({\n\t            show:false\n\t        });\n\t    }\n\t    changeDate(){\n\t      this.refs.cp.dateChange('2015-03-02');\n\t    }\n\t    getvalue(val){\n\t        this.setState({\n\t            defaultDate: val\n\t        });\n\t    }\n\t    render(){\n\t        return (\n\t            <div style={{paddingBottom: '250px'}}>\n\t                <DemoLayout title=\"日历组件\">\n\t                    <DemoItem title=\"默认样式\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo1')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel>\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"选择年月\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo2')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel calendarType=\"yearMonth\" format=\"yyyy年MM月\">\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"起止日期限制\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('button-demo3')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel defaultDate={this.state.defaultDate} startDate=\"2017-02-05\" endDate=\"2017-10-01\" getValueCallback={::this.getvalue}>\n\t                                <Input placeholder=\"请选择日期\"/>\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"日期格式化\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo4')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <CalendarPanel format=\"yyyy年MM月dd日\">\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"改变时间\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo5')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <Button onClick={::this.changeDate} >改变时间</Button>\n\t                            <br/>\n\t                            <br/>\n\t                            <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\">\n\t                                <Input placeholder=\"请选择日期\"  icon=\"calendar\"/>\n\t                            </CalendarPanel>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"自定义定位\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('calendar-demo6')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <Grid>\n\t                                <Row>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-top' format=\"yyyy年MM月dd日\" direction='top'>\n\t                                            <Input placeholder=\"上部\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-right' format=\"yyyy年MM月dd日\" direction='right'>\n\t                                            <Input placeholder=\"右边\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-down' format=\"yyyy年MM月dd日\" direction='down'>\n\t                                            <Input placeholder=\"底部\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-left' format=\"yyyy年MM月dd日\" direction='left'>\n\t                                            <Input placeholder=\"左边\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={3}/>\n\t                                    <Col sm={6}>\n\t                                        <CalendarPanel ref='cp-auto-1' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={3}/>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={4}>\n\t                                        <CalendarPanel ref='cp-left-1' format=\"yyyy年MM月dd日\" direction='left'>\n\t                                            <Input placeholder=\"定位到左边，但是左边位置不足\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={4}/>\n\t                                    <Col sm={4}>\n\t                                        <CalendarPanel ref='cp-right-1' format=\"yyyy年MM月dd日\" direction='right'>\n\t                                            <Input placeholder=\"定位到右边，但是右边位置不足\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-auto-2' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={6}/>\n\t                                    <Col sm={3}>\n\t                                        <CalendarPanel ref='cp-auto-3' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                                <Row>\n\t                                    <Col sm={6}>\n\t                                        <CalendarPanel ref='cp-auto-4' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                    <Col sm={6}>\n\t                                        <CalendarPanel ref='cp-auto-5' format=\"yyyy年MM月dd日\">\n\t                                            <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n\t                                        </CalendarPanel>\n\t                                    </Col>\n\t                                </Row>\n\t                            </Grid>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                </DemoLayout>\n\t            </div>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "calendar"
@@ -844,8 +864,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/CheckboxGroup.js",
-            "line": 32,
+            "file": "src/CheckboxGroup.js",
+            "line": 11,
             "description": "CheckboxGroup需与Input组件配合使用<br/>\n它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能",
             "extends": "Component",
             "is_constructor": 1,
@@ -869,8 +889,8 @@
             "extension_for": [],
             "module": "grid(布局)",
             "namespace": "",
-            "file": "lib/Col.js",
-            "line": 27,
+            "file": "src/Col.js",
+            "line": 5,
             "description": "定义栅格中的一列，配合Row组件使用\n<h5>主要的UI属性接口包括:</h5>\n<ul>\n    <li>sm:一行Row的宽度为100%(12份)，sm的值表示当前Col的宽度占了12份中的几份</li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Col sm={5} &#62;&#60;/Col&#62;</code>\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
@@ -894,8 +914,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Crumb.js",
-            "line": 46,
+            "file": "src/Crumb.js",
+            "line": 27,
             "description": "面包屑组件",
             "extends": "Component",
             "is_constructor": 1,
@@ -910,6 +930,32 @@
             ],
             "show": true
         },
+        "DateTimePicker": {
+            "name": "DateTimePicker",
+            "shortname": "DateTimePicker",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ui",
+            "namespace": "",
+            "file": "src/DateTimePicker.js",
+            "line": 9,
+            "description": "日期时间选择器<br />\n<strong style=\"color:red\">可使用Calendar类所有API</strong>",
+            "extends": "TimePicker",
+            "is_constructor": 1,
+            "example": [
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\timport {Input, CalendarPanel, Button, Grid, Row, Col,TimePicker,DateTimePicker} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            dateTime:''\n\t        };\n\t\n\t    };\n\t    render(){\n\t        return (\n\t            <div style={{paddingBottom: '250px'}}>\n\t                <DemoLayout title=\"日期时间选择器\">\n\t                    <DemoItem title=\"默认\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('datetimepicker-demo1')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <DateTimePicker>\n\t                                <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n\t                            </DateTimePicker>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"日期选择器\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('datetimepicker-demo2')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <DateTimePicker format=\"yyyy年MM月dd日\">\n\t                                <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n\t                            </DateTimePicker>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"时间选择器\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('datetimepicker-demo3')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <DateTimePicker format=\"hh:mm\">\n\t                                <Input placeholder=\"请选择日期时间\"  icon=\"clock\" />\n\t                            </DateTimePicker>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t                    <DemoItem title=\"默认值更改\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('datetimepicker-demo4')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <DateTimePicker defaultValue={this.state.dateTime} getValueCallback={(val)=>{\n\t                                this.setState({\n\t                                    dateTime:val\n\t                                });\n\t                            }}>\n\t                                <Input placeholder=\"请选择日期时间\"  icon=\"clock\" />\n\t                            </DateTimePicker>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t\n\t                </DemoLayout>\n\t            </div>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "datetimepicker"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/datetimepicker"
+            ],
+            "show": true
+        },
         "Dialog": {
             "name": "Dialog",
             "shortname": "Dialog",
@@ -920,8 +966,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Dialog.js",
-            "line": 11,
+            "file": "src/Dialog.js",
+            "line": 3,
             "description": "弹出层组件",
             "extends": "Component",
             "is_constructor": 1,
@@ -946,8 +992,8 @@
             "extension_for": [],
             "module": "grid(布局)",
             "namespace": "",
-            "file": "lib/Grid.js",
-            "line": 48,
+            "file": "src/Grid.js",
+            "line": 28,
             "description": "定义栅格容器,配合Col和Row使用",
             "extends": "Component",
             "is_constructor": 1,
@@ -961,9 +1007,9 @@
                 "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
             ]
         },
-        "Slider": {
-            "name": "Slider",
-            "shortname": "Slider",
+        "imgSlider": {
+            "name": "imgSlider",
+            "shortname": "imgSlider",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -971,8 +1017,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/ImgSlider.js",
-            "line": 35,
+            "file": "src/ImgSlider.js",
+            "line": 10,
             "description": "照片浏览组件<br />\n提供的UI展示属性接口如下<br/>\n <ul>\n   <li>imgList:需要展示的图片数组，每个图片用一个对象来表示<br>\n       例如\n       <pre><code>\n                [{\n                      profile:'1叔2015上传',\n                      url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                      description:'闪惠商户培训资料',\n                      thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n                   }]\n       </code></pre>\n   </li>\n   <li>show:是否显示照片浏览组件，默认隐藏，需要手动设置为true才可以显示照片浏览组件\n       <code>\n           <strong>默认</strong>false\n       </code>\n   </li>\n   <li>\n       urlKey:定义大图的‘图片路径’应该取自图像object的哪一个属性。<br/>\n       在上述imgList中，图像object的url属性就是大图路径，所以urlKey='url'\n   </li>\n   <li>\n       titleKey:定义大图‘左下方文字描述’应该取自图像object的哪一个属性。<br/>\n       在上述imgList中，图像object的description属性就是图片描述，所以titleKey='description'\n   </li>\n   <li>\n       profileKey:定义大图‘正下方profile描述’应该取自图像object的哪一个属性。<br/>\n       在上述imgList中，图像object的profile属性就是图片profile，所以profileKey='profile'\n   </li>\n   <li>thumbnailKey:定义缩略图对应imgList数组的key\n       <code>\n           <strong>默认</strong>和urlKey保持一致,本例中就是thumbnail\n       </code>\n   </li>\n   <li>showThumbnail:定义是否展示缩略图\n       <code>\n           <strong>默认</strong>true\n       </code>\n   </li>\n    <li>pageNum:定义每页缩略图的个数\n       <code>\n           <strong>默认</strong>为5\n       </code>\n   </li>\n   <li>imgModify:是否对图片进行放大缩小等操作\n       <code>\n           <strong>默认</strong>为false\n       </code>\n   </li>\n </ul>\n 使用方式:\n <pre><code>&#60;imgSlider show={true} showThumbnail={true}\n imgList={imgList}\n profileKey={'profile'}\n urlKey={'url'}\n titleKey={'description'}\n thumbnailKey={thumbnailKey} /&#62;</code>\n </pre>\n <div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/slider\">demo展示</a></div>\n <div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/ImgSlider.js\">查看源码</a></div>",
             "extends": "Component",
             "is_constructor": 1,
@@ -983,7 +1029,7 @@
                 "imgSlider"
             ],
             "exampleUrls": [
-                "http://future-team.github.io/eagle-ui/examples/index.html#/slider"
+                "http://future-team.github.io/eagle-ui/examples/index.html#/imgslider"
             ],
             "show": true
         },
@@ -997,8 +1043,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/Input.js",
-            "line": 46,
+            "file": "src/Input.js",
+            "line": 20,
             "description": "input表单组件<br />\n设置type属性可以生成radio、checkbox、input等元素标签，并包裹初始化样式.<br/>\n提供自动补全功能，autoComplete为true即可。\n\n主要属性和接口：\n<ul>\n    <li>type:input的不同类型，可选'text,radio..'等，默认text<br>\n        如：<code>\n           Input  type=\"radio\"\n        </code>\n    </li>\n    <li>autoComplete:是否自动补全，默认false<br>\n        如：<code>\n           Button radius egSize=\"sm\" egStyle=\"warning\"\n        </code>\n    </li>\n    <li>label:type为radio,checkbox时，需要显示的标签信息。默认''<br>\n        如：<code>\n           Input  type=\"radio\"  label=\"大白菜\"\n        </code>\n    </li>\n    <li>onChange:状态改变时的回调方法，默认null<br>\n        如：<code>\n           Input  type=\"checkbox\" checked onChange={::this.change} value=\"bbb\"\n        </code>\n    </li>\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
@@ -1023,8 +1069,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Label.js",
-            "line": 30,
+            "file": "src/Label.js",
+            "line": 8,
             "description": "标签组件<br />\n提供基本的标签样式，通常结合LabelGroup组件一起使用\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/label\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Label.js\">查看源码</a></div>",
             "is_constructor": 1,
             "example": [
@@ -1048,8 +1094,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/LabelGroup.js",
-            "line": 40,
+            "file": "src/LabelGroup.js",
+            "line": 11,
             "description": "标签组<br />\n<div><a target=\"_blank\" href=\"http://future-team.github.io/eagle-ui/examples/index.html#/label\">demo展示</a></div>\n<div><a target=\"_blank\" href=\"https://github.com/future-team/eagle-ui/blob/master/src/Label.js\">查看源码</a></div>",
             "extends": "Component",
             "is_constructor": 1,
@@ -1074,8 +1120,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Paging.js",
-            "line": 25,
+            "file": "src/Paging.js",
+            "line": 5,
             "description": "分页组件",
             "is_constructor": 1,
             "extends": "Component",
@@ -1104,8 +1150,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/RadioGroup.js",
-            "line": 36,
+            "file": "src/RadioGroup.js",
+            "line": 11,
             "description": "RadioGroup需与Input组件配合使用<br/>\n它的作用是将type=radio的Input组件在UI上展示在一起\n主要属性接口：\n<ul>\n    <li>name:radio组的name值<br>\n        如：<code>\n            name='fruits'\n        </code>\n    </li>\n    <li>defaultChecked:默认选中值<br>\n        如：<code>defaultChecked=\"石榴\"</code>\n    </li>\n    <li>getValueCallback:获取选中值的回调函数<br>\n        如：<code>getValueCallback={function(val){alert(val)}}</code>\n    </li>\n\n</ul>",
             "extends": "Component",
             "is_constructor": 1,
@@ -1129,8 +1175,8 @@
             "extension_for": [],
             "module": "grid(布局)",
             "namespace": "",
-            "file": "lib/Row.js",
-            "line": 27,
+            "file": "src/Row.js",
+            "line": 6,
             "description": "定义栅格中的一行，配合Col组件使用",
             "extends": "Component",
             "is_constructor": 1,
@@ -1144,31 +1190,6 @@
                 "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
             ]
         },
-        "Search": {
-            "name": "Search",
-            "shortname": "Search",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ui",
-            "namespace": "",
-            "file": "lib/Search.js",
-            "line": 23,
-            "description": "搜索按钮组件\n参数： id/callBack/placeholder 均可不传",
-            "is_constructor": 1,
-            "example": [
-                "\timport React,{Component,PropTypes}  from 'react';\n\timport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\n\timport Code from '../libs/Code.js';\n\timport {getFile} from '../libs/Code.js';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\t\n\texport default class Demo extends Component{\n\t\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    }\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input\n\t        }\n\t    }\n\t\n\t    query(){\n\t        //可以返回ajax\n\t        return [\n\t            {\n\t                key:'上海',\n\t                value:'shanghai',\n\t                subKey:'10个区'\n\t            },\n\t            {\n\t                key:'北京',\n\t                value:'beijing',\n\t                subKey:'10个区'\n\t            },\n\t            {\n\t                key:'哈尔滨',\n\t                value:'haerbin',\n\t                subKey:'5010个区'\n\t            },\n\t            {\n\t                key:'南京',\n\t                value:'nanjing',\n\t                subKey:'10个区'\n\t            },\n\t            {\n\t                key:'南宁',\n\t                value:'nanning',\n\t                subKey:'120个区'\n\t            },\n\t            {\n\t                key:'天津',\n\t                value:'tianjing',\n\t                subKey:'312310个区'\n\t            },\n\t            {\n\t                key:'深圳',\n\t                value:'shenzhen',\n\t                subKey:'101个区'\n\t            }\n\t        ];\n\t    }\n\t\n\t    getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t\n\t    render(){\n\t        return (\n\t        <DemoLayout title=\"联想词\">\n\t            <DemoItem title=\"\" desc={'queryCallback的形式传入数据'}>\n\t                <CodeShow>\n\t                    <Code code={getFile('suggestion-demo1')}>\n\t                    </Code>\n\t                </CodeShow>\n\t                <DemoShow>\n\t                    <Grid fluid>\n\t                        <Row>\n\t                            <Col>\n\t                                <div id=\"showtip\" className=\"color-info\"></div>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={10} layer padding={0}>\n\t                                <Suggestion\n\t                                    getValueCallback={::this.getValue}\n\t                                    queryCallback={::this.query}\n\t                                    icon=\"search\"\n\t                                    iconDirection=\"left\"\n\t                                    placeholder=\"请输入key搜索\" />\n\t                            </Col>\n\t                            <Col sm={2} end padding={0}>\n\t                                <Button type=\"submit\">查询</Button>\n\t                            </Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </DemoShow>\n\t            </DemoItem>\n\t            <DemoItem title=\"子标签的形式传入数据\" desc={''}>\n\t                <CodeShow>\n\t                    <Code code={getFile('suggestion-demo2')}>\n\t                    </Code>\n\t                </CodeShow>\n\t                <DemoShow>\n\t                    <Grid fluid>\n\t                        <Row>\n\t                            <Col>\n\t                                <div id=\"showtip\" className=\"color-info\"></div>\n\t                            </Col>\n\t                        </Row>\n\t                        <Row>\n\t                            <Col sm={10} layer>\n\t                                <Row>\n\t                                    <Col sm={10} end>\n\t                                        <Suggestion\n\t                                            icon=\"search\"\n\t                                            iconDirection=\"left\"\n\t                                            placeholder=\"请输入测、测试、试进行搜索\">\n\t                                            <Item value=\"测试测试\" subKey=\"222222\">\n\t                                                测试测试\n\t                                            </Item>\n\t                                            <Item value=\"测试\" subKey=\"达到\">\n\t                                                测试\n\t                                            </Item>\n\t                                            <Item value=\"试验\" subKey=\"dsadsad\">\n\t                                                试验\n\t                                            </Item>\n\t                                            <Item value=\"测验\">\n\t                                                测验\n\t                                            </Item>\n\t                                            <Item value=\"检测\" >\n\t                                                检测\n\t                                            </Item>\n\t                                        </Suggestion>\n\t                                    </Col>\n\t                                </Row>\n\t                            </Col>\n\t                            <Col sm={2}>请输入测、测试、试进行搜索</Col>\n\t                        </Row>\n\t                    </Grid>\n\t                </DemoShow>\n\t            </DemoItem>\n\t\n\t        </DemoLayout>\n\t        );\n\t    }\n\t}"
-            ],
-            "exampleTitles": [
-                "suggestion"
-            ],
-            "exampleUrls": [
-                "http://future-team.github.io/eagle-ui/examples/index.html#/suggestion"
-            ],
-            "show": true
-        },
         "Select": {
             "name": "Select",
             "shortname": "Select",
@@ -1179,8 +1200,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/Select.js",
-            "line": 45,
+            "file": "src/Select.js",
+            "line": 12,
             "description": "下拉选择框组件<br>\n    支持在input框中输入文字或者点击下拉菜单中的选项进行查询,同时支持上下方向键进行选择。\n主要属性接口：\n<ul>\n    <li>defaultChecked:默认显示的选项即选中的选项<br>\n        如：<code>\n            defaultChecked=\"上海\"\n        </code>\n    </li>\n    <li>getValueCallback:获取元素之后的回调方法，主要将选中值传递给父级元素<br>\n        如：<code>getValueCallback={::this.getValue}</code>\n    </li>\n    <li>placeholder:提示框的内容<br>\n        如：<code>placeholder=\"请选择\"</code>\n    </li>\n\n</ul>",
             "is_constructor": 1,
             "extends": "Component",
@@ -1194,6 +1215,32 @@
                 "http://future-team.github.io/eagle-ui/examples/index.html#/select"
             ]
         },
+        "Slider": {
+            "name": "Slider",
+            "shortname": "Slider",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ui",
+            "namespace": "",
+            "file": "src/Slider.js",
+            "line": 7,
+            "description": "滑块组件<br>\n目前支持水平滑动",
+            "extends": "Component",
+            "is_constructor": 1,
+            "example": [
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React, { Component ,PropTypes} from 'react';\n\timport {Slider} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class SliderDemo extends Component{\n\t\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            val:''\n\t        };\n\t\n\t    }\n\t    getValueCallback(val){\n\t        this.setState({\n\t            val:val\n\t        });\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"滑块\">\n\t                <DemoItem title=\"基本使用\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('slider-demo1')} />\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Slider getValueCallback={::this.getValueCallback} initCallback={(val)=>{console.dir(val);}} />\n\t                        <div>滑动输出的值：<strong style={{color:'red'}}>{this.state.val}</strong></div>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "slider"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/slider"
+            ],
+            "show": true
+        },
         "Star": {
             "name": "Star",
             "shortname": "Star",
@@ -1204,8 +1251,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Star.js",
-            "line": 27,
+            "file": "src/Star.js",
+            "line": 4,
             "description": "星级评价(Star)组件<br />\n提供的UI展示属性接口包括<br/>\n<ul>\n    <li>rate：星级评价的分数(满分为100)<code>默认为0</code></li>\n    <li>size：星星的大小(默认单位为px)<code>默认13*13px</code></li>\n    <li>disable：是否可以手动设置星星比率<code>默认为true[不可以]</code></li>\n</ul><br>\n使用方式:\n<pre><code>&#60;Star rate={50} size={10}/&#62;</code>\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
@@ -1230,8 +1277,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Suggestion.js",
-            "line": 21,
+            "file": "src/Suggestion.js",
+            "line": 3,
             "description": "搜索联想组件。",
             "is_constructor": 1,
             "extends": "Component",
@@ -1256,8 +1303,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Tab.js",
-            "line": 30,
+            "file": "src/Tab.js",
+            "line": 8,
             "description": "导航标签组件，用户可以在不同的tab之间进行切换<br/>\n需要和Tabset组件配合使用,Tabset相当于是Tab的容器",
             "extends": "Component",
             "is_constructor": 1,
@@ -1282,8 +1329,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Tabset.js",
-            "line": 40,
+            "file": "src/Tabset.js",
+            "line": 9,
             "description": "导航标签组件，用户可以在不同的tab之间进行切换<br/>\n需要和Tab组件配合使用,Tabset相当于是Tab的容器",
             "extends": "Component",
             "is_constructor": 1,
@@ -1299,6 +1346,32 @@
             ],
             "show": true
         },
+        "TimePicker": {
+            "name": "TimePicker",
+            "shortname": "TimePicker",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ui",
+            "namespace": "",
+            "file": "src/TimePicker.js",
+            "line": 9,
+            "description": "时间选择器",
+            "extends": "CalendarPanel",
+            "is_constructor": 1,
+            "example": [
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component,PropTypes} from 'react';\n\timport {Input,  Button, Grid, Row, Col,TimePicker} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class Calendar extends Component{\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            time:''\n\t        };\n\t\n\t    }\n\t    render(){\n\t        return (\n\t            <div style={{paddingBottom: '250px'}}>\n\t                <DemoLayout title=\"时间选择器\">\n\t                    <DemoItem title=\"默认\">\n\t                        <CodeShow>\n\t                            <Code code={getFile('timepicker-demo1')}/>\n\t                        </CodeShow>\n\t                        <DemoShow>\n\t                            <TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format=\"HH:mm\">\n\t                                <Input placeholder=\"请选择时间\"  icon=\"clock\" />\n\t                            </TimePicker>\n\t                        </DemoShow>\n\t                    </DemoItem>\n\t\n\t\n\t                </DemoLayout>\n\t            </div>\n\t        );\n\t    }\n\t}"
+            ],
+            "exampleTitles": [
+                "timepicker"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/timepicker"
+            ],
+            "show": true
+        },
         "Toast": {
             "name": "Toast",
             "shortname": "Toast",
@@ -1309,8 +1382,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Toast.js",
-            "line": 49,
+            "file": "src/Toast.js",
+            "line": 11,
             "description": "提示组件\n类型：分为success,error,loading 三种。默认success\noveralay是否显示遮罩，默认false不显示",
             "extends": "Component",
             "is_constructor": 1,
@@ -1335,8 +1408,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/Tooltip.js",
-            "line": 41,
+            "file": "src/Tooltip.js",
+            "line": 8,
             "description": "tips组件\n只是从tooltipPanel获得props渲染，其他操作均在tooltipPanel中",
             "is_constructor": 1,
             "example": [
@@ -1360,8 +1433,8 @@
             "extension_for": [],
             "module": "ui",
             "namespace": "",
-            "file": "lib/TooltipPanel.js",
-            "line": 53,
+            "file": "src/TooltipPanel.js",
+            "line": 10,
             "description": "tipsPanel组件\n方向可选：top,down,left,right.默认down\n存在边界判断，若指定方向容纳不了提示，会转为默认\n可以指定边界，即将边界的id值，赋给wrapper属性。则提示超出该元素范围则取反方向。\n主要属性和接口：\n<ul>\n    <li>direction:提示的方向，取值范围［top,bottom,left,right］默认down<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n    <li>msg:提示文字，必须要写，不然默认的没什么用吧<br>\n        如：<code>\n          TooltipPanel direction='top' wapper='a' msg='this is msg'\n        </code>\n    </li>\n    <li>wrapper:指定边界元素，默认为可视窗口，如下则id为a的div为边界元素<br>\n        如：<code>\n           TooltipPanel direction='top' wapper='a'\n        </code>\n    </li>\n</ul>",
             "is_constructor": 1,
             "example": [
@@ -1385,8 +1458,8 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "lib/ValidatorPanel.js",
-            "line": 31,
+            "file": "src/ValidatorPanel.js",
+            "line": 6,
             "description": "表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />\n<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->\nrules属性提供的规则有<br/>\n<pre>\n    required：是否必填\n    date：日期格式验证\n    number：是否是有效的号码\n    url：url规则验证\n    dateISO：日期ISO验证\n    digits：是否是数字\n    equalTo：值对比\n    minlength：最少输入\n    maxlength：最大输入\n    email：邮箱验证\n    rangelength：字符大小需在某个区间之内\n    min：输入的值需要大于等于此规则定义的值\n    max：输入的值需要小于等于此规则定义的值\n    range：一个区间取值范围\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
@@ -1404,14 +1477,14 @@
     },
     "classitems": [
         {
-            "file": "lib/dialog/Dialog.js",
-            "line": 52,
+            "file": "src/dialog/Dialog.js",
+            "line": 26,
             "description": "key 报warning，暂时改为keys",
             "class": "Panel"
         },
         {
-            "file": "lib/panels/Panel.js",
-            "line": 96,
+            "file": "src/panels/Panel.js",
+            "line": 34,
             "description": "panel的样式风格, 这个属性只会影响多层panel嵌套的场景<br>\n可以设置为normal或者default<br>\ndefault为默认值，当出现嵌套的panel时，子panel不会有border<br>\n当egType为normal时，每一层的子panel和父panel之间都会有border隔开",
             "itemtype": "property",
             "name": "egType",
@@ -1421,8 +1494,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/panels/Panel.js",
-            "line": 106,
+            "file": "src/panels/Panel.js",
+            "line": 44,
             "description": "可以通过heading设置panel的header，如果设置了heading属性，就没有必要在Panel下包含PanelHeader标签",
             "itemtype": "property",
             "name": "heading",
@@ -1432,8 +1505,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/panels/PanelContent.js",
-            "line": 57,
+            "file": "src/panels/PanelContent.js",
+            "line": 20,
             "description": "是否为panelContent添加padding，默认true",
             "itemtype": "property",
             "name": "padding",
@@ -1443,8 +1516,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/panels/PanelFooter.js",
-            "line": 57,
+            "file": "src/panels/PanelFooter.js",
+            "line": 21,
             "description": "是否为panelFooter中的内容添加padding，默认true",
             "itemtype": "property",
             "name": "padding",
@@ -1454,8 +1527,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/panels/PanelHeader.js",
-            "line": 60,
+            "file": "src/panels/PanelHeader.js",
+            "line": 20,
             "description": "设置leftFlag为true时，header的背景色会变为白色（默认灰色），并在header左边添加高亮flag",
             "itemtype": "property",
             "name": "leftFlag",
@@ -1465,8 +1538,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/sug/Search.js",
-            "line": 43,
+            "file": "src/sug/Search.js",
+            "line": 10,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "property",
             "name": "callback",
@@ -1476,8 +1549,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/sug/Search.js",
-            "line": 50,
+            "file": "src/sug/Search.js",
+            "line": 17,
             "description": "样式类名前缀",
             "itemtype": "property",
             "name": "classPrefix",
@@ -1486,8 +1559,8 @@
             "module": "panel(面板)"
         },
         {
-            "file": "lib/tables/Column.js",
-            "line": 51,
+            "file": "src/tables/Column.js",
+            "line": 18,
             "description": "表头样式(设置表头，支持JSX)",
             "itemtype": "property",
             "name": "header",
@@ -1496,8 +1569,8 @@
             "module": "table(表格)"
         },
         {
-            "file": "lib/tables/Column.js",
-            "line": 57,
+            "file": "src/tables/Column.js",
+            "line": 27,
             "description": "用来声明需要绑定数组对象中的哪一个属性",
             "itemtype": "property",
             "name": "field",
@@ -1506,8 +1579,8 @@
             "module": "table(表格)"
         },
         {
-            "file": "lib/tables/Column.js",
-            "line": 63,
+            "file": "src/tables/Column.js",
+            "line": 33,
             "description": "用来描述每个竖排单元格的展示形式\n不应该为string",
             "itemtype": "property",
             "name": "cell",
@@ -1516,8 +1589,8 @@
             "module": "table(表格)"
         },
         {
-            "file": "lib/tables/Table.js",
-            "line": 65,
+            "file": "src/tables/Table.js",
+            "line": 30,
             "description": "用来渲染表格的数组，可选参数，如果传入data，会更具table下的column标签绑定的属性进行渲染",
             "itemtype": "property",
             "name": "data",
@@ -1526,8 +1599,8 @@
             "module": "table(表格)"
         },
         {
-            "file": "lib/tables/Tr.js",
-            "line": 57,
+            "file": "src/tables/Tr.js",
+            "line": 18,
             "description": "是否在每一行下添加分割线",
             "itemtype": "property",
             "name": "split",
@@ -1537,50 +1610,50 @@
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/ClassNameMixin.js",
+            "file": "src/utils/ClassNameMixin.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/MethodMixin.js",
+            "file": "src/utils/MethodMixin.js",
             "line": 1,
             "description": "Created by mac on 16/1/3.",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/PropertyMixin.js",
+            "file": "src/utils/PropertyMixin.js",
             "line": 1,
             "description": "Created by mac on 16/1/3.",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/constants.js",
+            "file": "src/utils/constants.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/constants.js",
-            "line": 15,
+            "file": "src/utils/constants.js",
+            "line": 12,
             "description": "状态",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/constants.js",
-            "line": 54,
+            "file": "src/utils/constants.js",
+            "line": 51,
             "description": "颜色",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/utils/extend.js",
-            "line": 7,
+            "file": "src/utils/extend.js",
+            "line": 5,
             "description": "A recursive merge between two objects.",
             "params": [
                 {
@@ -1596,15 +1669,15 @@
             "module": "table(表格)"
         },
         {
-            "file": "lib/Button.js",
+            "file": "src/Button.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Button",
             "module": "table(表格)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 49,
+            "file": "src/Button.js",
+            "line": 22,
             "description": "按钮尺寸,分别为xs、sm、lg",
             "itemtype": "property",
             "name": "egSize",
@@ -1614,8 +1687,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 56,
+            "file": "src/Button.js",
+            "line": 29,
             "description": "是否禁用按钮",
             "itemtype": "property",
             "name": "disabled",
@@ -1625,8 +1698,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 64,
+            "file": "src/Button.js",
+            "line": 37,
             "description": "按钮是否处于选中状态",
             "itemtype": "property",
             "name": "active",
@@ -1636,8 +1709,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 71,
+            "file": "src/Button.js",
+            "line": 44,
             "description": "按钮颜色样式，可以为['success','error','warning','danger','default','link','white']中任何一个",
             "itemtype": "property",
             "name": "egStyle",
@@ -1647,8 +1720,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 79,
+            "file": "src/Button.js",
+            "line": 52,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -1658,8 +1731,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 86,
+            "file": "src/Button.js",
+            "line": 59,
             "description": "是否为块级显示",
             "itemtype": "property",
             "name": "block",
@@ -1669,8 +1742,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Button.js",
-            "line": 94,
+            "file": "src/Button.js",
+            "line": 67,
             "description": "是否只将主题颜色应用于边框，而不是应用于背景色",
             "itemtype": "property",
             "name": "hollow",
@@ -1680,15 +1753,15 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ButtonGroup.js",
+            "file": "src/ButtonGroup.js",
             "line": 1,
             "description": "Created by mac on 15/9/8.",
             "class": "ButtonGroup",
             "module": "form(表单)"
         },
         {
-            "file": "lib/ButtonGroup.js",
-            "line": 48,
+            "file": "src/ButtonGroup.js",
+            "line": 22,
             "description": "是否自适应宽度并水平排列",
             "itemtype": "property",
             "name": "justify",
@@ -1698,8 +1771,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ButtonGroup.js",
-            "line": 55,
+            "file": "src/ButtonGroup.js",
+            "line": 29,
             "description": "是否垂直排列",
             "itemtype": "property",
             "name": "tacked",
@@ -1709,15 +1782,15 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ButtonGroup.js",
-            "line": 72,
+            "file": "src/ButtonGroup.js",
+            "line": 43,
             "description": "tacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
             "class": "ButtonGroup",
             "module": "form(表单)"
         },
         {
-            "file": "lib/ButtonGroup.js",
-            "line": 90,
+            "file": "src/ButtonGroup.js",
+            "line": 55,
             "description": "点击按钮组中任意按钮时触发的回调事件",
             "itemtype": "event",
             "name": "activeCallback",
@@ -1737,8 +1810,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 71,
+            "file": "src/Calendar.js",
+            "line": 48,
             "description": "起始日期",
             "itemtype": "property",
             "name": "startDate",
@@ -1748,8 +1821,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 78,
+            "file": "src/Calendar.js",
+            "line": 55,
             "description": "终止日期",
             "itemtype": "property",
             "name": "endDate",
@@ -1759,8 +1832,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 85,
+            "file": "src/Calendar.js",
+            "line": 62,
             "description": "默认选中日期",
             "itemtype": "property",
             "name": "defaultDate",
@@ -1770,8 +1843,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 92,
+            "file": "src/Calendar.js",
+            "line": 69,
             "description": "日期格式",
             "itemtype": "property",
             "name": "format",
@@ -1781,8 +1854,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 99,
+            "file": "src/Calendar.js",
+            "line": 76,
             "description": "日期选择控件类型,date表示可以选择年月日，year只能选择年份，month只能选择月份",
             "itemtype": "property",
             "name": "calendarType",
@@ -1792,8 +1865,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 106,
+            "file": "src/Calendar.js",
+            "line": 83,
             "description": "选择某个具体日期后执行的回调函数",
             "itemtype": "event",
             "name": "selectCallback",
@@ -1809,20 +1882,31 @@
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 229,
+            "file": "src/Calendar.js",
+            "line": 194,
             "class": "Calendar",
             "module": "ui"
         },
         {
-            "file": "lib/Calendar.js",
-            "line": 238,
+            "file": "src/Calendar.js",
+            "line": 201,
             "class": "Calendar",
             "module": "ui"
         },
         {
-            "file": "lib/CalendarPanel.js",
-            "line": 91,
+            "file": "src/CalendarPanel.js",
+            "line": 34,
+            "description": "日历位置",
+            "itemtype": "property",
+            "name": "direction",
+            "type": "string direction 可选值有 top | left | down | right",
+            "default": "auto 自动根据当前位置切换 上/下",
+            "class": "CalendarPanel",
+            "module": "ui"
+        },
+        {
+            "file": "src/CalendarPanel.js",
+            "line": 41,
             "description": "通过传入此函数获取日期值",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -1837,15 +1921,15 @@
             "module": "ui"
         },
         {
-            "file": "lib/CheckboxGroup.js",
+            "file": "src/CheckboxGroup.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "CheckboxGroup",
             "module": "ui"
         },
         {
-            "file": "lib/Col.js",
-            "line": 77,
+            "file": "src/Col.js",
+            "line": 23,
             "description": "适用于每个Row下的最后一个Col\n当所有的col加起来不满12的情况下：如果不设置end属性，最后一个Col会向右对齐，如果设置end属性，最后一个Col就会向左对齐（float left）",
             "itemtype": "property",
             "name": "end",
@@ -1855,8 +1939,8 @@
             "module": "grid(布局)"
         },
         {
-            "file": "lib/Col.js",
-            "line": 85,
+            "file": "src/Col.js",
+            "line": 31,
             "description": "Row总宽度为100%(12份)，sm的值表示当前Col宽度占比父元素12份中的几份",
             "itemtype": "property",
             "name": "sm",
@@ -1866,42 +1950,19 @@
             "module": "grid(布局)"
         },
         {
-            "file": "lib/Crumb.js",
-            "line": 62,
-            "description": "类名样式前缀",
+            "file": "src/DateTimePicker.js",
+            "line": 30,
+            "description": "格式化日期时间<br />\n<code>yyyy</code>:表示年<br />\n<code>MM</code>:表示月<br />\n<code>dd</code>:表示天<br />\n<code>HH</code>:24小时制<br />\n<code>hh</code>:12小时制<br />\n<code>mm</code>:分钟<br />\n<code>tt</code>:上午或下午<br />",
             "itemtype": "property",
-            "name": "classPrefix",
-            "type": "sting",
-            "default": "crumb",
-            "class": "Crumb",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Crumb.js",
-            "line": 69,
-            "description": "标签tagName",
-            "itemtype": "property",
-            "name": "componentTag",
+            "name": "format",
             "type": "String",
-            "default": "div",
-            "class": "Crumb",
+            "default": "HH:mm tt",
+            "class": "DateTimePicker",
             "module": "ui"
         },
         {
-            "file": "lib/Crumb.js",
-            "line": 93,
-            "itemtype": "method",
-            "name": "render",
-            "return": {
-                "description": "",
-                "type": "ReactElement"
-            },
-            "class": "Crumb",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Dialog.js",
-            "line": 21,
+            "file": "src/Dialog.js",
+            "line": 13,
             "description": "是否显示标题栏背景色",
             "itemtype": "property",
             "name": "isHeaderBackground",
@@ -1911,8 +1972,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 28,
+            "file": "src/Dialog.js",
+            "line": 20,
             "description": "底部按钮对齐方式 center、right or left",
             "itemtype": "property",
             "name": "buttonAlign",
@@ -1922,8 +1983,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 35,
+            "file": "src/Dialog.js",
+            "line": 27,
             "description": "是否显示标题栏",
             "itemtype": "property",
             "name": "isHeader",
@@ -1933,8 +1994,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 42,
+            "file": "src/Dialog.js",
+            "line": 34,
             "description": "内容区域对齐方式",
             "itemtype": "property",
             "name": "contentAlign",
@@ -1944,8 +2005,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 49,
+            "file": "src/Dialog.js",
+            "line": 41,
             "description": "是否显示遮罩层",
             "itemtype": "property",
             "name": "isMask",
@@ -1955,8 +2016,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 56,
+            "file": "src/Dialog.js",
+            "line": 48,
             "description": "内容不在content之内 mask属性",
             "itemtype": "property",
             "name": "outside",
@@ -1966,8 +2027,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 63,
+            "file": "src/Dialog.js",
+            "line": 55,
             "description": "是否显示关闭 mask常用属性",
             "itemtype": "property",
             "name": "isClose",
@@ -1977,8 +2038,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 70,
+            "file": "src/Dialog.js",
+            "line": 62,
             "description": "标题",
             "itemtype": "property",
             "name": "title",
@@ -1988,8 +2049,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 76,
+            "file": "src/Dialog.js",
+            "line": 68,
             "description": "是否点击背景层也能关闭弹窗",
             "itemtype": "property",
             "name": "isMaskClose",
@@ -1999,8 +2060,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Dialog.js",
-            "line": 83,
+            "file": "src/Dialog.js",
+            "line": 75,
             "description": "底部按钮组<br />\n当不设置type的时候，按钮的回调直接用callback定义就好，<br />\n如果设置了type为'success'或者'cancel'，callback属性将不会起到作用，此时可以通过dialog提供的promise来注册点击成功或者取消按钮时的回调事件:<br/>\n<pre class=\"code prettyprint\">\n<code>\n   Dialog.confirm('确定你已经打开了么？').then(()=>{\n           alert('确定');\n       },()=>{\n           alert('取消');\n       });\n</code>\n</pre>\n<br>\n按钮组格式如下：\n   <pre class=\"code prettyprint\">\n       <code>\n       [\n            {\n                type: 'success',\n                name: '确认'\n            },\n            {\n                type:'cancel',\n                egStyle:'white',\n                name:'取消'\n            },\n            {\n                egStyle:'warning',\n                name:'自定义按钮',\n                callback:()=>{alert('自定义按钮');}\n            }\n        ]\n       </code>\n   </pre>",
             "itemtype": "property",
             "name": "buttons",
@@ -2010,121 +2071,121 @@
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
+            "file": "src/ImgSlider.js",
             "line": 1,
             "description": "Created by slashhuang on 15/12/28.",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "grid(布局)"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 345,
-            "description": "有放大操作需求时，新增操作区div",
-            "class": "Slider",
-            "module": "ui"
-        },
-        {
-            "file": "lib/ImgSlider.js",
-            "line": 433,
+            "file": "src/ImgSlider.js",
+            "line": 110,
             "description": "slider的图片数组",
             "itemtype": "property",
             "name": "imgList",
             "type": "Array",
             "default": "图片数组(包含大图地址、描述等信息)",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 440,
+            "file": "src/ImgSlider.js",
+            "line": 117,
             "description": "是否展示slider",
             "itemtype": "property",
             "name": "show",
             "type": "boolean",
             "default": "false(默认不展示)",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 447,
+            "file": "src/ImgSlider.js",
+            "line": 124,
             "description": "图片信息(对应imgList中大图标题信息的key))",
             "itemtype": "property",
             "name": "urlKey",
             "type": "string",
             "default": "url",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 454,
+            "file": "src/ImgSlider.js",
+            "line": 131,
             "description": "图片信息(对应图片信息数组对象中图片描述信息的key)",
             "itemtype": "property",
             "name": "profileKey",
             "type": "string",
             "default": "profile",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 461,
+            "file": "src/ImgSlider.js",
+            "line": 138,
             "description": "图片描述信息(对应imgList中大图标题信息的key)",
             "itemtype": "property",
             "name": "titleKey",
             "type": "string",
             "default": "description",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 468,
+            "file": "src/ImgSlider.js",
+            "line": 145,
             "description": "是否显示slider的图片缩略图部分",
             "itemtype": "property",
             "name": "showThumbnail",
             "type": "boolean",
             "default": "true",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 475,
+            "file": "src/ImgSlider.js",
+            "line": 152,
             "description": "缩略图的key",
             "itemtype": "property",
             "name": "thumbnailKey",
             "type": "array",
             "default": "默认和urlKey保持一致",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 482,
+            "file": "src/ImgSlider.js",
+            "line": 159,
             "description": "缩略图展示数目",
             "itemtype": "property",
             "name": "pageNum",
             "type": "number",
             "default": "5",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/ImgSlider.js",
-            "line": 489,
+            "file": "src/ImgSlider.js",
+            "line": 166,
             "description": "控制缩放旋转控件的显示，默认隐藏",
             "itemtype": "property",
             "name": "imgModify",
             "type": "boolean",
             "default": "false",
-            "class": "Slider",
+            "class": "imgSlider",
             "module": "ui"
         },
         {
-            "file": "lib/Input.js",
-            "line": 94,
+            "file": "src/ImgSlider.js",
+            "line": 337,
+            "description": "有放大操作需求时，新增操作区div",
+            "class": "imgSlider",
+            "module": "ui"
+        },
+        {
+            "file": "src/Input.js",
+            "line": 62,
             "description": "生成不同的元素标签",
             "itemtype": "property",
             "name": "type",
@@ -2133,8 +2194,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 100,
+            "file": "src/Input.js",
+            "line": 68,
             "description": "默认输入提示",
             "itemtype": "property",
             "name": "autoComplete",
@@ -2143,8 +2204,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 106,
+            "file": "src/Input.js",
+            "line": 74,
             "description": "type为radio或checkbox时，需要显示的标签信息",
             "itemtype": "property",
             "name": "label",
@@ -2153,8 +2214,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 112,
+            "file": "src/Input.js",
+            "line": 80,
             "description": "需要显示的icon",
             "itemtype": "property",
             "name": "icon",
@@ -2163,8 +2224,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 117,
+            "file": "src/Input.js",
+            "line": 85,
             "description": "给icon设置样式",
             "itemtype": "property",
             "name": "iconStyle",
@@ -2173,8 +2234,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 123,
+            "file": "src/Input.js",
+            "line": 91,
             "description": "icon,input类型只能是text这种的",
             "itemtype": "property",
             "name": "icon",
@@ -2183,8 +2244,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 129,
+            "file": "src/Input.js",
+            "line": 97,
             "description": "icon展示的方向，{left,right}",
             "itemtype": "property",
             "name": "iconDirection",
@@ -2193,8 +2254,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Input.js",
-            "line": 135,
+            "file": "src/Input.js",
+            "line": 103,
             "description": "icon点击事件",
             "itemtype": "property",
             "name": "iconClickCallback",
@@ -2203,15 +2264,15 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Label.js",
+            "file": "src/Label.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Label",
             "module": "form(表单)"
         },
         {
-            "file": "lib/Label.js",
-            "line": 48,
+            "file": "src/Label.js",
+            "line": 21,
             "description": "label的链接地址（不设置的话默认不进行跳转）",
             "itemtype": "property",
             "name": "url",
@@ -2221,8 +2282,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Label.js",
-            "line": 56,
+            "file": "src/Label.js",
+            "line": 29,
             "description": "标签尺寸,分别为xs、sm、lg",
             "itemtype": "property",
             "name": "egSize",
@@ -2232,8 +2293,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Label.js",
-            "line": 63,
+            "file": "src/Label.js",
+            "line": 36,
             "description": "是否禁用Label",
             "itemtype": "property",
             "name": "disabled",
@@ -2243,8 +2304,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Label.js",
-            "line": 70,
+            "file": "src/Label.js",
+            "line": 43,
             "description": "标签是否处于选中状态",
             "itemtype": "property",
             "name": "active",
@@ -2254,8 +2315,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Label.js",
-            "line": 77,
+            "file": "src/Label.js",
+            "line": 50,
             "description": "标签颜色样式，可以为['success','error','warning','danger','']中任何一个",
             "itemtype": "property",
             "name": "egStyle",
@@ -2265,22 +2326,22 @@
             "module": "ui"
         },
         {
-            "file": "lib/Label.js",
-            "line": 102,
+            "file": "src/Label.js",
+            "line": 67,
             "description": "点击回调函数",
             "class": "Label",
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
+            "file": "src/LabelGroup.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "LabelGroup",
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
-            "line": 58,
+            "file": "src/LabelGroup.js",
+            "line": 24,
             "description": "标签组左侧标题",
             "itemtype": "property",
             "name": "title",
@@ -2289,8 +2350,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
-            "line": 64,
+            "file": "src/LabelGroup.js",
+            "line": 30,
             "description": "标签组展现形式{form|simple|default}",
             "itemtype": "property",
             "name": "egType",
@@ -2300,8 +2361,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
-            "line": 71,
+            "file": "src/LabelGroup.js",
+            "line": 37,
             "description": "点击后触发的回调，所有label会被继承",
             "itemtype": "property",
             "name": "activeCallback",
@@ -2310,8 +2371,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
-            "line": 77,
+            "file": "src/LabelGroup.js",
+            "line": 43,
             "description": "默认选中的项，取值为选中标签的文案",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2320,8 +2381,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
-            "line": 83,
+            "file": "src/LabelGroup.js",
+            "line": 52,
             "description": "间距，label集合与左边title的间距",
             "itemtype": "property",
             "name": "spacing",
@@ -2330,15 +2391,15 @@
             "module": "ui"
         },
         {
-            "file": "lib/LabelGroup.js",
-            "line": 159,
+            "file": "src/LabelGroup.js",
+            "line": 123,
             "description": "key 重复，使用component生成唯一key",
             "class": "LabelGroup",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 43,
+            "file": "src/Paging.js",
+            "line": 20,
             "description": "总页数",
             "itemtype": "property",
             "name": "currentPage",
@@ -2348,8 +2409,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 50,
+            "file": "src/Paging.js",
+            "line": 27,
             "description": "每页显示多少条数据",
             "itemtype": "property",
             "name": "pageSize",
@@ -2359,8 +2420,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 57,
+            "file": "src/Paging.js",
+            "line": 34,
             "description": "数据总数",
             "itemtype": "property",
             "name": "total",
@@ -2369,18 +2430,25 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 63,
+            "file": "src/Paging.js",
+            "line": 40,
             "description": "点击分页回调",
-            "itemtype": "property",
+            "itemtype": "event",
             "name": "pageCallback",
-            "type": "Function",
+            "params": [
+                {
+                    "name": "pageNum",
+                    "description": "用户点击的页码",
+                    "type": "Integer"
+                }
+            ],
+            "default": "function(){}",
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 69,
+            "file": "src/Paging.js",
+            "line": 47,
             "itemtype": "property",
             "name": "activeClass",
             "type": "String",
@@ -2389,8 +2457,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 78,
+            "file": "src/Paging.js",
+            "line": 56,
             "description": "开启选择每页显示数量选项",
             "itemtype": "property",
             "name": "showItemsNumber",
@@ -2399,8 +2467,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 84,
+            "file": "src/Paging.js",
+            "line": 62,
             "description": "自定义每页显示数量数组,需为非空数组。默认为[]",
             "itemtype": "property",
             "name": "choosePageSize",
@@ -2410,15 +2478,15 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 102,
+            "file": "src/Paging.js",
+            "line": 77,
             "description": "默认每页显示数量为［］",
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 106,
+            "file": "src/Paging.js",
+            "line": 81,
             "description": "跟showItemsNumber一起使用 arguments{pageSize}",
             "itemtype": "property",
             "name": "loadPageCallback",
@@ -2426,8 +2494,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 115,
+            "file": "src/Paging.js",
+            "line": 90,
             "is_constructor": 1,
             "params": [
                 {
@@ -2445,144 +2513,60 @@
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 128,
+            "file": "src/Paging.js",
+            "line": 98,
             "type": "Integer",
             "default": "",
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 138,
+            "file": "src/Paging.js",
+            "line": 108,
             "type": "Boolean",
             "default": "false",
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 146,
+            "file": "src/Paging.js",
+            "line": 117,
             "description": "当前页",
             "type": "Integer",
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 155,
-            "description": "上一页",
-            "itemtype": "method",
-            "name": "prev",
-            "class": "Paging",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Paging.js",
-            "line": 164,
-            "description": "下一页",
-            "itemtype": "method",
-            "name": "prev",
-            "class": "Paging",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Paging.js",
-            "line": 173,
-            "description": "获取页大小",
-            "itemtype": "method",
-            "name": "getPages",
-            "return": {
-                "description": "",
-                "type": "Integer"
-            },
-            "class": "Paging",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Paging.js",
-            "line": 183,
+            "file": "src/Paging.js",
+            "line": 160,
             "description": "跳转至N页",
-            "itemtype": "method",
-            "name": "goto",
-            "params": [
-                {
-                    "name": "page",
-                    "description": "页码，从1开始",
-                    "type": "Integer"
-                }
-            ],
-            "access": "private",
-            "tagname": "",
-            "return": {
-                "description": "",
-                "type": "Array"
-            },
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 212,
-            "description": "跳转至N页",
-            "itemtype": "method",
-            "name": "gotoPage",
-            "params": [
-                {
-                    "name": "index",
-                    "description": "页码，从1开始",
-                    "type": "Integer"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Array"
-            },
-            "class": "Paging",
-            "module": "ui"
-        },
-        {
-            "file": "lib/Paging.js",
-            "line": 225,
+            "file": "src/Paging.js",
+            "line": 168,
             "description": "生成页码",
-            "itemtype": "method",
-            "name": "generate",
-            "return": {
-                "description": "",
-                "type": "Array"
-            },
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 327,
+            "file": "src/Paging.js",
+            "line": 232,
             "description": "if 提供自定义数组 且非空。",
             "class": "Paging",
             "module": "ui"
         },
         {
-            "file": "lib/Paging.js",
-            "line": 369,
-            "itemtype": "method",
-            "name": "render",
-            "return": {
-                "description": "",
-                "type": "ReactElement"
-            },
-            "class": "Paging",
-            "module": "ui"
-        },
-        {
-            "file": "lib/RadioGroup.js",
+            "file": "src/RadioGroup.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "RadioGroup",
             "module": "ui"
         },
         {
-            "file": "lib/RadioGroup.js",
-            "line": 67,
+            "file": "src/RadioGroup.js",
+            "line": 38,
             "description": "radio name",
             "itemtype": "property",
             "name": "name",
@@ -2592,8 +2576,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/RadioGroup.js",
-            "line": 74,
+            "file": "src/RadioGroup.js",
+            "line": 45,
             "description": "默认选中项",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2603,8 +2587,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/RadioGroup.js",
-            "line": 81,
+            "file": "src/RadioGroup.js",
+            "line": 52,
             "description": "获取选中的值",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2619,8 +2603,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Select.js",
-            "line": 76,
+            "file": "src/Select.js",
+            "line": 38,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2646,8 +2630,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Select.js",
-            "line": 85,
+            "file": "src/Select.js",
+            "line": 47,
             "description": "没有选中任何item时的占位文案",
             "itemtype": "property",
             "name": "placeholder",
@@ -2656,8 +2640,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Select.js",
-            "line": 93,
+            "file": "src/Select.js",
+            "line": 55,
             "description": "默认选中值，即初始显示内容",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2667,15 +2651,70 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/Select.js",
-            "line": 101,
+            "file": "src/Select.js",
+            "line": 63,
             "description": "报svg的warning竟然在这里。。 真尴尬",
             "class": "Select",
             "module": "form(表单)"
         },
         {
-            "file": "lib/Star.js",
-            "line": 52,
+            "file": "src/Slider.js",
+            "line": 27,
+            "description": "滑块初始值",
+            "itemtype": "property",
+            "name": "min",
+            "type": "Number",
+            "default": "0",
+            "class": "Slider",
+            "module": "ui"
+        },
+        {
+            "file": "src/Slider.js",
+            "line": 34,
+            "description": "滑块最大值",
+            "itemtype": "property",
+            "name": "max",
+            "type": "Number",
+            "default": "100",
+            "class": "Slider",
+            "module": "ui"
+        },
+        {
+            "file": "src/Slider.js",
+            "line": 41,
+            "description": "默认滑块值，设置后会默认移动到对应的值上",
+            "itemtype": "property",
+            "name": "defaultValue",
+            "type": "Number",
+            "default": "0",
+            "class": "Slider",
+            "module": "ui"
+        },
+        {
+            "file": "src/Slider.js",
+            "line": 48,
+            "description": "获取移动后的滑块值，getValueCallback(value)",
+            "itemtype": "property",
+            "name": "getValueCallback",
+            "type": "Function",
+            "default": "null",
+            "class": "Slider",
+            "module": "ui"
+        },
+        {
+            "file": "src/Slider.js",
+            "line": 55,
+            "description": "第一次实例化slider时被调用，initCallback(value)",
+            "itemtype": "property",
+            "name": "initCallback",
+            "type": "Function",
+            "default": "null",
+            "class": "Slider",
+            "module": "ui"
+        },
+        {
+            "file": "src/Star.js",
+            "line": 24,
             "description": "星级评价分数(满分100)",
             "itemtype": "property",
             "name": "Rate",
@@ -2685,8 +2724,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Star.js",
-            "line": 59,
+            "file": "src/Star.js",
+            "line": 31,
             "description": "星星大小",
             "itemtype": "property",
             "name": "size",
@@ -2696,8 +2735,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Star.js",
-            "line": 66,
+            "file": "src/Star.js",
+            "line": 41,
             "description": "星星是否可以自己设置\n设置单位为1个星星",
             "itemtype": "property",
             "name": "disable",
@@ -2707,43 +2746,99 @@
             "module": "ui"
         },
         {
-            "file": "lib/Star.js",
-            "line": 75,
+            "file": "src/Star.js",
+            "line": 50,
             "description": "用于不同的css写法导致的位置微调",
             "class": "Star",
             "module": "ui"
         },
         {
-            "file": "lib/Suggestion.js",
-            "line": 64,
-            "description": "回调方法，主要作用将value传给父级元素。默认为null",
-            "itemtype": "property",
-            "name": "callback",
-            "type": "func",
-            "default": "null",
+            "file": "src/Suggestion.js",
+            "line": 17,
+            "description": "当用户选中sug中的某一提示项时触发的回调函数",
+            "itemtype": "event",
+            "name": "getValueCallback",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "每一个sug Item的value属性",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "每一个sug Item的展示值",
+                    "type": "String"
+                }
+            ],
+            "default": "function(){}",
             "class": "Suggestion",
             "module": "ui"
         },
         {
-            "file": "lib/Suggestion.js",
-            "line": 71,
-            "description": "样式类名前缀",
+            "file": "src/Suggestion.js",
+            "line": 28,
+            "description": "input框左侧或者右侧出现的提示图标.默认不加icon.如果想显示放大镜图标可以将icon设置为\"search\".其他图标可以参考icon fonts",
             "itemtype": "property",
-            "name": "classPrefix",
-            "type": "string",
+            "name": "icon",
+            "type": "String",
+            "default": "''",
             "class": "Suggestion",
             "module": "ui"
         },
         {
-            "file": "lib/Tab.js",
+            "file": "src/Suggestion.js",
+            "line": 35,
+            "description": "图标出现的位置，可以设置为left或者right",
+            "itemtype": "property",
+            "name": "iconDirection",
+            "type": "String",
+            "default": "'right'",
+            "class": "Suggestion",
+            "module": "ui"
+        },
+        {
+            "file": "src/Suggestion.js",
+            "line": 42,
+            "description": "icon的样式，比如可以通过设置{color:'red'}来将icon设置为红色",
+            "itemtype": "property",
+            "name": "iconStyle",
+            "type": "Object",
+            "default": "{}",
+            "class": "Suggestion",
+            "module": "ui"
+        },
+        {
+            "file": "src/Suggestion.js",
+            "line": 49,
+            "description": "没有匹配结果时下拉框中的匹配文案",
+            "itemtype": "property",
+            "name": "noResultTips",
+            "type": "String",
+            "default": "'没有匹配结果'",
+            "class": "Suggestion",
+            "module": "ui"
+        },
+        {
+            "file": "src/Suggestion.js",
+            "line": 56,
+            "description": "input框中没有输入值时的提示文案",
+            "itemtype": "property",
+            "name": "placeholder",
+            "type": "String",
+            "default": "''",
+            "class": "Suggestion",
+            "module": "ui"
+        },
+        {
+            "file": "src/Tab.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Tab",
             "module": "ui"
         },
         {
-            "file": "lib/Tab.js",
-            "line": 78,
+            "file": "src/Tab.js",
+            "line": 21,
             "description": "tab导航标签的title",
             "itemtype": "property",
             "name": "heading",
@@ -2753,15 +2848,15 @@
             "module": "ui"
         },
         {
-            "file": "lib/Tabset.js",
+            "file": "src/Tabset.js",
             "line": 1,
             "description": "Created by mac on 15/9/7.",
             "class": "Tabset",
             "module": "ui"
         },
         {
-            "file": "lib/Tabset.js",
-            "line": 65,
+            "file": "src/Tabset.js",
+            "line": 29,
             "description": "需要在初始的时候打开第几个tab，默认为0（从0计数，即打开第一个tab）",
             "itemtype": "property",
             "name": "activeTab",
@@ -2771,8 +2866,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Tabset.js",
-            "line": 72,
+            "file": "src/Tabset.js",
+            "line": 36,
             "description": "回调方法，当用户切换不同tab时，会调用这个回调。",
             "itemtype": "event",
             "name": "tabCallback",
@@ -2788,8 +2883,30 @@
             "module": "ui"
         },
         {
-            "file": "lib/Toast.js",
-            "line": 67,
+            "file": "src/TimePicker.js",
+            "line": 24,
+            "description": "格式化时间<br />\n<code>HH</code>:24小时制<br />\n<code>hh</code>:12小时制<br />\n<code>mm</code>:分钟<br />\n<code>tt</code>:上午或下午<br />",
+            "itemtype": "property",
+            "name": "format",
+            "type": "String",
+            "default": "HH:mm tt",
+            "class": "TimePicker",
+            "module": "ui"
+        },
+        {
+            "file": "src/TimePicker.js",
+            "line": 35,
+            "description": "默认值",
+            "itemtype": "property",
+            "name": "defaultValue",
+            "type": "String",
+            "default": "''",
+            "class": "TimePicker",
+            "module": "ui"
+        },
+        {
+            "file": "src/Toast.js",
+            "line": 25,
             "description": "toast类型：分为success,error,loading 三种。默认success",
             "itemtype": "property",
             "name": "type",
@@ -2799,8 +2916,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Toast.js",
-            "line": 74,
+            "file": "src/Toast.js",
+            "line": 32,
             "description": "文字信息",
             "itemtype": "property",
             "name": "message",
@@ -2810,8 +2927,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Toast.js",
-            "line": 81,
+            "file": "src/Toast.js",
+            "line": 39,
             "description": "tips n秒后消失 默认2秒",
             "itemtype": "property",
             "name": "seconds",
@@ -2821,19 +2938,15 @@
             "module": "ui"
         },
         {
-            "file": "lib/Toast.js",
-            "line": 88,
+            "file": "src/Toast.js",
+            "line": 46,
             "description": "类名样式前缀",
-            "itemtype": "property",
-            "name": "classPrefix",
-            "type": "sting",
-            "default": "crumb",
             "class": "Toast",
             "module": "ui"
         },
         {
-            "file": "lib/Toast.js",
-            "line": 95,
+            "file": "src/Toast.js",
+            "line": 50,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -2843,20 +2956,15 @@
             "module": "ui"
         },
         {
-            "file": "lib/Toast.js",
-            "line": 123,
+            "file": "src/Toast.js",
+            "line": 70,
             "description": "改变state.show 隐藏tips,并调用回调方法",
-            "itemtype": "method",
-            "name": "close",
-            "return": {
-                "description": "null"
-            },
             "class": "Toast",
             "module": "ui"
         },
         {
-            "file": "lib/Tooltip.js",
-            "line": 57,
+            "file": "src/Tooltip.js",
+            "line": 20,
             "description": "提示是否展示",
             "itemtype": "property",
             "name": "show",
@@ -2866,8 +2974,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Tooltip.js",
-            "line": 64,
+            "file": "src/Tooltip.js",
+            "line": 27,
             "description": "提示内容",
             "itemtype": "property",
             "name": "msg",
@@ -2877,8 +2985,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/Tooltip.js",
-            "line": 71,
+            "file": "src/Tooltip.js",
+            "line": 34,
             "description": "提示方向",
             "itemtype": "property",
             "name": "direction",
@@ -2888,27 +2996,22 @@
             "module": "ui"
         },
         {
-            "file": "lib/Tooltip.js",
-            "line": 97,
+            "file": "src/Tooltip.js",
+            "line": 51,
             "description": "接收到新props时执行,state.show变为nextProps.show\n接收到新props时执行,state.show变为nextProps.show\n实现隐藏与显示",
-            "itemtype": "method",
-            "name": "componentWillReceiveProps",
-            "return": {
-                "description": "null"
-            },
             "class": "Tooltip",
             "module": "ui"
         },
         {
-            "file": "lib/Tooltip.js",
-            "line": 148,
+            "file": "src/Tooltip.js",
+            "line": 100,
             "description": "判断是否有子元素，有的话取children，否则取msg\n两者均有以children优先",
             "class": "Tooltip",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 89,
+            "file": "src/TooltipPanel.js",
+            "line": 43,
             "description": "提示内容",
             "itemtype": "property",
             "name": "msg",
@@ -2918,8 +3021,8 @@
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 96,
+            "file": "src/TooltipPanel.js",
+            "line": 50,
             "description": "是否指定tips的边界，如果指定超出该边界则改变方向，否则默认以可是窗口边界来判断",
             "itemtype": "property",
             "name": "wrapper",
@@ -2929,9 +3032,9 @@
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 103,
-            "description": "提示方向",
+            "file": "src/TooltipPanel.js",
+            "line": 57,
+            "description": "提示方向。方向可选：top,down,left,right.默认down",
             "itemtype": "property",
             "name": "direction",
             "type": "String",
@@ -2940,199 +3043,122 @@
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 112,
+            "file": "src/TooltipPanel.js",
+            "line": 66,
             "description": "触发事件类型，可选‘click‘，’hover‘",
             "itemtype": "property",
-            "name": "onTrigger",
+            "name": "trigger",
             "type": ":String",
             "default": "hover",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 119,
+            "file": "src/TooltipPanel.js",
+            "line": 73,
             "description": "可选 'black,white'",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 124,
-            "description": "提示内容padding，默认5px",
+            "file": "src/TooltipPanel.js",
+            "line": 78,
+            "description": "提示内容padding，默认5",
+            "itemtype": "property",
+            "name": "padding",
+            "type": ":Number",
+            "default": "hover",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 149,
+            "file": "src/TooltipPanel.js",
+            "line": 99,
             "description": "显示与否由父组件控制",
             "type": "Boolean",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 159,
+            "file": "src/TooltipPanel.js",
+            "line": 109,
             "description": "动态更新展示",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 166,
-            "description": "渲染完成时进行方向和边界判断，调整tips的位置",
-            "itemtype": "method",
-            "name": "componentDidMount",
-            "return": {
-                "description": "null"
-            },
-            "class": "TooltipPanel",
-            "module": "ui"
-        },
-        {
-            "file": "lib/TooltipPanel.js",
-            "line": 176,
+            "file": "src/TooltipPanel.js",
+            "line": 118,
             "description": "如果事件是click，body加上事件，移除时隐藏",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 223,
+            "file": "src/TooltipPanel.js",
+            "line": 160,
             "description": "获得限制区域的宽，若未指定则默认可视区域大小",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 242,
+            "file": "src/TooltipPanel.js",
+            "line": 178,
             "description": "获取元素的client宽高",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 254,
+            "file": "src/TooltipPanel.js",
+            "line": 189,
             "description": "获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 271,
+            "file": "src/TooltipPanel.js",
+            "line": 204,
             "description": "获取处理之后的offset，top和left",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 284,
+            "file": "src/TooltipPanel.js",
+            "line": 215,
             "description": "获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 300,
+            "file": "src/TooltipPanel.js",
+            "line": 230,
             "description": "tips方向和边界判断，调整tips的位置",
-            "itemtype": "method",
-            "name": "changeStyle",
-            "params": [
-                {
-                    "name": "direction",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "null"
-            },
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 341,
+            "file": "src/TooltipPanel.js",
+            "line": 265,
             "description": "获得浏览器的边界大小",
-            "itemtype": "method",
-            "name": "getMaxBody",
-            "params": [
-                {
-                    "name": "body",
-                    "description": "",
-                    "type": "Object"
-                },
-                {
-                    "name": "doc",
-                    "description": "",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "maxBody",
-                "type": "Object"
-            },
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 358,
+            "file": "src/TooltipPanel.js",
+            "line": 277,
             "description": "如果方向改变，重新设置箭头方向",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 368,
+            "file": "src/TooltipPanel.js",
+            "line": 290,
             "description": "判断是否满足边界条件,返回满足的方向\n不满足的话应该说直接取相反方向",
-            "itemtype": "method",
-            "name": "isValidate",
-            "params": [
-                {
-                    "name": "dir",
-                    "description": "",
-                    "type": "String"
-                },
-                {
-                    "name": "tips",
-                    "description": "",
-                    "type": "Object"
-                },
-                {
-                    "name": "ele",
-                    "description": "",
-                    "type": "Object"
-                },
-                {
-                    "name": "maxBody",
-                    "description": "边界",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "flag",
-                "type": "Boolean"
-            },
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
-            "file": "lib/TooltipPanel.js",
-            "line": 422,
-            "itemtype": "method",
-            "name": "render",
-            "return": {
-                "description": "ReactElement"
-            },
-            "class": "TooltipPanel",
-            "module": "ui"
-        },
-        {
-            "file": "lib/ValidatorPanel.js",
-            "line": 68,
+            "file": "src/ValidatorPanel.js",
+            "line": 39,
             "description": "需要初始化的表单元素默认值(废弃)",
             "itemtype": "property",
             "name": "values",
@@ -3141,8 +3167,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 74,
+            "file": "src/ValidatorPanel.js",
+            "line": 45,
             "description": "每次验证时值被改变后都会被触发，会回传当前data-field字段、值和所有值对象",
             "itemtype": "property",
             "name": "getValueCallback",
@@ -3151,8 +3177,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 85,
+            "file": "src/ValidatorPanel.js",
+            "line": 54,
             "description": "包装容器",
             "itemtype": "property",
             "name": "componentTag",
@@ -3162,8 +3188,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 92,
+            "file": "src/ValidatorPanel.js",
+            "line": 61,
             "description": "触发验证的事件集合",
             "itemtype": "property",
             "name": "trigger",
@@ -3173,19 +3199,19 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 99,
+            "file": "src/ValidatorPanel.js",
+            "line": 68,
             "description": "默认规则提示文案",
             "itemtype": "property",
             "name": "message",
             "type": "Object",
-            "default": "required: '不能为空',\n                    date: '请正确填写日期',\n                    number: '请输入一个有效的号码',\n                    url: '请输入一个有效的URL',\n                    email: '请输入一个有效的电子邮件地址',\n                    dateISO: '请输入一个有效的日期(ISO)',\n                    digits: '请输入数字',\n                    equalTo:'请再次输入相同的值。',\n                    minlength: '请输入至少{0}字符',\n                    maxlength: '请输入不超过{0}字符',\n                    rangelength: '请输入一个值{0}和{1}字符之间',\n                    min: '请输入一个值大于或等于{0}',\n                    max: '请输入一个值小于或等于{0}',\n                    range: '请输入一个值{0} - {1}'",
+            "default": "required: '不能为空',\n                date: '请正确填写日期',\n                number: '请输入一个有效的号码',\n                url: '请输入一个有效的URL',\n                email: '请输入一个有效的电子邮件地址',\n                dateISO: '请输入一个有效的日期(ISO)',\n                digits: '请输入数字',\n                equalTo:'请再次输入相同的值。',\n                minlength: '请输入至少{0}字符',\n                maxlength: '请输入不超过{0}字符',\n                rangelength: '请输入一个值{0}和{1}字符之间',\n                min: '请输入一个值大于或等于{0}',\n                max: '请输入一个值小于或等于{0}',\n                range: '请输入一个值{0} - {1}'",
             "class": "ValidatorPanel",
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 136,
+            "file": "src/ValidatorPanel.js",
+            "line": 105,
             "description": "自定义在提交后的callback",
             "itemtype": "event",
             "name": "submitCallback",
@@ -3200,8 +3226,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 144,
+            "file": "src/ValidatorPanel.js",
+            "line": 113,
             "description": "自定义验证规则之外的其他逻辑",
             "itemtype": "event",
             "name": "validateCallback",
@@ -3216,8 +3242,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 152,
+            "file": "src/ValidatorPanel.js",
+            "line": 121,
             "description": "提示框消失时间",
             "itemtype": "property",
             "name": "timeout",
@@ -3227,8 +3253,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 159,
+            "file": "src/ValidatorPanel.js",
+            "line": 128,
             "description": "提交按钮id",
             "itemtype": "property",
             "name": "submitElement",
@@ -3237,8 +3263,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 165,
+            "file": "src/ValidatorPanel.js",
+            "line": 134,
             "description": "是否增强文本框提示",
             "itemtype": "property",
             "name": "shake",
@@ -3248,8 +3274,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 172,
+            "file": "src/ValidatorPanel.js",
+            "line": 141,
             "description": "规则验证",
             "itemtype": "property",
             "name": "rules",
@@ -3258,8 +3284,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 178,
+            "file": "src/ValidatorPanel.js",
+            "line": 147,
             "description": "提示方位",
             "itemtype": "property",
             "name": "direction",
@@ -3269,8 +3295,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "lib/ValidatorPanel.js",
-            "line": 185,
+            "file": "src/ValidatorPanel.js",
+            "line": 154,
             "description": "重新更新dom",
             "itemtype": "property",
             "name": "update",
@@ -3283,427 +3309,471 @@
     "warnings": [
         {
             "message": "unknown tag: demo",
-            "line": " lib/panels/Panel.js:42"
+            "line": " src/panels/Panel.js:17"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/panels/Panel.js:42"
+            "line": " src/panels/Panel.js:17"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/panels/PanelContent.js:25"
+            "line": " src/panels/PanelContent.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/panels/PanelContent.js:25"
+            "line": " src/panels/PanelContent.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/panels/PanelFooter.js:25"
+            "line": " src/panels/PanelFooter.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/panels/PanelFooter.js:25"
+            "line": " src/panels/PanelFooter.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/panels/PanelHeader.js:25"
+            "line": " src/panels/PanelHeader.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/panels/PanelHeader.js:25"
+            "line": " src/panels/PanelHeader.js:5"
         },
         {
             "message": "unknown tag: content",
-            "line": " lib/tables/Column.js:25"
+            "line": " src/tables/Column.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/tables/Column.js:25"
+            "line": " src/tables/Column.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/tables/Column.js:25"
+            "line": " src/tables/Column.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/tables/Table.js:49"
+            "line": " src/tables/Table.js:17"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/tables/Table.js:49"
+            "line": " src/tables/Table.js:17"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/tables/Td.js:25"
+            "line": " src/tables/Td.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/tables/Td.js:25"
+            "line": " src/tables/Td.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/tables/Th.js:27"
+            "line": " src/tables/Th.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/tables/Th.js:27"
+            "line": " src/tables/Th.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/tables/Tr.js:27"
+            "line": " src/tables/Tr.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/tables/Tr.js:27"
+            "line": " src/tables/Tr.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Button.js:30"
+            "line": " src/Button.js:8"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/ButtonGroup.js:30"
+            "line": " src/ButtonGroup.js:8"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Calendar.js:25"
+            "line": " src/Calendar.js:6"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Calendar.js:25"
+            "line": " src/Calendar.js:6"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/CalendarPanel.js:43"
+            "line": " src/CalendarPanel.js:10"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/CalendarPanel.js:43"
+            "line": " src/CalendarPanel.js:10"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/CheckboxGroup.js:32"
+            "line": " src/CheckboxGroup.js:11"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Col.js:27"
+            "line": " src/Col.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Crumb.js:46"
+            "line": " src/Crumb.js:27"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Crumb.js:46"
+            "line": " src/Crumb.js:27"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Dialog.js:11"
+            "line": " src/DateTimePicker.js:9"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Dialog.js:11"
+            "line": " src/DateTimePicker.js:9"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Grid.js:48"
-        },
-        {
-            "message": "unknown tag: demo",
-            "line": " lib/ImgSlider.js:35"
+            "line": " src/Dialog.js:3"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/ImgSlider.js:35"
+            "line": " src/Dialog.js:3"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Input.js:46"
+            "line": " src/Grid.js:28"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " src/ImgSlider.js:10"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Input.js:46"
+            "line": " src/ImgSlider.js:10"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Label.js:30"
+            "line": " src/Input.js:20"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Label.js:30"
+            "line": " src/Input.js:20"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/LabelGroup.js:40"
+            "line": " src/Label.js:8"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/LabelGroup.js:40"
+            "line": " src/Label.js:8"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Paging.js:25"
+            "line": " src/LabelGroup.js:11"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Paging.js:25"
+            "line": " src/LabelGroup.js:11"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/RadioGroup.js:36"
-        },
-        {
-            "message": "unknown tag: demo",
-            "line": " lib/Row.js:27"
-        },
-        {
-            "message": "unknown tag: demo",
-            "line": " lib/Search.js:23"
+            "line": " src/Paging.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Search.js:23"
+            "line": " src/Paging.js:5"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Select.js:45"
+            "line": " src/RadioGroup.js:11"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Star.js:27"
+            "line": " src/Row.js:6"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " src/Select.js:12"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " src/Slider.js:7"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Star.js:27"
+            "line": " src/Slider.js:7"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Suggestion.js:21"
+            "line": " src/Star.js:4"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Suggestion.js:21"
+            "line": " src/Star.js:4"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Tab.js:30"
+            "line": " src/Suggestion.js:3"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Tab.js:30"
+            "line": " src/Suggestion.js:3"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Tabset.js:40"
+            "line": " src/Tab.js:8"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Tabset.js:40"
+            "line": " src/Tab.js:8"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Toast.js:49"
+            "line": " src/Tabset.js:9"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Toast.js:49"
+            "line": " src/Tabset.js:9"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/Tooltip.js:41"
+            "line": " src/TimePicker.js:9"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/Tooltip.js:41"
+            "line": " src/TimePicker.js:9"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/TooltipPanel.js:53"
+            "line": " src/Toast.js:11"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/TooltipPanel.js:53"
+            "line": " src/Toast.js:11"
         },
         {
             "message": "unknown tag: demo",
-            "line": " lib/ValidatorPanel.js:31"
+            "line": " src/Tooltip.js:8"
         },
         {
             "message": "unknown tag: show",
-            "line": " lib/ValidatorPanel.js:31"
+            "line": " src/Tooltip.js:8"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " src/TooltipPanel.js:10"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " src/TooltipPanel.js:10"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " src/ValidatorPanel.js:6"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " src/ValidatorPanel.js:6"
         },
         {
             "message": "Missing item type\nkey 报warning，暂时改为keys",
-            "line": " lib/dialog/Dialog.js:52"
+            "line": " src/dialog/Dialog.js:26"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/utils/ClassNameMixin.js:1"
+            "line": " src/utils/ClassNameMixin.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 16/1/3.",
-            "line": " lib/utils/MethodMixin.js:1"
+            "line": " src/utils/MethodMixin.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 16/1/3.",
-            "line": " lib/utils/PropertyMixin.js:1"
+            "line": " src/utils/PropertyMixin.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/utils/constants.js:1"
+            "line": " src/utils/constants.js:1"
         },
         {
             "message": "Missing item type\n状态",
-            "line": " lib/utils/constants.js:15"
+            "line": " src/utils/constants.js:12"
         },
         {
             "message": "Missing item type\n颜色",
-            "line": " lib/utils/constants.js:54"
+            "line": " src/utils/constants.js:51"
         },
         {
             "message": "Missing item type\nA recursive merge between two objects.",
-            "line": " lib/utils/extend.js:7"
+            "line": " src/utils/extend.js:5"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/Button.js:1"
+            "line": " src/Button.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/8.",
-            "line": " lib/ButtonGroup.js:1"
+            "line": " src/ButtonGroup.js:1"
         },
         {
             "message": "Missing item type\ntacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
-            "line": " lib/ButtonGroup.js:72"
+            "line": " src/ButtonGroup.js:43"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:229"
+            "line": " src/Calendar.js:194"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Calendar.js:238"
+            "line": " src/Calendar.js:201"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/CheckboxGroup.js:1"
+            "line": " src/CheckboxGroup.js:1"
         },
         {
             "message": "Missing item type\nCreated by slashhuang on 15/12/28.",
-            "line": " lib/ImgSlider.js:1"
+            "line": " src/ImgSlider.js:1"
         },
         {
             "message": "Missing item type\n有放大操作需求时，新增操作区div",
-            "line": " lib/ImgSlider.js:345"
+            "line": " src/ImgSlider.js:337"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/Label.js:1"
+            "line": " src/Label.js:1"
         },
         {
             "message": "Missing item type\n点击回调函数",
-            "line": " lib/Label.js:102"
+            "line": " src/Label.js:67"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/LabelGroup.js:1"
+            "line": " src/LabelGroup.js:1"
         },
         {
             "message": "Missing item type\nkey 重复，使用component生成唯一key",
-            "line": " lib/LabelGroup.js:159"
+            "line": " src/LabelGroup.js:123"
         },
         {
             "message": "Missing item type\n默认每页显示数量为［］",
-            "line": " lib/Paging.js:102"
+            "line": " src/Paging.js:77"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Paging.js:115"
+            "line": " src/Paging.js:90"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Paging.js:128"
+            "line": " src/Paging.js:98"
         },
         {
             "message": "Missing item type",
-            "line": " lib/Paging.js:138"
+            "line": " src/Paging.js:108"
         },
         {
             "message": "Missing item type\n当前页",
-            "line": " lib/Paging.js:146"
+            "line": " src/Paging.js:117"
+        },
+        {
+            "message": "Missing item type\n跳转至N页",
+            "line": " src/Paging.js:160"
+        },
+        {
+            "message": "Missing item type\n生成页码",
+            "line": " src/Paging.js:168"
         },
         {
             "message": "Missing item type\nif 提供自定义数组 且非空。",
-            "line": " lib/Paging.js:327"
+            "line": " src/Paging.js:232"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/RadioGroup.js:1"
+            "line": " src/RadioGroup.js:1"
         },
         {
             "message": "Missing item type\n报svg的warning竟然在这里。。 真尴尬",
-            "line": " lib/Select.js:101"
+            "line": " src/Select.js:63"
         },
         {
             "message": "Missing item type\n用于不同的css写法导致的位置微调",
-            "line": " lib/Star.js:75"
+            "line": " src/Star.js:50"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/Tab.js:1"
+            "line": " src/Tab.js:1"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
-            "line": " lib/Tabset.js:1"
+            "line": " src/Tabset.js:1"
+        },
+        {
+            "message": "Missing item type\n类名样式前缀",
+            "line": " src/Toast.js:46"
+        },
+        {
+            "message": "Missing item type\n改变state.show 隐藏tips,并调用回调方法",
+            "line": " src/Toast.js:70"
+        },
+        {
+            "message": "Missing item type\n接收到新props时执行,state.show变为nextProps.show\n接收到新props时执行,state.show变为nextProps.show\n实现隐藏与显示",
+            "line": " src/Tooltip.js:51"
         },
         {
             "message": "Missing item type\n判断是否有子元素，有的话取children，否则取msg\n两者均有以children优先",
-            "line": " lib/Tooltip.js:148"
+            "line": " src/Tooltip.js:100"
         },
         {
             "message": "Missing item type\n可选 'black,white'",
-            "line": " lib/TooltipPanel.js:119"
-        },
-        {
-            "message": "Missing item type\n提示内容padding，默认5px",
-            "line": " lib/TooltipPanel.js:124"
+            "line": " src/TooltipPanel.js:73"
         },
         {
             "message": "Missing item type\n显示与否由父组件控制",
-            "line": " lib/TooltipPanel.js:149"
+            "line": " src/TooltipPanel.js:99"
         },
         {
             "message": "Missing item type\n动态更新展示",
-            "line": " lib/TooltipPanel.js:159"
+            "line": " src/TooltipPanel.js:109"
         },
         {
             "message": "Missing item type\n如果事件是click，body加上事件，移除时隐藏",
-            "line": " lib/TooltipPanel.js:176"
+            "line": " src/TooltipPanel.js:118"
         },
         {
             "message": "Missing item type\n获得限制区域的宽，若未指定则默认可视区域大小",
-            "line": " lib/TooltipPanel.js:223"
+            "line": " src/TooltipPanel.js:160"
         },
         {
             "message": "Missing item type\n获取元素的client宽高",
-            "line": " lib/TooltipPanel.js:242"
+            "line": " src/TooltipPanel.js:178"
         },
         {
             "message": "Missing item type\n获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
-            "line": " lib/TooltipPanel.js:254"
+            "line": " src/TooltipPanel.js:189"
         },
         {
             "message": "Missing item type\n获取处理之后的offset，top和left",
-            "line": " lib/TooltipPanel.js:271"
+            "line": " src/TooltipPanel.js:204"
         },
         {
             "message": "Missing item type\n获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
-            "line": " lib/TooltipPanel.js:284"
+            "line": " src/TooltipPanel.js:215"
+        },
+        {
+            "message": "Missing item type\ntips方向和边界判断，调整tips的位置",
+            "line": " src/TooltipPanel.js:230"
+        },
+        {
+            "message": "Missing item type\n获得浏览器的边界大小",
+            "line": " src/TooltipPanel.js:265"
         },
         {
             "message": "Missing item type\n如果方向改变，重新设置箭头方向",
-            "line": " lib/TooltipPanel.js:358"
+            "line": " src/TooltipPanel.js:277"
+        },
+        {
+            "message": "Missing item type\n判断是否满足边界条件,返回满足的方向\n不满足的话应该说直接取相反方向",
+            "line": " src/TooltipPanel.js:290"
         }
     ]
 }
