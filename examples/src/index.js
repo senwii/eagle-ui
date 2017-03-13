@@ -35,20 +35,12 @@ import Theme from './modules/theme';
 import Slider from './modules/slider';
 import Datetimepicker from './modules/datetimepicker.js';
 import Timepicker from './modules/timepicker.js';
-import Iconfont from './modules/iconfont'
+import Iconfont from './modules/iconfont';
+import Index from './modules/index';
 // import '../../src/less/eagle-ui.less';
 // import '../../src/less/skin.less'
 
 
-let Index = class Index extends Component{
-    render() {
-        return (
-            <div>
-                <h1>欢迎使用eagle-ui构建react的pc 应用</h1>
-            </div>
-        );
-    }
-};
 
 let AppRouter = class AppRouter extends Component {
     constructor(props,context) {
@@ -94,7 +86,7 @@ let AppRouter = class AppRouter extends Component {
                 <Route path="/iconfont" name="Slider" component={Iconfont} />
                 <Route path="/datetimepicker" name="datetimepicker" component={Datetimepicker} />
                 <Route path="/timepicker" name="timepicker" component={Timepicker} />
-                <Redirect from="/" to="/Theme" />
+                <Redirect from="/" to="/index" />
             </Router>
         );
     }
@@ -105,7 +97,13 @@ ReactDom.render(
     document.getElementById('root')
 );
 ReactDom.render(
-    <Head></Head>,
+    <Head
+          titles={[{title: '文档', href: 'http://future-team.github.io/eagle-ui/doc/index.html'},
+            {title: '博客', href: 'http://uedfamily.com/'},
+            {title: '关于我们', href: 'http://uedfamily.com/about/'},
+            {title: '更多组件', href: 'http://uedfamily.com/framework/'}]}
+        >
+    </Head>,
     document.getElementById('head')
 );
 ReactDom.render(
