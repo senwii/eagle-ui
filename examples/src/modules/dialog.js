@@ -55,6 +55,15 @@ export default class DialogCls extends Component{
             alert('取消');
         });
     }
+    showPrompt(){
+        Dialog.prompt('这是个prompt',{
+            inputWidth:'50%'
+        }).then((value)=>{
+            console.log(value)
+        },()=>{
+            console.log('取消回调')
+        })
+    }
     render(){
         return (
             <DemoLayout title="弹出框组件">
@@ -282,6 +291,14 @@ export default class DialogCls extends Component{
                     </CodeShow>
                     <DemoShow>
                         <Button onClick={::this.showConfirm}>点击我Confirm</Button>
+                    </DemoShow>
+                </DemoItem>
+                <DemoItem title="prompt展示">
+                    <CodeShow>
+                        <Code code={getFile('dialog-demo8')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <Button onClick={::this.showPrompt} className="mg-right-15">点击我prompt</Button>
                     </DemoShow>
                 </DemoItem>
             </DemoLayout>

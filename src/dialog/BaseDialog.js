@@ -146,5 +146,6 @@ export default {
     },
     ALERT:'alert',
     CONFRIM:'confirm',
-    MASK:'mask'
+    MASK:'mask',
+    PROMPT:'prompt'
 };
