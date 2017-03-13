@@ -67,3 +67,4 @@ $ npm run test
 `version 1.4.5` 修复表单验证无法更改为其他标签的bug     
 `version 1.4.7` 日历、input回滚到1.3.7版本逻辑     
 `version 3.0.1` 修复dialog无法更新表单元素值bug      
+`version 4.0.3` 新增dialog中prompt方法      

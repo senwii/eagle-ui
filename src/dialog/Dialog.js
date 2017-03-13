@@ -76,7 +76,22 @@ export default class Dialog extends Component{
         }
 
     }
+    static prompt(title,opts){
+        return new Promise((resolve, reject)=>{
+            new DialogFactory().show(BaseDialog.PROMPT,extend({},{
+                submitCallback:(value)=>{
+                    resolve(value);
+                    new DialogFactory().hide();
 
+                },
+                cancelCallback:()=>{
+                    reject();
+                    new DialogFactory().hide();
+                },
+                title:title
+            },opts) );
+        });
+    }
     static mask(dialogId,opts={}){
         return new Promise((resolve, reject)=>{
             new DialogFactory().show(dialogId,extend({},{
