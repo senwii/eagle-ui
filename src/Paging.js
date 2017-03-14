@@ -65,7 +65,14 @@ export default class Paging extends Component{
          * @type array
          * @default []
          * */
-        choosePageSize:PropTypes.array
+        choosePageSize:PropTypes.array,
+        /**
+         * 分页组件的样式,取值为'theme1'或'theme2'(theme1的页码没有样式，theme2的页码是块状样式)
+         * @property theme
+         * @type string
+         * @default 'theme1'
+         * */
+        theme:PropTypes.string
     };
     static defaultProps = {
         activeClass:'active',
@@ -78,6 +85,7 @@ export default class Paging extends Component{
          * 默认每页显示数量为［］
          * */
         choosePageSize:[],
+        theme:'theme1',
         /**
          * 跟showItemsNumber一起使用 arguments{pageSize}
          * @property loadPageCallback
@@ -182,7 +190,7 @@ export default class Paging extends Component{
         len = len>this.pages ? this.pages : len;
 
         if(currentPage>1){
-            htmlList.push(<a href="javascript:void(0);" key="上一页" className="" onClick={::this.prev}>上一页</a>);
+            htmlList.push(<a className='pre' href="javascript:void(0);" key="上一页" onClick={::this.prev}>上一页</a>);
         }
 
         //9     ....4....|.
@@ -205,7 +213,7 @@ export default class Paging extends Component{
         }
 
         if(this.pages>1 && currentPage!=this.pages){
-            htmlList.push(<a href="javascript:void(0);" key="下一页"  onClick={::this.next}>下一页</a>);
+            htmlList.push(<a className='next' href="javascript:void(0);" key="下一页"  onClick={::this.next}>下一页</a>);
 
         }
 
@@ -270,7 +278,7 @@ export default class Paging extends Component{
 
         return (
 
-            <Component className={classnames(this.getClassName('container')) }>
+            <Component className={classnames(this.getClassName('container'))+' '+this.props.theme }>
                 {showItemsNumber ? this.accordingNumber():null}
                 {this.goto() }
                 <span className='info'>
