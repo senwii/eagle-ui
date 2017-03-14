@@ -72,7 +72,14 @@ export default class Paging extends Component{
          * @type string
          * @default 'theme1'
          * */
-        theme:PropTypes.string
+        theme:PropTypes.string,
+        /**
+         * 可见的分页数
+         * @property visiblePages
+         * @type nmumber
+         * @default 10
+         * */
+        visiblePages: PropTypes.number
     };
     static defaultProps = {
         activeClass:'active',
@@ -86,6 +93,7 @@ export default class Paging extends Component{
          * */
         choosePageSize:[],
         theme:'theme1',
+        visiblePages:10,
         /**
          * 跟showItemsNumber一起使用 arguments{pageSize}
          * @property loadPageCallback
@@ -173,11 +181,60 @@ export default class Paging extends Component{
         this.props.pageCallback && this.props.pageCallback(index );
         return this.goto(index);
     }
+    generatePage(){
+        const {currentPage,activeClass,visiblePages} = this.props;
+        console.log(currentPage,this.pages,visiblePages);
+        let htmlList = [];
+        if(this.pages>visiblePages){
+            if(currentPage>1){
+                htmlList.push(<a className='pre' href="javascript:void(0);" key="上一页" onClick={::this.prev}>上一页</a>);
+            }
+            let rightPartPages=visiblePages-Math.ceil(visiblePages/2),
+                finishFlag=false;
+            //console.log(rightPartPages);
+            if(rightPartPages+currentPage>this.pages){
+                for(var pi=0;pi<visiblePages;pi++){
+                    var i=this.pages-visiblePages+1+pi;
+                    console.log(i);
+                    htmlList.push(<a href="javascript:void(0);" key={i} onClick={this.gotoPage.bind(this,i)} className={classnames({
+                                    [this.getClassName(activeClass) ]:  i==currentPage
+                    } ) } >{i}</a> );
+                }
+                finishFlag=true;
+            }
+            if(!finishFlag&&currentPage-(visiblePages-rightPartPages)<0){
+                for(var pi=0;pi<visiblePages;pi++){
+                    var i=pi+1;
+                    console.log(i);
+                    htmlList.push(<a href="javascript:void(0);" key={i} onClick={this.gotoPage.bind(this,i)} className={classnames({
+                                    [this.getClassName(activeClass) ]:  i==currentPage
+                    } ) } >{i}</a> );
+                }
+                finishFlag=true;
+            }
+            if(!finishFlag){
+                let startPageIndex=currentPage-(visiblePages-rightPartPages-1);
+                for(var i=startPageIndex;i<startPageIndex+visiblePages;i++){
+                    htmlList.push(<a href="javascript:void(0);" key={i} onClick={this.gotoPage.bind(this,i)} className={classnames({
+                                    [this.getClassName(activeClass) ]:  i==currentPage
+                    } ) } >{i}</a> );
+                }
+            }
+            if(this.pages>1 && currentPage!=this.pages){
+                htmlList.push(<a className='next' href="javascript:void(0);" key="下一页"  onClick={::this.next}>下一页</a>);
+
+            }
+            return htmlList;
+        }
+    }
     /**
      * 生成页码
      * */
     generate(){
-        const {currentPage,activeClass} = this.props;
+        const {currentPage,activeClass,visiblePages} = this.props;
+        if(visiblePages!=10){
+            return this.generatePage();
+        }
         let i=1,
             htmlList = [],
             distance = 4,
