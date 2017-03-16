@@ -36,6 +36,7 @@ export PanelHeader from './panels/PanelHeader.js';
 export List from './List.js';
 export Item from './Item.js';
 export ValidatorPanel from './ValidatorPanel';
+export ValidatorWrapper from './ValidatorWrapper';
 
 
 export Table from './tables/Table.js';
