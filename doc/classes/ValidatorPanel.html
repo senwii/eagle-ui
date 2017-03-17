@@ -114,6 +114,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/ValidatorWrapper.html">ValidatorWrapper</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -575,7 +583,7 @@ rules属性提供的规则有<br/></p>
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/src_ValidatorPanel.js.html#l6"><code>src&#x2F;ValidatorPanel.js:6</code></a>
+                    Defined in: <a href="../files/src_ValidatorBase.js.html#l5"><code>src&#x2F;ValidatorBase.js:5</code></a>
                 </div>
             
 
@@ -626,7 +634,7 @@ rules属性提供的规则有<br/></p>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l6"><code>src&#x2F;ValidatorPanel.js:6</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l5"><code>src&#x2F;ValidatorBase.js:5</code></a>
         
         </p>
 
@@ -657,7 +665,7 @@ rules属性提供的规则有<br/></p>
  * Created by mac on 15/11/4.
  */
 import React,{Component} from &#39;react&#39;;
-import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,ValidatorWrapper,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from &#39;eagle-ui&#39;;
 import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;
 import Code, {getFile} from &#39;../libs/Code&#39;;
 let Demo = class Demo extends Component{
@@ -867,6 +875,36 @@ let Demo = class Demo extends Component{
                         &lt;/Dialog&gt;
                     &lt;/DemoShow&gt;
                 &lt;/DemoItem&gt;
+
+
+                &lt;DemoItem title="ValidatorWrapper"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;validate-demo4&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;ValidatorWrapper
+                            rules={{
+                                userName:{
+                                    required:true
+                                }}} &gt;
+                            &lt;Input placeholder="请输入姓名"  name="userName" data-validate /&gt;
+                        &lt;/ValidatorWrapper&gt;
+                        &lt;br /&gt;
+                        &lt;ValidatorWrapper
+                            rules={{
+                                minlength:{
+                                    minlength:{
+                                    params:10
+                                 },
+                                 maxlength:{
+                                     params:15
+                                 }
+                             }   }} &gt;
+                            &lt;Input placeholder="最大最小字符10-15" name="minlength" data-validate /&gt;
+                        &lt;/ValidatorWrapper&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+
             &lt;/DemoLayout&gt;
         );
     }
@@ -918,7 +956,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l54"><code>src&#x2F;ValidatorPanel.js:54</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l53"><code>src&#x2F;ValidatorBase.js:53</code></a>
         
         </p>
 
@@ -966,7 +1004,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l147"><code>src&#x2F;ValidatorPanel.js:147</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l146"><code>src&#x2F;ValidatorBase.js:146</code></a>
         
         </p>
 
@@ -1014,7 +1052,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l45"><code>src&#x2F;ValidatorPanel.js:45</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l44"><code>src&#x2F;ValidatorBase.js:44</code></a>
         
         </p>
 
@@ -1059,7 +1097,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l68"><code>src&#x2F;ValidatorPanel.js:68</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l67"><code>src&#x2F;ValidatorBase.js:67</code></a>
         
         </p>
 
@@ -1076,19 +1114,19 @@ export default Demo;</code></pre>
     
         <p><strong>Default:</strong></p>
          <code> required: &#x27;不能为空&#x27;,
-                date: &#x27;请正确填写日期&#x27;,
-                number: &#x27;请输入一个有效的号码&#x27;,
-                url: &#x27;请输入一个有效的URL&#x27;,
-                email: &#x27;请输入一个有效的电子邮件地址&#x27;,
-                dateISO: &#x27;请输入一个有效的日期(ISO)&#x27;,
-                digits: &#x27;请输入数字&#x27;,
-                equalTo:&#x27;请再次输入相同的值。&#x27;,
-                minlength: &#x27;请输入至少{0}字符&#x27;,
-                maxlength: &#x27;请输入不超过{0}字符&#x27;,
-                rangelength: &#x27;请输入一个值{0}和{1}字符之间&#x27;,
-                min: &#x27;请输入一个值大于或等于{0}&#x27;,
-                max: &#x27;请输入一个值小于或等于{0}&#x27;,
-                range: &#x27;请输入一个值{0} - {1}&#x27;</code>
+        date: &#x27;请正确填写日期&#x27;,
+        number: &#x27;请输入一个有效的号码&#x27;,
+        url: &#x27;请输入一个有效的URL&#x27;,
+        email: &#x27;请输入一个有效的电子邮件地址&#x27;,
+        dateISO: &#x27;请输入一个有效的日期(ISO)&#x27;,
+        digits: &#x27;请输入数字&#x27;,
+        equalTo:&#x27;请再次输入相同的值。&#x27;,
+        minlength: &#x27;请输入至少{0}字符&#x27;,
+        maxlength: &#x27;请输入不超过{0}字符&#x27;,
+        rangelength: &#x27;请输入一个值{0}和{1}字符之间&#x27;,
+        min: &#x27;请输入一个值大于或等于{0}&#x27;,
+        max: &#x27;请输入一个值小于或等于{0}&#x27;,
+        range: &#x27;请输入一个值{0} - {1}&#x27;</code>
     
 
     
@@ -1120,7 +1158,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l141"><code>src&#x2F;ValidatorPanel.js:141</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l140"><code>src&#x2F;ValidatorBase.js:140</code></a>
         
         </p>
 
@@ -1165,7 +1203,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l134"><code>src&#x2F;ValidatorPanel.js:134</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l133"><code>src&#x2F;ValidatorBase.js:133</code></a>
         
         </p>
 
@@ -1213,7 +1251,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l128"><code>src&#x2F;ValidatorPanel.js:128</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l127"><code>src&#x2F;ValidatorBase.js:127</code></a>
         
         </p>
 
@@ -1258,7 +1296,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l121"><code>src&#x2F;ValidatorPanel.js:121</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l120"><code>src&#x2F;ValidatorBase.js:120</code></a>
         
         </p>
 
@@ -1306,7 +1344,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l61"><code>src&#x2F;ValidatorPanel.js:61</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l60"><code>src&#x2F;ValidatorBase.js:60</code></a>
         
         </p>
 
@@ -1354,7 +1392,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l154"><code>src&#x2F;ValidatorPanel.js:154</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l153"><code>src&#x2F;ValidatorBase.js:153</code></a>
         
         </p>
 
@@ -1402,7 +1440,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l39"><code>src&#x2F;ValidatorPanel.js:39</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l38"><code>src&#x2F;ValidatorBase.js:38</code></a>
         
         </p>
 
@@ -1455,7 +1493,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l105"><code>src&#x2F;ValidatorPanel.js:105</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l104"><code>src&#x2F;ValidatorBase.js:104</code></a>
         
         </p>
 
@@ -1543,7 +1581,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorPanel.js.html#l113"><code>src&#x2F;ValidatorPanel.js:113</code></a>
+        <a href="../files/src_ValidatorBase.js.html#l112"><code>src&#x2F;ValidatorBase.js:112</code></a>
         
         </p>
 

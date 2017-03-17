@@ -47,7 +47,7 @@ export default class PagingCls extends Component{
                         <Button onClick={::this.toggleItemNumber}>
                             {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}
                         </Button>
-                        <Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                        <Paging showItemsNumber={showItemsNumber} visiblePages={5} theme='theme2' chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
                                 pageCallback={callback} total={5024} choosePageSize={arr1}/>
                     </DemoShow>
                 </DemoItem>

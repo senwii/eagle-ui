@@ -114,6 +114,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/ValidatorWrapper.html">ValidatorWrapper</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -489,7 +497,22 @@ export default class Dialog extends Component{
         }
 
     }
+    static prompt(title,opts){
+        return new Promise((resolve, reject)=&gt;{
+            new DialogFactory().show(BaseDialog.PROMPT,extend({},{
+                submitCallback:(value)=&gt;{
+                    resolve(value);
+                    new DialogFactory().hide();
 
+                },
+                cancelCallback:()=&gt;{
+                    reject();
+                    new DialogFactory().hide();
+                },
+                title:title
+            },opts) );
+        });
+    }
     static mask(dialogId,opts={}){
         return new Promise((resolve, reject)=&gt;{
             new DialogFactory().show(dialogId,extend({},{

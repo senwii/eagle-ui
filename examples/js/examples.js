@@ -7362,7 +7362,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	!(function(global) {
 	  "use strict";
 
-	  var hasOwn = Object.prototype.hasOwnProperty;
+	  var Op = Object.prototype;
+	  var hasOwn = Op.hasOwnProperty;
 	  var undefined; // More compressible than void 0.
 	  var $Symbol = typeof Symbol === "function" ? Symbol : {};
 	  var iteratorSymbol = $Symbol.iterator || "@@iterator";
@@ -7434,10 +7435,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function GeneratorFunction() {}
 	  function GeneratorFunctionPrototype() {}
 
-	  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype;
+	  // This is a polyfill for %IteratorPrototype% for environments that
+	  // don't natively support it.
+	  var IteratorPrototype = {};
+	  IteratorPrototype[iteratorSymbol] = function () {
+	    return this;
+	  };
+
+	  var getProto = Object.getPrototypeOf;
+	  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+	  if (NativeIteratorPrototype &&
+	      NativeIteratorPrototype !== Op &&
+	      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+	    // This environment has a native %IteratorPrototype%; use it instead
+	    // of the polyfill.
+	    IteratorPrototype = NativeIteratorPrototype;
+	  }
+
+	  var Gp = GeneratorFunctionPrototype.prototype =
+	    Generator.prototype = Object.create(IteratorPrototype);
 	  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
 	  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-	  GeneratorFunctionPrototype[toStringTagSymbol] = GeneratorFunction.displayName = "GeneratorFunction";
+	  GeneratorFunctionPrototype[toStringTagSymbol] =
+	    GeneratorFunction.displayName = "GeneratorFunction";
 
 	  // Helper for defining the .next, .throw, and .return methods of the
 	  // Iterator interface in terms of a single ._invoke method.
@@ -7474,16 +7494,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  // Within the body of any async function, `await x` is transformed to
 	  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-	  // `value instanceof AwaitArgument` to determine if the yielded value is
-	  // meant to be awaited. Some may consider the name of this method too
-	  // cutesy, but they are curmudgeons.
+	  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+	  // meant to be awaited.
 	  runtime.awrap = function(arg) {
-	    return new AwaitArgument(arg);
+	    return { __await: arg };
 	  };
-
-	  function AwaitArgument(arg) {
-	    this.arg = arg;
-	  }
 
 	  function AsyncIterator(generator) {
 	    function invoke(method, arg, resolve, reject) {
@@ -7493,8 +7508,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        var result = record.arg;
 	        var value = result.value;
-	        if (value instanceof AwaitArgument) {
-	          return Promise.resolve(value.arg).then(function(value) {
+	        if (value &&
+	            typeof value === "object" &&
+	            hasOwn.call(value, "__await")) {
+	          return Promise.resolve(value.__await).then(function(value) {
 	            invoke("next", value, resolve, reject);
 	          }, function(err) {
 	            invoke("throw", err, resolve, reject);
@@ -7563,6 +7580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  defineIteratorMethods(AsyncIterator.prototype);
+	  runtime.AsyncIterator = AsyncIterator;
 
 	  // Note that simple async functions are implemented on top of
 	  // AsyncIterator objects; they just return a Promise for the value of
@@ -7597,90 +7615,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return doneResult();
 	      }
 
+	      context.method = method;
+	      context.arg = arg;
+
 	      while (true) {
 	        var delegate = context.delegate;
 	        if (delegate) {
-	          if (method === "return" ||
-	              (method === "throw" && delegate.iterator[method] === undefined)) {
-	            // A return or throw (when the delegate iterator has no throw
-	            // method) always terminates the yield* loop.
-	            context.delegate = null;
-
-	            // If the delegate iterator has a return method, give it a
-	            // chance to clean up.
-	            var returnMethod = delegate.iterator["return"];
-	            if (returnMethod) {
-	              var record = tryCatch(returnMethod, delegate.iterator, arg);
-	              if (record.type === "throw") {
-	                // If the return method threw an exception, let that
-	                // exception prevail over the original return or throw.
-	                method = "throw";
-	                arg = record.arg;
-	                continue;
-	              }
-	            }
-
-	            if (method === "return") {
-	              // Continue with the outer return, now that the delegate
-	              // iterator has been terminated.
-	              continue;
-	            }
+	          var delegateResult = maybeInvokeDelegate(delegate, context);
+	          if (delegateResult) {
+	            if (delegateResult === ContinueSentinel) continue;
+	            return delegateResult;
 	          }
-
-	          var record = tryCatch(
-	            delegate.iterator[method],
-	            delegate.iterator,
-	            arg
-	          );
-
-	          if (record.type === "throw") {
-	            context.delegate = null;
-
-	            // Like returning generator.throw(uncaught), but without the
-	            // overhead of an extra function call.
-	            method = "throw";
-	            arg = record.arg;
-	            continue;
-	          }
-
-	          // Delegate generator ran and handled its own exceptions so
-	          // regardless of what the method was, we continue as if it is
-	          // "next" with an undefined arg.
-	          method = "next";
-	          arg = undefined;
-
-	          var info = record.arg;
-	          if (info.done) {
-	            context[delegate.resultName] = info.value;
-	            context.next = delegate.nextLoc;
-	          } else {
-	            state = GenStateSuspendedYield;
-	            return info;
-	          }
-
-	          context.delegate = null;
 	        }
 
-	        if (method === "next") {
+	        if (context.method === "next") {
 	          // Setting context._sent for legacy support of Babel's
 	          // function.sent implementation.
-	          context.sent = context._sent = arg;
+	          context.sent = context._sent = context.arg;
 
-	        } else if (method === "throw") {
+	        } else if (context.method === "throw") {
 	          if (state === GenStateSuspendedStart) {
 	            state = GenStateCompleted;
-	            throw arg;
+	            throw context.arg;
 	          }
 
-	          if (context.dispatchException(arg)) {
-	            // If the dispatched exception was caught by a catch block,
-	            // then let that catch block handle the exception normally.
-	            method = "next";
-	            arg = undefined;
-	          }
+	          context.dispatchException(context.arg);
 
-	        } else if (method === "return") {
-	          context.abrupt("return", arg);
+	        } else if (context.method === "return") {
+	          context.abrupt("return", context.arg);
 	        }
 
 	        state = GenStateExecuting;
@@ -7693,39 +7655,111 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ? GenStateCompleted
 	            : GenStateSuspendedYield;
 
-	          var info = {
+	          if (record.arg === ContinueSentinel) {
+	            continue;
+	          }
+
+	          return {
 	            value: record.arg,
 	            done: context.done
 	          };
 
-	          if (record.arg === ContinueSentinel) {
-	            if (context.delegate && method === "next") {
-	              // Deliberately forget the last sent value so that we don't
-	              // accidentally pass it on to the delegate.
-	              arg = undefined;
-	            }
-	          } else {
-	            return info;
-	          }
-
 	        } else if (record.type === "throw") {
 	          state = GenStateCompleted;
 	          // Dispatch the exception by looping back around to the
-	          // context.dispatchException(arg) call above.
-	          method = "throw";
-	          arg = record.arg;
+	          // context.dispatchException(context.arg) call above.
+	          context.method = "throw";
+	          context.arg = record.arg;
 	        }
 	      }
 	    };
 	  }
 
+	  // Call delegate.iterator[context.method](context.arg) and handle the
+	  // result, either by returning a { value, done } result from the
+	  // delegate iterator, or by modifying context.method and context.arg,
+	  // setting context.delegate to null, and returning the ContinueSentinel.
+	  function maybeInvokeDelegate(delegate, context) {
+	    var method = delegate.iterator[context.method];
+	    if (method === undefined) {
+	      // A .throw or .return when the delegate iterator has no .throw
+	      // method always terminates the yield* loop.
+	      context.delegate = null;
+
+	      if (context.method === "throw") {
+	        if (delegate.iterator.return) {
+	          // If the delegate iterator has a return method, give it a
+	          // chance to clean up.
+	          context.method = "return";
+	          context.arg = undefined;
+	          maybeInvokeDelegate(delegate, context);
+
+	          if (context.method === "throw") {
+	            // If maybeInvokeDelegate(context) changed context.method from
+	            // "return" to "throw", let that override the TypeError below.
+	            return ContinueSentinel;
+	          }
+	        }
+
+	        context.method = "throw";
+	        context.arg = new TypeError(
+	          "The iterator does not provide a 'throw' method");
+	      }
+
+	      return ContinueSentinel;
+	    }
+
+	    var record = tryCatch(method, delegate.iterator, context.arg);
+
+	    if (record.type === "throw") {
+	      context.method = "throw";
+	      context.arg = record.arg;
+	      context.delegate = null;
+	      return ContinueSentinel;
+	    }
+
+	    var info = record.arg;
+
+	    if (! info) {
+	      context.method = "throw";
+	      context.arg = new TypeError("iterator result is not an object");
+	      context.delegate = null;
+	      return ContinueSentinel;
+	    }
+
+	    if (info.done) {
+	      // Assign the result of the finished delegate to the temporary
+	      // variable specified by delegate.resultName (see delegateYield).
+	      context[delegate.resultName] = info.value;
+
+	      // Resume execution at the desired location (see delegateYield).
+	      context.next = delegate.nextLoc;
+
+	      // If context.method was "throw" but the delegate handled the
+	      // exception, let the outer generator proceed normally. If
+	      // context.method was "next", forget context.arg since it has been
+	      // "consumed" by the delegate iterator. If context.method was
+	      // "return", allow the original .return call to continue in the
+	      // outer generator.
+	      if (context.method !== "return") {
+	        context.method = "next";
+	        context.arg = undefined;
+	      }
+
+	    } else {
+	      // Re-yield the result returned by the delegate method.
+	      return info;
+	    }
+
+	    // The delegate iterator is finished, so forget it and continue with
+	    // the outer generator.
+	    context.delegate = null;
+	    return ContinueSentinel;
+	  }
+
 	  // Define Generator.prototype.{next,throw,return} in terms of the
 	  // unified ._invoke helper method.
 	  defineIteratorMethods(Gp);
-
-	  Gp[iteratorSymbol] = function() {
-	    return this;
-	  };
 
 	  Gp[toStringTagSymbol] = "Generator";
 
@@ -7843,6 +7877,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.done = false;
 	      this.delegate = null;
 
+	      this.method = "next";
+	      this.arg = undefined;
+
 	      this.tryEntries.forEach(resetTryEntry);
 
 	      if (!skipTempReset) {
@@ -7879,7 +7916,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        record.type = "throw";
 	        record.arg = exception;
 	        context.next = loc;
-	        return !!caught;
+
+	        if (caught) {
+	          // If the dispatched exception was caught by a catch block,
+	          // then let that catch block handle the exception normally.
+	          context.method = "next";
+	          context.arg = undefined;
+	        }
+
+	        return !! caught;
 	      }
 
 	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
@@ -7947,12 +7992,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      record.arg = arg;
 
 	      if (finallyEntry) {
+	        this.method = "next";
 	        this.next = finallyEntry.finallyLoc;
-	      } else {
-	        this.complete(record);
+	        return ContinueSentinel;
 	      }
 
-	      return ContinueSentinel;
+	      return this.complete(record);
 	    },
 
 	    complete: function(record, afterLoc) {
@@ -7964,11 +8009,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	          record.type === "continue") {
 	        this.next = record.arg;
 	      } else if (record.type === "return") {
-	        this.rval = record.arg;
+	        this.rval = this.arg = record.arg;
+	        this.method = "return";
 	        this.next = "end";
 	      } else if (record.type === "normal" && afterLoc) {
 	        this.next = afterLoc;
 	      }
+
+	      return ContinueSentinel;
 	    },
 
 	    finish: function(finallyLoc) {
@@ -8006,6 +8054,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        resultName: resultName,
 	        nextLoc: nextLoc
 	      };
+
+	      if (this.method === "next") {
+	        // Deliberately forget the last sent value so that we don't
+	        // accidentally pass it on to the delegate.
+	        this.arg = undefined;
+	      }
 
 	      return ContinueSentinel;
 	    }
@@ -8272,154 +8326,134 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _modulesCalendarJs2 = _interopRequireDefault(_modulesCalendarJs);
 
-	var _modulesButton = __webpack_require__(705);
+	var _modulesButton = __webpack_require__(708);
 
 	var _modulesButton2 = _interopRequireDefault(_modulesButton);
 
-	var _modulesCrumb = __webpack_require__(706);
+	var _modulesCrumb = __webpack_require__(709);
 
 	var _modulesCrumb2 = _interopRequireDefault(_modulesCrumb);
 
-	var _modulesLayout = __webpack_require__(707);
+	var _modulesLayout = __webpack_require__(710);
 
 	var _modulesLayout2 = _interopRequireDefault(_modulesLayout);
 
-	var _modulesDemo2 = __webpack_require__(708);
+	var _modulesDemo2 = __webpack_require__(711);
 
 	var _modulesDemo22 = _interopRequireDefault(_modulesDemo2);
 
-	var _modulesDetailJs = __webpack_require__(709);
+	var _modulesDetailJs = __webpack_require__(712);
 
 	var _modulesDetailJs2 = _interopRequireDefault(_modulesDetailJs);
 
 	//增加商户详情页面demo
 
-	var _modulesDialog = __webpack_require__(713);
+	var _modulesDialog = __webpack_require__(716);
 
 	var _modulesDialog2 = _interopRequireDefault(_modulesDialog);
 
-	var _modulesInput = __webpack_require__(714);
+	var _modulesInput = __webpack_require__(717);
 
 	var _modulesInput2 = _interopRequireDefault(_modulesInput);
 
-	var _modulesLabel = __webpack_require__(715);
+	var _modulesLabel = __webpack_require__(718);
 
 	var _modulesLabel2 = _interopRequireDefault(_modulesLabel);
 
-	var _modulesPaging = __webpack_require__(716);
+	var _modulesPaging = __webpack_require__(719);
 
 	var _modulesPaging2 = _interopRequireDefault(_modulesPaging);
 
-	var _modulesPanel = __webpack_require__(717);
+	var _modulesPanel = __webpack_require__(720);
 
 	var _modulesPanel2 = _interopRequireDefault(_modulesPanel);
 
-	var _modulesSelect = __webpack_require__(718);
+	var _modulesSelect = __webpack_require__(721);
 
 	var _modulesSelect2 = _interopRequireDefault(_modulesSelect);
 
-	var _modulesTab = __webpack_require__(719);
+	var _modulesTab = __webpack_require__(722);
 
 	var _modulesTab2 = _interopRequireDefault(_modulesTab);
 
-	var _modulesTable = __webpack_require__(720);
+	var _modulesTable = __webpack_require__(723);
 
 	var _modulesTable2 = _interopRequireDefault(_modulesTable);
 
-	var _modulesToast = __webpack_require__(721);
+	var _modulesToast = __webpack_require__(724);
 
 	var _modulesToast2 = _interopRequireDefault(_modulesToast);
 
-	var _modulesTooltip = __webpack_require__(722);
+	var _modulesTooltip = __webpack_require__(725);
 
 	var _modulesTooltip2 = _interopRequireDefault(_modulesTooltip);
 
-	var _modulesValidate = __webpack_require__(723);
+	var _modulesValidate = __webpack_require__(726);
 
 	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
 
-	var _modulesStarJs = __webpack_require__(724);
+	var _modulesStarJs = __webpack_require__(727);
 
 	var _modulesStarJs2 = _interopRequireDefault(_modulesStarJs);
 
-	var _modulesImgSliderJs = __webpack_require__(725);
+	var _modulesImgSliderJs = __webpack_require__(728);
 
 	var _modulesImgSliderJs2 = _interopRequireDefault(_modulesImgSliderJs);
 
-	var _modulesSuggestionJs = __webpack_require__(726);
+	var _modulesSuggestionJs = __webpack_require__(729);
 
 	var _modulesSuggestionJs2 = _interopRequireDefault(_modulesSuggestionJs);
 
-	var _modulesIconsJs = __webpack_require__(727);
+	var _modulesIconsJs = __webpack_require__(730);
 
 	var _modulesIconsJs2 = _interopRequireDefault(_modulesIconsJs);
 
-	var _modulesTreeMenuJs = __webpack_require__(728);
+	var _modulesTreeMenuJs = __webpack_require__(731);
 
 	var _modulesTreeMenuJs2 = _interopRequireDefault(_modulesTreeMenuJs);
 
-	var _modulesDropTreeJs = __webpack_require__(734);
+	var _modulesDropTreeJs = __webpack_require__(737);
 
 	var _modulesDropTreeJs2 = _interopRequireDefault(_modulesDropTreeJs);
 
-	var _modulesTheme = __webpack_require__(739);
+	var _modulesTheme = __webpack_require__(742);
 
 	var _modulesTheme2 = _interopRequireDefault(_modulesTheme);
 
-	var _modulesSlider = __webpack_require__(740);
+	var _modulesSlider = __webpack_require__(743);
 
 	var _modulesSlider2 = _interopRequireDefault(_modulesSlider);
 
-	var _modulesDatetimepickerJs = __webpack_require__(741);
+	var _modulesDatetimepickerJs = __webpack_require__(744);
 
 	var _modulesDatetimepickerJs2 = _interopRequireDefault(_modulesDatetimepickerJs);
 
-	var _modulesTimepickerJs = __webpack_require__(742);
+	var _modulesTimepickerJs = __webpack_require__(745);
 
 	var _modulesTimepickerJs2 = _interopRequireDefault(_modulesTimepickerJs);
 
-	var _modulesIconfont = __webpack_require__(743);
+	var _modulesIconfont = __webpack_require__(746);
 
 	var _modulesIconfont2 = _interopRequireDefault(_modulesIconfont);
+
+	var _modulesIndex = __webpack_require__(747);
+
+	var _modulesIndex2 = _interopRequireDefault(_modulesIndex);
 
 	// import '../../src/less/eagle-ui.less';
 	// import '../../src/less/skin.less'
 
-	__webpack_require__(744);
-	__webpack_require__(745);
-	__webpack_require__(746);
-	__webpack_require__(747);
-	var Index = (function (_Component) {
-	    _inherits(Index, _Component);
-
-	    function Index() {
-	        _classCallCheck(this, Index);
-
-	        _Component.apply(this, arguments);
-	    }
-
-	    Index.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            null,
-	            _react2['default'].createElement(
-	                'h1',
-	                null,
-	                '欢迎使用eagle-ui构建react的pc 应用'
-	            )
-	        );
-	    };
-
-	    return Index;
-	})(_react.Component);
-
-	var AppRouter = (function (_Component2) {
-	    _inherits(AppRouter, _Component2);
+	__webpack_require__(748);
+	__webpack_require__(749);
+	__webpack_require__(750);
+	__webpack_require__(751);
+	var AppRouter = (function (_Component) {
+	    _inherits(AppRouter, _Component);
 
 	    function AppRouter(props, context) {
 	        _classCallCheck(this, AppRouter);
 
-	        _Component2.call(this, props, context);
+	        _Component.call(this, props, context);
 	        // Opt-out of persistent state, not recommended.
 	        this.history = new _historyLibCreateHashHistory2['default']({
 	            queryKey: false
@@ -8430,7 +8464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement(
 	            _reactRouter.Router,
 	            { history: this.history },
-	            _react2['default'].createElement(_reactRouter.Route, { path: '/index', name: 'index', component: Index }),
+	            _react2['default'].createElement(_reactRouter.Route, { path: '/index', name: 'index', component: _modulesIndex2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Calendar', name: 'Calendar', component: _modulesCalendarJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Button', name: 'Button', component: _modulesButton2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/Crumb', name: 'Crumb', component: _modulesCrumb2['default'] }),
@@ -8457,7 +8491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/iconfont', name: 'Slider', component: _modulesIconfont2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/datetimepicker', name: 'datetimepicker', component: _modulesDatetimepickerJs2['default'] }),
 	            _react2['default'].createElement(_reactRouter.Route, { path: '/timepicker', name: 'timepicker', component: _modulesTimepickerJs2['default'] }),
-	            _react2['default'].createElement(_reactRouter.Redirect, { from: '/', to: '/Theme' })
+	            _react2['default'].createElement(_reactRouter.Redirect, { from: '/', to: '/index' })
 	        );
 	    };
 
@@ -8471,7 +8505,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react.Component);
 
 	_reactLibReactDOM2['default'].render(_react2['default'].createElement(AppRouter, null), document.getElementById('root'));
-	_reactLibReactDOM2['default'].render(_react2['default'].createElement(_gfsHead.Head, null), document.getElementById('head'));
+	_reactLibReactDOM2['default'].render(_react2['default'].createElement(_gfsHead.Head, {
+	    titles: [{ title: '文档', href: 'http://future-team.github.io/eagle-ui/doc/index.html' }, { title: '博客', href: 'http://uedfamily.com/' }, { title: '关于我们', href: 'http://uedfamily.com/about/' }, { title: '更多组件', href: 'http://uedfamily.com/framework/' }]
+	}), document.getElementById('head'));
 	_reactLibReactDOM2['default'].render(_react2['default'].createElement(_gfsHead.Footer, null), document.getElementById('footer'));
 
 /***/ },
@@ -32724,9 +32760,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -33236,31 +33272,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.ValidatorPanel = _ValidatorPanel3['default'];
 
-	var _tablesTableJs = __webpack_require__(635);
+	var _ValidatorWrapper2 = __webpack_require__(636);
+
+	var _ValidatorWrapper3 = _interopRequireDefault(_ValidatorWrapper2);
+
+	exports.ValidatorWrapper = _ValidatorWrapper3['default'];
+
+	var _tablesTableJs = __webpack_require__(637);
 
 	var _tablesTableJs2 = _interopRequireDefault(_tablesTableJs);
 
 	exports.Table = _tablesTableJs2['default'];
 
-	var _tablesTrJs = __webpack_require__(638);
+	var _tablesTrJs = __webpack_require__(640);
 
 	var _tablesTrJs2 = _interopRequireDefault(_tablesTrJs);
 
 	exports.Tr = _tablesTrJs2['default'];
 
-	var _tablesTdJs = __webpack_require__(637);
+	var _tablesTdJs = __webpack_require__(639);
 
 	var _tablesTdJs2 = _interopRequireDefault(_tablesTdJs);
 
 	exports.Td = _tablesTdJs2['default'];
 
-	var _tablesThJs = __webpack_require__(636);
+	var _tablesThJs = __webpack_require__(638);
 
 	var _tablesThJs2 = _interopRequireDefault(_tablesThJs);
 
 	exports.Th = _tablesThJs2['default'];
 
-	var _FormGroupJs = __webpack_require__(639);
+	var _FormGroupJs = __webpack_require__(641);
 
 	var _FormGroupJs2 = _interopRequireDefault(_FormGroupJs);
 
@@ -33278,13 +33320,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.Slider = _Slider3['default'];
 
-	var _TimePicker2 = __webpack_require__(640);
+	var _TimePicker2 = __webpack_require__(642);
 
 	var _TimePicker3 = _interopRequireDefault(_TimePicker2);
 
 	exports.TimePicker = _TimePicker3['default'];
 
-	var _DateTimePicker2 = __webpack_require__(641);
+	var _DateTimePicker2 = __webpack_require__(643);
 
 	var _DateTimePicker3 = _interopRequireDefault(_DateTimePicker2);
 
@@ -33823,7 +33865,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * 后端对应的url，默认dp，catjs报警接口
 	   * 不建议更改，因为字段需保持一致
 	   * */
-	  url: '//221.181.67.144/web-broker-service/api/js',
+	  url: '//catdot.dianping.com/web-broker-service/api/js',
 	  /**
 	   * 可设置cookie名称和value，以判断是否符合规则的登录
 	   * 建议设置不易重复的值或者使用默认值
@@ -38494,9 +38536,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames2 = __webpack_require__(564);
+	var _classnames5 = __webpack_require__(564);
 
-	var _classnames3 = _interopRequireDefault(_classnames2);
+	var _classnames6 = _interopRequireDefault(_classnames5);
 
 	var _utilsClassNameMixinJs = __webpack_require__(579);
 
@@ -38568,7 +38610,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type array
 	             * @default []
 	             * */
-	            choosePageSize: _react.PropTypes.array
+	            choosePageSize: _react.PropTypes.array,
+	            /**
+	             * 分页组件的样式,取值为'theme1'或'theme2'(theme1的页码没有样式，theme2的页码是块状样式)
+	             * @property theme
+	             * @type string
+	             * @default 'theme1'
+	             * */
+	            theme: _react.PropTypes.string,
+	            /**
+	             * 可见的分页数
+	             * @property visiblePages
+	             * @type nmumber
+	             * @default 10
+	             * */
+	            visiblePages: _react.PropTypes.number
 	        },
 	        enumerable: true
 	    }, {
@@ -38584,6 +38640,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * 默认每页显示数量为［］
 	             * */
 	            choosePageSize: [],
+	            theme: 'theme1',
+	            visiblePages: 10,
 	            /**
 	             * 跟showItemsNumber一起使用 arguments{pageSize}
 	             * @property loadPageCallback
@@ -38676,15 +38734,89 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this["goto"](index);
 	    };
 
+	    Paging.prototype.generatePage = function generatePage() {
+	        var _props = this.props;
+	        var currentPage = _props.currentPage;
+	        var activeClass = _props.activeClass;
+	        var visiblePages = _props.visiblePages;
+
+	        console.log(currentPage, this.pages, visiblePages);
+	        var htmlList = [];
+	        if (this.pages > visiblePages) {
+	            if (currentPage > 1) {
+	                htmlList.push(_react2['default'].createElement(
+	                    'a',
+	                    { className: 'pre', href: 'javascript:void(0);', key: '上一页', onClick: this.prev.bind(this) },
+	                    '上一页'
+	                ));
+	            }
+	            var rightPartPages = visiblePages - Math.ceil(visiblePages / 2),
+	                finishFlag = false;
+	            //console.log(rightPartPages);
+	            if (rightPartPages + currentPage > this.pages) {
+	                for (var pi = 0; pi < visiblePages; pi++) {
+	                    var _classnames;
+
+	                    var i = this.pages - visiblePages + 1 + pi;
+	                    console.log(i);
+	                    htmlList.push(_react2['default'].createElement(
+	                        'a',
+	                        { href: 'javascript:void(0);', key: i, onClick: this.gotoPage.bind(this, i), className: _classnames6['default']((_classnames = {}, _classnames[this.getClassName(activeClass)] = i == currentPage, _classnames)) },
+	                        i
+	                    ));
+	                }
+	                finishFlag = true;
+	            }
+	            if (!finishFlag && currentPage - (visiblePages - rightPartPages) < 0) {
+	                for (var pi = 0; pi < visiblePages; pi++) {
+	                    var _classnames2;
+
+	                    var i = pi + 1;
+	                    console.log(i);
+	                    htmlList.push(_react2['default'].createElement(
+	                        'a',
+	                        { href: 'javascript:void(0);', key: i, onClick: this.gotoPage.bind(this, i), className: _classnames6['default']((_classnames2 = {}, _classnames2[this.getClassName(activeClass)] = i == currentPage, _classnames2)) },
+	                        i
+	                    ));
+	                }
+	                finishFlag = true;
+	            }
+	            if (!finishFlag) {
+	                var startPageIndex = currentPage - (visiblePages - rightPartPages - 1);
+	                for (var i = startPageIndex; i < startPageIndex + visiblePages; i++) {
+	                    var _classnames3;
+
+	                    htmlList.push(_react2['default'].createElement(
+	                        'a',
+	                        { href: 'javascript:void(0);', key: i, onClick: this.gotoPage.bind(this, i), className: _classnames6['default']((_classnames3 = {}, _classnames3[this.getClassName(activeClass)] = i == currentPage, _classnames3)) },
+	                        i
+	                    ));
+	                }
+	            }
+	            if (this.pages > 1 && currentPage != this.pages) {
+	                htmlList.push(_react2['default'].createElement(
+	                    'a',
+	                    { className: 'next', href: 'javascript:void(0);', key: '下一页', onClick: this.next.bind(this) },
+	                    '下一页'
+	                ));
+	            }
+	            return htmlList;
+	        }
+	    };
+
 	    /**
 	     * 生成页码
 	     * */
 
 	    Paging.prototype.generate = function generate() {
-	        var _props = this.props;
-	        var currentPage = _props.currentPage;
-	        var activeClass = _props.activeClass;
+	        var _props2 = this.props;
+	        var currentPage = _props2.currentPage;
+	        var activeClass = _props2.activeClass;
+	        var visiblePages = _props2.visiblePages;
 
+	        if (visiblePages != 10) {
+	            return this.generatePage();
+	        }
 	        var i = 1,
 	            htmlList = [],
 	            distance = 4,
@@ -38698,7 +38830,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (currentPage > 1) {
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);', key: '上一页', className: '', onClick: this.prev.bind(this) },
+	                { className: 'pre', href: 'javascript:void(0);', key: '上一页', onClick: this.prev.bind(this) },
 	                '上一页'
 	            ));
 	        }
@@ -38721,11 +38853,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        for (; i <= len; i++) {
-	            var _classnames;
+	            var _classnames4;
 
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);', key: i, onClick: this.gotoPage.bind(this, i), className: _classnames3['default']((_classnames = {}, _classnames[this.getClassName(activeClass)] = i == currentPage, _classnames)) },
+	                { href: 'javascript:void(0);', key: i, onClick: this.gotoPage.bind(this, i), className: _classnames6['default']((_classnames4 = {}, _classnames4[this.getClassName(activeClass)] = i == currentPage, _classnames4)) },
 	                i
 	            ));
 	        }
@@ -38749,7 +38881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.pages > 1 && currentPage != this.pages) {
 	            htmlList.push(_react2['default'].createElement(
 	                'a',
-	                { href: 'javascript:void(0);', key: '下一页', onClick: this.next.bind(this) },
+	                { className: 'next', href: 'javascript:void(0);', key: '下一页', onClick: this.next.bind(this) },
 	                '下一页'
 	            ));
 	        }
@@ -38819,14 +38951,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Paging.prototype.render = function render() {
-	        var _props2 = this.props;
-	        var Component = _props2.componentTag;
-	        var activeClass = _props2.activeClass;
-	        var showItemsNumber = _props2.showItemsNumber;
+	        var _props3 = this.props;
+	        var Component = _props3.componentTag;
+	        var activeClass = _props3.activeClass;
+	        var showItemsNumber = _props3.showItemsNumber;
 
 	        return _react2['default'].createElement(
 	            Component,
-	            { className: _classnames3['default'](this.getClassName('container')) },
+	            { className: _classnames6['default'](this.getClassName('container')) + ' ' + this.props.theme },
 	            showItemsNumber ? this.accordingNumber() : null,
 	            this["goto"](),
 	            _react2['default'].createElement(
@@ -38834,7 +38966,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                { className: 'info' },
 	                _react2['default'].createElement(
 	                    'span',
-	                    { className: _classnames3['default'](this.getClassName(activeClass)) },
+	                    { className: _classnames6['default'](this.getClassName(activeClass)) },
 	                    this.props.currentPage
 	                ),
 	                '/',
@@ -42552,6 +42684,102 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(353);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ValidatorBaseJs = __webpack_require__(635);
+
+	var _ValidatorBaseJs2 = _interopRequireDefault(_ValidatorBaseJs);
+
+	var _classnames = __webpack_require__(564);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var ValidatorPanel = (function (_ValidatorBase) {
+	    _inherits(ValidatorPanel, _ValidatorBase);
+
+	    function ValidatorPanel(props, context) {
+	        _classCallCheck(this, ValidatorPanel);
+
+	        _ValidatorBase.call(this, props, context);
+	    }
+
+	    //验证
+
+	    ValidatorPanel.prototype.validate = function validate(element) {
+	        var message = this.check(element) || '';
+	        if (message !== '' && element.style.display != 'none' && !this.isUpdate) {
+	            //错误提示
+	            //this.elements[element.name].status=1;
+
+	            this.setTipsOffset(element);
+
+	            //设置错误消息
+	            this.setState({
+	                message: message,
+	                show: message
+	            });
+	            //this.highlight(this.parent, this.options.errorClass, this.options.validClass);
+	            if (this.props.timeout) {
+	                clearTimeout(this.validateTimeout);
+	                this.validateTimeout = setTimeout((function () {
+	                    this.setState({
+	                        show: ''
+	                    });
+	                }).bind(this), this.props.timeout);
+	            }
+	            return false;
+	        }
+	        this.setState({
+	            show: null
+	        });
+	        this.unhighlight(element);
+	        this.isUpdate = false;
+	        //this.hide();
+	        return true;
+	    };
+
+	    ValidatorPanel.prototype.render = function render() {
+	        var _props = this.props;
+	        var Component = _props.componentTag;
+	        var direction = _props.direction;
+	        var id = _props.id;
+
+	        this.removeFadeout();
+	        return _react2['default'].createElement(
+	            Component,
+	            _extends({}, this.props, { ref: id ? id : this.formName, className: this.getClassName('validate') }),
+	            this.props.children,
+	            _react2['default'].createElement(
+	                'div',
+	                { ref: 'ref-validateTips', className: _classnames2['default'](this.getClassName('validate-tips'), 'animated', '' + (direction === "bottom" || direction === "top" ? 'bottom' : ''), '' + (this.init ? "" : this.state.show ? "fadein" : "fadeout"), 'absolute') },
+	                _react2['default'].createElement('i', null),
+	                this.state.message
+	            )
+	        );
+	    };
+
+	    return ValidatorPanel;
+	})(_ValidatorBaseJs2['default']);
+
+	exports['default'] = ValidatorPanel;
+	module.exports = exports['default'];
+
+/***/ },
+/* 635 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -42567,10 +42795,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilsClassNameMixin = __webpack_require__(579);
 
 	var _utilsClassNameMixin2 = _interopRequireDefault(_utilsClassNameMixin);
-
-	var _classnames = __webpack_require__(564);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var _reactLibReactDOM = __webpack_require__(355);
 
@@ -42650,19 +42874,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @type Object
 	             * @default
 	             *       required: '不能为空',
-	                     date: '请正确填写日期',
-	                     number: '请输入一个有效的号码',
-	                     url: '请输入一个有效的URL',
-	                     email: '请输入一个有效的电子邮件地址',
-	                     dateISO: '请输入一个有效的日期(ISO)',
-	                     digits: '请输入数字',
-	                     equalTo:'请再次输入相同的值。',
-	                     minlength: '请输入至少{0}字符',
-	                     maxlength: '请输入不超过{0}字符',
-	                     rangelength: '请输入一个值{0}和{1}字符之间',
-	                     min: '请输入一个值大于或等于{0}',
-	                     max: '请输入一个值小于或等于{0}',
-	                     range: '请输入一个值{0} - {1}'
+	             date: '请正确填写日期',
+	             number: '请输入一个有效的号码',
+	             url: '请输入一个有效的URL',
+	             email: '请输入一个有效的电子邮件地址',
+	             dateISO: '请输入一个有效的日期(ISO)',
+	             digits: '请输入数字',
+	             equalTo:'请再次输入相同的值。',
+	             minlength: '请输入至少{0}字符',
+	             maxlength: '请输入不超过{0}字符',
+	             rangelength: '请输入一个值{0}和{1}字符之间',
+	             min: '请输入一个值大于或等于{0}',
+	             max: '请输入一个值小于或等于{0}',
+	             range: '请输入一个值{0} - {1}'
 	             * */
 	            message: {
 	                required: '不能为空',
@@ -42842,10 +43066,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ValidatorPanel.prototype.equalTo = function equalTo(value, element, param) {
 	        var target = document.querySelectorAll(param);
 	        /*if ( this.onfocus ) {
-	            target.off( ".validate-equalTo" ).on( "blur.validate-equalTo", function() {
-	                this.show();
-	            });
-	        }*/
+	         target.off( ".validate-equalTo" ).on( "blur.validate-equalTo", function() {
+	         this.show();
+	         });
+	         }*/
 	        return this.optional(element) || value === target[0].value;
 	    };
 
@@ -42970,18 +43194,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            rules = this.props.rules[element.name]; //element.getAttribute('data-rules') ;
 
 	        /*{
-	            require:true,
-	                isName:function(){
-	            return true
-	        },
-	            number:{
-	                text:'不能为空',
-	                    params:1,
-	                    rule:function(){
-	                    return true;
-	                }
-	            }
-	        }*/
+	         require:true,
+	         isName:function(){
+	         return true
+	         },
+	         number:{
+	         text:'不能为空',
+	         params:1,
+	         rule:function(){
+	         return true;
+	         }
+	         }
+	         }*/
 	        this.vals[this.getField(element)] = val;
 	        for (var rule in rules) {
 
@@ -43001,52 +43225,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	                break;
 	            }
 	            /*if(text.url && text.url!='' ){
-	                msg = this.ajaxValidate(text.url,val,text.params);
-	                if(typeof(msg) !== 'string'){
-	                    msg = text.text;
-	                }
-	                break;
-	            }else if(!this[rule].call(this,val,element,text.params)  ){
-	                msg = text.text;
-	                break;
-	            }*/
+	             msg = this.ajaxValidate(text.url,val,text.params);
+	             if(typeof(msg) !== 'string'){
+	             msg = text.text;
+	             }
+	             break;
+	             }else if(!this[rule].call(this,val,element,text.params)  ){
+	             msg = text.text;
+	             break;
+	             }*/
 	        }
 	        return this.formatString(msg, text && text.params || '');
-	    };
-
-	    //验证
-
-	    ValidatorPanel.prototype.validate = function validate(element) {
-	        var message = this.check(element) || '';
-	        if (message !== '' && element.style.display != 'none' && !this.isUpdate) {
-	            //错误提示
-	            //this.elements[element.name].status=1;
-
-	            this.setTipsOffset(element);
-
-	            //设置错误消息
-	            this.setState({
-	                message: message,
-	                show: message
-	            });
-	            //this.highlight(this.parent, this.options.errorClass, this.options.validClass);
-	            if (this.props.timeout) {
-	                clearTimeout(this.validateTimeout);
-	                this.validateTimeout = setTimeout((function () {
-	                    this.setState({
-	                        show: ''
-	                    });
-	                }).bind(this), this.props.timeout);
-	            }
-	            return false;
-	        }
-	        this.setState({
-	            show: null
-	        });
-	        this.unhighlight(element);
-	        this.isUpdate = false;
-	        //this.hide();
-	        return true;
 	    };
 
 	    ValidatorPanel.prototype.getField = function getField(element) {
@@ -43163,44 +43352,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 
-	    //废弃
-
-	    ValidatorPanel.prototype.bindValidate = function bindValidate() {
-	        var _this2 = this;
-
-	        //let _this = this;
-	        var same = null,
-	            showOrhide = 'show';
-	        var options = _react2['default'].Children.map(this.props.children, function (option) {
-	            //将validate保存起来，在适当的时候调用
-	            var _option$props = option.props;
-	            var rules = _option$props.rules;
-	            var name = _option$props.name;
-
-	            if (rules) {
-
-	                _this2.elements[name] = {
-	                    rules: rules,
-	                    status: 0
-	                };
-
-	                var opt = _react2['default'].cloneElement(option, {
-	                    onBlur: _this2.validateHandler.bind(_this2),
-	                    onFocus: _this2.validateHandler.bind(_this2),
-	                    onClick: _this2.validateHandler.bind(_this2),
-	                    onKeyUp: _this2.validateHandler.bind(_this2),
-	                    ref: 'ref-' + name
-	                });
-
-	                showOrhide = _this2.state[name] && same != name ? 'show' : 'hide';
-	                same = name;
-	                return { opt: opt };
-	            }
-	            return option;
-	        }, this);
-	        return options;
-	    };
-
 	    ValidatorPanel.prototype.getForm = function getForm() {
 	        return _reactLibReactDOM2['default'].findDOMNode(this.refs[this.props.id ? this.props.id : this.formName]);
 	    };
@@ -43243,10 +43394,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var submitElement = _props2.submitElement;
 
 	        /*for(let i=0,len=elements.length;i<len;i++){
-	            trigger.split(' ').forEach((event)=>{
-	                 elements[i].addEventListener(event,_this.validateHandler.bind(_this),false);
-	            });
-	        }*/
+	         trigger.split(' ').forEach((event)=>{
+	          elements[i].addEventListener(event,_this.validateHandler.bind(_this),false);
+	         });
+	         }*/
 
 	        this.setDomEvent();
 
@@ -43282,26 +43433,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }).bind(this), 400);
 	    };
 
-	    ValidatorPanel.prototype.render = function render() {
-	        var _props3 = this.props;
-	        var Component = _props3.componentTag;
-	        var direction = _props3.direction;
-	        var id = _props3.id;
-
-	        this.removeFadeout();
-	        return _react2['default'].createElement(
-	            Component,
-	            _extends({}, this.props, { ref: id ? id : this.formName, className: this.getClassName('validate') }),
-	            this.props.children,
-	            _react2['default'].createElement(
-	                'div',
-	                { ref: 'ref-validateTips', className: _classnames2['default'](this.getClassName('validate-tips'), 'animated', '' + (direction === "bottom" || direction === "top" ? 'bottom' : ''), '' + (this.init ? "" : this.state.show ? "fadein" : "fadeout")) },
-	                _react2['default'].createElement('i', null),
-	                this.state.message
-	            )
-	        );
-	    };
-
 	    var _ValidatorPanel = ValidatorPanel;
 	    ValidatorPanel = _utilsClassNameMixin2['default'](ValidatorPanel) || ValidatorPanel;
 	    return ValidatorPanel;
@@ -43311,7 +43442,92 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 635 */
+/* 636 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(353);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ValidatorBaseJs = __webpack_require__(635);
+
+	var _ValidatorBaseJs2 = _interopRequireDefault(_ValidatorBaseJs);
+
+	var _classnames = __webpack_require__(564);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var ValidatorWrapper = (function (_ValidatorBase) {
+	    _inherits(ValidatorWrapper, _ValidatorBase);
+
+	    function ValidatorWrapper(props, context) {
+	        _classCallCheck(this, ValidatorWrapper);
+
+	        _ValidatorBase.call(this, props, context);
+	    }
+
+	    //验证
+
+	    ValidatorWrapper.prototype.validate = function validate(element) {
+	        var message = this.check(element) || '';
+	        if (message !== '' && element.style.display != 'none' && !this.isUpdate) {
+	            //设置错误消息
+	            this.setState({
+	                message: message,
+	                show: message
+	            });
+	            return false;
+	        }
+	        this.setState({
+	            show: null,
+	            message: ''
+	        });
+	        this.unhighlight(element);
+	        this.isUpdate = false;
+	        //this.hide();
+	        return true;
+	    };
+
+	    ValidatorWrapper.prototype.render = function render() {
+	        var _props = this.props;
+	        var Component = _props.componentTag;
+	        var direction = _props.direction;
+	        var id = _props.id;
+
+	        this.removeFadeout();
+	        return _react2['default'].createElement(
+	            'div',
+	            _extends({}, this.props, { ref: id ? id : this.formName, className: this.getClassName('validate') }),
+	            this.props.children,
+	            _react2['default'].createElement(
+	                'div',
+	                { ref: 'ref-validateTips', className: _classnames2['default'](this.getClassName('validate-tips'), 'animated', '' + (direction === "bottom" || direction === "top" ? 'bottom' : ''), '' + (this.init ? "" : this.state.show ? "fadein" : "fadeout"), 'relative') },
+	                _react2['default'].createElement('i', null),
+	                this.state.message
+	            )
+	        );
+	    };
+
+	    return ValidatorWrapper;
+	})(_ValidatorBaseJs2['default']);
+
+	exports['default'] = ValidatorWrapper;
+	module.exports = exports['default'];
+
+/***/ },
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43340,15 +43556,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilsClassNameMixinJs2 = _interopRequireDefault(_utilsClassNameMixinJs);
 
-	var _ThJs = __webpack_require__(636);
+	var _ThJs = __webpack_require__(638);
 
 	var _ThJs2 = _interopRequireDefault(_ThJs);
 
-	var _TdJs = __webpack_require__(637);
+	var _TdJs = __webpack_require__(639);
 
 	var _TdJs2 = _interopRequireDefault(_TdJs);
 
-	var _TrJs = __webpack_require__(638);
+	var _TrJs = __webpack_require__(640);
 
 	var _TrJs2 = _interopRequireDefault(_TrJs);
 
@@ -43512,7 +43728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 636 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43607,7 +43823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 637 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43681,7 +43897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 638 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43766,7 +43982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 639 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43827,7 +44043,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 640 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44123,7 +44339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 641 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44154,7 +44370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _SliderJs2 = _interopRequireDefault(_SliderJs);
 
-	var _TimePickerJs = __webpack_require__(640);
+	var _TimePickerJs = __webpack_require__(642);
 
 	var _TimePickerJs2 = _interopRequireDefault(_TimePickerJs);
 
@@ -44277,7 +44493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 642 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44294,7 +44510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(643);
+	__webpack_require__(645);
 
 	var DemoLayout = (function (_Component) {
 	    _inherits(DemoLayout, _Component);
@@ -44421,14 +44637,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.DemoShow = DemoShow;
 
 /***/ },
-/* 643 */
+/* 645 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 644 */,
-/* 645 */
+/* 646 */,
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44446,12 +44662,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(646);
+	__webpack_require__(648);
 
-	var Prism = __webpack_require__(648);
+	var Prism = __webpack_require__(650);
 
 	function getFile(fileName) {
-	    var fileContent = __webpack_require__(649)("./" + fileName + '.text');
+	    var fileContent = __webpack_require__(651)("./" + fileName + '.text');
 	    return fileContent;
 	}
 
@@ -44486,14 +44702,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Code;
 
 /***/ },
-/* 646 */
+/* 648 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 647 */,
-/* 648 */
+/* 649 */,
+/* 650 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -45295,65 +45511,66 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 649 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./button-demo1.text": 650,
-		"./button-demo2.text": 651,
-		"./button-demo3.text": 652,
-		"./button-demo4.text": 653,
-		"./button-demo5.text": 654,
-		"./calendar-demo1.text": 655,
-		"./calendar-demo2.text": 656,
-		"./calendar-demo3.text": 657,
-		"./calendar-demo4.text": 658,
-		"./calendar-demo5.text": 659,
-		"./calendar-demo6.text": 660,
-		"./crumb.text": 661,
-		"./datetimepicker-demo1.text": 662,
-		"./datetimepicker-demo2.text": 663,
-		"./datetimepicker-demo3.text": 664,
-		"./datetimepicker-demo4.text": 665,
-		"./dialog-demo1.text": 666,
-		"./dialog-demo2.text": 667,
-		"./dialog-demo3.text": 668,
-		"./dialog-demo4.text": 669,
-		"./dialog-demo5.text": 670,
-		"./dialog-demo6.text": 671,
-		"./dialog-demo7.text": 672,
-		"./dialog-demo8.text": 673,
-		"./dropTree.text": 674,
-		"./input-checkbox.text": 675,
-		"./input-combine.text": 676,
-		"./input-radio.text": 677,
-		"./label-demo1.text": 678,
-		"./label-demo2.text": 679,
-		"./label-demo3.text": 680,
-		"./label-demo4.text": 681,
-		"./label-demo5.text": 682,
-		"./layout-card.text": 683,
-		"./layout-filter.text": 684,
-		"./layout-search.text": 685,
-		"./paging.text": 686,
-		"./select-demo.text": 687,
-		"./slider-demo1.text": 688,
-		"./slider.text": 689,
-		"./star-demo1.text": 690,
-		"./star-demo2.text": 691,
-		"./star-demo3.text": 692,
-		"./suggestion-demo1.text": 693,
-		"./suggestion-demo2.text": 694,
-		"./tab.text": 695,
-		"./theme.text": 696,
-		"./timepicker-demo1.text": 697,
-		"./toast.text": 698,
-		"./tooltip-demo1.text": 699,
-		"./tooltip-demo2.text": 700,
-		"./treeMenu-demo.text": 701,
-		"./validate-demo1.text": 702,
-		"./validate-demo2.text": 703,
-		"./validate-demo3.text": 704
+		"./button-demo1.text": 652,
+		"./button-demo2.text": 653,
+		"./button-demo3.text": 654,
+		"./button-demo4.text": 655,
+		"./button-demo5.text": 656,
+		"./calendar-demo1.text": 657,
+		"./calendar-demo2.text": 658,
+		"./calendar-demo3.text": 659,
+		"./calendar-demo4.text": 660,
+		"./calendar-demo5.text": 661,
+		"./calendar-demo6.text": 662,
+		"./crumb.text": 663,
+		"./datetimepicker-demo1.text": 664,
+		"./datetimepicker-demo2.text": 665,
+		"./datetimepicker-demo3.text": 666,
+		"./datetimepicker-demo4.text": 667,
+		"./dialog-demo1.text": 668,
+		"./dialog-demo2.text": 669,
+		"./dialog-demo3.text": 670,
+		"./dialog-demo4.text": 671,
+		"./dialog-demo5.text": 672,
+		"./dialog-demo6.text": 673,
+		"./dialog-demo7.text": 674,
+		"./dialog-demo8.text": 675,
+		"./dropTree.text": 676,
+		"./input-checkbox.text": 677,
+		"./input-combine.text": 678,
+		"./input-radio.text": 679,
+		"./label-demo1.text": 680,
+		"./label-demo2.text": 681,
+		"./label-demo3.text": 682,
+		"./label-demo4.text": 683,
+		"./label-demo5.text": 684,
+		"./layout-card.text": 685,
+		"./layout-filter.text": 686,
+		"./layout-search.text": 687,
+		"./paging.text": 688,
+		"./select-demo.text": 689,
+		"./slider-demo1.text": 690,
+		"./slider.text": 691,
+		"./star-demo1.text": 692,
+		"./star-demo2.text": 693,
+		"./star-demo3.text": 694,
+		"./suggestion-demo1.text": 695,
+		"./suggestion-demo2.text": 696,
+		"./tab.text": 697,
+		"./theme.text": 698,
+		"./timepicker-demo1.text": 699,
+		"./toast.text": 700,
+		"./tooltip-demo1.text": 701,
+		"./tooltip-demo2.text": 702,
+		"./treeMenu-demo.text": 703,
+		"./validate-demo1.text": 704,
+		"./validate-demo2.text": 705,
+		"./validate-demo3.text": 706,
+		"./validate-demo4.text": 707
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -45366,341 +45583,347 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 649;
+	webpackContext.id = 651;
 
-
-/***/ },
-/* 650 */
-/***/ function(module, exports) {
-
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo1 extends Component{\n    render(){\n        return (\n            <div>\n                <Button egStyle=\"warning\">警告</Button>\n                <Button egStyle=\"success\">成功</Button>\n                <Button egStyle=\"danger\">危险</Button>\n                <Button egStyle=\"error\">错误</Button>\n                <Button egStyle=\"info\">info</Button>\n                <Button >默认</Button>\n                <Button egStyle=\"white\">白色</Button>\n                <Button egStyle=\"link\" >链接</Button>\n            </div>\n        );\n    }\n}"
-
-/***/ },
-/* 651 */
-/***/ function(module, exports) {
-
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo2 extends Component{\n    render(){\n        return (\n            <div>\n                <Button egSize=\"xs\" >小号</Button>\n                <Button>默认</Button>\n                <Button egSize=\"lg\" >大号</Button>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 652 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo3 extends Component{\n    onActive(target,html){\n        console.dir(html);\n        alert('测试');\n    }\n    render(){\n        return (\n            <div>\n                <ButtonGroup egType=\"justify\" activeCallback={this.onActive}>\n                    <Button egStyle=\"warning\">水平按钮组1</Button><Button egStyle=\"warning\">水平按钮组2</Button><Button egStyle=\"warning\">水平按钮组3</Button>\n                </ButtonGroup>\n                <br/>\n                <ButtonGroup egType=\"tacked\">\n                    <Button>垂直按钮组1</Button><Button>垂直按钮组2</Button><Button>垂直按钮组3</Button>\n                </ButtonGroup>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo1 extends Component{\n    render(){\n        return (\n            <div>\n                <Button egStyle=\"warning\">警告</Button>\n                <Button egStyle=\"success\">成功</Button>\n                <Button egStyle=\"danger\">危险</Button>\n                <Button egStyle=\"error\">错误</Button>\n                <Button egStyle=\"info\">info</Button>\n                <Button >默认</Button>\n                <Button egStyle=\"white\">白色</Button>\n                <Button egStyle=\"link\" >链接</Button>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 653 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo4 extends Component{\n    render(){\n        return (\n            <div>\n                <Button egStyle=\"warning\" hollow>警告</Button>\n                <Button egStyle=\"success\" hollow>成功</Button>\n                <Button egStyle=\"danger\" hollow>危险</Button>\n                <Button egStyle=\"error\" hollow>错误</Button>\n                <Button egStyle=\"primary\" hollow>primary</Button>\n                <Button egStyle=\"info\" hollow>info</Button>\n                <Button egStyle=\"default\" hollow>default</Button>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo2 extends Component{\n    render(){\n        return (\n            <div>\n                <Button egSize=\"xs\" >小号</Button>\n                <Button>默认</Button>\n                <Button egSize=\"lg\" >大号</Button>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 654 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo6 extends Component{\n    render(){\n        return (\n            <div>\n                <Button radius egSize=\"sm\">默认</Button>\n                <Button radius egSize=\"sm\" disabled>默认不可点</Button>\n                <br/>\n                <Button egStyle=\"white\">白色</Button>\n                <Button egStyle=\"white\" disabled>白色不可点</Button>\n                <br/>\n                <Button egStyle=\"success\">成功</Button>\n                <Button egStyle=\"success\" disabled>成功不可点</Button>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo3 extends Component{\n    onActive(target,html){\n        console.dir(html);\n        alert('测试');\n    }\n    render(){\n        return (\n            <div>\n                <ButtonGroup egType=\"justify\" activeCallback={this.onActive}>\n                    <Button egStyle=\"warning\">水平按钮组1</Button><Button egStyle=\"warning\">水平按钮组2</Button><Button egStyle=\"warning\">水平按钮组3</Button>\n                </ButtonGroup>\n                <br/>\n                <ButtonGroup egType=\"tacked\">\n                    <Button>垂直按钮组1</Button><Button>垂直按钮组2</Button><Button>垂直按钮组3</Button>\n                </ButtonGroup>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 655 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n                <CalendarPanel>\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo4 extends Component{\n    render(){\n        return (\n            <div>\n                <Button egStyle=\"warning\" hollow>警告</Button>\n                <Button egStyle=\"success\" hollow>成功</Button>\n                <Button egStyle=\"danger\" hollow>危险</Button>\n                <Button egStyle=\"error\" hollow>错误</Button>\n                <Button egStyle=\"primary\" hollow>primary</Button>\n                <Button egStyle=\"info\" hollow>info</Button>\n                <Button egStyle=\"default\" hollow>default</Button>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 656 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo2 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n                <CalendarPanel calendarType=\"yearMonth\">\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {ButtonGroup,Button,Row,Col,Grid} from 'eagle-ui';\nexport default class ButtonDemo6 extends Component{\n    render(){\n        return (\n            <div>\n                <Button radius egSize=\"sm\">默认</Button>\n                <Button radius egSize=\"sm\" disabled>默认不可点</Button>\n                <br/>\n                <Button egStyle=\"white\">白色</Button>\n                <Button egStyle=\"white\" disabled>白色不可点</Button>\n                <br/>\n                <Button egStyle=\"success\">成功</Button>\n                <Button egStyle=\"success\" disabled>成功不可点</Button>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 657 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo3 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            defaultDate: '2016-12-1'\n        };\n    };\n    getvalue(val){\n        this.setState({\n            defaultDate: val\n        });\n    }\n    render(){\n        return (\n            <div>\n                <CalendarPanel defaultDate={this.state.defaultDate} startDate=\"2017-02-05\" endDate=\"2017-10-01\" getValueCallback={::this.getvalue}>\n                    <Input placeholder=\"请选择日期\"/>\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n                <CalendarPanel>\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 658 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo4 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n                <CalendarPanel format=\"yyyy年MM月dd日\">\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo2 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n                <CalendarPanel calendarType=\"yearMonth\">\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 659 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel, Button} from 'eagle-ui';\nexport default class CalendarDemo5 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    changeDate(){\n        this.refs.cp.dateChange('2015-03-02');\n    }\n    render(){\n        return (\n            <div>\n                <Button onClick={::this.changeDate} >改变时间</Button>\n                <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\">\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\"/>\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo3 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            defaultDate: '2016-12-1'\n        };\n    };\n    getvalue(val){\n        this.setState({\n            defaultDate: val\n        });\n    }\n    render(){\n        return (\n            <div>\n                <CalendarPanel defaultDate={this.state.defaultDate} startDate=\"2017-02-05\" endDate=\"2017-10-01\" getValueCallback={::this.getvalue}>\n                    <Input placeholder=\"请选择日期\"/>\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 660 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel, Button, Grid, Row, Col} from 'eagle-ui';\nexport default class CalendarDemo5 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n               <Grid>\n                   <Row>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='top'>\n                               <Input placeholder=\"上部\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='right'>\n                               <Input placeholder=\"右边\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='bottom'>\n                               <Input placeholder=\"底部\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='left'>\n                               <Input placeholder=\"左边\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n                   <Row>\n                       <Col sm={3}/>\n                       <Col sm={6}>\n                           <CalendarPanel ref='cp-auto-1' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}/>\n                   </Row>\n                   <Row>\n                       <Col sm={4}>\n                           <CalendarPanel ref='cp-left-1' format=\"yyyy年MM月dd日\" direction='left'>\n                               <Input placeholder=\"定位到左边，但是左边位置不足\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={4}/>\n                       <Col sm={4}>\n                           <CalendarPanel ref='cp-right-1' format=\"yyyy年MM月dd日\" direction='right'>\n                               <Input placeholder=\"定位到右边，但是右边位置不足\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n                   <Row>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp-auto-2' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={6}/>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp-auto-3' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n                   <Row>\n                       <Col sm={6}>\n                           <CalendarPanel ref='cp-auto-4' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={6}>\n                           <CalendarPanel ref='cp-auto-5' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n               </Grid>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel} from 'eagle-ui';\nexport default class CalendarDemo4 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n                <CalendarPanel format=\"yyyy年MM月dd日\">\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\" />\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 661 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Crumb} from 'eagle-ui';\nexport default class CrumbCls extends Component {\n    render() {\n        return (\n            <Crumb>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url='baidu.html'>菜单</item>\n            </Crumb>\n        );\n    }\n}\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel, Button} from 'eagle-ui';\nexport default class CalendarDemo5 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    changeDate(){\n        this.refs.cp.dateChange('2015-03-02');\n    }\n    render(){\n        return (\n            <div>\n                <Button onClick={::this.changeDate} >改变时间</Button>\n                <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\">\n                    <Input placeholder=\"请选择日期\"  icon=\"calendar\"/>\n                </CalendarPanel>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 662 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"yyyy年MM月dd日 hh:mm tt\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, CalendarPanel, Button, Grid, Row, Col} from 'eagle-ui';\nexport default class CalendarDemo5 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <div>\n               <Grid>\n                   <Row>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='top'>\n                               <Input placeholder=\"上部\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='right'>\n                               <Input placeholder=\"右边\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='bottom'>\n                               <Input placeholder=\"底部\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp' format=\"yyyy年MM月dd日\" direction='left'>\n                               <Input placeholder=\"左边\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n                   <Row>\n                       <Col sm={3}/>\n                       <Col sm={6}>\n                           <CalendarPanel ref='cp-auto-1' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={3}/>\n                   </Row>\n                   <Row>\n                       <Col sm={4}>\n                           <CalendarPanel ref='cp-left-1' format=\"yyyy年MM月dd日\" direction='left'>\n                               <Input placeholder=\"定位到左边，但是左边位置不足\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={4}/>\n                       <Col sm={4}>\n                           <CalendarPanel ref='cp-right-1' format=\"yyyy年MM月dd日\" direction='right'>\n                               <Input placeholder=\"定位到右边，但是右边位置不足\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n                   <Row>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp-auto-2' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={6}/>\n                       <Col sm={3}>\n                           <CalendarPanel ref='cp-auto-3' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n                   <Row>\n                       <Col sm={6}>\n                           <CalendarPanel ref='cp-auto-4' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                       <Col sm={6}>\n                           <CalendarPanel ref='cp-auto-5' format=\"yyyy年MM月dd日\">\n                               <Input placeholder=\"自动定位，区别左右\"  icon=\"calendar\"/>\n                           </CalendarPanel>\n                       </Col>\n                   </Row>\n               </Grid>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 663 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"yyyy年MM月dd日\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Crumb} from 'eagle-ui';\nexport default class CrumbCls extends Component {\n    render() {\n        return (\n            <Crumb>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url=\"dddd.html\">菜单</item>\n                <item url='baidu.html'>菜单</item>\n            </Crumb>\n        );\n    }\n}\n"
 
 /***/ },
 /* 664 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"hh:mm\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"yyyy年MM月dd日 hh:mm tt\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
 
 /***/ },
 /* 665 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n\nthis.state = {\n    dateTime:''\n};\n\n<DateTimePicker defaultValue={this.state.dateTime} getValueCallback={(val)=>{\n    this.setState({\n        dateTime:val\n    });\n}}>\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"yyyy年MM月dd日\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
 
 /***/ },
 /* 666 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this, 'demo1')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo1\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\" buttons={[\n                    {\n                        type: 'success',\n                        name: '确认'\n\n                    },\n                    {\n                        type: 'cancel',\n                        egStyle: 'white',\n                        name: '取消'\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"hh:mm\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
 
 /***/ },
 /* 667 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo2\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n                    {\n                        egStyle:'warning',\n                        name:'改变文案',\n                        callback:()=>{\n                            {/*alert('自定义按钮');*/}\n                            this.setState({\n                                alertContent: '哈哈哈，改成波多。。。。'\n                            })\n                        }\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n\nthis.state = {\n    dateTime:''\n};\n\n<DateTimePicker defaultValue={this.state.dateTime} getValueCallback={(val)=>{\n    this.setState({\n        dateTime:val\n    });\n}}>\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
 
 /***/ },
 /* 668 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n                <Dialog id=\"demo3\" egSize=\"sm\" title=\"表单验证\" contentAlign={this.state.dialogAlign} buttons={[\n                    {\n                        type: 'success',\n                        name: '提交',\n                        callback:()=>{}\n                    },\n                    {\n                        type:'cancel',\n                        egStyle:'white',\n                        name:'取消',\n                        callback:()=>{}\n                    }\n                ]}>\n                    <Panel heading=\"我是标题\">\n                        <PanelContent>\n                            <Row>\n                                <Col>\n                                    <FormGroup>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test1231\" id=\"test\" placeholder=\"请输入姓名\" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>改变对齐方式</Col>\n                                            <Col sm={10}><Input name=\"test222\" id=\"test222\" placeholder=\"left|right|center\" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>性别</Col>\n                                            <Col sm={10}>\n                                                <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                                                    <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                                                    <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                                                </RadioGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>体育爱好</Col>\n                                            <Col sm={10}>\n                                                <CheckboxGroup>\n                                                    <Input  type=\"checkbox\" label=\"足球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"篮球\"    />\n                                                    <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                                                </CheckboxGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                            <FormGroup>\n                                                <Col sm={13}>出生日期</Col>\n                                                <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                                            </FormGroup>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>所在城市</Col>\n                                            <Col sm={10} layer>\n                                                <Row style={{margin:0}}>\n                                                    <Col sm={4} end>\n                                                        <Select placeholder=\"请选择城市\" >\n                                                            <item value='bei'>北京</item>\n                                                            <item value='shang'>上海</item>\n                                                            <item value='nan'>南京</item>\n                                                        </Select>\n                                                    </Col>\n                                                </Row>\n                                            </Col>\n                                        </Row>\n                                    </FormGroup>\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题二\">\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题三\" >\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n                            </Row>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this, 'demo1')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo1\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\" buttons={[\n                    {\n                        type: 'success',\n                        name: '确认'\n\n                    },\n                    {\n                        type: 'cancel',\n                        egStyle: 'white',\n                        name: '取消'\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 669 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo4')} className=\"mg-right-15\">点击我mask3 outside</Button>\n                <Dialog id=\"demo4\" title=\"panel\" outside egSize=\"lg\">\n                    <Panel egType=\"normal\" margin=\"0\">\n                        <PanelHeader>另一种形式的嵌套</PanelHeader>\n                        <PanelContent>\n                            <Panel egType=\"normal\">\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                    <Row>\n                                        <Col>\n                                            <Panel  margin={'0'}>\n                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>\n                                                <PanelContent>\n                                                    <Row>\n                                                        <Col>\n                                                            我是内容区\n                                                        </Col>\n                                                    </Row>\n                                                </PanelContent>\n                                            </Panel>\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                            <Panel margin={'0'}>\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo2\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n                    {\n                        egStyle:'warning',\n                        name:'改变文案',\n                        callback:()=>{\n                            {/*alert('自定义按钮');*/}\n                            this.setState({\n                                alertContent: '哈哈哈，改成波多。。。。'\n                            })\n                        }\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 670 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showAlert(){\n        Dialog.alert('哈哈，我是alert');\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n                <Dialog id=\"demo3\" egSize=\"sm\" title=\"表单验证\" contentAlign={this.state.dialogAlign} buttons={[\n                    {\n                        type: 'success',\n                        name: '提交',\n                        callback:()=>{}\n                    },\n                    {\n                        type:'cancel',\n                        egStyle:'white',\n                        name:'取消',\n                        callback:()=>{}\n                    }\n                ]}>\n                    <Panel heading=\"我是标题\">\n                        <PanelContent>\n                            <Row>\n                                <Col>\n                                    <FormGroup>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test1231\" id=\"test\" placeholder=\"请输入姓名\" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>改变对齐方式</Col>\n                                            <Col sm={10}><Input name=\"test222\" id=\"test222\" placeholder=\"left|right|center\" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>性别</Col>\n                                            <Col sm={10}>\n                                                <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                                                    <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                                                    <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                                                </RadioGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>体育爱好</Col>\n                                            <Col sm={10}>\n                                                <CheckboxGroup>\n                                                    <Input  type=\"checkbox\" label=\"足球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"篮球\"    />\n                                                    <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                                                </CheckboxGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                            <FormGroup>\n                                                <Col sm={13}>出生日期</Col>\n                                                <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                                            </FormGroup>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>所在城市</Col>\n                                            <Col sm={10} layer>\n                                                <Row style={{margin:0}}>\n                                                    <Col sm={4} end>\n                                                        <Select placeholder=\"请选择城市\" >\n                                                            <item value='bei'>北京</item>\n                                                            <item value='shang'>上海</item>\n                                                            <item value='nan'>南京</item>\n                                                        </Select>\n                                                    </Col>\n                                                </Row>\n                                            </Col>\n                                        </Row>\n                                    </FormGroup>\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题二\">\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题三\" >\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n                            </Row>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 671 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    nomask(){\n        Dialog.alert('哈哈，我是alert',{\n            isMask:false\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo4')} className=\"mg-right-15\">点击我mask3 outside</Button>\n                <Dialog id=\"demo4\" title=\"panel\" outside egSize=\"lg\">\n                    <Panel egType=\"normal\" margin=\"0\">\n                        <PanelHeader>另一种形式的嵌套</PanelHeader>\n                        <PanelContent>\n                            <Panel egType=\"normal\">\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                    <Row>\n                                        <Col>\n                                            <Panel  margin={'0'}>\n                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>\n                                                <PanelContent>\n                                                    <Row>\n                                                        <Col>\n                                                            我是内容区\n                                                        </Col>\n                                                    </Row>\n                                                </PanelContent>\n                                            </Panel>\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                            <Panel margin={'0'}>\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 672 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showConfirm(){\n        Dialog.confirm('确定你已经打开了么？').then(()=>{\n            alert('确定');\n        },()=>{\n            alert('取消');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showAlert(){\n        Dialog.alert('哈哈，我是alert');\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 673 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n   showPrompt(){\n       Dialog.prompt('这是个prompt',{\n               inputWidth:'50%'\n           }).then((value)=>{\n               console.log(value)\n           },(value)=>{\n               console.log('取消回调')\n           })\n    }\n    render() {\n        return (\n            <div>\n               <Button onClick={::this.showPrompt} className=\"mg-right-15\">点击我prompt</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    nomask(){\n        Dialog.alert('哈哈，我是alert',{\n            isMask:false\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 674 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\n\nimport MultiDropDown from \"eg-drop-tree\";\nexport default class Demo extends Component {\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            mockMultiDropData:[],\n            selected:'1000034'\n        }\n    }\n    componentDidMount(){\n        var self=this;\n        setTimeout(function(){\n            self.setState({\n                mockMultiDropData:[\n                    {\n                        \"typeId\": 2,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"测试\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 1000023,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }, {\n                                \"typeId\": 1000022,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000024,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"ppe测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000025,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"beta测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    },\n                    {\n                        \"typeId\": 3,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"POI相关\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 10014,\n                                \"parentTypeId\": 3,\n                                \"typeName\": \"评价评分\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 2,\n                                \"firstOwnerId\": 0,\n                                \"secondOwnerId\": 0,\n                                \"children\": [\n                                    {\n                                        \"typeId\": 1000034,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧评价\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 37743,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000035,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评价\",\n                                        \"leadingAnswer\": \"点评评价的恶意差评、炒作的举报和申诉请到<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://trust.dianping.com\\\" target=\\\"_blank\\\">http://trust.dianping.com</a>提交反馈\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 20779,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000036,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧星级评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 25305,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000037,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 34348,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    }\n                                ],\n                                \"leaf\": false\n                            },\n                            {\n                                \"typeId\": 1000026,\n                                \"parentTypeId\": 10006,\n                                \"typeName\": \"门店基本信息/地图报错\",\n                                \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000027,\n                                \"parentTypeId\": 10007,\n                                \"typeName\": \"门店营业状态报错\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000028,\n                                \"parentTypeId\": 10008,\n                                \"typeName\": \"举报重复/拆分/美大关联\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000029,\n                                \"parentTypeId\": 10009,\n                                \"typeName\": \"门店品牌连锁\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000030,\n                                \"parentTypeId\": 10010,\n                                \"typeName\": \"举报虚假门店\",\n                                \"leadingAnswer\": \"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000031,\n                                \"parentTypeId\": 10011,\n                                \"typeName\": \"门店首图展示\",\n                                \"leadingAnswer\": \"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\\n<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/img\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/img</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000032,\n                                \"parentTypeId\": 10012,\n                                \"typeName\": \"门店品类划分\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在MDC门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n以上报错都会在1个工作日内17:00前处理完毕\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37434,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000033,\n                                \"parentTypeId\": 10013,\n                                \"typeName\": \"门店罚款相关\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000038,\n                                \"parentTypeId\": 10015,\n                                \"typeName\": \"其他POI问题\",\n                                \"leadingAnswer\": \"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://bd.hui.dper.com/hui/poi/shop_query\\\" target=\\\"_blank\\\">http://bd.hui.dper.com/hui/poi/shop_query</a>\\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    }\n                ]\n            }  )\n        },0);\n    }\n    render(){\n        let _this=this;\n        return (\n            <div className=\"paddingSpace\">\n                <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>\n                    <MultiDropDown selected={this.state.selected}\n                                   onChange={\n                                        function(e){\n                                            _this.setState({\n                                            selected:e  })\n                                        }\n\n                                   }\n                                   dropDownData={this.state.mockMultiDropData}\n                                   keyName='typeName'\n                                   leafName='leaf'\n                                   title=\"树状列表选择\"\n                                   ref=\"MultiDropDown\"/>\n                </div>\n\n                <div className='demo-button-container'>\n                    <div className='demo-button' style={{background:'red'}} onClick={()=>{this.getDropDownData('MultiDropDown')}}>点击获取树状列表的选择结果</div></div>\n            </div>\n        );\n    }\n    getDropDownData(type){\n        console.log(this.refs[type].getParams());\n    }\n}\n\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showConfirm(){\n        Dialog.confirm('确定你已经打开了么？').then(()=>{\n            alert('确定');\n        },()=>{\n            alert('取消');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 675 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {CheckboxGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            checkBoxValue:false\n        }\n    };\n    checkboxCallback(){\n        this.setState({\n            checkBoxValue:!this.state.checkBoxValue\n        })\n    }\n    render(){\n        let {checkBoxValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={12}>\n                        <CheckboxGroup>\n                            <Input label=\"石榴\" type=\"checkbox\" checked />\n                            <Input label=\"橘子\" type=\"checkbox\" disabled={true}   />\n                            <Input label=\"苹果\"  type=\"checkbox\" getValueCallback={function(val,dom){console.log(val,dom)}}  value=\"apple\"  />\n                            <Input label=\"香蕉\"  type=\"checkbox\" onChange={::this.checkboxCallback} checked={checkBoxValue} value=\"banana\"  />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n   showPrompt(){\n       Dialog.prompt('这是个prompt',{\n               inputWidth:'50%'\n           }).then((value)=>{\n               console.log(value)\n           },(value)=>{\n               console.log('取消回调')\n           })\n    }\n    render() {\n        return (\n            <div>\n               <Button onClick={::this.showPrompt} className=\"mg-right-15\">点击我prompt</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 676 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <FormGroup>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>性别</Col>\n                    <Col sm={10}>\n                        <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                            <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                            <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                        </RadioGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>体育爱好</Col>\n                    <Col sm={10}>\n                        <CheckboxGroup>\n                            <Input  type=\"checkbox\" label=\"足球\" checked   />\n                            <Input  type=\"checkbox\" label=\"篮球\"    />\n                            <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                            <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                    <FormGroup>\n                        <Col sm={13}>出生日期</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                    </FormGroup>\n                    <FormGroup>\n                        <Col sm={13}>省份证</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入省份证\"   /></Col>\n                    </FormGroup>\n                </Row>\n            </FormGroup>\n        );\n    }\n};\n"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\n\nimport MultiDropDown from \"eg-drop-tree\";\nexport default class Demo extends Component {\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            mockMultiDropData:[],\n            selected:'1000034'\n        }\n    }\n    componentDidMount(){\n        var self=this;\n        setTimeout(function(){\n            self.setState({\n                mockMultiDropData:[\n                    {\n                        \"typeId\": 2,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"测试\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 1000023,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }, {\n                                \"typeId\": 1000022,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000024,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"ppe测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000025,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"beta测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    },\n                    {\n                        \"typeId\": 3,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"POI相关\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 10014,\n                                \"parentTypeId\": 3,\n                                \"typeName\": \"评价评分\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 2,\n                                \"firstOwnerId\": 0,\n                                \"secondOwnerId\": 0,\n                                \"children\": [\n                                    {\n                                        \"typeId\": 1000034,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧评价\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 37743,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000035,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评价\",\n                                        \"leadingAnswer\": \"点评评价的恶意差评、炒作的举报和申诉请到<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://trust.dianping.com\\\" target=\\\"_blank\\\">http://trust.dianping.com</a>提交反馈\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 20779,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000036,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧星级评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 25305,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000037,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 34348,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    }\n                                ],\n                                \"leaf\": false\n                            },\n                            {\n                                \"typeId\": 1000026,\n                                \"parentTypeId\": 10006,\n                                \"typeName\": \"门店基本信息/地图报错\",\n                                \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000027,\n                                \"parentTypeId\": 10007,\n                                \"typeName\": \"门店营业状态报错\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000028,\n                                \"parentTypeId\": 10008,\n                                \"typeName\": \"举报重复/拆分/美大关联\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000029,\n                                \"parentTypeId\": 10009,\n                                \"typeName\": \"门店品牌连锁\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000030,\n                                \"parentTypeId\": 10010,\n                                \"typeName\": \"举报虚假门店\",\n                                \"leadingAnswer\": \"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000031,\n                                \"parentTypeId\": 10011,\n                                \"typeName\": \"门店首图展示\",\n                                \"leadingAnswer\": \"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\\n<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/img\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/img</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000032,\n                                \"parentTypeId\": 10012,\n                                \"typeName\": \"门店品类划分\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在MDC门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n以上报错都会在1个工作日内17:00前处理完毕\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37434,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000033,\n                                \"parentTypeId\": 10013,\n                                \"typeName\": \"门店罚款相关\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000038,\n                                \"parentTypeId\": 10015,\n                                \"typeName\": \"其他POI问题\",\n                                \"leadingAnswer\": \"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://bd.hui.dper.com/hui/poi/shop_query\\\" target=\\\"_blank\\\">http://bd.hui.dper.com/hui/poi/shop_query</a>\\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    }\n                ]\n            }  )\n        },0);\n    }\n    render(){\n        let _this=this;\n        return (\n            <div className=\"paddingSpace\">\n                <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>\n                    <MultiDropDown selected={this.state.selected}\n                                   onChange={\n                                        function(e){\n                                            _this.setState({\n                                            selected:e  })\n                                        }\n\n                                   }\n                                   dropDownData={this.state.mockMultiDropData}\n                                   keyName='typeName'\n                                   leafName='leaf'\n                                   title=\"树状列表选择\"\n                                   ref=\"MultiDropDown\"/>\n                </div>\n\n                <div className='demo-button-container'>\n                    <div className='demo-button' style={{background:'red'}} onClick={()=>{this.getDropDownData('MultiDropDown')}}>点击获取树状列表的选择结果</div></div>\n            </div>\n        );\n    }\n    getDropDownData(type){\n        console.log(this.refs[type].getParams());\n    }\n}\n\n"
 
 /***/ },
 /* 677 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            radioValue:'橘子'\n        }\n    };\n    radioCallback(val){\n        this.setState({\n            radioValue:val\n        })\n    }\n    render(){\n        let {radioValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <RadioGroup defaultChecked={radioValue}\n                                    name=\"radio-test\"\n                                    getValueCallback={::this.radioCallback}>\n                            <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n                            <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n                            <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n                        </RadioGroup>\n                    </Col>\n                    <Col sm={6}>\n                        已选择了：{this.state.radioValue}\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {CheckboxGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            checkBoxValue:false\n        }\n    };\n    checkboxCallback(){\n        this.setState({\n            checkBoxValue:!this.state.checkBoxValue\n        })\n    }\n    render(){\n        let {checkBoxValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={12}>\n                        <CheckboxGroup>\n                            <Input label=\"石榴\" type=\"checkbox\" checked />\n                            <Input label=\"橘子\" type=\"checkbox\" disabled={true}   />\n                            <Input label=\"苹果\"  type=\"checkbox\" getValueCallback={function(val,dom){console.log(val,dom)}}  value=\"apple\"  />\n                            <Input label=\"香蕉\"  type=\"checkbox\" onChange={::this.checkboxCallback} checked={checkBoxValue} value=\"banana\"  />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ },
 /* 678 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={2}>\n                        <Label egStyle=\"error\">error</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"success\">success</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"warning\">warning</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"danger\">danger</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label>default</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label disabled>disabled</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <FormGroup>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>性别</Col>\n                    <Col sm={10}>\n                        <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                            <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                            <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                        </RadioGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>体育爱好</Col>\n                    <Col sm={10}>\n                        <CheckboxGroup>\n                            <Input  type=\"checkbox\" label=\"足球\" checked   />\n                            <Input  type=\"checkbox\" label=\"篮球\"    />\n                            <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                            <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                    <FormGroup>\n                        <Col sm={13}>出生日期</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                    </FormGroup>\n                    <FormGroup>\n                        <Col sm={13}>省份证</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入省份证\"   /></Col>\n                    </FormGroup>\n                </Row>\n            </FormGroup>\n        );\n    }\n};\n"
 
 /***/ },
 /* 679 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"xs\">small</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"sm\">middle</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"lg\">large</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            radioValue:'橘子'\n        }\n    };\n    radioCallback(val){\n        this.setState({\n            radioValue:val\n        })\n    }\n    render(){\n        let {radioValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <RadioGroup defaultChecked={radioValue}\n                                    name=\"radio-test\"\n                                    getValueCallback={::this.radioCallback}>\n                            <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n                            <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n                            <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n                        </RadioGroup>\n                    </Col>\n                    <Col sm={6}>\n                        已选择了：{this.state.radioValue}\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ },
 /* 680 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup egType=\"simple\"\n                        activeCallback={\n                            function(value,text,target,active){\n                                console.log(value,text,target,active);\n                            }}>\n                <Label value=\"all\">全部</Label>\n                <Label value=\"luwan\">卢湾区</Label>\n                <Label value=\"xuhui\">徐汇区</Label>\n                <Label value=\"jinan\">静安区</Label>\n                <Label value=\"changning\">长宁区</Label>\n                <Label value=\"minhang\">闵行区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={2}>\n                        <Label egStyle=\"error\">error</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"success\">success</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"warning\">warning</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"danger\">danger</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label>default</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label disabled>disabled</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ },
 /* 681 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup spacing={94}\n                        title='行政区'\n                        egType='default'\n                        defaultChecked='卢湾区'>\n                <Label value=\"0\" className=\"all\">全部</Label>\n                <Label value=\"1\">卢湾区</Label>\n                <Label value=\"10\">徐汇区</Label>\n                <Label>静安区</Label>\n                <Label>长宁区</Label>\n                <Label>闵行区</Label>\n                <Label>浦东新区</Label>\n                <Label>黄浦区</Label>\n                <Label>普陀区</Label>\n                <Label>闸北区</Label>\n                <Label>虹口区</Label>\n                <Label>杨浦区</Label>\n                <Label>宝山区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"xs\">small</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"sm\">middle</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"lg\">large</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ },
 /* 682 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\">121212121</Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup egType=\"simple\"\n                        activeCallback={\n                            function(value,text,target,active){\n                                console.log(value,text,target,active);\n                            }}>\n                <Label value=\"all\">全部</Label>\n                <Label value=\"luwan\">卢湾区</Label>\n                <Label value=\"xuhui\">徐汇区</Label>\n                <Label value=\"jinan\">静安区</Label>\n                <Label value=\"changning\">长宁区</Label>\n                <Label value=\"minhang\">闵行区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
 
 /***/ },
 /* 683 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\nexport default class CardListPanel extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state = {\n            page: 1\n        }\n    }\n    show(){\n        console.debug(1);\n    }\n    render(){\n        return (\n            <Panel>\n                <PanelHeader>\n                    <CheckboxGroup>\n                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n                        <Input label=\"团购在线\" type=\"checkbox\"/>\n                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n                        <Input label=\"预订在线\" type=\"checkbox\"/>\n                    </CheckboxGroup>\n                </PanelHeader>\n                <PanelContent padding={false}>\n                    <List>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius> 团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                    </List>\n                </PanelContent>\n                <PanelFooter>\n                    <Paging currentPage={this.state.page} total={1024} />\n                </PanelFooter>\n            </Panel>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup spacing={94}\n                        title='行政区'\n                        egType='default'\n                        defaultChecked='卢湾区'>\n                <Label value=\"0\" className=\"all\">全部</Label>\n                <Label value=\"1\">卢湾区</Label>\n                <Label value=\"10\">徐汇区</Label>\n                <Label>静安区</Label>\n                <Label>长宁区</Label>\n                <Label>闵行区</Label>\n                <Label>浦东新区</Label>\n                <Label>黄浦区</Label>\n                <Label>普陀区</Label>\n                <Label>闸北区</Label>\n                <Label>虹口区</Label>\n                <Label>杨浦区</Label>\n                <Label>宝山区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
 
 /***/ },
 /* 684 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {LabelGroup, Label} from 'eagle-ui';\n\nexport class FilterSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>美</Label>\n                    <Label>休闲娱乐</Label>\n                    <Label>景点</Label>\n                    <Label>购物</Label>\n                    <Label>丽人</Label>\n                    <Label>结婚</Label>\n                    <Label>亲子</Label>\n                    <Label>教育培训</Label>\n                    <Label>运动健身</Label>\n                    <Label>酒店</Label>\n                    <Label>家装</Label>\n                    <Label>酒店</Label>\n                    <Label>爱车</Label>\n                    <Label>酒店</Label>\n                    <Label>医疗健康</Label>\n                </LabelGroup>\n                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>卢湾区</Label>\n                    <Label>徐汇区</Label>\n                    <Label>静安区</Label>\n                    <Label>长宁区</Label>\n                    <Label>闵行区</Label>\n                    <Label>浦东新区</Label>\n                    <Label>黄浦区</Label>\n                    <Label>普陀区</Label>\n                    <Label>闸北区</Label>\n                    <Label>虹口区</Label>\n                    <Label>杨浦区</Label>\n                    <Label>宝山区</Label>\n                </LabelGroup>\n            </div>\n        )\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\">121212121</Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ },
 /* 685 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Grid, Row, Col, Select, Item, Search} from 'eagle-ui';\n\nexport class SearchSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={5}>\n                        <Select  callback={function(val){alert(val)}}>\n                            <item>北京</item>\n                            <item>上海</item>\n                            <item>南京</item>\n                        </Select>\n                    </Col>\n                    <Col sm={5}>\n                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n                    </Col>\n                    <Col sm={2}/>\n                </Row>\n            </Grid>\n        )\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\nexport default class CardListPanel extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state = {\n            page: 1\n        }\n    }\n    show(){\n        console.debug(1);\n    }\n    render(){\n        return (\n            <Panel>\n                <PanelHeader>\n                    <CheckboxGroup>\n                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n                        <Input label=\"团购在线\" type=\"checkbox\"/>\n                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n                        <Input label=\"预订在线\" type=\"checkbox\"/>\n                    </CheckboxGroup>\n                </PanelHeader>\n                <PanelContent padding={false}>\n                    <List>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius> 团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                    </List>\n                </PanelContent>\n                <PanelFooter>\n                    <Paging currentPage={this.state.page} total={1024} />\n                </PanelFooter>\n            </Panel>\n        );\n    }\n};"
 
 /***/ },
 /* 686 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Paging,Button} from 'eagle-ui';\n\nlet page = 1;\nfunction callback(page){\n    page = page;\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nfunction loadPageCallback(pageSize){\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nvar pageSize = 20;\nlet arrs = [10,15,23,35,40],\n    arr1 = '1';\nexport default class PagingCls extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            showItemsNumber:0\n        };\n    }\n    toggleItemNumber(){\n        this.setState({\n            showItemsNumber:!this.state.showItemsNumber\n        });\n    }\n    render(){\n        let query = this.props.location.query,\n            page = query.page*1 ||0,\n            pageSize = query.pageSize*1 || 20,\n            {showItemsNumber}=this.state;\n        return (\n            <div>\n                <Button onClick={::this.toggleItemNumber}>\n                    {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}\n                </Button>\n                <Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n                        pageCallback={callback} total={5024} choosePageSize={arr1}/>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {LabelGroup, Label} from 'eagle-ui';\n\nexport class FilterSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>美</Label>\n                    <Label>休闲娱乐</Label>\n                    <Label>景点</Label>\n                    <Label>购物</Label>\n                    <Label>丽人</Label>\n                    <Label>结婚</Label>\n                    <Label>亲子</Label>\n                    <Label>教育培训</Label>\n                    <Label>运动健身</Label>\n                    <Label>酒店</Label>\n                    <Label>家装</Label>\n                    <Label>酒店</Label>\n                    <Label>爱车</Label>\n                    <Label>酒店</Label>\n                    <Label>医疗健康</Label>\n                </LabelGroup>\n                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>卢湾区</Label>\n                    <Label>徐汇区</Label>\n                    <Label>静安区</Label>\n                    <Label>长宁区</Label>\n                    <Label>闵行区</Label>\n                    <Label>浦东新区</Label>\n                    <Label>黄浦区</Label>\n                    <Label>普陀区</Label>\n                    <Label>闸北区</Label>\n                    <Label>虹口区</Label>\n                    <Label>杨浦区</Label>\n                    <Label>宝山区</Label>\n                </LabelGroup>\n            </div>\n        )\n    }\n}"
 
 /***/ },
 /* 687 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\nexport default class SelectDemo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input,\n            options:[],\n            defaultCity:''\n        };\n        setTimeout(()=>{\n            this.setState({options:this.renderC()})\n        });\n\n        setTimeout(function(){\n            this.setState({\n                defaultCity:'上海'\n            });\n        }.bind(this),2000 );\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    renderC(){\n        return [\n            <option value='bei' key=\"bei\">北京</option>,\n            <option value='shang' key=\"上海\">上海</option>,\n            <option value='nan' key=\"南京\">南京</option>,\n            <option value='3' key=\"杭州\">杭州</option>,\n            <option value='4' key=\"杭州西\">杭州西</option>,\n            <option value='5' key=\"杭州北站\">杭州北站</option>,\n            <option value='6' key=\"广州\">广州</option>,\n            <option value='7' key=\"深圳\">深圳</option>,\n            <option value='8' key=\"澳门\">澳门</option>,\n            <option value='10' key=\"太原\">太原</option>,\n            <option value='11' key=\"台湾\">台湾</option>,\n            <option value='12' key=\"香港\">香港</option>\n        ];\n    }\n    render(){\n        return (\n            <div>\n                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n                    {this.state.options}\n                </Select>\n                <div id=\"showtip\" className=\"color-info\"></div>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {Grid, Row, Col, Select, Item, Search} from 'eagle-ui';\n\nexport class SearchSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={5}>\n                        <Select  callback={function(val){alert(val)}}>\n                            <item>北京</item>\n                            <item>上海</item>\n                            <item>南京</item>\n                        </Select>\n                    </Col>\n                    <Col sm={5}>\n                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n                    </Col>\n                    <Col sm={2}/>\n                </Row>\n            </Grid>\n        )\n    }\n}"
 
 /***/ },
 /* 688 */
 /***/ function(module, exports) {
 
-	module.exports = "import {Slider} from 'eagle-ui';\n\ngetValueCallback(val){\n    console.dir(val);\n}\n\n<Slider getValueCallback={::this.getValueCallback} initCallback={(val)=>{console.dir(val);}} />"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Paging,Button} from 'eagle-ui';\n\nlet page = 1;\nfunction callback(page){\n    page = page;\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nfunction loadPageCallback(pageSize){\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nvar pageSize = 20;\nlet arrs = [10,15,23,35,40],\n    arr1 = '1';\nexport default class PagingCls extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            showItemsNumber:0\n        };\n    }\n    toggleItemNumber(){\n        this.setState({\n            showItemsNumber:!this.state.showItemsNumber\n        });\n    }\n    render(){\n        let query = this.props.location.query,\n            page = query.page*1 ||0,\n            pageSize = query.pageSize*1 || 20,\n            {showItemsNumber}=this.state;\n        return (\n            <div>\n                <Button onClick={::this.toggleItemNumber}>\n                    {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}\n                </Button>\n                <Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n                        pageCallback={callback} total={5024} choosePageSize={arr1}/>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 689 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Button,ImgSlider,Grid,Row,Col} from 'eagle-ui';\n\nexport default class SliderDemo extends Component {\n    constructor(props,context) {\n        super(props,context);\n        this.state={\n            showThumbnail:true,\n            imgModify:true\n        }\n    }\n    toggleThumbnail(){\n        this.setState({\n            showThumbnail:!this.state.showThumbnail\n        });\n    }\n    toggleModifier(){\n        this.setState({\n            imgModify:!this.state.imgModify\n        });\n    }\n    render() {\n        let imgList=[\n            {\n                profile:'1叔2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'1哥2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'2哥2015上传',\n                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'3哥2015上传',\n                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'4哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5叔2015上传',\n                url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',\n                description:'熊猫野外生存',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'\n            }\n        ],\n            pageNum=5,\n            {showThumbnail,imgModify}=this.state;\n        return (\n            <div>\n                <Grid>\n                    <Row>\n                        <Col sm={6}>\n                            <ImgSlider  show={true}\n                                        showThumbnail={showThumbnail}\n                                        imgList={imgList}\n                                        profileKey={'profile'}\n                                        urlKey={'url'}\n                                        titleKey={'description'}\n                                        thumbnailKey={'thumbnail'}\n                                        pageNum={pageNum}\n                                        imgModify={imgModify}\n                                />\n                        </Col>\n                        <Col sm={6}>\n                            <Button block success\n                                    onClick={::this.toggleThumbnail} >\n                                {(showThumbnail?'隐藏':'显示')+'缩略图'}\n                            </Button>\n                            <Button block style={{marginTop:'10px'}} success\n                                    onClick={::this.toggleModifier} >\n                                {(imgModify?'隐藏':'显示')+'缩放控件'}\n                            </Button>\n                        </Col>\n                    </Row>\n                </Grid>\n            </div>\n\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\nexport default class SelectDemo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input,\n            options:[],\n            defaultCity:''\n        };\n        setTimeout(()=>{\n            this.setState({options:this.renderC()})\n        });\n\n        setTimeout(function(){\n            this.setState({\n                defaultCity:'上海'\n            });\n        }.bind(this),2000 );\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    renderC(){\n        return [\n            <option value='bei' key=\"bei\">北京</option>,\n            <option value='shang' key=\"上海\">上海</option>,\n            <option value='nan' key=\"南京\">南京</option>,\n            <option value='3' key=\"杭州\">杭州</option>,\n            <option value='4' key=\"杭州西\">杭州西</option>,\n            <option value='5' key=\"杭州北站\">杭州北站</option>,\n            <option value='6' key=\"广州\">广州</option>,\n            <option value='7' key=\"深圳\">深圳</option>,\n            <option value='8' key=\"澳门\">澳门</option>,\n            <option value='10' key=\"太原\">太原</option>,\n            <option value='11' key=\"台湾\">台湾</option>,\n            <option value='12' key=\"香港\">香港</option>\n        ];\n    }\n    render(){\n        return (\n            <div>\n                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n                    {this.state.options}\n                </Select>\n                <div id=\"showtip\" className=\"color-info\"></div>\n            </div>\n        );\n    }\n}"
 
 /***/ },
 /* 690 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo1 extends Component {\n    render(){\n        return(\n            <div>\n                <Star/><br/>\n                <Star rate={50} size={15}/>\n                <br/>\n                <Star rate={60} size={16} />\n                <br/>\n                <Star rate={70} size={17}/>\n                <br/>\n                <Star rate={80} size={18} />\n            </div>\n        )\n    }\n}"
+	module.exports = "import {Slider} from 'eagle-ui';\n\ngetValueCallback(val){\n    console.dir(val);\n}\n\n<Slider getValueCallback={::this.getValueCallback} initCallback={(val)=>{console.dir(val);}} />"
 
 /***/ },
 /* 691 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo2 extends Component {\n    render(){\n        return(\n            <div>\n                <Star rate={90} size={18}  disable={false}/>\n                <br/>\n                <Star rate={10} size={19}  disable={false}/>\n                <br/>\n                <Star rate={20} size={20} disable={false}/>\n                <br/>\n                <Star rate={30} size={21} disable={false}/>\n                <br/>\n                <Star rate={40} size={22} disable={false}/>\n            </div>\n        )\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Button,ImgSlider,Grid,Row,Col} from 'eagle-ui';\n\nexport default class SliderDemo extends Component {\n    constructor(props,context) {\n        super(props,context);\n        this.state={\n            showThumbnail:true,\n            imgModify:true\n        }\n    }\n    toggleThumbnail(){\n        this.setState({\n            showThumbnail:!this.state.showThumbnail\n        });\n    }\n    toggleModifier(){\n        this.setState({\n            imgModify:!this.state.imgModify\n        });\n    }\n    render() {\n        let imgList=[\n            {\n                profile:'1叔2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'1哥2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'2哥2015上传',\n                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'3哥2015上传',\n                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'4哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5叔2015上传',\n                url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',\n                description:'熊猫野外生存',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'\n            }\n        ],\n            pageNum=5,\n            {showThumbnail,imgModify}=this.state;\n        return (\n            <div>\n                <Grid>\n                    <Row>\n                        <Col sm={6}>\n                            <ImgSlider  show={true}\n                                        showThumbnail={showThumbnail}\n                                        imgList={imgList}\n                                        profileKey={'profile'}\n                                        urlKey={'url'}\n                                        titleKey={'description'}\n                                        thumbnailKey={'thumbnail'}\n                                        pageNum={pageNum}\n                                        imgModify={imgModify}\n                                />\n                        </Col>\n                        <Col sm={6}>\n                            <Button block success\n                                    onClick={::this.toggleThumbnail} >\n                                {(showThumbnail?'隐藏':'显示')+'缩略图'}\n                            </Button>\n                            <Button block style={{marginTop:'10px'}} success\n                                    onClick={::this.toggleModifier} >\n                                {(imgModify?'隐藏':'显示')+'缩放控件'}\n                            </Button>\n                        </Col>\n                    </Row>\n                </Grid>\n            </div>\n\n        );\n    }\n};\n"
 
 /***/ },
 /* 692 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star, Button} from 'eagle-ui';\nexport default class StarDemo3 extends Component {\n    getValue() {\n        alert('rate is'+this.refs['test'].Rate)\n    }\n    render(){\n        return(\n            <div>\n                <Star rate={50} size={23} disable={false} ref='test'/>\n                <br/>\n                <br/>\n                <Button onClick={this.getValue.bind(this)}>点击获取星星的红色比率数据</Button>\n            </div>\n        )\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo1 extends Component {\n    render(){\n        return(\n            <div>\n                <Star/><br/>\n                <Star rate={50} size={15}/>\n                <br/>\n                <Star rate={60} size={16} />\n                <br/>\n                <Star rate={70} size={17}/>\n                <br/>\n                <Star rate={80} size={18} />\n            </div>\n        )\n    }\n}"
 
 /***/ },
 /* 693 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input\n        }\n    }\n    query(){\n        //可以返回ajax\n        return [\n            {\n                key:'上海',\n                value:'shanghai',\n                subKey:'10个区'\n            },\n            {\n                key:'北京',\n                value:'beijing',\n                subKey:'10个区'\n            },\n            {\n                key:'哈尔滨',\n                value:'haerbin',\n                subKey:'5010个区'\n            },\n            {\n                key:'南京',\n                value:'nanjing',\n                subKey:'10个区'\n            },\n            {\n                key:'南宁',\n                value:'nanning',\n                subKey:'120个区'\n            },\n            {\n                key:'天津',\n                value:'tianjing',\n                subKey:'312310个区'\n            },\n            {\n                key:'深圳',\n                value:'shenzhen',\n                subKey:'101个区'\n            }\n        ];\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n\n    render(){\n        return (\n            <Grid fluid>\n                <Row>\n                    <Col>\n                        <div id=\"showtip\" className=\"color-info\"></div>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={10} layer padding={0}>\n                        <Suggestion\n                            getValueCallback={::this.getValue}\n                            queryCallback={::this.query}\n                            icon=\"search\"\n                            iconDirection=\"left\"\n                            placeholder=\"请输入key搜索\" />\n                    </Col>\n                    <Col sm={2} end padding={0}>\n                        <Button type=\"submit\">查询</Button>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo2 extends Component {\n    render(){\n        return(\n            <div>\n                <Star rate={90} size={18}  disable={false}/>\n                <br/>\n                <Star rate={10} size={19}  disable={false}/>\n                <br/>\n                <Star rate={20} size={20} disable={false}/>\n                <br/>\n                <Star rate={30} size={21} disable={false}/>\n                <br/>\n                <Star rate={40} size={22} disable={false}/>\n            </div>\n        )\n    }\n}"
 
 /***/ },
 /* 694 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    render(){\n        return (\n            <Grid fluid>\n                <Col sm={10} layer>\n                    <Row>\n                        <Col>\n                            <div id=\"showtip\" className=\"color-info\"></div>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col sm={10} end>\n                            <Suggestion\n                                getValueCallback={::this.getValue}\n                                icon=\"search\"\n                                iconDirection=\"left\"\n                                placeholder=\"请输入测、测试、试进行搜索\">\n                                <Item value=\"测试测试\" subKey=\"222222\">\n                                    测试测试\n                                </Item>\n                                <Item value=\"测试\" subKey=\"达到\">\n                                    测试\n                                </Item>\n                                <Item value=\"试验\" subKey=\"dsadsad\">\n                                    试验\n                                </Item>\n                                <Item value=\"测验\">\n                                    测验\n                                </Item>\n                                <Item value=\"检测\" >\n                                    检测\n                                </Item>\n                            </Suggestion>\n                        </Col>\n                    </Row>\n                </Col>\n                <Col sm={2}>请输入测、测试、试进行搜索</Col>\n            </Grid>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star, Button} from 'eagle-ui';\nexport default class StarDemo3 extends Component {\n    getValue() {\n        alert('rate is'+this.refs['test'].Rate)\n    }\n    render(){\n        return(\n            <div>\n                <Star rate={50} size={23} disable={false} ref='test'/>\n                <br/>\n                <br/>\n                <Button onClick={this.getValue.bind(this)}>点击获取星星的红色比率数据</Button>\n            </div>\n        )\n    }\n}"
 
 /***/ },
 /* 695 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Tab,Tabset} from 'eagle-ui';\nlet Demo = class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            tabIndex:2\n        };\n    }\n    componentDidMount(){\n        let _this=this;\n        setTimeout(()=>{\n            _this.setState({\n                tabIndex:3\n            })\n        },2000)\n    }\n    callback(index){\n        console.log('i',index);\n        if(this.state.tabIndex!==index){\n            this.setState({\n                tabIndex:index\n            });\n        }\n    }\n    tab3(){\n        if(this.state.tabIndex==2){\n            return (<div>tab3</div>);\n        }\n    }\n    tab2(){\n        if(this.state.tabIndex==1){\n            return (<div>tab2</div>);\n        }\n    }\n    tab1(){\n        if(this.state.tabIndex==0){\n            return (<div>tab1</div>);\n        }\n    }\n    render(){\n        return (\n            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n                <Tab>\n                    {::this.tab1()}\n                </Tab>\n                <Tab heading='tab2'>\n                    {::this.tab2()}\n                </Tab>\n                <Tab heading='tab3'>\n                    {::this.tab3()}\n                </Tab>\n                <Tab heading='tab4'>\n                    tab4\n                </Tab>\n                <Tab heading='tab5'>\n                    tab5\n                </Tab>\n            </Tabset>\n        );\n    }\n}\n\n"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input\n        }\n    }\n    query(){\n        //可以返回ajax\n        return [\n            {\n                key:'上海',\n                value:'shanghai',\n                subKey:'10个区'\n            },\n            {\n                key:'北京',\n                value:'beijing',\n                subKey:'10个区'\n            },\n            {\n                key:'哈尔滨',\n                value:'haerbin',\n                subKey:'5010个区'\n            },\n            {\n                key:'南京',\n                value:'nanjing',\n                subKey:'10个区'\n            },\n            {\n                key:'南宁',\n                value:'nanning',\n                subKey:'120个区'\n            },\n            {\n                key:'天津',\n                value:'tianjing',\n                subKey:'312310个区'\n            },\n            {\n                key:'深圳',\n                value:'shenzhen',\n                subKey:'101个区'\n            }\n        ];\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n\n    render(){\n        return (\n            <Grid fluid>\n                <Row>\n                    <Col>\n                        <div id=\"showtip\" className=\"color-info\"></div>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={10} layer padding={0}>\n                        <Suggestion\n                            getValueCallback={::this.getValue}\n                            queryCallback={::this.query}\n                            icon=\"search\"\n                            iconDirection=\"left\"\n                            placeholder=\"请输入key搜索\" />\n                    </Col>\n                    <Col sm={2} end padding={0}>\n                        <Button type=\"submit\">查询</Button>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n}"
 
 /***/ },
 /* 696 */
 /***/ function(module, exports) {
 
-	module.exports = "// html 中使用meituan主题\n<link rel=\"stylesheet\" href=\"http://future-team.github.io/eagle-ui/dist/skin.css\"/>\n\n// javascript 中使用 meituan主题\nimport 'eagle-ui/dist/meituan.css'"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    render(){\n        return (\n            <Grid fluid>\n                <Col sm={10} layer>\n                    <Row>\n                        <Col>\n                            <div id=\"showtip\" className=\"color-info\"></div>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col sm={10} end>\n                            <Suggestion\n                                getValueCallback={::this.getValue}\n                                icon=\"search\"\n                                iconDirection=\"left\"\n                                placeholder=\"请输入测、测试、试进行搜索\">\n                                <Item value=\"测试测试\" subKey=\"222222\">\n                                    测试测试\n                                </Item>\n                                <Item value=\"测试\" subKey=\"达到\">\n                                    测试\n                                </Item>\n                                <Item value=\"试验\" subKey=\"dsadsad\">\n                                    试验\n                                </Item>\n                                <Item value=\"测验\">\n                                    测验\n                                </Item>\n                                <Item value=\"检测\" >\n                                    检测\n                                </Item>\n                            </Suggestion>\n                        </Col>\n                    </Row>\n                </Col>\n                <Col sm={2}>请输入测、测试、试进行搜索</Col>\n            </Grid>\n        );\n    }\n}"
 
 /***/ },
 /* 697 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, TimePicker} from 'eagle-ui';\n\nthis.state = {\n    time:''\n};\n\n<TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format=\"HH:mm\">\n    <Input placeholder=\"请选择时间\"  icon=\"calendar\" />\n</TimePicker>"
+	module.exports = "import React,{Component} from 'react';\nimport {Tab,Tabset} from 'eagle-ui';\nlet Demo = class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            tabIndex:2\n        };\n    }\n    componentDidMount(){\n        let _this=this;\n        setTimeout(()=>{\n            _this.setState({\n                tabIndex:3\n            })\n        },2000)\n    }\n    callback(index){\n        console.log('i',index);\n        if(this.state.tabIndex!==index){\n            this.setState({\n                tabIndex:index\n            });\n        }\n    }\n    tab3(){\n        if(this.state.tabIndex==2){\n            return (<div>tab3</div>);\n        }\n    }\n    tab2(){\n        if(this.state.tabIndex==1){\n            return (<div>tab2</div>);\n        }\n    }\n    tab1(){\n        if(this.state.tabIndex==0){\n            return (<div>tab1</div>);\n        }\n    }\n    render(){\n        return (\n            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n                <Tab>\n                    {::this.tab1()}\n                </Tab>\n                <Tab heading='tab2'>\n                    {::this.tab2()}\n                </Tab>\n                <Tab heading='tab3'>\n                    {::this.tab3()}\n                </Tab>\n                <Tab heading='tab4'>\n                    tab4\n                </Tab>\n                <Tab heading='tab5'>\n                    tab5\n                </Tab>\n            </Tabset>\n        );\n    }\n}\n\n"
 
 /***/ },
 /* 698 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ButtonGroup, Toast, Button, Dialog,} from 'eagle-ui';\n\nexport default class Demo extends Component{\n    static defaultProps = {\n        show: false,\n        type: \"success\"\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            isMask:true\n        }\n    }\n    showToast(){\n        let msg = arguments[0].getAttribute('data-message');\n\n        this.setState({\n            type:arguments[0].getAttribute('data-value'),\n            message:msg,\n            isMask:msg=='无遮罩加载成功' ?false:true\n        });\n        Dialog.mask('toast');\n    }\n    render(){\n        return (\n            <div>\n                <ButtonGroup activeCallback={::this.showToast}>\n                    <Button data-value=\"success\" data-message=\"数据载入成功\">显示success</Button>\n                    <Button data-value=\"error\"  data-message=\"数据加载失败\">显示error</Button>\n                    <Button data-value=\"loading\"  data-message=\"加载中...\">显示loading</Button>\n                    <Button data-value=\"success\"  data-message=\"无遮罩加载成功\">无遮罩toast</Button>\n                </ButtonGroup>\n                <Dialog id=\"toast\" isClose={false} isMask={this.state.isMask} isMaskClose={false}>\n                    <Toast type={this.state.type}>{this.state.message}</Toast>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "// html 中使用meituan主题\n<link rel=\"stylesheet\" href=\"http://future-team.github.io/eagle-ui/dist/skin.css\"/>\n\n// javascript 中使用 meituan主题\nimport 'eagle-ui/dist/meituan.css'"
 
 /***/ },
 /* 699 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\n\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div>\n                <TooltipPanel direction='top'\n                              msg='我是在上方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">上边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='right'\n                              msg='我是在右方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">右边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='bottom'\n                              msg='我是在下方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">下边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='left'\n                              msg='我是在左方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">左边</Button>\n                </TooltipPanel>\n            </div>\n        )\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, TimePicker} from 'eagle-ui';\n\nthis.state = {\n    time:''\n};\n\n<TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format=\"HH:mm\">\n    <Input placeholder=\"请选择时间\"  icon=\"calendar\" />\n</TimePicker>"
 
 /***/ },
 /* 700 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div id='a' style={{width:'500px',height:'200px',border:'1px solid #f00',position:'relative'}}>\n                <div style={{margin:'10px'}}>\n                    <TooltipPanel direction='top' wrapper='a'>\n                        <Button radius egSize=\"sm\" egStyle=\"warning\">红色边框为边界，设置的方向是top.实际展示为bottom</Button>\n                    </TooltipPanel>\n                </div>\n            </div>\n        )\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {ButtonGroup, Toast, Button, Dialog,} from 'eagle-ui';\n\nexport default class Demo extends Component{\n    static defaultProps = {\n        show: false,\n        type: \"success\"\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            isMask:true\n        }\n    }\n    showToast(){\n        let msg = arguments[0].getAttribute('data-message');\n\n        this.setState({\n            type:arguments[0].getAttribute('data-value'),\n            message:msg,\n            isMask:msg=='无遮罩加载成功' ?false:true\n        });\n        Dialog.mask('toast');\n    }\n    render(){\n        return (\n            <div>\n                <ButtonGroup activeCallback={::this.showToast}>\n                    <Button data-value=\"success\" data-message=\"数据载入成功\">显示success</Button>\n                    <Button data-value=\"error\"  data-message=\"数据加载失败\">显示error</Button>\n                    <Button data-value=\"loading\"  data-message=\"加载中...\">显示loading</Button>\n                    <Button data-value=\"success\"  data-message=\"无遮罩加载成功\">无遮罩toast</Button>\n                </ButtonGroup>\n                <Dialog id=\"toast\" isClose={false} isMask={this.state.isMask} isMaskClose={false}>\n                    <Toast type={this.state.type}>{this.state.message}</Toast>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 701 */
 /***/ function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport TreeMenu from \"eg-tree-menu\";//联想功能组件\nimport {Button} from \"eagle-ui\";\n\nexport default class TreeMenuDemo extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            selected:'',\n            expandNodes:{3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true, 11: true, 16: true,10014:true},\n            data:[\n                {\n                    \"typeId\": 2,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"测试\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 1000023,\n                            \"parentTypeId\": 10005,\n                            \"typeName\": \"线上测试\",\n                            \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 22315,\n                            \"secondOwnerId\": 17896,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                },\n                {\n                    \"typeId\": 3,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"POI相关\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 10014,\n                            \"parentTypeId\": 3,\n                            \"typeName\": \"评价评分\",\n                            \"leadingAnswer\": \"\",\n                            \"level\": 2,\n                            \"firstOwnerId\": 0,\n                            \"secondOwnerId\": 0,\n                            \"children\": [\n                                {\n                                    \"typeId\": 1000034,\n                                    \"parentTypeId\": 10014,\n                                    \"typeName\": \"美团侧评价\",\n                                    \"leadingAnswer\": \"\",\n                                    \"level\": 3,\n                                    \"firstOwnerId\": 37743,\n                                    \"secondOwnerId\": 0,\n                                    \"children\": [],\n                                    \"leaf\": true\n                                },\n                            ],\n                            \"leaf\": false\n                        },\n                        {\n                            \"typeId\": 1000026,\n                            \"parentTypeId\": 10006,\n                            \"typeName\": \"门店基本信息/地图报错\",\n                            \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 37425,\n                            \"secondOwnerId\": 0,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                }\n            ]\n        };\n    }\n    render(){\n        let self=this;\n        return(\n            <div>\n                <Button onClick={function(){console.log(self.refs.tm.getExpandNodes())}}>获取展开节点的信息</Button>\n                <br/>\n                <TreeMenu ref='tm' clickCallback={function(nodeId,type){\n                    console.log(nodeId,type);\n                    self.setState({\n                        selected: nodeId\n                    })\n                }} selected={self.state.selected} data={this.state.data} expandNodes={this.state.expandNodes}/>\n        </div>)\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\n\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div>\n                <TooltipPanel direction='top'\n                              msg='我是在上方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">上边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='right'\n                              msg='我是在右方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">右边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='bottom'\n                              msg='我是在下方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">下边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='left'\n                              msg='我是在左方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">左边</Button>\n                </TooltipPanel>\n            </div>\n        )\n    }\n};\n"
 
 /***/ },
 /* 702 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo1 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            date:{\n                date:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <CalendarPanel>\n                                <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n                            </CalendarPanel>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div id='a' style={{width:'500px',height:'200px',border:'1px solid #f00',position:'relative'}}>\n                <div style={{margin:'10px'}}>\n                    <TooltipPanel direction='top' wrapper='a'>\n                        <Button radius egSize=\"sm\" egStyle=\"warning\">红色边框为边界，设置的方向是top.实际展示为bottom</Button>\n                    </TooltipPanel>\n                </div>\n            </div>\n        )\n    }\n};"
 
 /***/ },
 /* 703 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo2 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport TreeMenu from \"eg-tree-menu\";//联想功能组件\nimport {Button} from \"eagle-ui\";\n\nexport default class TreeMenuDemo extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            selected:'',\n            expandNodes:{3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true, 11: true, 16: true,10014:true},\n            data:[\n                {\n                    \"typeId\": 2,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"测试\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 1000023,\n                            \"parentTypeId\": 10005,\n                            \"typeName\": \"线上测试\",\n                            \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 22315,\n                            \"secondOwnerId\": 17896,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                },\n                {\n                    \"typeId\": 3,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"POI相关\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 10014,\n                            \"parentTypeId\": 3,\n                            \"typeName\": \"评价评分\",\n                            \"leadingAnswer\": \"\",\n                            \"level\": 2,\n                            \"firstOwnerId\": 0,\n                            \"secondOwnerId\": 0,\n                            \"children\": [\n                                {\n                                    \"typeId\": 1000034,\n                                    \"parentTypeId\": 10014,\n                                    \"typeName\": \"美团侧评价\",\n                                    \"leadingAnswer\": \"\",\n                                    \"level\": 3,\n                                    \"firstOwnerId\": 37743,\n                                    \"secondOwnerId\": 0,\n                                    \"children\": [],\n                                    \"leaf\": true\n                                },\n                            ],\n                            \"leaf\": false\n                        },\n                        {\n                            \"typeId\": 1000026,\n                            \"parentTypeId\": 10006,\n                            \"typeName\": \"门店基本信息/地图报错\",\n                            \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 37425,\n                            \"secondOwnerId\": 0,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                }\n            ]\n        };\n    }\n    render(){\n        let self=this;\n        return(\n            <div>\n                <Button onClick={function(){console.log(self.refs.tm.getExpandNodes())}}>获取展开节点的信息</Button>\n                <br/>\n                <TreeMenu ref='tm' clickCallback={function(nodeId,type){\n                    console.log(nodeId,type);\n                    self.setState({\n                        selected: nodeId\n                    })\n                }} selected={self.state.selected} data={this.state.data} expandNodes={this.state.expandNodes}/>\n        </div>)\n    }\n};"
 
 /***/ },
 /* 704 */
 /***/ function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\nexport default class ValidateDemo3 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid',\n            show:false\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    showMask(){\n        Dialog.mask('demo2');\n    }\n    render(){\n        return (\n            <div>\n                <Button onClick={::this.showMask}>弹出验证表单</Button>\n                <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n                    <Grid>\n                        <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n                                </Col>\n                            </Row>\n                        </ValidatorPanel>\n                    </Grid>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo1 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            date:{\n                date:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <CalendarPanel>\n                                <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n                            </CalendarPanel>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
 
 /***/ },
 /* 705 */
+/***/ function(module, exports) {
+
+	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo2 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
+
+/***/ },
+/* 706 */
+/***/ function(module, exports) {
+
+	module.exports = "import React,{Component} from 'react';\nimport {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\nexport default class ValidateDemo3 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid',\n            show:false\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    showMask(){\n        Dialog.mask('demo2');\n    }\n    render(){\n        return (\n            <div>\n                <Button onClick={::this.showMask}>弹出验证表单</Button>\n                <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n                    <Grid>\n                        <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n                                </Col>\n                            </Row>\n                        </ValidatorPanel>\n                    </Grid>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+
+/***/ },
+/* 707 */
+/***/ function(module, exports) {
+
+	module.exports = "import React,{Component} from 'react';\nimport {ValidatorWrapper,Input} from 'eagle-ui';\nexport default class ValidateDemo4 extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorWrapper\n                    rules={{\n                                userName:{\n                                    required:true\n                                }}} >\n                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                </ValidatorWrapper>\n                <ValidatorWrapper\n                    rules={{\n                                minlength:{\n                                    minlength:{\n                                    params:10\n                                 },\n                                 maxlength:{\n                                     params:15\n                                 }\n                             }   }} >\n                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                </ValidatorWrapper>\n            </div>\n        );\n    }\n};"
+
+/***/ },
+/* 708 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45722,9 +45945,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -45996,7 +46219,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 706 */
+/* 709 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -46018,11 +46241,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var CrumbCls = (function (_Component) {
 	    _inherits(CrumbCls, _Component);
@@ -46094,7 +46317,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 707 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -46116,9 +46339,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -46770,7 +46993,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Layout;
 
 /***/ },
-/* 708 */
+/* 711 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47581,7 +47804,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 709 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47601,7 +47824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _querystring = __webpack_require__(710);
+	var _querystring = __webpack_require__(713);
 
 	var _querystring2 = _interopRequireDefault(_querystring);
 
@@ -49040,17 +49263,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	/*照片浏览组件(建议放在dom根节点附近)*/ /*主页面*/ /*门店信息*/ /*市场份额信息*/ /*合作信息*/ /*联系人信息*/ /*拜访记录*/ /*关联客户*/ /*门店历史*/ /*归属信息*/ /*归属信息*/ /*附近同类门店*/
 
 /***/ },
-/* 710 */
+/* 713 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.decode = exports.parse = __webpack_require__(711);
-	exports.encode = exports.stringify = __webpack_require__(712);
+	exports.decode = exports.parse = __webpack_require__(714);
+	exports.encode = exports.stringify = __webpack_require__(715);
 
 
 /***/ },
-/* 711 */
+/* 714 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -49140,7 +49363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 712 */
+/* 715 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -49231,7 +49454,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 713 */
+/* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49255,9 +49478,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -49840,7 +50063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 714 */
+/* 717 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49860,17 +50083,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _querystring = __webpack_require__(710);
+	var _querystring = __webpack_require__(713);
 
 	var _querystring2 = _interopRequireDefault(_querystring);
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -50132,7 +50355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 715 */
+/* 718 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50154,11 +50377,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -50551,7 +50774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 716 */
+/* 719 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50570,11 +50793,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var page = 1;
 	function callback(page) {
@@ -50647,7 +50870,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 717 */
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51446,7 +51669,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 718 */
+/* 721 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51467,9 +51690,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -51600,7 +51823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 719 */
+/* 722 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51622,11 +51845,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -51745,7 +51968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 720 */
+/* 723 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52135,7 +52358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 721 */
+/* 724 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52159,9 +52382,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -52257,7 +52480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 722 */
+/* 725 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52276,11 +52499,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -52424,7 +52647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 723 */
+/* 726 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52446,9 +52669,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -52780,6 +53003,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        )
 	                    )
 	                )
+	            ),
+	            _react2['default'].createElement(
+	                _libsLayout.DemoItem,
+	                { title: 'ValidatorWrapper' },
+	                _react2['default'].createElement(
+	                    _libsLayout.CodeShow,
+	                    null,
+	                    _react2['default'].createElement(_libsCode2['default'], { code: _libsCode.getFile('validate-demo4') })
+	                ),
+	                _react2['default'].createElement(
+	                    _libsLayout.DemoShow,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _eagleUi.ValidatorWrapper,
+	                        {
+	                            rules: {
+	                                userName: {
+	                                    required: true
+	                                } } },
+	                        _react2['default'].createElement(_eagleUi.Input, { placeholder: '请输入姓名', name: 'userName', 'data-validate': true })
+	                    ),
+	                    _react2['default'].createElement('br', null),
+	                    _react2['default'].createElement(
+	                        _eagleUi.ValidatorWrapper,
+	                        {
+	                            rules: {
+	                                minlength: {
+	                                    minlength: {
+	                                        params: 10
+	                                    },
+	                                    maxlength: {
+	                                        params: 15
+	                                    }
+	                                } } },
+	                        _react2['default'].createElement(_eagleUi.Input, { placeholder: '最大最小字符10-15', name: 'minlength', 'data-validate': true })
+	                    )
+	                )
 	            )
 	        );
 	    };
@@ -52790,7 +53050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 724 */
+/* 727 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52812,9 +53072,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -52910,7 +53170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 725 */
+/* 728 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52929,11 +53189,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var SliderDemo = (function (_Component) {
 	    _inherits(SliderDemo, _Component);
@@ -53076,7 +53336,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 726 */
+/* 729 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53097,11 +53357,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -53308,7 +53568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 727 */
+/* 730 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -53728,7 +53988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 728 */
+/* 731 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -53749,7 +54009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _egTreeMenu = __webpack_require__(729);
+	var _egTreeMenu = __webpack_require__(732);
 
 	var _egTreeMenu2 = _interopRequireDefault(_egTreeMenu);
 
@@ -53757,9 +54017,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -53880,30 +54140,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 729 */
+/* 732 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	__webpack_require__(730);
+	__webpack_require__(733);
 
-	var _Tree = __webpack_require__(732);
+	var _Tree = __webpack_require__(735);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
 	module.exports = _Tree2['default'];
 
 /***/ },
-/* 730 */
+/* 733 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 731 */,
-/* 732 */
+/* 734 */,
+/* 735 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53922,7 +54182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NodeJs = __webpack_require__(733);
+	var _NodeJs = __webpack_require__(736);
 
 	var _NodeJs2 = _interopRequireDefault(_NodeJs);
 
@@ -54033,7 +54293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 733 */
+/* 736 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54108,7 +54368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 734 */
+/* 737 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54125,17 +54385,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _egDropTree = __webpack_require__(735);
+	var _egDropTree = __webpack_require__(738);
 
 	var _egDropTree2 = _interopRequireDefault(_egDropTree);
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsCodeJs = __webpack_require__(645);
+	var _libsCodeJs = __webpack_require__(647);
 
 	var _libsCodeJs2 = _interopRequireDefault(_libsCodeJs);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
 	var Demo = (function (_Component) {
 	    _inherits(Demo, _Component);
@@ -54405,20 +54665,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 735 */
+/* 738 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _componentsMultiDropDownMenuJs = __webpack_require__(736);
+	var _componentsMultiDropDownMenuJs = __webpack_require__(739);
 
 	var _componentsMultiDropDownMenuJs2 = _interopRequireDefault(_componentsMultiDropDownMenuJs);
 
 	//下拉层级菜单
 
-	__webpack_require__(737);
+	__webpack_require__(740);
 	if (window.Eagleui) {
 	    Eagleui.MultiDropDown = _componentsMultiDropDownMenuJs2['default'];
 	} else {
@@ -54427,7 +54687,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _componentsMultiDropDownMenuJs2['default'];
 
 /***/ },
-/* 736 */
+/* 739 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -54992,14 +55252,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 737 */
+/* 740 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 738 */,
-/* 739 */
+/* 741 */,
+/* 742 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55018,9 +55278,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -55123,7 +55383,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 740 */
+/* 743 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -55145,9 +55405,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -55209,7 +55469,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 741 */
+/* 744 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -55231,9 +55491,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -55345,7 +55605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 742 */
+/* 745 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -55367,9 +55627,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -55425,7 +55685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 743 */
+/* 746 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//http://future-team.github.io/gfs-icons/index.html
@@ -55445,9 +55705,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _eagleUi = __webpack_require__(567);
 
-	var _libsLayout = __webpack_require__(642);
+	var _libsLayout = __webpack_require__(644);
 
-	var _libsCode = __webpack_require__(645);
+	var _libsCode = __webpack_require__(647);
 
 	var _libsCode2 = _interopRequireDefault(_libsCode);
 
@@ -55471,7 +55731,169 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 744 */
+/* 747 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(353);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _libsCode = __webpack_require__(647);
+
+	var _libsCode2 = _interopRequireDefault(_libsCode);
+
+	var _eagleUi = __webpack_require__(567);
+
+	var Index = (function (_Component) {
+	    _inherits(Index, _Component);
+
+	    function Index() {
+	        _classCallCheck(this, Index);
+
+	        _Component.apply(this, arguments);
+	    }
+
+	    Index.prototype.render = function render() {
+	        var demo = '<CalendarPanel defaultDate={this.state.defaultDate}\n' + '   startDate="2015-11-11"\n' + '   endDate="2017-12-1"\n' + '   getValueCallback={::this.getvalue}>\n' + '   <Input placeholder="请选择日期" style={{width:"150px"}} />\n' + '</CalendarPanel>';
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'ui-intro' },
+	            _react2['default'].createElement(
+	                'div',
+	                { className: 'sec1' },
+	                _react2['default'].createElement(
+	                    'div',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'h1',
+	                        null,
+	                        'Eagle-UI'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'p',
+	                        null,
+	                        '点评商家、销售系统常用的react组件库'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                'div',
+	                { className: 'sec2' },
+	                _react2['default'].createElement(
+	                    'p',
+	                    { className: 'lead' },
+	                    'eagle-ui是一款基于react开发的pc端UI组件库，目前主要用于apollo系统，它提供了常用的表单、布局、日历、弹窗等一系列符合apollo style的控件集合。'
+	                ),
+	                _react2['default'].createElement(
+	                    'h2',
+	                    null,
+	                    '安装'
+	                ),
+	                _react2['default'].createElement(
+	                    _eagleUi.Grid,
+	                    null,
+	                    _react2['default'].createElement(
+	                        _eagleUi.Row,
+	                        null,
+	                        _react2['default'].createElement(
+	                            _eagleUi.Col,
+	                            { sm: 6 },
+	                            _react2['default'].createElement(_libsCode2['default'], { code: '$ npm install eagle-ui --save' })
+	                        ),
+	                        _react2['default'].createElement(
+	                            _eagleUi.Col,
+	                            { sm: 6 },
+	                            _react2['default'].createElement(_libsCode2['default'], { code: '$ bower install eagle-ui' })
+	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    'h2',
+	                    null,
+	                    '如何在项目中引用'
+	                ),
+	                _react2['default'].createElement(_libsCode2['default'], { code: 'import {CalendarPanel,Input} from \'eagle-ui\';' }),
+	                _react2['default'].createElement(
+	                    'p',
+	                    null,
+	                    '引入需要使用的组件之后在render函数中的调用方式如下：'
+	                ),
+	                _react2['default'].createElement(_libsCode2['default'], { code: demo }),
+	                _react2['default'].createElement(
+	                    'h2',
+	                    null,
+	                    '其他'
+	                ),
+	                _react2['default'].createElement(
+	                    'h3',
+	                    null,
+	                    '推荐移动端React UI组件库 - Phoenix-ui'
+	                ),
+	                _react2['default'].createElement(
+	                    'p',
+	                    null,
+	                    'Github: ',
+	                    _react2['default'].createElement(
+	                        'a',
+	                        { href: 'https://github.com/future-team/phoenix-ui' },
+	                        'https://github.com/future-team/phoenix-ui'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    'p',
+	                    null,
+	                    'Document: ',
+	                    _react2['default'].createElement(
+	                        'a',
+	                        { href: 'http://future-team.github.io/phoenix-ui/doc/index.html' },
+	                        'http://future-team.github.io/phoenix-ui/doc/index.html'
+	                    )
+	                )
+	            ),
+	            _react2['default'].createElement(
+	                'div',
+	                { className: 'sec3' },
+	                _react2['default'].createElement(
+	                    'div',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'h3',
+	                        null,
+	                        'Want to help make this project awesome? Check out our repo'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'a',
+	                        { href: 'https://github.com/future-team/eagle-ui' },
+	                        _react2['default'].createElement(
+	                            'div',
+	                            null,
+	                            'GitHub'
+	                        )
+	                    )
+	                )
+	            )
+	        );
+	    };
+
+	    return Index;
+	})(_react.Component);
+
+	exports['default'] = Index;
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 748 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -57542,7 +57964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 745 */
+/* 749 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -58111,7 +58533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 746 */
+/* 750 */
 /***/ function(module, exports) {
 
 	// Console-polyfill. MIT license.
@@ -58136,1353 +58558,29 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 747 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(748);
-	__webpack_require__(797);
-	__webpack_require__(798);
-	__webpack_require__(799);
-	__webpack_require__(800);
-	__webpack_require__(802);
-	__webpack_require__(805);
-	__webpack_require__(806);
-	__webpack_require__(807);
-	__webpack_require__(808);
-	__webpack_require__(809);
-	__webpack_require__(810);
-	__webpack_require__(811);
-	__webpack_require__(812);
-	__webpack_require__(813);
-	__webpack_require__(815);
-	__webpack_require__(817);
-	__webpack_require__(819);
-
-	module.exports = __webpack_require__(754).Object;
-
-/***/ },
-/* 748 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	// ECMAScript 6 symbols shim
-	var global         = __webpack_require__(749)
-	  , has            = __webpack_require__(750)
-	  , DESCRIPTORS    = __webpack_require__(751)
-	  , $export        = __webpack_require__(753)
-	  , redefine       = __webpack_require__(763)
-	  , META           = __webpack_require__(767).KEY
-	  , $fails         = __webpack_require__(752)
-	  , shared         = __webpack_require__(768)
-	  , setToStringTag = __webpack_require__(769)
-	  , uid            = __webpack_require__(764)
-	  , wks            = __webpack_require__(770)
-	  , wksExt         = __webpack_require__(771)
-	  , wksDefine      = __webpack_require__(772)
-	  , keyOf          = __webpack_require__(774)
-	  , enumKeys       = __webpack_require__(787)
-	  , isArray        = __webpack_require__(790)
-	  , anObject       = __webpack_require__(757)
-	  , toIObject      = __webpack_require__(777)
-	  , toPrimitive    = __webpack_require__(761)
-	  , createDesc     = __webpack_require__(762)
-	  , _create        = __webpack_require__(791)
-	  , gOPNExt        = __webpack_require__(794)
-	  , $GOPD          = __webpack_require__(796)
-	  , $DP            = __webpack_require__(756)
-	  , $keys          = __webpack_require__(775)
-	  , gOPD           = $GOPD.f
-	  , dP             = $DP.f
-	  , gOPN           = gOPNExt.f
-	  , $Symbol        = global.Symbol
-	  , $JSON          = global.JSON
-	  , _stringify     = $JSON && $JSON.stringify
-	  , PROTOTYPE      = 'prototype'
-	  , HIDDEN         = wks('_hidden')
-	  , TO_PRIMITIVE   = wks('toPrimitive')
-	  , isEnum         = {}.propertyIsEnumerable
-	  , SymbolRegistry = shared('symbol-registry')
-	  , AllSymbols     = shared('symbols')
-	  , OPSymbols      = shared('op-symbols')
-	  , ObjectProto    = Object[PROTOTYPE]
-	  , USE_NATIVE     = typeof $Symbol == 'function'
-	  , QObject        = global.QObject;
-	// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
-	var setter = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
-
-	// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
-	var setSymbolDesc = DESCRIPTORS && $fails(function(){
-	  return _create(dP({}, 'a', {
-	    get: function(){ return dP(this, 'a', {value: 7}).a; }
-	  })).a != 7;
-	}) ? function(it, key, D){
-	  var protoDesc = gOPD(ObjectProto, key);
-	  if(protoDesc)delete ObjectProto[key];
-	  dP(it, key, D);
-	  if(protoDesc && it !== ObjectProto)dP(ObjectProto, key, protoDesc);
-	} : dP;
-
-	var wrap = function(tag){
-	  var sym = AllSymbols[tag] = _create($Symbol[PROTOTYPE]);
-	  sym._k = tag;
-	  return sym;
-	};
-
-	var isSymbol = USE_NATIVE && typeof $Symbol.iterator == 'symbol' ? function(it){
-	  return typeof it == 'symbol';
-	} : function(it){
-	  return it instanceof $Symbol;
-	};
-
-	var $defineProperty = function defineProperty(it, key, D){
-	  if(it === ObjectProto)$defineProperty(OPSymbols, key, D);
-	  anObject(it);
-	  key = toPrimitive(key, true);
-	  anObject(D);
-	  if(has(AllSymbols, key)){
-	    if(!D.enumerable){
-	      if(!has(it, HIDDEN))dP(it, HIDDEN, createDesc(1, {}));
-	      it[HIDDEN][key] = true;
-	    } else {
-	      if(has(it, HIDDEN) && it[HIDDEN][key])it[HIDDEN][key] = false;
-	      D = _create(D, {enumerable: createDesc(0, false)});
-	    } return setSymbolDesc(it, key, D);
-	  } return dP(it, key, D);
-	};
-	var $defineProperties = function defineProperties(it, P){
-	  anObject(it);
-	  var keys = enumKeys(P = toIObject(P))
-	    , i    = 0
-	    , l = keys.length
-	    , key;
-	  while(l > i)$defineProperty(it, key = keys[i++], P[key]);
-	  return it;
-	};
-	var $create = function create(it, P){
-	  return P === undefined ? _create(it) : $defineProperties(_create(it), P);
-	};
-	var $propertyIsEnumerable = function propertyIsEnumerable(key){
-	  var E = isEnum.call(this, key = toPrimitive(key, true));
-	  if(this === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))return false;
-	  return E || !has(this, key) || !has(AllSymbols, key) || has(this, HIDDEN) && this[HIDDEN][key] ? E : true;
-	};
-	var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key){
-	  it  = toIObject(it);
-	  key = toPrimitive(key, true);
-	  if(it === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))return;
-	  var D = gOPD(it, key);
-	  if(D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key]))D.enumerable = true;
-	  return D;
-	};
-	var $getOwnPropertyNames = function getOwnPropertyNames(it){
-	  var names  = gOPN(toIObject(it))
-	    , result = []
-	    , i      = 0
-	    , key;
-	  while(names.length > i){
-	    if(!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META)result.push(key);
-	  } return result;
-	};
-	var $getOwnPropertySymbols = function getOwnPropertySymbols(it){
-	  var IS_OP  = it === ObjectProto
-	    , names  = gOPN(IS_OP ? OPSymbols : toIObject(it))
-	    , result = []
-	    , i      = 0
-	    , key;
-	  while(names.length > i){
-	    if(has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true))result.push(AllSymbols[key]);
-	  } return result;
-	};
-
-	// 19.4.1.1 Symbol([description])
-	if(!USE_NATIVE){
-	  $Symbol = function Symbol(){
-	    if(this instanceof $Symbol)throw TypeError('Symbol is not a constructor!');
-	    var tag = uid(arguments.length > 0 ? arguments[0] : undefined);
-	    var $set = function(value){
-	      if(this === ObjectProto)$set.call(OPSymbols, value);
-	      if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
-	      setSymbolDesc(this, tag, createDesc(1, value));
-	    };
-	    if(DESCRIPTORS && setter)setSymbolDesc(ObjectProto, tag, {configurable: true, set: $set});
-	    return wrap(tag);
-	  };
-	  redefine($Symbol[PROTOTYPE], 'toString', function toString(){
-	    return this._k;
-	  });
-
-	  $GOPD.f = $getOwnPropertyDescriptor;
-	  $DP.f   = $defineProperty;
-	  __webpack_require__(795).f = gOPNExt.f = $getOwnPropertyNames;
-	  __webpack_require__(789).f  = $propertyIsEnumerable;
-	  __webpack_require__(788).f = $getOwnPropertySymbols;
-
-	  if(DESCRIPTORS && !__webpack_require__(773)){
-	    redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
-	  }
-
-	  wksExt.f = function(name){
-	    return wrap(wks(name));
-	  }
-	}
-
-	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Symbol: $Symbol});
-
-	for(var symbols = (
-	  // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
-	  'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
-	).split(','), i = 0; symbols.length > i; )wks(symbols[i++]);
-
-	for(var symbols = $keys(wks.store), i = 0; symbols.length > i; )wksDefine(symbols[i++]);
-
-	$export($export.S + $export.F * !USE_NATIVE, 'Symbol', {
-	  // 19.4.2.1 Symbol.for(key)
-	  'for': function(key){
-	    return has(SymbolRegistry, key += '')
-	      ? SymbolRegistry[key]
-	      : SymbolRegistry[key] = $Symbol(key);
-	  },
-	  // 19.4.2.5 Symbol.keyFor(sym)
-	  keyFor: function keyFor(key){
-	    if(isSymbol(key))return keyOf(SymbolRegistry, key);
-	    throw TypeError(key + ' is not a symbol!');
-	  },
-	  useSetter: function(){ setter = true; },
-	  useSimple: function(){ setter = false; }
-	});
-
-	$export($export.S + $export.F * !USE_NATIVE, 'Object', {
-	  // 19.1.2.2 Object.create(O [, Properties])
-	  create: $create,
-	  // 19.1.2.4 Object.defineProperty(O, P, Attributes)
-	  defineProperty: $defineProperty,
-	  // 19.1.2.3 Object.defineProperties(O, Properties)
-	  defineProperties: $defineProperties,
-	  // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-	  getOwnPropertyDescriptor: $getOwnPropertyDescriptor,
-	  // 19.1.2.7 Object.getOwnPropertyNames(O)
-	  getOwnPropertyNames: $getOwnPropertyNames,
-	  // 19.1.2.8 Object.getOwnPropertySymbols(O)
-	  getOwnPropertySymbols: $getOwnPropertySymbols
-	});
-
-	// 24.3.2 JSON.stringify(value [, replacer [, space]])
-	$JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
-	  var S = $Symbol();
-	  // MS Edge converts symbol values to JSON as {}
-	  // WebKit converts symbol values to JSON as null
-	  // V8 throws on boxed symbols
-	  return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
-	})), 'JSON', {
-	  stringify: function stringify(it){
-	    if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
-	    var args = [it]
-	      , i    = 1
-	      , replacer, $replacer;
-	    while(arguments.length > i)args.push(arguments[i++]);
-	    replacer = args[1];
-	    if(typeof replacer == 'function')$replacer = replacer;
-	    if($replacer || !isArray(replacer))replacer = function(key, value){
-	      if($replacer)value = $replacer.call(this, key, value);
-	      if(!isSymbol(value))return value;
-	    };
-	    args[1] = replacer;
-	    return _stringify.apply($JSON, args);
-	  }
-	});
-
-	// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(755)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
-	// 19.4.3.5 Symbol.prototype[@@toStringTag]
-	setToStringTag($Symbol, 'Symbol');
-	// 20.2.1.9 Math[@@toStringTag]
-	setToStringTag(Math, 'Math', true);
-	// 24.3.3 JSON[@@toStringTag]
-	setToStringTag(global.JSON, 'JSON', true);
-
-/***/ },
-/* 749 */
-/***/ function(module, exports) {
-
-	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-	var global = module.exports = typeof window != 'undefined' && window.Math == Math
-	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ },
-/* 750 */
-/***/ function(module, exports) {
-
-	var hasOwnProperty = {}.hasOwnProperty;
-	module.exports = function(it, key){
-	  return hasOwnProperty.call(it, key);
-	};
-
-/***/ },
 /* 751 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(752)(function(){
-	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 752 */
-/***/ function(module, exports) {
-
-	module.exports = function(exec){
-	  try {
-	    return !!exec();
-	  } catch(e){
-	    return true;
-	  }
-	};
-
-/***/ },
-/* 753 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(749)
-	  , core      = __webpack_require__(754)
-	  , hide      = __webpack_require__(755)
-	  , redefine  = __webpack_require__(763)
-	  , ctx       = __webpack_require__(765)
-	  , PROTOTYPE = 'prototype';
-
-	var $export = function(type, name, source){
-	  var IS_FORCED = type & $export.F
-	    , IS_GLOBAL = type & $export.G
-	    , IS_STATIC = type & $export.S
-	    , IS_PROTO  = type & $export.P
-	    , IS_BIND   = type & $export.B
-	    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE]
-	    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-	    , expProto  = exports[PROTOTYPE] || (exports[PROTOTYPE] = {})
-	    , key, own, out, exp;
-	  if(IS_GLOBAL)source = name;
-	  for(key in source){
-	    // contains in native
-	    own = !IS_FORCED && target && target[key] !== undefined;
-	    // export native or passed
-	    out = (own ? target : source)[key];
-	    // bind timers to global for call from export context
-	    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-	    // extend global
-	    if(target)redefine(target, key, out, type & $export.U);
-	    // export
-	    if(exports[key] != out)hide(exports, key, exp);
-	    if(IS_PROTO && expProto[key] != out)expProto[key] = out;
-	  }
-	};
-	global.core = core;
-	// type bitmap
-	$export.F = 1;   // forced
-	$export.G = 2;   // global
-	$export.S = 4;   // static
-	$export.P = 8;   // proto
-	$export.B = 16;  // bind
-	$export.W = 32;  // wrap
-	$export.U = 64;  // safe
-	$export.R = 128; // real proto method for `library` 
-	module.exports = $export;
-
-/***/ },
-/* 754 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 755 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var dP         = __webpack_require__(756)
-	  , createDesc = __webpack_require__(762);
-	module.exports = __webpack_require__(751) ? function(object, key, value){
-	  return dP.f(object, key, createDesc(1, value));
-	} : function(object, key, value){
-	  object[key] = value;
-	  return object;
-	};
-
-/***/ },
-/* 756 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var anObject       = __webpack_require__(757)
-	  , IE8_DOM_DEFINE = __webpack_require__(759)
-	  , toPrimitive    = __webpack_require__(761)
-	  , dP             = Object.defineProperty;
-
-	exports.f = __webpack_require__(751) ? Object.defineProperty : function defineProperty(O, P, Attributes){
-	  anObject(O);
-	  P = toPrimitive(P, true);
-	  anObject(Attributes);
-	  if(IE8_DOM_DEFINE)try {
-	    return dP(O, P, Attributes);
-	  } catch(e){ /* empty */ }
-	  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-	  if('value' in Attributes)O[P] = Attributes.value;
-	  return O;
-	};
-
-/***/ },
-/* 757 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(758);
-	module.exports = function(it){
-	  if(!isObject(it))throw TypeError(it + ' is not an object!');
-	  return it;
-	};
-
-/***/ },
-/* 758 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  return typeof it === 'object' ? it !== null : typeof it === 'function';
-	};
-
-/***/ },
-/* 759 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = !__webpack_require__(751) && !__webpack_require__(752)(function(){
-	  return Object.defineProperty(__webpack_require__(760)('div'), 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 760 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(758)
-	  , document = __webpack_require__(749).document
-	  // in old IE typeof document.createElement is 'object'
-	  , is = isObject(document) && isObject(document.createElement);
-	module.exports = function(it){
-	  return is ? document.createElement(it) : {};
-	};
-
-/***/ },
-/* 761 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(758);
-	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-	// and the second argument - flag - preferred type is a string
-	module.exports = function(it, S){
-	  if(!isObject(it))return it;
-	  var fn, val;
-	  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-	  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-	  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-	  throw TypeError("Can't convert object to primitive value");
-	};
-
-/***/ },
-/* 762 */
-/***/ function(module, exports) {
-
-	module.exports = function(bitmap, value){
-	  return {
-	    enumerable  : !(bitmap & 1),
-	    configurable: !(bitmap & 2),
-	    writable    : !(bitmap & 4),
-	    value       : value
-	  };
-	};
-
-/***/ },
-/* 763 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(749)
-	  , hide      = __webpack_require__(755)
-	  , has       = __webpack_require__(750)
-	  , SRC       = __webpack_require__(764)('src')
-	  , TO_STRING = 'toString'
-	  , $toString = Function[TO_STRING]
-	  , TPL       = ('' + $toString).split(TO_STRING);
-
-	__webpack_require__(754).inspectSource = function(it){
-	  return $toString.call(it);
-	};
-
-	(module.exports = function(O, key, val, safe){
-	  var isFunction = typeof val == 'function';
-	  if(isFunction)has(val, 'name') || hide(val, 'name', key);
-	  if(O[key] === val)return;
-	  if(isFunction)has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
-	  if(O === global){
-	    O[key] = val;
-	  } else {
-	    if(!safe){
-	      delete O[key];
-	      hide(O, key, val);
-	    } else {
-	      if(O[key])O[key] = val;
-	      else hide(O, key, val);
-	    }
-	  }
-	// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-	})(Function.prototype, TO_STRING, function toString(){
-	  return typeof this == 'function' && this[SRC] || $toString.call(this);
-	});
-
-/***/ },
-/* 764 */
-/***/ function(module, exports) {
-
-	var id = 0
-	  , px = Math.random();
-	module.exports = function(key){
-	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-	};
-
-/***/ },
-/* 765 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// optional / simple context binding
-	var aFunction = __webpack_require__(766);
-	module.exports = function(fn, that, length){
-	  aFunction(fn);
-	  if(that === undefined)return fn;
-	  switch(length){
-	    case 1: return function(a){
-	      return fn.call(that, a);
-	    };
-	    case 2: return function(a, b){
-	      return fn.call(that, a, b);
-	    };
-	    case 3: return function(a, b, c){
-	      return fn.call(that, a, b, c);
-	    };
-	  }
-	  return function(/* ...args */){
-	    return fn.apply(that, arguments);
-	  };
-	};
-
-/***/ },
-/* 766 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-	  return it;
-	};
-
-/***/ },
-/* 767 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var META     = __webpack_require__(764)('meta')
-	  , isObject = __webpack_require__(758)
-	  , has      = __webpack_require__(750)
-	  , setDesc  = __webpack_require__(756).f
-	  , id       = 0;
-	var isExtensible = Object.isExtensible || function(){
-	  return true;
-	};
-	var FREEZE = !__webpack_require__(752)(function(){
-	  return isExtensible(Object.preventExtensions({}));
-	});
-	var setMeta = function(it){
-	  setDesc(it, META, {value: {
-	    i: 'O' + ++id, // object ID
-	    w: {}          // weak collections IDs
-	  }});
-	};
-	var fastKey = function(it, create){
-	  // return primitive with prefix
-	  if(!isObject(it))return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-	  if(!has(it, META)){
-	    // can't set metadata to uncaught frozen object
-	    if(!isExtensible(it))return 'F';
-	    // not necessary to add metadata
-	    if(!create)return 'E';
-	    // add missing metadata
-	    setMeta(it);
-	  // return object ID
-	  } return it[META].i;
-	};
-	var getWeak = function(it, create){
-	  if(!has(it, META)){
-	    // can't set metadata to uncaught frozen object
-	    if(!isExtensible(it))return true;
-	    // not necessary to add metadata
-	    if(!create)return false;
-	    // add missing metadata
-	    setMeta(it);
-	  // return hash weak collections IDs
-	  } return it[META].w;
-	};
-	// add metadata on freeze-family methods calling
-	var onFreeze = function(it){
-	  if(FREEZE && meta.NEED && isExtensible(it) && !has(it, META))setMeta(it);
-	  return it;
-	};
-	var meta = module.exports = {
-	  KEY:      META,
-	  NEED:     false,
-	  fastKey:  fastKey,
-	  getWeak:  getWeak,
-	  onFreeze: onFreeze
-	};
-
-/***/ },
-/* 768 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global = __webpack_require__(749)
-	  , SHARED = '__core-js_shared__'
-	  , store  = global[SHARED] || (global[SHARED] = {});
-	module.exports = function(key){
-	  return store[key] || (store[key] = {});
-	};
-
-/***/ },
-/* 769 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var def = __webpack_require__(756).f
-	  , has = __webpack_require__(750)
-	  , TAG = __webpack_require__(770)('toStringTag');
-
-	module.exports = function(it, tag, stat){
-	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
-	};
-
-/***/ },
-/* 770 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var store      = __webpack_require__(768)('wks')
-	  , uid        = __webpack_require__(764)
-	  , Symbol     = __webpack_require__(749).Symbol
-	  , USE_SYMBOL = typeof Symbol == 'function';
-
-	var $exports = module.exports = function(name){
-	  return store[name] || (store[name] =
-	    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-	};
-
-	$exports.store = store;
-
-/***/ },
-/* 771 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports.f = __webpack_require__(770);
-
-/***/ },
-/* 772 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global         = __webpack_require__(749)
-	  , core           = __webpack_require__(754)
-	  , LIBRARY        = __webpack_require__(773)
-	  , wksExt         = __webpack_require__(771)
-	  , defineProperty = __webpack_require__(756).f;
-	module.exports = function(name){
-	  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
-	  if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
-	};
-
-/***/ },
-/* 773 */
-/***/ function(module, exports) {
-
-	module.exports = false;
-
-/***/ },
-/* 774 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var getKeys   = __webpack_require__(775)
-	  , toIObject = __webpack_require__(777);
-	module.exports = function(object, el){
-	  var O      = toIObject(object)
-	    , keys   = getKeys(O)
-	    , length = keys.length
-	    , index  = 0
-	    , key;
-	  while(length > index)if(O[key = keys[index++]] === el)return key;
-	};
-
-/***/ },
-/* 775 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys       = __webpack_require__(776)
-	  , enumBugKeys = __webpack_require__(786);
-
-	module.exports = Object.keys || function keys(O){
-	  return $keys(O, enumBugKeys);
-	};
-
-/***/ },
-/* 776 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var has          = __webpack_require__(750)
-	  , toIObject    = __webpack_require__(777)
-	  , arrayIndexOf = __webpack_require__(781)(false)
-	  , IE_PROTO     = __webpack_require__(785)('IE_PROTO');
-
-	module.exports = function(object, names){
-	  var O      = toIObject(object)
-	    , i      = 0
-	    , result = []
-	    , key;
-	  for(key in O)if(key != IE_PROTO)has(O, key) && result.push(key);
-	  // Don't enum bug & hidden keys
-	  while(names.length > i)if(has(O, key = names[i++])){
-	    ~arrayIndexOf(result, key) || result.push(key);
-	  }
-	  return result;
-	};
-
-/***/ },
-/* 777 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(778)
-	  , defined = __webpack_require__(780);
-	module.exports = function(it){
-	  return IObject(defined(it));
-	};
-
-/***/ },
-/* 778 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(779);
-	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
-	  return cof(it) == 'String' ? it.split('') : Object(it);
-	};
-
-/***/ },
-/* 779 */
-/***/ function(module, exports) {
-
-	var toString = {}.toString;
-
-	module.exports = function(it){
-	  return toString.call(it).slice(8, -1);
-	};
-
-/***/ },
-/* 780 */
-/***/ function(module, exports) {
-
-	// 7.2.1 RequireObjectCoercible(argument)
-	module.exports = function(it){
-	  if(it == undefined)throw TypeError("Can't call method on  " + it);
-	  return it;
-	};
-
-/***/ },
-/* 781 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// false -> Array#indexOf
-	// true  -> Array#includes
-	var toIObject = __webpack_require__(777)
-	  , toLength  = __webpack_require__(782)
-	  , toIndex   = __webpack_require__(784);
-	module.exports = function(IS_INCLUDES){
-	  return function($this, el, fromIndex){
-	    var O      = toIObject($this)
-	      , length = toLength(O.length)
-	      , index  = toIndex(fromIndex, length)
-	      , value;
-	    // Array#includes uses SameValueZero equality algorithm
-	    if(IS_INCLUDES && el != el)while(length > index){
-	      value = O[index++];
-	      if(value != value)return true;
-	    // Array#toIndex ignores holes, Array#includes - not
-	    } else for(;length > index; index++)if(IS_INCLUDES || index in O){
-	      if(O[index] === el)return IS_INCLUDES || index || 0;
-	    } return !IS_INCLUDES && -1;
-	  };
-	};
-
-/***/ },
-/* 782 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(783)
-	  , min       = Math.min;
-	module.exports = function(it){
-	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-	};
-
-/***/ },
-/* 783 */
-/***/ function(module, exports) {
-
-	// 7.1.4 ToInteger
-	var ceil  = Math.ceil
-	  , floor = Math.floor;
-	module.exports = function(it){
-	  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-	};
-
-/***/ },
-/* 784 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var toInteger = __webpack_require__(783)
-	  , max       = Math.max
-	  , min       = Math.min;
-	module.exports = function(index, length){
-	  index = toInteger(index);
-	  return index < 0 ? max(index + length, 0) : min(index, length);
-	};
-
-/***/ },
-/* 785 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var shared = __webpack_require__(768)('keys')
-	  , uid    = __webpack_require__(764);
-	module.exports = function(key){
-	  return shared[key] || (shared[key] = uid(key));
-	};
-
-/***/ },
-/* 786 */
-/***/ function(module, exports) {
-
-	// IE 8- don't enum bug keys
-	module.exports = (
-	  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-	).split(',');
-
-/***/ },
-/* 787 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// all enumerable object keys, includes symbols
-	var getKeys = __webpack_require__(775)
-	  , gOPS    = __webpack_require__(788)
-	  , pIE     = __webpack_require__(789);
-	module.exports = function(it){
-	  var result     = getKeys(it)
-	    , getSymbols = gOPS.f;
-	  if(getSymbols){
-	    var symbols = getSymbols(it)
-	      , isEnum  = pIE.f
-	      , i       = 0
-	      , key;
-	    while(symbols.length > i)if(isEnum.call(it, key = symbols[i++]))result.push(key);
-	  } return result;
-	};
-
-/***/ },
-/* 788 */
-/***/ function(module, exports) {
-
-	exports.f = Object.getOwnPropertySymbols;
-
-/***/ },
-/* 789 */
-/***/ function(module, exports) {
-
-	exports.f = {}.propertyIsEnumerable;
-
-/***/ },
-/* 790 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.2.2 IsArray(argument)
-	var cof = __webpack_require__(779);
-	module.exports = Array.isArray || function isArray(arg){
-	  return cof(arg) == 'Array';
-	};
-
-/***/ },
-/* 791 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	var anObject    = __webpack_require__(757)
-	  , dPs         = __webpack_require__(792)
-	  , enumBugKeys = __webpack_require__(786)
-	  , IE_PROTO    = __webpack_require__(785)('IE_PROTO')
-	  , Empty       = function(){ /* empty */ }
-	  , PROTOTYPE   = 'prototype';
-
-	// Create object with fake `null` prototype: use iframe Object with cleared prototype
-	var createDict = function(){
-	  // Thrash, waste and sodomy: IE GC bug
-	  var iframe = __webpack_require__(760)('iframe')
-	    , i      = enumBugKeys.length
-	    , lt     = '<'
-	    , gt     = '>'
-	    , iframeDocument;
-	  iframe.style.display = 'none';
-	  __webpack_require__(793).appendChild(iframe);
-	  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
-	  // createDict = iframe.contentWindow.Object;
-	  // html.removeChild(iframe);
-	  iframeDocument = iframe.contentWindow.document;
-	  iframeDocument.open();
-	  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
-	  iframeDocument.close();
-	  createDict = iframeDocument.F;
-	  while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
-	  return createDict();
-	};
-
-	module.exports = Object.create || function create(O, Properties){
-	  var result;
-	  if(O !== null){
-	    Empty[PROTOTYPE] = anObject(O);
-	    result = new Empty;
-	    Empty[PROTOTYPE] = null;
-	    // add "__proto__" for Object.getPrototypeOf polyfill
-	    result[IE_PROTO] = O;
-	  } else result = createDict();
-	  return Properties === undefined ? result : dPs(result, Properties);
-	};
-
-
-/***/ },
-/* 792 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var dP       = __webpack_require__(756)
-	  , anObject = __webpack_require__(757)
-	  , getKeys  = __webpack_require__(775);
-
-	module.exports = __webpack_require__(751) ? Object.defineProperties : function defineProperties(O, Properties){
-	  anObject(O);
-	  var keys   = getKeys(Properties)
-	    , length = keys.length
-	    , i = 0
-	    , P;
-	  while(length > i)dP.f(O, P = keys[i++], Properties[P]);
-	  return O;
-	};
-
-/***/ },
-/* 793 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(749).document && document.documentElement;
-
-/***/ },
-/* 794 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-	var toIObject = __webpack_require__(777)
-	  , gOPN      = __webpack_require__(795).f
-	  , toString  = {}.toString;
-
-	var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
-	  ? Object.getOwnPropertyNames(window) : [];
-
-	var getWindowNames = function(it){
-	  try {
-	    return gOPN(it);
-	  } catch(e){
-	    return windowNames.slice();
-	  }
-	};
-
-	module.exports.f = function getOwnPropertyNames(it){
-	  return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
-	};
-
-
-/***/ },
-/* 795 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-	var $keys      = __webpack_require__(776)
-	  , hiddenKeys = __webpack_require__(786).concat('length', 'prototype');
-
-	exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
-	  return $keys(O, hiddenKeys);
-	};
-
-/***/ },
-/* 796 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var pIE            = __webpack_require__(789)
-	  , createDesc     = __webpack_require__(762)
-	  , toIObject      = __webpack_require__(777)
-	  , toPrimitive    = __webpack_require__(761)
-	  , has            = __webpack_require__(750)
-	  , IE8_DOM_DEFINE = __webpack_require__(759)
-	  , gOPD           = Object.getOwnPropertyDescriptor;
-
-	exports.f = __webpack_require__(751) ? gOPD : function getOwnPropertyDescriptor(O, P){
-	  O = toIObject(O);
-	  P = toPrimitive(P, true);
-	  if(IE8_DOM_DEFINE)try {
-	    return gOPD(O, P);
-	  } catch(e){ /* empty */ }
-	  if(has(O, P))return createDesc(!pIE.f.call(O, P), O[P]);
-	};
-
-/***/ },
-/* 797 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $export = __webpack_require__(753)
-	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	$export($export.S, 'Object', {create: __webpack_require__(791)});
-
-/***/ },
-/* 798 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $export = __webpack_require__(753);
-	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(751), 'Object', {defineProperty: __webpack_require__(756).f});
-
-/***/ },
-/* 799 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $export = __webpack_require__(753);
-	// 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-	$export($export.S + $export.F * !__webpack_require__(751), 'Object', {defineProperties: __webpack_require__(792)});
-
-/***/ },
-/* 800 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-	var toIObject                 = __webpack_require__(777)
-	  , $getOwnPropertyDescriptor = __webpack_require__(796).f;
-
-	__webpack_require__(801)('getOwnPropertyDescriptor', function(){
-	  return function getOwnPropertyDescriptor(it, key){
-	    return $getOwnPropertyDescriptor(toIObject(it), key);
-	  };
-	});
-
-/***/ },
-/* 801 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// most Object methods by ES6 should accept primitives
-	var $export = __webpack_require__(753)
-	  , core    = __webpack_require__(754)
-	  , fails   = __webpack_require__(752);
-	module.exports = function(KEY, exec){
-	  var fn  = (core.Object || {})[KEY] || Object[KEY]
-	    , exp = {};
-	  exp[KEY] = exec(fn);
-	  $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
-	};
-
-/***/ },
-/* 802 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.9 Object.getPrototypeOf(O)
-	var toObject        = __webpack_require__(803)
-	  , $getPrototypeOf = __webpack_require__(804);
-
-	__webpack_require__(801)('getPrototypeOf', function(){
-	  return function getPrototypeOf(it){
-	    return $getPrototypeOf(toObject(it));
-	  };
-	});
-
-/***/ },
-/* 803 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(780);
-	module.exports = function(it){
-	  return Object(defined(it));
-	};
-
-/***/ },
-/* 804 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-	var has         = __webpack_require__(750)
-	  , toObject    = __webpack_require__(803)
-	  , IE_PROTO    = __webpack_require__(785)('IE_PROTO')
-	  , ObjectProto = Object.prototype;
-
-	module.exports = Object.getPrototypeOf || function(O){
-	  O = toObject(O);
-	  if(has(O, IE_PROTO))return O[IE_PROTO];
-	  if(typeof O.constructor == 'function' && O instanceof O.constructor){
-	    return O.constructor.prototype;
-	  } return O instanceof Object ? ObjectProto : null;
-	};
-
-/***/ },
-/* 805 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.14 Object.keys(O)
-	var toObject = __webpack_require__(803)
-	  , $keys    = __webpack_require__(775);
-
-	__webpack_require__(801)('keys', function(){
-	  return function keys(it){
-	    return $keys(toObject(it));
-	  };
-	});
-
-/***/ },
-/* 806 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.7 Object.getOwnPropertyNames(O)
-	__webpack_require__(801)('getOwnPropertyNames', function(){
-	  return __webpack_require__(794).f;
-	});
-
-/***/ },
-/* 807 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.5 Object.freeze(O)
-	var isObject = __webpack_require__(758)
-	  , meta     = __webpack_require__(767).onFreeze;
-
-	__webpack_require__(801)('freeze', function($freeze){
-	  return function freeze(it){
-	    return $freeze && isObject(it) ? $freeze(meta(it)) : it;
-	  };
-	});
-
-/***/ },
-/* 808 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.17 Object.seal(O)
-	var isObject = __webpack_require__(758)
-	  , meta     = __webpack_require__(767).onFreeze;
-
-	__webpack_require__(801)('seal', function($seal){
-	  return function seal(it){
-	    return $seal && isObject(it) ? $seal(meta(it)) : it;
-	  };
-	});
-
-/***/ },
-/* 809 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.15 Object.preventExtensions(O)
-	var isObject = __webpack_require__(758)
-	  , meta     = __webpack_require__(767).onFreeze;
-
-	__webpack_require__(801)('preventExtensions', function($preventExtensions){
-	  return function preventExtensions(it){
-	    return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
-	  };
-	});
-
-/***/ },
-/* 810 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.12 Object.isFrozen(O)
-	var isObject = __webpack_require__(758);
-
-	__webpack_require__(801)('isFrozen', function($isFrozen){
-	  return function isFrozen(it){
-	    return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
-	  };
-	});
-
-/***/ },
-/* 811 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.13 Object.isSealed(O)
-	var isObject = __webpack_require__(758);
-
-	__webpack_require__(801)('isSealed', function($isSealed){
-	  return function isSealed(it){
-	    return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
-	  };
-	});
-
-/***/ },
-/* 812 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.11 Object.isExtensible(O)
-	var isObject = __webpack_require__(758);
-
-	__webpack_require__(801)('isExtensible', function($isExtensible){
-	  return function isExtensible(it){
-	    return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
-	  };
-	});
-
-/***/ },
-/* 813 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.3.1 Object.assign(target, source)
-	var $export = __webpack_require__(753);
-
-	$export($export.S + $export.F, 'Object', {assign: __webpack_require__(814)});
-
-/***/ },
-/* 814 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	// 19.1.2.1 Object.assign(target, source, ...)
-	var getKeys  = __webpack_require__(775)
-	  , gOPS     = __webpack_require__(788)
-	  , pIE      = __webpack_require__(789)
-	  , toObject = __webpack_require__(803)
-	  , IObject  = __webpack_require__(778)
-	  , $assign  = Object.assign;
-
-	// should work with symbols and should have deterministic property order (V8 bug)
-	module.exports = !$assign || __webpack_require__(752)(function(){
-	  var A = {}
-	    , B = {}
-	    , S = Symbol()
-	    , K = 'abcdefghijklmnopqrst';
-	  A[S] = 7;
-	  K.split('').forEach(function(k){ B[k] = k; });
-	  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-	}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
-	  var T     = toObject(target)
-	    , aLen  = arguments.length
-	    , index = 1
-	    , getSymbols = gOPS.f
-	    , isEnum     = pIE.f;
-	  while(aLen > index){
-	    var S      = IObject(arguments[index++])
-	      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
-	      , length = keys.length
-	      , j      = 0
-	      , key;
-	    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
-	  } return T;
-	} : $assign;
-
-/***/ },
-/* 815 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.3.10 Object.is(value1, value2)
-	var $export = __webpack_require__(753);
-	$export($export.S, 'Object', {is: __webpack_require__(816)});
-
-/***/ },
-/* 816 */
-/***/ function(module, exports) {
-
-	// 7.2.9 SameValue(x, y)
-	module.exports = Object.is || function is(x, y){
-	  return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
-	};
-
-/***/ },
-/* 817 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.3.19 Object.setPrototypeOf(O, proto)
-	var $export = __webpack_require__(753);
-	$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(818).set});
-
-/***/ },
-/* 818 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Works with __proto__ only. Old v8 can't work with null proto objects.
-	/* eslint-disable no-proto */
-	var isObject = __webpack_require__(758)
-	  , anObject = __webpack_require__(757);
-	var check = function(O, proto){
-	  anObject(O);
-	  if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
-	};
-	module.exports = {
-	  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
-	    function(test, buggy, set){
-	      try {
-	        set = __webpack_require__(765)(Function.call, __webpack_require__(796).f(Object.prototype, '__proto__').set, 2);
-	        set(test, []);
-	        buggy = !(test instanceof Array);
-	      } catch(e){ buggy = true; }
-	      return function setPrototypeOf(O, proto){
-	        check(O, proto);
-	        if(buggy)O.__proto__ = proto;
-	        else set(O, proto);
-	        return O;
-	      };
-	    }({}, false) : undefined),
-	  check: check
-	};
-
-/***/ },
-/* 819 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	// 19.1.3.6 Object.prototype.toString()
-	var classof = __webpack_require__(820)
-	  , test    = {};
-	test[__webpack_require__(770)('toStringTag')] = 'z';
-	if(test + '' != '[object z]'){
-	  __webpack_require__(763)(Object.prototype, 'toString', function toString(){
-	    return '[object ' + classof(this) + ']';
-	  }, true);
-	}
-
-/***/ },
-/* 820 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// getting tag from 19.1.3.6 Object.prototype.toString()
-	var cof = __webpack_require__(779)
-	  , TAG = __webpack_require__(770)('toStringTag')
-	  // ES3 wrong here
-	  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
-
-	// fallback for IE11 Script Access Denied error
-	var tryGet = function(it, key){
-	  try {
-	    return it[key];
-	  } catch(e){ /* empty */ }
-	};
-
-	module.exports = function(it){
-	  var O, T, B;
-	  return it === undefined ? 'Undefined' : it === null ? 'Null'
-	    // @@toStringTag case
-	    : typeof (T = tryGet(O = Object(it), TAG)) == 'string' ? T
-	    // builtinTag case
-	    : ARG ? cof(O)
-	    // ES3 arguments fallback
-	    : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
-	};
+	__webpack_require__(57);
+	__webpack_require__(106);
+	__webpack_require__(107);
+	__webpack_require__(108);
+	__webpack_require__(109);
+	__webpack_require__(111);
+	__webpack_require__(114);
+	__webpack_require__(115);
+	__webpack_require__(116);
+	__webpack_require__(117);
+	__webpack_require__(118);
+	__webpack_require__(119);
+	__webpack_require__(120);
+	__webpack_require__(121);
+	__webpack_require__(122);
+	__webpack_require__(124);
+	__webpack_require__(126);
+	__webpack_require__(128);
+
+	module.exports = __webpack_require__(63).Object;
 
 /***/ }
 /******/ ])

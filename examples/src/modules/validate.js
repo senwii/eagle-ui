@@ -2,7 +2,7 @@
  * Created by mac on 15/11/4.
  */
 import React,{Component} from 'react';
-import {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
+import {Tabset,Tab,CalendarPanel,ValidatorPanel,ValidatorWrapper,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';
 import {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'
 import Code, {getFile} from '../libs/Code';
 let Demo = class Demo extends Component{
@@ -212,6 +212,36 @@ let Demo = class Demo extends Component{
                         </Dialog>
                     </DemoShow>
                 </DemoItem>
+
+
+                <DemoItem title="ValidatorWrapper">
+                    <CodeShow>
+                        <Code code={getFile('validate-demo4')}/>
+                    </CodeShow>
+                    <DemoShow>
+                        <ValidatorWrapper
+                            rules={{
+                                userName:{
+                                    required:true
+                                }}} >
+                            <Input placeholder="请输入姓名"  name="userName" data-validate />
+                        </ValidatorWrapper>
+                        <br />
+                        <ValidatorWrapper
+                            rules={{
+                                minlength:{
+                                    minlength:{
+                                    params:10
+                                 },
+                                 maxlength:{
+                                     params:15
+                                 }
+                             }   }} >
+                            <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+                        </ValidatorWrapper>
+                    </DemoShow>
+                </DemoItem>
+
             </DemoLayout>
         );
     }

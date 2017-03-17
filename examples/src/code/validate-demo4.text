@@ -1,0 +1,32 @@
+import React,{Component} from 'react';
+import {ValidatorWrapper,Input} from 'eagle-ui';
+export default class ValidateDemo4 extends Component{
+    constructor(props,context){
+        super(props,context);
+    }
+    render(){
+        return (
+            <div>
+                <ValidatorWrapper
+                    rules={{
+                                userName:{
+                                    required:true
+                                }}} >
+                    <Input placeholder="请输入姓名"  name="userName" data-validate />
+                </ValidatorWrapper>
+                <ValidatorWrapper
+                    rules={{
+                                minlength:{
+                                    minlength:{
+                                    params:10
+                                 },
+                                 maxlength:{
+                                     params:15
+                                 }
+                             }   }} >
+                    <Input placeholder="最大最小字符10-15" name="minlength" data-validate />
+                </ValidatorWrapper>
+            </div>
+        );
+    }
+};

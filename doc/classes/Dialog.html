@@ -114,6 +114,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/ValidatorWrapper.html">ValidatorWrapper</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -666,6 +674,15 @@ export default class DialogCls extends Component{
             alert(&#39;取消&#39;);
         });
     }
+    showPrompt(){
+        Dialog.prompt(&#39;这是个prompt&#39;,{
+            inputWidth:&#39;50%&#39;
+        }).then((value)=&gt;{
+            console.log(value)
+        },()=&gt;{
+            console.log(&#39;取消回调&#39;)
+        })
+    }
     render(){
         return (
             &lt;DemoLayout title="弹出框组件"&gt;
@@ -893,6 +910,14 @@ export default class DialogCls extends Component{
                     &lt;/CodeShow&gt;
                     &lt;DemoShow&gt;
                         &lt;Button onClick={::this.showConfirm}&gt;点击我Confirm&lt;/Button&gt;
+                    &lt;/DemoShow&gt;
+                &lt;/DemoItem&gt;
+                &lt;DemoItem title="prompt展示"&gt;
+                    &lt;CodeShow&gt;
+                        &lt;Code code={getFile(&#39;dialog-demo8&#39;)}/&gt;
+                    &lt;/CodeShow&gt;
+                    &lt;DemoShow&gt;
+                        &lt;Button onClick={::this.showPrompt} className="mg-right-15"&gt;点击我prompt&lt;/Button&gt;
                     &lt;/DemoShow&gt;
                 &lt;/DemoItem&gt;
             &lt;/DemoLayout&gt;

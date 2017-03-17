@@ -37,6 +37,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "TooltipPanel",
         "Tr",
         "ValidatorPanel",
+        "ValidatorWrapper",
         "imgSlider"
     ],
     "modules": [
@@ -72,6 +73,9 @@ YUI.add("yuidoc-meta", function(Y) {
                 },
                 {
                     "name": "Input"
+                },
+                {
+                    "name": "ValidatorWrapper"
                 }
             ]
         },

@@ -114,6 +114,14 @@
                            </ul>
                        </li>
                     
+                       <li>
+                            
+                           <a href="../classes/ValidatorWrapper.html">ValidatorWrapper</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
                     </ul>
                 </dd>
              
@@ -469,7 +477,21 @@
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_theme" data-tablink="theme">theme</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_total" data-tablink="total">total</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#" data-tabid="#property" data-anchor="#property_visiblePages" data-tablink="visiblePages">visiblePages</a>
 
                                 
                                 
@@ -650,7 +672,7 @@ export default class PagingCls extends Component{
                         &lt;Button onClick={::this.toggleItemNumber}&gt;
                             {(showItemsNumber?&#39;隐藏&#39;:&#39;显示&#39;)+&#39;条数设置工具&#39;}
                         &lt;/Button&gt;
-                        &lt;Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
+                        &lt;Paging showItemsNumber={showItemsNumber} visiblePages={5} theme=&#39;theme2&#39; chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}
                                 pageCallback={callback} total={5024} choosePageSize={arr1}/&gt;
                     &lt;/DemoShow&gt;
                 &lt;/DemoItem&gt;
@@ -847,7 +869,7 @@ export default class PagingCls extends Component{
             
         
         
-        <a href="../files/src_Paging.js.html#l81"><code>src&#x2F;Paging.js:81</code></a>
+        <a href="../files/src_Paging.js.html#l97"><code>src&#x2F;Paging.js:97</code></a>
         
         </p>
 
@@ -962,6 +984,54 @@ export default class PagingCls extends Component{
 </div>
 
                 
+                    <div id="property_theme" class="property item">
+    <h3 class="name"><code>theme</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Paging.js.html#l69"><code>src&#x2F;Paging.js:69</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>分页组件的样式,取值为&#39;theme1&#39;或&#39;theme2&#39;(theme1的页码没有样式，theme2的页码是块状样式)</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> &#x27;theme1&#x27;</code>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="property_total" class="property item">
     <h3 class="name"><code>total</code></h3>
     <span class="type">Integer</span>
@@ -999,6 +1069,54 @@ export default class PagingCls extends Component{
 </div>
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_visiblePages" class="property item">
+    <h3 class="name"><code>visiblePages</code></h3>
+    <span class="type">Nmumber</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p class="foundat">
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_Paging.js.html#l76"><code>src&#x2F;Paging.js:76</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <div class="stdoc-code"><p>可见的分页数</p>
+</div>
+    </div>
+
+    
+        <p><strong>Default:</strong></p>
+         <code> 10</code>
     
 
     

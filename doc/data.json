@@ -399,11 +399,20 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/ValidatorPanel.js": {
-            "name": "src/ValidatorPanel.js",
+        "src/ValidatorBase.js": {
+            "name": "src/ValidatorBase.js",
             "modules": {},
             "classes": {
                 "ValidatorPanel": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ValidatorWrapper.js": {
+            "name": "src/ValidatorWrapper.js",
+            "modules": {},
+            "classes": {
+                "ValidatorWrapper": 1
             },
             "fors": {},
             "namespaces": {}
@@ -458,13 +467,14 @@
                 "ValidatorPanel": 1,
                 "Button": 1,
                 "ButtonGroup": 1,
-                "Input": 1
+                "Input": 1,
+                "ValidatorWrapper": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "src/ValidatorPanel.js",
-            "line": 6,
+            "file": "src/ValidatorWrapper.js",
+            "line": 5,
             "description": "<h5>form表单模块集成了常见的表单元素形式:</h5>\n<strong><a href='../classes/CheckboxGroup.html'>checkbox多选框</a></strong><br>\n<strong><a href='../classes/RadioGroup.html'>radio单选框</a></strong><br>\n<strong><a href='../classes/Input.html'>input输入框</a></strong><br>\n<strong><a href='../classes/Select.html'>select下拉框</a></strong><br>\n<strong><a href='../classes/ButtonGroup.html'>button按钮组</a></strong>\n<h6>点击以上链接或者左侧导航栏的组件名称链接进行查看</h6>",
             "itemtype": "main"
         },
@@ -972,7 +982,7 @@
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t/**\n\t * Created by min.xiao\n\t */\n\timport React,{Component} from 'react';\n\timport {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class DialogCls extends Component{\n\t    static defaultProps = {\n\t    };\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            inputVal: 123124,\n\t            dialogAlign: 'center',\n\t            alertContent: '哈哈，你好苍老师'\n\t        }\n\t    }\n\t    getScope(dialog){\n\t        this.dialog = dialog;\n\t    }\n\t    show(name){\n\t        Dialog.mask(name).then(function(){\n\t            console.log('success');\n\t            Dialog.close();\n\t        },function(type){\n\t            console.log('cancel');\n\t        });\n\t    }\n\t    showAlert(){\n\t        Dialog.alert('哈哈，我是alert');\n\t    }\n\t    nomask(){\n\t        Dialog.alert('哈哈，我是alert',{\n\t            isMask:false\n\t        });\n\t    }\n\t    inputChangeHandler(evt) {\n\t        const value = evt.target.value\n\t        this.setState({\n\t            inputVal: value\n\t        })\n\t    }\n\t    dialogAlignChangeHandler(evt) {\n\t        const value = evt.target.value\n\t        this.setState({\n\t            dialogAlign: value\n\t        })\n\t    }\n\t    showConfirm(){\n\t        Dialog.confirm('确定你已经打开了么？').then(()=>{\n\t            alert('确定');\n\t        },()=>{\n\t            alert('取消');\n\t        });\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"弹出框组件\">\n\t                <DemoItem title=\"默认样式\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo1')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo1')} className=\"mg-right-15\">点击我mask</Button>\n\t                        <Dialog id=\"demo1\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n\t                            {\n\t                                type: 'success',\n\t                                name: '确认'\n\t\n\t                            },\n\t                            {\n\t                                type:'cancel',\n\t                                egStyle:'white',\n\t                                name:'取消'\n\t                            }\n\t                        ]}>\n\t                            <div>\n\t                                {this.state.alertContent}\n\t                            </div>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"改变内部文本\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask</Button>\n\t                        <Dialog id=\"demo2\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n\t                            {\n\t                                egStyle:'warning',\n\t                                name:'改变文案',\n\t                                callback:()=>{\n\t                                    {/*alert('自定义按钮');*/}\n\t                                    this.setState({\n\t                                        alertContent: '哈哈哈，改成波多。。。。'\n\t                                    })\n\t                                }\n\t                            }\n\t                        ]}>\n\t                            <div>\n\t                                {this.state.alertContent}\n\t                            </div>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"内嵌表单\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n\t                        <Dialog id=\"demo3\" egSize=\"sm\" title=\"表单验证\" contentAlign={this.state.dialogAlign} buttons={[\n\t                            {\n\t                                type: 'success',\n\t                                name: '提交',\n\t                                callback:()=>{}\n\t                            },\n\t                            {\n\t                                type:'cancel',\n\t                                egStyle:'white',\n\t                                name:'取消',\n\t                                callback:()=>{}\n\t                            }\n\t                        ]}>\n\t                            <Panel heading=\"我是标题\">\n\t                                <PanelContent>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <FormGroup>\n\t                                                <Row>\n\t                                                    <Col sm={2}>姓名</Col>\n\t                                                    <Col sm={10}><Input name=\"test1231\" id=\"test\" placeholder=\"请输入姓名\" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>姓名</Col>\n\t                                                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>改变对齐方式</Col>\n\t                                                    <Col sm={10}><Input name=\"test222\" id=\"test222\" placeholder=\"left|right|center\" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>性别</Col>\n\t                                                    <Col sm={10}>\n\t                                                        <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                            <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                            <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                        </RadioGroup>\n\t                                                    </Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>体育爱好</Col>\n\t                                                    <Col sm={10}>\n\t                                                        <CheckboxGroup>\n\t                                                            <Input  type=\"checkbox\" label=\"足球\" checked   />\n\t                                                            <Input  type=\"checkbox\" label=\"篮球\"    />\n\t                                                            <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n\t                                                            <Input  type=\"checkbox\" label=\"乒乓球\"    />\n\t                                                        </CheckboxGroup>\n\t                                                    </Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>姓名</Col>\n\t                                                    <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                    <FormGroup>\n\t                                                        <Col sm={13}>出生日期</Col>\n\t                                                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n\t                                                    </FormGroup>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>所在城市</Col>\n\t                                                    <Col sm={10} layer>\n\t                                                        <Row style={{margin:0}}>\n\t                                                            <Col sm={4} end>\n\t                                                                <Select placeholder=\"请选择城市\" >\n\t                                                                    <item value='bei'>北京</item>\n\t                                                                    <item value='shang'>上海</item>\n\t                                                                    <item value='nan'>南京</item>\n\t                                                                </Select>\n\t                                                            </Col>\n\t                                                        </Row>\n\t                                                    </Col>\n\t                                                </Row>\n\t                                            </FormGroup>\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col padding={'0'}>\n\t                                            <Panel heading=\"我是标题二\">\n\t                                                <PanelContent padding={true}>\n\t                                                    我是下一个内容区\n\t                                                </PanelContent>\n\t                                            </Panel>\n\t                                        </Col>\n\t\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col padding={'0'}>\n\t                                            <Panel heading=\"我是标题三\" >\n\t                                                <PanelContent padding={true}>\n\t                                                    我是下一个内容区\n\t                                                </PanelContent>\n\t                                            </Panel>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </PanelContent>\n\t                            </Panel>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"内容不在content之内\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo4')} className=\"mg-right-15\">点击我mask3 outside</Button>\n\t                        <Dialog id=\"demo4\" title=\"panel\" outside egSize=\"lg\">\n\t                            <Panel egType=\"normal\" margin=\"0\">\n\t                                <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                                <PanelContent>\n\t                                    <Panel egType=\"normal\">\n\t                                        <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                        <PanelContent>\n\t                                            <Row>\n\t                                                <Col>\n\t                                                    我是内容区\n\t                                                </Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col>\n\t                                                    <Panel  margin={'0'}>\n\t                                                        <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                        <PanelContent>\n\t                                                            <Row>\n\t                                                                <Col>\n\t                                                                    我是内容区\n\t                                                                </Col>\n\t                                                            </Row>\n\t                                                        </PanelContent>\n\t                                                    </Panel>\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </PanelContent>\n\t                                    </Panel>\n\t                                    <Panel margin={'0'}>\n\t                                        <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                        <PanelContent>\n\t                                            <Row>\n\t                                                <Col>\n\t                                                    我是内容区\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </PanelContent>\n\t                                    </Panel>\n\t                                </PanelContent>\n\t                            </Panel>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"alert展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo5')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"无遮罩展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo6')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"confirm展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo7')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+                "\t/**\n\t * Created by min.xiao\n\t */\n\timport React,{Component} from 'react';\n\timport {Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code';\n\t\n\texport default class DialogCls extends Component{\n\t    static defaultProps = {\n\t    };\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            inputVal: 123124,\n\t            dialogAlign: 'center',\n\t            alertContent: '哈哈，你好苍老师'\n\t        }\n\t    }\n\t    getScope(dialog){\n\t        this.dialog = dialog;\n\t    }\n\t    show(name){\n\t        Dialog.mask(name).then(function(){\n\t            console.log('success');\n\t            Dialog.close();\n\t        },function(type){\n\t            console.log('cancel');\n\t        });\n\t    }\n\t    showAlert(){\n\t        Dialog.alert('哈哈，我是alert');\n\t    }\n\t    nomask(){\n\t        Dialog.alert('哈哈，我是alert',{\n\t            isMask:false\n\t        });\n\t    }\n\t    inputChangeHandler(evt) {\n\t        const value = evt.target.value\n\t        this.setState({\n\t            inputVal: value\n\t        })\n\t    }\n\t    dialogAlignChangeHandler(evt) {\n\t        const value = evt.target.value\n\t        this.setState({\n\t            dialogAlign: value\n\t        })\n\t    }\n\t    showConfirm(){\n\t        Dialog.confirm('确定你已经打开了么？').then(()=>{\n\t            alert('确定');\n\t        },()=>{\n\t            alert('取消');\n\t        });\n\t    }\n\t    showPrompt(){\n\t        Dialog.prompt('这是个prompt',{\n\t            inputWidth:'50%'\n\t        }).then((value)=>{\n\t            console.log(value)\n\t        },()=>{\n\t            console.log('取消回调')\n\t        })\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"弹出框组件\">\n\t                <DemoItem title=\"默认样式\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo1')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo1')} className=\"mg-right-15\">点击我mask</Button>\n\t                        <Dialog id=\"demo1\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n\t                            {\n\t                                type: 'success',\n\t                                name: '确认'\n\t\n\t                            },\n\t                            {\n\t                                type:'cancel',\n\t                                egStyle:'white',\n\t                                name:'取消'\n\t                            }\n\t                        ]}>\n\t                            <div>\n\t                                {this.state.alertContent}\n\t                            </div>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"改变内部文本\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask</Button>\n\t                        <Dialog id=\"demo2\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n\t                            {\n\t                                egStyle:'warning',\n\t                                name:'改变文案',\n\t                                callback:()=>{\n\t                                    {/*alert('自定义按钮');*/}\n\t                                    this.setState({\n\t                                        alertContent: '哈哈哈，改成波多。。。。'\n\t                                    })\n\t                                }\n\t                            }\n\t                        ]}>\n\t                            <div>\n\t                                {this.state.alertContent}\n\t                            </div>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"内嵌表单\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n\t                        <Dialog id=\"demo3\" egSize=\"sm\" title=\"表单验证\" contentAlign={this.state.dialogAlign} buttons={[\n\t                            {\n\t                                type: 'success',\n\t                                name: '提交',\n\t                                callback:()=>{}\n\t                            },\n\t                            {\n\t                                type:'cancel',\n\t                                egStyle:'white',\n\t                                name:'取消',\n\t                                callback:()=>{}\n\t                            }\n\t                        ]}>\n\t                            <Panel heading=\"我是标题\">\n\t                                <PanelContent>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <FormGroup>\n\t                                                <Row>\n\t                                                    <Col sm={2}>姓名</Col>\n\t                                                    <Col sm={10}><Input name=\"test1231\" id=\"test\" placeholder=\"请输入姓名\" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>姓名</Col>\n\t                                                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>改变对齐方式</Col>\n\t                                                    <Col sm={10}><Input name=\"test222\" id=\"test222\" placeholder=\"left|right|center\" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>性别</Col>\n\t                                                    <Col sm={10}>\n\t                                                        <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n\t                                                            <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n\t                                                            <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n\t                                                        </RadioGroup>\n\t                                                    </Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>体育爱好</Col>\n\t                                                    <Col sm={10}>\n\t                                                        <CheckboxGroup>\n\t                                                            <Input  type=\"checkbox\" label=\"足球\" checked   />\n\t                                                            <Input  type=\"checkbox\" label=\"篮球\"    />\n\t                                                            <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n\t                                                            <Input  type=\"checkbox\" label=\"乒乓球\"    />\n\t                                                        </CheckboxGroup>\n\t                                                    </Col>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>姓名</Col>\n\t                                                    <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n\t                                                    <FormGroup>\n\t                                                        <Col sm={13}>出生日期</Col>\n\t                                                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n\t                                                    </FormGroup>\n\t                                                </Row>\n\t                                                <Row>\n\t                                                    <Col sm={2}>所在城市</Col>\n\t                                                    <Col sm={10} layer>\n\t                                                        <Row style={{margin:0}}>\n\t                                                            <Col sm={4} end>\n\t                                                                <Select placeholder=\"请选择城市\" >\n\t                                                                    <item value='bei'>北京</item>\n\t                                                                    <item value='shang'>上海</item>\n\t                                                                    <item value='nan'>南京</item>\n\t                                                                </Select>\n\t                                                            </Col>\n\t                                                        </Row>\n\t                                                    </Col>\n\t                                                </Row>\n\t                                            </FormGroup>\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col padding={'0'}>\n\t                                            <Panel heading=\"我是标题二\">\n\t                                                <PanelContent padding={true}>\n\t                                                    我是下一个内容区\n\t                                                </PanelContent>\n\t                                            </Panel>\n\t                                        </Col>\n\t\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col padding={'0'}>\n\t                                            <Panel heading=\"我是标题三\" >\n\t                                                <PanelContent padding={true}>\n\t                                                    我是下一个内容区\n\t                                                </PanelContent>\n\t                                            </Panel>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </PanelContent>\n\t                            </Panel>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"内容不在content之内\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.show.bind(this,'demo4')} className=\"mg-right-15\">点击我mask3 outside</Button>\n\t                        <Dialog id=\"demo4\" title=\"panel\" outside egSize=\"lg\">\n\t                            <Panel egType=\"normal\" margin=\"0\">\n\t                                <PanelHeader>另一种形式的嵌套</PanelHeader>\n\t                                <PanelContent>\n\t                                    <Panel egType=\"normal\">\n\t                                        <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                        <PanelContent>\n\t                                            <Row>\n\t                                                <Col>\n\t                                                    我是内容区\n\t                                                </Col>\n\t                                            </Row>\n\t                                            <Row>\n\t                                                <Col>\n\t                                                    <Panel  margin={'0'}>\n\t                                                        <PanelHeader>另一种形式的嵌套3</PanelHeader>\n\t                                                        <PanelContent>\n\t                                                            <Row>\n\t                                                                <Col>\n\t                                                                    我是内容区\n\t                                                                </Col>\n\t                                                            </Row>\n\t                                                        </PanelContent>\n\t                                                    </Panel>\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </PanelContent>\n\t                                    </Panel>\n\t                                    <Panel margin={'0'}>\n\t                                        <PanelHeader>另一种形式的嵌套2</PanelHeader>\n\t                                        <PanelContent>\n\t                                            <Row>\n\t                                                <Col>\n\t                                                    我是内容区\n\t                                                </Col>\n\t                                            </Row>\n\t                                        </PanelContent>\n\t                                    </Panel>\n\t                                </PanelContent>\n\t                            </Panel>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"alert展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo5')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"无遮罩展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo6')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"confirm展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo7')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"prompt展示\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('dialog-demo8')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showPrompt} className=\"mg-right-15\">点击我prompt</Button>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "dialog"
@@ -1129,7 +1139,7 @@
                 "React classnames"
             ],
             "example": [
-                "\timport React, { Component ,PropTypes} from 'react';\n\timport {Col,Row,Paging,Button} from 'eagle-ui';\n\timport Code from '../libs/Code.js';\n\timport {getFile} from '../libs/Code.js';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\t\n\t\n\tlet page = 1;\n\tfunction callback(page){\n\t    page = page;\n\t    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n\t}\n\t\n\tfunction loadPageCallback(pageSize){\n\t    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n\t}\n\tvar pageSize = 20;\n\tlet arrs = [10,15,23,35,40],\n\t    arr1 = '1';\n\t\n\texport default class PagingCls extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t\n\t        this.state={\n\t            showItemsNumber:0\n\t        };\n\t    }\n\t    toggleItemNumber(){\n\t        this.setState({\n\t            showItemsNumber:!this.state.showItemsNumber\n\t        });\n\t    }\n\t    render(){\n\t        let query = this.props.location.query,\n\t            page = query.page*1 ||0,\n\t            pageSize = query.pageSize*1 || 20,\n\t            {showItemsNumber}=this.state;\n\t        return (\n\t            <DemoLayout title=\"分页\">\n\t                <DemoItem title=\"\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('paging')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.toggleItemNumber}>\n\t                            {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}\n\t                        </Button>\n\t                        <Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n\t                                pageCallback={callback} total={5024} choosePageSize={arr1}/>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+                "\timport React, { Component ,PropTypes} from 'react';\n\timport {Col,Row,Paging,Button} from 'eagle-ui';\n\timport Code from '../libs/Code.js';\n\timport {getFile} from '../libs/Code.js';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\t\n\t\n\tlet page = 1;\n\tfunction callback(page){\n\t    page = page;\n\t    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n\t}\n\t\n\tfunction loadPageCallback(pageSize){\n\t    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n\t}\n\tvar pageSize = 20;\n\tlet arrs = [10,15,23,35,40],\n\t    arr1 = '1';\n\t\n\texport default class PagingCls extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t\n\t        this.state={\n\t            showItemsNumber:0\n\t        };\n\t    }\n\t    toggleItemNumber(){\n\t        this.setState({\n\t            showItemsNumber:!this.state.showItemsNumber\n\t        });\n\t    }\n\t    render(){\n\t        let query = this.props.location.query,\n\t            page = query.page*1 ||0,\n\t            pageSize = query.pageSize*1 || 20,\n\t            {showItemsNumber}=this.state;\n\t        return (\n\t            <DemoLayout title=\"分页\">\n\t                <DemoItem title=\"\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('paging')}>\n\t                        </Code>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.toggleItemNumber}>\n\t                            {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}\n\t                        </Button>\n\t                        <Paging showItemsNumber={showItemsNumber} visiblePages={5} theme='theme2' chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n\t                                pageCallback={callback} total={5024} choosePageSize={arr1}/>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "paging"
@@ -1458,13 +1468,39 @@
             "extension_for": [],
             "module": "form(表单)",
             "namespace": "",
-            "file": "src/ValidatorPanel.js",
-            "line": 6,
+            "file": "src/ValidatorBase.js",
+            "line": 5,
             "description": "表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />\n<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->\nrules属性提供的规则有<br/>\n<pre>\n    required：是否必填\n    date：日期格式验证\n    number：是否是有效的号码\n    url：url规则验证\n    dateISO：日期ISO验证\n    digits：是否是数字\n    equalTo：值对比\n    minlength：最少输入\n    maxlength：最大输入\n    email：邮箱验证\n    rangelength：字符大小需在某个区间之内\n    min：输入的值需要大于等于此规则定义的值\n    max：输入的值需要小于等于此规则定义的值\n    range：一个区间取值范围\n</pre>",
             "extends": "Component",
             "is_constructor": 1,
             "example": [
-                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\timport Code, {getFile} from '../libs/Code';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.rules = {\n\t            //key对应的是表单元素的name\n\t            calendar:{\n\t                //组件默认规则\n\t                required:true\n\t            },\n\t            userName:{\n\t                required:true\n\t            },\n\t            checkbox:{\n\t                required:true,\n\t                //自定义规则\n\t                isValueToNumber:{\n\t                    text:'value值不是字符串',\n\t                    rule:function(value){\n\t                        console.dir(value);\n\t                        //return isNaN(value);\n\t                        return true;\n\t                    }\n\t                }\n\t            },\n\t            date:{\n\t                date:true\n\t            },\n\t            number:{\n\t                number:true,\n\t                digits:true\n\t            },\n\t            equalTo:{\n\t                digits:true,\n\t                equalTo:{\n\t                    params:'[name=\"number\"]'\n\t                }\n\t            },\n\t            minlength:{\n\t                minlength:{\n\t                    params:10\n\t                },\n\t                maxlength:{\n\t                    params:15\n\t                }\n\t            },\n\t            email:{\n\t                email:true\n\t            }\n\t        };\n\t        this.state={\n\t            showTab:0,\n\t            update:'uid',\n\t            show:false\n\t        };\n\t    }\n\t\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t    getDialog(d){\n\t        //this.dialog = d;\n\t    }\n\t    change(value){\n\t       this.setState({\n\t           showTab:value,\n\t           update:'uid'+(+new Date())\n\t       });\n\t\n\t    }\n\t    submit(vals){\n\t        alert('验证成功'+JSON.stringify(vals));\n\t    }\n\t    showMask(){\n\t        Dialog.mask('demo2');\n\t    }\n\t    checktab(){\n\t        if(this.state.showTab =='1'){\n\t            return (\n\t                <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                <Col>\n\t                    <CheckboxGroup>\n\t                    <Input  type=\"checkbox\"  name=\"checkbox\" value=\"1\"  data-validate />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"2\" data-validate  />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"3\" data-validate  />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"4\" data-validate  />\n\t                    </CheckboxGroup>\n\t                </Col>\n\t\n\t                </Row>\n\t                </div>\n\t            );\n\t        }else{\n\t            return null;\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"验证控件\">\n\t                <DemoItem title=\"非必填项\">\n\t                    <CodeShow><Code code={getFile('validate-demo1')}/></CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <CalendarPanel>\n\t                                        <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n\t                                    </CalendarPanel>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"必填项\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"弹出验证表单\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showMask}>弹出验证表单</Button>\n\t                        <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n\t                            <Grid>\n\t                                <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </ValidatorPanel>\n\t                            </Grid>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t};\n\texport default Demo;"
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Tabset,Tab,CalendarPanel,ValidatorPanel,ValidatorWrapper,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\timport Code, {getFile} from '../libs/Code';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.rules = {\n\t            //key对应的是表单元素的name\n\t            calendar:{\n\t                //组件默认规则\n\t                required:true\n\t            },\n\t            userName:{\n\t                required:true\n\t            },\n\t            checkbox:{\n\t                required:true,\n\t                //自定义规则\n\t                isValueToNumber:{\n\t                    text:'value值不是字符串',\n\t                    rule:function(value){\n\t                        console.dir(value);\n\t                        //return isNaN(value);\n\t                        return true;\n\t                    }\n\t                }\n\t            },\n\t            date:{\n\t                date:true\n\t            },\n\t            number:{\n\t                number:true,\n\t                digits:true\n\t            },\n\t            equalTo:{\n\t                digits:true,\n\t                equalTo:{\n\t                    params:'[name=\"number\"]'\n\t                }\n\t            },\n\t            minlength:{\n\t                minlength:{\n\t                    params:10\n\t                },\n\t                maxlength:{\n\t                    params:15\n\t                }\n\t            },\n\t            email:{\n\t                email:true\n\t            }\n\t        };\n\t        this.state={\n\t            showTab:0,\n\t            update:'uid',\n\t            show:false\n\t        };\n\t    }\n\t\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t    getDialog(d){\n\t        //this.dialog = d;\n\t    }\n\t    change(value){\n\t       this.setState({\n\t           showTab:value,\n\t           update:'uid'+(+new Date())\n\t       });\n\t\n\t    }\n\t    submit(vals){\n\t        alert('验证成功'+JSON.stringify(vals));\n\t    }\n\t    showMask(){\n\t        Dialog.mask('demo2');\n\t    }\n\t    checktab(){\n\t        if(this.state.showTab =='1'){\n\t            return (\n\t                <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                <Col>\n\t                    <CheckboxGroup>\n\t                    <Input  type=\"checkbox\"  name=\"checkbox\" value=\"1\"  data-validate />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"2\" data-validate  />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"3\" data-validate  />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"4\" data-validate  />\n\t                    </CheckboxGroup>\n\t                </Col>\n\t\n\t                </Row>\n\t                </div>\n\t            );\n\t        }else{\n\t            return null;\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"验证控件\">\n\t                <DemoItem title=\"非必填项\">\n\t                    <CodeShow><Code code={getFile('validate-demo1')}/></CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <CalendarPanel>\n\t                                        <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n\t                                    </CalendarPanel>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"必填项\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"弹出验证表单\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showMask}>弹出验证表单</Button>\n\t                        <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n\t                            <Grid>\n\t                                <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </ValidatorPanel>\n\t                            </Grid>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t\n\t\n\t                <DemoItem title=\"ValidatorWrapper\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorWrapper\n\t                            rules={{\n\t                                userName:{\n\t                                    required:true\n\t                                }}} >\n\t                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                        </ValidatorWrapper>\n\t                        <br />\n\t                        <ValidatorWrapper\n\t                            rules={{\n\t                                minlength:{\n\t                                    minlength:{\n\t                                    params:10\n\t                                 },\n\t                                 maxlength:{\n\t                                     params:15\n\t                                 }\n\t                             }   }} >\n\t                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                        </ValidatorWrapper>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t\n\t            </DemoLayout>\n\t        );\n\t    }\n\t};\n\texport default Demo;"
+            ],
+            "exampleTitles": [
+                "validate"
+            ],
+            "exampleUrls": [
+                "http://future-team.github.io/eagle-ui/examples/index.html#/validate"
+            ],
+            "show": true
+        },
+        "ValidatorWrapper": {
+            "name": "ValidatorWrapper",
+            "shortname": "ValidatorWrapper",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "form(表单)",
+            "namespace": "",
+            "file": "src/ValidatorWrapper.js",
+            "line": 5,
+            "description": "表单验证组件对所有带有data-validate属性的子元素input输入框进行验证。<br/>\n<strong>rules配置对象的key值必须和子元素Input的name值保持一致</strong><br />\n<strong>区别于ValidatorPanel：ValidatorWrapper用于包裹单个输入组件，不像ValidatorPanel包裹一系列输入组件。\nValidatorWrapper的错误信息会出现在输入框下方，直到验证通过后错误信息才会消失。\n</strong>\n<br/>\n<!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->\nrules属性提供的规则有<br/>\n<pre>\n    required：是否必填\n    date：日期格式验证\n    number：是否是有效的号码\n    url：url规则验证\n    dateISO：日期ISO验证\n    digits：是否是数字\n    equalTo：值对比\n    minlength：最少输入\n    maxlength：最大输入\n    email：邮箱验证\n    rangelength：字符大小需在某个区间之内\n    min：输入的值需要大于等于此规则定义的值\n    max：输入的值需要小于等于此规则定义的值\n    range：一个区间取值范围\n</pre>",
+            "extends": "Component",
+            "is_constructor": 1,
+            "example": [
+                "\t/**\n\t * Created by mac on 15/11/4.\n\t */\n\timport React,{Component} from 'react';\n\timport {Tabset,Tab,CalendarPanel,ValidatorPanel,ValidatorWrapper,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout'\n\timport Code, {getFile} from '../libs/Code';\n\tlet Demo = class Demo extends Component{\n\t    constructor(props,context){\n\t        super(props,context);\n\t        this.rules = {\n\t            //key对应的是表单元素的name\n\t            calendar:{\n\t                //组件默认规则\n\t                required:true\n\t            },\n\t            userName:{\n\t                required:true\n\t            },\n\t            checkbox:{\n\t                required:true,\n\t                //自定义规则\n\t                isValueToNumber:{\n\t                    text:'value值不是字符串',\n\t                    rule:function(value){\n\t                        console.dir(value);\n\t                        //return isNaN(value);\n\t                        return true;\n\t                    }\n\t                }\n\t            },\n\t            date:{\n\t                date:true\n\t            },\n\t            number:{\n\t                number:true,\n\t                digits:true\n\t            },\n\t            equalTo:{\n\t                digits:true,\n\t                equalTo:{\n\t                    params:'[name=\"number\"]'\n\t                }\n\t            },\n\t            minlength:{\n\t                minlength:{\n\t                    params:10\n\t                },\n\t                maxlength:{\n\t                    params:15\n\t                }\n\t            },\n\t            email:{\n\t                email:true\n\t            }\n\t        };\n\t        this.state={\n\t            showTab:0,\n\t            update:'uid',\n\t            show:false\n\t        };\n\t    }\n\t\n\t    show(value,text,target,active){\n\t        console.dir(value);\n\t    }\n\t    getDialog(d){\n\t        //this.dialog = d;\n\t    }\n\t    change(value){\n\t       this.setState({\n\t           showTab:value,\n\t           update:'uid'+(+new Date())\n\t       });\n\t\n\t    }\n\t    submit(vals){\n\t        alert('验证成功'+JSON.stringify(vals));\n\t    }\n\t    showMask(){\n\t        Dialog.mask('demo2');\n\t    }\n\t    checktab(){\n\t        if(this.state.showTab =='1'){\n\t            return (\n\t                <div>\n\t                <Row>\n\t                    <Col>\n\t                        <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                    </Col>\n\t                </Row>\n\t                <Row>\n\t                <Col>\n\t                    <CheckboxGroup>\n\t                    <Input  type=\"checkbox\"  name=\"checkbox\" value=\"1\"  data-validate />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"2\" data-validate  />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"3\" data-validate  />\n\t                    <Input  type=\"checkbox\"   name=\"checkbox\" value=\"4\" data-validate  />\n\t                    </CheckboxGroup>\n\t                </Col>\n\t\n\t                </Row>\n\t                </div>\n\t            );\n\t        }else{\n\t            return null;\n\t        }\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"验证控件\">\n\t                <DemoItem title=\"非必填项\">\n\t                    <CodeShow><Code code={getFile('validate-demo1')}/></CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <CalendarPanel>\n\t                                        <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n\t                                    </CalendarPanel>\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"必填项\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo2')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                </Col>\n\t                            </Row>\n\t                            <Row>\n\t                                <Col>\n\t                                    <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n\t                                </Col>\n\t                            </Row>\n\t                        </ValidatorPanel>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"弹出验证表单\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo3')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Button onClick={::this.showMask}>弹出验证表单</Button>\n\t                        <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n\t                            <Grid>\n\t                                <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n\t                                        </Col>\n\t                                    </Row>\n\t                                    <Row>\n\t                                        <Col>\n\t                                            <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n\t                                        </Col>\n\t                                    </Row>\n\t                                </ValidatorPanel>\n\t                            </Grid>\n\t                        </Dialog>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t\n\t\n\t                <DemoItem title=\"ValidatorWrapper\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('validate-demo4')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <ValidatorWrapper\n\t                            rules={{\n\t                                userName:{\n\t                                    required:true\n\t                                }}} >\n\t                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n\t                        </ValidatorWrapper>\n\t                        <br />\n\t                        <ValidatorWrapper\n\t                            rules={{\n\t                                minlength:{\n\t                                    minlength:{\n\t                                    params:10\n\t                                 },\n\t                                 maxlength:{\n\t                                     params:15\n\t                                 }\n\t                             }   }} >\n\t                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n\t                        </ValidatorWrapper>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t\n\t            </DemoLayout>\n\t        );\n\t    }\n\t};\n\texport default Demo;"
             ],
             "exampleTitles": [
                 "validate"
@@ -2479,14 +2515,36 @@
         },
         {
             "file": "src/Paging.js",
-            "line": 77,
+            "line": 69,
+            "description": "分页组件的样式,取值为'theme1'或'theme2'(theme1的页码没有样式，theme2的页码是块状样式)",
+            "itemtype": "property",
+            "name": "theme",
+            "type": "string",
+            "default": "'theme1'",
+            "class": "Paging",
+            "module": "ui"
+        },
+        {
+            "file": "src/Paging.js",
+            "line": 76,
+            "description": "可见的分页数",
+            "itemtype": "property",
+            "name": "visiblePages",
+            "type": "nmumber",
+            "default": "10",
+            "class": "Paging",
+            "module": "ui"
+        },
+        {
+            "file": "src/Paging.js",
+            "line": 91,
             "description": "默认每页显示数量为［］",
             "class": "Paging",
             "module": "ui"
         },
         {
             "file": "src/Paging.js",
-            "line": 81,
+            "line": 97,
             "description": "跟showItemsNumber一起使用 arguments{pageSize}",
             "itemtype": "property",
             "name": "loadPageCallback",
@@ -2495,7 +2553,7 @@
         },
         {
             "file": "src/Paging.js",
-            "line": 90,
+            "line": 106,
             "is_constructor": 1,
             "params": [
                 {
@@ -2514,7 +2572,7 @@
         },
         {
             "file": "src/Paging.js",
-            "line": 98,
+            "line": 114,
             "type": "Integer",
             "default": "",
             "class": "Paging",
@@ -2522,7 +2580,7 @@
         },
         {
             "file": "src/Paging.js",
-            "line": 108,
+            "line": 124,
             "type": "Boolean",
             "default": "false",
             "class": "Paging",
@@ -2530,7 +2588,7 @@
         },
         {
             "file": "src/Paging.js",
-            "line": 117,
+            "line": 133,
             "description": "当前页",
             "type": "Integer",
             "class": "Paging",
@@ -2538,21 +2596,21 @@
         },
         {
             "file": "src/Paging.js",
-            "line": 160,
+            "line": 176,
             "description": "跳转至N页",
             "class": "Paging",
             "module": "ui"
         },
         {
             "file": "src/Paging.js",
-            "line": 168,
+            "line": 230,
             "description": "生成页码",
             "class": "Paging",
             "module": "ui"
         },
         {
             "file": "src/Paging.js",
-            "line": 232,
+            "line": 297,
             "description": "if 提供自定义数组 且非空。",
             "class": "Paging",
             "module": "ui"
@@ -3157,8 +3215,8 @@
             "module": "ui"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 39,
+            "file": "src/ValidatorBase.js",
+            "line": 38,
             "description": "需要初始化的表单元素默认值(废弃)",
             "itemtype": "property",
             "name": "values",
@@ -3167,8 +3225,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 45,
+            "file": "src/ValidatorBase.js",
+            "line": 44,
             "description": "每次验证时值被改变后都会被触发，会回传当前data-field字段、值和所有值对象",
             "itemtype": "property",
             "name": "getValueCallback",
@@ -3177,8 +3235,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 54,
+            "file": "src/ValidatorBase.js",
+            "line": 53,
             "description": "包装容器",
             "itemtype": "property",
             "name": "componentTag",
@@ -3188,8 +3246,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 61,
+            "file": "src/ValidatorBase.js",
+            "line": 60,
             "description": "触发验证的事件集合",
             "itemtype": "property",
             "name": "trigger",
@@ -3199,19 +3257,19 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 68,
+            "file": "src/ValidatorBase.js",
+            "line": 67,
             "description": "默认规则提示文案",
             "itemtype": "property",
             "name": "message",
             "type": "Object",
-            "default": "required: '不能为空',\n                date: '请正确填写日期',\n                number: '请输入一个有效的号码',\n                url: '请输入一个有效的URL',\n                email: '请输入一个有效的电子邮件地址',\n                dateISO: '请输入一个有效的日期(ISO)',\n                digits: '请输入数字',\n                equalTo:'请再次输入相同的值。',\n                minlength: '请输入至少{0}字符',\n                maxlength: '请输入不超过{0}字符',\n                rangelength: '请输入一个值{0}和{1}字符之间',\n                min: '请输入一个值大于或等于{0}',\n                max: '请输入一个值小于或等于{0}',\n                range: '请输入一个值{0} - {1}'",
+            "default": "required: '不能为空',\n        date: '请正确填写日期',\n        number: '请输入一个有效的号码',\n        url: '请输入一个有效的URL',\n        email: '请输入一个有效的电子邮件地址',\n        dateISO: '请输入一个有效的日期(ISO)',\n        digits: '请输入数字',\n        equalTo:'请再次输入相同的值。',\n        minlength: '请输入至少{0}字符',\n        maxlength: '请输入不超过{0}字符',\n        rangelength: '请输入一个值{0}和{1}字符之间',\n        min: '请输入一个值大于或等于{0}',\n        max: '请输入一个值小于或等于{0}',\n        range: '请输入一个值{0} - {1}'",
             "class": "ValidatorPanel",
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 105,
+            "file": "src/ValidatorBase.js",
+            "line": 104,
             "description": "自定义在提交后的callback",
             "itemtype": "event",
             "name": "submitCallback",
@@ -3226,8 +3284,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 113,
+            "file": "src/ValidatorBase.js",
+            "line": 112,
             "description": "自定义验证规则之外的其他逻辑",
             "itemtype": "event",
             "name": "validateCallback",
@@ -3242,8 +3300,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 121,
+            "file": "src/ValidatorBase.js",
+            "line": 120,
             "description": "提示框消失时间",
             "itemtype": "property",
             "name": "timeout",
@@ -3253,8 +3311,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 128,
+            "file": "src/ValidatorBase.js",
+            "line": 127,
             "description": "提交按钮id",
             "itemtype": "property",
             "name": "submitElement",
@@ -3263,8 +3321,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 134,
+            "file": "src/ValidatorBase.js",
+            "line": 133,
             "description": "是否增强文本框提示",
             "itemtype": "property",
             "name": "shake",
@@ -3274,8 +3332,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 141,
+            "file": "src/ValidatorBase.js",
+            "line": 140,
             "description": "规则验证",
             "itemtype": "property",
             "name": "rules",
@@ -3284,8 +3342,8 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 147,
+            "file": "src/ValidatorBase.js",
+            "line": 146,
             "description": "提示方位",
             "itemtype": "property",
             "name": "direction",
@@ -3295,14 +3353,35 @@
             "module": "form(表单)"
         },
         {
-            "file": "src/ValidatorPanel.js",
-            "line": 154,
+            "file": "src/ValidatorBase.js",
+            "line": 153,
             "description": "重新更新dom",
             "itemtype": "property",
             "name": "update",
             "type": "String",
             "default": "+new Date()",
             "class": "ValidatorPanel",
+            "module": "form(表单)"
+        },
+        {
+            "file": "src/ValidatorWrapper.js",
+            "line": 38,
+            "description": "默认规则提示文案",
+            "itemtype": "property",
+            "name": "message",
+            "type": "Object",
+            "default": "required: '不能为空',\ndate: '请正确填写日期',\nnumber: '请输入一个有效的号码',\nurl: '请输入一个有效的URL',\nemail: '请输入一个有效的电子邮件地址',\ndateISO: '请输入一个有效的日期(ISO)',\ndigits: '请输入数字',\nequalTo:'请再次输入相同的值。',\nminlength: '请输入至少{0}字符',\nmaxlength: '请输入不超过{0}字符',\nrangelength: '请输入一个值{0}和{1}字符之间',\nmin: '请输入一个值大于或等于{0}',\nmax: '请输入一个值小于或等于{0}',\nrange: '请输入一个值{0} - {1}'",
+            "class": "ValidatorWrapper",
+            "module": "form(表单)"
+        },
+        {
+            "file": "src/ValidatorWrapper.js",
+            "line": 59,
+            "description": "规则验证",
+            "itemtype": "property",
+            "name": "rules",
+            "type": "Object",
+            "class": "ValidatorWrapper",
             "module": "form(表单)"
         }
     ],
@@ -3569,11 +3648,19 @@
         },
         {
             "message": "unknown tag: demo",
-            "line": " src/ValidatorPanel.js:6"
+            "line": " src/ValidatorBase.js:5"
         },
         {
             "message": "unknown tag: show",
-            "line": " src/ValidatorPanel.js:6"
+            "line": " src/ValidatorBase.js:5"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " src/ValidatorWrapper.js:5"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " src/ValidatorWrapper.js:5"
         },
         {
             "message": "Missing item type\nkey 报warning，暂时改为keys",
@@ -3657,35 +3744,35 @@
         },
         {
             "message": "Missing item type\n默认每页显示数量为［］",
-            "line": " src/Paging.js:77"
+            "line": " src/Paging.js:91"
         },
         {
             "message": "Missing item type",
-            "line": " src/Paging.js:90"
+            "line": " src/Paging.js:106"
         },
         {
             "message": "Missing item type",
-            "line": " src/Paging.js:98"
+            "line": " src/Paging.js:114"
         },
         {
             "message": "Missing item type",
-            "line": " src/Paging.js:108"
+            "line": " src/Paging.js:124"
         },
         {
             "message": "Missing item type\n当前页",
-            "line": " src/Paging.js:117"
+            "line": " src/Paging.js:133"
         },
         {
             "message": "Missing item type\n跳转至N页",
-            "line": " src/Paging.js:160"
+            "line": " src/Paging.js:176"
         },
         {
             "message": "Missing item type\n生成页码",
-            "line": " src/Paging.js:168"
+            "line": " src/Paging.js:230"
         },
         {
             "message": "Missing item type\nif 提供自定义数组 且非空。",
-            "line": " src/Paging.js:232"
+            "line": " src/Paging.js:297"
         },
         {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
