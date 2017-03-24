@@ -32,6 +32,7 @@ import ClassNameMixin from './utils/ClassNameMixin';
  * @extends Component
  * @constructor
  * @demo #/Layout|layout.js
+ * @show true
  * */
 export default class Grid extends Component{
 

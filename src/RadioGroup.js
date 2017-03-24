@@ -31,6 +31,7 @@ import Component from './utils/Component';
  * @extends Component
  * @constructor
  * @demo #/input|input.js
+ * @show true
  * */
 export default class RadioGroup extends Component{
 

@@ -16,6 +16,7 @@ import Component from './utils/Component.js';
  * @extends Component
  * @constructor
  * @demo #/input|input.js
+ * @show true
  * */
 export default class CheckboxGroup extends Component{
     static propTypes = {

@@ -15,6 +15,7 @@ import classnames from 'classnames';
  * @constructor
  * @since 0.1.0
  * @demo #/button|button.js
+ * @show true
  * */
 export default class ButtonGroup extends Component{
 

@@ -32,6 +32,7 @@ import Search from './sug/Search';
  * @constructor
  * @extends Component
  * @demo #/select|select.js
+ * @show true
  * */
 export default class Select extends Search {
     static defaultProps = {

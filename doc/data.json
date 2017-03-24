@@ -784,7 +784,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/button"
-            ]
+            ],
+            "show": true
         },
         "ButtonGroup": {
             "name": "ButtonGroup",
@@ -810,7 +811,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/button"
-            ]
+            ],
+            "show": true
         },
         "Calendar": {
             "name": "Calendar",
@@ -887,7 +889,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/input"
-            ]
+            ],
+            "show": true
         },
         "Col": {
             "name": "Col",
@@ -912,7 +915,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
-            ]
+            ],
+            "show": true
         },
         "Crumb": {
             "name": "Crumb",
@@ -1015,7 +1019,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
-            ]
+            ],
+            "show": true
         },
         "imgSlider": {
             "name": "imgSlider",
@@ -1173,7 +1178,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/input"
-            ]
+            ],
+            "show": true
         },
         "Row": {
             "name": "Row",
@@ -1198,7 +1204,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/Layout"
-            ]
+            ],
+            "show": true
         },
         "Select": {
             "name": "Select",
@@ -1223,7 +1230,8 @@
             ],
             "exampleUrls": [
                 "http://future-team.github.io/eagle-ui/examples/index.html#/select"
-            ]
+            ],
+            "show": true
         },
         "Slider": {
             "name": "Slider",
@@ -1713,7 +1721,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 22,
+            "line": 23,
             "description": "按钮尺寸,分别为xs、sm、lg",
             "itemtype": "property",
             "name": "egSize",
@@ -1724,7 +1732,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 29,
+            "line": 30,
             "description": "是否禁用按钮",
             "itemtype": "property",
             "name": "disabled",
@@ -1735,7 +1743,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 37,
+            "line": 38,
             "description": "按钮是否处于选中状态",
             "itemtype": "property",
             "name": "active",
@@ -1746,7 +1754,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 44,
+            "line": 45,
             "description": "按钮颜色样式，可以为['success','error','warning','danger','default','link','white']中任何一个",
             "itemtype": "property",
             "name": "egStyle",
@@ -1757,7 +1765,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 52,
+            "line": 53,
             "description": "标签tagName",
             "itemtype": "property",
             "name": "componentTag",
@@ -1768,7 +1776,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 59,
+            "line": 60,
             "description": "是否为块级显示",
             "itemtype": "property",
             "name": "block",
@@ -1779,7 +1787,7 @@
         },
         {
             "file": "src/Button.js",
-            "line": 67,
+            "line": 68,
             "description": "是否只将主题颜色应用于边框，而不是应用于背景色",
             "itemtype": "property",
             "name": "hollow",
@@ -1797,7 +1805,7 @@
         },
         {
             "file": "src/ButtonGroup.js",
-            "line": 22,
+            "line": 23,
             "description": "是否自适应宽度并水平排列",
             "itemtype": "property",
             "name": "justify",
@@ -1808,7 +1816,7 @@
         },
         {
             "file": "src/ButtonGroup.js",
-            "line": 29,
+            "line": 30,
             "description": "是否垂直排列",
             "itemtype": "property",
             "name": "tacked",
@@ -1819,14 +1827,14 @@
         },
         {
             "file": "src/ButtonGroup.js",
-            "line": 43,
+            "line": 44,
             "description": "tacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
             "class": "ButtonGroup",
             "module": "form(表单)"
         },
         {
             "file": "src/ButtonGroup.js",
-            "line": 55,
+            "line": 56,
             "description": "点击按钮组中任意按钮时触发的回调事件",
             "itemtype": "event",
             "name": "activeCallback",
@@ -1965,7 +1973,7 @@
         },
         {
             "file": "src/Col.js",
-            "line": 23,
+            "line": 24,
             "description": "适用于每个Row下的最后一个Col\n当所有的col加起来不满12的情况下：如果不设置end属性，最后一个Col会向右对齐，如果设置end属性，最后一个Col就会向左对齐（float left）",
             "itemtype": "property",
             "name": "end",
@@ -1976,7 +1984,7 @@
         },
         {
             "file": "src/Col.js",
-            "line": 31,
+            "line": 32,
             "description": "Row总宽度为100%(12份)，sm的值表示当前Col宽度占比父元素12份中的几份",
             "itemtype": "property",
             "name": "sm",
@@ -2624,7 +2632,7 @@
         },
         {
             "file": "src/RadioGroup.js",
-            "line": 38,
+            "line": 39,
             "description": "radio name",
             "itemtype": "property",
             "name": "name",
@@ -2635,7 +2643,7 @@
         },
         {
             "file": "src/RadioGroup.js",
-            "line": 45,
+            "line": 46,
             "description": "默认选中项",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2646,7 +2654,7 @@
         },
         {
             "file": "src/RadioGroup.js",
-            "line": 52,
+            "line": 53,
             "description": "获取选中的值",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2662,7 +2670,7 @@
         },
         {
             "file": "src/Select.js",
-            "line": 38,
+            "line": 39,
             "description": "回调方法，主要作用将value传给父级元素。默认为null",
             "itemtype": "event",
             "name": "getValueCallback",
@@ -2689,7 +2697,7 @@
         },
         {
             "file": "src/Select.js",
-            "line": 47,
+            "line": 48,
             "description": "没有选中任何item时的占位文案",
             "itemtype": "property",
             "name": "placeholder",
@@ -2699,7 +2707,7 @@
         },
         {
             "file": "src/Select.js",
-            "line": 55,
+            "line": 56,
             "description": "默认选中值，即初始显示内容",
             "itemtype": "property",
             "name": "defaultChecked",
@@ -2710,7 +2718,7 @@
         },
         {
             "file": "src/Select.js",
-            "line": 63,
+            "line": 64,
             "description": "报svg的warning竟然在这里。。 真尴尬",
             "class": "Select",
             "module": "form(表单)"
@@ -3467,7 +3475,15 @@
             "line": " src/Button.js:8"
         },
         {
+            "message": "unknown tag: show",
+            "line": " src/Button.js:8"
+        },
+        {
             "message": "unknown tag: demo",
+            "line": " src/ButtonGroup.js:8"
+        },
+        {
+            "message": "unknown tag: show",
             "line": " src/ButtonGroup.js:8"
         },
         {
@@ -3491,7 +3507,15 @@
             "line": " src/CheckboxGroup.js:11"
         },
         {
+            "message": "unknown tag: show",
+            "line": " src/CheckboxGroup.js:11"
+        },
+        {
             "message": "unknown tag: demo",
+            "line": " src/Col.js:5"
+        },
+        {
+            "message": "unknown tag: show",
             "line": " src/Col.js:5"
         },
         {
@@ -3520,6 +3544,10 @@
         },
         {
             "message": "unknown tag: demo",
+            "line": " src/Grid.js:28"
+        },
+        {
+            "message": "unknown tag: show",
             "line": " src/Grid.js:28"
         },
         {
@@ -3567,11 +3595,23 @@
             "line": " src/RadioGroup.js:11"
         },
         {
+            "message": "unknown tag: show",
+            "line": " src/RadioGroup.js:11"
+        },
+        {
             "message": "unknown tag: demo",
             "line": " src/Row.js:6"
         },
         {
+            "message": "unknown tag: show",
+            "line": " src/Row.js:6"
+        },
+        {
             "message": "unknown tag: demo",
+            "line": " src/Select.js:12"
+        },
+        {
+            "message": "unknown tag: show",
             "line": " src/Select.js:12"
         },
         {
@@ -3704,7 +3744,7 @@
         },
         {
             "message": "Missing item type\ntacked: bool 是否垂直排列\njustify: justify 是否自适应宽度",
-            "line": " src/ButtonGroup.js:43"
+            "line": " src/ButtonGroup.js:44"
         },
         {
             "message": "Missing item type",
@@ -3780,7 +3820,7 @@
         },
         {
             "message": "Missing item type\n报svg的warning竟然在这里。。 真尴尬",
-            "line": " src/Select.js:63"
+            "line": " src/Select.js:64"
         },
         {
             "message": "Missing item type\n用于不同的css写法导致的位置微调",

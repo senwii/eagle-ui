@@ -16,6 +16,7 @@ import classnames from 'classnames';
  * @extends Component
  * @constructor
  * @demo #/button|button.js
+ * @show true
  * */
 export default class Button extends Component{
     static propTypes = {
