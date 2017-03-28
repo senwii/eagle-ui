@@ -21,11 +21,9 @@ let Demo = class Demo extends Component{
                 required:true,
                 //自定义规则
                 isValueToNumber:{
-                    text:'value值不是字符串',
+                    text:'value值不是数字',
                     rule:function(value){
-                        console.dir(value);
-                        //return isNaN(value);
-                        return true;
+                        return !isNaN(value-0);
                     }
                 }
             },
@@ -80,32 +78,6 @@ let Demo = class Demo extends Component{
     showMask(){
         Dialog.mask('demo2');
     }
-    checktab(){
-        if(this.state.showTab =='1'){
-            return (
-                <div>
-                <Row>
-                    <Col>
-                        <Input placeholder="请输入姓名"  name="userName" data-validate />
-                    </Col>
-                </Row>
-                <Row>
-                <Col>
-                    <CheckboxGroup>
-                    <Input  type="checkbox"  name="checkbox" value="1"  data-validate />
-                    <Input  type="checkbox"   name="checkbox" value="2" data-validate  />
-                    <Input  type="checkbox"   name="checkbox" value="3" data-validate  />
-                    <Input  type="checkbox"   name="checkbox" value="4" data-validate  />
-                    </CheckboxGroup>
-                </Col>
-
-                </Row>
-                </div>
-            );
-        }else{
-            return null;
-        }
-    }
     render(){
         return (
             <DemoLayout title="验证控件">
@@ -113,6 +85,12 @@ let Demo = class Demo extends Component{
                     <CodeShow><Code code={getFile('validate-demo1')}/></CodeShow>
                     <DemoShow>
                         <ValidatorPanel rules={this.rules} submitElement="#submit1" direction="right" id="testFrom" update={this.state.update} submitCallback={::this.submit}>
+                            <CheckboxGroup>
+                                <Input  type="checkbox" label='1'  name="checkbox" value="1"  data-validate />
+                                <Input  type="checkbox" label='2'  name="checkbox" value="2" data-validate  />
+                                <Input  type="checkbox" label='3'  name="checkbox" value="3" data-validate  />
+                                <Input  type="checkbox" label='4a'  name="checkbox" value="4a" data-validate  />
+                            </CheckboxGroup>
                             <Row>
                                 <Col>
                                     <CalendarPanel>

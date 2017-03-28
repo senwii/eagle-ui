@@ -26,6 +26,20 @@ import classnames from 'classnames';
  *     min：输入的值需要大于等于此规则定义的值
  *     max：输入的值需要小于等于此规则定义的值
  *     range：一个区间取值范围
+ *     自定义，比如rules:{
+ *          checkbox:{
+ *                required:true,
+ *                //自定义规则
+ *                isValueToNumber:{
+ *                    text:'value值不是数字',
+ *                    rule:function(value){
+ *                        return !isNaN(value-0);
+ *                    }
+ *                }
+ *            }
+ *        }
+ *     会验证name为checkbox的输入控件。
+ *     自定义的规则作为key、value配置，validator会依据rule方法返回的true或者false来决定是否提示text中的文案
  * </pre>
  * @class ValidatorWrapper
  * @module form(表单)
