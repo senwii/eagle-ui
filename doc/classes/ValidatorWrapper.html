@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimal-ui" />
-    <title>ValidatorPanel - eagle-ui</title>
+    <title>ValidatorWrapper - eagle-ui</title>
   
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
@@ -414,10 +414,15 @@
             <div id="docs-main">
                 <div class="content">
                     <div class="page-header">
-    <h1>ValidatorPanel</h1>
+    <h1>ValidatorWrapper</h1>
 </div>
  <div class="well well-small sign-left3">
-      <div class="stdoc-code"><p>表单验证组件对所有带有data-validate属性的子元素input输入框进行验证<br />
+      <div class="stdoc-code"><p>表单验证组件对所有带有data-validate属性的子元素input输入框进行验证。<br/>
+<strong>rules配置对象的key值必须和子元素Input的name值保持一致</strong><br />
+<strong>区别于ValidatorPanel：ValidatorWrapper用于包裹单个输入组件，不像ValidatorPanel包裹一系列输入组件。
+ValidatorWrapper的错误信息会出现在输入框下方，直到验证通过后错误信息才会消失。
+</strong>
+<br/>
 <!--表单元素初始化值请绑定上data-field=“fieldName”,fieldName对应数据字段名称-->
 rules属性提供的规则有<br/></p>
 <pre>
@@ -446,7 +451,7 @@ rules属性提供的规则有<br/></p>
                    }
                }
            }
-      }
+       }
     会验证name为checkbox的输入控件。
     自定义的规则作为key、value配置，validator会依据rule方法返回的true或者false来决定是否提示text中的文案
 </pre></div>
@@ -466,27 +471,6 @@ rules属性提供的规则有<br/></p>
                     <ul class="index-list properties extends">
                         
                             <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_componentTag" data-tablink="componentTag">componentTag</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_direction" data-tablink="direction">direction</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_getValueCallback" data-tablink="getValueCallback">getValueCallback</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
                                 <a href="#" data-tabid="#property" data-anchor="#property_message" data-tablink="message">message</a>
 
                                 
@@ -500,72 +484,12 @@ rules属性提供的规则有<br/></p>
                                 
                             </li>
                         
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_shake" data-tablink="shake">shake</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_submitElement" data-tablink="submitElement">submitElement</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_timeout" data-tablink="timeout">timeout</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_trigger" data-tablink="trigger">trigger</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_update" data-tablink="update">update</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_values" data-tablink="values">values</a>
-
-                                
-                                
-                            </li>
-                        
                     </ul>
                 
             </div>
 
             <div class="index-section events col-sm-4">
                 <h3>事件</h3>
-                
-                    <ul class="index-list events extends">
-                        
-                            <li class="index-item event">
-                                <a href="#" data-tabid="#event" data-anchor="#event_submitCallback" data-tablink="submitCallback">submitCallback</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item event">
-                                <a href="#" data-tabid="#event" data-anchor="#event_validateCallback" data-tablink="validateCallback">validateCallback</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
                 
             </div>
         </div>
@@ -579,8 +503,6 @@ rules属性提供的规则有<br/></p>
             
                 <li class=""><a data-toggle="tab" href="#property">属性</a></li>
             
-            
-                <li class=""><a data-toggle="tab" href="#event">事件</a></li>
             
         </ul>
     
@@ -597,7 +519,7 @@ rules属性提供的规则有<br/></p>
 
             
                 <div class="foundat">
-                    Defined in: <a href="../files/src_ValidatorBase.js.html#l5"><code>src&#x2F;ValidatorBase.js:5</code></a>
+                    Defined in: <a href="../files/src_ValidatorWrapper.js.html#l5"><code>src&#x2F;ValidatorWrapper.js:5</code></a>
                 </div>
             
 
@@ -614,10 +536,10 @@ rules属性提供的规则有<br/></p>
             
                 <div class="constructor">
                     <h2>Constructor</h2>
-                    <div id="method_ValidatorPanel" class="method item">
-    <h3 class="name">ValidatorPanel</h3>
+                    <div id="method_ValidatorWrapper" class="method item">
+    <h3 class="name">ValidatorWrapper</h3>
     <code>
-    ValidatorPanel
+    ValidatorWrapper
     
         <span class="paren">()</span>
     
@@ -648,7 +570,7 @@ rules属性提供的规则有<br/></p>
             
         
         
-        <a href="../files/src_ValidatorBase.js.html#l5"><code>src&#x2F;ValidatorBase.js:5</code></a>
+        <a href="../files/src_ValidatorWrapper.js.html#l5"><code>src&#x2F;ValidatorWrapper.js:5</code></a>
         
         </p>
 
@@ -925,147 +847,6 @@ export default Demo;</code></pre>
                 <h2 class="off-left">属性</h2>
 
                 
-                    <div id="property_componentTag" class="property item">
-    <h3 class="name"><code>componentTag</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l67"><code>src&#x2F;ValidatorBase.js:67</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>包装容器</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> form</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_direction" class="property item">
-    <h3 class="name"><code>direction</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l160"><code>src&#x2F;ValidatorBase.js:160</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>提示方位</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> right</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_getValueCallback" class="property item">
-    <h3 class="name"><code>getValueCallback</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l58"><code>src&#x2F;ValidatorBase.js:58</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>每次验证时值被改变后都会被触发，会回传当前data-field字段、值和所有值对象</p>
-</div>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="property_message" class="property item">
     <h3 class="name"><code>message</code></h3>
     <span class="type">Object</span>
@@ -1089,7 +870,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorBase.js.html#l81"><code>src&#x2F;ValidatorBase.js:81</code></a>
+        <a href="../files/src_ValidatorWrapper.js.html#l52"><code>src&#x2F;ValidatorWrapper.js:52</code></a>
         
         </p>
 
@@ -1106,19 +887,19 @@ export default Demo;</code></pre>
     
         <p><strong>Default:</strong></p>
          <code> required: &#x27;不能为空&#x27;,
-        date: &#x27;请正确填写日期&#x27;,
-        number: &#x27;请输入一个有效的号码&#x27;,
-        url: &#x27;请输入一个有效的URL&#x27;,
-        email: &#x27;请输入一个有效的电子邮件地址&#x27;,
-        dateISO: &#x27;请输入一个有效的日期(ISO)&#x27;,
-        digits: &#x27;请输入数字&#x27;,
-        equalTo:&#x27;请再次输入相同的值。&#x27;,
-        minlength: &#x27;请输入至少{0}字符&#x27;,
-        maxlength: &#x27;请输入不超过{0}字符&#x27;,
-        rangelength: &#x27;请输入一个值{0}和{1}字符之间&#x27;,
-        min: &#x27;请输入一个值大于或等于{0}&#x27;,
-        max: &#x27;请输入一个值小于或等于{0}&#x27;,
-        range: &#x27;请输入一个值{0} - {1}&#x27;</code>
+date: &#x27;请正确填写日期&#x27;,
+number: &#x27;请输入一个有效的号码&#x27;,
+url: &#x27;请输入一个有效的URL&#x27;,
+email: &#x27;请输入一个有效的电子邮件地址&#x27;,
+dateISO: &#x27;请输入一个有效的日期(ISO)&#x27;,
+digits: &#x27;请输入数字&#x27;,
+equalTo:&#x27;请再次输入相同的值。&#x27;,
+minlength: &#x27;请输入至少{0}字符&#x27;,
+maxlength: &#x27;请输入不超过{0}字符&#x27;,
+rangelength: &#x27;请输入一个值{0}和{1}字符之间&#x27;,
+min: &#x27;请输入一个值大于或等于{0}&#x27;,
+max: &#x27;请输入一个值小于或等于{0}&#x27;,
+range: &#x27;请输入一个值{0} - {1}&#x27;</code>
     
 
     
@@ -1150,7 +931,7 @@ export default Demo;</code></pre>
             
         
         
-        <a href="../files/src_ValidatorBase.js.html#l154"><code>src&#x2F;ValidatorBase.js:154</code></a>
+        <a href="../files/src_ValidatorWrapper.js.html#l73"><code>src&#x2F;ValidatorWrapper.js:73</code></a>
         
         </p>
 
@@ -1172,473 +953,9 @@ export default Demo;</code></pre>
 </div>
 
                 
-                    <div id="property_shake" class="property item">
-    <h3 class="name"><code>shake</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l147"><code>src&#x2F;ValidatorBase.js:147</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>是否增强文本框提示</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> true</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_submitElement" class="property item">
-    <h3 class="name"><code>submitElement</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l141"><code>src&#x2F;ValidatorBase.js:141</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>提交按钮id</p>
-</div>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_timeout" class="property item">
-    <h3 class="name"><code>timeout</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l134"><code>src&#x2F;ValidatorBase.js:134</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>提示框消失时间</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> 3000</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_trigger" class="property item">
-    <h3 class="name"><code>trigger</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l74"><code>src&#x2F;ValidatorBase.js:74</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>触发验证的事件集合</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> blur keyup focus click</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_update" class="property item">
-    <h3 class="name"><code>update</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l167"><code>src&#x2F;ValidatorBase.js:167</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>重新更新dom</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> +new Date()</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_values" class="property item">
-    <h3 class="name"><code>values</code></h3>
-    <span class="type">Object</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l52"><code>src&#x2F;ValidatorBase.js:52</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>需要初始化的表单元素默认值(废弃)</p>
-</div>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
             </div>
         
 
-        
-            <div id="event" class="tab-pane">
-                <h2 class="off-left">事件</h2>
-
-                
-                    <div id="event_submitCallback" class="events item">
-    <h3 class="name"><code>submitCallback</code></h3>
-    <span class="type"></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l118"><code>src&#x2F;ValidatorBase.js:118</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-     <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>自定义在提交后的callback</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <div class="clearfix params-wap-table">
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">opt</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                            <p>表单数据结构</p>
-
-                        </span>
-                    </div>
-                    
-                
-            </div>
-
-            <table class="table table-bordered params-pc-table">
-            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">opt</code>
-                       <td> <span class="type">Object</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>表单数据结构</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-
-    
-</div>
-
-                
-                    <div id="event_validateCallback" class="events item">
-    <h3 class="name"><code>validateCallback</code></h3>
-    <span class="type"></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_ValidatorBase.js.html#l126"><code>src&#x2F;ValidatorBase.js:126</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-     <div class="description well well-small sign-left3">
-        <div class="stdoc-code"><p>自定义验证规则之外的其他逻辑</p>
-</div>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <div class="clearfix params-wap-table">
-                
-                    <div class="params-box">
-                        
-                            <code class="param-name">opt</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                            <p>表单数据结构</p>
-
-                        </span>
-                    </div>
-                    
-                
-            </div>
-
-            <table class="table table-bordered params-pc-table">
-            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-            
-                <tr class="param">
-                    
-                       <td> <code class="param-name">opt</code>
-                       <td> <span class="type">Object</span>
-                       <td>
-                    
-
-                    
-                    </td>
-                    <td><div class="param-description">
-                        <p>表单数据结构</p>
-
-                    </div>
-
-                    
-                </tr>
-            
-            </table>
-        </div>
-    
-
-
-    
-</div>
-
-                
-            </div>
         
     </div>
 </div>
