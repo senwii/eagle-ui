@@ -360,7 +360,7 @@ class ImgSlider extends Component {
                               name="radio-unchecked" alt="旋转"></Icon>
                         <Icon onClick={::this.cssEnhance.bind(this,'max')} className="upload-icon" name="add"
                               alt="放大"></Icon>
-                        <Icon onClick={::this.cssEnhance.bind(this,'min')} className="upload-icon" name="minnus"
+                        <Icon onClick={::this.cssEnhance.bind(this,'min')} className="upload-icon" name="minus"
                               alt="缩小"></Icon>
                     </div>
                 </div>
