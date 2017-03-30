@@ -10,7 +10,8 @@ export default class Icons extends Component{
     render(){
         let defaultStyle = {
             width:'18px',
-            height:'18px'
+            height:'18px',
+            color:'#fff'
         };
         let {name,className,style,...other} = this.props;
         return (
