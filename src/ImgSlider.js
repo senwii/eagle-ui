@@ -356,11 +356,11 @@ class ImgSlider extends Component {
                                     transform: this.state.transform}}/>
                     </div>
                     <div className="icon-box">
-                        <Icon onClick={::this.cssEnhance.bind(this,'rotate')} className="upload-icon"
+                        <Icon style={{color:'#fff'}} onClick={::this.cssEnhance.bind(this,'rotate')} className="upload-icon"
                               name="radio-unchecked" alt="旋转"></Icon>
-                        <Icon onClick={::this.cssEnhance.bind(this,'max')} className="upload-icon" name="add"
+                        <Icon style={{color:'#fff'}} onClick={::this.cssEnhance.bind(this,'max')} className="upload-icon" name="add"
                               alt="放大"></Icon>
-                        <Icon onClick={::this.cssEnhance.bind(this,'min')} className="upload-icon" name="minus"
+                        <Icon style={{color:'#fff'}} onClick={::this.cssEnhance.bind(this,'min')} className="upload-icon" name="minus"
                               alt="缩小"></Icon>
                     </div>
                 </div>

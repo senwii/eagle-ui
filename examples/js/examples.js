@@ -35609,8 +35609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Icons.prototype.render = function render() {
 	        var defaultStyle = {
 	            width: '18px',
-	            height: '18px',
-	            color: '#fff'
+	            height: '18px'
 	        };
 	        var _props = this.props;
 	        var name = _props.name;
@@ -40990,11 +40989,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(
 	                'div',
 	                { className: 'icon-box' },
-	                _react2['default'].createElement(_utilsIconsJs2['default'], { onClick: (_context = this.cssEnhance).bind.call(_context, this, 'rotate'), className: 'upload-icon',
+	                _react2['default'].createElement(_utilsIconsJs2['default'], { style: { color: '#fff' }, onClick: (_context = this.cssEnhance).bind.call(_context, this, 'rotate'), className: 'upload-icon',
 	                    name: 'radio-unchecked', alt: '旋转' }),
-	                _react2['default'].createElement(_utilsIconsJs2['default'], { onClick: (_context = this.cssEnhance).bind.call(_context, this, 'max'), className: 'upload-icon', name: 'add',
+	                _react2['default'].createElement(_utilsIconsJs2['default'], { style: { color: '#fff' }, onClick: (_context = this.cssEnhance).bind.call(_context, this, 'max'), className: 'upload-icon', name: 'add',
 	                    alt: '放大' }),
-	                _react2['default'].createElement(_utilsIconsJs2['default'], { onClick: (_context = this.cssEnhance).bind.call(_context, this, 'min'), className: 'upload-icon', name: 'minus',
+	                _react2['default'].createElement(_utilsIconsJs2['default'], { style: { color: '#fff' }, onClick: (_context = this.cssEnhance).bind.call(_context, this, 'min'), className: 'upload-icon', name: 'minus',
 	                    alt: '缩小' })
 	            )
 	        );
