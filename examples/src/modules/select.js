@@ -32,6 +32,14 @@ export default class Demo extends Component{
         };
         document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>"key":<span class="color-error">${key}</span></b>,<b>"value":<span class="color-error">${value}</span></b>`;
     }
+    getValue2(value,key,type){
+        let stype = {
+            'init':'加载时调用',
+            'enter':'回车时调用',
+            'click':'点击每一项元素时调用'
+        };
+        document.getElementById('showtip2').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>"key":<span class="color-error">${key}</span></b>,<b>"value":<span class="color-error">${value}</span></b>`;
+    }
     getOptions(){
         return [
             <option value='bei' key="bei">北京</option>,
@@ -69,11 +77,11 @@ export default class Demo extends Component{
                         <Code code={getFile('select-demo-autoClear')}/>
                     </CodeShow>
                     <DemoShow>
+                        <div id="showtip2" className="color-info"></div>
                         <Select
-                            defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" autoClear={true}>
+                            defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue2} placeholder="请选择" autoClear={true}>
                             {this.state.options}
                         </Select>
-                        <div id="showtip" className="color-info"></div>
                     </DemoShow>
                 </DemoItem>
             </DemoLayout>
