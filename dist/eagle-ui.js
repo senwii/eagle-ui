@@ -415,8 +415,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../css-loader/index.js!../../less-loader/index.js!./eagle-styles.less", function() {
-				var newContent = require("!!../../css-loader/index.js!../../less-loader/index.js!./eagle-styles.less");
+			module.hot.accept("!!./../../eagle-ui/node_modules/css-loader/index.js!./../../eagle-ui/node_modules/less-loader/index.js!./eagle-styles.less", function() {
+				var newContent = require("!!./../../eagle-ui/node_modules/css-loader/index.js!./../../eagle-ui/node_modules/less-loader/index.js!./eagle-styles.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9775,34 +9775,90 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return doneResult();
 	      }
 
-	      context.method = method;
-	      context.arg = arg;
-
 	      while (true) {
 	        var delegate = context.delegate;
 	        if (delegate) {
-	          var delegateResult = maybeInvokeDelegate(delegate, context);
-	          if (delegateResult) {
-	            if (delegateResult === ContinueSentinel) continue;
-	            return delegateResult;
+	          if (method === "return" ||
+	              (method === "throw" && delegate.iterator[method] === undefined)) {
+	            // A return or throw (when the delegate iterator has no throw
+	            // method) always terminates the yield* loop.
+	            context.delegate = null;
+
+	            // If the delegate iterator has a return method, give it a
+	            // chance to clean up.
+	            var returnMethod = delegate.iterator["return"];
+	            if (returnMethod) {
+	              var record = tryCatch(returnMethod, delegate.iterator, arg);
+	              if (record.type === "throw") {
+	                // If the return method threw an exception, let that
+	                // exception prevail over the original return or throw.
+	                method = "throw";
+	                arg = record.arg;
+	                continue;
+	              }
+	            }
+
+	            if (method === "return") {
+	              // Continue with the outer return, now that the delegate
+	              // iterator has been terminated.
+	              continue;
+	            }
 	          }
+
+	          var record = tryCatch(
+	            delegate.iterator[method],
+	            delegate.iterator,
+	            arg
+	          );
+
+	          if (record.type === "throw") {
+	            context.delegate = null;
+
+	            // Like returning generator.throw(uncaught), but without the
+	            // overhead of an extra function call.
+	            method = "throw";
+	            arg = record.arg;
+	            continue;
+	          }
+
+	          // Delegate generator ran and handled its own exceptions so
+	          // regardless of what the method was, we continue as if it is
+	          // "next" with an undefined arg.
+	          method = "next";
+	          arg = undefined;
+
+	          var info = record.arg;
+	          if (info.done) {
+	            context[delegate.resultName] = info.value;
+	            context.next = delegate.nextLoc;
+	          } else {
+	            state = GenStateSuspendedYield;
+	            return info;
+	          }
+
+	          context.delegate = null;
 	        }
 
-	        if (context.method === "next") {
+	        if (method === "next") {
 	          // Setting context._sent for legacy support of Babel's
 	          // function.sent implementation.
-	          context.sent = context._sent = context.arg;
+	          context.sent = context._sent = arg;
 
-	        } else if (context.method === "throw") {
+	        } else if (method === "throw") {
 	          if (state === GenStateSuspendedStart) {
 	            state = GenStateCompleted;
-	            throw context.arg;
+	            throw arg;
 	          }
 
-	          context.dispatchException(context.arg);
+	          if (context.dispatchException(arg)) {
+	            // If the dispatched exception was caught by a catch block,
+	            // then let that catch block handle the exception normally.
+	            method = "next";
+	            arg = undefined;
+	          }
 
-	        } else if (context.method === "return") {
-	          context.abrupt("return", context.arg);
+	        } else if (method === "return") {
+	          context.abrupt("return", arg);
 	        }
 
 	        state = GenStateExecuting;
@@ -9815,106 +9871,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ? GenStateCompleted
 	            : GenStateSuspendedYield;
 
-	          if (record.arg === ContinueSentinel) {
-	            continue;
-	          }
-
-	          return {
+	          var info = {
 	            value: record.arg,
 	            done: context.done
 	          };
 
+	          if (record.arg === ContinueSentinel) {
+	            if (context.delegate && method === "next") {
+	              // Deliberately forget the last sent value so that we don't
+	              // accidentally pass it on to the delegate.
+	              arg = undefined;
+	            }
+	          } else {
+	            return info;
+	          }
+
 	        } else if (record.type === "throw") {
 	          state = GenStateCompleted;
 	          // Dispatch the exception by looping back around to the
-	          // context.dispatchException(context.arg) call above.
-	          context.method = "throw";
-	          context.arg = record.arg;
+	          // context.dispatchException(arg) call above.
+	          method = "throw";
+	          arg = record.arg;
 	        }
 	      }
 	    };
-	  }
-
-	  // Call delegate.iterator[context.method](context.arg) and handle the
-	  // result, either by returning a { value, done } result from the
-	  // delegate iterator, or by modifying context.method and context.arg,
-	  // setting context.delegate to null, and returning the ContinueSentinel.
-	  function maybeInvokeDelegate(delegate, context) {
-	    var method = delegate.iterator[context.method];
-	    if (method === undefined) {
-	      // A .throw or .return when the delegate iterator has no .throw
-	      // method always terminates the yield* loop.
-	      context.delegate = null;
-
-	      if (context.method === "throw") {
-	        if (delegate.iterator.return) {
-	          // If the delegate iterator has a return method, give it a
-	          // chance to clean up.
-	          context.method = "return";
-	          context.arg = undefined;
-	          maybeInvokeDelegate(delegate, context);
-
-	          if (context.method === "throw") {
-	            // If maybeInvokeDelegate(context) changed context.method from
-	            // "return" to "throw", let that override the TypeError below.
-	            return ContinueSentinel;
-	          }
-	        }
-
-	        context.method = "throw";
-	        context.arg = new TypeError(
-	          "The iterator does not provide a 'throw' method");
-	      }
-
-	      return ContinueSentinel;
-	    }
-
-	    var record = tryCatch(method, delegate.iterator, context.arg);
-
-	    if (record.type === "throw") {
-	      context.method = "throw";
-	      context.arg = record.arg;
-	      context.delegate = null;
-	      return ContinueSentinel;
-	    }
-
-	    var info = record.arg;
-
-	    if (! info) {
-	      context.method = "throw";
-	      context.arg = new TypeError("iterator result is not an object");
-	      context.delegate = null;
-	      return ContinueSentinel;
-	    }
-
-	    if (info.done) {
-	      // Assign the result of the finished delegate to the temporary
-	      // variable specified by delegate.resultName (see delegateYield).
-	      context[delegate.resultName] = info.value;
-
-	      // Resume execution at the desired location (see delegateYield).
-	      context.next = delegate.nextLoc;
-
-	      // If context.method was "throw" but the delegate handled the
-	      // exception, let the outer generator proceed normally. If
-	      // context.method was "next", forget context.arg since it has been
-	      // "consumed" by the delegate iterator. If context.method was
-	      // "return", allow the original .return call to continue in the
-	      // outer generator.
-	      if (context.method !== "return") {
-	        context.method = "next";
-	        context.arg = undefined;
-	      }
-
-	    } else {
-	      // Re-yield the result returned by the delegate method.
-	      return info;
-	    }
-
-	    // The delegate iterator is finished, so forget it and continue with
-	    // the outer generator.
-	    context.delegate = null;
-	    return ContinueSentinel;
 	  }
 
 	  // Define Generator.prototype.{next,throw,return} in terms of the
@@ -10037,9 +10017,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.done = false;
 	      this.delegate = null;
 
-	      this.method = "next";
-	      this.arg = undefined;
-
 	      this.tryEntries.forEach(resetTryEntry);
 
 	      if (!skipTempReset) {
@@ -10076,15 +10053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        record.type = "throw";
 	        record.arg = exception;
 	        context.next = loc;
-
-	        if (caught) {
-	          // If the dispatched exception was caught by a catch block,
-	          // then let that catch block handle the exception normally.
-	          context.method = "next";
-	          context.arg = undefined;
-	        }
-
-	        return !! caught;
+	        return !!caught;
 	      }
 
 	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
@@ -10152,12 +10121,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      record.arg = arg;
 
 	      if (finallyEntry) {
-	        this.method = "next";
 	        this.next = finallyEntry.finallyLoc;
-	        return ContinueSentinel;
+	      } else {
+	        this.complete(record);
 	      }
 
-	      return this.complete(record);
+	      return ContinueSentinel;
 	    },
 
 	    complete: function(record, afterLoc) {
@@ -10169,14 +10138,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          record.type === "continue") {
 	        this.next = record.arg;
 	      } else if (record.type === "return") {
-	        this.rval = this.arg = record.arg;
-	        this.method = "return";
+	        this.rval = record.arg;
 	        this.next = "end";
 	      } else if (record.type === "normal" && afterLoc) {
 	        this.next = afterLoc;
 	      }
-
-	      return ContinueSentinel;
 	    },
 
 	    finish: function(finallyLoc) {
@@ -10214,12 +10180,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        resultName: resultName,
 	        nextLoc: nextLoc
 	      };
-
-	      if (this.method === "next") {
-	        // Deliberately forget the last sent value so that we don't
-	        // accidentally pass it on to the delegate.
-	        this.arg = undefined;
-	      }
 
 	      return ContinueSentinel;
 	    }
@@ -11246,8 +11206,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../css-loader/index.js!../less-loader/index.js!./iconfont.less", function() {
-				var newContent = require("!!../css-loader/index.js!../less-loader/index.js!./iconfont.less");
+			module.hot.accept("!!./../css-loader/index.js!./../less-loader/index.js!./iconfont.less", function() {
+				var newContent = require("!!./../css-loader/index.js!./../less-loader/index.js!./iconfont.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11939,6 +11899,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            classPrefix: 'search',
 	            componentTag: 'div',
+	            /**
+	             * 是否自动清除默已选的值
+	             */
+	            autoClear: false,
 	            defaultValue: '' /*,
 	                             icon:'arrow_drop_down',
 	                             iconStyle:{
@@ -12019,6 +11983,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        } else {
 	            var val = this.trim(e.target.value);
 	            this.setDefaultData();
+	        }
+	        if (this.props.autoClear) {
+	            // auto clear data
+	            this.removeActiveValue();
+	            this.setState({
+	                value: ""
+	            });
 	        }
 	    };
 
@@ -12592,14 +12563,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @default ''
 	             * */
 	            defaultChecked: '',
-	            icon: 'arrow_drop_down',
+	            icon: 'arrow-dropdown',
 	            /**
 	             * 报svg的warning竟然在这里。。 真尴尬
 	             * */
 	            iconStyle: {
 	                width: '30px',
-	                height: '30px',
-	                top: '15px',
+	                textAlign: 'center',
+	                // height:'30px',
+	                // top: '15px',
 	                right: 0
 	            }
 	        },
