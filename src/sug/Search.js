@@ -22,6 +22,10 @@ export default class Search extends Suggestion {
          * */
         classPrefix: 'search',
         componentTag: 'div',
+        /**
+         * 是否自动清除默已选的值
+         */
+        autoClear: false,
         defaultValue:''/*,
         icon:'arrow_drop_down',
         iconStyle:{
@@ -88,7 +92,12 @@ export default class Search extends Suggestion {
             let val = this.trim(e.target.value);
             this.setDefaultData();
         }
-
+        if(this.props.autoClear){// auto clear data
+            this.removeActiveValue()
+            this.setState({
+                value:""
+            });
+        }
     }
 
     checkedCallback(sug,index){
