@@ -51,7 +51,7 @@ export default class SelectDemo extends Component{
     render(){
         return (
             <div>
-                <Select readOnly defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" >
+                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder="请选择" autoClear={true}>
                     {this.state.options}
                 </Select>
                 <div id="showtip" className="color-info"></div>

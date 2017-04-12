@@ -60,14 +60,15 @@ export default class Select extends Search {
          * @default ''
          * */
         defaultChecked:'',
-        icon:'arrow_drop_down',
+        icon:'arrow-dropdown',
         /**
          * 报svg的warning竟然在这里。。 真尴尬
          * */
         iconStyle:{
             width:'30px',
-            height:'30px',
-            top: '15px',
+            textAlign: 'center',
+            // height:'30px',
+            // top: '15px',
             right: 0
         }
     };

@@ -415,8 +415,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../css-loader/index.js!../../less-loader/index.js!./eagle-styles.less", function() {
-				var newContent = require("!!../../css-loader/index.js!../../less-loader/index.js!./eagle-styles.less");
+			module.hot.accept("!!./../../eagle-ui/node_modules/css-loader/index.js!./../../eagle-ui/node_modules/less-loader/index.js!./eagle-styles.less", function() {
+				var newContent = require("!!./../../eagle-ui/node_modules/css-loader/index.js!./../../eagle-ui/node_modules/less-loader/index.js!./eagle-styles.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9775,34 +9775,90 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return doneResult();
 	      }
 
-	      context.method = method;
-	      context.arg = arg;
-
 	      while (true) {
 	        var delegate = context.delegate;
 	        if (delegate) {
-	          var delegateResult = maybeInvokeDelegate(delegate, context);
-	          if (delegateResult) {
-	            if (delegateResult === ContinueSentinel) continue;
-	            return delegateResult;
+	          if (method === "return" ||
+	              (method === "throw" && delegate.iterator[method] === undefined)) {
+	            // A return or throw (when the delegate iterator has no throw
+	            // method) always terminates the yield* loop.
+	            context.delegate = null;
+
+	            // If the delegate iterator has a return method, give it a
+	            // chance to clean up.
+	            var returnMethod = delegate.iterator["return"];
+	            if (returnMethod) {
+	              var record = tryCatch(returnMethod, delegate.iterator, arg);
+	              if (record.type === "throw") {
+	                // If the return method threw an exception, let that
+	                // exception prevail over the original return or throw.
+	                method = "throw";
+	                arg = record.arg;
+	                continue;
+	              }
+	            }
+
+	            if (method === "return") {
+	              // Continue with the outer return, now that the delegate
+	              // iterator has been terminated.
+	              continue;
+	            }
 	          }
+
+	          var record = tryCatch(
+	            delegate.iterator[method],
+	            delegate.iterator,
+	            arg
+	          );
+
+	          if (record.type === "throw") {
+	            context.delegate = null;
+
+	            // Like returning generator.throw(uncaught), but without the
+	            // overhead of an extra function call.
+	            method = "throw";
+	            arg = record.arg;
+	            continue;
+	          }
+
+	          // Delegate generator ran and handled its own exceptions so
+	          // regardless of what the method was, we continue as if it is
+	          // "next" with an undefined arg.
+	          method = "next";
+	          arg = undefined;
+
+	          var info = record.arg;
+	          if (info.done) {
+	            context[delegate.resultName] = info.value;
+	            context.next = delegate.nextLoc;
+	          } else {
+	            state = GenStateSuspendedYield;
+	            return info;
+	          }
+
+	          context.delegate = null;
 	        }
 
-	        if (context.method === "next") {
+	        if (method === "next") {
 	          // Setting context._sent for legacy support of Babel's
 	          // function.sent implementation.
-	          context.sent = context._sent = context.arg;
+	          context.sent = context._sent = arg;
 
-	        } else if (context.method === "throw") {
+	        } else if (method === "throw") {
 	          if (state === GenStateSuspendedStart) {
 	            state = GenStateCompleted;
-	            throw context.arg;
+	            throw arg;
 	          }
 
-	          context.dispatchException(context.arg);
+	          if (context.dispatchException(arg)) {
+	            // If the dispatched exception was caught by a catch block,
+	            // then let that catch block handle the exception normally.
+	            method = "next";
+	            arg = undefined;
+	          }
 
-	        } else if (context.method === "return") {
-	          context.abrupt("return", context.arg);
+	        } else if (method === "return") {
+	          context.abrupt("return", arg);
 	        }
 
 	        state = GenStateExecuting;
@@ -9815,106 +9871,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	            ? GenStateCompleted
 	            : GenStateSuspendedYield;
 
-	          if (record.arg === ContinueSentinel) {
-	            continue;
-	          }
-
-	          return {
+	          var info = {
 	            value: record.arg,
 	            done: context.done
 	          };
 
+	          if (record.arg === ContinueSentinel) {
+	            if (context.delegate && method === "next") {
+	              // Deliberately forget the last sent value so that we don't
+	              // accidentally pass it on to the delegate.
+	              arg = undefined;
+	            }
+	          } else {
+	            return info;
+	          }
+
 	        } else if (record.type === "throw") {
 	          state = GenStateCompleted;
 	          // Dispatch the exception by looping back around to the
-	          // context.dispatchException(context.arg) call above.
-	          context.method = "throw";
-	          context.arg = record.arg;
+	          // context.dispatchException(arg) call above.
+	          method = "throw";
+	          arg = record.arg;
 	        }
 	      }
 	    };
-	  }
-
-	  // Call delegate.iterator[context.method](context.arg) and handle the
-	  // result, either by returning a { value, done } result from the
-	  // delegate iterator, or by modifying context.method and context.arg,
-	  // setting context.delegate to null, and returning the ContinueSentinel.
-	  function maybeInvokeDelegate(delegate, context) {
-	    var method = delegate.iterator[context.method];
-	    if (method === undefined) {
-	      // A .throw or .return when the delegate iterator has no .throw
-	      // method always terminates the yield* loop.
-	      context.delegate = null;
-
-	      if (context.method === "throw") {
-	        if (delegate.iterator.return) {
-	          // If the delegate iterator has a return method, give it a
-	          // chance to clean up.
-	          context.method = "return";
-	          context.arg = undefined;
-	          maybeInvokeDelegate(delegate, context);
-
-	          if (context.method === "throw") {
-	            // If maybeInvokeDelegate(context) changed context.method from
-	            // "return" to "throw", let that override the TypeError below.
-	            return ContinueSentinel;
-	          }
-	        }
-
-	        context.method = "throw";
-	        context.arg = new TypeError(
-	          "The iterator does not provide a 'throw' method");
-	      }
-
-	      return ContinueSentinel;
-	    }
-
-	    var record = tryCatch(method, delegate.iterator, context.arg);
-
-	    if (record.type === "throw") {
-	      context.method = "throw";
-	      context.arg = record.arg;
-	      context.delegate = null;
-	      return ContinueSentinel;
-	    }
-
-	    var info = record.arg;
-
-	    if (! info) {
-	      context.method = "throw";
-	      context.arg = new TypeError("iterator result is not an object");
-	      context.delegate = null;
-	      return ContinueSentinel;
-	    }
-
-	    if (info.done) {
-	      // Assign the result of the finished delegate to the temporary
-	      // variable specified by delegate.resultName (see delegateYield).
-	      context[delegate.resultName] = info.value;
-
-	      // Resume execution at the desired location (see delegateYield).
-	      context.next = delegate.nextLoc;
-
-	      // If context.method was "throw" but the delegate handled the
-	      // exception, let the outer generator proceed normally. If
-	      // context.method was "next", forget context.arg since it has been
-	      // "consumed" by the delegate iterator. If context.method was
-	      // "return", allow the original .return call to continue in the
-	      // outer generator.
-	      if (context.method !== "return") {
-	        context.method = "next";
-	        context.arg = undefined;
-	      }
-
-	    } else {
-	      // Re-yield the result returned by the delegate method.
-	      return info;
-	    }
-
-	    // The delegate iterator is finished, so forget it and continue with
-	    // the outer generator.
-	    context.delegate = null;
-	    return ContinueSentinel;
 	  }
 
 	  // Define Generator.prototype.{next,throw,return} in terms of the
@@ -10037,9 +10017,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.done = false;
 	      this.delegate = null;
 
-	      this.method = "next";
-	      this.arg = undefined;
-
 	      this.tryEntries.forEach(resetTryEntry);
 
 	      if (!skipTempReset) {
@@ -10076,15 +10053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        record.type = "throw";
 	        record.arg = exception;
 	        context.next = loc;
-
-	        if (caught) {
-	          // If the dispatched exception was caught by a catch block,
-	          // then let that catch block handle the exception normally.
-	          context.method = "next";
-	          context.arg = undefined;
-	        }
-
-	        return !! caught;
+	        return !!caught;
 	      }
 
 	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
@@ -10152,12 +10121,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      record.arg = arg;
 
 	      if (finallyEntry) {
-	        this.method = "next";
 	        this.next = finallyEntry.finallyLoc;
-	        return ContinueSentinel;
+	      } else {
+	        this.complete(record);
 	      }
 
-	      return this.complete(record);
+	      return ContinueSentinel;
 	    },
 
 	    complete: function(record, afterLoc) {
@@ -10169,14 +10138,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          record.type === "continue") {
 	        this.next = record.arg;
 	      } else if (record.type === "return") {
-	        this.rval = this.arg = record.arg;
-	        this.method = "return";
+	        this.rval = record.arg;
 	        this.next = "end";
 	      } else if (record.type === "normal" && afterLoc) {
 	        this.next = afterLoc;
 	      }
-
-	      return ContinueSentinel;
 	    },
 
 	    finish: function(finallyLoc) {
@@ -10214,12 +10180,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        resultName: resultName,
 	        nextLoc: nextLoc
 	      };
-
-	      if (this.method === "next") {
-	        // Deliberately forget the last sent value so that we don't
-	        // accidentally pass it on to the delegate.
-	        this.arg = undefined;
-	      }
 
 	      return ContinueSentinel;
 	    }
@@ -11212,8 +11172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Icons.prototype.render = function render() {
 	        var defaultStyle = {
 	            width: '18px',
-	            height: '18px',
-	            color: '#fff'
+	            height: '18px'
 	        };
 	        var _props = this.props;
 	        var name = _props.name;
@@ -11247,8 +11206,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../css-loader/index.js!../less-loader/index.js!./iconfont.less", function() {
-				var newContent = require("!!../css-loader/index.js!../less-loader/index.js!./iconfont.less");
+			module.hot.accept("!!./../css-loader/index.js!./../less-loader/index.js!./iconfont.less", function() {
+				var newContent = require("!!./../css-loader/index.js!./../less-loader/index.js!./iconfont.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11266,7 +11225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: \"iconfont\";\n  src: url(" + __webpack_require__(381) + ");\n  /* IE9*/\n  src: url(" + __webpack_require__(381) + "#iefix) format('embedded-opentype'),  url(" + __webpack_require__(382) + ") format('woff'),  url(" + __webpack_require__(383) + ") format('truetype'),  url(" + __webpack_require__(384) + "#iconfont) format('svg');\n  /* iOS 4.1- */\n}\n.gfs-icon {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -webkit-text-stroke-width: 0.2px;\n  -moz-osx-font-smoothing: grayscale;\n}\n.icon-more:before {\n  content: \"\\E608\";\n}\n.icon-minus:before {\n  content: \"\\E609\";\n}\n.icon-menu:before {\n  content: \"\\E60A\";\n}\n.icon-add:before {\n  content: \"\\E60B\";\n}\n.icon-camera-fill:before {\n  content: \"\\E60C\";\n}\n.icon-favorite-fill:before {\n  content: \"\\E60D\";\n}\n.icon-clock:before {\n  content: \"\\E60E\";\n}\n.icon-wifi:before {\n  content: \"\\E60F\";\n}\n.icon-camera:before {\n  content: \"\\E610\";\n}\n.icon-place-fill:before {\n  content: \"\\E611\";\n}\n.icon-favorite:before {\n  content: \"\\E612\";\n}\n.icon-home-fill:before {\n  content: \"\\E613\";\n}\n.icon-home:before {\n  content: \"\\E614\";\n}\n.icon-radio-checked-fill:before {\n  content: \"\\E615\";\n}\n.icon-close:before {\n  content: \"\\E616\";\n}\n.icon-check:before {\n  content: \"\\E617\";\n}\n.icon-arrow-upward:before {\n  content: \"\\E618\";\n}\n.icon-checkbox-checked-fill:before {\n  content: \"\\E619\";\n}\n.icon-checkbox-unchecked:before {\n  content: \"\\E61A\";\n}\n.icon-radio-checked:before {\n  content: \"\\E61B\";\n}\n.icon-checkbox-checked:before {\n  content: \"\\E61C\";\n}\n.icon-arrow-dropup:before {\n  content: \"\\E61D\";\n}\n.icon-radio-unchecked:before {\n  content: \"\\E61E\";\n}\n.icon-chevron-left:before {\n  content: \"\\E61F\";\n}\n.icon-expand-more:before {\n  content: \"\\E620\";\n}\n.icon-arrow-dropdown:before {\n  content: \"\\E621\";\n}\n.icon-more-vertical:before {\n  content: \"\\E622\";\n}\n.icon-arrow-downward:before {\n  content: \"\\E623\";\n}\n.icon-expand-less:before {\n  content: \"\\E624\";\n}\n.icon-chevron-right:before {\n  content: \"\\E625\";\n}\n.icon-search:before {\n  content: \"\\E626\";\n}\n.icon-star:before {\n  content: \"\\E627\";\n}\n.icon-star-fill:before {\n  content: \"\\E628\";\n}\n.icon-folder-fill:before {\n  content: \"\\E62A\";\n}\n.icon-folder:before {\n  content: \"\\E62B\";\n}\n.icon-upload:before {\n  content: \"\\E629\";\n}\n.icon-download:before {\n  content: \"\\E62C\";\n}\n.icon-delete:before {\n  content: \"\\E62D\";\n}\n.icon-refresh:before {\n  content: \"\\E62E\";\n}\n.icon-list:before {\n  content: \"\\E62F\";\n}\n.icon-setting:before {\n  content: \"\\E630\";\n}\n.icon-arrow-back:before {\n  content: \"\\E631\";\n}\n.icon-arrow-forward:before {\n  content: \"\\E632\";\n}\n.icon-fenxiang:before {\n  content: \"\\E633\";\n}\n.icon-map:before {\n  content: \"\\E634\";\n}\n.icon-calendar:before {\n  content: \"\\E635\";\n}\n.icon-location:before {\n  content: \"\\E636\";\n}\n.icon-place:before {\n  content: \"\\E637\";\n}\n.icon-folder-open-fill:before {\n  content: \"\\E638\";\n}\n.icon-folder-open:before {\n  content: \"\\E639\";\n}\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: \"iconfont\";\n  src: url(" + __webpack_require__(381) + ");\n  /* IE9*/\n  src: url(" + __webpack_require__(381) + "#iefix) format('embedded-opentype'),  url(" + __webpack_require__(382) + ") format('woff'),  url(" + __webpack_require__(383) + ") format('truetype'),  url(" + __webpack_require__(384) + "#iconfont) format('svg');\n  /* iOS 4.1- */\n}\n.gfs-icon {\n  font-family: \"iconfont\" !important;\n  font-size: 16px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -webkit-text-stroke-width: 0.2px;\n  -moz-osx-font-smoothing: grayscale;\n}\n/* 更新时覆盖以下内容，以上内容如果覆盖使用时会报错 */\n.icon-zuoxuanzhuan:before {\n  content: \"\\E604\";\n}\n.icon-more:before {\n  content: \"\\E608\";\n}\n.icon-minus:before {\n  content: \"\\E609\";\n}\n.icon-menu:before {\n  content: \"\\E60A\";\n}\n.icon-add:before {\n  content: \"\\E60B\";\n}\n.icon-camera-fill:before {\n  content: \"\\E60C\";\n}\n.icon-favorite-fill:before {\n  content: \"\\E60D\";\n}\n.icon-clock:before {\n  content: \"\\E60E\";\n}\n.icon-wifi:before {\n  content: \"\\E60F\";\n}\n.icon-camera:before {\n  content: \"\\E610\";\n}\n.icon-place-fill:before {\n  content: \"\\E611\";\n}\n.icon-favorite:before {\n  content: \"\\E612\";\n}\n.icon-home-fill:before {\n  content: \"\\E613\";\n}\n.icon-home:before {\n  content: \"\\E614\";\n}\n.icon-radio-checked-fill:before {\n  content: \"\\E615\";\n}\n.icon-close:before {\n  content: \"\\E616\";\n}\n.icon-check:before {\n  content: \"\\E617\";\n}\n.icon-arrow-upward:before {\n  content: \"\\E618\";\n}\n.icon-checkbox-checked-fill:before {\n  content: \"\\E619\";\n}\n.icon-checkbox-unchecked:before {\n  content: \"\\E61A\";\n}\n.icon-radio-checked:before {\n  content: \"\\E61B\";\n}\n.icon-checkbox-checked:before {\n  content: \"\\E61C\";\n}\n.icon-arrow-dropup:before {\n  content: \"\\E61D\";\n}\n.icon-radio-unchecked:before {\n  content: \"\\E61E\";\n}\n.icon-chevron-left:before {\n  content: \"\\E61F\";\n}\n.icon-expand-more:before {\n  content: \"\\E620\";\n}\n.icon-arrow-dropdown:before {\n  content: \"\\E621\";\n}\n.icon-more-vertical:before {\n  content: \"\\E622\";\n}\n.icon-arrow-downward:before {\n  content: \"\\E623\";\n}\n.icon-expand-less:before {\n  content: \"\\E624\";\n}\n.icon-chevron-right:before {\n  content: \"\\E625\";\n}\n.icon-search:before {\n  content: \"\\E626\";\n}\n.icon-star:before {\n  content: \"\\E627\";\n}\n.icon-star-fill:before {\n  content: \"\\E628\";\n}\n.icon-folder-fill:before {\n  content: \"\\E629\";\n}\n.icon-folder:before {\n  content: \"\\E62A\";\n}\n.icon-upload:before {\n  content: \"\\E62B\";\n}\n.icon-download:before {\n  content: \"\\E62C\";\n}\n.icon-delete:before {\n  content: \"\\E62D\";\n}\n.icon-refresh:before {\n  content: \"\\E62E\";\n}\n.icon-list:before {\n  content: \"\\E62F\";\n}\n.icon-setting:before {\n  content: \"\\E630\";\n}\n.icon-arrow-back:before {\n  content: \"\\E631\";\n}\n.icon-arrow-forward:before {\n  content: \"\\E632\";\n}\n.icon-share:before {\n  content: \"\\E633\";\n}\n.icon-map:before {\n  content: \"\\E634\";\n}\n.icon-calendar:before {\n  content: \"\\E635\";\n}\n.icon-location:before {\n  content: \"\\E636\";\n}\n.icon-place:before {\n  content: \"\\E637\";\n}\n.icon-folder-open-fill:before {\n  content: \"\\E638\";\n}\n.icon-folder-open:before {\n  content: \"\\E639\";\n}\n.icon-dialogue-fill:before {\n  content: \"\\E63A\";\n}\n.icon-alert-fill:before {\n  content: \"\\E63B\";\n}\n.icon-filter:before {\n  content: \"\\E63C\";\n}\n.icon-alert:before {\n  content: \"\\E63D\";\n}\n.icon-dialogue:before {\n  content: \"\\E63E\";\n}\n.icon-feedback:before {\n  content: \"\\E63F\";\n}\n.icon-help:before {\n  content: \"\\E640\";\n}\n.icon-message-fill:before {\n  content: \"\\E641\";\n}\n.icon-message:before {\n  content: \"\\E642\";\n}\n.icon-question-fill:before {\n  content: \"\\E643\";\n}\n.icon-text:before {\n  content: \"\\E644\";\n}\n.icon-question:before {\n  content: \"\\E645\";\n}\n.icon-tip-fill:before {\n  content: \"\\E646\";\n}\n.icon-user-fill:before {\n  content: \"\\E647\";\n}\n.icon-user:before {\n  content: \"\\E648\";\n}\n.icon-phone:before {\n  content: \"\\E649\";\n}\n.icon-tip:before {\n  content: \"\\E64A\";\n}\n.icon-arrow-up:before {\n  content: \"\\E64B\";\n}\n.icon-arrow-down:before {\n  content: \"\\E64C\";\n}\n.icon-loading:before {\n  content: \"\\E64D\";\n}\n.icon-font:before {\n  content: \"\\E64E\";\n}\n.icon-sort:before {\n  content: \"\\E64F\";\n}\n.icon-id:before {\n  content: \"\\E650\";\n}\n.icon-scale:before {\n  content: \"\\E651\";\n}\n.icon-clear:before {\n  content: \"\\E652\";\n}\n.icon-cancel:before {\n  content: \"\\E653\";\n}\n.icon-success-fill:before {\n  content: \"\\E654\";\n}\n.icon-strategy:before {\n  content: \"\\E655\";\n}\n.icon-add-circle:before {\n  content: \"\\E656\";\n}\n.icon-add-circle-fill:before {\n  content: \"\\E657\";\n}\n.icon-fail-fill:before {\n  content: \"\\E658\";\n}\n.icon-fail:before {\n  content: \"\\E659\";\n}\n.icon-success:before {\n  content: \"\\E65A\";\n}\n.icon-youxuanzhuan:before {\n  content: \"\\E65B\";\n}\n", ""]);
 
 	// exports
 
@@ -11275,25 +11234,25 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "a9a5a63115118d0ed99a2ad33d26a9c2.eot";
+	module.exports = __webpack_require__.p + "251460a0b5eae6e2026c6481769f6a5a.eot";
 
 /***/ },
 /* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "703978701fe0a23a515c8baaaf5614dd.woff";
+	module.exports = __webpack_require__.p + "a1a374bd31fc646574f7790a9d3132a2.woff";
 
 /***/ },
 /* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "2c97b8700dc8d3287ab2c4e5267f0ae0.ttf";
+	module.exports = __webpack_require__.p + "ce56e19b5b30a6b629784eb3b76185ce.ttf";
 
 /***/ },
 /* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "fcc334de737e89186d2fe779fc380e1b.svg";
+	module.exports = __webpack_require__.p + "000046848fc347347c1bbc7b08fdefca.svg";
 
 /***/ },
 /* 385 */
@@ -11940,6 +11899,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * */
 	            classPrefix: 'search',
 	            componentTag: 'div',
+	            /**
+	             * 是否自动清除默已选的值
+	             */
+	            autoClear: false,
 	            defaultValue: '' /*,
 	                             icon:'arrow_drop_down',
 	                             iconStyle:{
@@ -12020,6 +11983,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        } else {
 	            var val = this.trim(e.target.value);
 	            this.setDefaultData();
+	        }
+	        if (this.props.autoClear) {
+	            // auto clear data
+	            this.removeActiveValue();
+	            this.setState({
+	                value: ""
+	            });
 	        }
 	    };
 
@@ -12593,14 +12563,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * @default ''
 	             * */
 	            defaultChecked: '',
-	            icon: 'arrow_drop_down',
+	            icon: 'arrow-dropdown',
 	            /**
 	             * 报svg的warning竟然在这里。。 真尴尬
 	             * */
 	            iconStyle: {
 	                width: '30px',
-	                height: '30px',
-	                top: '15px',
+	                textAlign: 'center',
+	                // height:'30px',
+	                // top: '15px',
 	                right: 0
 	            }
 	        },
@@ -16646,11 +16617,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(
 	                'div',
 	                { className: 'icon-box' },
-	                _react2['default'].createElement(_utilsIconsJs2['default'], { onClick: (_context = this.cssEnhance).bind.call(_context, this, 'rotate'), className: 'upload-icon',
+	                _react2['default'].createElement(_utilsIconsJs2['default'], { style: { color: '#fff' }, onClick: (_context = this.cssEnhance).bind.call(_context, this, 'rotate'), className: 'upload-icon',
 	                    name: 'radio-unchecked', alt: '旋转' }),
-	                _react2['default'].createElement(_utilsIconsJs2['default'], { onClick: (_context = this.cssEnhance).bind.call(_context, this, 'max'), className: 'upload-icon', name: 'add',
+	                _react2['default'].createElement(_utilsIconsJs2['default'], { style: { color: '#fff' }, onClick: (_context = this.cssEnhance).bind.call(_context, this, 'max'), className: 'upload-icon', name: 'add',
 	                    alt: '放大' }),
-	                _react2['default'].createElement(_utilsIconsJs2['default'], { onClick: (_context = this.cssEnhance).bind.call(_context, this, 'min'), className: 'upload-icon', name: 'minus',
+	                _react2['default'].createElement(_utilsIconsJs2['default'], { style: { color: '#fff' }, onClick: (_context = this.cssEnhance).bind.call(_context, this, 'min'), className: 'upload-icon', name: 'minus',
 	                    alt: '缩小' })
 	            )
 	        );

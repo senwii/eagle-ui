@@ -4243,9 +4243,9 @@ b.eg-slider-arrow-right {
 }
 @font-face {
   font-family: "iconfont";
-  src: url(a9a5a63115118d0ed99a2ad33d26a9c2.eot);
+  src: url(251460a0b5eae6e2026c6481769f6a5a.eot);
   /* IE9*/
-  src: url(a9a5a63115118d0ed99a2ad33d26a9c2.eot#iefix) format('embedded-opentype'),  url(703978701fe0a23a515c8baaaf5614dd.woff) format('woff'),  url(2c97b8700dc8d3287ab2c4e5267f0ae0.ttf) format('truetype'),  url(fcc334de737e89186d2fe779fc380e1b.svg#iconfont) format('svg');
+  src: url(251460a0b5eae6e2026c6481769f6a5a.eot#iefix) format('embedded-opentype'),  url(a1a374bd31fc646574f7790a9d3132a2.woff) format('woff'),  url(ce56e19b5b30a6b629784eb3b76185ce.ttf) format('truetype'),  url(000046848fc347347c1bbc7b08fdefca.svg#iconfont) format('svg');
   /* iOS 4.1- */
 }
 .gfs-icon {
@@ -4255,6 +4255,10 @@ b.eg-slider-arrow-right {
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
+}
+/* 更新时覆盖以下内容，以上内容如果覆盖使用时会报错 */
+.icon-zuoxuanzhuan:before {
+  content: "\E604";
 }
 .icon-more:before {
   content: "\E608";
@@ -4356,13 +4360,13 @@ b.eg-slider-arrow-right {
   content: "\E628";
 }
 .icon-folder-fill:before {
-  content: "\E62A";
+  content: "\E629";
 }
 .icon-folder:before {
-  content: "\E62B";
+  content: "\E62A";
 }
 .icon-upload:before {
-  content: "\E629";
+  content: "\E62B";
 }
 .icon-download:before {
   content: "\E62C";
@@ -4385,7 +4389,7 @@ b.eg-slider-arrow-right {
 .icon-arrow-forward:before {
   content: "\E632";
 }
-.icon-fenxiang:before {
+.icon-share:before {
   content: "\E633";
 }
 .icon-map:before {
@@ -4405,6 +4409,108 @@ b.eg-slider-arrow-right {
 }
 .icon-folder-open:before {
   content: "\E639";
+}
+.icon-dialogue-fill:before {
+  content: "\E63A";
+}
+.icon-alert-fill:before {
+  content: "\E63B";
+}
+.icon-filter:before {
+  content: "\E63C";
+}
+.icon-alert:before {
+  content: "\E63D";
+}
+.icon-dialogue:before {
+  content: "\E63E";
+}
+.icon-feedback:before {
+  content: "\E63F";
+}
+.icon-help:before {
+  content: "\E640";
+}
+.icon-message-fill:before {
+  content: "\E641";
+}
+.icon-message:before {
+  content: "\E642";
+}
+.icon-question-fill:before {
+  content: "\E643";
+}
+.icon-text:before {
+  content: "\E644";
+}
+.icon-question:before {
+  content: "\E645";
+}
+.icon-tip-fill:before {
+  content: "\E646";
+}
+.icon-user-fill:before {
+  content: "\E647";
+}
+.icon-user:before {
+  content: "\E648";
+}
+.icon-phone:before {
+  content: "\E649";
+}
+.icon-tip:before {
+  content: "\E64A";
+}
+.icon-arrow-up:before {
+  content: "\E64B";
+}
+.icon-arrow-down:before {
+  content: "\E64C";
+}
+.icon-loading:before {
+  content: "\E64D";
+}
+.icon-font:before {
+  content: "\E64E";
+}
+.icon-sort:before {
+  content: "\E64F";
+}
+.icon-id:before {
+  content: "\E650";
+}
+.icon-scale:before {
+  content: "\E651";
+}
+.icon-clear:before {
+  content: "\E652";
+}
+.icon-cancel:before {
+  content: "\E653";
+}
+.icon-success-fill:before {
+  content: "\E654";
+}
+.icon-strategy:before {
+  content: "\E655";
+}
+.icon-add-circle:before {
+  content: "\E656";
+}
+.icon-add-circle-fill:before {
+  content: "\E657";
+}
+.icon-fail-fill:before {
+  content: "\E658";
+}
+.icon-fail:before {
+  content: "\E659";
+}
+.icon-success:before {
+  content: "\E65A";
+}
+.icon-youxuanzhuan:before {
+  content: "\E65B";
 }
 .doc-content {
   counter-reset: header2;

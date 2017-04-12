@@ -1,6 +1,6 @@
 {
   "name": "eagle-ui",
-  "version": "4.0.5",
+  "version": "4.0.9",
   "description": "This is a used to develop the background management system based on the react to develop a set of UI framework",
   "main": "lib",
   "repository": "git@github.com:future-team/eagle-ui.git",
@@ -16,7 +16,7 @@
     "demo": "node_modules/.bin/gulp demo",
     "doc": "gfsdoc ||node_modules/.bin/gfsdoc",
     "prepublish": "npm run build",
-    "start":"npm run demo"
+    "start": "npm run demo"
   },
   "license": "MIT",
   "author": {
@@ -75,10 +75,10 @@
   ],
   "dependencies": {
     "cat-browser": "^0.1.0",
-    "hope-s-basic": "^1.1.0",
     "eagle-styles": "^0.1.0",
-    "gfs-icons": "^0.1.5",
-    "extend": "^3.0.0"
+    "extend": "^3.0.0",
+    "gfs-icons": "^0.3.2",
+    "hope-s-basic": "^1.1.0"
   },
   "peerDependencies": {},
   "devDependencies": {
