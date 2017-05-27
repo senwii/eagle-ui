@@ -59,6 +59,15 @@ export default class Star extends Component{
         disable:true,
         adjust:0
     };
+
+    componentDidMount(){
+        this.resizeListener()
+        window.addEventListener('resize',this.resizeListener)
+    }
+    componentWillUnmount(){
+        window.removeEventListener('resize',this.resizeListener)
+    }
+
     componentWillReceiveProps(nextProps) {
         let newRate=nextProps.rate;
         if(this.state.rate!==newRate){
@@ -76,6 +85,22 @@ export default class Star extends Component{
             adjust:props.adjust
         };
         this.Rate = props.rate;
+        let self=this;
+        this.resizeListener=function(){
+            function calculateCoor(){
+                let node=self.refs.starContainer;
+                self.offsetWidth = node.offsetWidth;
+                self.positionX = 0;
+                while (node) {
+                    self.positionX += node.offsetLeft;
+                    node = node.offsetParent;
+                }
+                self.positionX += self.state.adjust;
+            }
+            if(!self.positionX) {
+                calculateCoor();
+            }
+        }
     }
     renderCustomize(e) {
         let newPositionX = e.clientX;
@@ -107,23 +132,7 @@ export default class Star extends Component{
                  onMouseMove={(e)=>{
                     !this.props.disable&&this.renderCustomize(e)
                     }}
-                 ref={(targetNode)=>{
-                 let self=this;
-                    function calculateCoor(){
-                        let node=targetNode;
-                        self.offsetWidth = node.offsetWidth;
-                        self.positionX = 0;
-                        while (node) {
-                            self.positionX += node.offsetLeft;
-                            node = node.offsetParent;
-                        }
-                        self.positionX += self.state.adjust;
-                    }
-                    if(!this.positionX) {
-                        calculateCoor();
-                    }
-                    window.onresize=calculateCoor;
-                 }}>
+                 ref='starContainer'>
                 <div className={this.getClassName('grey')} style={{width:rate+'%',...shadowPosition}}></div>
             </div>
         )
