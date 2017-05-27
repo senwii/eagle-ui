@@ -122,14 +122,25 @@ class TooltipPanel extends Component {
         if(this.props.trigger == 'click'){
             let idName = this.idName;
             let self = this;
-            document.addEventListener('click',((idName)=>{
+
+            this.clickTriggerHandler=((idName)=>{
                 let id = idName;
                 return (event)=>{
                     !self.parents(id,event.target)&&(self.setState({
                         show:false
                     }));
                 }
-            })(idName))
+            })(idName)
+            document.addEventListener('click',this.clickTriggerHandler)
+        }
+
+    }
+    componentWillUnmount() {
+        /**
+         * 如果事件是click，body加上事件，移除时隐藏
+         * */
+        if(this.props.trigger == 'click'){
+            document.removeEventListener('click',this.clickTriggerHandler)
         }
 
     }
@@ -349,7 +360,7 @@ class TooltipPanel extends Component {
         let {children,bgColor,direction,...other} = this.props;
         let dir = direction == 'down' ? 'bottom': direction;
         let c = null;
-        if(other.msg){
+        if(other.msg!==undefined){
             let child = this.getChild(children,other.trigger);
             c = [
                 ...child,
