@@ -74,7 +74,8 @@ export default class TimePicker extends CalendarPanel{
         return d;
     }
     formatTimer(format=this.props.format){
-        const timeStr = format.replace(/H{1,2}/i,this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/,this.fill(this.state.minutes) ).replace(/s{1,2}/,this.fill(this.state.second) ).replace(/t{1,2}/i, this.tt )
+        const {hours, minutes, second} = this.state
+        const timeStr = format.replace(/H{1,2}/i,this.fill(this.getHours(hours))).replace(/m{1,2}/,this.fill(minutes) ).replace(/s{1,2}/,this.fill(second) ).replace(/t{1,2}/i, this.tt )
         return timeStr;
     }
     setTime(key,value){
@@ -114,11 +115,12 @@ export default class TimePicker extends CalendarPanel{
     }
     getTimelayer(){
         const {h, m, s } = this.getSliderShow()
+        const {hours, minutes, second} = this.state
         return (
             <div  style={{marginTop:'20px'}}>
                 <div style={{
                     'textAlign':'center'
-                }}><span>{this.fill(this.getHours(this.state.hours))}:{this.fill(this.state.minutes)}:{this.fill(this.state.second)} {this.getTT(this.state.hours*1)}</span></div>
+                }}><span>{this.fill(this.getHours(hours))}:{this.fill(minutes)}:{this.fill(second)} {this.getTT(hours*1)}</span></div>
                 <div>
                     {h && <Slider max={23} min={0} getValueCallback={this.setTime.bind(this,'hours')} defaultValue={this.state.hours*1} initCallback={this.setTime.bind(this,'hours')} style={{marginTop:'20px'}} />}
                     {m && <Slider max={59} getValueCallback={this.setTime.bind(this,'minutes')} defaultValue={this.state.minutes*1} style={{marginTop:'20px'}} />}
@@ -133,13 +135,19 @@ export default class TimePicker extends CalendarPanel{
         // 排除日期的情况
         const isData = /(yyyy|MM|dd)+/.test(format)
         if(isData) format = format.split(' ').splice(1).join(' ')
-
         const hasTT = format.split(' ').length > 1;
         const hmsArr = format.replace(/\st{1,2}/, '').split(':')
         let defaultValue =arguments[0]|| this.props.defaultValue;
-        let tt ='';
+        let tt =''
+        // defaultValue 里居然会出现这样的值！！！！！ yyyy-MM-dd 00:00 am 还有 2017-06-09 11:23 am 这样的值咋整
+        // 只能用这种黑科技了
+        const errorValue = defaultValue.indexOf(':') > 2
+        if(errorValue) defaultValue = defaultValue.split(' ').splice(1).join(' ')
         if(hasTT){
-            tt = this.tt = defaultValue.split(' ')[1]
+            // 要去掉后面的 am pm 之类的
+            const ttA = defaultValue.split(' ')
+            tt = this.tt = ttA[1] || ''
+            defaultValue = ttA[0]
             format = format.replace(/\st{1,2}/, '')
         }
         const valArr = defaultValue.split(':')

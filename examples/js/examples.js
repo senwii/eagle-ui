@@ -44191,8 +44191,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    TimePicker.prototype.formatTimer = function formatTimer() {
 	        var format = arguments.length <= 0 || arguments[0] === undefined ? this.props.format : arguments[0];
+	        var _state = this.state;
+	        var hours = _state.hours;
+	        var minutes = _state.minutes;
+	        var second = _state.second;
 
-	        var timeStr = format.replace(/H{1,2}/i, this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/, this.fill(this.state.minutes)).replace(/s{1,2}/, this.fill(this.state.second)).replace(/t{1,2}/i, this.tt);
+	        var timeStr = format.replace(/H{1,2}/i, this.fill(this.getHours(hours))).replace(/m{1,2}/, this.fill(minutes)).replace(/s{1,2}/, this.fill(second)).replace(/t{1,2}/i, this.tt);
 	        return timeStr;
 	    };
 
@@ -44243,6 +44247,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var h = _getSliderShow.h;
 	        var m = _getSliderShow.m;
 	        var s = _getSliderShow.s;
+	        var _state2 = this.state;
+	        var hours = _state2.hours;
+	        var minutes = _state2.minutes;
+	        var second = _state2.second;
 
 	        return _react2['default'].createElement(
 	            'div',
@@ -44255,13 +44263,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                _react2['default'].createElement(
 	                    'span',
 	                    null,
-	                    this.fill(this.getHours(this.state.hours)),
+	                    this.fill(this.getHours(hours)),
 	                    ':',
-	                    this.fill(this.state.minutes),
+	                    this.fill(minutes),
 	                    ':',
-	                    this.fill(this.state.second),
+	                    this.fill(second),
 	                    ' ',
-	                    this.getTT(this.state.hours * 1)
+	                    this.getTT(hours * 1)
 	                )
 	            ),
 	            _react2['default'].createElement(
@@ -44282,13 +44290,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // 排除日期的情况
 	        var isData = /(yyyy|MM|dd)+/.test(format);
 	        if (isData) format = format.split(' ').splice(1).join(' ');
-
 	        var hasTT = format.split(' ').length > 1;
 	        var hmsArr = format.replace(/\st{1,2}/, '').split(':');
 	        var defaultValue = arguments[0] || this.props.defaultValue;
 	        var tt = '';
+	        // defaultValue 里居然会出现这样的值！！！！！ yyyy-MM-dd 00:00 am 还有 2017-06-09 11:23 am 这样的值咋整
+	        // 只能用这种黑科技了
+	        var errorValue = defaultValue.indexOf(':') > 2;
+	        if (errorValue) defaultValue = defaultValue.split(' ').splice(1).join(' ');
 	        if (hasTT) {
-	            tt = this.tt = defaultValue.split(' ')[1];
+	            // 要去掉后面的 am pm 之类的
+	            var ttA = defaultValue.split(' ');
+	            tt = this.tt = ttA[1] || '';
+	            defaultValue = ttA[0];
 	            format = format.replace(/\st{1,2}/, '');
 	        }
 	        var valArr = defaultValue.split(':');
