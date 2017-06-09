@@ -16167,6 +16167,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Star = (function (_Component) {
 	    _inherits(Star, _Component);
 
+	    Star.prototype.componentDidMount = function componentDidMount() {
+	        this.resizeListener();
+	        window.addEventListener('resize', this.resizeListener);
+	    };
+
+	    Star.prototype.componentWillUnmount = function componentWillUnmount() {
+	        window.removeEventListener('resize', this.resizeListener);
+	    };
+
 	    Star.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        var newRate = nextProps.rate;
 	        if (this.state.rate !== newRate) {
@@ -16231,6 +16240,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	            adjust: props.adjust
 	        };
 	        this.Rate = props.rate;
+	        var self = this;
+	        this.resizeListener = function () {
+	            function calculateCoor() {
+	                var node = self.refs.starContainer;
+	                self.offsetWidth = node.offsetWidth;
+	                self.positionX = 0;
+	                while (node) {
+	                    self.positionX += node.offsetLeft;
+	                    node = node.offsetParent;
+	                }
+	                self.positionX += self.state.adjust;
+	            }
+	            if (!self.positionX) {
+	                calculateCoor();
+	            }
+	        };
 	    }
 
 	    Star.prototype.renderCustomize = function renderCustomize(e) {
@@ -16269,23 +16294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                onMouseMove: function (e) {
 	                    !_this.props.disable && _this.renderCustomize(e);
 	                },
-	                ref: function (targetNode) {
-	                    var self = _this;
-	                    function calculateCoor() {
-	                        var node = targetNode;
-	                        self.offsetWidth = node.offsetWidth;
-	                        self.positionX = 0;
-	                        while (node) {
-	                            self.positionX += node.offsetLeft;
-	                            node = node.offsetParent;
-	                        }
-	                        self.positionX += self.state.adjust;
-	                    }
-	                    if (!_this.positionX) {
-	                        calculateCoor();
-	                    }
-	                    window.onresize = calculateCoor;
-	                } },
+	                ref: 'starContainer' },
 	            _react2['default'].createElement('div', { className: this.getClassName('grey'), style: _extends({ width: rate + '%' }, shadowPosition) })
 	        );
 	    };
@@ -17558,15 +17567,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	            (function () {
 	                var idName = _this.idName;
 	                var self = _this;
-	                document.addEventListener('click', (function (idName) {
+
+	                _this.clickTriggerHandler = (function (idName) {
 	                    var id = idName;
 	                    return function (event) {
 	                        !self.parents(id, event.target) && self.setState({
 	                            show: false
 	                        });
 	                    };
-	                })(idName));
+	                })(idName);
+	                document.addEventListener('click', _this.clickTriggerHandler);
 	            })();
+	        }
+	    };
+
+	    TooltipPanel.prototype.componentWillUnmount = function componentWillUnmount() {
+	        /**
+	         * 如果事件是click，body加上事件，移除时隐藏
+	         * */
+	        if (this.props.trigger == 'click') {
+	            document.removeEventListener('click', this.clickTriggerHandler);
 	        }
 	    };
 
@@ -17810,7 +17830,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var dir = direction == 'down' ? 'bottom' : direction;
 	        var c = null;
-	        if (other.msg) {
+	        if (other.msg !== undefined) {
 	            var child = this.getChild(children, other.trigger);
 	            c = [].concat(child, [_react2['default'].createElement(_TooltipJs2['default'], _extends({}, other, { show: this.state.show, setToolTipObj: this.setToolTipObj.bind(this), bgColor: bgColor, direction: dir }))]);
 	        } else {
@@ -19894,6 +19914,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * <code>HH</code>:24小时制<br />
 	             * <code>hh</code>:12小时制<br />
 	             * <code>mm</code>:分钟<br />
+	             * <code>ss</code>:秒<br />
 	             * <code>tt</code>:上午或下午<br />
 	             * @property format
 	             * @type String
@@ -19921,6 +19942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.state = _extend2['default'](this.state, {
 	            hours: 0,
 	            minutes: 0,
+	            second: 0,
 	            posStyle: {}
 	        });
 	        this.timerId = this.uniqueId();
@@ -19951,7 +19973,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    TimePicker.prototype.formatTimer = function formatTimer() {
 	        var format = arguments.length <= 0 || arguments[0] === undefined ? this.props.format : arguments[0];
 
-	        return format.replace(/H{1,2}/i, this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/, this.fill(this.state.minutes)).replace(/t{1,2}/i, this.tt);
+	        var timeStr = format.replace(/H{1,2}/i, this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/, this.fill(this.state.minutes)).replace(/s{1,2}/, this.fill(this.state.second)).replace(/t{1,2}/i, this.tt);
+	        return timeStr;
 	    };
 
 	    TimePicker.prototype.setTime = function setTime(key, value) {
@@ -19984,7 +20007,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return tt.toUpperCase();
 	    };
 
+	    TimePicker.prototype.getSliderShow = function getSliderShow() {
+	        var format = this.props.format;
+
+	        return {
+	            h: /[HH|hh]/.test(format),
+	            m: /mm/.test(format),
+	            s: /ss/.test(format),
+	            tt: /\stt/.test(format)
+	        };
+	    };
+
 	    TimePicker.prototype.getTimelayer = function getTimelayer() {
+	        var _getSliderShow = this.getSliderShow();
+
+	        var h = _getSliderShow.h;
+	        var m = _getSliderShow.m;
+	        var s = _getSliderShow.s;
+
 	        return _react2['default'].createElement(
 	            'div',
 	            { style: { marginTop: '20px' } },
@@ -19999,6 +20039,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    this.fill(this.getHours(this.state.hours)),
 	                    ':',
 	                    this.fill(this.state.minutes),
+	                    ':',
+	                    this.fill(this.state.second),
 	                    ' ',
 	                    this.getTT(this.state.hours * 1)
 	                )
@@ -20006,30 +20048,67 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(
 	                'div',
 	                null,
-	                _react2['default'].createElement(_SliderJs2['default'], { max: 23, min: 0, getValueCallback: this.setTime.bind(this, 'hours'), defaultValue: this.state.hours * 1, initCallback: this.setTime.bind(this, 'hours'), style: { marginTop: '20px' } }),
-	                _react2['default'].createElement(_SliderJs2['default'], { max: 59, getValueCallback: this.setTime.bind(this, 'minutes'), defaultValue: this.state.minutes * 1, style: { marginTop: '20px' } })
+	                h && _react2['default'].createElement(_SliderJs2['default'], { max: 23, min: 0, getValueCallback: this.setTime.bind(this, 'hours'), defaultValue: this.state.hours * 1, initCallback: this.setTime.bind(this, 'hours'), style: { marginTop: '20px' } }),
+	                m && _react2['default'].createElement(_SliderJs2['default'], { max: 59, getValueCallback: this.setTime.bind(this, 'minutes'), defaultValue: this.state.minutes * 1, style: { marginTop: '20px' } }),
+	                s && _react2['default'].createElement(_SliderJs2['default'], { max: 99, min: 0, getValueCallback: this.setTime.bind(this, 'second'), defaultValue: this.state.second * 1, style: { marginTop: '20px' } })
 	            )
 	        );
 	    };
 
+	    // 这个取值问题变得很尴尬啊
+
 	    TimePicker.prototype.resetValue = function resetValue() {
+	        var format = this.props.format;
+
+	        // 排除日期的情况
+	        var isData = /(yyyy|MM|dd)+/.test(format);
+	        if (isData) format = format.split(' ').splice(1).join(' ');
+
+	        var hasTT = format.split(' ').length > 1;
+	        var hmsArr = format.replace(/\st{1,2}/, '').split(':');
 	        var defaultValue = arguments[0] || this.props.defaultValue;
-	        var v = defaultValue.match(this.matchTime);
 	        var tt = '';
-	        if (v && v.length >= 3) {
-	            var h = v[1] * 1;
-	            var m = v[2] * 1;
-	            if (v.length >= 4) {
-	                tt = this.tt = v[3].toLowerCase();
-	            }
-	            if (!this.props.format.match('HH')) {
-	                h = this.hhUpList[h];
-	            }
-	            this.setState({
-	                hours: h * 1,
-	                minutes: m * 1
+	        if (hasTT) {
+	            tt = this.tt = defaultValue.split(' ')[1];
+	            format = format.replace(/\st{1,2}/, '');
+	        }
+	        var valArr = defaultValue.split(':');
+	        var h = 0;
+	        var m = 0;
+	        var s = 0;
+	        if (hmsArr.length == valArr.length) {
+	            hmsArr.map(function (val, index) {
+	                if (/[HH|hh]/.test(val)) {
+	                    h = valArr[index];
+	                }
+	                if (/mm/.test(val)) {
+	                    m = valArr[index];
+	                }
+	                if (/ss/.test(val)) {
+	                    s = valArr[index];
+	                }
 	            });
 	        }
+	        this.setState({
+	            hours: h * 1,
+	            minutes: m * 1,
+	            second: s * 1
+	        });
+	        // let v = defaultValue.match(this.matchTime);
+	        // if(v && v.length>=3){
+	        //     let h = v[1]*1;
+	        //     let m = v[2]*1;
+	        //     if(v.length>=3){
+	        //         tt =this.tt = v[4].toLowerCase();
+	        //     }
+	        //     if(!this.props.format.match('HH') ){
+	        //         h = this.hhUpList[h];
+	        //     }
+	        //     this.setState({
+	        //         hours:h*1,
+	        //         minutes:m*1
+	        //     });
+	        // }
 	    };
 
 	    TimePicker.prototype.inputChangeHandler = function inputChangeHandler(e) {
@@ -20197,6 +20276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * <code>HH</code>:24小时制<br />
 	             * <code>hh</code>:12小时制<br />
 	             * <code>mm</code>:分钟<br />
+	             * <code>ss</code>:秒<br />
 	             * <code>tt</code>:上午或下午<br />
 	             * @property format
 	             * @type String

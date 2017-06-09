@@ -8334,127 +8334,127 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _modulesCalendarJs2 = _interopRequireDefault(_modulesCalendarJs);
 
-	var _modulesButton = __webpack_require__(707);
+	var _modulesButton = __webpack_require__(708);
 
 	var _modulesButton2 = _interopRequireDefault(_modulesButton);
 
-	var _modulesCrumb = __webpack_require__(708);
+	var _modulesCrumb = __webpack_require__(709);
 
 	var _modulesCrumb2 = _interopRequireDefault(_modulesCrumb);
 
-	var _modulesLayout = __webpack_require__(709);
+	var _modulesLayout = __webpack_require__(710);
 
 	var _modulesLayout2 = _interopRequireDefault(_modulesLayout);
 
-	var _modulesDemo2 = __webpack_require__(710);
+	var _modulesDemo2 = __webpack_require__(711);
 
 	var _modulesDemo22 = _interopRequireDefault(_modulesDemo2);
 
-	var _modulesDetailJs = __webpack_require__(711);
+	var _modulesDetailJs = __webpack_require__(712);
 
 	var _modulesDetailJs2 = _interopRequireDefault(_modulesDetailJs);
 
 	//增加商户详情页面demo
 
-	var _modulesDialog = __webpack_require__(715);
+	var _modulesDialog = __webpack_require__(716);
 
 	var _modulesDialog2 = _interopRequireDefault(_modulesDialog);
 
-	var _modulesInput = __webpack_require__(716);
+	var _modulesInput = __webpack_require__(717);
 
 	var _modulesInput2 = _interopRequireDefault(_modulesInput);
 
-	var _modulesLabel = __webpack_require__(717);
+	var _modulesLabel = __webpack_require__(718);
 
 	var _modulesLabel2 = _interopRequireDefault(_modulesLabel);
 
-	var _modulesPaging = __webpack_require__(718);
+	var _modulesPaging = __webpack_require__(719);
 
 	var _modulesPaging2 = _interopRequireDefault(_modulesPaging);
 
-	var _modulesPanel = __webpack_require__(719);
+	var _modulesPanel = __webpack_require__(720);
 
 	var _modulesPanel2 = _interopRequireDefault(_modulesPanel);
 
-	var _modulesSelect = __webpack_require__(720);
+	var _modulesSelect = __webpack_require__(721);
 
 	var _modulesSelect2 = _interopRequireDefault(_modulesSelect);
 
-	var _modulesTab = __webpack_require__(721);
+	var _modulesTab = __webpack_require__(722);
 
 	var _modulesTab2 = _interopRequireDefault(_modulesTab);
 
-	var _modulesTable = __webpack_require__(722);
+	var _modulesTable = __webpack_require__(723);
 
 	var _modulesTable2 = _interopRequireDefault(_modulesTable);
 
-	var _modulesToast = __webpack_require__(723);
+	var _modulesToast = __webpack_require__(724);
 
 	var _modulesToast2 = _interopRequireDefault(_modulesToast);
 
-	var _modulesTooltip = __webpack_require__(724);
+	var _modulesTooltip = __webpack_require__(725);
 
 	var _modulesTooltip2 = _interopRequireDefault(_modulesTooltip);
 
-	var _modulesValidate = __webpack_require__(725);
+	var _modulesValidate = __webpack_require__(726);
 
 	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
 
-	var _modulesStarJs = __webpack_require__(726);
+	var _modulesStarJs = __webpack_require__(727);
 
 	var _modulesStarJs2 = _interopRequireDefault(_modulesStarJs);
 
-	var _modulesImgSliderJs = __webpack_require__(727);
+	var _modulesImgSliderJs = __webpack_require__(728);
 
 	var _modulesImgSliderJs2 = _interopRequireDefault(_modulesImgSliderJs);
 
-	var _modulesSuggestionJs = __webpack_require__(728);
+	var _modulesSuggestionJs = __webpack_require__(729);
 
 	var _modulesSuggestionJs2 = _interopRequireDefault(_modulesSuggestionJs);
 
-	var _modulesIconsJs = __webpack_require__(729);
+	var _modulesIconsJs = __webpack_require__(730);
 
 	var _modulesIconsJs2 = _interopRequireDefault(_modulesIconsJs);
 
-	var _modulesTreeMenuJs = __webpack_require__(730);
+	var _modulesTreeMenuJs = __webpack_require__(731);
 
 	var _modulesTreeMenuJs2 = _interopRequireDefault(_modulesTreeMenuJs);
 
-	var _modulesDropTreeJs = __webpack_require__(736);
+	var _modulesDropTreeJs = __webpack_require__(737);
 
 	var _modulesDropTreeJs2 = _interopRequireDefault(_modulesDropTreeJs);
 
-	var _modulesTheme = __webpack_require__(741);
+	var _modulesTheme = __webpack_require__(742);
 
 	var _modulesTheme2 = _interopRequireDefault(_modulesTheme);
 
-	var _modulesSlider = __webpack_require__(742);
+	var _modulesSlider = __webpack_require__(743);
 
 	var _modulesSlider2 = _interopRequireDefault(_modulesSlider);
 
-	var _modulesDatetimepickerJs = __webpack_require__(743);
+	var _modulesDatetimepickerJs = __webpack_require__(744);
 
 	var _modulesDatetimepickerJs2 = _interopRequireDefault(_modulesDatetimepickerJs);
 
-	var _modulesTimepickerJs = __webpack_require__(744);
+	var _modulesTimepickerJs = __webpack_require__(745);
 
 	var _modulesTimepickerJs2 = _interopRequireDefault(_modulesTimepickerJs);
 
-	var _modulesIconfont = __webpack_require__(745);
+	var _modulesIconfont = __webpack_require__(746);
 
 	var _modulesIconfont2 = _interopRequireDefault(_modulesIconfont);
 
-	var _modulesIndex = __webpack_require__(746);
+	var _modulesIndex = __webpack_require__(747);
 
 	var _modulesIndex2 = _interopRequireDefault(_modulesIndex);
 
 	// import '../../src/less/eagle-ui.less';
 	// import '../../src/less/skin.less'
 
-	__webpack_require__(747);
 	__webpack_require__(748);
 	__webpack_require__(749);
 	__webpack_require__(750);
+	__webpack_require__(751);
 	var AppRouter = (function (_Component) {
 	    _inherits(AppRouter, _Component);
 
@@ -40386,6 +40386,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Star = (function (_Component) {
 	    _inherits(Star, _Component);
 
+	    Star.prototype.componentDidMount = function componentDidMount() {
+	        this.resizeListener();
+	        window.addEventListener('resize', this.resizeListener);
+	    };
+
+	    Star.prototype.componentWillUnmount = function componentWillUnmount() {
+	        window.removeEventListener('resize', this.resizeListener);
+	    };
+
 	    Star.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        var newRate = nextProps.rate;
 	        if (this.state.rate !== newRate) {
@@ -40450,6 +40459,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	            adjust: props.adjust
 	        };
 	        this.Rate = props.rate;
+	        var self = this;
+	        this.resizeListener = function () {
+	            function calculateCoor() {
+	                var node = self.refs.starContainer;
+	                self.offsetWidth = node.offsetWidth;
+	                self.positionX = 0;
+	                while (node) {
+	                    self.positionX += node.offsetLeft;
+	                    node = node.offsetParent;
+	                }
+	                self.positionX += self.state.adjust;
+	            }
+	            if (!self.positionX) {
+	                calculateCoor();
+	            }
+	        };
 	    }
 
 	    Star.prototype.renderCustomize = function renderCustomize(e) {
@@ -40488,23 +40513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                onMouseMove: function (e) {
 	                    !_this.props.disable && _this.renderCustomize(e);
 	                },
-	                ref: function (targetNode) {
-	                    var self = _this;
-	                    function calculateCoor() {
-	                        var node = targetNode;
-	                        self.offsetWidth = node.offsetWidth;
-	                        self.positionX = 0;
-	                        while (node) {
-	                            self.positionX += node.offsetLeft;
-	                            node = node.offsetParent;
-	                        }
-	                        self.positionX += self.state.adjust;
-	                    }
-	                    if (!_this.positionX) {
-	                        calculateCoor();
-	                    }
-	                    window.onresize = calculateCoor;
-	                } },
+	                ref: 'starContainer' },
 	            _react2['default'].createElement('div', { className: this.getClassName('grey'), style: _extends({ width: rate + '%' }, shadowPosition) })
 	        );
 	    };
@@ -41777,15 +41786,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	            (function () {
 	                var idName = _this.idName;
 	                var self = _this;
-	                document.addEventListener('click', (function (idName) {
+
+	                _this.clickTriggerHandler = (function (idName) {
 	                    var id = idName;
 	                    return function (event) {
 	                        !self.parents(id, event.target) && self.setState({
 	                            show: false
 	                        });
 	                    };
-	                })(idName));
+	                })(idName);
+	                document.addEventListener('click', _this.clickTriggerHandler);
 	            })();
+	        }
+	    };
+
+	    TooltipPanel.prototype.componentWillUnmount = function componentWillUnmount() {
+	        /**
+	         * 如果事件是click，body加上事件，移除时隐藏
+	         * */
+	        if (this.props.trigger == 'click') {
+	            document.removeEventListener('click', this.clickTriggerHandler);
 	        }
 	    };
 
@@ -42029,7 +42049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var dir = direction == 'down' ? 'bottom' : direction;
 	        var c = null;
-	        if (other.msg) {
+	        if (other.msg !== undefined) {
 	            var child = this.getChild(children, other.trigger);
 	            c = [].concat(child, [_react2['default'].createElement(_TooltipJs2['default'], _extends({}, other, { show: this.state.show, setToolTipObj: this.setToolTipObj.bind(this), bgColor: bgColor, direction: dir }))]);
 	        } else {
@@ -44113,6 +44133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * <code>HH</code>:24小时制<br />
 	             * <code>hh</code>:12小时制<br />
 	             * <code>mm</code>:分钟<br />
+	             * <code>ss</code>:秒<br />
 	             * <code>tt</code>:上午或下午<br />
 	             * @property format
 	             * @type String
@@ -44140,6 +44161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.state = _extend2['default'](this.state, {
 	            hours: 0,
 	            minutes: 0,
+	            second: 0,
 	            posStyle: {}
 	        });
 	        this.timerId = this.uniqueId();
@@ -44170,7 +44192,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    TimePicker.prototype.formatTimer = function formatTimer() {
 	        var format = arguments.length <= 0 || arguments[0] === undefined ? this.props.format : arguments[0];
 
-	        return format.replace(/H{1,2}/i, this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/, this.fill(this.state.minutes)).replace(/t{1,2}/i, this.tt);
+	        var timeStr = format.replace(/H{1,2}/i, this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/, this.fill(this.state.minutes)).replace(/s{1,2}/, this.fill(this.state.second)).replace(/t{1,2}/i, this.tt);
+	        return timeStr;
 	    };
 
 	    TimePicker.prototype.setTime = function setTime(key, value) {
@@ -44203,7 +44226,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return tt.toUpperCase();
 	    };
 
+	    TimePicker.prototype.getSliderShow = function getSliderShow() {
+	        var format = this.props.format;
+
+	        return {
+	            h: /[HH|hh]/.test(format),
+	            m: /mm/.test(format),
+	            s: /ss/.test(format),
+	            tt: /\stt/.test(format)
+	        };
+	    };
+
 	    TimePicker.prototype.getTimelayer = function getTimelayer() {
+	        var _getSliderShow = this.getSliderShow();
+
+	        var h = _getSliderShow.h;
+	        var m = _getSliderShow.m;
+	        var s = _getSliderShow.s;
+
 	        return _react2['default'].createElement(
 	            'div',
 	            { style: { marginTop: '20px' } },
@@ -44218,6 +44258,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    this.fill(this.getHours(this.state.hours)),
 	                    ':',
 	                    this.fill(this.state.minutes),
+	                    ':',
+	                    this.fill(this.state.second),
 	                    ' ',
 	                    this.getTT(this.state.hours * 1)
 	                )
@@ -44225,30 +44267,67 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(
 	                'div',
 	                null,
-	                _react2['default'].createElement(_SliderJs2['default'], { max: 23, min: 0, getValueCallback: this.setTime.bind(this, 'hours'), defaultValue: this.state.hours * 1, initCallback: this.setTime.bind(this, 'hours'), style: { marginTop: '20px' } }),
-	                _react2['default'].createElement(_SliderJs2['default'], { max: 59, getValueCallback: this.setTime.bind(this, 'minutes'), defaultValue: this.state.minutes * 1, style: { marginTop: '20px' } })
+	                h && _react2['default'].createElement(_SliderJs2['default'], { max: 23, min: 0, getValueCallback: this.setTime.bind(this, 'hours'), defaultValue: this.state.hours * 1, initCallback: this.setTime.bind(this, 'hours'), style: { marginTop: '20px' } }),
+	                m && _react2['default'].createElement(_SliderJs2['default'], { max: 59, getValueCallback: this.setTime.bind(this, 'minutes'), defaultValue: this.state.minutes * 1, style: { marginTop: '20px' } }),
+	                s && _react2['default'].createElement(_SliderJs2['default'], { max: 99, min: 0, getValueCallback: this.setTime.bind(this, 'second'), defaultValue: this.state.second * 1, style: { marginTop: '20px' } })
 	            )
 	        );
 	    };
 
+	    // 这个取值问题变得很尴尬啊
+
 	    TimePicker.prototype.resetValue = function resetValue() {
+	        var format = this.props.format;
+
+	        // 排除日期的情况
+	        var isData = /(yyyy|MM|dd)+/.test(format);
+	        if (isData) format = format.split(' ').splice(1).join(' ');
+
+	        var hasTT = format.split(' ').length > 1;
+	        var hmsArr = format.replace(/\st{1,2}/, '').split(':');
 	        var defaultValue = arguments[0] || this.props.defaultValue;
-	        var v = defaultValue.match(this.matchTime);
 	        var tt = '';
-	        if (v && v.length >= 3) {
-	            var h = v[1] * 1;
-	            var m = v[2] * 1;
-	            if (v.length >= 4) {
-	                tt = this.tt = v[3].toLowerCase();
-	            }
-	            if (!this.props.format.match('HH')) {
-	                h = this.hhUpList[h];
-	            }
-	            this.setState({
-	                hours: h * 1,
-	                minutes: m * 1
+	        if (hasTT) {
+	            tt = this.tt = defaultValue.split(' ')[1];
+	            format = format.replace(/\st{1,2}/, '');
+	        }
+	        var valArr = defaultValue.split(':');
+	        var h = 0;
+	        var m = 0;
+	        var s = 0;
+	        if (hmsArr.length == valArr.length) {
+	            hmsArr.map(function (val, index) {
+	                if (/[HH|hh]/.test(val)) {
+	                    h = valArr[index];
+	                }
+	                if (/mm/.test(val)) {
+	                    m = valArr[index];
+	                }
+	                if (/ss/.test(val)) {
+	                    s = valArr[index];
+	                }
 	            });
 	        }
+	        this.setState({
+	            hours: h * 1,
+	            minutes: m * 1,
+	            second: s * 1
+	        });
+	        // let v = defaultValue.match(this.matchTime);
+	        // if(v && v.length>=3){
+	        //     let h = v[1]*1;
+	        //     let m = v[2]*1;
+	        //     if(v.length>=3){
+	        //         tt =this.tt = v[4].toLowerCase();
+	        //     }
+	        //     if(!this.props.format.match('HH') ){
+	        //         h = this.hhUpList[h];
+	        //     }
+	        //     this.setState({
+	        //         hours:h*1,
+	        //         minutes:m*1
+	        //     });
+	        // }
 	    };
 
 	    TimePicker.prototype.inputChangeHandler = function inputChangeHandler(e) {
@@ -44416,6 +44495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * <code>HH</code>:24小时制<br />
 	             * <code>hh</code>:12小时制<br />
 	             * <code>mm</code>:分钟<br />
+	             * <code>ss</code>:秒<br />
 	             * <code>tt</code>:上午或下午<br />
 	             * @property format
 	             * @type String
@@ -45531,47 +45611,48 @@ return /******/ (function(modules) { // webpackBootstrap
 		"./datetimepicker-demo2.text": 663,
 		"./datetimepicker-demo3.text": 664,
 		"./datetimepicker-demo4.text": 665,
-		"./dialog-demo1.text": 666,
-		"./dialog-demo2.text": 667,
-		"./dialog-demo3.text": 668,
-		"./dialog-demo4.text": 669,
-		"./dialog-demo5.text": 670,
-		"./dialog-demo6.text": 671,
-		"./dialog-demo7.text": 672,
-		"./dialog-demo8.text": 673,
-		"./dropTree.text": 674,
-		"./input-checkbox.text": 675,
-		"./input-combine.text": 676,
-		"./input-radio.text": 677,
-		"./label-demo1.text": 678,
-		"./label-demo2.text": 679,
-		"./label-demo3.text": 680,
-		"./label-demo4.text": 681,
-		"./label-demo5.text": 682,
-		"./layout-card.text": 683,
-		"./layout-filter.text": 684,
-		"./layout-search.text": 685,
-		"./paging.text": 686,
-		"./select-demo-autoClear.text": 687,
-		"./select-demo.text": 688,
-		"./slider-demo1.text": 689,
-		"./slider.text": 690,
-		"./star-demo1.text": 691,
-		"./star-demo2.text": 692,
-		"./star-demo3.text": 693,
-		"./suggestion-demo1.text": 694,
-		"./suggestion-demo2.text": 695,
-		"./tab.text": 696,
-		"./theme.text": 697,
-		"./timepicker-demo1.text": 698,
-		"./toast.text": 699,
-		"./tooltip-demo1.text": 700,
-		"./tooltip-demo2.text": 701,
-		"./treeMenu-demo.text": 702,
-		"./validate-demo1.text": 703,
-		"./validate-demo2.text": 704,
-		"./validate-demo3.text": 705,
-		"./validate-demo4.text": 706
+		"./datetimepicker-demo5.text": 666,
+		"./dialog-demo1.text": 667,
+		"./dialog-demo2.text": 668,
+		"./dialog-demo3.text": 669,
+		"./dialog-demo4.text": 670,
+		"./dialog-demo5.text": 671,
+		"./dialog-demo6.text": 672,
+		"./dialog-demo7.text": 673,
+		"./dialog-demo8.text": 674,
+		"./dropTree.text": 675,
+		"./input-checkbox.text": 676,
+		"./input-combine.text": 677,
+		"./input-radio.text": 678,
+		"./label-demo1.text": 679,
+		"./label-demo2.text": 680,
+		"./label-demo3.text": 681,
+		"./label-demo4.text": 682,
+		"./label-demo5.text": 683,
+		"./layout-card.text": 684,
+		"./layout-filter.text": 685,
+		"./layout-search.text": 686,
+		"./paging.text": 687,
+		"./select-demo-autoClear.text": 688,
+		"./select-demo.text": 689,
+		"./slider-demo1.text": 690,
+		"./slider.text": 691,
+		"./star-demo1.text": 692,
+		"./star-demo2.text": 693,
+		"./star-demo3.text": 694,
+		"./suggestion-demo1.text": 695,
+		"./suggestion-demo2.text": 696,
+		"./tab.text": 697,
+		"./theme.text": 698,
+		"./timepicker-demo1.text": 699,
+		"./toast.text": 700,
+		"./tooltip-demo1.text": 701,
+		"./tooltip-demo2.text": 702,
+		"./treeMenu-demo.text": 703,
+		"./validate-demo1.text": 704,
+		"./validate-demo2.text": 705,
+		"./validate-demo3.text": 706,
+		"./validate-demo4.text": 707
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -45687,250 +45768,256 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 666 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this, 'demo1')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo1\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\" buttons={[\n                    {\n                        type: 'success',\n                        name: '确认'\n\n                    },\n                    {\n                        type: 'cancel',\n                        egStyle: 'white',\n                        name: '取消'\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, DateTimePicker} from 'eagle-ui';\n\n<DateTimePicker format=\"hh:mm:ss\">\n    <Input placeholder=\"请选择日期时间\"  icon=\"calendar\" />\n</DateTimePicker>"
 
 /***/ }),
 /* 667 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo2\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n                    {\n                        egStyle:'warning',\n                        name:'改变文案',\n                        callback:()=>{\n                            {/*alert('自定义按钮');*/}\n                            this.setState({\n                                alertContent: '哈哈哈，改成波多。。。。'\n                            })\n                        }\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this, 'demo1')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo1\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\" buttons={[\n                    {\n                        type: 'success',\n                        name: '确认'\n\n                    },\n                    {\n                        type: 'cancel',\n                        egStyle: 'white',\n                        name: '取消'\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 668 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n                <Dialog id=\"demo3\" egSize=\"sm\" title=\"表单验证\" contentAlign={this.state.dialogAlign} buttons={[\n                    {\n                        type: 'success',\n                        name: '提交',\n                        callback:()=>{}\n                    },\n                    {\n                        type:'cancel',\n                        egStyle:'white',\n                        name:'取消',\n                        callback:()=>{}\n                    }\n                ]}>\n                    <Panel heading=\"我是标题\">\n                        <PanelContent>\n                            <Row>\n                                <Col>\n                                    <FormGroup>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test1231\" id=\"test\" placeholder=\"请输入姓名\" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>改变对齐方式</Col>\n                                            <Col sm={10}><Input name=\"test222\" id=\"test222\" placeholder=\"left|right|center\" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>性别</Col>\n                                            <Col sm={10}>\n                                                <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                                                    <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                                                    <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                                                </RadioGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>体育爱好</Col>\n                                            <Col sm={10}>\n                                                <CheckboxGroup>\n                                                    <Input  type=\"checkbox\" label=\"足球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"篮球\"    />\n                                                    <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                                                </CheckboxGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                            <FormGroup>\n                                                <Col sm={13}>出生日期</Col>\n                                                <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                                            </FormGroup>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>所在城市</Col>\n                                            <Col sm={10} layer>\n                                                <Row style={{margin:0}}>\n                                                    <Col sm={4} end>\n                                                        <Select placeholder=\"请选择城市\" >\n                                                            <item value='bei'>北京</item>\n                                                            <item value='shang'>上海</item>\n                                                            <item value='nan'>南京</item>\n                                                        </Select>\n                                                    </Col>\n                                                </Row>\n                                            </Col>\n                                        </Row>\n                                    </FormGroup>\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题二\">\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题三\" >\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n                            </Row>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo2')} className=\"mg-right-15\">点击我mask</Button>\n                <Dialog id=\"demo2\" egSize=\"xs\" className=\"xxx\" buttonAlign=\"right\" title=\"苍老师你好\"  buttons={[\n                    {\n                        egStyle:'warning',\n                        name:'改变文案',\n                        callback:()=>{\n                            {/*alert('自定义按钮');*/}\n                            this.setState({\n                                alertContent: '哈哈哈，改成波多。。。。'\n                            })\n                        }\n                    }\n                ]}>\n                    <div>\n                        {this.state.alertContent}\n                    </div>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 669 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo4')} className=\"mg-right-15\">点击我mask3 outside</Button>\n                <Dialog id=\"demo4\" title=\"panel\" outside egSize=\"lg\">\n                    <Panel egType=\"normal\" margin=\"0\">\n                        <PanelHeader>另一种形式的嵌套</PanelHeader>\n                        <PanelContent>\n                            <Panel egType=\"normal\">\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                    <Row>\n                                        <Col>\n                                            <Panel  margin={'0'}>\n                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>\n                                                <PanelContent>\n                                                    <Row>\n                                                        <Col>\n                                                            我是内容区\n                                                        </Col>\n                                                    </Row>\n                                                </PanelContent>\n                                            </Panel>\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                            <Panel margin={'0'}>\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            inputVal: 123124,\n            dialogAlign: 'center',\n            alertContent: '哈哈，你好苍老师'\n        }\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo3')} className=\"mg-right-15\">点击我mask2表单秀</Button>\n                <Dialog id=\"demo3\" egSize=\"sm\" title=\"表单验证\" contentAlign={this.state.dialogAlign} buttons={[\n                    {\n                        type: 'success',\n                        name: '提交',\n                        callback:()=>{}\n                    },\n                    {\n                        type:'cancel',\n                        egStyle:'white',\n                        name:'取消',\n                        callback:()=>{}\n                    }\n                ]}>\n                    <Panel heading=\"我是标题\">\n                        <PanelContent>\n                            <Row>\n                                <Col>\n                                    <FormGroup>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test1231\" id=\"test\" placeholder=\"请输入姓名\" value={this.state.inputVal} onChange={::this.inputChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>改变对齐方式</Col>\n                                            <Col sm={10}><Input name=\"test222\" id=\"test222\" placeholder=\"left|right|center\" value={this.state.dialogAlign} onChange={::this.dialogAlignChangeHandler}/></Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>性别</Col>\n                                            <Col sm={10}>\n                                                <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                                                    <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                                                    <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                                                </RadioGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>体育爱好</Col>\n                                            <Col sm={10}>\n                                                <CheckboxGroup>\n                                                    <Input  type=\"checkbox\" label=\"足球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"篮球\"    />\n                                                    <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                                                    <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                                                </CheckboxGroup>\n                                            </Col>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>姓名</Col>\n                                            <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                                            <FormGroup>\n                                                <Col sm={13}>出生日期</Col>\n                                                <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                                            </FormGroup>\n                                        </Row>\n                                        <Row>\n                                            <Col sm={2}>所在城市</Col>\n                                            <Col sm={10} layer>\n                                                <Row style={{margin:0}}>\n                                                    <Col sm={4} end>\n                                                        <Select placeholder=\"请选择城市\" >\n                                                            <item value='bei'>北京</item>\n                                                            <item value='shang'>上海</item>\n                                                            <item value='nan'>南京</item>\n                                                        </Select>\n                                                    </Col>\n                                                </Row>\n                                            </Col>\n                                        </Row>\n                                    </FormGroup>\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题二\">\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n\n                            </Row>\n                            <Row>\n                                <Col padding={'0'}>\n                                    <Panel heading=\"我是标题三\" >\n                                        <PanelContent padding={true}>\n                                            我是下一个内容区\n                                        </PanelContent>\n                                    </Panel>\n                                </Col>\n                            </Row>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 670 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showAlert(){\n        Dialog.alert('哈哈，我是alert');\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    show(name){\n        Dialog.mask(name).then(function(){\n            console.log('success');\n            Dialog.close();\n        },function(type){\n            console.log('cancel');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.show.bind(this,'demo4')} className=\"mg-right-15\">点击我mask3 outside</Button>\n                <Dialog id=\"demo4\" title=\"panel\" outside egSize=\"lg\">\n                    <Panel egType=\"normal\" margin=\"0\">\n                        <PanelHeader>另一种形式的嵌套</PanelHeader>\n                        <PanelContent>\n                            <Panel egType=\"normal\">\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                    <Row>\n                                        <Col>\n                                            <Panel  margin={'0'}>\n                                                <PanelHeader>另一种形式的嵌套3</PanelHeader>\n                                                <PanelContent>\n                                                    <Row>\n                                                        <Col>\n                                                            我是内容区\n                                                        </Col>\n                                                    </Row>\n                                                </PanelContent>\n                                            </Panel>\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                            <Panel margin={'0'}>\n                                <PanelHeader>另一种形式的嵌套2</PanelHeader>\n                                <PanelContent>\n                                    <Row>\n                                        <Col>\n                                            我是内容区\n                                        </Col>\n                                    </Row>\n                                </PanelContent>\n                            </Panel>\n                        </PanelContent>\n                    </Panel>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 671 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    nomask(){\n        Dialog.alert('哈哈，我是alert',{\n            isMask:false\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showAlert(){\n        Dialog.alert('哈哈，我是alert');\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showAlert} className=\"mg-right-15\">点击我alert</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 672 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showConfirm(){\n        Dialog.confirm('确定你已经打开了么？').then(()=>{\n            alert('确定');\n        },()=>{\n            alert('取消');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo1 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    nomask(){\n        Dialog.alert('哈哈，我是alert',{\n            isMask:false\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.nomask} className=\"mg-right-15\">无遮罩显示</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 673 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n   showPrompt(){\n       Dialog.prompt('这是个prompt',{\n               inputWidth:'50%'\n           }).then((value)=>{\n               console.log(value)\n           },(value)=>{\n               console.log('取消回调')\n           })\n    }\n    render() {\n        return (\n            <div>\n               <Button onClick={::this.showPrompt} className=\"mg-right-15\">点击我prompt</Button>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    showConfirm(){\n        Dialog.confirm('确定你已经打开了么？').then(()=>{\n            alert('确定');\n        },()=>{\n            alert('取消');\n        });\n    }\n    render() {\n        return (\n            <div>\n                <Button onClick={::this.showConfirm}>点击我Confirm</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 674 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\n\nimport MultiDropDown from \"eg-drop-tree\";\nexport default class Demo extends Component {\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            mockMultiDropData:[],\n            selected:'1000034'\n        }\n    }\n    componentDidMount(){\n        var self=this;\n        setTimeout(function(){\n            self.setState({\n                mockMultiDropData:[\n                    {\n                        \"typeId\": 2,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"测试\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 1000023,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }, {\n                                \"typeId\": 1000022,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000024,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"ppe测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000025,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"beta测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    },\n                    {\n                        \"typeId\": 3,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"POI相关\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 10014,\n                                \"parentTypeId\": 3,\n                                \"typeName\": \"评价评分\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 2,\n                                \"firstOwnerId\": 0,\n                                \"secondOwnerId\": 0,\n                                \"children\": [\n                                    {\n                                        \"typeId\": 1000034,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧评价\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 37743,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000035,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评价\",\n                                        \"leadingAnswer\": \"点评评价的恶意差评、炒作的举报和申诉请到<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://trust.dianping.com\\\" target=\\\"_blank\\\">http://trust.dianping.com</a>提交反馈\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 20779,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000036,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧星级评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 25305,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000037,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 34348,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    }\n                                ],\n                                \"leaf\": false\n                            },\n                            {\n                                \"typeId\": 1000026,\n                                \"parentTypeId\": 10006,\n                                \"typeName\": \"门店基本信息/地图报错\",\n                                \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000027,\n                                \"parentTypeId\": 10007,\n                                \"typeName\": \"门店营业状态报错\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000028,\n                                \"parentTypeId\": 10008,\n                                \"typeName\": \"举报重复/拆分/美大关联\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000029,\n                                \"parentTypeId\": 10009,\n                                \"typeName\": \"门店品牌连锁\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000030,\n                                \"parentTypeId\": 10010,\n                                \"typeName\": \"举报虚假门店\",\n                                \"leadingAnswer\": \"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000031,\n                                \"parentTypeId\": 10011,\n                                \"typeName\": \"门店首图展示\",\n                                \"leadingAnswer\": \"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\\n<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/img\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/img</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000032,\n                                \"parentTypeId\": 10012,\n                                \"typeName\": \"门店品类划分\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在MDC门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n以上报错都会在1个工作日内17:00前处理完毕\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37434,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000033,\n                                \"parentTypeId\": 10013,\n                                \"typeName\": \"门店罚款相关\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000038,\n                                \"parentTypeId\": 10015,\n                                \"typeName\": \"其他POI问题\",\n                                \"leadingAnswer\": \"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://bd.hui.dper.com/hui/poi/shop_query\\\" target=\\\"_blank\\\">http://bd.hui.dper.com/hui/poi/shop_query</a>\\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    }\n                ]\n            }  )\n        },0);\n    }\n    render(){\n        let _this=this;\n        return (\n            <div className=\"paddingSpace\">\n                <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>\n                    <MultiDropDown selected={this.state.selected}\n                                   onChange={\n                                        function(e){\n                                            _this.setState({\n                                            selected:e  })\n                                        }\n\n                                   }\n                                   dropDownData={this.state.mockMultiDropData}\n                                   keyName='typeName'\n                                   leafName='leaf'\n                                   title=\"树状列表选择\"\n                                   ref=\"MultiDropDown\"/>\n                </div>\n\n                <div className='demo-button-container'>\n                    <div className='demo-button' style={{background:'red'}} onClick={()=>{this.getDropDownData('MultiDropDown')}}>点击获取树状列表的选择结果</div></div>\n            </div>\n        );\n    }\n    getDropDownData(type){\n        console.log(this.refs[type].getParams());\n    }\n}\n\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Button,Dialog} from 'eagle-ui';\n\nexport default class DialogDemo7 extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n   showPrompt(){\n       Dialog.prompt('这是个prompt',{\n               inputWidth:'50%'\n           }).then((value)=>{\n               console.log(value)\n           },(value)=>{\n               console.log('取消回调')\n           })\n    }\n    render() {\n        return (\n            <div>\n               <Button onClick={::this.showPrompt} className=\"mg-right-15\">点击我prompt</Button>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 675 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {CheckboxGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            checkBoxValue:false\n        }\n    };\n    checkboxCallback(){\n        this.setState({\n            checkBoxValue:!this.state.checkBoxValue\n        })\n    }\n    render(){\n        let {checkBoxValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={12}>\n                        <CheckboxGroup>\n                            <Input label=\"石榴\" type=\"checkbox\" checked />\n                            <Input label=\"橘子\" type=\"checkbox\" disabled={true}   />\n                            <Input label=\"苹果\"  type=\"checkbox\" getValueCallback={function(val,dom){console.log(val,dom)}}  value=\"apple\"  />\n                            <Input label=\"香蕉\"  type=\"checkbox\" onChange={::this.checkboxCallback} checked={checkBoxValue} value=\"banana\"  />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\n\nimport MultiDropDown from \"eg-drop-tree\";\nexport default class Demo extends Component {\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            mockMultiDropData:[],\n            selected:'1000034'\n        }\n    }\n    componentDidMount(){\n        var self=this;\n        setTimeout(function(){\n            self.setState({\n                mockMultiDropData:[\n                    {\n                        \"typeId\": 2,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"测试\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 1000023,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }, {\n                                \"typeId\": 1000022,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"线上测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000024,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"ppe测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000025,\n                                \"parentTypeId\": 10005,\n                                \"typeName\": \"beta测试\",\n                                \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 22315,\n                                \"secondOwnerId\": 17896,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    },\n                    {\n                        \"typeId\": 3,\n                        \"parentTypeId\": 0,\n                        \"typeName\": \"POI相关\",\n                        \"leadingAnswer\": \"\",\n                        \"level\": 1,\n                        \"firstOwnerId\": 0,\n                        \"secondOwnerId\": 0,\n                        \"children\": [\n                            {\n                                \"typeId\": 10014,\n                                \"parentTypeId\": 3,\n                                \"typeName\": \"评价评分\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 2,\n                                \"firstOwnerId\": 0,\n                                \"secondOwnerId\": 0,\n                                \"children\": [\n                                    {\n                                        \"typeId\": 1000034,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧评价\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 37743,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000035,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评价\",\n                                        \"leadingAnswer\": \"点评评价的恶意差评、炒作的举报和申诉请到<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://trust.dianping.com\\\" target=\\\"_blank\\\">http://trust.dianping.com</a>提交反馈\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 20779,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000036,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"美团侧星级评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 25305,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    },\n                                    {\n                                        \"typeId\": 1000037,\n                                        \"parentTypeId\": 10014,\n                                        \"typeName\": \"点评侧评分\",\n                                        \"leadingAnswer\": \"\",\n                                        \"level\": 3,\n                                        \"firstOwnerId\": 34348,\n                                        \"secondOwnerId\": 0,\n                                        \"children\": [],\n                                        \"leaf\": true\n                                    }\n                                ],\n                                \"leaf\": false\n                            },\n                            {\n                                \"typeId\": 1000026,\n                                \"parentTypeId\": 10006,\n                                \"typeName\": \"门店基本信息/地图报错\",\n                                \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000027,\n                                \"parentTypeId\": 10007,\n                                \"typeName\": \"门店营业状态报错\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000028,\n                                \"parentTypeId\": 10008,\n                                \"typeName\": \"举报重复/拆分/美大关联\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000029,\n                                \"parentTypeId\": 10009,\n                                \"typeName\": \"门店品牌连锁\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000030,\n                                \"parentTypeId\": 10010,\n                                \"typeName\": \"举报虚假门店\",\n                                \"leadingAnswer\": \"【举报虚假门店】需要提供对应的shop ID及对应的举证，不接受只提供商户名的虚假门店报错；一个shop ID至少对应一张能证明门店确实虚假的照片，即提供的照片可以证明在该地址上的确不存在该门店，因此照片需要能同时将该地址和门头照拍下来，如果一张照片无法同时体现地址和门头照，可以分成有共同之处的两张照片，提供以上资质到qc.mdc@meituan.com审核处理\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000031,\n                                \"parentTypeId\": 10011,\n                                \"typeName\": \"门店首图展示\",\n                                \"leadingAnswer\": \"美团首图设置请到以下链接自行报错，1个工作日内17:00前处理完毕\\n<a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/img\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/img</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000032,\n                                \"parentTypeId\": 10012,\n                                \"typeName\": \"门店品类划分\",\n                                \"leadingAnswer\": \"【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在MDC门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n以上报错都会在1个工作日内17:00前处理完毕\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37434,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000033,\n                                \"parentTypeId\": 10013,\n                                \"typeName\": \"门店罚款相关\",\n                                \"leadingAnswer\": \"\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            },\n                            {\n                                \"typeId\": 1000038,\n                                \"parentTypeId\": 10015,\n                                \"typeName\": \"其他POI问题\",\n                                \"leadingAnswer\": \"闪惠二维码自助重置，请点击此链接自助恢复扫码功能，处理后立即生效：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://bd.hui.dper.com/hui/poi/shop_query\\\" target=\\\"_blank\\\">http://bd.hui.dper.com/hui/poi/shop_query</a>\\n补充点评侧商区体系结构，请在阿波罗商机（门店）标签→【POI报错】入口→新增商区结构提交报错，每周三迭代上线，可每周四查看：<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a>\",\n                                \"level\": 3,\n                                \"firstOwnerId\": 37425,\n                                \"secondOwnerId\": 0,\n                                \"children\": [],\n                                \"leaf\": true\n                            }\n                        ],\n                        \"leaf\": false\n                    }\n                ]\n            }  )\n        },0);\n    }\n    render(){\n        let _this=this;\n        return (\n            <div className=\"paddingSpace\">\n                <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>\n                    <MultiDropDown selected={this.state.selected}\n                                   onChange={\n                                        function(e){\n                                            _this.setState({\n                                            selected:e  })\n                                        }\n\n                                   }\n                                   dropDownData={this.state.mockMultiDropData}\n                                   keyName='typeName'\n                                   leafName='leaf'\n                                   title=\"树状列表选择\"\n                                   ref=\"MultiDropDown\"/>\n                </div>\n\n                <div className='demo-button-container'>\n                    <div className='demo-button' style={{background:'red'}} onClick={()=>{this.getDropDownData('MultiDropDown')}}>点击获取树状列表的选择结果</div></div>\n            </div>\n        );\n    }\n    getDropDownData(type){\n        console.log(this.refs[type].getParams());\n    }\n}\n\n"
 
 /***/ }),
 /* 676 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <FormGroup>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>性别</Col>\n                    <Col sm={10}>\n                        <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                            <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                            <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                        </RadioGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>体育爱好</Col>\n                    <Col sm={10}>\n                        <CheckboxGroup>\n                            <Input  type=\"checkbox\" label=\"足球\" checked   />\n                            <Input  type=\"checkbox\" label=\"篮球\"    />\n                            <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                            <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                    <FormGroup>\n                        <Col sm={13}>出生日期</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                    </FormGroup>\n                    <FormGroup>\n                        <Col sm={13}>省份证</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入省份证\"   /></Col>\n                    </FormGroup>\n                </Row>\n            </FormGroup>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {CheckboxGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            checkBoxValue:false\n        }\n    };\n    checkboxCallback(){\n        this.setState({\n            checkBoxValue:!this.state.checkBoxValue\n        })\n    }\n    render(){\n        let {checkBoxValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={12}>\n                        <CheckboxGroup>\n                            <Input label=\"石榴\" type=\"checkbox\" checked />\n                            <Input label=\"橘子\" type=\"checkbox\" disabled={true}   />\n                            <Input label=\"苹果\"  type=\"checkbox\" getValueCallback={function(val,dom){console.log(val,dom)}}  value=\"apple\"  />\n                            <Input label=\"香蕉\"  type=\"checkbox\" onChange={::this.checkboxCallback} checked={checkBoxValue} value=\"banana\"  />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 677 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            radioValue:'橘子'\n        }\n    };\n    radioCallback(val){\n        this.setState({\n            radioValue:val\n        })\n    }\n    render(){\n        let {radioValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <RadioGroup defaultChecked={radioValue}\n                                    name=\"radio-test\"\n                                    getValueCallback={::this.radioCallback}>\n                            <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n                            <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n                            <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n                        </RadioGroup>\n                    </Col>\n                    <Col sm={6}>\n                        已选择了：{this.state.radioValue}\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {FormGroup,CheckboxGroup,RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    };\n    render(){\n        return (\n            <FormGroup>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={10}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>性别</Col>\n                    <Col sm={10}>\n                        <RadioGroup defaultChecked=\"男\" name=\"radio-sex\">\n                            <Input  type=\"radio\"  label=\"男\" value=\"男\" />\n                            <Input  type=\"radio\"  label=\"女\" value=\"女\"  />\n                        </RadioGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>体育爱好</Col>\n                    <Col sm={10}>\n                        <CheckboxGroup>\n                            <Input  type=\"checkbox\" label=\"足球\" checked   />\n                            <Input  type=\"checkbox\" label=\"篮球\"    />\n                            <Input  type=\"checkbox\" label=\"羽毛球\" checked   />\n                            <Input  type=\"checkbox\" label=\"乒乓球\"    />\n                        </CheckboxGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={2}>姓名</Col>\n                    <Col sm={13}><Input name=\"test\" id=\"test\" placeholder=\"请输入姓名\"   /></Col>\n                    <FormGroup>\n                        <Col sm={13}>出生日期</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入出生日期\"   /></Col>\n                    </FormGroup>\n                    <FormGroup>\n                        <Col sm={13}>省份证</Col>\n                        <Col sm={13} end><Input name=\"test\" id=\"test\" placeholder=\"请输入省份证\"   /></Col>\n                    </FormGroup>\n                </Row>\n            </FormGroup>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 678 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={2}>\n                        <Label egStyle=\"error\">error</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"success\">success</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"warning\">warning</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"danger\">danger</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label>default</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label disabled>disabled</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {RadioGroup,Grid,Row,Col,Input} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            radioValue:'橘子'\n        }\n    };\n    radioCallback(val){\n        this.setState({\n            radioValue:val\n        })\n    }\n    render(){\n        let {radioValue}=this.state;\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <RadioGroup defaultChecked={radioValue}\n                                    name=\"radio-test\"\n                                    getValueCallback={::this.radioCallback}>\n                            <Input  type=\"radio\"  label=\"石榴\" value=\"石榴\" />\n                            <Input  type=\"radio\"  label=\"橘子\" value=\"橘子\"  />\n                            <Input  type=\"radio\"  label=\"苹果\" value=\"苹果\" />\n                        </RadioGroup>\n                    </Col>\n                    <Col sm={6}>\n                        已选择了：{this.state.radioValue}\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 679 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"xs\">small</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"sm\">middle</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"lg\">large</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={2}>\n                        <Label egStyle=\"error\">error</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"success\">success</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"warning\">warning</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label egStyle=\"danger\">danger</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label>default</Label>\n                    </Col>\n                    <Col sm={2}>\n                        <Label disabled>disabled</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 680 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup egType=\"simple\"\n                        activeCallback={\n                            function(value,text,target,active){\n                                console.log(value,text,target,active);\n                            }}>\n                <Label value=\"all\">全部</Label>\n                <Label value=\"luwan\">卢湾区</Label>\n                <Label value=\"xuhui\">徐汇区</Label>\n                <Label value=\"jinan\">静安区</Label>\n                <Label value=\"changning\">长宁区</Label>\n                <Label value=\"minhang\">闵行区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"xs\">small</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"sm\">middle</Label>\n                    </Col>\n                    <Col sm={4}>\n                        <Label egStyle=\"success\" egSize=\"lg\">large</Label>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 681 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup spacing={94}\n                        title='行政区'\n                        egType='default'\n                        defaultChecked='卢湾区'>\n                <Label value=\"0\" className=\"all\">全部</Label>\n                <Label value=\"1\">卢湾区</Label>\n                <Label value=\"10\">徐汇区</Label>\n                <Label>静安区</Label>\n                <Label>长宁区</Label>\n                <Label>闵行区</Label>\n                <Label>浦东新区</Label>\n                <Label>黄浦区</Label>\n                <Label>普陀区</Label>\n                <Label>闸北区</Label>\n                <Label>虹口区</Label>\n                <Label>杨浦区</Label>\n                <Label>宝山区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup egType=\"simple\"\n                        activeCallback={\n                            function(value,text,target,active){\n                                console.log(value,text,target,active);\n                            }}>\n                <Label value=\"all\">全部</Label>\n                <Label value=\"luwan\">卢湾区</Label>\n                <Label value=\"xuhui\">徐汇区</Label>\n                <Label value=\"jinan\">静安区</Label>\n                <Label value=\"changning\">长宁区</Label>\n                <Label value=\"minhang\">闵行区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 682 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\">121212121</Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <LabelGroup spacing={94}\n                        title='行政区'\n                        egType='default'\n                        defaultChecked='卢湾区'>\n                <Label value=\"0\" className=\"all\">全部</Label>\n                <Label value=\"1\">卢湾区</Label>\n                <Label value=\"10\">徐汇区</Label>\n                <Label>静安区</Label>\n                <Label>长宁区</Label>\n                <Label>闵行区</Label>\n                <Label>浦东新区</Label>\n                <Label>黄浦区</Label>\n                <Label>普陀区</Label>\n                <Label>闸北区</Label>\n                <Label>虹口区</Label>\n                <Label>杨浦区</Label>\n                <Label>宝山区</Label>\n            </LabelGroup>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 683 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\nexport default class CardListPanel extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state = {\n            page: 1\n        }\n    }\n    show(){\n        console.debug(1);\n    }\n    render(){\n        return (\n            <Panel>\n                <PanelHeader>\n                    <CheckboxGroup>\n                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n                        <Input label=\"团购在线\" type=\"checkbox\"/>\n                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n                        <Input label=\"预订在线\" type=\"checkbox\"/>\n                    </CheckboxGroup>\n                </PanelHeader>\n                <PanelContent padding={false}>\n                    <List>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius> 团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                    </List>\n                </PanelContent>\n                <PanelFooter>\n                    <Paging currentPage={this.state.page} total={1024} />\n                </PanelFooter>\n            </Panel>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Label,LabelGroup,Grid,Row,Col} from 'eagle-ui';\nexport default class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\">121212121</Label>\n                        </LabelGroup>\n                    </Col>\n                    <Col sm={6}>\n                        <LabelGroup egType=\"form\" >\n                            <Label value=\"0\">当前日佣金基数</Label>\n                            <Label value=\"1\"><h1 className=\"color-error\">9112</h1></Label>\n                        </LabelGroup>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n};\n"
 
 /***/ }),
 /* 684 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {LabelGroup, Label} from 'eagle-ui';\n\nexport class FilterSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>美</Label>\n                    <Label>休闲娱乐</Label>\n                    <Label>景点</Label>\n                    <Label>购物</Label>\n                    <Label>丽人</Label>\n                    <Label>结婚</Label>\n                    <Label>亲子</Label>\n                    <Label>教育培训</Label>\n                    <Label>运动健身</Label>\n                    <Label>酒店</Label>\n                    <Label>家装</Label>\n                    <Label>酒店</Label>\n                    <Label>爱车</Label>\n                    <Label>酒店</Label>\n                    <Label>医疗健康</Label>\n                </LabelGroup>\n                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>卢湾区</Label>\n                    <Label>徐汇区</Label>\n                    <Label>静安区</Label>\n                    <Label>长宁区</Label>\n                    <Label>闵行区</Label>\n                    <Label>浦东新区</Label>\n                    <Label>黄浦区</Label>\n                    <Label>普陀区</Label>\n                    <Label>闸北区</Label>\n                    <Label>虹口区</Label>\n                    <Label>杨浦区</Label>\n                    <Label>宝山区</Label>\n                </LabelGroup>\n            </div>\n        )\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {Search,Select, Input,Label,LabelGroup,Grid,Row,Col,Panel,PanelHeader,PanelFooter,PanelContent,Paging,CheckboxGroup,List,Item} from 'eagle-ui';\n\nexport default class CardListPanel extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state = {\n            page: 1\n        }\n    }\n    show(){\n        console.debug(1);\n    }\n    render(){\n        return (\n            <Panel>\n                <PanelHeader>\n                    <CheckboxGroup>\n                        <Input label=\"仅公海\"  type=\"checkbox\" checked />\n                        <Input lebal=\"冻结中\"  type=\"checkbox\"/>\n                        <Input label=\"团购在线\" type=\"checkbox\"/>\n                        <Input label=\"闪惠在线\" type=\"checkbox\"/>\n                        <Input label=\"预订在线\" type=\"checkbox\"/>\n                    </CheckboxGroup>\n                </PanelHeader>\n                <PanelContent padding={false}>\n                    <List>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col end sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius> 团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                        <Item className=\"shop-info-item\">\n                            <h1 className='shop-card-title inline-block'>宴遇 (晶品店)</h1>\n                            <Label error radius>团</Label>\n                            <div className=\"shop-info-item-text\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={6}>shopid: 22936478 rotateid: 107126470</Col>\n                                        <Col sm={6}>月佣金基数: 3000.00</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>浏览量：151195</Col>\n                                        <Col sm={6}>门店市场份额:100.00%          战区市场份额: 94.63%</Col>\n                                    </Row>\n                                    <Row>\n                                        <Col sm={6}>美食其他 | 静安区 愚园路68号晶品中心4楼</Col>\n                                        <Col sm={6}></Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                            <div className=\"shop-info-item-footer\">\n                                <Grid>\n                                    <Row>\n                                        <Col sm={10}>\n                                            <LabelGroup simple clickCallback={this.show} >\n                                                <Label>POI报错</Label>\n                                                <Label>查看所有分店</Label>\n                                            </LabelGroup>\n                                        </Col>\n                                        <Col sm={2}>\n                                            <Label>想要这家店？</Label>\n                                        </Col>\n                                    </Row>\n                                </Grid>\n                            </div>\n                        </Item>\n                    </List>\n                </PanelContent>\n                <PanelFooter>\n                    <Paging currentPage={this.state.page} total={1024} />\n                </PanelFooter>\n            </Panel>\n        );\n    }\n};"
 
 /***/ }),
 /* 685 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Grid, Row, Col, Select, Item, Search} from 'eagle-ui';\n\nexport class SearchSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={5}>\n                        <Select  callback={function(val){alert(val)}}>\n                            <item>北京</item>\n                            <item>上海</item>\n                            <item>南京</item>\n                        </Select>\n                    </Col>\n                    <Col sm={5}>\n                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n                    </Col>\n                    <Col sm={2}/>\n                </Row>\n            </Grid>\n        )\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {LabelGroup, Label} from 'eagle-ui';\n\nexport class FilterSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <LabelGroup title='频道' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>美</Label>\n                    <Label>休闲娱乐</Label>\n                    <Label>景点</Label>\n                    <Label>购物</Label>\n                    <Label>丽人</Label>\n                    <Label>结婚</Label>\n                    <Label>亲子</Label>\n                    <Label>教育培训</Label>\n                    <Label>运动健身</Label>\n                    <Label>酒店</Label>\n                    <Label>家装</Label>\n                    <Label>酒店</Label>\n                    <Label>爱车</Label>\n                    <Label>酒店</Label>\n                    <Label>医疗健康</Label>\n                </LabelGroup>\n                <LabelGroup title='行政区' defaultChecked='全部' clickCallback={this.show} >\n                    <Label>全部</Label>\n                    <Label>卢湾区</Label>\n                    <Label>徐汇区</Label>\n                    <Label>静安区</Label>\n                    <Label>长宁区</Label>\n                    <Label>闵行区</Label>\n                    <Label>浦东新区</Label>\n                    <Label>黄浦区</Label>\n                    <Label>普陀区</Label>\n                    <Label>闸北区</Label>\n                    <Label>虹口区</Label>\n                    <Label>杨浦区</Label>\n                    <Label>宝山区</Label>\n                </LabelGroup>\n            </div>\n        )\n    }\n}"
 
 /***/ }),
 /* 686 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Paging,Button} from 'eagle-ui';\n\nlet page = 1;\nfunction callback(page){\n    page = page;\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nfunction loadPageCallback(pageSize){\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nvar pageSize = 20;\nlet arrs = [10,15,23,35,40],\n    arr1 = '1';\nexport default class PagingCls extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            showItemsNumber:0\n        };\n    }\n    toggleItemNumber(){\n        this.setState({\n            showItemsNumber:!this.state.showItemsNumber\n        });\n    }\n    render(){\n        let query = this.props.location.query,\n            page = query.page*1 ||0,\n            pageSize = query.pageSize*1 || 20,\n            {showItemsNumber}=this.state;\n        return (\n            <div>\n                <Button onClick={::this.toggleItemNumber}>\n                    {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}\n                </Button>\n                <Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n                        pageCallback={callback} total={5024} choosePageSize={arr1}/>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component} from 'react';\nimport {Grid, Row, Col, Select, Item, Search} from 'eagle-ui';\n\nexport class SearchSec extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <Grid>\n                <Row>\n                    <Col sm={5}>\n                        <Select  callback={function(val){alert(val)}}>\n                            <item>北京</item>\n                            <item>上海</item>\n                            <item>南京</item>\n                        </Select>\n                    </Col>\n                    <Col sm={5}>\n                        <Search placeholder='shopId/门店名称' callBack={function(val){alert(val)}}/>\n                    </Col>\n                    <Col sm={2}/>\n                </Row>\n            </Grid>\n        )\n    }\n}"
 
 /***/ }),
 /* 687 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\nexport default class SelectDemo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input,\n            options:[],\n            defaultCity:''\n        };\n        setTimeout(()=>{\n            this.setState({options:this.renderC()})\n        });\n\n        setTimeout(function(){\n            this.setState({\n                defaultCity:'上海'\n            });\n        }.bind(this),2000 );\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    renderC(){\n        return [\n            <option value='bei' key=\"bei\">北京</option>,\n            <option value='shang' key=\"上海\">上海</option>,\n            <option value='nan' key=\"南京\">南京</option>,\n            <option value='3' key=\"杭州\">杭州</option>,\n            <option value='4' key=\"杭州西\">杭州西</option>,\n            <option value='5' key=\"杭州北站\">杭州北站</option>,\n            <option value='6' key=\"广州\">广州</option>,\n            <option value='7' key=\"深圳\">深圳</option>,\n            <option value='8' key=\"澳门\">澳门</option>,\n            <option value='10' key=\"太原\">太原</option>,\n            <option value='11' key=\"台湾\">台湾</option>,\n            <option value='12' key=\"香港\">香港</option>\n        ];\n    }\n    render(){\n        return (\n            <div>\n                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" autoClear={true}>\n                    {this.state.options}\n                </Select>\n                <div id=\"showtip\" className=\"color-info\"></div>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Paging,Button} from 'eagle-ui';\n\nlet page = 1;\nfunction callback(page){\n    page = page;\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nfunction loadPageCallback(pageSize){\n    window.location = location.href.replace(/\\?.*/,'')+'?page='+page+'&pageSize='+pageSize;\n}\nvar pageSize = 20;\nlet arrs = [10,15,23,35,40],\n    arr1 = '1';\nexport default class PagingCls extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            showItemsNumber:0\n        };\n    }\n    toggleItemNumber(){\n        this.setState({\n            showItemsNumber:!this.state.showItemsNumber\n        });\n    }\n    render(){\n        let query = this.props.location.query,\n            page = query.page*1 ||0,\n            pageSize = query.pageSize*1 || 20,\n            {showItemsNumber}=this.state;\n        return (\n            <div>\n                <Button onClick={::this.toggleItemNumber}>\n                    {(showItemsNumber?'隐藏':'显示')+'条数设置工具'}\n                </Button>\n                <Paging showItemsNumber={showItemsNumber} chooseMaxPageSize={50} loadPageCallback={loadPageCallback} currentPage={page} pageSize={pageSize}\n                        pageCallback={callback} total={5024} choosePageSize={arr1}/>\n            </div>\n        );\n    }\n}"
 
 /***/ }),
 /* 688 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\nexport default class SelectDemo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input,\n            options:[],\n            defaultCity:''\n        };\n        setTimeout(()=>{\n            this.setState({options:this.renderC()})\n        });\n\n        setTimeout(function(){\n            this.setState({\n                defaultCity:'上海'\n            });\n        }.bind(this),2000 );\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    renderC(){\n        return [\n            <option value='bei' key=\"bei\">北京</option>,\n            <option value='shang' key=\"上海\">上海</option>,\n            <option value='nan' key=\"南京\">南京</option>,\n            <option value='3' key=\"杭州\">杭州</option>,\n            <option value='4' key=\"杭州西\">杭州西</option>,\n            <option value='5' key=\"杭州北站\">杭州北站</option>,\n            <option value='6' key=\"广州\">广州</option>,\n            <option value='7' key=\"深圳\">深圳</option>,\n            <option value='8' key=\"澳门\">澳门</option>,\n            <option value='10' key=\"太原\">太原</option>,\n            <option value='11' key=\"台湾\">台湾</option>,\n            <option value='12' key=\"香港\">香港</option>\n        ];\n    }\n    render(){\n        return (\n            <div>\n                <Select readOnly defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n                    {this.state.options}\n                </Select>\n                <div id=\"showtip\" className=\"color-info\"></div>\n            </div>\n        );\n    }\n}"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\nexport default class SelectDemo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input,\n            options:[],\n            defaultCity:''\n        };\n        setTimeout(()=>{\n            this.setState({options:this.renderC()})\n        });\n\n        setTimeout(function(){\n            this.setState({\n                defaultCity:'上海'\n            });\n        }.bind(this),2000 );\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    renderC(){\n        return [\n            <option value='bei' key=\"bei\">北京</option>,\n            <option value='shang' key=\"上海\">上海</option>,\n            <option value='nan' key=\"南京\">南京</option>,\n            <option value='3' key=\"杭州\">杭州</option>,\n            <option value='4' key=\"杭州西\">杭州西</option>,\n            <option value='5' key=\"杭州北站\">杭州北站</option>,\n            <option value='6' key=\"广州\">广州</option>,\n            <option value='7' key=\"深圳\">深圳</option>,\n            <option value='8' key=\"澳门\">澳门</option>,\n            <option value='10' key=\"太原\">太原</option>,\n            <option value='11' key=\"台湾\">台湾</option>,\n            <option value='12' key=\"香港\">香港</option>\n        ];\n    }\n    render(){\n        return (\n            <div>\n                <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" autoClear={true}>\n                    {this.state.options}\n                </Select>\n                <div id=\"showtip\" className=\"color-info\"></div>\n            </div>\n        );\n    }\n}"
 
 /***/ }),
 /* 689 */
 /***/ (function(module, exports) {
 
-	module.exports = "import {Slider} from 'eagle-ui';\n\ngetValueCallback(val){\n    console.dir(val);\n}\n\n<Slider getValueCallback={::this.getValueCallback} initCallback={(val)=>{console.dir(val);}} />"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\nexport default class SelectDemo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input,\n            options:[],\n            defaultCity:''\n        };\n        setTimeout(()=>{\n            this.setState({options:this.renderC()})\n        });\n\n        setTimeout(function(){\n            this.setState({\n                defaultCity:'上海'\n            });\n        }.bind(this),2000 );\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    renderC(){\n        return [\n            <option value='bei' key=\"bei\">北京</option>,\n            <option value='shang' key=\"上海\">上海</option>,\n            <option value='nan' key=\"南京\">南京</option>,\n            <option value='3' key=\"杭州\">杭州</option>,\n            <option value='4' key=\"杭州西\">杭州西</option>,\n            <option value='5' key=\"杭州北站\">杭州北站</option>,\n            <option value='6' key=\"广州\">广州</option>,\n            <option value='7' key=\"深圳\">深圳</option>,\n            <option value='8' key=\"澳门\">澳门</option>,\n            <option value='10' key=\"太原\">太原</option>,\n            <option value='11' key=\"台湾\">台湾</option>,\n            <option value='12' key=\"香港\">香港</option>\n        ];\n    }\n    render(){\n        return (\n            <div>\n                <Select readOnly defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n                    {this.state.options}\n                </Select>\n                <div id=\"showtip\" className=\"color-info\"></div>\n            </div>\n        );\n    }\n}"
 
 /***/ }),
 /* 690 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Button,ImgSlider,Grid,Row,Col} from 'eagle-ui';\n\nexport default class SliderDemo extends Component {\n    constructor(props,context) {\n        super(props,context);\n        this.state={\n            showThumbnail:true,\n            imgModify:true\n        }\n    }\n    toggleThumbnail(){\n        this.setState({\n            showThumbnail:!this.state.showThumbnail\n        });\n    }\n    toggleModifier(){\n        this.setState({\n            imgModify:!this.state.imgModify\n        });\n    }\n    render() {\n        let imgList=[\n            {\n                profile:'1叔2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'1哥2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'2哥2015上传',\n                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'3哥2015上传',\n                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'4哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5叔2015上传',\n                url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',\n                description:'熊猫野外生存',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'\n            }\n        ],\n            pageNum=5,\n            {showThumbnail,imgModify}=this.state;\n        return (\n            <div>\n                <Grid>\n                    <Row>\n                        <Col sm={6}>\n                            <ImgSlider  show={true}\n                                        showThumbnail={showThumbnail}\n                                        imgList={imgList}\n                                        profileKey={'profile'}\n                                        urlKey={'url'}\n                                        titleKey={'description'}\n                                        thumbnailKey={'thumbnail'}\n                                        pageNum={pageNum}\n                                        imgModify={imgModify}\n                                />\n                        </Col>\n                        <Col sm={6}>\n                            <Button block success\n                                    onClick={::this.toggleThumbnail} >\n                                {(showThumbnail?'隐藏':'显示')+'缩略图'}\n                            </Button>\n                            <Button block style={{marginTop:'10px'}} success\n                                    onClick={::this.toggleModifier} >\n                                {(imgModify?'隐藏':'显示')+'缩放控件'}\n                            </Button>\n                        </Col>\n                    </Row>\n                </Grid>\n            </div>\n\n        );\n    }\n};\n"
+	module.exports = "import {Slider} from 'eagle-ui';\n\ngetValueCallback(val){\n    console.dir(val);\n}\n\n<Slider getValueCallback={::this.getValueCallback} initCallback={(val)=>{console.dir(val);}} />"
 
 /***/ }),
 /* 691 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo1 extends Component {\n    render(){\n        return(\n            <div>\n                <Star/><br/>\n                <Star rate={50} size={15}/>\n                <br/>\n                <Star rate={60} size={16} />\n                <br/>\n                <Star rate={70} size={17}/>\n                <br/>\n                <Star rate={80} size={18} />\n            </div>\n        )\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Button,ImgSlider,Grid,Row,Col} from 'eagle-ui';\n\nexport default class SliderDemo extends Component {\n    constructor(props,context) {\n        super(props,context);\n        this.state={\n            showThumbnail:true,\n            imgModify:true\n        }\n    }\n    toggleThumbnail(){\n        this.setState({\n            showThumbnail:!this.state.showThumbnail\n        });\n    }\n    toggleModifier(){\n        this.setState({\n            imgModify:!this.state.imgModify\n        });\n    }\n    render() {\n        let imgList=[\n            {\n                profile:'1叔2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'1哥2015上传',\n                url:'http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2544720638,729810412&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'2哥2015上传',\n                url:'http://img2.zol.com.cn/product/95/20/ceSFw3e3TqLNM.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'3哥2015上传',\n                url:'http://www.bz55.com/uploads/allimg/150309/139-150309101F2.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'4哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101F7.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img0.imgtn.bdimg.com/it/u=2926840907,3192872789&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=4207978144,3154923917&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5哥2015上传',\n                url: 'http://img3.imgtn.bdimg.com/it/u=227823385,2843041802&fm=21&gp=0.jpg',\n                description:'闪惠商户培训资料',\n                thumbnail:'http://img2.imgtn.bdimg.com/it/u=1813764503,1895922603&fm=21&gp=0.jpg'\n            },\n            {\n                profile:'5叔2015上传',\n                url:'http://img0.imgtn.bdimg.com/it/u=1649172259,4185796887&fm=21&gp=0.jpg',\n                description:'熊猫野外生存',\n                thumbnail:'http://img5.imgtn.bdimg.com/it/u=1432870041,1164599966&fm=21&gp=0.jpg'\n            }\n        ],\n            pageNum=5,\n            {showThumbnail,imgModify}=this.state;\n        return (\n            <div>\n                <Grid>\n                    <Row>\n                        <Col sm={6}>\n                            <ImgSlider  show={true}\n                                        showThumbnail={showThumbnail}\n                                        imgList={imgList}\n                                        profileKey={'profile'}\n                                        urlKey={'url'}\n                                        titleKey={'description'}\n                                        thumbnailKey={'thumbnail'}\n                                        pageNum={pageNum}\n                                        imgModify={imgModify}\n                                />\n                        </Col>\n                        <Col sm={6}>\n                            <Button block success\n                                    onClick={::this.toggleThumbnail} >\n                                {(showThumbnail?'隐藏':'显示')+'缩略图'}\n                            </Button>\n                            <Button block style={{marginTop:'10px'}} success\n                                    onClick={::this.toggleModifier} >\n                                {(imgModify?'隐藏':'显示')+'缩放控件'}\n                            </Button>\n                        </Col>\n                    </Row>\n                </Grid>\n            </div>\n\n        );\n    }\n};\n"
 
 /***/ }),
 /* 692 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo2 extends Component {\n    render(){\n        return(\n            <div>\n                <Star rate={90} size={18}  disable={false}/>\n                <br/>\n                <Star rate={10} size={19}  disable={false}/>\n                <br/>\n                <Star rate={20} size={20} disable={false}/>\n                <br/>\n                <Star rate={30} size={21} disable={false}/>\n                <br/>\n                <Star rate={40} size={22} disable={false}/>\n            </div>\n        )\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo1 extends Component {\n    render(){\n        return(\n            <div>\n                <Star/><br/>\n                <Star rate={50} size={15}/>\n                <br/>\n                <Star rate={60} size={16} />\n                <br/>\n                <Star rate={70} size={17}/>\n                <br/>\n                <Star rate={80} size={18} />\n            </div>\n        )\n    }\n}"
 
 /***/ }),
 /* 693 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star, Button} from 'eagle-ui';\nexport default class StarDemo3 extends Component {\n    getValue() {\n        alert('rate is'+this.refs['test'].Rate)\n    }\n    render(){\n        return(\n            <div>\n                <Star rate={50} size={23} disable={false} ref='test'/>\n                <br/>\n                <br/>\n                <Button onClick={this.getValue.bind(this)}>点击获取星星的红色比率数据</Button>\n            </div>\n        )\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star} from 'eagle-ui';\nexport default class StarDemo2 extends Component {\n    render(){\n        return(\n            <div>\n                <Star rate={90} size={18}  disable={false}/>\n                <br/>\n                <Star rate={10} size={19}  disable={false}/>\n                <br/>\n                <Star rate={20} size={20} disable={false}/>\n                <br/>\n                <Star rate={30} size={21} disable={false}/>\n                <br/>\n                <Star rate={40} size={22} disable={false}/>\n            </div>\n        )\n    }\n}"
 
 /***/ }),
 /* 694 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input\n        }\n    }\n    query(){\n        //可以返回ajax\n        return [\n            {\n                key:'上海',\n                value:'shanghai',\n                subKey:'10个区'\n            },\n            {\n                key:'北京',\n                value:'beijing',\n                subKey:'10个区'\n            },\n            {\n                key:'哈尔滨',\n                value:'haerbin',\n                subKey:'5010个区'\n            },\n            {\n                key:'南京',\n                value:'nanjing',\n                subKey:'10个区'\n            },\n            {\n                key:'南宁',\n                value:'nanning',\n                subKey:'120个区'\n            },\n            {\n                key:'天津',\n                value:'tianjing',\n                subKey:'312310个区'\n            },\n            {\n                key:'深圳',\n                value:'shenzhen',\n                subKey:'101个区'\n            }\n        ];\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n\n    render(){\n        return (\n            <Grid fluid>\n                <Row>\n                    <Col>\n                        <div id=\"showtip\" className=\"color-info\"></div>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={10} layer padding={0}>\n                        <Suggestion\n                            getValueCallback={::this.getValue}\n                            queryCallback={::this.query}\n                            icon=\"search\"\n                            iconDirection=\"left\"\n                            placeholder=\"请输入key搜索\" />\n                    </Col>\n                    <Col sm={2} end padding={0}>\n                        <Button type=\"submit\">查询</Button>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n}"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport {Star, Button} from 'eagle-ui';\nexport default class StarDemo3 extends Component {\n    getValue() {\n        alert('rate is'+this.refs['test'].Rate)\n    }\n    render(){\n        return(\n            <div>\n                <Star rate={50} size={23} disable={false} ref='test'/>\n                <br/>\n                <br/>\n                <Button onClick={this.getValue.bind(this)}>点击获取星星的红色比率数据</Button>\n            </div>\n        )\n    }\n}"
 
 /***/ }),
 /* 695 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    render(){\n        return (\n            <Grid fluid>\n                <Col sm={10} layer>\n                    <Row>\n                        <Col>\n                            <div id=\"showtip\" className=\"color-info\"></div>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col sm={10} end>\n                            <Suggestion\n                                getValueCallback={::this.getValue}\n                                icon=\"search\"\n                                iconDirection=\"left\"\n                                placeholder=\"请输入测、测试、试进行搜索\">\n                                <Item value=\"测试测试\" subKey=\"222222\">\n                                    测试测试\n                                </Item>\n                                <Item value=\"测试\" subKey=\"达到\">\n                                    测试\n                                </Item>\n                                <Item value=\"试验\" subKey=\"dsadsad\">\n                                    试验\n                                </Item>\n                                <Item value=\"测验\">\n                                    测验\n                                </Item>\n                                <Item value=\"检测\" >\n                                    检测\n                                </Item>\n                            </Suggestion>\n                        </Col>\n                    </Row>\n                </Col>\n                <Col sm={2}>请输入测、测试、试进行搜索</Col>\n            </Grid>\n        );\n    }\n}"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    static defaultProps = {\n        input: true,\n        keys:'bei'\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            input: this.props.input\n        }\n    }\n    query(){\n        //可以返回ajax\n        return [\n            {\n                key:'上海',\n                value:'shanghai',\n                subKey:'10个区'\n            },\n            {\n                key:'北京',\n                value:'beijing',\n                subKey:'10个区'\n            },\n            {\n                key:'哈尔滨',\n                value:'haerbin',\n                subKey:'5010个区'\n            },\n            {\n                key:'南京',\n                value:'nanjing',\n                subKey:'10个区'\n            },\n            {\n                key:'南宁',\n                value:'nanning',\n                subKey:'120个区'\n            },\n            {\n                key:'天津',\n                value:'tianjing',\n                subKey:'312310个区'\n            },\n            {\n                key:'深圳',\n                value:'shenzhen',\n                subKey:'101个区'\n            }\n        ];\n    }\n\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n\n    render(){\n        return (\n            <Grid fluid>\n                <Row>\n                    <Col>\n                        <div id=\"showtip\" className=\"color-info\"></div>\n                    </Col>\n                </Row>\n                <Row>\n                    <Col sm={10} layer padding={0}>\n                        <Suggestion\n                            getValueCallback={::this.getValue}\n                            queryCallback={::this.query}\n                            icon=\"search\"\n                            iconDirection=\"left\"\n                            placeholder=\"请输入key搜索\" />\n                    </Col>\n                    <Col sm={2} end padding={0}>\n                        <Button type=\"submit\">查询</Button>\n                    </Col>\n                </Row>\n            </Grid>\n        );\n    }\n}"
 
 /***/ }),
 /* 696 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Tab,Tabset} from 'eagle-ui';\nlet Demo = class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            tabIndex:2\n        };\n    }\n    componentDidMount(){\n        let _this=this;\n        setTimeout(()=>{\n            _this.setState({\n                tabIndex:3\n            })\n        },2000)\n    }\n    callback(index){\n        console.log('i',index);\n        if(this.state.tabIndex!==index){\n            this.setState({\n                tabIndex:index\n            });\n        }\n    }\n    tab3(){\n        if(this.state.tabIndex==2){\n            return (<div>tab3</div>);\n        }\n    }\n    tab2(){\n        if(this.state.tabIndex==1){\n            return (<div>tab2</div>);\n        }\n    }\n    tab1(){\n        if(this.state.tabIndex==0){\n            return (<div>tab1</div>);\n        }\n    }\n    render(){\n        return (\n            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n                <Tab>\n                    {::this.tab1()}\n                </Tab>\n                <Tab heading='tab2'>\n                    {::this.tab2()}\n                </Tab>\n                <Tab heading='tab3'>\n                    {::this.tab3()}\n                </Tab>\n                <Tab heading='tab4'>\n                    tab4\n                </Tab>\n                <Tab heading='tab5'>\n                    tab5\n                </Tab>\n            </Tabset>\n        );\n    }\n}\n\n"
+	module.exports = "import React,{Component,PropTypes}  from 'react';\nimport {Col,Item,Row,Grid,Button,Suggestion} from 'eagle-ui';\nlet Demo= class Demo extends Component{\n    constructor(props, context) {\n        super(props, context);\n    }\n    getValue(value,key,type){\n        let stype = {\n            'init':'加载时调用',\n            'enter':'回车时调用',\n            'click':'点击每一项元素时调用'\n        };\n        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n    }\n    render(){\n        return (\n            <Grid fluid>\n                <Col sm={10} layer>\n                    <Row>\n                        <Col>\n                            <div id=\"showtip\" className=\"color-info\"></div>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col sm={10} end>\n                            <Suggestion\n                                getValueCallback={::this.getValue}\n                                icon=\"search\"\n                                iconDirection=\"left\"\n                                placeholder=\"请输入测、测试、试进行搜索\">\n                                <Item value=\"测试测试\" subKey=\"222222\">\n                                    测试测试\n                                </Item>\n                                <Item value=\"测试\" subKey=\"达到\">\n                                    测试\n                                </Item>\n                                <Item value=\"试验\" subKey=\"dsadsad\">\n                                    试验\n                                </Item>\n                                <Item value=\"测验\">\n                                    测验\n                                </Item>\n                                <Item value=\"检测\" >\n                                    检测\n                                </Item>\n                            </Suggestion>\n                        </Col>\n                    </Row>\n                </Col>\n                <Col sm={2}>请输入测、测试、试进行搜索</Col>\n            </Grid>\n        );\n    }\n}"
 
 /***/ }),
 /* 697 */
 /***/ (function(module, exports) {
 
-	module.exports = "// html 中使用meituan主题\n<link rel=\"stylesheet\" href=\"http://future-team.github.io/eagle-ui/dist/skin.css\"/>\n\n// javascript 中使用 meituan主题\nimport 'eagle-ui/dist/meituan.css'"
+	module.exports = "import React,{Component} from 'react';\nimport {Tab,Tabset} from 'eagle-ui';\nlet Demo = class Demo extends Component{\n    constructor(props,context){\n        super(props,context);\n\n        this.state={\n            tabIndex:2\n        };\n    }\n    componentDidMount(){\n        let _this=this;\n        setTimeout(()=>{\n            _this.setState({\n                tabIndex:3\n            })\n        },2000)\n    }\n    callback(index){\n        console.log('i',index);\n        if(this.state.tabIndex!==index){\n            this.setState({\n                tabIndex:index\n            });\n        }\n    }\n    tab3(){\n        if(this.state.tabIndex==2){\n            return (<div>tab3</div>);\n        }\n    }\n    tab2(){\n        if(this.state.tabIndex==1){\n            return (<div>tab2</div>);\n        }\n    }\n    tab1(){\n        if(this.state.tabIndex==0){\n            return (<div>tab1</div>);\n        }\n    }\n    render(){\n        return (\n            <Tabset activeTab={this.state.tabIndex} tabCallback={::this.callback}>\n                <Tab>\n                    {::this.tab1()}\n                </Tab>\n                <Tab heading='tab2'>\n                    {::this.tab2()}\n                </Tab>\n                <Tab heading='tab3'>\n                    {::this.tab3()}\n                </Tab>\n                <Tab heading='tab4'>\n                    tab4\n                </Tab>\n                <Tab heading='tab5'>\n                    tab5\n                </Tab>\n            </Tabset>\n        );\n    }\n}\n\n"
 
 /***/ }),
 /* 698 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, TimePicker} from 'eagle-ui';\n\nthis.state = {\n    time:''\n};\n\n<TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format=\"HH:mm\">\n    <Input placeholder=\"请选择时间\"  icon=\"calendar\" />\n</TimePicker>"
+	module.exports = "// html 中使用meituan主题\n<link rel=\"stylesheet\" href=\"http://future-team.github.io/eagle-ui/dist/skin.css\"/>\n\n// javascript 中使用 meituan主题\nimport 'eagle-ui/dist/meituan.css'"
 
 /***/ }),
 /* 699 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ButtonGroup, Toast, Button, Dialog,} from 'eagle-ui';\n\nexport default class Demo extends Component{\n    static defaultProps = {\n        show: false,\n        type: \"success\"\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            isMask:true\n        }\n    }\n    showToast(){\n        let msg = arguments[0].getAttribute('data-message');\n\n        this.setState({\n            type:arguments[0].getAttribute('data-value'),\n            message:msg,\n            isMask:msg=='无遮罩加载成功' ?false:true\n        });\n        Dialog.mask('toast');\n    }\n    render(){\n        return (\n            <div>\n                <ButtonGroup activeCallback={::this.showToast}>\n                    <Button data-value=\"success\" data-message=\"数据载入成功\">显示success</Button>\n                    <Button data-value=\"error\"  data-message=\"数据加载失败\">显示error</Button>\n                    <Button data-value=\"loading\"  data-message=\"加载中...\">显示loading</Button>\n                    <Button data-value=\"success\"  data-message=\"无遮罩加载成功\">无遮罩toast</Button>\n                </ButtonGroup>\n                <Dialog id=\"toast\" isClose={false} isMask={this.state.isMask} isMaskClose={false}>\n                    <Toast type={this.state.type}>{this.state.message}</Toast>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component,PropTypes} from 'react';\nimport {Input, TimePicker} from 'eagle-ui';\n\nthis.state = {\n    time:''\n};\n\n<TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format=\"HH:mm\">\n    <Input placeholder=\"请选择时间\"  icon=\"calendar\" />\n</TimePicker>"
 
 /***/ }),
 /* 700 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\n\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div>\n                <TooltipPanel direction='top'\n                              msg='我是在上方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">上边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='right'\n                              msg='我是在右方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">右边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='bottom'\n                              msg='我是在下方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">下边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='left'\n                              msg='我是在左方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">左边</Button>\n                </TooltipPanel>\n            </div>\n        )\n    }\n};\n"
+	module.exports = "import React,{Component} from 'react';\nimport {ButtonGroup, Toast, Button, Dialog,} from 'eagle-ui';\n\nexport default class Demo extends Component{\n    static defaultProps = {\n        show: false,\n        type: \"success\"\n    }\n    constructor(props, context) {\n        super(props, context);\n        this.state = {\n            isMask:true\n        }\n    }\n    showToast(){\n        let msg = arguments[0].getAttribute('data-message');\n\n        this.setState({\n            type:arguments[0].getAttribute('data-value'),\n            message:msg,\n            isMask:msg=='无遮罩加载成功' ?false:true\n        });\n        Dialog.mask('toast');\n    }\n    render(){\n        return (\n            <div>\n                <ButtonGroup activeCallback={::this.showToast}>\n                    <Button data-value=\"success\" data-message=\"数据载入成功\">显示success</Button>\n                    <Button data-value=\"error\"  data-message=\"数据加载失败\">显示error</Button>\n                    <Button data-value=\"loading\"  data-message=\"加载中...\">显示loading</Button>\n                    <Button data-value=\"success\"  data-message=\"无遮罩加载成功\">无遮罩toast</Button>\n                </ButtonGroup>\n                <Dialog id=\"toast\" isClose={false} isMask={this.state.isMask} isMaskClose={false}>\n                    <Toast type={this.state.type}>{this.state.message}</Toast>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 701 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div id='a' style={{width:'500px',height:'200px',border:'1px solid #f00',position:'relative'}}>\n                <div style={{margin:'10px'}}>\n                    <TooltipPanel direction='top' wrapper='a'>\n                        <Button radius egSize=\"sm\" egStyle=\"warning\">红色边框为边界，设置的方向是top.实际展示为bottom</Button>\n                    </TooltipPanel>\n                </div>\n            </div>\n        )\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\n\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div>\n                <TooltipPanel direction='top'\n                              msg='我是在上方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">上边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='right'\n                              msg='我是在右方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">右边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='bottom'\n                              msg='我是在下方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">下边</Button>\n                </TooltipPanel>\n                <TooltipPanel direction='left'\n                              msg='我是在左方的tooltip哦'>\n                    <Button radius egSize=\"sm\" egStyle=\"warning\">左边</Button>\n                </TooltipPanel>\n            </div>\n        )\n    }\n};\n"
 
 /***/ }),
 /* 702 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport TreeMenu from \"eg-tree-menu\";//联想功能组件\nimport {Button} from \"eagle-ui\";\n\nexport default class TreeMenuDemo extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            selected:'',\n            expandNodes:{3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true, 11: true, 16: true,10014:true},\n            data:[\n                {\n                    \"typeId\": 2,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"测试\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 1000023,\n                            \"parentTypeId\": 10005,\n                            \"typeName\": \"线上测试\",\n                            \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 22315,\n                            \"secondOwnerId\": 17896,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                },\n                {\n                    \"typeId\": 3,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"POI相关\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 10014,\n                            \"parentTypeId\": 3,\n                            \"typeName\": \"评价评分\",\n                            \"leadingAnswer\": \"\",\n                            \"level\": 2,\n                            \"firstOwnerId\": 0,\n                            \"secondOwnerId\": 0,\n                            \"children\": [\n                                {\n                                    \"typeId\": 1000034,\n                                    \"parentTypeId\": 10014,\n                                    \"typeName\": \"美团侧评价\",\n                                    \"leadingAnswer\": \"\",\n                                    \"level\": 3,\n                                    \"firstOwnerId\": 37743,\n                                    \"secondOwnerId\": 0,\n                                    \"children\": [],\n                                    \"leaf\": true\n                                },\n                            ],\n                            \"leaf\": false\n                        },\n                        {\n                            \"typeId\": 1000026,\n                            \"parentTypeId\": 10006,\n                            \"typeName\": \"门店基本信息/地图报错\",\n                            \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 37425,\n                            \"secondOwnerId\": 0,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                }\n            ]\n        };\n    }\n    render(){\n        let self=this;\n        return(\n            <div>\n                <Button onClick={function(){console.log(self.refs.tm.getExpandNodes())}}>获取展开节点的信息</Button>\n                <br/>\n                <TreeMenu ref='tm' clickCallback={function(nodeId,type){\n                    console.log(nodeId,type);\n                    self.setState({\n                        selected: nodeId\n                    })\n                }} selected={self.state.selected} data={this.state.data} expandNodes={this.state.expandNodes}/>\n        </div>)\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {TooltipPanel,Button} from 'eagle-ui';\nlet Demo = class Demo extends Component {\n    render() {\n        return (\n            <div id='a' style={{width:'500px',height:'200px',border:'1px solid #f00',position:'relative'}}>\n                <div style={{margin:'10px'}}>\n                    <TooltipPanel direction='top' wrapper='a'>\n                        <Button radius egSize=\"sm\" egStyle=\"warning\">红色边框为边界，设置的方向是top.实际展示为bottom</Button>\n                    </TooltipPanel>\n                </div>\n            </div>\n        )\n    }\n};"
 
 /***/ }),
 /* 703 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo1 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            date:{\n                date:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <CalendarPanel>\n                                <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n                            </CalendarPanel>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React, { Component ,PropTypes} from 'react';\nimport TreeMenu from \"eg-tree-menu\";//联想功能组件\nimport {Button} from \"eagle-ui\";\n\nexport default class TreeMenuDemo extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.state={\n            selected:'',\n            expandNodes:{3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true, 10: true, 11: true, 16: true,10014:true},\n            data:[\n                {\n                    \"typeId\": 2,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"测试\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 1000023,\n                            \"parentTypeId\": 10005,\n                            \"typeName\": \"线上测试\",\n                            \"leadingAnswer\": \"这是线上测试分类,你玩我吧!\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 22315,\n                            \"secondOwnerId\": 17896,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                },\n                {\n                    \"typeId\": 3,\n                    \"parentTypeId\": 0,\n                    \"typeName\": \"POI相关\",\n                    \"leadingAnswer\": \"\",\n                    \"level\": 1,\n                    \"firstOwnerId\": 0,\n                    \"secondOwnerId\": 0,\n                    \"children\": [\n                        {\n                            \"typeId\": 10014,\n                            \"parentTypeId\": 3,\n                            \"typeName\": \"评价评分\",\n                            \"leadingAnswer\": \"\",\n                            \"level\": 2,\n                            \"firstOwnerId\": 0,\n                            \"secondOwnerId\": 0,\n                            \"children\": [\n                                {\n                                    \"typeId\": 1000034,\n                                    \"parentTypeId\": 10014,\n                                    \"typeName\": \"美团侧评价\",\n                                    \"leadingAnswer\": \"\",\n                                    \"level\": 3,\n                                    \"firstOwnerId\": 37743,\n                                    \"secondOwnerId\": 0,\n                                    \"children\": [],\n                                    \"leaf\": true\n                                },\n                            ],\n                            \"leaf\": false\n                        },\n                        {\n                            \"typeId\": 1000026,\n                            \"parentTypeId\": 10006,\n                            \"typeName\": \"门店基本信息/地图报错\",\n                            \"leadingAnswer\": \"\\n【到综/到餐推广销售】请在阿波罗商机（门店）标签→【POI报错】入口提交报错：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"https://a.dper.com/shops#!/shop/all\\\" target=\\\"_blank\\\">https://a.dper.com/shops#!/shop/all</a><br/>\\n【到餐销售】请在美团点评数据门户报错，报错入口：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/poierror\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/poierror</a><br/>\\n  以上报错90%系统都能够自动处理，比其他渠道等着人工处理要快的多。<br/>\\n 【点评&美团映射关系报错】，所有销售都请在MDC门户→美大关联报错提交：<br/>\\n  <a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/web/report/relatingreport\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/web/report/relatingreport</a><br/>\\n  以上报错都会在1个工作日内17:00前处理完毕\\n不管在门户或阿波罗报错，商户名、地址、电话、营业状态、地图字段通过审核后，会自动同步修改另一侧信息（除行政区、商区、靠近字段，这三个字段需要在<br/><a style=\\\"cursor: pointer; color: #2c87bd\\\" class=\\\"external-link\\\" href=\\\"http://mdc.sankuai.com/\\\" target=\\\"_blank\\\">http://mdc.sankuai.com/</a>，门店报错-丰富度信息，点击管理点评连锁，跳转点评阿波罗报错审核）\",\n                            \"level\": 3,\n                            \"firstOwnerId\": 37425,\n                            \"secondOwnerId\": 0,\n                            \"children\": [],\n                            \"leaf\": true\n                        }\n                    ],\n                    \"leaf\": false\n                }\n            ]\n        };\n    }\n    render(){\n        let self=this;\n        return(\n            <div>\n                <Button onClick={function(){console.log(self.refs.tm.getExpandNodes())}}>获取展开节点的信息</Button>\n                <br/>\n                <TreeMenu ref='tm' clickCallback={function(nodeId,type){\n                    console.log(nodeId,type);\n                    self.setState({\n                        selected: nodeId\n                    })\n                }} selected={self.state.selected} data={this.state.data} expandNodes={this.state.expandNodes}/>\n        </div>)\n    }\n};"
 
 /***/ }),
 /* 704 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo2 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo1 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            date:{\n                date:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit1\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <CalendarPanel>\n                                <Input placeholder=\"请选择日期\" icon=\"calendar\" name=\"date\" data-validate />\n                            </CalendarPanel>\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入手机号码\" name=\"number\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请再次确认手机号码\" name=\"equalTo\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit1\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 705 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\nexport default class ValidateDemo3 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid',\n            show:false\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    showMask(){\n        Dialog.mask('demo2');\n    }\n    render(){\n        return (\n            <div>\n                <Button onClick={::this.showMask}>弹出验证表单</Button>\n                <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n                    <Grid>\n                        <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n                                </Col>\n                            </Row>\n                        </ValidatorPanel>\n                    </Grid>\n                </Dialog>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {ValidatorPanel, Row, Col, CalendarPanel, Input, Button} from 'eagle-ui';\n\nexport default class ValidateDemo2 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid'\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorPanel rules={this.rules} submitElement=\"#submit2\" direction=\"right\" id=\"testFrom\" update={this.state.update} submitCallback={::this.submit}>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                        </Col>\n                    </Row>\n                    <Row>\n                        <Col>\n                            <Button radius egSize=\"xs\" id=\"submit2\" >点我提交表单</Button>\n                        </Col>\n                    </Row>\n                </ValidatorPanel>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 706 */
 /***/ (function(module, exports) {
 
-	module.exports = "import React,{Component} from 'react';\nimport {ValidatorWrapper,Input} from 'eagle-ui';\nexport default class ValidateDemo4 extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorWrapper\n                    rules={{\n                                userName:{\n                                    required:true\n                                }}} >\n                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                </ValidatorWrapper>\n                <ValidatorWrapper\n                    rules={{\n                                minlength:{\n                                    minlength:{\n                                    params:10\n                                 },\n                                 maxlength:{\n                                     params:15\n                                 }\n                             }   }} >\n                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                </ValidatorWrapper>\n            </div>\n        );\n    }\n};"
+	module.exports = "import React,{Component} from 'react';\nimport {Tabset,Tab,CalendarPanel,ValidatorPanel,Col,Row,Grid,Button,Dialog,Panel,PanelHeader,PanelContent,PanelFooter,FormGroup,Input,RadioGroup,CheckboxGroup,Select} from 'eagle-ui';\nexport default class ValidateDemo3 extends Component{\n    constructor(props,context){\n        super(props,context);\n        this.rules = {\n            //key对应的是表单元素的name\n            userName:{\n                required:true\n            },\n            number:{\n                number:true,\n                digits:true\n            },\n            equalTo:{\n                digits:true,\n                equalTo:{\n                    params:'[name=\"number\"]'\n                }\n            },\n            minlength:{\n                minlength:{\n                    params:10\n                },\n                maxlength:{\n                    params:15\n                }\n            },\n            email:{\n                email:true\n            }\n        };\n        this.state={\n            update:'uid',\n            show:false\n        };\n    }\n    show(value){\n        console.dir(value);\n    }\n    submit(vals){\n        alert('验证成功'+JSON.stringify(vals));\n    }\n    showMask(){\n        Dialog.mask('demo2');\n    }\n    render(){\n        return (\n            <div>\n                <Button onClick={::this.showMask}>弹出验证表单</Button>\n                <Dialog id=\"demo2\" egSize=\"sm\" title=\"表单验证\">\n                    <Grid>\n                        <ValidatorPanel rules={this.rules} submitElement=\"#ssubmit\" direction=\"top\" id=\"testDialogFrom\" submitCallback={::this.submit}>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"number\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入有效的号码\" name=\"equalTo\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Input placeholder=\"请输入您的email\" name=\"email\" data-validate />\n                                </Col>\n                            </Row>\n                            <Row>\n                                <Col>\n                                    <Button radius egSize=\"xs\" id=\"ssubmit\" >点我提交表单</Button>\n                                </Col>\n                            </Row>\n                        </ValidatorPanel>\n                    </Grid>\n                </Dialog>\n            </div>\n        );\n    }\n};"
 
 /***/ }),
 /* 707 */
+/***/ (function(module, exports) {
+
+	module.exports = "import React,{Component} from 'react';\nimport {ValidatorWrapper,Input} from 'eagle-ui';\nexport default class ValidateDemo4 extends Component{\n    constructor(props,context){\n        super(props,context);\n    }\n    render(){\n        return (\n            <div>\n                <ValidatorWrapper\n                    rules={{\n                                userName:{\n                                    required:true\n                                }}} >\n                    <Input placeholder=\"请输入姓名\"  name=\"userName\" data-validate />\n                </ValidatorWrapper>\n                <ValidatorWrapper\n                    rules={{\n                                minlength:{\n                                    minlength:{\n                                    params:10\n                                 },\n                                 maxlength:{\n                                     params:15\n                                 }\n                             }   }} >\n                    <Input placeholder=\"最大最小字符10-15\" name=\"minlength\" data-validate />\n                </ValidatorWrapper>\n            </div>\n        );\n    }\n};"
+
+/***/ }),
+/* 708 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -46226,7 +46313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 708 */
+/* 709 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -46324,7 +46411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 709 */
+/* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -47000,7 +47087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Layout;
 
 /***/ }),
-/* 710 */
+/* 711 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -47811,7 +47898,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 711 */
+/* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -47831,7 +47918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _querystring = __webpack_require__(712);
+	var _querystring = __webpack_require__(713);
 
 	var _querystring2 = _interopRequireDefault(_querystring);
 
@@ -49270,17 +49357,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	/*照片浏览组件(建议放在dom根节点附近)*/ /*主页面*/ /*门店信息*/ /*市场份额信息*/ /*合作信息*/ /*联系人信息*/ /*拜访记录*/ /*关联客户*/ /*门店历史*/ /*归属信息*/ /*归属信息*/ /*附近同类门店*/
 
 /***/ }),
-/* 712 */
+/* 713 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.decode = exports.parse = __webpack_require__(713);
-	exports.encode = exports.stringify = __webpack_require__(714);
+	exports.decode = exports.parse = __webpack_require__(714);
+	exports.encode = exports.stringify = __webpack_require__(715);
 
 
 /***/ }),
-/* 713 */
+/* 714 */
 /***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -49366,7 +49453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 714 */
+/* 715 */
 /***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -49436,7 +49523,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 715 */
+/* 716 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -50045,7 +50132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 716 */
+/* 717 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -50065,7 +50152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _querystring = __webpack_require__(712);
+	var _querystring = __webpack_require__(713);
 
 	var _querystring2 = _interopRequireDefault(_querystring);
 
@@ -50337,7 +50424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 717 */
+/* 718 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -50756,7 +50843,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 718 */
+/* 719 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50852,7 +50939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 719 */
+/* 720 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -51651,7 +51738,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 720 */
+/* 721 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51836,7 +51923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 721 */
+/* 722 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -51981,7 +52068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 722 */
+/* 723 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -52371,7 +52458,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 723 */
+/* 724 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -52493,7 +52580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 724 */
+/* 725 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52660,7 +52747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 725 */
+/* 726 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -53033,7 +53120,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 726 */
+/* 727 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -53153,7 +53240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 727 */
+/* 728 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53319,7 +53406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 728 */
+/* 729 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53551,7 +53638,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 729 */
+/* 730 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -53971,7 +54058,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 730 */
+/* 731 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -53992,7 +54079,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _egTreeMenu = __webpack_require__(731);
+	var _egTreeMenu = __webpack_require__(732);
 
 	var _egTreeMenu2 = _interopRequireDefault(_egTreeMenu);
 
@@ -54123,30 +54210,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ }),
-/* 731 */
+/* 732 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	__webpack_require__(732);
+	__webpack_require__(733);
 
-	var _Tree = __webpack_require__(734);
+	var _Tree = __webpack_require__(735);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
 	module.exports = _Tree2['default'];
 
 /***/ }),
-/* 732 */
+/* 733 */
 /***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 733 */,
-/* 734 */
+/* 734 */,
+/* 735 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54165,7 +54252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NodeJs = __webpack_require__(735);
+	var _NodeJs = __webpack_require__(736);
 
 	var _NodeJs2 = _interopRequireDefault(_NodeJs);
 
@@ -54276,7 +54363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 735 */
+/* 736 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54351,7 +54438,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 736 */
+/* 737 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54368,7 +54455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _egDropTree = __webpack_require__(737);
+	var _egDropTree = __webpack_require__(738);
 
 	var _egDropTree2 = _interopRequireDefault(_egDropTree);
 
@@ -54648,20 +54735,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 737 */
+/* 738 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _componentsMultiDropDownMenuJs = __webpack_require__(738);
+	var _componentsMultiDropDownMenuJs = __webpack_require__(739);
 
 	var _componentsMultiDropDownMenuJs2 = _interopRequireDefault(_componentsMultiDropDownMenuJs);
 
 	//下拉层级菜单
 
-	__webpack_require__(739);
+	__webpack_require__(740);
 	if (window.Eagleui) {
 	    Eagleui.MultiDropDown = _componentsMultiDropDownMenuJs2['default'];
 	} else {
@@ -54670,7 +54757,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _componentsMultiDropDownMenuJs2['default'];
 
 /***/ }),
-/* 738 */
+/* 739 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -55235,14 +55322,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 739 */
+/* 740 */
 /***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 740 */,
-/* 741 */
+/* 741 */,
+/* 742 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55366,7 +55453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 742 */
+/* 743 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -55452,7 +55539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 743 */
+/* 744 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -55539,7 +55626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                ),
 	                _react2['default'].createElement(
 	                    _libsLayout.DemoItem,
-	                    { title: '时间选择器' },
+	                    { title: '时间选择器(时分)' },
 	                    _react2['default'].createElement(
 	                        _libsLayout.CodeShow,
 	                        null,
@@ -55551,6 +55638,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        _react2['default'].createElement(
 	                            _eagleUi.DateTimePicker,
 	                            { format: 'hh:mm' },
+	                            _react2['default'].createElement(_eagleUi.Input, { placeholder: '请选择日期时间', icon: 'clock' })
+	                        )
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    _libsLayout.DemoItem,
+	                    { title: '时间选择器(时分秒)' },
+	                    _react2['default'].createElement(
+	                        _libsLayout.CodeShow,
+	                        null,
+	                        _react2['default'].createElement(_libsCode2['default'], { code: _libsCode.getFile('datetimepicker-demo5') })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libsLayout.DemoShow,
+	                        null,
+	                        _react2['default'].createElement(
+	                            _eagleUi.DateTimePicker,
+	                            { format: 'hh:mm:ss' },
 	                            _react2['default'].createElement(_eagleUi.Input, { placeholder: '请选择日期时间', icon: 'clock' })
 	                        )
 	                    )
@@ -55588,7 +55693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 744 */
+/* 745 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -55652,7 +55757,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            _eagleUi.TimePicker,
 	                            { getValueCallback: function (val) {
 	                                    _this.setState({ time: val });
-	                                }, defaultValue: this.state.time || '', format: 'HH:mm' },
+	                                }, defaultValue: this.state.time || '', format: 'HH:mm:ss' },
 	                            _react2['default'].createElement(_eagleUi.Input, { placeholder: '请选择时间', icon: 'clock' })
 	                        )
 	                    )
@@ -55668,7 +55773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 745 */
+/* 746 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//http://future-team.github.io/gfs-icons/index.html
@@ -55714,7 +55819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 746 */
+/* 747 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55876,7 +55981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 747 */
+/* 748 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -57947,7 +58052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 748 */
+/* 749 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -58516,7 +58621,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 749 */
+/* 750 */
 /***/ (function(module, exports) {
 
 	// Console-polyfill. MIT license.
@@ -58541,7 +58646,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 750 */
+/* 751 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(57);

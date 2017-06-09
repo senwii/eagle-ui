@@ -8,7 +8,7 @@ var WebpackDevServer = require("webpack-dev-server");
 var open = require('gulp-open');
 var less=require('gulp-less');
 var babel = require('gulp-babel');
-require('shelljs/global');
+var shell = require('shelljs');
 
 var error = function(e){
   console.error(e);
@@ -69,7 +69,6 @@ gulp.task('demo-webpack', function(done) {
   ];
 
   var compiler = webpack(wbpk);
-
   new WebpackDevServer(compiler, {
     //contentBase:'/examples/',
     publicPath: '/examples/js/',
@@ -83,7 +82,7 @@ gulp.task('demo-webpack', function(done) {
   listen(devPort, "127.0.0.1", function (err) {
     if (err) throw new gutil.PluginError("webpack-dev-server", err);
     // cp meituan.css to examples/js
-    cp('-u', 'dist/meituan.css', 'examples/js/');
+    shell.cp('-u', 'dist/meituan.css', 'examples/js/');
     gutil.log("[webpack-dev-server]", "http://127.0.0.1:" + devPort + "/webpack-dev-server/index.html");
   });
 });
@@ -99,6 +98,12 @@ gulp.task('example-webpack',function(done){
 });
 
 gulp.task('require-webpack', function(done) {
+  shell.rm([
+      'dist/*.eot',
+      'dist/*.woff',
+      'dist/*.ttf',
+      'dist/*.svg',
+  ]);
   webpack(webpackConfig).run(function(err, stats) {
     if(err) throw new gutil.PluginError("require-webpack", err);
     gutil.log("[webpack]", stats.toString({

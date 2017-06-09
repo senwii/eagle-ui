@@ -23,13 +23,11 @@ export default class Calendar extends Component{
                             <Code code={getFile('timepicker-demo1')}/>
                         </CodeShow>
                         <DemoShow>
-                            <TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format="HH:mm">
+                            <TimePicker getValueCallback={(val)=>{this.setState({time:val}); }} defaultValue={this.state.time ||''} format="HH:mm:ss">
                                 <Input placeholder="请选择时间"  icon="clock" />
                             </TimePicker>
                         </DemoShow>
                     </DemoItem>
-
-
                 </DemoLayout>
             </div>
         );

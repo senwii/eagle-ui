@@ -35,6 +35,7 @@ export default class DateTimePicker extends TimePicker{
          * <code>HH</code>:24小时制<br />
          * <code>hh</code>:12小时制<br />
          * <code>mm</code>:分钟<br />
+         * <code>ss</code>:秒<br />
          * <code>tt</code>:上午或下午<br />
          * @property format
          * @type String

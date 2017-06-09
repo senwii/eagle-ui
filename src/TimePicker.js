@@ -26,6 +26,7 @@ export default class TimePicker extends CalendarPanel{
          * <code>HH</code>:24小时制<br />
          * <code>hh</code>:12小时制<br />
          * <code>mm</code>:分钟<br />
+         * <code>ss</code>:秒<br />
          * <code>tt</code>:上午或下午<br />
          * @property format
          * @type String
@@ -49,6 +50,7 @@ export default class TimePicker extends CalendarPanel{
         this.state = extend(this.state, {
             hours:0,
             minutes:0,
+            second:0,
             posStyle:{}
         });
         this.timerId = this.uniqueId();
@@ -72,7 +74,8 @@ export default class TimePicker extends CalendarPanel{
         return d;
     }
     formatTimer(format=this.props.format){
-        return format.replace(/H{1,2}/i,this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/,this.fill(this.state.minutes) ).replace(/t{1,2}/i, this.tt );
+        const timeStr = format.replace(/H{1,2}/i,this.fill(this.getHours(this.state.hours))).replace(/m{1,2}/,this.fill(this.state.minutes) ).replace(/s{1,2}/,this.fill(this.state.second) ).replace(/t{1,2}/i, this.tt )
+        return timeStr;
     }
     setTime(key,value){
         if(key ==='hours'){
@@ -85,7 +88,7 @@ export default class TimePicker extends CalendarPanel{
         setTimeout(()=>{
             let date = this.formatTimer();
             this.changeSlider(date);
-            this.props.getValueCallback(date );
+            this.props.getValueCallback(date);
         });
     }
     getHours(h){
@@ -100,38 +103,82 @@ export default class TimePicker extends CalendarPanel{
         this.tt = tt;
         return tt.toUpperCase();
     }
-
+    getSliderShow(){
+        const {format} = this.props
+        return {
+            h : /[HH|hh]/.test(format),
+            m : /mm/.test(format),
+            s : /ss/.test(format),
+            tt: /\stt/.test(format),
+        }
+    }
     getTimelayer(){
+        const {h, m, s } = this.getSliderShow()
         return (
             <div  style={{marginTop:'20px'}}>
                 <div style={{
-                                'textAlign':'center'
-                            }}><span>{this.fill(this.getHours(this.state.hours))}:{this.fill(this.state.minutes)} {this.getTT(this.state.hours*1)}</span></div>
+                    'textAlign':'center'
+                }}><span>{this.fill(this.getHours(this.state.hours))}:{this.fill(this.state.minutes)}:{this.fill(this.state.second)} {this.getTT(this.state.hours*1)}</span></div>
                 <div>
-                    <Slider max={23} min={0} getValueCallback={this.setTime.bind(this,'hours')} defaultValue={this.state.hours*1} initCallback={this.setTime.bind(this,'hours')} style={{marginTop:'20px'}} />
-                    <Slider max={59} getValueCallback={this.setTime.bind(this,'minutes')} defaultValue={this.state.minutes*1} style={{marginTop:'20px'}} />
+                    {h && <Slider max={23} min={0} getValueCallback={this.setTime.bind(this,'hours')} defaultValue={this.state.hours*1} initCallback={this.setTime.bind(this,'hours')} style={{marginTop:'20px'}} />}
+                    {m && <Slider max={59} getValueCallback={this.setTime.bind(this,'minutes')} defaultValue={this.state.minutes*1} style={{marginTop:'20px'}} />}
+                    {s && <Slider max={99} min={0} getValueCallback={this.setTime.bind(this,'second')} defaultValue={this.state.second*1} style={{marginTop:'20px'}} />}
                 </div>
             </div>
         );
     }
+    // 这个取值问题变得很尴尬啊
     resetValue(){
+        let {format} = this.props
+        // 排除日期的情况
+        const isData = /(yyyy|MM|dd)+/.test(format)
+        if(isData) format = format.split(' ').splice(1).join(' ')
+
+        const hasTT = format.split(' ').length > 1;
+        const hmsArr = format.replace(/\st{1,2}/, '').split(':')
         let defaultValue =arguments[0]|| this.props.defaultValue;
-        let v = defaultValue.match(this.matchTime);
         let tt ='';
-        if(v && v.length>=3){
-            let h = v[1]*1;
-            let m = v[2]*1;
-            if(v.length>=4){
-                tt =this.tt = v[3].toLowerCase();
-            }
-            if(!this.props.format.match('HH') ){
-                h = this.hhUpList[h];
-            }
-            this.setState({
-                hours:h*1,
-                minutes:m*1
-            });
+        if(hasTT){
+            tt = this.tt = defaultValue.split(' ')[1]
+            format = format.replace(/\st{1,2}/, '')
         }
+        const valArr = defaultValue.split(':')
+        let h = 0;
+        let m = 0;
+        let s = 0;
+        if(hmsArr.length == valArr.length){
+            hmsArr.map((val, index)=>{
+                if(/[HH|hh]/.test(val)){
+                    h = valArr[index]
+                }
+                if(/mm/.test(val)){
+                    m = valArr[index]
+                }
+                if(/ss/.test(val)){
+                    s = valArr[index]
+                }
+            })
+        }
+        this.setState({
+            hours:h*1,
+            minutes:m*1,
+            second:s*1
+        });
+        // let v = defaultValue.match(this.matchTime);
+        // if(v && v.length>=3){
+        //     let h = v[1]*1;
+        //     let m = v[2]*1;
+        //     if(v.length>=3){
+        //         tt =this.tt = v[4].toLowerCase();
+        //     }
+        //     if(!this.props.format.match('HH') ){
+        //         h = this.hhUpList[h];
+        //     }
+        //     this.setState({
+        //         hours:h*1,
+        //         minutes:m*1
+        //     });
+        // }
     }
     inputChangeHandler(e){
         let target = e.target;

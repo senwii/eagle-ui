@@ -38,12 +38,22 @@ export default class Calendar extends Component{
                             </DateTimePicker>
                         </DemoShow>
                     </DemoItem>
-                    <DemoItem title="时间选择器">
+                    <DemoItem title="时间选择器(时分)">
                         <CodeShow>
                             <Code code={getFile('datetimepicker-demo3')}/>
                         </CodeShow>
                         <DemoShow>
                             <DateTimePicker format="hh:mm">
+                                <Input placeholder="请选择日期时间"  icon="clock" />
+                            </DateTimePicker>
+                        </DemoShow>
+                    </DemoItem>
+                    <DemoItem title="时间选择器(时分秒)">
+                        <CodeShow>
+                            <Code code={getFile('datetimepicker-demo5')}/>
+                        </CodeShow>
+                        <DemoShow>
+                            <DateTimePicker format="hh:mm:ss">
                                 <Input placeholder="请选择日期时间"  icon="clock" />
                             </DateTimePicker>
                         </DemoShow>
