@@ -4081,6 +4081,14 @@ b.eg-slider-arrow-right {
   transform: rotate(45deg);
 }
 /**成功图标*/
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .eg-tips-success {
   width: 30px;
   height: 30px;
@@ -4243,9 +4251,9 @@ b.eg-slider-arrow-right {
 }
 @font-face {
   font-family: "iconfont";
-  src: url(1c38a734f84be54dd3c71f82b0b2981c.eot);
+  src: url(251460a0b5eae6e2026c6481769f6a5a.eot);
   /* IE9*/
-  src: url(1c38a734f84be54dd3c71f82b0b2981c.eot#iefix) format('embedded-opentype'),  url(15165f8a5b43912e43b98bb49532f9af.woff) format('woff'),  url(421925a168f12479e49bf11c7b0b34ef.ttf) format('truetype'),  url(cd21c8f55f907b9e2e032ee7e6694dcd.svg#iconfont) format('svg');
+  src: url(251460a0b5eae6e2026c6481769f6a5a.eot#iefix) format('embedded-opentype'),  url(a1a374bd31fc646574f7790a9d3132a2.woff) format('woff'),  url(ce56e19b5b30a6b629784eb3b76185ce.ttf) format('truetype'),  url(000046848fc347347c1bbc7b08fdefca.svg#iconfont) format('svg');
   /* iOS 4.1- */
 }
 .gfs-icon {
@@ -4511,18 +4519,6 @@ b.eg-slider-arrow-right {
 }
 .icon-youxuanzhuan:before {
   content: "\E65B";
-}
-.icon-eraser:before {
-  content: "\E65C";
-}
-.icon-zan-fill:before {
-  content: "\E65D";
-}
-.icon-modify:before {
-  content: "\E65E";
-}
-.icon-zan:before {
-  content: "\E65F";
 }
 .doc-content {
   counter-reset: header2;
