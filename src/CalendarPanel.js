@@ -87,9 +87,13 @@ export default class CalendarPanel extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            value: nextProps.defaultDate
-        });
+        let defaultDate=nextProps.defaultDate
+        if(defaultDate&&(defaultDate!=this.props.defaultDate)){
+            this.dateChange(defaultDate)
+        }
+        // this.setState({
+        //     value: nextProps.defaultDate
+        // });
         //this.updateDirection();
     }
 
