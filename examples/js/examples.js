@@ -32797,7 +32797,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    Calendar.prototype.changeDate = function changeDate() {
-	        this.refs.cp.dateChange('2015-03-02');
+	        this.setState({
+	            defaultDate: '2018-03-04'
+	        });
 	    };
 
 	    Calendar.prototype.getvalue = function getvalue(val) {
@@ -32905,7 +32907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        _react2['default'].createElement('br', null),
 	                        _react2['default'].createElement(
 	                            _eagleUi.CalendarPanel,
-	                            { ref: 'cp', format: 'yyyy年MM月dd日' },
+	                            { defaultDate: this.state.defaultDate, ref: 'cp', format: 'yyyy年MM月dd日' },
 	                            _react2['default'].createElement(_eagleUi.Input, { placeholder: '请选择日期', icon: 'calendar' })
 	                        )
 	                    )
@@ -41286,9 +41288,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    CalendarPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        this.setState({
-	            value: nextProps.defaultDate
-	        });
+	        var defaultDate = nextProps.defaultDate;
+	        if (defaultDate && defaultDate != this.props.defaultDate) {
+	            this.dateChange(defaultDate);
+	        }
+	        // this.setState({
+	        //     value: nextProps.defaultDate
+	        // });
 	        //this.updateDirection();
 	    };
 

@@ -16942,9 +16942,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    CalendarPanel.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        this.setState({
-	            value: nextProps.defaultDate
-	        });
+	        var defaultDate = nextProps.defaultDate;
+	        if (defaultDate && defaultDate != this.props.defaultDate) {
+	            this.dateChange(defaultDate);
+	        }
+	        // this.setState({
+	        //     value: nextProps.defaultDate
+	        // });
 	        //this.updateDirection();
 	    };
 
