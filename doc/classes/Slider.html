@@ -44,7 +44,8 @@
             </div>
         </div>
     </nav>
-    <div id="sidebar">
+    <div class="gfs-wrapper clearfix">
+        <div id="sidebar">
     <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
@@ -409,493 +410,152 @@
     <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
-    <div class="stdoc-content">
-        <div class="apidocs">
-            <div id="docs-main">
-                <div class="content">
-                    <div class="page-header">
+        <div class="stdoc-content">
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
     <h1>Slider</h1>
 </div>
- <div class="well well-small sign-left3">
+
+
+
+
+ <div class="gfs-description">
       <div class="stdoc-code"><p>滑块组件<br>
 目前支持水平滑动</p>
 </div>
  </div>
 
-    <div class="well well-small sign-left2 container-fluid" id="classesItems">
-        <div class="row">
-
-            <div class="index-section methods col-sm-4">
-                <h3>方法</h3>
-                
-            </div>
-
-            <div class="index-section properties col-sm-4">
-                <h3>属性</h3>
-                
-                    <ul class="index-list properties extends">
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_defaultValue" data-tablink="defaultValue">defaultValue</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_getValueCallback" data-tablink="getValueCallback">getValueCallback</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_initCallback" data-tablink="initCallback">initCallback</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_max" data-tablink="max">max</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#" data-tabid="#property" data-anchor="#property_min" data-tablink="min">min</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                
-            </div>
-
-            <div class="index-section events col-sm-4">
-                <h3>事件</h3>
-                
-            </div>
-        </div>
-    </div>
-
 <div class="">
     
-        <ul id="itemTab" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#class">详情</a></li>
-            
-            
-                <li class=""><a data-toggle="tab" href="#property">属性</a></li>
-            
-            
-        </ul>
-    
     <div class="tab-content">
-        <div id="class" class="tab-pane active">
-            <div class="well well-small classDetail sign-left1">
-            
+        
 
-            
-                <div class="extends">
-                    Extends Component
-                </div>
-            
+        
+        <div id="property">
+            <h2 class="off-left">属性</h2>
 
-            
-                <div class="foundat">
-                    Defined in: <a href="../files/src_Slider.js.html#l7"><code>src&#x2F;Slider.js:7</code></a>
-                </div>
-            
-
-            
+            <table class="table table-bordered params-pc-table">
+                <tr class='active'><th>属性名</th><th>类型</th><th>说明</th><th>默认值</th></tr>
                 
-                    Module: <a href="../modules/ui.html">ui</a>
-                
+                    <tr class="param">
+     <td> 
+        <code class="param-name">defaultValue</code>
+    </td>
+    <td><span class="type">Number</span> </td>
+    <td>
+        <div class="param-description">
             
-
+            <div class="stdoc-code"><p>默认滑块值，设置后会默认移动到对应的值上</p>
+</div>
+        </div>
+    </td>
+    <td>
+        0
+    </td>
+    
+</tr>
+                
+                    <tr class="param">
+     <td> 
+        <code class="param-name">getValueCallback</code>
+    </td>
+    <td><span class="type">Function</span> </td>
+    <td>
+        <div class="param-description">
+            
+            <div class="stdoc-code"><p>获取移动后的滑块值，getValueCallback(value)</p>
+</div>
+        </div>
+    </td>
+    <td>
+        null
+    </td>
+    
+</tr>
+                
+                    <tr class="param">
+     <td> 
+        <code class="param-name">initCallback</code>
+    </td>
+    <td><span class="type">Function</span> </td>
+    <td>
+        <div class="param-description">
+            
+            <div class="stdoc-code"><p>第一次实例化slider时被调用，initCallback(value)</p>
+</div>
+        </div>
+    </td>
+    <td>
+        null
+    </td>
+    
+</tr>
+                
+                    <tr class="param">
+     <td> 
+        <code class="param-name">max</code>
+    </td>
+    <td><span class="type">Number</span> </td>
+    <td>
+        <div class="param-description">
+            
+            <div class="stdoc-code"><p>滑块最大值</p>
+</div>
+        </div>
+    </td>
+    <td>
+        100
+    </td>
+    
+</tr>
+                
+                    <tr class="param">
+     <td> 
+        <code class="param-name">min</code>
+    </td>
+    <td><span class="type">Number</span> </td>
+    <td>
+        <div class="param-description">
+            
+            <div class="stdoc-code"><p>滑块初始值</p>
+</div>
+        </div>
+    </td>
+    <td>
+        0
+    </td>
+    
+</tr>
+                
+            </table>
             
         </div>
-
-        
-            
-                <div class="constructor">
-                    <h2>Constructor</h2>
-                    <div id="method_Slider" class="method item">
-    <h3 class="name">Slider</h3>
-    <code>
-    Slider
-    
-        <span class="paren">()</span>
-    
-    </code>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Slider.js.html#l7"><code>src&#x2F;Slider.js:7</code></a>
-        
-        </p>
-
-
         
 
         
     </div>
+</div>
 
-    <div class="description well well-small sign-left3">
-        
-    </div>
-
-    
-
-    
+<div>
 
     
         <div class="example">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
+            <h4>示例展示:</h4>
+            <div class="example-content  showdemo " data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/slider">
                 
-                <li role="presentation"  class="active"  data-demo="http://future-team.github.io/eagle-ui/examples/index.html#/slider"  _no='0'> <a>slider</a></li>
-                
-            </ul>
-            <div class="example-content  showdemo ">
-                <div class="stdoc-code"><pre class="code prettyprint"><code>/**
- * Created by mac on 15/11/4.
- */
-import React, { Component ,PropTypes} from &#39;react&#39;;
-import {Slider} from &#39;eagle-ui&#39;;
-import {DemoLayout, DemoItem, DemoShow, CodeShow} from &#39;../libs/Layout&#39;;
-import Code, {getFile} from &#39;../libs/Code&#39;;
-
-export default class SliderDemo extends Component{
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            val:&#39;&#39;
-        };
-
-    }
-    getValueCallback(val){
-        this.setState({
-            val:val
-        });
-    }
-    render(){
-        return (
-            &lt;DemoLayout title="滑块"&gt;
-                &lt;DemoItem title="基本使用"&gt;
-                    &lt;CodeShow&gt;
-                        &lt;Code code={getFile(&#39;slider-demo1&#39;)} /&gt;
-                    &lt;/CodeShow&gt;
-                    &lt;DemoShow&gt;
-                        &lt;Slider getValueCallback={::this.getValueCallback} initCallback={(val)=&gt;{console.dir(val);}} /&gt;
-                        &lt;div&gt;滑动输出的值：&lt;strong style={{color:&#39;red&#39;}}&gt;{this.state.val}&lt;/strong&gt;&lt;/div&gt;
-                    &lt;/DemoShow&gt;
-                &lt;/DemoItem&gt;
-
-            &lt;/DemoLayout&gt;
-        );
-    }
-}</code></pre>
-</div>
             </div>
-            <div class="btn-method-box">
-                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
-                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
-            </div>
-
-            <div class="device"></div>
         </div>
     
 </div>
 
-                </div>
-            
-        </div>
-
-        
-
-        
-            <div id="property" class="tab-pane">
-                <h2 class="off-left">属性</h2>
-
-                
-                    <div id="property_defaultValue" class="property item">
-    <h3 class="name"><code>defaultValue</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Slider.js.html#l41"><code>src&#x2F;Slider.js:41</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>默认滑块值，设置后会默认移动到对应的值上</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> 0</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_getValueCallback" class="property item">
-    <h3 class="name"><code>getValueCallback</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Slider.js.html#l48"><code>src&#x2F;Slider.js:48</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>获取移动后的滑块值，getValueCallback(value)</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> null</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_initCallback" class="property item">
-    <h3 class="name"><code>initCallback</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Slider.js.html#l55"><code>src&#x2F;Slider.js:55</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>第一次实例化slider时被调用，initCallback(value)</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> null</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_max" class="property item">
-    <h3 class="name"><code>max</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Slider.js.html#l34"><code>src&#x2F;Slider.js:34</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>滑块最大值</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> 100</code>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_min" class="property item">
-    <h3 class="name"><code>min</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p class="foundat">
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_Slider.js.html#l27"><code>src&#x2F;Slider.js:27</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <div class="stdoc-code"><p>滑块初始值</p>
-</div>
-    </div>
-
-    
-        <p><strong>Default:</strong></p>
-         <code> 0</code>
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-    </div>
-</div>
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 <a id="gotoTop" class='well well-small' href='#'>
 </a>
 <script src="../assets/vendor/jquery/jquery-1.8.2.js"></script>

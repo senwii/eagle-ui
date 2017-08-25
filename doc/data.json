@@ -1223,7 +1223,7 @@
             "is_constructor": 1,
             "extends": "Component",
             "example": [
-                "\timport React,{Component,PropTypes}  from 'react';\n\timport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code'\n\t\n\texport default class Demo extends Component{\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    }\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input,\n\t            options:[],\n\t            defaultCity:''\n\t        };\n\t        setTimeout(()=>{\n\t            this.setState({options: this.getOptions()})\n\t        });\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultCity:'上海'\n\t            });\n\t        }.bind(this),2000);\n\t    }\n\t    getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t    getOptions(){\n\t        return [\n\t            <option value='bei' key=\"bei\">北京</option>,\n\t            <option value='shang' key=\"上海\">上海</option>,\n\t            <option value='nan' key=\"南京\">南京</option>,\n\t            <option value='3' key=\"杭州\">杭州</option>,\n\t            <option value='4' key=\"杭州西\">杭州西</option>,\n\t            <option value='5' key=\"杭州北站\">杭州北站</option>,\n\t            <option value='6' key=\"广州\">广州</option>,\n\t            <option value='7' key=\"深圳\">深圳</option>,\n\t            <option value='8' key=\"澳门\">澳门</option>,\n\t            <option value='10' key=\"太原\">太原</option>,\n\t            <option value='11' key=\"台湾\">台湾</option>,\n\t            <option value='12' key=\"香港\">香港</option>\n\t        ];\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"下拉框组件\">\n\t                <DemoItem title=\"默认使用\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('select-demo')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Select defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n\t                            {this.state.options}\n\t                        </Select>\n\t                        <div id=\"showtip\" className=\"color-info\"></div>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
+                "\timport React,{Component,PropTypes}  from 'react';\n\timport {Col,Row,Grid,Button,Select} from 'eagle-ui';\n\timport {DemoLayout, DemoItem, DemoShow, CodeShow} from '../libs/Layout';\n\timport Code, {getFile} from '../libs/Code'\n\t\n\texport default class Demo extends Component{\n\t    static defaultProps = {\n\t        input: true,\n\t        keys:'bei'\n\t    }\n\t    constructor(props, context) {\n\t        super(props, context);\n\t        this.state = {\n\t            input: this.props.input,\n\t            options:[],\n\t            defaultCity:''\n\t        };\n\t        setTimeout(()=>{\n\t            this.setState({options: this.getOptions()})\n\t        });\n\t        setTimeout(function(){\n\t            this.setState({\n\t                defaultCity:'上海'\n\t            });\n\t        }.bind(this),2000);\n\t    }\n\t    getValue(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t    getValue2(value,key,type){\n\t        let stype = {\n\t            'init':'加载时调用',\n\t            'enter':'回车时调用',\n\t            'click':'点击每一项元素时调用'\n\t        };\n\t        document.getElementById('showtip2').innerHTML = `<strong>${stype[type]}</strong>的值为：<b>\"key\":<span class=\"color-error\">${key}</span></b>,<b>\"value\":<span class=\"color-error\">${value}</span></b>`;\n\t    }\n\t    getOptions(){\n\t        return [\n\t            <option value='bei' key=\"bei\">北京</option>,\n\t            <option value='shang' key=\"上海\">上海</option>,\n\t            <option value='nan' key=\"南京\">南京</option>,\n\t            <option value='3' key=\"杭州\">杭州</option>,\n\t            <option value='4' key=\"杭州西\">杭州西</option>,\n\t            <option value='5' key=\"杭州北站\">杭州北站</option>,\n\t            <option value='6' key=\"广州\">广州</option>,\n\t            <option value='7' key=\"深圳\">深圳</option>,\n\t            <option value='8' key=\"澳门\">澳门</option>,\n\t            <option value='10' key=\"太原\">太原</option>,\n\t            <option value='11' key=\"台湾\">台湾</option>,\n\t            <option value='12' key=\"香港\">香港</option>\n\t        ];\n\t    }\n\t    render(){\n\t        return (\n\t            <DemoLayout title=\"下拉框组件\">\n\t                <DemoItem title=\"默认使用\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('select-demo')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <Select\n\t                            readOnly\n\t                            defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue} placeholder=\"请选择\" >\n\t                            {this.state.options}\n\t                        </Select>\n\t                        <div id=\"showtip\" className=\"color-info\"></div>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t                <DemoItem title=\"自动清除已选\">\n\t                    <CodeShow>\n\t                        <Code code={getFile('select-demo-autoClear')}/>\n\t                    </CodeShow>\n\t                    <DemoShow>\n\t                        <div id=\"showtip2\" className=\"color-info\"></div>\n\t                        <Select\n\t                            defaultChecked={this.state.defaultCity} getValueCallback={::this.getValue2} placeholder=\"请选择\" autoClear={true}>\n\t                            {this.state.options}\n\t                        </Select>\n\t                    </DemoShow>\n\t                </DemoItem>\n\t            </DemoLayout>\n\t        );\n\t    }\n\t}"
             ],
             "exampleTitles": [
                 "select"
@@ -1599,6 +1599,13 @@
             "itemtype": "property",
             "name": "classPrefix",
             "type": "string",
+            "class": "Column",
+            "module": "panel(面板)"
+        },
+        {
+            "file": "src/sug/Search.js",
+            "line": 25,
+            "description": "是否自动清除默已选的值",
             "class": "Column",
             "module": "panel(面板)"
         },
@@ -3161,63 +3168,70 @@
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 160,
+            "line": 139,
+            "description": "如果事件是click，body加上事件，移除时隐藏",
+            "class": "TooltipPanel",
+            "module": "ui"
+        },
+        {
+            "file": "src/TooltipPanel.js",
+            "line": 171,
             "description": "获得限制区域的宽，若未指定则默认可视区域大小",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 178,
+            "line": 189,
             "description": "获取元素的client宽高",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 189,
+            "line": 200,
             "description": "获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 204,
+            "line": 215,
             "description": "获取处理之后的offset，top和left",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 215,
+            "line": 226,
             "description": "获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 230,
+            "line": 241,
             "description": "tips方向和边界判断，调整tips的位置",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 265,
+            "line": 276,
             "description": "获得浏览器的边界大小",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 277,
+            "line": 288,
             "description": "如果方向改变，重新设置箭头方向",
             "class": "TooltipPanel",
             "module": "ui"
         },
         {
             "file": "src/TooltipPanel.js",
-            "line": 290,
+            "line": 301,
             "description": "判断是否满足边界条件,返回满足的方向\n不满足的话应该说直接取相反方向",
             "class": "TooltipPanel",
             "module": "ui"
@@ -3707,6 +3721,10 @@
             "line": " src/dialog/Dialog.js:26"
         },
         {
+            "message": "Missing item type\n是否自动清除默已选的值",
+            "line": " src/sug/Search.js:25"
+        },
+        {
             "message": "Missing item type\nCreated by mac on 15/9/7.",
             "line": " src/utils/ClassNameMixin.js:1"
         },
@@ -3867,40 +3885,44 @@
             "line": " src/TooltipPanel.js:118"
         },
         {
+            "message": "Missing item type\n如果事件是click，body加上事件，移除时隐藏",
+            "line": " src/TooltipPanel.js:139"
+        },
+        {
             "message": "Missing item type\n获得限制区域的宽，若未指定则默认可视区域大小",
-            "line": " src/TooltipPanel.js:160"
+            "line": " src/TooltipPanel.js:171"
         },
         {
             "message": "Missing item type\n获取元素的client宽高",
-            "line": " src/TooltipPanel.js:178"
-        },
-        {
-            "message": "Missing item type\n获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
             "line": " src/TooltipPanel.js:189"
         },
         {
-            "message": "Missing item type\n获取处理之后的offset，top和left",
-            "line": " src/TooltipPanel.js:204"
+            "message": "Missing item type\n获取tips的offset\n宽高容易获取，top和left循环向上直到body，如果指定边界a，则取两者之差",
+            "line": " src/TooltipPanel.js:200"
         },
         {
-            "message": "Missing item type\n获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
+            "message": "Missing item type\n获取处理之后的offset，top和left",
             "line": " src/TooltipPanel.js:215"
         },
         {
+            "message": "Missing item type\n获取offset top、left。\n两者获取方式相同，根据isleft区分left或top",
+            "line": " src/TooltipPanel.js:226"
+        },
+        {
             "message": "Missing item type\ntips方向和边界判断，调整tips的位置",
-            "line": " src/TooltipPanel.js:230"
+            "line": " src/TooltipPanel.js:241"
         },
         {
             "message": "Missing item type\n获得浏览器的边界大小",
-            "line": " src/TooltipPanel.js:265"
+            "line": " src/TooltipPanel.js:276"
         },
         {
             "message": "Missing item type\n如果方向改变，重新设置箭头方向",
-            "line": " src/TooltipPanel.js:277"
+            "line": " src/TooltipPanel.js:288"
         },
         {
             "message": "Missing item type\n判断是否满足边界条件,返回满足的方向\n不满足的话应该说直接取相反方向",
-            "line": " src/TooltipPanel.js:290"
+            "line": " src/TooltipPanel.js:301"
         }
     ]
 }

@@ -44,7 +44,8 @@
             </div>
         </div>
     </nav>
-    <div id="sidebar">
+    <div class="gfs-wrapper clearfix">
+        <div id="sidebar">
     <h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
@@ -409,11 +410,11 @@
     <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
 </div>
    
-    <div class="stdoc-content">
-        <div class="apidocs">
-            <div id="docs-main">
-                <div class="content">
-                    <div class="page-header">
+        <div class="stdoc-content">
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
     <h1>src/TooltipPanel.js <small>File</small></h1>
 </div>
 
@@ -543,14 +544,25 @@ class TooltipPanel extends Component {
         if(this.props.trigger == &#x27;click&#x27;){
             let idName = this.idName;
             let self = this;
-            document.addEventListener(&#x27;click&#x27;,((idName)=&gt;{
+
+            this.clickTriggerHandler=((idName)=&gt;{
                 let id = idName;
                 return (event)=&gt;{
                     !self.parents(id,event.target)&amp;&amp;(self.setState({
                         show:false
                     }));
                 }
-            })(idName))
+            })(idName)
+            document.addEventListener(&#x27;click&#x27;,this.clickTriggerHandler)
+        }
+
+    }
+    componentWillUnmount() {
+        /**
+         * 如果事件是click，body加上事件，移除时隐藏
+         * */
+        if(this.props.trigger == &#x27;click&#x27;){
+            document.removeEventListener(&#x27;click&#x27;,this.clickTriggerHandler)
         }
 
     }
@@ -770,7 +782,7 @@ class TooltipPanel extends Component {
         let {children,bgColor,direction,...other} = this.props;
         let dir = direction == &#x27;down&#x27; ? &#x27;bottom&#x27;: direction;
         let c = null;
-        if(other.msg){
+        if(other.msg!==undefined){
             let child = this.getChild(children,other.trigger);
             c = [
                 ...child,
@@ -806,10 +818,12 @@ class TooltipPanel extends Component {
     </pre>
 </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 <a id="gotoTop" class='well well-small' href='#'>
 </a>
 <script src="../assets/vendor/jquery/jquery-1.8.2.js"></script>

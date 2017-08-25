@@ -97,6 +97,7 @@
     "es5-shim": "^4.5.9",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.5",
+    "gfs-doc": "^0.1.44",
     "gfs-head": "^0.0.5",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
