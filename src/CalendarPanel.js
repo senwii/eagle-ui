@@ -31,6 +31,7 @@ export default class CalendarPanel extends Component{
         showCallback:PropTypes.func,
         hideCallback:PropTypes.func,
         componentTag:PropTypes.string,
+        force:PropTypes.bool, // 强制方向
         /**
          * 日历位置
          * @property direction
@@ -51,6 +52,7 @@ export default class CalendarPanel extends Component{
         componentTag:'Input',
         calendarType:'date',
         direction: 'auto',
+        force: false,
         getValueCallback:function(date){
             console.warn('通过向CalendarPanel传入回调函数"getValueCallback"可以获取到当前选取的日期值，当前选取的日期为：'+date);
         }
@@ -87,9 +89,13 @@ export default class CalendarPanel extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            value: nextProps.defaultDate
-        });
+        let defaultDate=nextProps.defaultDate
+        if(defaultDate&&(defaultDate!=this.props.defaultDate)){
+            this.dateChange(defaultDate)
+        }
+        // this.setState({
+        //     value: nextProps.defaultDate
+        // });
         //this.updateDirection();
     }
 
@@ -228,17 +234,19 @@ export default class CalendarPanel extends Component{
         // if dir auto then rename dir
         // detach direction
         // body - input VS panel
-        if (['auto', 'down', 'top'].indexOf(dir) !== -1) {
-            dir = isUp ? 'top' : 'down';
-        }
-        if(['left', 'right'].indexOf(dir) !== -1){
-            const diffLeft = inputPos.offsetLeft - panelPos.width;
-            const diffRight = containerPos.width - inputPos.offsetLeft - inputPos.width - panelPos.width;
-            if(dir == 'left' && diffLeft < 0 && diffRight){
-               dir = 'right';
+        if(!this.props.force){ // 是否强制方向
+            if (['auto', 'down', 'top'].indexOf(dir) !== -1) {
+                dir = isUp ? 'top' : 'down';
             }
-            if(dir == 'right' && diffRight < 0 && diffLeft){
-                dir = 'left';
+            if(['left', 'right'].indexOf(dir) !== -1){
+                const diffLeft = inputPos.offsetLeft - panelPos.width;
+                const diffRight = containerPos.width - inputPos.offsetLeft - inputPos.width - panelPos.width;
+                if(dir == 'left' && diffLeft < 0 && diffRight){
+                   dir = 'right';
+                }
+                if(dir == 'right' && diffRight < 0 && diffLeft){
+                    dir = 'left';
+                }
             }
         }
         const style = {}
