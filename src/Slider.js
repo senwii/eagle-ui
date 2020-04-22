@@ -150,8 +150,6 @@ export default class Slider extends Component{
             }
             this.isUpdateValue = true;
         }
-        e.preventDefault();
-        return false;
     }
     upHandler(){
         if(this.isUpdateValue){
