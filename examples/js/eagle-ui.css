@@ -4922,12 +4922,13 @@ pre[class*="language-"] {
   box-shadow: -3px 2px 3px rgba(150, 150, 150, 0.3), 3px -2px 3px rgba(150, 150, 150, 0.3);
   width: 200px;
   background: #fff;
-  padding: 3px;
+  padding: 0px;
   display: inline-block;
   vertical-align: top;
 }
 .question-multi-menu .question-multi-menu-body ul.multi-drop-down-list li {
   font-size: 14px;
+  height: 32px;
   position: relative;
   overflow: hidden;
   background: #ffffff;
